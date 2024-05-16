@@ -1,0 +1,10 @@
+{
+    "devDependencies": {
+        "elm-codegen": "^0.5.3",
+        "elm-test-rs": "^3.0.0-5"
+    },
+    "license": "BSD-3-Clause",
+    "scripts": {
+        "start": "yarn elm-codegen run --output src"
+    }
+}
