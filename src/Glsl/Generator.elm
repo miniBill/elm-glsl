@@ -1,7 +1,7 @@
 module Glsl.Generator exposing (Context, ErrorValue(..), File, FunDecl, GlslValue(..), adds2, adds3, adds4, and, ands, assign, assignAdd, assignBy, assignOut, boolT, break, continue, decl, def, def1, def2, def3, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun2, fun3, fun4, fun5, funDeclToGlsl, gl_FragColor, gl_FragCoord, ifElse, if_, in_, intT, interpret, main_, mat3, mat3T, minusOne, nop, one, or, ors, out, return, statementToGlsl, ternary, ternary3, value, valueToString, vec2, vec2T, vec2Zero, vec3, vec3T, vec3Zero, vec4, vec4T, vec4Zero, voidT, zero)
 
 import Dict exposing (Dict)
-import Glsl exposing (BinaryOperation(..), ComboOperation(..), Expr(..), Expression(..), ForDirection(..), In, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, false, float1, true, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap2, unsafeMap3, var, withExpression, withStatement)
+import Glsl exposing (BinaryOperation(..), Expr(..), Expression(..), ForDirection(..), In, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, false, float1, true, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap2, unsafeMap3, var, withExpression, withStatement)
 import Glsl.Functions exposing (vec211, vec3111, vec41111)
 import Glsl.Operations exposing (add22, add33, add44)
 import Glsl.PrettyPrinter
@@ -201,9 +201,6 @@ relationToString rel =
         GreaterThan ->
             ">"
 
-        Assign ->
-            "="
-
 
 expressionToGlsl : Expression t -> String
 expressionToGlsl (Expression tree) =
@@ -211,167 +208,23 @@ expressionToGlsl (Expression tree) =
 
 
 exprToGlsl : Expr -> String
-exprToGlsl tree =
+exprToGlsl root =
     let
-        -- The numbers are precedence numbers from the GLSL spec
-        go : Bool -> Expr -> String
-        go rec e =
-            -- case e of
-            --     Unknown u ->
-            --         u
-            --     _ ->
-            go17 rec e
+        showParen show e =
+            if show then
+                "(" ++ e ++ ")"
 
-        go17 : Bool -> Expr -> String
-        go17 rec e =
-            go16 rec e
+            else
+                e
 
-        go16 : Bool -> Expr -> String
-        go16 rec e =
-            case e of
-                Comparison Assign l r ->
-                    go15 False l ++ " = " ++ go15 False r
+        infixl_ n p l op r =
+            showParen (p > n) (go p l ++ " " ++ op ++ " " ++ go (p + 1) r)
 
-                AssignCombo k l r ->
-                    go15 False l ++ " " ++ comboOperationToString k ++ "= " ++ go15 False r
+        infixr_ n p l op r =
+            showParen (p > n) (go (p + 1) l ++ " " ++ op ++ " " ++ go p r)
 
-                _ ->
-                    go15 rec e
-
-        go15 : Bool -> Expr -> String
-        go15 rec e =
-            case e of
-                Ternary c t f ->
-                    go14 False c ++ " ? " ++ go14 False t ++ " : " ++ go15 False f
-
-                _ ->
-                    go14 rec e
-
-        go14 : Bool -> Expr -> String
-        go14 rec e =
-            case e of
-                BinaryOperation Or l r ->
-                    go14 False l ++ " || " ++ go13 False r
-
-                _ ->
-                    go13 rec e
-
-        go13 : Bool -> Expr -> String
-        go13 rec e =
-            go12 rec e
-
-        go12 : Bool -> Expr -> String
-        go12 rec e =
-            case e of
-                BinaryOperation And l r ->
-                    go12 False l ++ " && " ++ go11 False r
-
-                _ ->
-                    go11 rec e
-
-        go11 : Bool -> Expr -> String
-        go11 rec e =
-            go10 rec e
-
-        go10 : Bool -> Expr -> String
-        go10 rec e =
-            go9 rec e
-
-        go9 : Bool -> Expr -> String
-        go9 rec e =
-            go8 rec e
-
-        go8 : Bool -> Expr -> String
-        go8 rec e =
-            case e of
-                Comparison Equals l r ->
-                    go7 False l ++ " == " ++ go7 False r
-
-                Comparison NotEquals l r ->
-                    go7 False l ++ " != " ++ go7 False r
-
-                _ ->
-                    go7 rec e
-
-        go7 : Bool -> Expr -> String
-        go7 rec e =
-            case e of
-                Comparison LessThan l r ->
-                    go6 False l ++ " < " ++ go6 False r
-
-                Comparison LessThanOrEquals l r ->
-                    go6 False l ++ " <= " ++ go6 False r
-
-                Comparison GreaterThan l r ->
-                    go6 False l ++ " > " ++ go6 False r
-
-                Comparison GreaterThanOrEquals l r ->
-                    go6 False l ++ " >= " ++ go6 False r
-
-                _ ->
-                    go6 rec e
-
-        go6 : Bool -> Expr -> String
-        go6 rec e =
-            go5 rec e
-
-        go5 : Bool -> Expr -> String
-        go5 rec e =
-            case e of
-                BinaryOperation Add l r ->
-                    go5 False l ++ " + " ++ go4 False r
-
-                BinaryOperation Subtract l r ->
-                    go5 False l ++ " - " ++ go4 False r
-
-                _ ->
-                    go4 rec e
-
-        go4 : Bool -> Expr -> String
-        go4 rec e =
-            case e of
-                BinaryOperation By l r ->
-                    go4 False l ++ " * " ++ go3 False r
-
-                BinaryOperation Div l r ->
-                    go4 False l ++ " / " ++ go3 False r
-
-                _ ->
-                    go3 rec e
-
-        go3 : Bool -> Expr -> String
-        go3 rec e =
-            case e of
-                UnaryOperation Negate c ->
-                    "-" ++ go2 False c
-
-                PostfixIncrement c ->
-                    go2 False c ++ "++"
-
-                PostfixDecrement c ->
-                    go2 False c ++ "--"
-
-                _ ->
-                    go2 rec e
-
-        go2 : Bool -> Expr -> String
-        go2 rec e =
-            case e of
-                Call name args ->
-                    name ++ "(" ++ String.join ", " (List.map (go False) args) ++ ")"
-
-                Dot l r ->
-                    go2 False l ++ "." ++ r
-
-                Array l r ->
-                    go2 False l ++ "[" ++ go False r ++ "]"
-
-                _ ->
-                    go1 rec e
-
-        go1 : Bool -> Expr -> String
-        go1 rec e =
-            case e of
+        go p tree =
+            case tree of
                 Bool b ->
                     if b then
                         "true"
@@ -388,30 +241,115 @@ exprToGlsl tree =
                 Variable v ->
                     v
 
-                _ ->
-                    if rec then
-                        "!!!Internal error in toString for Glsl!!!"
+                UnaryOperation _ _ ->
+                    Debug.todo "branch 'UnaryOperation _ _' not implemented"
 
-                    else
-                        "(" ++ go True e ++ ")"
+                BinaryOperation l By r ->
+                    infixl_ 4 p l "*" r
+
+                BinaryOperation l Div r ->
+                    infixl_ 4 p l "/" r
+
+                BinaryOperation l Mod r ->
+                    infixl_ 4 p l "%" r
+
+                BinaryOperation l Add r ->
+                    infixl_ 5 p l "+" r
+
+                BinaryOperation l Subtract r ->
+                    infixl_ 5 p l "-" r
+
+                BinaryOperation l ShiftLeft r ->
+                    infixl_ 6 p l "<<" r
+
+                BinaryOperation l ShiftRight r ->
+                    infixl_ 6 p l ">>" r
+
+                BinaryOperation l (RelationOperation LessThan) r ->
+                    infixl_ 7 p l "<" r
+
+                BinaryOperation l (RelationOperation LessThanOrEquals) r ->
+                    infixl_ 7 p l "<=" r
+
+                BinaryOperation l (RelationOperation GreaterThan) r ->
+                    infixl_ 7 p l ">" r
+
+                BinaryOperation l (RelationOperation GreaterThanOrEquals) r ->
+                    infixl_ 7 p l ">=" r
+
+                BinaryOperation l (RelationOperation Equals) r ->
+                    infixl_ 8 p l "==" r
+
+                BinaryOperation l (RelationOperation NotEquals) r ->
+                    infixl_ 8 p l "!=" r
+
+                BinaryOperation l BitwiseAnd r ->
+                    infixl_ 9 p l "&" r
+
+                BinaryOperation l BitwiseXor r ->
+                    infixl_ 10 p l "^" r
+
+                BinaryOperation l BitwiseOr r ->
+                    infixl_ 11 p l "|" r
+
+                BinaryOperation l And r ->
+                    infixl_ 12 p l "&&" r
+
+                BinaryOperation l Xor r ->
+                    infixl_ 13 p l "^^" r
+
+                BinaryOperation l Or r ->
+                    infixl_ 14 p l "||" r
+
+                Ternary c t f ->
+                    showParen (p > 15) (go 16 c ++ " ? " ++ go 16 t ++ " : " ++ go 15 f)
+
+                BinaryOperation l Assign r ->
+                    infixr_ 16 p l "=" r
+
+                BinaryOperation l ComboAdd r ->
+                    infixr_ 16 p l "+=" r
+
+                BinaryOperation l ComboSubtract r ->
+                    infixr_ 16 p l "-=" r
+
+                BinaryOperation l ComboBy r ->
+                    infixr_ 16 p l "*=" r
+
+                BinaryOperation l ComboDiv r ->
+                    infixr_ 16 p l "/=" r
+
+                BinaryOperation l ComboMod r ->
+                    infixr_ 16 p l "%=" r
+
+                BinaryOperation l ComboLeftShift r ->
+                    infixr_ 16 p l "<<=" r
+
+                BinaryOperation l ComboRightShift r ->
+                    infixr_ 16 p l ">>=" r
+
+                BinaryOperation l ComboBitwiseAnd r ->
+                    infixr_ 16 p l "&=" r
+
+                BinaryOperation l ComboBitwiseXor r ->
+                    infixr_ 16 p l "^=" r
+
+                BinaryOperation l ComboBitwiseOr r ->
+                    infixr_ 16 p l "|=" r
+
+                BinaryOperation l Comma r ->
+                    infixl_ 17 p l "," r
+
+                Call _ _ ->
+                    Debug.todo "branch 'Call _ _' not implemented"
+
+                Dot _ _ ->
+                    Debug.todo "branch 'Dot _ _' not implemented"
+
+                BinaryOperation _ _ _ ->
+                    Debug.todo "branch 'BinaryOperation _ _ _' not implemented"
     in
-    go False tree
-
-
-comboOperationToString : ComboOperation -> String
-comboOperationToString op =
-    case op of
-        ComboAdd ->
-            "+"
-
-        ComboSubtract ->
-            "-"
-
-        ComboBy ->
-            "*"
-
-        ComboDiv ->
-            "/"
+    go 0 root
 
 
 indent : Int -> String -> String
@@ -435,7 +373,7 @@ ternary3 =
 
 and : Expression Bool -> Expression Bool -> Expression Bool
 and =
-    unsafeMap2 (BinaryOperation And)
+    unsafeMap2 (\l r -> BinaryOperation l And r)
 
 
 ands : List (Expression Bool) -> Expression Bool
@@ -450,7 +388,7 @@ ands es =
 
 or : Expression Bool -> Expression Bool -> Expression Bool
 or =
-    unsafeMap2 (BinaryOperation Or)
+    unsafeMap2 (\l r -> BinaryOperation l Or r)
 
 
 ors : List (Expression Bool) -> Expression Bool
@@ -883,12 +821,12 @@ def3 ( tn0, val0 ) ( tn1, val1 ) ( tn2, val2 ) k =
 
 assign : Expression t -> Expression t -> Expression t
 assign name e =
-    unsafeMap2 (Comparison Assign) name e
+    unsafeMap2 (\l r -> BinaryOperation l Assign r) name e
 
 
 assignOut : Expression (Out t) -> Expression t -> Expression t
 assignOut name e =
-    unsafeMap2 (Comparison Assign) name e
+    unsafeMap2 (\l r -> BinaryOperation l Assign r) name e
 
 
 expr : Expression t -> (() -> Statement r) -> Statement r
@@ -911,12 +849,12 @@ unsafeNop =
 
 assignAdd : Expression t -> Expression t -> (() -> Statement q) -> Statement q
 assignAdd name val =
-    expr <| unsafeMap2 (AssignCombo ComboAdd) name val
+    expr <| unsafeMap2 (\l r -> BinaryOperation l ComboAdd r) name val
 
 
 assignBy : Expression t -> Expression t -> (() -> Statement q) -> Statement q
 assignBy name val =
-    expr <| unsafeMap2 (AssignCombo ComboBy) name val
+    expr <| unsafeMap2 (\l r -> BinaryOperation l ComboBy r) name val
 
 
 
@@ -1074,7 +1012,7 @@ innerValue ctx e =
                                         ("Cannot calculate `-` for " ++ valueToString vc)
                     )
 
-        BinaryOperation And l r ->
+        BinaryOperation l And r ->
             innerValue2 ctx l r <|
                 \ctx2 vl vr ->
                     case ( vl, vr ) of
@@ -1086,7 +1024,7 @@ innerValue ctx e =
                                 InvalidTypes
                                     ("Cannot calculate `and` for " ++ valueToString vl ++ " and " ++ valueToString vr)
 
-        BinaryOperation Or l r ->
+        BinaryOperation l Or r ->
             innerValue2 ctx l r <|
                 \ctx2 vl vr ->
                     case ( vl, vr ) of
@@ -1098,7 +1036,7 @@ innerValue ctx e =
                                 InvalidTypes
                                     ("Cannot calculate `or` for " ++ valueToString vl ++ " and " ++ valueToString vr)
 
-        Comparison k l r ->
+        BinaryOperation l (RelationOperation k) r ->
             innerValue2 ctx l r <|
                 \ctx2 vl vr ->
                     case ( vl, vr, k ) of
@@ -1120,18 +1058,18 @@ innerValue ctx e =
                         _ ->
                             Err <|
                                 InvalidTypes
-                                    ("Cannot compare " ++ valueToString vl ++ " and " ++ valueToString vr)
+                                    ("Cannot compare " ++ valueToString vl ++ " " ++ relationToString k ++ " " ++ valueToString vr)
 
         Ternary _ _ _ ->
             Debug.todo "branch 'Ternary _ _ _' not implemented"
 
-        BinaryOperation Add _ _ ->
+        BinaryOperation _ Add _ ->
             Debug.todo "branch 'Add _ _' not implemented"
 
-        BinaryOperation Subtract _ _ ->
+        BinaryOperation _ Subtract _ ->
             Debug.todo "branch 'Subtract _ _' not implemented"
 
-        BinaryOperation By l r ->
+        BinaryOperation l By r ->
             innerValue2 ctx l r <|
                 \ctx2 vl vr ->
                     case ( vl, vr ) of
@@ -1143,7 +1081,7 @@ innerValue ctx e =
                                 InvalidTypes
                                     ("Cannot calculate `*` for " ++ valueToString vl ++ " and " ++ valueToString vr)
 
-        BinaryOperation Div _ _ ->
+        BinaryOperation _ Div _ ->
             Debug.todo "branch 'Div _ _' not implemented"
 
         Call "vec2" [ l, r ] ->
@@ -1173,17 +1111,86 @@ innerValue ctx e =
         Dot _ _ ->
             Debug.todo "branch 'Dot _ _' not implemented"
 
-        Array _ _ ->
-            Debug.todo "branch 'Array _ _' not implemented"
+        UnaryOperation PostfixIncrement _ ->
+            Debug.todo "branch 'UnaryOperation PostfixIncrement _' not implemented"
 
-        AssignCombo _ _ _ ->
-            Debug.todo "branch 'AssignCombo _ _' not implemented"
+        UnaryOperation PostfixDecrement _ ->
+            Debug.todo "branch 'UnaryOperation PostfixDecrement _' not implemented"
 
-        PostfixIncrement _ ->
-            Debug.todo "branch 'PostfixIncrement _' not implemented"
+        UnaryOperation PrefixIncrement _ ->
+            Debug.todo "branch 'UnaryOperation PrefixIncrement _' not implemented"
 
-        PostfixDecrement _ ->
-            Debug.todo "branch 'PostfixDecrement _' not implemented"
+        UnaryOperation PrefixDecrement _ ->
+            Debug.todo "branch 'UnaryOperation PrefixDecrement _' not implemented"
+
+        UnaryOperation Plus _ ->
+            Debug.todo "branch 'UnaryOperation Plus _' not implemented"
+
+        UnaryOperation Invert _ ->
+            Debug.todo "branch 'UnaryOperation Invert _' not implemented"
+
+        UnaryOperation Not _ ->
+            Debug.todo "branch 'UnaryOperation Not _' not implemented"
+
+        BinaryOperation _ ArraySubscript _ ->
+            Debug.todo "branch 'BinaryOperation _ ArraySubscript _' not implemented"
+
+        BinaryOperation _ Mod _ ->
+            Debug.todo "branch 'BinaryOperation _ Mod _' not implemented"
+
+        BinaryOperation _ ShiftLeft _ ->
+            Debug.todo "branch 'BinaryOperation _ LeftShift _' not implemented"
+
+        BinaryOperation _ ShiftRight _ ->
+            Debug.todo "branch 'BinaryOperation _ RightShift _' not implemented"
+
+        BinaryOperation _ BitwiseAnd _ ->
+            Debug.todo "branch 'BinaryOperation _ BitwiseAnd _' not implemented"
+
+        BinaryOperation _ BitwiseOr _ ->
+            Debug.todo "branch 'BinaryOperation _ BitwiseOr _' not implemented"
+
+        BinaryOperation _ BitwiseXor _ ->
+            Debug.todo "branch 'BinaryOperation _ BitwiseXor _' not implemented"
+
+        BinaryOperation _ Xor _ ->
+            Debug.todo "branch 'BinaryOperation _ Xor _' not implemented"
+
+        BinaryOperation _ Assign _ ->
+            Debug.todo "branch 'BinaryOperation _ Assign _' not implemented"
+
+        BinaryOperation _ ComboAdd _ ->
+            Debug.todo "branch 'BinaryOperation _ ComboAdd _' not implemented"
+
+        BinaryOperation _ ComboSubtract _ ->
+            Debug.todo "branch 'BinaryOperation _ ComboSubtract _' not implemented"
+
+        BinaryOperation _ ComboBy _ ->
+            Debug.todo "branch 'BinaryOperation _ ComboBy _' not implemented"
+
+        BinaryOperation _ ComboDiv _ ->
+            Debug.todo "branch 'BinaryOperation _ ComboDiv _' not implemented"
+
+        BinaryOperation _ ComboMod _ ->
+            Debug.todo "branch 'BinaryOperation _ ComboMod _' not implemented"
+
+        BinaryOperation _ ComboLeftShift _ ->
+            Debug.todo "branch 'BinaryOperation _ ComboLeftShift _' not implemented"
+
+        BinaryOperation _ ComboRightShift _ ->
+            Debug.todo "branch 'BinaryOperation _ ComboRightShift _' not implemented"
+
+        BinaryOperation _ ComboBitwiseAnd _ ->
+            Debug.todo "branch 'BinaryOperation _ ComboBitwiseAnd _' not implemented"
+
+        BinaryOperation _ ComboBitwiseXor _ ->
+            Debug.todo "branch 'BinaryOperation _ ComboBitwiseXor _' not implemented"
+
+        BinaryOperation _ ComboBitwiseOr _ ->
+            Debug.todo "branch 'BinaryOperation _ ComboBitwiseOr _' not implemented"
+
+        BinaryOperation _ Comma _ ->
+            Debug.todo "branch 'BinaryOperation _ Comma _' not implemented"
 
 
 innerValue2 :

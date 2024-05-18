@@ -279,6 +279,31 @@ builtinFunctions =
         |> Dict.fromList
 
 
+builtin_new : List ( String, List ( Type, Type ), List ( Type, Type ) )
+builtin_new =
+    [ ( "abs", genType |> toSame, genIType |> toSame ) ]
+
+
+genType : List Type
+genType =
+    [ TFloat, TVec2, TVec3, TVec4 ]
+
+
+genIType : List Type
+genIType =
+    [ TInt, TIVec2, TIVec3, TIVec4 ]
+
+
+toSame : List a -> List ( a, a )
+toSame list =
+    List.map (\x -> ( x, x )) list
+
+
+to : (a -> b) -> List a -> List b
+to f list =
+    List.map f list
+
+
 builtin_v_s : ( List String, List ( List Type, Type ) )
 builtin_v_s =
     ( [ -- Geometric
@@ -302,14 +327,14 @@ builtin_v_v =
       , "fract"
 
       -- Complex and power
-      , "sign"
-      , "exp"
-      , "log"
       , "abs"
+      , "exp"
       , "exp2"
-      , "log2"
-      , "sqrt"
       , "inversesqrt"
+      , "log"
+      , "log2"
+      , "sign"
+      , "sqrt"
 
       -- Trig
       , "radians"

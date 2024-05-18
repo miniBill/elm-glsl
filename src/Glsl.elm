@@ -2,7 +2,7 @@ module Glsl exposing
     ( Function
     , Statement(..), Stat(..), ForDirection(..)
     , Expression(..), ExprWithDeps, Expr(..)
-    , BinaryOperation(..), UnaryOperation(..), RelationOperation(..), ComboOperation(..)
+    , BinaryOperation(..), UnaryOperation(..), RelationOperation(..)
     , BisectSignature
     , true, false, var
     , unsafeDot, dot2X, dot2Y, dot3X, dot3Y, dot3Z
@@ -22,7 +22,7 @@ module Glsl exposing
 @docs Function
 @docs Statement, Stat, ForDirection
 @docs Expression, ExprWithDeps, Expr
-@docs BinaryOperation, UnaryOperation, RelationOperation, ComboOperation
+@docs BinaryOperation, UnaryOperation, RelationOperation
 @docs BisectSignature
 
 
@@ -227,46 +227,78 @@ type Expr
     | Int Int
     | Float Float
     | Variable String
-    | Comparison RelationOperation Expr Expr
     | Ternary Expr Expr Expr
     | UnaryOperation UnaryOperation Expr
-    | BinaryOperation BinaryOperation Expr Expr
+    | BinaryOperation Expr BinaryOperation Expr
     | Call String (List Expr)
-    | PostfixIncrement Expr
-    | PostfixDecrement Expr
     | Dot Expr String
-    | Array Expr Expr
-    | AssignCombo ComboOperation Expr Expr
 
 
 type BinaryOperation
-    = Add
-    | Subtract
+    = -- 2
+      ArraySubscript
+      -- 4
     | By
     | Div
+    | Mod
+    | -- 5
+      Add
+    | Subtract
+      -- 6
+    | ShiftLeft
+    | ShiftRight
+      -- 7 and 8
+    | RelationOperation RelationOperation
+      -- 9
+    | BitwiseAnd
+      -- 10
+    | BitwiseOr
+      -- 11
+    | BitwiseXor
+      -- 12
     | And
+      -- 13
+    | Xor
+      -- 14
     | Or
-
-
-type UnaryOperation
-    = Negate
-
-
-type RelationOperation
-    = LessThan
-    | LessThanOrEquals
-    | Equals
-    | NotEquals
-    | GreaterThanOrEquals
-    | GreaterThan
+      -- 16
     | Assign
-
-
-type ComboOperation
-    = ComboAdd
+    | ComboAdd
     | ComboSubtract
     | ComboBy
     | ComboDiv
+    | ComboMod
+    | ComboLeftShift
+    | ComboRightShift
+    | ComboBitwiseAnd
+    | ComboBitwiseXor
+    | ComboBitwiseOr
+      -- 17
+    | Comma
+
+
+type RelationOperation
+    = -- 7
+      LessThan
+    | GreaterThan
+    | LessThanOrEquals
+    | GreaterThanOrEquals
+      -- 8
+    | Equals
+    | NotEquals
+
+
+type UnaryOperation
+    = -- 2
+      PostfixIncrement
+    | PostfixDecrement
+      -- 3
+    | PrefixIncrement
+    | PrefixDecrement
+    | Plus
+    | Negate
+    | Invert
+    | Not
 
 
 type alias BisectSignature =

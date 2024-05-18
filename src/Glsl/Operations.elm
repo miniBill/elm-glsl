@@ -7,7 +7,7 @@ module Glsl.Operations exposing
     , by31
     , div11, div22, div33, div44
     , lt, eq, gt
-    , arraym33
+    , arraym33, geq, leq
     )
 
 {-|
@@ -54,6 +54,11 @@ module Glsl.Operations exposing
 import Glsl exposing (BinaryOperation(..), Expr(..), Expression, Mat3, RelationOperation(..), UnaryOperation(..), Vec2, Vec3, Vec4)
 
 
+unsafeBinary : BinaryOperation -> Expression a -> Expression b -> Expression c
+unsafeBinary op =
+    Glsl.unsafeMap2 (\l r -> BinaryOperation l op r)
+
+
 
 -- Addition
 
@@ -79,8 +84,8 @@ add44 =
 
 
 add : Expression a -> Expression a -> Expression a
-add l r =
-    Glsl.unsafeMap2 (BinaryOperation Add) l r
+add =
+    unsafeBinary Add
 
 
 
@@ -108,8 +113,8 @@ subtract44 =
 
 
 subtract : Expression a -> Expression a -> Expression a
-subtract l r =
-    Glsl.unsafeMap2 (BinaryOperation Subtract) l r
+subtract =
+    unsafeBinary Subtract
 
 
 
@@ -166,23 +171,23 @@ by44 =
 
 
 by12 : Expression Float -> Expression Vec2 -> Expression Vec2
-by12 l r =
-    Glsl.unsafeMap2 (BinaryOperation By) l r
+by12 =
+    unsafeBinary By
 
 
 by13 : Expression Float -> Expression Vec3 -> Expression Vec3
-by13 l r =
-    Glsl.unsafeMap2 (BinaryOperation By) l r
+by13 =
+    unsafeBinary By
 
 
 by31 : Expression Vec3 -> Expression Float -> Expression Vec3
-by31 l r =
-    Glsl.unsafeMap2 (BinaryOperation By) l r
+by31 =
+    unsafeBinary By
 
 
 by : Expression a -> Expression a -> Expression a
-by l r =
-    Glsl.unsafeMap2 (BinaryOperation By) l r
+by =
+    unsafeBinary By
 
 
 
@@ -210,8 +215,8 @@ div44 =
 
 
 div : Expression a -> Expression a -> Expression a
-div l r =
-    Glsl.unsafeMap2 (BinaryOperation Div) l r
+div =
+    unsafeBinary Div
 
 
 
@@ -220,7 +225,7 @@ div l r =
 
 arraym33 : Expression Mat3 -> Expression Int -> Expression Vec3
 arraym33 =
-    Glsl.unsafeMap2 Array
+    unsafeBinary ArraySubscript
 
 
 
@@ -229,14 +234,24 @@ arraym33 =
 
 lt : Expression Float -> Expression Float -> Expression Bool
 lt =
-    Glsl.unsafeMap2 (Comparison LessThan)
+    unsafeBinary (RelationOperation LessThan)
+
+
+leq : Expression Float -> Expression Float -> Expression Bool
+leq =
+    unsafeBinary (RelationOperation LessThanOrEquals)
 
 
 gt : Expression Float -> Expression Float -> Expression Bool
 gt =
-    Glsl.unsafeMap2 (Comparison GreaterThan)
+    unsafeBinary (RelationOperation GreaterThan)
+
+
+geq : Expression Float -> Expression Float -> Expression Bool
+geq =
+    unsafeBinary (RelationOperation GreaterThanOrEquals)
 
 
 eq : Expression t -> Expression t -> Expression Bool
 eq =
-    Glsl.unsafeMap2 (Comparison Equals)
+    unsafeBinary (RelationOperation Equals)
