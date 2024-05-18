@@ -1,6 +1,5 @@
-module Glsl.Generator exposing (Context, ErrorValue(..), File, FunDecl, GlslValue(..), adds2, adds3, adds4, and, ands, assign, assignAdd, assignBy, assignOut, boolT, break, continue, decl, def, def1, def2, def3, expr, exprToGlsl, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun2, fun3, fun4, fun5, funDeclToGlsl, gl_FragColor, gl_FragCoord, ifElse, if_, in_, intT, interpret, main_, mat3, mat3T, minusOne, nop, one, or, ors, out, return, statementToGlsl, ternary, ternary3, value, valueToString, vec2, vec2T, vec2Zero, vec3, vec3T, vec3Zero, vec4, vec4T, vec4Zero, voidT, zero)
+module Glsl.Generator exposing (Context, ErrorValue(..), File, FunDecl, GlslValue(..), adds2, adds3, adds4, and, ands, assign, assignAdd, assignBy, assignOut, boolT, break, continue, decl, def, def1, def2, def3, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun2, fun3, fun4, fun5, funDeclToGlsl, gl_FragColor, gl_FragCoord, ifElse, if_, in_, intT, interpret, main_, mat3, mat3T, minusOne, nop, one, or, ors, out, return, statementToGlsl, ternary, ternary3, value, valueToString, vec2, vec2T, vec2Zero, vec3, vec3T, vec3Zero, vec4, vec4T, vec4Zero, voidT, zero)
 
-import Array exposing (Array)
 import Dict exposing (Dict)
 import Glsl exposing (BinaryOperation(..), Expr(..), Expression(..), ForDirection(..), In, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, false, float1, true, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap2, unsafeMap3, var, withExpression, withStatement)
 import Glsl.Functions exposing (vec211, vec3111, vec41111)
@@ -53,7 +52,7 @@ statToGlsl : Int -> Stat -> String
 statToGlsl i c =
     case c of
         If cond t n ->
-            [ indent i ("if (" ++ exprToGlsl cond ++ ") {")
+            [ indent i ("if (" ++ Glsl.PrettyPrinter.expr cond ++ ") {")
             , statToGlsl (i + 1) t
             , indent i "}"
             , ""
@@ -62,7 +61,7 @@ statToGlsl i c =
                 |> String.join "\n"
 
         IfElse cond t ((If _ _ _) as f) n ->
-            [ indent i ("if (" ++ exprToGlsl cond ++ ") {")
+            [ indent i ("if (" ++ Glsl.PrettyPrinter.expr cond ++ ") {")
             , statToGlsl (i + 1) t
             , indent i <| "} else " ++ String.trimLeft (statToGlsl i f)
             , statToGlsl i n
@@ -70,7 +69,7 @@ statToGlsl i c =
                 |> String.join "\n"
 
         IfElse cond t ((IfElse _ _ _ _) as f) n ->
-            [ indent i ("if (" ++ exprToGlsl cond ++ ") {")
+            [ indent i ("if (" ++ Glsl.PrettyPrinter.expr cond ++ ") {")
             , statToGlsl (i + 1) t
             , indent i <| "} else " ++ String.trimLeft (statToGlsl i f)
             , statToGlsl i n
@@ -78,7 +77,7 @@ statToGlsl i c =
                 |> String.join "\n"
 
         IfElse cond t f n ->
-            [ indent i ("if (" ++ exprToGlsl cond ++ ") {")
+            [ indent i ("if (" ++ Glsl.PrettyPrinter.expr cond ++ ") {")
             , statToGlsl (i + 1) t
             , indent i "} else {"
             , statToGlsl (i + 1) f
@@ -89,7 +88,7 @@ statToGlsl i c =
                 |> String.join "\n"
 
         For var from rel to direction loop next ->
-            [ indent i ("for (int " ++ var ++ " = " ++ exprToGlsl from ++ "; " ++ var ++ " " ++ relationToString rel ++ " " ++ exprToGlsl to ++ "; " ++ var ++ directionToGlsl direction ++ ") {")
+            [ indent i ("for (int " ++ var ++ " = " ++ Glsl.PrettyPrinter.expr from ++ "; " ++ var ++ " " ++ relationToString rel ++ " " ++ Glsl.PrettyPrinter.expr to ++ "; " ++ var ++ directionToGlsl direction ++ ") {")
             , statToGlsl (i + 1) loop
             , indent i "}"
             , ""
@@ -98,7 +97,7 @@ statToGlsl i c =
                 |> String.join "\n"
 
         Return e ->
-            indent i <| "return " ++ exprToGlsl e ++ ";"
+            indent i <| "return " ++ Glsl.PrettyPrinter.expr e ++ ";"
 
         Break ->
             indent i "break;"
@@ -107,19 +106,19 @@ statToGlsl i c =
             indent i "continue;"
 
         ExpressionStatement e Nop ->
-            indent i (exprToGlsl e ++ ";")
+            indent i (Glsl.PrettyPrinter.expr e ++ ";")
 
         Decl t n (Just e) Nop ->
-            indent i (typeToGlsl t ++ " " ++ n ++ " = " ++ exprToGlsl e ++ ";")
+            indent i (typeToGlsl t ++ " " ++ n ++ " = " ++ Glsl.PrettyPrinter.expr e ++ ";")
 
         Decl t n Nothing Nop ->
             indent i (typeToGlsl t ++ " " ++ n ++ ";")
 
         ExpressionStatement e next ->
-            indent i (exprToGlsl e ++ ";\n") ++ statToGlsl i next
+            indent i (Glsl.PrettyPrinter.expr e ++ ";\n") ++ statToGlsl i next
 
         Decl t n (Just e) next ->
-            indent i (typeToGlsl t ++ " " ++ n ++ " = " ++ exprToGlsl e ++ ";\n") ++ statToGlsl i next
+            indent i (typeToGlsl t ++ " " ++ n ++ " = " ++ Glsl.PrettyPrinter.expr e ++ ";\n") ++ statToGlsl i next
 
         Decl t n Nothing next ->
             indent i (typeToGlsl t ++ " " ++ n ++ ";\n") ++ statToGlsl i next
@@ -205,173 +204,7 @@ relationToString rel =
 
 expressionToGlsl : Expression t -> String
 expressionToGlsl (Expression tree) =
-    exprToGlsl tree.expr
-
-
-exprToGlsl : Expr -> String
-exprToGlsl root =
-    let
-        showParen show e =
-            if show then
-                "(" ++ e ++ ")"
-
-            else
-                e
-
-        infixl_ n p l op r =
-            showParen (p > n) (go n l ++ " " ++ op ++ " " ++ go (n + 1) r)
-
-        infixr_ n p l op r =
-            showParen (p > n) (go (n + 1) l ++ " " ++ op ++ " " ++ go n r)
-
-        go p tree =
-            case tree of
-                Bool b ->
-                    if b then
-                        "true"
-
-                    else
-                        "false"
-
-                Float f ->
-                    Glsl.PrettyPrinter.float f
-
-                Int i ->
-                    String.fromInt i
-
-                Variable v ->
-                    v
-
-                BinaryOperation l ArraySubscript r ->
-                    showParen (p > 15) (go 15 l ++ "[" ++ go 16 r ++ "]")
-
-                Call l r ->
-                    showParen (p > 15) (go 15 l ++ "(" ++ String.join ", " (List.map (go 16) r) ++ ")")
-
-                Dot l r ->
-                    showParen (p > 15) (go 15 l ++ "." ++ r)
-
-                UnaryOperation PostfixIncrement r ->
-                    showParen (p > 15) (go 15 r ++ "++")
-
-                UnaryOperation PostfixDecrement r ->
-                    showParen (p > 15) (go 15 r ++ "--")
-
-                UnaryOperation PrefixIncrement r ->
-                    showParen (p > 14) ("++" ++ go 14 r)
-
-                UnaryOperation PrefixDecrement r ->
-                    showParen (p > 14) ("--" ++ go 14 r)
-
-                UnaryOperation Plus r ->
-                    showParen (p > 14) ("+" ++ go 14 r)
-
-                UnaryOperation Negate r ->
-                    showParen (p > 14) ("-" ++ go 14 r)
-
-                UnaryOperation Invert r ->
-                    showParen (p > 14) ("~" ++ go 14 r)
-
-                UnaryOperation Not r ->
-                    showParen (p > 14) ("!" ++ go 14 r)
-
-                BinaryOperation l By r ->
-                    infixl_ 13 p l "*" r
-
-                BinaryOperation l Div r ->
-                    infixl_ 13 p l "/" r
-
-                BinaryOperation l Mod r ->
-                    infixl_ 13 p l "%" r
-
-                BinaryOperation l Add r ->
-                    infixl_ 12 p l "+" r
-
-                BinaryOperation l Subtract r ->
-                    infixl_ 12 p l "-" r
-
-                BinaryOperation l ShiftLeft r ->
-                    infixl_ 11 p l "<<" r
-
-                BinaryOperation l ShiftRight r ->
-                    infixl_ 11 p l ">>" r
-
-                BinaryOperation l (RelationOperation LessThan) r ->
-                    infixl_ 10 p l "<" r
-
-                BinaryOperation l (RelationOperation LessThanOrEquals) r ->
-                    infixl_ 10 p l "<=" r
-
-                BinaryOperation l (RelationOperation GreaterThan) r ->
-                    infixl_ 10 p l ">" r
-
-                BinaryOperation l (RelationOperation GreaterThanOrEquals) r ->
-                    infixl_ 10 p l ">=" r
-
-                BinaryOperation l (RelationOperation Equals) r ->
-                    infixl_ 9 p l "==" r
-
-                BinaryOperation l (RelationOperation NotEquals) r ->
-                    infixl_ 9 p l "!=" r
-
-                BinaryOperation l BitwiseAnd r ->
-                    infixl_ 8 p l "&" r
-
-                BinaryOperation l BitwiseXor r ->
-                    infixl_ 7 p l "^" r
-
-                BinaryOperation l BitwiseOr r ->
-                    infixl_ 6 p l "|" r
-
-                BinaryOperation l And r ->
-                    infixl_ 5 p l "&&" r
-
-                BinaryOperation l Xor r ->
-                    infixl_ 4 p l "^^" r
-
-                BinaryOperation l Or r ->
-                    infixl_ 3 p l "||" r
-
-                Ternary c t f ->
-                    showParen (p > 2) (go 3 c ++ " ? " ++ go 3 t ++ " : " ++ go 2 f)
-
-                BinaryOperation l Assign r ->
-                    infixr_ 1 p l "=" r
-
-                BinaryOperation l ComboAdd r ->
-                    infixr_ 1 p l "+=" r
-
-                BinaryOperation l ComboSubtract r ->
-                    infixr_ 1 p l "-=" r
-
-                BinaryOperation l ComboBy r ->
-                    infixr_ 1 p l "*=" r
-
-                BinaryOperation l ComboDiv r ->
-                    infixr_ 1 p l "/=" r
-
-                BinaryOperation l ComboMod r ->
-                    infixr_ 1 p l "%=" r
-
-                BinaryOperation l ComboLeftShift r ->
-                    infixr_ 1 p l "<<=" r
-
-                BinaryOperation l ComboRightShift r ->
-                    infixr_ 1 p l ">>=" r
-
-                BinaryOperation l ComboBitwiseAnd r ->
-                    infixr_ 1 p l "&=" r
-
-                BinaryOperation l ComboBitwiseXor r ->
-                    infixr_ 1 p l "^=" r
-
-                BinaryOperation l ComboBitwiseOr r ->
-                    infixr_ 1 p l "|=" r
-
-                BinaryOperation l Comma r ->
-                    infixl_ 0 p l "," r
-    in
-    go 0 root
+    Glsl.PrettyPrinter.expr tree.expr
 
 
 indent : Int -> String -> String
@@ -520,17 +353,6 @@ functionToGlsl (TypedName rt name) args body =
         , statementToGlsl body
         , "}"
         ]
-
-
-argToString : TypedName t -> ( String, String )
-argToString (TypedName t n) =
-    ( typeToGlsl t, n )
-
-
-toVar : TypedName t -> Expression t
-toVar (TypedName _ n) =
-    --pure <| Variable n
-    Debug.todo "toVar"
 
 
 funX :

@@ -1,10 +1,10 @@
-module Generate exposing (examples, roundtrip)
+module ParserPrinterTests exposing (examples, roundtrip)
 
 import Expect
 import Fuzz exposing (Fuzzer)
 import Glsl exposing (BinaryOperation(..), Expr(..), RelationOperation(..), UnaryOperation(..))
-import Glsl.Generator
 import Glsl.Parser
+import Glsl.PrettyPrinter
 import Glsl.Simplify
 import Parser exposing ((|.))
 import Test exposing (Test, describe, test)
@@ -23,13 +23,13 @@ example label expr =
     test label <|
         \_ ->
             expr
-                |> Glsl.Generator.exprToGlsl
+                |> Glsl.PrettyPrinter.expr
                 |> Expect.equal label
 
 
 roundtrip : Test
 roundtrip =
-    Test.fuzz exprFuzzer "Roundtrips" <|
+    Test.fuzz (exprFuzzer 3) "Roundtrips" <|
         \expr ->
             let
                 simplified : Expr
@@ -38,7 +38,7 @@ roundtrip =
 
                 str : String
                 str =
-                    Glsl.Generator.exprToGlsl simplified
+                    Glsl.PrettyPrinter.expr simplified
             in
             case Parser.run (Glsl.Parser.expressionParser |. Parser.end) str of
                 Err e ->
@@ -50,32 +50,36 @@ roundtrip =
                         |> Expect.equal simplified
 
 
-exprFuzzer : Fuzzer Expr
-exprFuzzer =
-    Fuzz.lazy
-        (\_ ->
-            Fuzz.oneOf
-                [ Fuzz.map Bool Fuzz.bool
-                , Fuzz.map Int Fuzz.int
-                , Fuzz.map Float Fuzz.float
-                , Fuzz.map Variable variableNameFuzzer
-                , Fuzz.map3 Ternary exprFuzzer exprFuzzer exprFuzzer
-                , Fuzz.map2 UnaryOperation unaryOperationFuzzer exprFuzzer
-                , Fuzz.map3 BinaryOperation exprFuzzer binaryOperationFuzzer exprFuzzer
-                , Fuzz.map2 Call (Fuzz.map Variable variableNameFuzzer) (Fuzz.list exprFuzzer)
-                , Fuzz.map2 Dot (exprFuzzer |> Fuzz.andThen checkDottable) variableNameFuzzer
-                ]
-        )
+exprFuzzer : Int -> Fuzzer Expr
+exprFuzzer depth =
+    if depth == 0 then
+        Fuzz.oneOf
+            [ Fuzz.map Bool Fuzz.bool
+            , Fuzz.map Int Fuzz.int
+            , Fuzz.map Float Fuzz.float
+            ]
+
+    else
+        let
+            child =
+                exprFuzzer (depth - 1)
+        in
+        Fuzz.oneOf
+            [ Fuzz.map Bool Fuzz.bool
+            , Fuzz.map Int Fuzz.int
+            , Fuzz.map Float Fuzz.float
+            , Fuzz.map Variable variableNameFuzzer
+            , Fuzz.map3 Ternary child child child
+            , Fuzz.map2 UnaryOperation unaryOperationFuzzer child
+            , Fuzz.map3 BinaryOperation child binaryOperationFuzzer child
+            , Fuzz.map2 Call (Fuzz.map Variable variableNameFuzzer) (Fuzz.list child)
+            , Fuzz.map2 Dot dottableExprFuzzer variableNameFuzzer
+            ]
 
 
-checkDottable : Expr -> Fuzzer Expr
-checkDottable expr =
-    case expr of
-        Float _ ->
-            Fuzz.invalid "Cannot apply dot to a flot"
-
-        _ ->
-            Fuzz.constant expr
+dottableExprFuzzer : Fuzzer Expr
+dottableExprFuzzer =
+    Fuzz.map Variable variableNameFuzzer
 
 
 variableNameFuzzer : Fuzzer String

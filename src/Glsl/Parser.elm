@@ -239,13 +239,28 @@ defParser =
 
 expressionParser : Parser Expr
 expressionParser =
-    ternaryParser
+    prec17Parser
 
 
-ternaryParser : Parser Expr
-ternaryParser =
+prec17Parser : Parser Expr
+prec17Parser =
+    multiSequence
+        { separators = [ ( \l r -> BinaryOperation l Comma r, symbol "," ) ]
+        , item = prec16Parser
+        , allowNegation = False
+        }
+
+
+prec16Parser : Parser Expr
+prec16Parser =
+    -- TODO: assignments are expressions, actually
+    prec15Parser
+
+
+prec15Parser : Parser Expr
+prec15Parser =
     Parser.succeed (\k f -> f k)
-        |= booleanParser
+        |= prec14Parser
         |. spaces
         |= oneOf
             [ succeed (\t f c -> Ternary c t f)
@@ -253,39 +268,93 @@ ternaryParser =
                 -- from above
                 |. symbol "?"
                 |. spaces
-                |= booleanParser
+                |= prec14Parser
                 |. spaces
                 |. symbol ":"
                 |. spaces
-                |= Parser.lazy (\_ -> ternaryParser)
+                |= Parser.lazy (\_ -> prec15Parser)
             , succeed identity
             ]
 
 
-booleanParser : Parser Expr
-booleanParser =
+prec14Parser : Parser Expr
+prec14Parser =
     multiSequence
         { separators =
             [ ( \l r -> BinaryOperation l Or r, symbol "||" )
-            , ( \l r -> BinaryOperation l And r, symbol "&&" )
             ]
-        , item = relationParser
+        , item = prec13Parser
         , allowNegation = False
         }
 
 
-relationParser : Parser Expr
-relationParser =
+prec13Parser : Parser Expr
+prec13Parser =
+    multiSequence
+        { separators =
+            [ ( \l r -> BinaryOperation l Xor r, symbol "^^" )
+            ]
+        , item = prec12Parser
+        , allowNegation = False
+        }
+
+
+prec12Parser : Parser Expr
+prec12Parser =
+    multiSequence
+        { separators =
+            [ ( \l r -> BinaryOperation l And r, symbol "&&" )
+            ]
+        , item = prec11Parser
+        , allowNegation = False
+        }
+
+
+prec11Parser : Parser Expr
+prec11Parser =
+    multiSequence
+        { separators =
+            [ ( \l r -> BinaryOperation l BitwiseOr r, symbol "|" )
+            ]
+        , item = prec10Parser
+        , allowNegation = False
+        }
+
+
+prec10Parser : Parser Expr
+prec10Parser =
+    multiSequence
+        { separators =
+            [ ( \l r -> BinaryOperation l BitwiseXor r, symbol "^" )
+            ]
+        , item = prec9Parser
+        , allowNegation = False
+        }
+
+
+prec9Parser : Parser Expr
+prec9Parser =
+    multiSequence
+        { separators =
+            [ ( \l r -> BinaryOperation l BitwiseAnd r, symbol "&" )
+            ]
+        , item = prec8To6Parser
+        , allowNegation = False
+        }
+
+
+prec8To6Parser : Parser Expr
+prec8To6Parser =
     let
         inner =
             succeed (\a f -> f a)
-                |= addsubtractionParser
+                |= prec5Parser
                 |. spaces
                 |= oneOf
                     [ succeed (\o r l -> succeed <| BinaryOperation l (RelationOperation o) r)
                         |= relationOperationParser
                         |. spaces
-                        |= addsubtractionParser
+                        |= prec5Parser
                     , succeed succeed
                     ]
     in
@@ -304,162 +373,117 @@ relationOperationParser =
         ]
 
 
-addsubtractionParser : Parser Expr
-addsubtractionParser =
+prec5Parser : Parser Expr
+prec5Parser =
     multiSequence
         { separators =
             [ ( \l r -> BinaryOperation l Add r, symbol "+" )
             , ( \l r -> BinaryOperation l Subtract r, symbol "-" )
             ]
-        , item = multidivisionParser
+        , item = prec4Parser
         , allowNegation = False
         }
 
 
-type alias SequenceData =
-    { separators : List ( Expr -> Expr -> Expr, Parser () )
-    , item : Parser Expr
-    , allowNegation : Bool
-    }
-
-
-multiSequence : SequenceData -> Parser Expr
-multiSequence data =
-    succeed identity
-        |= data.item
-        |. spaces
-        |> Parser.andThen
-            (\first ->
-                loop first (\expr -> multiSequenceHelp data expr)
-            )
-
-
-multiSequenceHelp :
-    SequenceData
-    -> Expr
-    -> Parser (Step Expr Expr)
-multiSequenceHelp { allowNegation, separators, item } acc =
-    let
-        separated =
-            separators
-                |> List.map
-                    (\( f, parser ) ->
-                        Parser.succeed (\mn e -> Loop <| f acc <| mn e)
-                            |= (if allowNegation then
-                                    Parser.oneOf
-                                        [ Parser.succeed (UnaryOperation Negate)
-                                            |. Parser.symbol "-"
-                                        , Parser.succeed identity
-                                        ]
-
-                                else
-                                    Parser.succeed identity
-                               )
-                            |. parser
-                            |. spaces
-                            |= item
-                            |. spaces
-                    )
-                |> Parser.oneOf
-    in
-    Parser.oneOf
-        [ separated
-        , Parser.succeed (Done acc)
-        ]
-
-
-multidivisionParser : Parser Expr
-multidivisionParser =
+prec4Parser : Parser Expr
+prec4Parser =
     multiSequence
         { separators =
             [ ( \l r -> BinaryOperation l By r, symbol "*" )
             , ( \l r -> BinaryOperation l Div r, symbol "/" )
+            , ( \l r -> BinaryOperation l Mod r, symbol "%" )
             ]
-        , item = unaryParser
+        , item = prec3Parser
         , allowNegation = False
         }
 
 
-unaryParser : Parser Expr
-unaryParser =
+prec3Parser : Parser Expr
+prec3Parser =
     Parser.oneOf
-        [ succeed (UnaryOperation Plus)
+        [ succeed (UnaryOperation PrefixIncrement)
+            |. symbol "++"
+            |= prec2Parser
+        , succeed (UnaryOperation Plus)
             |. symbol "+"
-            |= arrayAndCallParser
+            |= prec2Parser
+        , succeed (UnaryOperation PrefixDecrement)
+            |. symbol "--"
+            |= prec2Parser
         , succeed (UnaryOperation Negate)
             |. symbol "-"
-            |= arrayAndCallParser
+            |= prec2Parser
         , succeed (UnaryOperation Invert)
             |. symbol "~"
-            |= arrayAndCallParser
+            |= prec2Parser
         , succeed (UnaryOperation Not)
             |. symbol "!"
-            |= arrayAndCallParser
-        , arrayAndCallParser
+            |= prec2Parser
+        , prec2Parser
         ]
 
 
-arrayAndCallParser : Parser Expr
-arrayAndCallParser =
+prec2Parser : Parser Expr
+prec2Parser =
     oneOf
         [ succeed (\a f -> f a)
-            |= atomParser
+            |= prec1Parser
             |. spaces
-            |= Parser.lazy arrayAndCallSuffixes
+            |= Parser.lazy prec2Suffixes
         ]
 
 
-arrayAndCallSuffixes : () -> Parser (Expr -> Expr)
-arrayAndCallSuffixes () =
+prec2Suffixes : () -> Parser (Expr -> Expr)
+prec2Suffixes () =
     Parser.oneOf
         [ succeed (\args k v -> k (Call v args))
             |= sequence
                 { start = "("
                 , separator = ","
-                , item = Parser.lazy <| \_ -> expressionParser
+                , item = Parser.lazy <| \_ -> prec16Parser
                 , end = ")"
                 , trailing = Forbidden
                 , spaces = spaces
                 }
             |= oneOf
-                [ Parser.lazy <| \_ -> arrayAndCallSuffixes ()
+                [ Parser.lazy <| \_ -> prec2Suffixes ()
                 , succeed identity
                 ]
         , succeed (\arg k v -> k (BinaryOperation v ArraySubscript arg))
             |. symbol "["
             |. spaces
-            |= Parser.lazy (\_ -> expressionParser)
+            |= Parser.lazy (\_ -> prec16Parser)
             |. spaces
             |. symbol "]"
             |= oneOf
-                [ Parser.lazy <| \_ -> arrayAndCallSuffixes ()
+                [ Parser.lazy <| \_ -> prec2Suffixes ()
                 , succeed identity
                 ]
         , succeed (\p k v -> k (Dot v p))
             |. symbol "."
             |= identifierParser
             |= oneOf
-                [ Parser.lazy <| \_ -> arrayAndCallSuffixes ()
+                [ Parser.lazy <| \_ -> prec2Suffixes ()
                 , succeed identity
                 ]
         , succeed (\k v -> k (UnaryOperation PostfixIncrement v))
             |. symbol "++"
             |= oneOf
-                [ Parser.lazy <| \_ -> arrayAndCallSuffixes ()
+                [ Parser.lazy <| \_ -> prec2Suffixes ()
                 , succeed identity
                 ]
         , succeed (\k v -> k (UnaryOperation PostfixDecrement v))
             |. symbol "--"
             |= oneOf
-                [ Parser.lazy <| \_ -> arrayAndCallSuffixes ()
+                [ Parser.lazy <| \_ -> prec2Suffixes ()
                 , succeed identity
                 ]
         , succeed identity
         ]
 
 
-atomParser : Parser Expr
-atomParser =
+prec1Parser : Parser Expr
+prec1Parser =
     oneOf
         [ succeed identity
             |. symbol "("
@@ -520,3 +544,55 @@ file =
             , spaces = Parser.spaces
             }
         |. Parser.end
+
+
+type alias SequenceData =
+    { separators : List ( Expr -> Expr -> Expr, Parser () )
+    , item : Parser Expr
+    , allowNegation : Bool
+    }
+
+
+multiSequence : SequenceData -> Parser Expr
+multiSequence data =
+    succeed identity
+        |= data.item
+        |. spaces
+        |> Parser.andThen
+            (\first ->
+                loop first (\expr -> multiSequenceHelp data expr)
+            )
+
+
+multiSequenceHelp :
+    SequenceData
+    -> Expr
+    -> Parser (Step Expr Expr)
+multiSequenceHelp { allowNegation, separators, item } acc =
+    let
+        separated =
+            separators
+                |> List.map
+                    (\( f, parser ) ->
+                        Parser.succeed (\mn e -> Loop <| f acc <| mn e)
+                            |= (if allowNegation then
+                                    Parser.oneOf
+                                        [ Parser.succeed (UnaryOperation Negate)
+                                            |. Parser.symbol "-"
+                                        , Parser.succeed identity
+                                        ]
+
+                                else
+                                    Parser.succeed identity
+                               )
+                            |. parser
+                            |. spaces
+                            |= item
+                            |. spaces
+                    )
+                |> Parser.oneOf
+    in
+    Parser.oneOf
+        [ separated
+        , Parser.succeed (Done acc)
+        ]

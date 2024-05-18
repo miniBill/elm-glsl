@@ -60,6 +60,9 @@ simplify expr =
         UnaryOperation Negate (Int x) ->
             Int -x
 
+        UnaryOperation Negate (Float x) ->
+            Float -x
+
         UnaryOperation op l ->
             let
                 ls : Expr
@@ -71,6 +74,22 @@ simplify expr =
 
             else
                 simplify (UnaryOperation op ls)
+
+        Call l r ->
+            let
+                ls : Expr
+                ls =
+                    simplify l
+
+                rs : List Expr
+                rs =
+                    List.map simplify r
+            in
+            if ls == l && rs == r then
+                expr
+
+            else
+                simplify (Call ls rs)
 
         _ ->
             expr
