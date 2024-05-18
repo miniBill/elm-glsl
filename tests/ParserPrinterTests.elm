@@ -73,7 +73,22 @@ isAlmostEqual expected actual =
             eop == aop && isAlmostEqual er ar
 
         ( Float l, Float r ) ->
-            abs (l - r) < 0.000001 * max (abs l) (abs r)
+            if isInfinite l && isInfinite r then
+                (l > 0) == (r > 0)
+
+            else if isNaN l && isNaN r then
+                True
+
+            else
+                let
+                    check =
+                        abs (l - r) <= 0.000001 * max (abs l) (abs r)
+                in
+                if check then
+                    True
+
+                else
+                    Debug.todo <| "check failed for " ++ Debug.toString l ++ " and " ++ Debug.toString r
 
         _ ->
             expected == actual

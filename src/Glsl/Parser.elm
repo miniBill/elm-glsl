@@ -190,6 +190,18 @@ forParser =
         |= maybeStatementParser
 
 
+relationOperationParser : Parser RelationOperation
+relationOperationParser =
+    oneOf
+        [ succeed LessThanOrEquals |. symbol "<="
+        , succeed GreaterThanOrEquals |. symbol ">="
+        , succeed LessThan |. symbol "<"
+        , succeed GreaterThan |. symbol ">"
+        , succeed Equals |. symbol "=="
+        , succeed NotEquals |. symbol "!="
+        ]
+
+
 returnParser : Parser Stat
 returnParser =
     Parser.succeed Return
@@ -247,7 +259,6 @@ prec17Parser =
     multiSequence
         { separators = [ ( \l r -> BinaryOperation l Comma r, symbol "," ) ]
         , item = prec16Parser
-        , allowNegation = False
         }
 
 
@@ -284,7 +295,6 @@ prec14Parser =
             [ ( \l r -> BinaryOperation l Or r, symbol "||" )
             ]
         , item = prec13Parser
-        , allowNegation = False
         }
 
 
@@ -295,7 +305,6 @@ prec13Parser =
             [ ( \l r -> BinaryOperation l Xor r, symbol "^^" )
             ]
         , item = prec12Parser
-        , allowNegation = False
         }
 
 
@@ -306,7 +315,6 @@ prec12Parser =
             [ ( \l r -> BinaryOperation l And r, symbol "&&" )
             ]
         , item = prec11Parser
-        , allowNegation = False
         }
 
 
@@ -317,7 +325,6 @@ prec11Parser =
             [ ( \l r -> BinaryOperation l BitwiseOr r, symbol "|" )
             ]
         , item = prec10Parser
-        , allowNegation = False
         }
 
 
@@ -328,7 +335,6 @@ prec10Parser =
             [ ( \l r -> BinaryOperation l BitwiseXor r, symbol "^" )
             ]
         , item = prec9Parser
-        , allowNegation = False
         }
 
 
@@ -338,39 +344,43 @@ prec9Parser =
         { separators =
             [ ( \l r -> BinaryOperation l BitwiseAnd r, symbol "&" )
             ]
-        , item = prec8To6Parser
-        , allowNegation = False
+        , item = prec8Parser
         }
 
 
-prec8To6Parser : Parser Expr
-prec8To6Parser =
-    let
-        inner =
-            succeed (\a f -> f a)
-                |= prec5Parser
-                |. spaces
-                |= oneOf
-                    [ succeed (\o r l -> succeed <| BinaryOperation l (RelationOperation o) r)
-                        |= relationOperationParser
-                        |. spaces
-                        |= prec5Parser
-                    , succeed succeed
-                    ]
-    in
-    Parser.andThen identity inner
+prec8Parser : Parser Expr
+prec8Parser =
+    multiSequence
+        { separators =
+            [ ( \l r -> BinaryOperation l (RelationOperation Equals) r, symbol "==" )
+            , ( \l r -> BinaryOperation l (RelationOperation NotEquals) r, symbol "!=" )
+            ]
+        , item = prec7Parser
+        }
 
 
-relationOperationParser : Parser RelationOperation
-relationOperationParser =
-    oneOf
-        [ succeed LessThanOrEquals |. symbol "<="
-        , succeed GreaterThanOrEquals |. symbol ">="
-        , succeed LessThan |. symbol "<"
-        , succeed GreaterThan |. symbol ">"
-        , succeed Equals |. symbol "=="
-        , succeed NotEquals |. symbol "!="
-        ]
+prec7Parser : Parser Expr
+prec7Parser =
+    multiSequence
+        { separators =
+            [ ( \l r -> BinaryOperation l (RelationOperation LessThanOrEquals) r, symbol "<=" )
+            , ( \l r -> BinaryOperation l (RelationOperation GreaterThanOrEquals) r, symbol ">=" )
+            , ( \l r -> BinaryOperation l (RelationOperation LessThan) r, symbol "<" )
+            , ( \l r -> BinaryOperation l (RelationOperation GreaterThan) r, symbol ">" )
+            ]
+        , item = prec6Parser
+        }
+
+
+prec6Parser : Parser Expr
+prec6Parser =
+    multiSequence
+        { separators =
+            [ ( \l r -> BinaryOperation l ShiftLeft r, symbol "<<" )
+            , ( \l r -> BinaryOperation l ShiftRight r, symbol ">>" )
+            ]
+        , item = prec5Parser
+        }
 
 
 prec5Parser : Parser Expr
@@ -381,7 +391,6 @@ prec5Parser =
             , ( \l r -> BinaryOperation l Subtract r, symbol "-" )
             ]
         , item = prec4Parser
-        , allowNegation = False
         }
 
 
@@ -394,7 +403,6 @@ prec4Parser =
             , ( \l r -> BinaryOperation l Mod r, symbol "%" )
             ]
         , item = prec3Parser
-        , allowNegation = False
         }
 
 
@@ -614,7 +622,6 @@ file =
 type alias SequenceData =
     { separators : List ( Expr -> Expr -> Expr, Parser () )
     , item : Parser Expr
-    , allowNegation : Bool
     }
 
 
@@ -633,23 +640,13 @@ multiSequenceHelp :
     SequenceData
     -> Expr
     -> Parser (Step Expr Expr)
-multiSequenceHelp { allowNegation, separators, item } acc =
+multiSequenceHelp { separators, item } acc =
     let
         separated =
             separators
                 |> List.map
                     (\( f, parser ) ->
-                        Parser.succeed (\mn e -> Loop <| f acc <| mn e)
-                            |= (if allowNegation then
-                                    Parser.oneOf
-                                        [ Parser.succeed (UnaryOperation Negate)
-                                            |. Parser.symbol "-"
-                                        , Parser.succeed identity
-                                        ]
-
-                                else
-                                    Parser.succeed identity
-                               )
+                        Parser.succeed (\e -> Loop <| f acc e)
                             |. parser
                             |. spaces
                             |= item
