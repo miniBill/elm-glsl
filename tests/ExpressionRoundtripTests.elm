@@ -143,7 +143,6 @@ exprFuzzer depth =
                     child
                 , Fuzz.map3 BinaryOperation child binaryOperationFuzzer child
                 , Fuzz.map2 Call (Fuzz.map Variable variableNameFuzzer) (Fuzz.list child)
-                , Fuzz.map2 Dot child variableNameFuzzer
                 ]
 
         inner : Fuzzer Expr -> Fuzzer Expr
