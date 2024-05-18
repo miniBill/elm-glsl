@@ -395,8 +395,8 @@ prec7Parser =
         { separators =
             [ ( \l r -> BinaryOperation l (RelationOperation LessThanOrEquals) r, symbol "<=" )
             , ( \l r -> BinaryOperation l (RelationOperation GreaterThanOrEquals) r, symbol ">=" )
-            , ( \l r -> BinaryOperation l (RelationOperation LessThan) r, symbol "<" )
-            , ( \l r -> BinaryOperation l (RelationOperation GreaterThan) r, symbol ">" )
+            , ( \l r -> BinaryOperation l (RelationOperation LessThan) r, symbolNotFollowedBy "<" [ "<=" ] )
+            , ( \l r -> BinaryOperation l (RelationOperation GreaterThan) r, symbolNotFollowedBy ">" [ ">=" ] )
             ]
         , item = prec6Parser
         }
