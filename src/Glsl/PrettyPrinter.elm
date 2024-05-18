@@ -47,28 +47,28 @@ expr root =
                     showParen (p > 15) (go 15 l ++ "." ++ r)
 
                 UnaryOperation PostfixIncrement r ->
-                    showParen (p > 15) (go 15 r ++ "++")
+                    showParen (p > 15) (go 16 r ++ "++")
 
                 UnaryOperation PostfixDecrement r ->
-                    showParen (p > 15) (go 15 r ++ "--")
+                    showParen (p > 15) (go 16 r ++ "--")
 
                 UnaryOperation PrefixIncrement r ->
-                    showParen (p > 14) ("++" ++ go 14 r)
+                    showParen (p > 14) ("++" ++ go 15 r)
 
                 UnaryOperation PrefixDecrement r ->
-                    showParen (p > 14) ("--" ++ go 14 r)
+                    showParen (p > 14) ("--" ++ go 15 r)
 
                 UnaryOperation Plus r ->
-                    showParen (p > 14) ("+" ++ go 14 r)
+                    showParen (p > 14) ("+" ++ go 15 r)
 
                 UnaryOperation Negate r ->
-                    showParen (p > 14) ("-" ++ go 14 r)
+                    showParen (p > 14) ("-" ++ go 15 r)
 
                 UnaryOperation Invert r ->
-                    showParen (p > 14) ("~" ++ go 14 r)
+                    showParen (p > 14) ("~" ++ go 15 r)
 
                 UnaryOperation Not r ->
-                    showParen (p > 14) ("!" ++ go 14 r)
+                    showParen (p > 14) ("!" ++ go 15 r)
 
                 BinaryOperation l By r ->
                     infixl_ 13 p l "*" r
@@ -219,7 +219,10 @@ float f =
         s =
             String.fromFloat f
     in
-    if isInfinite f then
+    if isNaN f then
+        "(0./0.)"
+
+    else if isInfinite f then
         if f > 0 then
             "(1./0.)"
 

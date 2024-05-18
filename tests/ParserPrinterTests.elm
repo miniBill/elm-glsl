@@ -1,5 +1,6 @@
 module ParserPrinterTests exposing (examples, roundtrip)
 
+import ErrorUtils
 import Expect
 import Fuzz exposing (Fuzzer)
 import Glsl exposing (BinaryOperation(..), Expr(..), RelationOperation(..), UnaryOperation(..))
@@ -41,8 +42,10 @@ roundtrip =
                     Glsl.PrettyPrinter.expr simplified
             in
             case Parser.run (Glsl.Parser.expressionParser |. Parser.end) str of
-                Err e ->
-                    Expect.fail (str ++ " => " ++ Debug.toString e)
+                Err errs ->
+                    errs
+                        |> ErrorUtils.errorsToString str
+                        |> Expect.fail
 
                 Ok o ->
                     let
@@ -117,6 +120,14 @@ exprFuzzer depth =
             , Fuzz.map2
                 (\op c ->
                     case ( op, c ) of
+                        ( PostfixIncrement, Int _ ) ->
+                            -- this wouldn't make sense
+                            c
+
+                        ( PostfixDecrement, Int _ ) ->
+                            -- this wouldn't make sense
+                            c
+
                         ( PostfixIncrement, Float _ ) ->
                             -- this wouldn't make sense
                             c

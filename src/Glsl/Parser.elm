@@ -264,8 +264,22 @@ prec17Parser =
 
 prec16Parser : Parser Expr
 prec16Parser =
-    -- TODO: assignments are expressions, actually
-    prec15Parser
+    multiSequence
+        { separators =
+            [ ( \l r -> BinaryOperation l Assign r, singleSymbol "=" )
+            , ( \l r -> BinaryOperation l ComboAdd r, symbol "+=" )
+            , ( \l r -> BinaryOperation l ComboSubtract r, symbol "-=" )
+            , ( \l r -> BinaryOperation l ComboBy r, symbol "*=" )
+            , ( \l r -> BinaryOperation l ComboDiv r, symbol "/=" )
+            , ( \l r -> BinaryOperation l ComboMod r, symbol "%=" )
+            , ( \l r -> BinaryOperation l ComboLeftShift r, symbol "<<=" )
+            , ( \l r -> BinaryOperation l ComboRightShift r, symbol ">>=" )
+            , ( \l r -> BinaryOperation l ComboBitwiseAnd r, symbol "&=" )
+            , ( \l r -> BinaryOperation l ComboBitwiseOr r, symbol "|=" )
+            , ( \l r -> BinaryOperation l ComboBitwiseXor r, symbol "^=" )
+            ]
+        , item = prec15Parser
+        }
 
 
 prec15Parser : Parser Expr
@@ -322,7 +336,7 @@ prec11Parser : Parser Expr
 prec11Parser =
     multiSequence
         { separators =
-            [ ( \l r -> BinaryOperation l BitwiseOr r, symbol "|" )
+            [ ( \l r -> BinaryOperation l BitwiseOr r, singleSymbol "|" )
             ]
         , item = prec10Parser
         }
@@ -332,7 +346,7 @@ prec10Parser : Parser Expr
 prec10Parser =
     multiSequence
         { separators =
-            [ ( \l r -> BinaryOperation l BitwiseXor r, symbol "^" )
+            [ ( \l r -> BinaryOperation l BitwiseXor r, singleSymbol "^" )
             ]
         , item = prec9Parser
         }
@@ -341,11 +355,27 @@ prec10Parser =
 prec9Parser : Parser Expr
 prec9Parser =
     multiSequence
-        { separators =
-            [ ( \l r -> BinaryOperation l BitwiseAnd r, symbol "&" )
-            ]
+        { separators = [ ( \l r -> BinaryOperation l BitwiseAnd r, singleSymbol "&" ) ]
         , item = prec8Parser
         }
+
+
+singleSymbol : String -> Parser ()
+singleSymbol s =
+    symbolNotFollowedBy s [ s ]
+
+
+symbolNotFollowedBy : String -> List String -> Parser ()
+symbolNotFollowedBy s nots =
+    Parser.succeed ()
+        |. Parser.backtrackable (symbol s)
+        |. oneOf
+            [ succeed ()
+                |. oneOf (List.map symbol nots)
+                |. Parser.problem ("Expecting " ++ s ++ " not follwed by any of " ++ String.join ", " nots)
+                |> Parser.backtrackable
+            , succeed ()
+            ]
 
 
 prec8Parser : Parser Expr
@@ -376,8 +406,8 @@ prec6Parser : Parser Expr
 prec6Parser =
     multiSequence
         { separators =
-            [ ( \l r -> BinaryOperation l ShiftLeft r, symbol "<<" )
-            , ( \l r -> BinaryOperation l ShiftRight r, symbol ">>" )
+            [ ( \l r -> BinaryOperation l ShiftLeft r, symbolNotFollowedBy "<<" [ "=" ] )
+            , ( \l r -> BinaryOperation l ShiftRight r, symbolNotFollowedBy ">>" [ "=" ] )
             ]
         , item = prec5Parser
         }
@@ -387,8 +417,8 @@ prec5Parser : Parser Expr
 prec5Parser =
     multiSequence
         { separators =
-            [ ( \l r -> BinaryOperation l Add r, symbol "+" )
-            , ( \l r -> BinaryOperation l Subtract r, symbol "-" )
+            [ ( \l r -> BinaryOperation l Add r, symbolNotFollowedBy "+" [ "=" ] )
+            , ( \l r -> BinaryOperation l Subtract r, symbolNotFollowedBy "-" [ "=" ] )
             ]
         , item = prec4Parser
         }
@@ -398,9 +428,9 @@ prec4Parser : Parser Expr
 prec4Parser =
     multiSequence
         { separators =
-            [ ( \l r -> BinaryOperation l By r, symbol "*" )
-            , ( \l r -> BinaryOperation l Div r, symbol "/" )
-            , ( \l r -> BinaryOperation l Mod r, symbol "%" )
+            [ ( \l r -> BinaryOperation l By r, symbolNotFollowedBy "*" [ "=" ] )
+            , ( \l r -> BinaryOperation l Div r, symbolNotFollowedBy "/" [ "=" ] )
+            , ( \l r -> BinaryOperation l Mod r, symbolNotFollowedBy "%" [ "=" ] )
             ]
         , item = prec3Parser
         }
@@ -413,13 +443,13 @@ prec3Parser =
             |. symbol "++"
             |= prec2Parser
         , succeed (UnaryOperation Plus)
-            |. symbol "+"
+            |. singleSymbol "+"
             |= prec2Parser
         , succeed (UnaryOperation PrefixDecrement)
             |. symbol "--"
             |= prec2Parser
         , succeed (UnaryOperation Negate)
-            |. symbol "-"
+            |. singleSymbol "-"
             |= prec2Parser
         , succeed (UnaryOperation Invert)
             |. symbol "~"
@@ -579,6 +609,7 @@ floatParser =
 intParser : Parser Int
 intParser =
     succeed ()
+        |. Parser.chompWhile (\c -> c == '-')
         |. Parser.chompIf Char.isDigit
         |. Parser.chompWhile Char.isDigit
         |> Parser.getChompedString
