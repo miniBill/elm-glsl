@@ -1,5 +1,6 @@
-module Glsl.Generator exposing (Context, ErrorValue(..), File, FunDecl, GlslValue(..), adds2, adds3, adds4, and, ands, assign, assignAdd, assignBy, assignOut, boolT, break, continue, decl, def, def1, def2, def3, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun2, fun3, fun4, fun5, funDeclToGlsl, gl_FragColor, gl_FragCoord, ifElse, if_, in_, intT, interpret, main_, mat3, mat3T, minusOne, nop, one, or, ors, out, return, statementToGlsl, ternary, ternary3, value, valueToString, vec2, vec2T, vec2Zero, vec3, vec3T, vec3Zero, vec4, vec4T, vec4Zero, voidT, zero)
+module Glsl.Generator exposing (Context, ErrorValue(..), File, FunDecl, GlslValue(..), adds2, adds3, adds4, and, ands, assign, assignAdd, assignBy, assignOut, boolT, break, continue, decl, def, def1, def2, def3, expr, exprToGlsl, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun2, fun3, fun4, fun5, funDeclToGlsl, gl_FragColor, gl_FragCoord, ifElse, if_, in_, intT, interpret, main_, mat3, mat3T, minusOne, nop, one, or, ors, out, return, statementToGlsl, ternary, ternary3, value, valueToString, vec2, vec2T, vec2Zero, vec3, vec3T, vec3Zero, vec4, vec4T, vec4Zero, voidT, zero)
 
+import Array exposing (Array)
 import Dict exposing (Dict)
 import Glsl exposing (BinaryOperation(..), Expr(..), Expression(..), ForDirection(..), In, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, false, float1, true, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap2, unsafeMap3, var, withExpression, withStatement)
 import Glsl.Functions exposing (vec211, vec3111, vec41111)
@@ -218,10 +219,10 @@ exprToGlsl root =
                 e
 
         infixl_ n p l op r =
-            showParen (p > n) (go p l ++ " " ++ op ++ " " ++ go (p + 1) r)
+            showParen (p > n) (go n l ++ " " ++ op ++ " " ++ go (n + 1) r)
 
         infixr_ n p l op r =
-            showParen (p > n) (go (p + 1) l ++ " " ++ op ++ " " ++ go p r)
+            showParen (p > n) (go (n + 1) l ++ " " ++ op ++ " " ++ go n r)
 
         go p tree =
             case tree of
@@ -241,113 +242,134 @@ exprToGlsl root =
                 Variable v ->
                     v
 
-                UnaryOperation _ _ ->
-                    Debug.todo "branch 'UnaryOperation _ _' not implemented"
+                BinaryOperation l ArraySubscript r ->
+                    showParen (p > 15) (go 15 l ++ "[" ++ go 16 r ++ "]")
+
+                Call l r ->
+                    showParen (p > 15) (go 15 l ++ "(" ++ String.join ", " (List.map (go 16) r) ++ ")")
+
+                Dot l r ->
+                    showParen (p > 15) (go 15 l ++ "." ++ r)
+
+                UnaryOperation PostfixIncrement r ->
+                    showParen (p > 15) (go 15 r ++ "++")
+
+                UnaryOperation PostfixDecrement r ->
+                    showParen (p > 15) (go 15 r ++ "--")
+
+                UnaryOperation PrefixIncrement r ->
+                    showParen (p > 14) ("++" ++ go 14 r)
+
+                UnaryOperation PrefixDecrement r ->
+                    showParen (p > 14) ("--" ++ go 14 r)
+
+                UnaryOperation Plus r ->
+                    showParen (p > 14) ("+" ++ go 14 r)
+
+                UnaryOperation Negate r ->
+                    showParen (p > 14) ("-" ++ go 14 r)
+
+                UnaryOperation Invert r ->
+                    showParen (p > 14) ("~" ++ go 14 r)
+
+                UnaryOperation Not r ->
+                    showParen (p > 14) ("!" ++ go 14 r)
 
                 BinaryOperation l By r ->
-                    infixl_ 4 p l "*" r
+                    infixl_ 13 p l "*" r
 
                 BinaryOperation l Div r ->
-                    infixl_ 4 p l "/" r
+                    infixl_ 13 p l "/" r
 
                 BinaryOperation l Mod r ->
-                    infixl_ 4 p l "%" r
+                    infixl_ 13 p l "%" r
 
                 BinaryOperation l Add r ->
-                    infixl_ 5 p l "+" r
+                    infixl_ 12 p l "+" r
 
                 BinaryOperation l Subtract r ->
-                    infixl_ 5 p l "-" r
+                    infixl_ 12 p l "-" r
 
                 BinaryOperation l ShiftLeft r ->
-                    infixl_ 6 p l "<<" r
+                    infixl_ 11 p l "<<" r
 
                 BinaryOperation l ShiftRight r ->
-                    infixl_ 6 p l ">>" r
+                    infixl_ 11 p l ">>" r
 
                 BinaryOperation l (RelationOperation LessThan) r ->
-                    infixl_ 7 p l "<" r
+                    infixl_ 10 p l "<" r
 
                 BinaryOperation l (RelationOperation LessThanOrEquals) r ->
-                    infixl_ 7 p l "<=" r
+                    infixl_ 10 p l "<=" r
 
                 BinaryOperation l (RelationOperation GreaterThan) r ->
-                    infixl_ 7 p l ">" r
+                    infixl_ 10 p l ">" r
 
                 BinaryOperation l (RelationOperation GreaterThanOrEquals) r ->
-                    infixl_ 7 p l ">=" r
+                    infixl_ 10 p l ">=" r
 
                 BinaryOperation l (RelationOperation Equals) r ->
-                    infixl_ 8 p l "==" r
+                    infixl_ 9 p l "==" r
 
                 BinaryOperation l (RelationOperation NotEquals) r ->
-                    infixl_ 8 p l "!=" r
+                    infixl_ 9 p l "!=" r
 
                 BinaryOperation l BitwiseAnd r ->
-                    infixl_ 9 p l "&" r
+                    infixl_ 8 p l "&" r
 
                 BinaryOperation l BitwiseXor r ->
-                    infixl_ 10 p l "^" r
+                    infixl_ 7 p l "^" r
 
                 BinaryOperation l BitwiseOr r ->
-                    infixl_ 11 p l "|" r
+                    infixl_ 6 p l "|" r
 
                 BinaryOperation l And r ->
-                    infixl_ 12 p l "&&" r
+                    infixl_ 5 p l "&&" r
 
                 BinaryOperation l Xor r ->
-                    infixl_ 13 p l "^^" r
+                    infixl_ 4 p l "^^" r
 
                 BinaryOperation l Or r ->
-                    infixl_ 14 p l "||" r
+                    infixl_ 3 p l "||" r
 
                 Ternary c t f ->
-                    showParen (p > 15) (go 16 c ++ " ? " ++ go 16 t ++ " : " ++ go 15 f)
+                    showParen (p > 2) (go 3 c ++ " ? " ++ go 3 t ++ " : " ++ go 2 f)
 
                 BinaryOperation l Assign r ->
-                    infixr_ 16 p l "=" r
+                    infixr_ 1 p l "=" r
 
                 BinaryOperation l ComboAdd r ->
-                    infixr_ 16 p l "+=" r
+                    infixr_ 1 p l "+=" r
 
                 BinaryOperation l ComboSubtract r ->
-                    infixr_ 16 p l "-=" r
+                    infixr_ 1 p l "-=" r
 
                 BinaryOperation l ComboBy r ->
-                    infixr_ 16 p l "*=" r
+                    infixr_ 1 p l "*=" r
 
                 BinaryOperation l ComboDiv r ->
-                    infixr_ 16 p l "/=" r
+                    infixr_ 1 p l "/=" r
 
                 BinaryOperation l ComboMod r ->
-                    infixr_ 16 p l "%=" r
+                    infixr_ 1 p l "%=" r
 
                 BinaryOperation l ComboLeftShift r ->
-                    infixr_ 16 p l "<<=" r
+                    infixr_ 1 p l "<<=" r
 
                 BinaryOperation l ComboRightShift r ->
-                    infixr_ 16 p l ">>=" r
+                    infixr_ 1 p l ">>=" r
 
                 BinaryOperation l ComboBitwiseAnd r ->
-                    infixr_ 16 p l "&=" r
+                    infixr_ 1 p l "&=" r
 
                 BinaryOperation l ComboBitwiseXor r ->
-                    infixr_ 16 p l "^=" r
+                    infixr_ 1 p l "^=" r
 
                 BinaryOperation l ComboBitwiseOr r ->
-                    infixr_ 16 p l "|=" r
+                    infixr_ 1 p l "|=" r
 
                 BinaryOperation l Comma r ->
-                    infixl_ 17 p l "," r
-
-                Call _ _ ->
-                    Debug.todo "branch 'Call _ _' not implemented"
-
-                Dot _ _ ->
-                    Debug.todo "branch 'Dot _ _' not implemented"
-
-                BinaryOperation _ _ _ ->
-                    Debug.todo "branch 'BinaryOperation _ _ _' not implemented"
+                    infixl_ 0 p l "," r
     in
     go 0 root
 
@@ -1084,7 +1106,7 @@ innerValue ctx e =
         BinaryOperation _ Div _ ->
             Debug.todo "branch 'Div _ _' not implemented"
 
-        Call "vec2" [ l, r ] ->
+        Call (Variable "vec2") [ l, r ] ->
             innerValue2 ctx l r <|
                 \ctx2 vl vr ->
                     case ( vl, vr ) of
@@ -1096,17 +1118,17 @@ innerValue ctx e =
                                 InvalidTypes
                                     ("Cannot calculate `vec2` for " ++ valueToString vl ++ " and " ++ valueToString vr)
 
-        Call "exp" [ l ] ->
+        Call (Variable "exp") [ l ] ->
             autovectorizingFloatOp ctx "exp" (\fv -> Basics.e ^ fv) l
 
-        Call "cos" [ l ] ->
+        Call (Variable "cos") [ l ] ->
             autovectorizingFloatOp ctx "cos" Basics.cos l
 
-        Call "sin" [ l ] ->
+        Call (Variable "sin") [ l ] ->
             autovectorizingFloatOp ctx "sin" Basics.sin l
 
         Call name args ->
-            Debug.todo <| "branch 'Call \"" ++ name ++ "\" [" ++ String.join ", " (List.map (Debug.toString >> (++) " ") args) ++ " ]' not implemented"
+            Debug.todo <| "branch 'Call " ++ Debug.toString name ++ " [" ++ String.join ", " (List.map (Debug.toString >> (++) " ") args) ++ " ]' not implemented"
 
         Dot _ _ ->
             Debug.todo "branch 'Dot _ _' not implemented"

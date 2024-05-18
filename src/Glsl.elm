@@ -60,14 +60,14 @@ import SortedSet exposing (SortedSet)
 
 unsafeCall0 : String -> List String -> Expression r
 unsafeCall0 name deps =
-    build (Call name [])
+    build (Call (Variable name) [])
         |> withDependencies deps
         |> buildExpression
 
 
 unsafeCall1 : String -> List String -> Expression t -> Expression r
 unsafeCall1 name deps arg0 =
-    build (\a0 -> Call name [ a0 ])
+    build (\a0 -> Call (Variable name) [ a0 ])
         |> withDependencies deps
         |> withExpression arg0
         |> buildExpression
@@ -75,7 +75,7 @@ unsafeCall1 name deps arg0 =
 
 unsafeCall2 : String -> List String -> Expression t -> Expression u -> Expression r
 unsafeCall2 name deps arg0 arg1 =
-    build (\a0 a1 -> Call name [ a0, a1 ])
+    build (\a0 a1 -> Call (Variable name) [ a0, a1 ])
         |> withDependencies deps
         |> withExpression arg0
         |> withExpression arg1
@@ -84,7 +84,7 @@ unsafeCall2 name deps arg0 arg1 =
 
 unsafeCall3 : String -> List String -> Expression t -> Expression u -> Expression v -> Expression r
 unsafeCall3 name deps arg0 arg1 arg2 =
-    build (\a0 a1 a2 -> Call name [ a0, a1, a2 ])
+    build (\a0 a1 a2 -> Call (Variable name) [ a0, a1, a2 ])
         |> withDependencies deps
         |> withExpression arg0
         |> withExpression arg1
@@ -94,7 +94,7 @@ unsafeCall3 name deps arg0 arg1 arg2 =
 
 unsafeCall4 : String -> List String -> Expression t -> Expression u -> Expression v -> Expression w -> Expression r
 unsafeCall4 name deps arg0 arg1 arg2 arg3 =
-    build (\a0 a1 a2 a3 -> Call name [ a0, a1, a2, a3 ])
+    build (\a0 a1 a2 a3 -> Call (Variable name) [ a0, a1, a2, a3 ])
         |> withDependencies deps
         |> withExpression arg0
         |> withExpression arg1
@@ -105,7 +105,7 @@ unsafeCall4 name deps arg0 arg1 arg2 arg3 =
 
 unsafeCall5 : String -> List String -> Expression t -> Expression u -> Expression v -> Expression w -> Expression x -> Expression r
 unsafeCall5 name deps arg0 arg1 arg2 arg3 arg4 =
-    build (\a0 a1 a2 a3 a4 -> Call name [ a0, a1, a2, a3, a4 ])
+    build (\a0 a1 a2 a3 a4 -> Call (Variable name) [ a0, a1, a2, a3, a4 ])
         |> withDependencies deps
         |> withExpression arg0
         |> withExpression arg1
@@ -202,7 +202,6 @@ type alias Function =
     , args : List ( Type, String )
     , stat : Stat
     , body : String
-    , hasSuffix : Bool
     }
 
 
@@ -230,7 +229,7 @@ type Expr
     | Ternary Expr Expr Expr
     | UnaryOperation UnaryOperation Expr
     | BinaryOperation Expr BinaryOperation Expr
-    | Call String (List Expr)
+    | Call Expr (List Expr)
     | Dot Expr String
 
 

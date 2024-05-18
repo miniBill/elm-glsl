@@ -336,7 +336,14 @@ float f =
         s =
             String.fromFloat f
     in
-    if String.contains "." s || String.contains "e" s then
+    if isInfinite f then
+        if f > 0 then
+            "(1./0.)"
+
+        else
+            "(-1./0.)"
+
+    else if String.contains "." s || String.contains "e" s then
         s
 
     else

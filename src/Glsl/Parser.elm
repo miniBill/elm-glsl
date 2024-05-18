@@ -1,4 +1,4 @@
-module Glsl.Parser exposing (file, function, statement)
+module Glsl.Parser exposing (expressionParser, file, function, statement)
 
 import Glsl exposing (BinaryOperation(..), Declaration(..), Expr(..), Expression(..), ForDirection(..), Function, RelationOperation(..), Stat(..), Statement(..), Type(..), UnaryOperation(..))
 import Parser exposing ((|.), (|=), Parser, Step(..), Trailing(..), chompIf, chompWhile, getChompedString, keyword, loop, oneOf, problem, sequence, spaces, succeed, symbol)
@@ -8,13 +8,12 @@ import Parser.Workaround
 function : Parser Declaration
 function =
     succeed
-        (\glsl begin returnType { name, hasSuffix } args stat end ->
+        (\glsl begin returnType name args stat end ->
             let
                 res : Function
                 res =
                     { returnType = returnType
                     , name = name
-                    , hasSuffix = hasSuffix
                     , args = args
                     , stat = stat
                     , body = String.slice begin end glsl
@@ -26,7 +25,7 @@ function =
         |= Parser.getOffset
         |= typeParser
         |. spaces
-        |= identifierWithSuffixParser
+        |= identifierParser
         |. spaces
         |= sequence
             { start = "("
@@ -65,16 +64,6 @@ argParser =
         |= typeParser
         |. spaces
         |= identifierParser
-
-
-identifierWithSuffixParser : Parser { name : String, hasSuffix : Bool }
-identifierWithSuffixParser =
-    succeed (\name hasSuffix -> { name = name, hasSuffix = hasSuffix })
-        |= identifierParser
-        |= oneOf
-            [ succeed True |. symbol "\"\"\" ++ suffix ++ \"\"\""
-            , succeed False
-            ]
 
 
 identifierParser : Parser String
@@ -277,8 +266,8 @@ booleanParser : Parser Expr
 booleanParser =
     multiSequence
         { separators =
-            [ ( BinaryOperation Or, symbol "||" )
-            , ( BinaryOperation And, symbol "&&" )
+            [ ( \l r -> BinaryOperation l Or r, symbol "||" )
+            , ( \l r -> BinaryOperation l And r, symbol "&&" )
             ]
         , item = relationParser
         , allowNegation = False
@@ -293,7 +282,7 @@ relationParser =
                 |= addsubtractionParser
                 |. spaces
                 |= oneOf
-                    [ succeed (\o r l -> succeed <| Comparison o l r)
+                    [ succeed (\o r l -> succeed <| BinaryOperation l (RelationOperation o) r)
                         |= relationOperationParser
                         |. spaces
                         |= addsubtractionParser
@@ -312,7 +301,6 @@ relationOperationParser =
         , succeed GreaterThan |. symbol ">"
         , succeed Equals |. symbol "=="
         , succeed NotEquals |. symbol "!="
-        , succeed Assign |. symbol "="
         ]
 
 
@@ -320,8 +308,8 @@ addsubtractionParser : Parser Expr
 addsubtractionParser =
     multiSequence
         { separators =
-            [ ( BinaryOperation Add, symbol "+" )
-            , ( BinaryOperation Subtract, symbol "-" )
+            [ ( \l r -> BinaryOperation l Add r, symbol "+" )
+            , ( \l r -> BinaryOperation l Subtract r, symbol "-" )
             ]
         , item = multidivisionParser
         , allowNegation = False
@@ -384,8 +372,8 @@ multidivisionParser : Parser Expr
 multidivisionParser =
     multiSequence
         { separators =
-            [ ( BinaryOperation By, symbol "*" )
-            , ( BinaryOperation Div, symbol "/" )
+            [ ( \l r -> BinaryOperation l By r, symbol "*" )
+            , ( \l r -> BinaryOperation l Div r, symbol "/" )
             ]
         , item = unaryParser
         , allowNegation = False
@@ -395,71 +383,101 @@ multidivisionParser =
 unaryParser : Parser Expr
 unaryParser =
     Parser.oneOf
-        [ succeed (UnaryOperation Negate)
+        [ succeed (UnaryOperation Plus)
+            |. symbol "+"
+            |= arrayAndCallParser
+        , succeed (UnaryOperation Negate)
             |. symbol "-"
+            |= arrayAndCallParser
+        , succeed (UnaryOperation Invert)
+            |. symbol "~"
+            |= arrayAndCallParser
+        , succeed (UnaryOperation Not)
+            |. symbol "!"
+            |= arrayAndCallParser
+        , arrayAndCallParser
+        ]
+
+
+arrayAndCallParser : Parser Expr
+arrayAndCallParser =
+    oneOf
+        [ succeed (\a f -> f a)
             |= atomParser
-        , atomParser
+            |. spaces
+            |= Parser.lazy arrayAndCallSuffixes
+        ]
+
+
+arrayAndCallSuffixes : () -> Parser (Expr -> Expr)
+arrayAndCallSuffixes () =
+    Parser.oneOf
+        [ succeed (\args k v -> k (Call v args))
+            |= sequence
+                { start = "("
+                , separator = ","
+                , item = Parser.lazy <| \_ -> expressionParser
+                , end = ")"
+                , trailing = Forbidden
+                , spaces = spaces
+                }
+            |= oneOf
+                [ Parser.lazy <| \_ -> arrayAndCallSuffixes ()
+                , succeed identity
+                ]
+        , succeed (\arg k v -> k (BinaryOperation v ArraySubscript arg))
+            |. symbol "["
+            |. spaces
+            |= Parser.lazy (\_ -> expressionParser)
+            |. spaces
+            |. symbol "]"
+            |= oneOf
+                [ Parser.lazy <| \_ -> arrayAndCallSuffixes ()
+                , succeed identity
+                ]
+        , succeed (\p k v -> k (Dot v p))
+            |. symbol "."
+            |= identifierParser
+            |= oneOf
+                [ Parser.lazy <| \_ -> arrayAndCallSuffixes ()
+                , succeed identity
+                ]
+        , succeed (\k v -> k (UnaryOperation PostfixIncrement v))
+            |. symbol "++"
+            |= oneOf
+                [ Parser.lazy <| \_ -> arrayAndCallSuffixes ()
+                , succeed identity
+                ]
+        , succeed (\k v -> k (UnaryOperation PostfixDecrement v))
+            |. symbol "--"
+            |= oneOf
+                [ Parser.lazy <| \_ -> arrayAndCallSuffixes ()
+                , succeed identity
+                ]
+        , succeed identity
         ]
 
 
 atomParser : Parser Expr
 atomParser =
-    succeed (\a f -> f a)
-        |= oneOf
-            [ succeed (\a f -> f a)
-                |. symbol "("
-                |. spaces
-                |= Parser.lazy (\_ -> expressionParser)
-                |. spaces
-                |. symbol ")"
-                |= maybeDot
-            , succeed (Bool True) |. symbol "true"
-            , succeed (Bool False) |. symbol "false"
-            , succeed (\a f md -> md <| f a)
-                |= Parser.map .name identifierWithSuffixParser
-                |. spaces
-                |= oneOf
-                    [ succeed (\args v -> Call v args)
-                        |= sequence
-                            { start = "("
-                            , separator = ","
-                            , item = Parser.lazy <| \_ -> expressionParser
-                            , end = ")"
-                            , trailing = Forbidden
-                            , spaces = spaces
-                            }
-                    , succeed (\arg v -> Array (Variable v) arg)
-                        |. symbol "["
-                        |. spaces
-                        |= Parser.lazy (\_ -> expressionParser)
-                        |. spaces
-                        |. symbol "]"
-                    , succeed Variable
-                    ]
-                |= maybeDot
-            , Parser.andThen tryParseNumber <|
-                getChompedString <|
-                    succeed ()
-                        |. chompIf (\c -> c == '.' || Char.isDigit c)
-                        |. chompWhile (\c -> c == '.' || Char.isDigit c)
-            ]
-        |. spaces
-        |= oneOf
-            [ succeed PostfixIncrement
-                |. symbol "++"
-            , succeed PostfixDecrement
-                |. symbol "--"
-            , succeed identity
-            ]
-
-
-maybeDot : Parser (Expr -> Expr)
-maybeDot =
     oneOf
-        [ succeed (\p v -> Dot v p)
-            |. symbol "."
+        [ succeed identity
+            |. symbol "("
+            |. spaces
+            |= Parser.lazy (\_ -> expressionParser)
+            |. spaces
+            |. symbol ")"
+        , succeed (Bool True)
+            |. symbol "true"
+        , succeed (Bool False)
+            |. symbol "false"
+        , succeed Variable
             |= identifierParser
-        , succeed identity
+        , Parser.andThen tryParseNumber <|
+            getChompedString <|
+                succeed ()
+                    |. chompIf (\c -> c == '.' || Char.isDigit c)
+                    |. chompWhile (\c -> c == '.' || Char.isDigit c)
         ]
 
 
