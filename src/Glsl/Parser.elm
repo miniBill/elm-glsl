@@ -624,29 +624,40 @@ intParser =
             )
 
 
-file : Parser (List Declaration)
+file : Parser ( Maybe { version : String }, List Declaration )
 file =
-    Parser.succeed (List.filterMap identity)
-        |= Parser.sequence
-            { start = ""
-            , separator = ""
-            , item =
-                Parser.oneOf
-                    [ Parser.succeed Nothing
-                        |. Parser.Workaround.lineCommentAfter "//"
-                    , Parser.succeed Nothing
-                        |. Parser.Workaround.lineCommentAfter "#define"
-                    , Parser.succeed Nothing
-                        |. Parser.Workaround.lineCommentAfter "precision highp"
-                    , Parser.succeed Just
-                        |= uniform
-                    , Parser.succeed Just
-                        |= function
-                    ]
-            , end = ""
-            , trailing = Parser.Optional
-            , spaces = Parser.spaces
-            }
+    Parser.succeed Tuple.pair
+        |= Parser.oneOf
+            [ Parser.succeed (\version -> Just { version = version })
+                |. symbol "#version "
+                |= (Parser.chompWhile Char.isDigit
+                        |> Parser.getChompedString
+                   )
+            , Parser.succeed Nothing
+            ]
+        |. Parser.spaces
+        |= (Parser.succeed (List.filterMap identity)
+                |= Parser.sequence
+                    { start = ""
+                    , separator = ""
+                    , item =
+                        Parser.oneOf
+                            [ Parser.succeed Nothing
+                                |. Parser.Workaround.lineCommentAfter "//"
+                            , Parser.succeed Nothing
+                                |. Parser.Workaround.lineCommentAfter "#define"
+                            , Parser.succeed Nothing
+                                |. Parser.Workaround.lineCommentAfter "precision highp"
+                            , Parser.succeed Just
+                                |= uniform
+                            , Parser.succeed Just
+                                |= function
+                            ]
+                    , end = ""
+                    , trailing = Parser.Optional
+                    , spaces = Parser.spaces
+                    }
+           )
         |. Parser.end
 
 

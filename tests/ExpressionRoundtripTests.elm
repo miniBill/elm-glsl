@@ -1,4 +1,4 @@
-module ParserPrinterTests exposing (examples, roundtrip)
+module ExpressionRoundtripTests exposing (examples, roundtrip)
 
 import ErrorUtils
 import Expect
