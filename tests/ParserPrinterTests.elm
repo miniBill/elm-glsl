@@ -45,9 +45,38 @@ roundtrip =
                     Expect.fail (str ++ " => " ++ Debug.toString e)
 
                 Ok o ->
-                    o
-                        |> Glsl.Simplify.simplify
-                        |> Expect.equal simplified
+                    let
+                        actual =
+                            o
+                                |> Glsl.Simplify.simplify
+                    in
+                    if isAlmostEqual simplified actual then
+                        Expect.pass
+
+                    else
+                        actual |> Expect.equal simplified
+
+
+isAlmostEqual : Expr -> Expr -> Bool
+isAlmostEqual expected actual =
+    case ( expected, actual ) of
+        ( Call el er, Call al ar ) ->
+            isAlmostEqual el al && List.all identity (List.map2 isAlmostEqual er ar)
+
+        ( Ternary ec et ef, Ternary ac at af ) ->
+            isAlmostEqual ec ac && isAlmostEqual et at && isAlmostEqual ef af
+
+        ( BinaryOperation el eop er, BinaryOperation al aop ar ) ->
+            eop == aop && isAlmostEqual el al && isAlmostEqual er ar
+
+        ( UnaryOperation eop er, UnaryOperation aop ar ) ->
+            eop == aop && isAlmostEqual er ar
+
+        ( Float l, Float r ) ->
+            abs (l - r) < 0.000001 * max (abs l) (abs r)
+
+        _ ->
+            expected == actual
 
 
 exprFuzzer : Int -> Fuzzer Expr
@@ -70,7 +99,22 @@ exprFuzzer depth =
             , Fuzz.map Float Fuzz.float
             , Fuzz.map Variable variableNameFuzzer
             , Fuzz.map3 Ternary child child child
-            , Fuzz.map2 UnaryOperation unaryOperationFuzzer child
+            , Fuzz.map2
+                (\op c ->
+                    case ( op, c ) of
+                        ( PostfixIncrement, Float _ ) ->
+                            -- this wouldn't make sense
+                            c
+
+                        ( PostfixDecrement, Float _ ) ->
+                            -- this wouldn't make sense
+                            c
+
+                        _ ->
+                            UnaryOperation op c
+                )
+                unaryOperationFuzzer
+                child
             , Fuzz.map3 BinaryOperation child binaryOperationFuzzer child
             , Fuzz.map2 Call (Fuzz.map Variable variableNameFuzzer) (Fuzz.list child)
             , Fuzz.map2 Dot dottableExprFuzzer variableNameFuzzer

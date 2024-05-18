@@ -1,7 +1,7 @@
 module Glsl.Parser exposing (expressionParser, file, function, statement)
 
 import Glsl exposing (BinaryOperation(..), Declaration(..), Expr(..), Expression(..), ForDirection(..), Function, RelationOperation(..), Stat(..), Statement(..), Type(..), UnaryOperation(..))
-import Parser exposing ((|.), (|=), Parser, Step(..), Trailing(..), chompIf, chompWhile, getChompedString, keyword, loop, oneOf, problem, sequence, spaces, succeed, symbol)
+import Parser exposing ((|.), (|=), Parser, Step(..), Trailing(..), chompIf, chompWhile, getChompedString, keyword, loop, oneOf, sequence, spaces, succeed, symbol)
 import Parser.Workaround
 
 
@@ -497,27 +497,92 @@ prec1Parser =
             |. symbol "false"
         , succeed Variable
             |= identifierParser
-        , Parser.andThen tryParseNumber <|
-            getChompedString <|
-                succeed ()
-                    |. chompIf (\c -> c == '.' || Char.isDigit c)
-                    |. chompWhile (\c -> c == '.' || Char.isDigit c)
+        , succeed Float |= floatParser
+        , succeed Int |= intParser
         ]
 
 
-tryParseNumber : String -> Parser Expr
-tryParseNumber n =
-    case String.toInt n of
-        Just i ->
-            succeed <| Int i
+floatParser : Parser Float
+floatParser =
+    oneOf
+        [ succeed (\c e -> e c)
+            |= (oneOf
+                    [ succeed ()
+                        |. symbol "."
+                        |. intParser
+                    , succeed ()
+                        |. Parser.backtrackable intParser
+                        |. symbol "."
+                        |. Parser.commit ()
+                        |. oneOf
+                            [ intParser
+                            , succeed 0
+                            ]
+                    ]
+                    |> Parser.getChompedString
+                    |> Parser.andThen
+                        (\s ->
+                            let
+                                withZero =
+                                    if String.endsWith "." s then
+                                        s ++ "0"
 
-        Nothing ->
-            case String.toFloat n of
-                Just f ->
-                    succeed <| Float f
+                                    else
+                                        s
+                            in
+                            case String.toFloat withZero of
+                                Just f ->
+                                    Parser.succeed f
 
-                Nothing ->
-                    problem "Expected a number"
+                                Nothing ->
+                                    Parser.problem ("Cannot parse \"" ++ s ++ "\" as float")
+                        )
+               )
+            |= oneOf
+                [ succeed (\e c -> c * 10 ^ toFloat e)
+                    |. oneOf [ symbol "e", symbol "E" ]
+                    |= oneOf
+                        [ succeed identity
+                            |. symbol "+"
+                            |= intParser
+                        , succeed negate
+                            |. symbol "-"
+                            |= intParser
+                        , intParser
+                        ]
+                , succeed identity
+                ]
+        , succeed (\c e -> toFloat c * 10 ^ toFloat e)
+            |= Parser.backtrackable intParser
+            |. oneOf [ symbol "e", symbol "E" ]
+            |. Parser.commit ()
+            |= oneOf
+                [ succeed identity
+                    |. symbol "+"
+                    |= intParser
+                , succeed negate
+                    |. symbol "-"
+                    |= intParser
+                , intParser
+                ]
+        ]
+
+
+intParser : Parser Int
+intParser =
+    succeed ()
+        |. Parser.chompIf Char.isDigit
+        |. Parser.chompWhile Char.isDigit
+        |> Parser.getChompedString
+        |> Parser.andThen
+            (\s ->
+                case String.toInt s of
+                    Just i ->
+                        Parser.succeed i
+
+                    Nothing ->
+                        Parser.problem ("Cannot parse \"" ++ s ++ "\" as int")
+            )
 
 
 file : Parser (List Declaration)
