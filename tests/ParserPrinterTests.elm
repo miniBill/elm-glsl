@@ -204,9 +204,8 @@ unaryOperationFuzzer =
     Fuzz.oneOfValues
         [ PostfixIncrement
         , PostfixDecrement
-
-        -- , PrefixIncrement
-        -- , PrefixDecrement
+        , PrefixIncrement
+        , PrefixDecrement
         , Plus
         , Negate
         , Invert
