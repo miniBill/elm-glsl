@@ -75,6 +75,9 @@ isAlmostEqual expected actual =
         ( UnaryOperation eop er, UnaryOperation aop ar ) ->
             eop == aop && isAlmostEqual er ar
 
+        ( Dot el er, Dot al ar ) ->
+            isAlmostEqual el al && er == ar
+
         ( Float l, Float r ) ->
             if isInfinite l && isInfinite r then
                 (l > 0) == (r > 0)
@@ -99,57 +102,88 @@ isAlmostEqual expected actual =
 
 exprFuzzer : Int -> Fuzzer Expr
 exprFuzzer depth =
-    if depth == 0 then
-        Fuzz.oneOf
-            [ Fuzz.map Bool Fuzz.bool
-            , Fuzz.map Int Fuzz.int
-            , Fuzz.map Float Fuzz.float
-            ]
+    let
+        base : Fuzzer Expr
+        base =
+            Fuzz.oneOf
+                [ Fuzz.map Bool Fuzz.bool
+                , Fuzz.map Int Fuzz.int
+                , Fuzz.map Float Fuzz.float
+                ]
 
-    else
-        let
-            child =
-                exprFuzzer (depth - 1)
-        in
-        Fuzz.oneOf
-            [ Fuzz.map Bool Fuzz.bool
-            , Fuzz.map Int Fuzz.int
-            , Fuzz.map Float Fuzz.float
-            , Fuzz.map Variable variableNameFuzzer
-            , Fuzz.map3 Ternary child child child
-            , Fuzz.map2
-                (\op c ->
-                    case ( op, c ) of
-                        ( PostfixIncrement, Int _ ) ->
-                            -- this wouldn't make sense
-                            c
+        dottableExprFuzzer : Fuzzer Expr -> Fuzzer Expr
+        dottableExprFuzzer child =
+            Fuzz.oneOf
+                [ Fuzz.map Bool Fuzz.bool
+                , Fuzz.map Variable variableNameFuzzer
+                , Fuzz.map3 Ternary child child child
+                , Fuzz.map2
+                    (\op c ->
+                        case ( op, c ) of
+                            ( PostfixIncrement, Int _ ) ->
+                                -- this wouldn't make sense
+                                c
 
-                        ( PostfixDecrement, Int _ ) ->
-                            -- this wouldn't make sense
-                            c
+                            ( PostfixDecrement, Int _ ) ->
+                                -- this wouldn't make sense
+                                c
 
-                        ( PostfixIncrement, Float _ ) ->
-                            -- this wouldn't make sense
-                            c
+                            ( PostfixIncrement, Float _ ) ->
+                                -- this wouldn't make sense
+                                c
 
-                        ( PostfixDecrement, Float _ ) ->
-                            -- this wouldn't make sense
-                            c
+                            ( PostfixDecrement, Float _ ) ->
+                                -- this wouldn't make sense
+                                c
 
-                        _ ->
-                            UnaryOperation op c
-                )
-                unaryOperationFuzzer
-                child
-            , Fuzz.map3 BinaryOperation child binaryOperationFuzzer child
-            , Fuzz.map2 Call (Fuzz.map Variable variableNameFuzzer) (Fuzz.list child)
-            , Fuzz.map2 Dot dottableExprFuzzer variableNameFuzzer
-            ]
+                            _ ->
+                                UnaryOperation op c
+                    )
+                    unaryOperationFuzzer
+                    child
+                , Fuzz.map3 BinaryOperation child binaryOperationFuzzer child
+                , Fuzz.map2 Call (Fuzz.map Variable variableNameFuzzer) (Fuzz.list child)
+                , Fuzz.map2 Dot child variableNameFuzzer
+                ]
 
+        inner : Fuzzer Expr -> Fuzzer Expr
+        inner child =
+            Fuzz.oneOf
+                [ Fuzz.map Bool Fuzz.bool
+                , Fuzz.map Int Fuzz.int
+                , Fuzz.map Float Fuzz.float
+                , Fuzz.map Variable variableNameFuzzer
+                , Fuzz.map3 Ternary child child child
+                , Fuzz.map2
+                    (\op c ->
+                        case ( op, c ) of
+                            ( PostfixIncrement, Int _ ) ->
+                                -- this wouldn't make sense
+                                c
 
-dottableExprFuzzer : Fuzzer Expr
-dottableExprFuzzer =
-    Fuzz.map Variable variableNameFuzzer
+                            ( PostfixDecrement, Int _ ) ->
+                                -- this wouldn't make sense
+                                c
+
+                            ( PostfixIncrement, Float _ ) ->
+                                -- this wouldn't make sense
+                                c
+
+                            ( PostfixDecrement, Float _ ) ->
+                                -- this wouldn't make sense
+                                c
+
+                            _ ->
+                                UnaryOperation op c
+                    )
+                    unaryOperationFuzzer
+                    child
+                , Fuzz.map3 BinaryOperation child binaryOperationFuzzer child
+                , Fuzz.map2 Call (Fuzz.map Variable variableNameFuzzer) (Fuzz.list child)
+                , Fuzz.map2 Dot (dottableExprFuzzer child) variableNameFuzzer
+                ]
+    in
+    List.foldl (\_ -> inner) base (List.range 1 depth)
 
 
 variableNameFuzzer : Fuzzer String
