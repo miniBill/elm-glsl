@@ -210,6 +210,8 @@ reserved =
     [ "break"
     , "return"
     , "continue"
+    , "if"
+    , "for"
     ]
         |> Set.fromList
 
