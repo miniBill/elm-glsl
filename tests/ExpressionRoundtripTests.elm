@@ -109,7 +109,7 @@ exprFuzzer depth =
             Fuzz.oneOf
                 [ Fuzz.map Bool Fuzz.bool
                 , Fuzz.map Int Fuzz.int
-                , Fuzz.map Float Fuzz.float
+                , Fuzz.map Float Fuzz.niceFloat
                 ]
 
         inner : Fuzzer Expr -> Fuzzer Expr
@@ -117,7 +117,7 @@ exprFuzzer depth =
             Fuzz.oneOf
                 [ Fuzz.map Bool Fuzz.bool
                 , Fuzz.map Int Fuzz.int
-                , Fuzz.map Float Fuzz.float
+                , Fuzz.map Float Fuzz.niceFloat
                 , Fuzz.map Variable variableNameFuzzer
                 , Fuzz.map3 Ternary child child child
                 , Fuzz.map2 excludeNonsensicalUnary unaryOperationFuzzer child

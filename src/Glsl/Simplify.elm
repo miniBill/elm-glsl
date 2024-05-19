@@ -6,9 +6,6 @@ import Glsl exposing (BinaryOperation(..), Expr(..), UnaryOperation(..))
 simplify : Expr -> Expr
 simplify expr =
     case expr of
-        BinaryOperation (Float n) Div (Float d) ->
-            Float (n / d)
-
         Int i ->
             if i < 0 then
                 UnaryOperation Negate (Int -i)
