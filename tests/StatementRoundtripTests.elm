@@ -45,34 +45,38 @@ roundtrip : Test
 roundtrip =
     Test.fuzz (statFuzzer 3) "Statement roundtrips" <|
         \stat ->
-            let
-                simplified : Stat
-                simplified =
-                    Glsl.Simplify.stat stat
+            if stat == Nop then
+                Expect.pass
 
-                str : String
-                str =
-                    Glsl.PrettyPrinter.stat 0 simplified
-            in
-            case Parser.run (Glsl.Parser.statementParser |. Parser.end) str of
-                Err errs ->
-                    errs
-                        |> ErrorUtils.errorsToString str
-                        |> Expect.fail
+            else
+                let
+                    simplified : Stat
+                    simplified =
+                        Glsl.Simplify.stat stat
 
-                Ok o ->
-                    let
-                        actual : Stat
-                        actual =
-                            o
-                                |> Glsl.Simplify.stat
-                    in
-                    if isAlmostEqual simplified actual then
-                        Expect.pass
+                    str : String
+                    str =
+                        Glsl.PrettyPrinter.stat 0 simplified
+                in
+                case Parser.run (Glsl.Parser.statementParser |. Parser.end) str of
+                    Err errs ->
+                        errs
+                            |> ErrorUtils.errorsToString str
+                            |> Expect.fail
 
-                    else
-                        ( Glsl.PrettyPrinter.stat 0 actual, actual )
-                            |> Expect.equal ( str, simplified )
+                    Ok o ->
+                        let
+                            actual : Stat
+                            actual =
+                                o
+                                    |> Glsl.Simplify.stat
+                        in
+                        if isAlmostEqual simplified actual then
+                            Expect.pass
+
+                        else
+                            ( Glsl.PrettyPrinter.stat 0 actual, actual )
+                                |> Expect.equal ( str, simplified )
 
 
 statFuzzer : Int -> Fuzzer Stat

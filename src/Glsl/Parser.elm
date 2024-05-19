@@ -225,16 +225,20 @@ defParser : Parser Stat
 defParser =
     succeed
         (\type_ var val ->
-            Decl type_ var (Just val)
+            Decl type_ var val
         )
         |= typeParser
         |. spaces
         |= identifierParser
         |. spaces
-        |. symbol "="
-        |. spaces
-        |= expressionParser
-        |. spaces
+        |= Parser.oneOf
+            [ Parser.succeed Just
+                |. symbol "="
+                |. spaces
+                |= expressionParser
+                |. spaces
+            , Parser.succeed Nothing
+            ]
         |. symbol ";"
         |. spaces
         |= maybeStatementParser
