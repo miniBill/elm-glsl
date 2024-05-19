@@ -373,43 +373,43 @@ type Type
 
 
 type Vec2
-    = Vec2 Vec2
+    = Vec2
 
 
 type Vec3
-    = Vec3 Vec3
+    = Vec3
 
 
 type Vec4
-    = Vec4 Vec4
+    = Vec4
 
 
 type IVec2
-    = IVec2 IVec2
+    = IVec2
 
 
 type IVec3
-    = IVec3 IVec3
+    = IVec3
 
 
 type IVec4
-    = IVec4 IVec4
+    = IVec4
 
 
 type Mat3
-    = Mat3 Mat3
+    = Mat3
 
 
 type Void
-    = Void Void
+    = Void
 
 
 type In t
-    = In (In t)
+    = In
 
 
 type Out t
-    = Out (Out t)
+    = Out
 
 
 
