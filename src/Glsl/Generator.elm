@@ -405,7 +405,7 @@ for :
     -> Statement r
     -> Statement r
 for ( var, from, to ) loop next =
-    build (\f t -> For var f LessThan t PlusPlus)
+    build (\f t -> For (Decl TInt var (Just f) Nop) (BinaryOperation (Variable var) (RelationOperation LessThan) t) (UnaryOperation PostfixIncrement (Variable var)))
         |> withExpression from
         |> withExpression to
         |> withStatement (loop (Glsl.var var) unsafeNop)
@@ -419,7 +419,7 @@ forLeq :
     -> Statement r
     -> Statement r
 forLeq ( var, from, to ) loop next =
-    build (\f t -> For var f LessThanOrEquals t PlusPlus)
+    build (\f t -> For (Decl TInt var (Just f) Nop) (BinaryOperation (Variable var) (RelationOperation LessThanOrEquals) t) (UnaryOperation PostfixIncrement (Variable var)))
         |> withExpression from
         |> withExpression to
         |> withStatement (loop (Glsl.var var) unsafeNop)
@@ -433,7 +433,7 @@ forDown :
     -> Statement r
     -> Statement r
 forDown ( var, from, to ) loop next =
-    build (\f t -> For var f GreaterThan t MinusMinus)
+    build (\f t -> For (Decl TInt var (Just f) Nop) (BinaryOperation (Variable var) (RelationOperation GreaterThan) t) (UnaryOperation PostfixDecrement (Variable var)))
         |> withExpression from
         |> withExpression to
         |> withStatement (loop (Glsl.var var) unsafeNop)
