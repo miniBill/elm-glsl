@@ -2,18 +2,13 @@ module ShaderToy exposing (suite)
 
 import ErrorUtils
 import Expect
-import Glsl exposing (Expression, float1)
-import Glsl.Functions exposing (dot33, fract1, sin1, sin3, vec31, vec3111)
-import Glsl.Generator exposing (float, floatT, fun1, fun1_, return, vec3, vec3T, zero)
-import Glsl.Operations exposing (by11, by13, by33)
+import Glsl exposing (float1)
+import Glsl.Functions exposing (dot33, fract1, sin1, vec3111)
+import Glsl.Generator exposing (floatT, fun1_, return, vec3T)
+import Glsl.Operations exposing (by11)
 import Glsl.Parser
 import Parser
-import SortedSet exposing (SortedSet)
 import Test exposing (Test, describe, test)
-
-
-a =
-    Glsl.Generator.and
 
 
 suite : Test
