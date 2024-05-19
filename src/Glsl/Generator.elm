@@ -1,4 +1,4 @@
-module Glsl.Generator exposing (File, FunDecl, adds2, adds3, adds4, and, ands, assign, assignAdd, assignBy, assignOut, boolT, break, continue, decl, def, def1, def2, def3, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun1_, fun2, fun3, fun4, fun5, funDeclToGlsl, gl_FragColor, gl_FragCoord, ifElse, if_, in_, intT, main_, mat3, mat3T, minusOne, nop, one, or, ors, out, return, statementToGlsl, ternary, ternary3, vec2, vec2T, vec2Zero, vec3, vec3T, vec3Zero, vec4, vec4T, vec4Zero, voidT, zero)
+module Glsl.Generator exposing (File, FunDecl, adds2, adds3, adds4, and, ands, assign, assignAdd, assignBy, assignOut, boolT, break, continue, decl, def, def1, def2, def3, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun1_, fun2, fun2_, fun3, fun3_, fun4, fun4_, fun5, fun5_, funDeclToGlsl, gl_FragColor, gl_FragCoord, ifElse, if_, in_, intT, main_, mat3, mat3T, minusOne, nop, one, or, ors, out, return, statementToGlsl, ternary, ternary3, vec2, vec2T, vec2Zero, vec3, vec3T, vec3Zero, vec4, vec4T, vec4Zero, voidT, zero)
 
 import Glsl exposing (BinaryOperation(..), Declaration(..), Expr(..), Expression(..), In, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, false, float1, true, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap2, unsafeMap3, var, withContinuation, withExpression, withStatement)
 import Glsl.Functions exposing (vec211, vec3111, vec41111)
@@ -346,11 +346,24 @@ fun2 :
     -> TypedName a
     -> TypedName b
     -> (Expression a -> Expression b -> Statement t)
+    -> Expression a
+    -> Expression b
+    -> Expression t
+fun2 typeF name arg0 arg1 body =
+    (fun2_ typeF name arg0 arg1 body).call
+
+
+fun2_ :
+    TypingFunction t
+    -> String
+    -> TypedName a
+    -> TypedName b
+    -> (Expression a -> Expression b -> Statement t)
     ->
         { declaration : Declaration
         , call : Expression a -> Expression b -> Expression t
         }
-fun2 typeF name (TypedName t0 arg0) (TypedName t1 arg1) body =
+fun2_ typeF name (TypedName t0 arg0) (TypedName t1 arg1) body =
     funX unsafeCall2
         typeF
         name
@@ -365,11 +378,26 @@ fun3 :
     -> TypedName b
     -> TypedName c
     -> (Expression a -> Expression b -> Expression c -> Statement t)
+    -> Expression a
+    -> Expression b
+    -> Expression c
+    -> Expression t
+fun3 typeF name arg0 arg1 arg2 body =
+    (fun3_ typeF name arg0 arg1 arg2 body).call
+
+
+fun3_ :
+    TypingFunction t
+    -> String
+    -> TypedName a
+    -> TypedName b
+    -> TypedName c
+    -> (Expression a -> Expression b -> Expression c -> Statement t)
     ->
         { declaration : Declaration
         , call : Expression a -> Expression b -> Expression c -> Expression t
         }
-fun3 typeF name (TypedName t0 arg0) (TypedName t1 arg1) (TypedName t2 arg2) body =
+fun3_ typeF name (TypedName t0 arg0) (TypedName t1 arg1) (TypedName t2 arg2) body =
     funX unsafeCall3
         typeF
         name
@@ -385,11 +413,28 @@ fun4 :
     -> TypedName c
     -> TypedName d
     -> (Expression a -> Expression b -> Expression c -> Expression d -> Statement t)
+    -> Expression a
+    -> Expression b
+    -> Expression c
+    -> Expression d
+    -> Expression t
+fun4 typeF name arg0 arg1 arg2 arg3 body =
+    (fun4_ typeF name arg0 arg1 arg2 arg3 body).call
+
+
+fun4_ :
+    TypingFunction t
+    -> String
+    -> TypedName a
+    -> TypedName b
+    -> TypedName c
+    -> TypedName d
+    -> (Expression a -> Expression b -> Expression c -> Expression d -> Statement t)
     ->
         { declaration : Declaration
         , call : Expression a -> Expression b -> Expression c -> Expression d -> Expression t
         }
-fun4 typeF name (TypedName t0 arg0) (TypedName t1 arg1) (TypedName t2 arg2) (TypedName t3 arg3) body =
+fun4_ typeF name (TypedName t0 arg0) (TypedName t1 arg1) (TypedName t2 arg2) (TypedName t3 arg3) body =
     funX unsafeCall4
         typeF
         name
@@ -406,11 +451,30 @@ fun5 :
     -> TypedName d
     -> TypedName e
     -> (Expression a -> Expression b -> Expression c -> Expression d -> Expression e -> Statement t)
+    -> Expression a
+    -> Expression b
+    -> Expression c
+    -> Expression d
+    -> Expression e
+    -> Expression t
+fun5 typeF name arg0 arg1 arg2 arg3 arg4 body =
+    (fun5_ typeF name arg0 arg1 arg2 arg3 arg4 body).call
+
+
+fun5_ :
+    TypingFunction t
+    -> String
+    -> TypedName a
+    -> TypedName b
+    -> TypedName c
+    -> TypedName d
+    -> TypedName e
+    -> (Expression a -> Expression b -> Expression c -> Expression d -> Expression e -> Statement t)
     ->
         { declaration : Declaration
         , call : Expression a -> Expression b -> Expression c -> Expression d -> Expression e -> Expression t
         }
-fun5 typeF name (TypedName t0 arg0) (TypedName t1 arg1) (TypedName t2 arg2) (TypedName t3 arg3) (TypedName t4 arg4) body =
+fun5_ typeF name (TypedName t0 arg0) (TypedName t1 arg1) (TypedName t2 arg2) (TypedName t3 arg3) (TypedName t4 arg4) body =
     funX unsafeCall5
         typeF
         name
