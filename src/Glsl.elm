@@ -1,6 +1,6 @@
 module Glsl exposing
     ( Function
-    , Statement(..), Stat(..), ForDirection(..)
+    , Statement(..), Stat(..)
     , Expression(..), ExprWithDeps, Expr(..)
     , BinaryOperation(..), UnaryOperation(..), RelationOperation(..)
     , true, false, var
@@ -19,7 +19,7 @@ module Glsl exposing
 # Types
 
 @docs Function
-@docs Statement, Stat, ForDirection
+@docs Statement, Stat
 @docs Expression, ExprWithDeps, Expr
 @docs BinaryOperation, UnaryOperation, RelationOperation
 
@@ -338,10 +338,6 @@ type Stat
     | ExpressionStatement Expr
     | Decl Type String (Maybe Expr)
     | Block (List Stat)
-
-
-type ForDirection
-    = PlusPlus
 
 
 type alias TypingFunction t =

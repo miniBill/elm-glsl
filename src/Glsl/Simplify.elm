@@ -73,6 +73,7 @@ expr root =
 map : (a -> a) -> a -> (b -> a) -> (b -> b) -> b -> a
 map rootKind root ctor kind val =
     let
+        vals : a
         vals =
             kind val
     in
@@ -86,9 +87,11 @@ map rootKind root ctor kind val =
 map2 : (a -> a) -> a -> (b -> c -> a) -> (b -> b) -> b -> (c -> c) -> c -> a
 map2 rootKind root ctor kind1 val1 kind2 val2 =
     let
+        val1s : b
         val1s =
             kind1 val1
 
+        val2s : c
         val2s =
             kind2 val2
     in
@@ -102,12 +105,15 @@ map2 rootKind root ctor kind1 val1 kind2 val2 =
 map3 : (a -> a) -> a -> (b -> c -> d -> a) -> (b -> b) -> b -> (c -> c) -> c -> (d -> d) -> d -> a
 map3 rootKind root ctor kind1 val1 kind2 val2 kind3 val3 =
     let
+        val1s : b
         val1s =
             kind1 val1
 
+        val2s : c
         val2s =
             kind2 val2
 
+        val3s : d
         val3s =
             kind3 val3
     in
@@ -121,15 +127,19 @@ map3 rootKind root ctor kind1 val1 kind2 val2 kind3 val3 =
 map4 : (a -> a) -> a -> (b -> c -> d -> e -> a) -> (b -> b) -> b -> (c -> c) -> c -> (d -> d) -> d -> (e -> e) -> e -> a
 map4 rootKind root ctor kind1 val1 kind2 val2 kind3 val3 kind4 val4 =
     let
+        val1s : b
         val1s =
             kind1 val1
 
+        val2s : c
         val2s =
             kind2 val2
 
+        val3s : d
         val3s =
             kind3 val3
 
+        val4s : e
         val4s =
             kind4 val4
     in

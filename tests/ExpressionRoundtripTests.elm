@@ -91,6 +91,7 @@ isAlmostEqual expected actual =
 
             else
                 let
+                    check : Bool
                     check =
                         abs (l - r) <= 0.000001 * max (abs l) (abs r)
                 in
