@@ -320,15 +320,14 @@ type Statement r
 
 
 type Stat
-    = If Expr Stat Stat
-    | IfElse Expr Stat Stat Stat
-    | For Stat Expr Expr Stat Stat
+    = If Expr Stat (Maybe Stat)
+    | IfElse Expr Stat Stat (Maybe Stat)
+    | For (Maybe Stat) Expr Expr Stat (Maybe Stat)
     | Return Expr
     | Break
     | Continue
-    | ExpressionStatement Expr Stat
-    | Decl Type String (Maybe Expr) Stat
-    | Nop
+    | ExpressionStatement Expr (Maybe Stat)
+    | Decl Type String (Maybe Expr) (Maybe Stat)
 
 
 type ForDirection

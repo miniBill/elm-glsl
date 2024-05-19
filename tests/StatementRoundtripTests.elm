@@ -15,19 +15,17 @@ import Test exposing (Test, describe, test)
 examples : Test
 examples =
     describe "Statement examples"
-        [ example "1;" (ExpressionStatement (Int 1) Nop)
+        [ example "1;" (ExpressionStatement (Int 1) Nothing)
         , example """if (a) {
     1;
 } else {
     0;
-}
-
-"""
+}"""
             (IfElse
                 (Variable "a")
-                (ExpressionStatement (Int 1) Nop)
-                (ExpressionStatement (Int 0) Nop)
-                Nop
+                (ExpressionStatement (Int 1) Nothing)
+                (ExpressionStatement (Int 0) Nothing)
+                Nothing
             )
         ]
 
@@ -45,38 +43,34 @@ roundtrip : Test
 roundtrip =
     Test.fuzz (statFuzzer 3) "Statement roundtrips" <|
         \stat ->
-            if stat == Nop then
-                Expect.pass
+            let
+                simplified : Stat
+                simplified =
+                    Glsl.Simplify.stat stat
 
-            else
-                let
-                    simplified : Stat
-                    simplified =
-                        Glsl.Simplify.stat stat
+                str : String
+                str =
+                    Glsl.PrettyPrinter.stat 0 simplified
+            in
+            case Parser.run (Glsl.Parser.statementParser |. Parser.end) str of
+                Err errs ->
+                    errs
+                        |> ErrorUtils.errorsToString str
+                        |> Expect.fail
 
-                    str : String
-                    str =
-                        Glsl.PrettyPrinter.stat 0 simplified
-                in
-                case Parser.run (Glsl.Parser.statementParser |. Parser.end) str of
-                    Err errs ->
-                        errs
-                            |> ErrorUtils.errorsToString str
-                            |> Expect.fail
+                Ok o ->
+                    let
+                        actual : Stat
+                        actual =
+                            o
+                                |> Glsl.Simplify.stat
+                    in
+                    if isAlmostEqual simplified actual then
+                        Expect.pass
 
-                    Ok o ->
-                        let
-                            actual : Stat
-                            actual =
-                                o
-                                    |> Glsl.Simplify.stat
-                        in
-                        if isAlmostEqual simplified actual then
-                            Expect.pass
-
-                        else
-                            ( Glsl.PrettyPrinter.stat 0 actual, actual )
-                                |> Expect.equal ( str, simplified )
+                    else
+                        ( Glsl.PrettyPrinter.stat 0 actual, actual )
+                            |> Expect.equal ( str, simplified )
 
 
 statFuzzer : Int -> Fuzzer Stat
@@ -87,7 +81,6 @@ statFuzzer depth =
             Fuzz.oneOf
                 [ Fuzz.constant Break
                 , Fuzz.constant Continue
-                , Fuzz.constant Nop
                 , Fuzz.map Return (ExpressionRoundtripTests.fuzzer 0)
                 ]
 
@@ -96,13 +89,12 @@ statFuzzer depth =
             Fuzz.oneOf
                 [ Fuzz.constant Break
                 , Fuzz.constant Continue
-                , Fuzz.constant Nop
                 , Fuzz.map Return expr
-                , Fuzz.map3 If expr child child
-                , Fuzz.map4 IfElse expr child child child
-                , Fuzz.map5 For child expr expr child child
-                , Fuzz.map2 ExpressionStatement expr child
-                , Fuzz.map4 Decl typeFuzzer ExpressionRoundtripTests.variableNameFuzzer (Fuzz.maybe expr) child
+                , Fuzz.map3 If expr child (Fuzz.maybe child)
+                , Fuzz.map4 IfElse expr child child (Fuzz.maybe child)
+                , Fuzz.map5 For (Fuzz.maybe child) expr expr child (Fuzz.maybe child)
+                , Fuzz.map2 ExpressionStatement expr (Fuzz.maybe child)
+                , Fuzz.map4 Decl typeFuzzer ExpressionRoundtripTests.variableNameFuzzer (Fuzz.maybe expr) (Fuzz.maybe child)
                 ]
     in
     List.foldl (\i -> inner (ExpressionRoundtripTests.fuzzer i)) base (List.range 1 depth)
@@ -138,8 +130,33 @@ typeFuzzer =
 isAlmostEqual : Stat -> Stat -> Bool
 isAlmostEqual expected actual =
     case ( expected, actual ) of
+        ( Return el, Return al ) ->
+            ExpressionRoundtripTests.isAlmostEqual el al
+
+        ( If el em er, If al am ar ) ->
+            ExpressionRoundtripTests.isAlmostEqual el al && isAlmostEqual em am && isAlmostEqualM er ar
+
+        ( For el em er ep eq, For al am ar ap aq ) ->
+            isAlmostEqualM el al && ExpressionRoundtripTests.isAlmostEqual em am && ExpressionRoundtripTests.isAlmostEqual er ar && isAlmostEqual ep ap && isAlmostEqualM eq aq
+
         ( ExpressionStatement el er, ExpressionStatement al ar ) ->
-            ExpressionRoundtripTests.isAlmostEqual el al && isAlmostEqual er ar
+            ExpressionRoundtripTests.isAlmostEqual el al && isAlmostEqualM er ar
 
         _ ->
             expected == actual
+
+
+isAlmostEqualM : Maybe Stat -> Maybe Stat -> Bool
+isAlmostEqualM expected actual =
+    case ( expected, actual ) of
+        ( Just _, Nothing ) ->
+            False
+
+        ( Nothing, Just _ ) ->
+            False
+
+        ( Nothing, Nothing ) ->
+            True
+
+        ( Just e, Just a ) ->
+            isAlmostEqual e a

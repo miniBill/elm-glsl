@@ -172,11 +172,12 @@ ifParser =
             ]
 
 
-maybeStatementParser : Parser Stat
+maybeStatementParser : Parser (Maybe Stat)
 maybeStatementParser =
     oneOf
-        [ statementParser
-        , succeed Nop
+        [ Parser.backtrackable maybeBlockParser
+        , succeed Just |= statementParser
+        , succeed Nothing
         ]
 
 
@@ -187,7 +188,7 @@ forParser =
         |. spaces
         |. symbol "("
         |. spaces
-        |= statementParser
+        |= maybeStatementParser
         |. spaces
         |. symbol ";"
         |. spaces
@@ -219,7 +220,15 @@ commentParser =
     Parser.succeed identity
         |. Parser.Workaround.lineCommentAfter "//"
         |. spaces
-        |= maybeStatementParser
+        |= statementParser
+
+
+maybeBlockParser : Parser (Maybe Stat)
+maybeBlockParser =
+    Parser.succeed Nothing
+        |. symbol "{"
+        |. spaces
+        |. symbol "}"
 
 
 blockParser : Parser Stat
@@ -227,7 +236,7 @@ blockParser =
     Parser.succeed identity
         |. symbol "{"
         |. spaces
-        |= maybeStatementParser
+        |= statementParser
         |. spaces
         |. symbol "}"
 

@@ -10,19 +10,19 @@ stat root =
             map stat root Return expr e
 
         ExpressionStatement e k ->
-            map2 stat root ExpressionStatement expr e stat k
+            map2 stat root ExpressionStatement expr e (Maybe.map stat) k
 
         If e s1 s2 ->
-            map3 stat root If expr e stat s1 stat s2
+            map3 stat root If expr e stat s1 (Maybe.map stat) s2
 
         IfElse e s1 s2 s3 ->
-            map4 stat root IfElse expr e stat s1 stat s2 stat s3
+            map4 stat root IfElse expr e stat s1 stat s2 (Maybe.map stat) s3
 
         Decl tipe name val k ->
-            map2 stat root (Decl tipe name) (Maybe.map expr) val stat k
+            map2 stat root (Decl tipe name) (Maybe.map expr) val (Maybe.map stat) k
 
         For init check step loop k ->
-            map5 stat root For stat init expr check expr step stat loop stat k
+            map5 stat root For (Maybe.map stat) init expr check expr step stat loop (Maybe.map stat) k
 
         _ ->
             root
