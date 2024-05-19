@@ -256,7 +256,7 @@ expressionParser =
 
 prec17Parser : Parser Expr
 prec17Parser =
-    multiSequence
+    multiSequenceAssocLeft
         { separators = [ ( \l r -> BinaryOperation l Comma r, symbol "," ) ]
         , item = prec16Parser
         }
@@ -264,22 +264,56 @@ prec17Parser =
 
 prec16Parser : Parser Expr
 prec16Parser =
-    multiSequence
-        { separators =
-            [ ( \l r -> BinaryOperation l Assign r, singleSymbol "=" )
-            , ( \l r -> BinaryOperation l ComboAdd r, symbol "+=" )
-            , ( \l r -> BinaryOperation l ComboSubtract r, symbol "-=" )
-            , ( \l r -> BinaryOperation l ComboBy r, symbol "*=" )
-            , ( \l r -> BinaryOperation l ComboDiv r, symbol "/=" )
-            , ( \l r -> BinaryOperation l ComboMod r, symbol "%=" )
-            , ( \l r -> BinaryOperation l ComboLeftShift r, symbol "<<=" )
-            , ( \l r -> BinaryOperation l ComboRightShift r, symbol ">>=" )
-            , ( \l r -> BinaryOperation l ComboBitwiseAnd r, symbol "&=" )
-            , ( \l r -> BinaryOperation l ComboBitwiseOr r, symbol "|=" )
-            , ( \l r -> BinaryOperation l ComboBitwiseXor r, symbol "^=" )
+    succeed (\a f -> f a)
+        |= prec15Parser
+        |. spaces
+        |= Parser.oneOf
+            [ succeed (\r l -> BinaryOperation l Assign r)
+                |. singleSymbol "="
+                |. spaces
+                |= Parser.lazy (\_ -> prec16Parser)
+            , succeed (\r l -> BinaryOperation l ComboAdd r)
+                |. symbol "+="
+                |. spaces
+                |= Parser.lazy (\_ -> prec16Parser)
+            , succeed (\r l -> BinaryOperation l ComboSubtract r)
+                |. symbol "-="
+                |. spaces
+                |= Parser.lazy (\_ -> prec16Parser)
+            , succeed (\r l -> BinaryOperation l ComboBy r)
+                |. symbol "*="
+                |. spaces
+                |= Parser.lazy (\_ -> prec16Parser)
+            , succeed (\r l -> BinaryOperation l ComboDiv r)
+                |. symbol "/="
+                |. spaces
+                |= Parser.lazy (\_ -> prec16Parser)
+            , succeed (\r l -> BinaryOperation l ComboMod r)
+                |. symbol "%="
+                |. spaces
+                |= Parser.lazy (\_ -> prec16Parser)
+            , succeed (\r l -> BinaryOperation l ComboLeftShift r)
+                |. symbol "<<="
+                |. spaces
+                |= Parser.lazy (\_ -> prec16Parser)
+            , succeed (\r l -> BinaryOperation l ComboRightShift r)
+                |. symbol ">>="
+                |. spaces
+                |= Parser.lazy (\_ -> prec16Parser)
+            , succeed (\r l -> BinaryOperation l ComboBitwiseAnd r)
+                |. symbol "&="
+                |. spaces
+                |= Parser.lazy (\_ -> prec16Parser)
+            , succeed (\r l -> BinaryOperation l ComboBitwiseOr r)
+                |. symbol "|="
+                |. spaces
+                |= Parser.lazy (\_ -> prec16Parser)
+            , succeed (\r l -> BinaryOperation l ComboBitwiseXor r)
+                |. symbol "^="
+                |. spaces
+                |= Parser.lazy (\_ -> prec16Parser)
+            , succeed identity
             ]
-        , item = prec15Parser
-        }
 
 
 prec15Parser : Parser Expr
@@ -304,7 +338,7 @@ prec15Parser =
 
 prec14Parser : Parser Expr
 prec14Parser =
-    multiSequence
+    multiSequenceAssocLeft
         { separators =
             [ ( \l r -> BinaryOperation l Or r, symbol "||" )
             ]
@@ -314,7 +348,7 @@ prec14Parser =
 
 prec13Parser : Parser Expr
 prec13Parser =
-    multiSequence
+    multiSequenceAssocLeft
         { separators =
             [ ( \l r -> BinaryOperation l Xor r, symbol "^^" )
             ]
@@ -324,7 +358,7 @@ prec13Parser =
 
 prec12Parser : Parser Expr
 prec12Parser =
-    multiSequence
+    multiSequenceAssocLeft
         { separators =
             [ ( \l r -> BinaryOperation l And r, symbol "&&" )
             ]
@@ -334,7 +368,7 @@ prec12Parser =
 
 prec11Parser : Parser Expr
 prec11Parser =
-    multiSequence
+    multiSequenceAssocLeft
         { separators =
             [ ( \l r -> BinaryOperation l BitwiseOr r, singleSymbol "|" )
             ]
@@ -344,7 +378,7 @@ prec11Parser =
 
 prec10Parser : Parser Expr
 prec10Parser =
-    multiSequence
+    multiSequenceAssocLeft
         { separators =
             [ ( \l r -> BinaryOperation l BitwiseXor r, singleSymbol "^" )
             ]
@@ -354,7 +388,7 @@ prec10Parser =
 
 prec9Parser : Parser Expr
 prec9Parser =
-    multiSequence
+    multiSequenceAssocLeft
         { separators = [ ( \l r -> BinaryOperation l BitwiseAnd r, singleSymbol "&" ) ]
         , item = prec8Parser
         }
@@ -380,7 +414,7 @@ symbolNotFollowedBy s nots =
 
 prec8Parser : Parser Expr
 prec8Parser =
-    multiSequence
+    multiSequenceAssocLeft
         { separators =
             [ ( \l r -> BinaryOperation l (RelationOperation Equals) r, symbol "==" )
             , ( \l r -> BinaryOperation l (RelationOperation NotEquals) r, symbol "!=" )
@@ -391,7 +425,7 @@ prec8Parser =
 
 prec7Parser : Parser Expr
 prec7Parser =
-    multiSequence
+    multiSequenceAssocLeft
         { separators =
             [ ( \l r -> BinaryOperation l (RelationOperation LessThanOrEquals) r, symbol "<=" )
             , ( \l r -> BinaryOperation l (RelationOperation GreaterThanOrEquals) r, symbol ">=" )
@@ -404,7 +438,7 @@ prec7Parser =
 
 prec6Parser : Parser Expr
 prec6Parser =
-    multiSequence
+    multiSequenceAssocLeft
         { separators =
             [ ( \l r -> BinaryOperation l ShiftLeft r, symbolNotFollowedBy "<<" [ "=" ] )
             , ( \l r -> BinaryOperation l ShiftRight r, symbolNotFollowedBy ">>" [ "=" ] )
@@ -415,7 +449,7 @@ prec6Parser =
 
 prec5Parser : Parser Expr
 prec5Parser =
-    multiSequence
+    multiSequenceAssocLeft
         { separators =
             [ ( \l r -> BinaryOperation l Add r, symbolNotFollowedBy "+" [ "=" ] )
             , ( \l r -> BinaryOperation l Subtract r, symbolNotFollowedBy "-" [ "=" ] )
@@ -426,7 +460,7 @@ prec5Parser =
 
 prec4Parser : Parser Expr
 prec4Parser =
-    multiSequence
+    multiSequenceAssocLeft
         { separators =
             [ ( \l r -> BinaryOperation l By r, symbolNotFollowedBy "*" [ "=" ] )
             , ( \l r -> BinaryOperation l Div r, symbolNotFollowedBy "/" [ "=" ] )
@@ -441,22 +475,22 @@ prec3Parser =
     Parser.oneOf
         [ succeed (UnaryOperation PrefixIncrement)
             |. symbol "++"
-            |= prec2Parser
+            |= Parser.lazy (\_ -> prec3Parser)
         , succeed (UnaryOperation Plus)
             |. singleSymbol "+"
-            |= prec2Parser
+            |= Parser.lazy (\_ -> prec3Parser)
         , succeed (UnaryOperation PrefixDecrement)
             |. symbol "--"
-            |= prec2Parser
+            |= Parser.lazy (\_ -> prec3Parser)
         , succeed (UnaryOperation Negate)
             |. singleSymbol "-"
-            |= prec2Parser
+            |= Parser.lazy (\_ -> prec3Parser)
         , succeed (UnaryOperation Invert)
             |. symbol "~"
-            |= prec2Parser
+            |= Parser.lazy (\_ -> prec3Parser)
         , succeed (UnaryOperation Not)
             |. symbol "!"
-            |= prec2Parser
+            |= Parser.lazy (\_ -> prec3Parser)
         , prec2Parser
         ]
 
@@ -609,7 +643,7 @@ floatParser =
 intParser : Parser Int
 intParser =
     succeed ()
-        |. Parser.chompWhile (\c -> c == '-')
+        -- |. Parser.chompWhile (\c -> c == '-')
         |. Parser.chompIf Char.isDigit
         |. Parser.chompWhile Char.isDigit
         |> Parser.getChompedString
@@ -667,22 +701,22 @@ type alias SequenceData =
     }
 
 
-multiSequence : SequenceData -> Parser Expr
-multiSequence data =
+multiSequenceAssocLeft : SequenceData -> Parser Expr
+multiSequenceAssocLeft data =
     succeed identity
         |= data.item
         |. spaces
         |> Parser.andThen
             (\first ->
-                loop first (\expr -> multiSequenceHelp data expr)
+                loop first (\expr -> multiSequenceHelpLeft data expr)
             )
 
 
-multiSequenceHelp :
+multiSequenceHelpLeft :
     SequenceData
     -> Expr
     -> Parser (Step Expr Expr)
-multiSequenceHelp { separators, item } acc =
+multiSequenceHelpLeft { separators, item } acc =
     let
         separated =
             separators
