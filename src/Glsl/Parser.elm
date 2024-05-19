@@ -1,4 +1,4 @@
-module Glsl.Parser exposing (expressionParser, file, function, statement)
+module Glsl.Parser exposing (expressionParser, file, function, statementParser)
 
 import Glsl exposing (BinaryOperation(..), Declaration(..), Expr(..), Expression(..), ForDirection(..), Function, RelationOperation(..), Stat(..), Statement(..), Type(..), UnaryOperation(..))
 import Parser exposing ((|.), (|=), Parser, Step(..), Trailing(..), chompIf, chompWhile, getChompedString, keyword, loop, oneOf, sequence, spaces, succeed, symbol)
@@ -36,7 +36,7 @@ function =
             , trailing = Forbidden
             }
         |. spaces
-        |= statement
+        |= statementParser
         |= Parser.getOffset
 
 
@@ -105,19 +105,34 @@ typeParser =
         ]
 
 
-statement : Parser Stat
-statement =
+statementParser : Parser Stat
+statementParser =
     Parser.lazy <|
         \_ ->
             oneOf
                 [ commentParser
                 , blockParser
                 , returnParser
+                , breakContinueParser
                 , ifParser
                 , forParser
                 , defParser
                 , expressionStatementParser
                 ]
+
+
+breakContinueParser : Parser Stat
+breakContinueParser =
+    Parser.oneOf
+        [ Parser.succeed Break
+            |. symbol "break"
+            |. spaces
+            |. symbol ";"
+        , Parser.succeed Continue
+            |. symbol "continue"
+            |. spaces
+            |. symbol ";"
+        ]
 
 
 expressionStatementParser : Parser Stat
@@ -141,7 +156,7 @@ ifParser =
         |. spaces
         |. symbol ")"
         |. spaces
-        |= statement
+        |= statementParser
         |. spaces
         |= maybeStatementParser
 
@@ -149,7 +164,7 @@ ifParser =
 maybeStatementParser : Parser Stat
 maybeStatementParser =
     oneOf
-        [ statement
+        [ statementParser
         , succeed Nop
         ]
 
@@ -161,7 +176,7 @@ forParser =
         |. spaces
         |. symbol "("
         |. spaces
-        |= statement
+        |= statementParser
         |. spaces
         |. symbol ";"
         |. spaces
@@ -173,7 +188,7 @@ forParser =
         |. spaces
         |. symbol ")"
         |. spaces
-        |= statement
+        |= statementParser
         |. spaces
         |= maybeStatementParser
 
