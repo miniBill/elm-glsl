@@ -4,7 +4,7 @@ import ErrorUtils
 import Expect
 import Glsl exposing (Expression, float1)
 import Glsl.Functions exposing (dot33, fract1, sin1, sin3, vec31, vec3111)
-import Glsl.Generator exposing (float, floatT, fun1, return, vec3, vec3T, zero)
+import Glsl.Generator exposing (float, floatT, fun1, fun1_, return, vec3, vec3T, zero)
 import Glsl.Operations exposing (by11, by13, by33)
 import Glsl.Parser
 import Parser
@@ -68,7 +68,7 @@ float hash3(vec3 p) {
 
            }"""
         -}
-        [ (fun1 floatT "hash3" (vec3T "p") <|
+        [ (fun1_ floatT "hash3" (vec3T "p") <|
             \p ->
                 return
                     (fract1
