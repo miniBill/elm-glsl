@@ -643,7 +643,6 @@ floatParser =
 intParser : Parser Int
 intParser =
     succeed ()
-        -- |. Parser.chompWhile (\c -> c == '-')
         |. Parser.chompIf Char.isDigit
         |. Parser.chompWhile Char.isDigit
         |> Parser.getChompedString

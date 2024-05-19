@@ -9,6 +9,20 @@ simplify expr =
         BinaryOperation (Float n) Div (Float d) ->
             Float (n / d)
 
+        Int i ->
+            if i < 0 then
+                UnaryOperation Negate (Int -i)
+
+            else
+                expr
+
+        Float f ->
+            if f < 0 then
+                UnaryOperation Negate (Float -f)
+
+            else
+                expr
+
         Ternary c t f ->
             let
                 cs : Expr
@@ -56,12 +70,6 @@ simplify expr =
 
             else
                 simplify (BinaryOperation ls op rs)
-
-        UnaryOperation Negate (Int x) ->
-            Int -x
-
-        UnaryOperation Negate (Float x) ->
-            Float -x
 
         UnaryOperation op l ->
             let
