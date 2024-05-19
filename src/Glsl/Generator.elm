@@ -1,7 +1,7 @@
-module Glsl.Generator exposing (Context, ErrorValue(..), File, FunDecl, GlslValue(..), adds2, adds3, adds4, and, ands, assign, assignAdd, assignBy, assignOut, boolT, break, continue, decl, def, def1, def2, def3, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun2, fun3, fun4, fun5, funDeclToGlsl, gl_FragColor, gl_FragCoord, ifElse, if_, in_, intT, interpret, main_, mat3, mat3T, minusOne, nop, one, or, ors, out, return, statementToGlsl, ternary, ternary3, value, valueToString, vec2, vec2T, vec2Zero, vec3, vec3T, vec3Zero, vec4, vec4T, vec4Zero, voidT, zero)
+module Glsl.Generator exposing (Context, ErrorValue(..), File, FunDecl, GlslValue(..), adds2, adds3, adds4, and, ands, assign, assignAdd, assignBy, assignOut, boolT, break, continue, decl, def, def1, def2, def3, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun2, fun3, fun4, fun5, funDeclToGlsl, gl_FragColor, gl_FragCoord, ifElse, if_, in_, intT, main_, mat3, mat3T, minusOne, nop, one, or, ors, out, return, statementToGlsl, ternary, ternary3, value, valueToString, vec2, vec2T, vec2Zero, vec3, vec3T, vec3Zero, vec4, vec4T, vec4Zero, voidT, zero)
 
 import Dict exposing (Dict)
-import Glsl exposing (BinaryOperation(..), Expr(..), Expression(..), ForDirection(..), In, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, false, float1, true, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap2, unsafeMap3, var, withExpression, withStatement)
+import Glsl exposing (BinaryOperation(..), Expr(..), Expression(..), ForDirection(..), In, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, false, float1, true, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap2, unsafeMap3, var, withContinuation, withExpression, withStatement)
 import Glsl.Functions exposing (vec211, vec3111, vec41111)
 import Glsl.Operations exposing (add22, add33, add44)
 import Glsl.PrettyPrinter
@@ -45,7 +45,9 @@ funDeclToGlsl (FunDecl { body }) =
 
 statementToGlsl : Statement s -> String
 statementToGlsl (Statement r) =
-    Glsl.PrettyPrinter.stat 1 r.stat
+    r.stat
+        |> List.map (Glsl.PrettyPrinter.stat 1)
+        |> String.join "\n"
 
 
 typeToGlsl : Type -> String
@@ -385,8 +387,7 @@ if_ cond ifTrue next =
     build If
         |> withExpression cond
         |> withStatement ifTrue
-        |> withStatement (next ())
-        |> buildStatement
+        |> withContinuation next
 
 
 ifElse : Expression Bool -> Statement s -> Statement s -> (() -> Statement s) -> Statement s
@@ -395,50 +396,46 @@ ifElse cond ifTrue ifFalse next =
         |> withExpression cond
         |> withStatement ifTrue
         |> withStatement ifFalse
-        |> withStatement (next ())
-        |> buildStatement
+        |> withContinuation next
 
 
 for :
     ( String, Expression Int, Expression Int )
-    -> (Expression Int -> Statement r -> Statement r)
-    -> Statement r
+    -> (Expression Int -> Statement () -> Statement ())
+    -> (() -> Statement r)
     -> Statement r
 for ( var, from, to ) loop next =
-    build (\f t -> For (Decl TInt var (Just f) Nop) (BinaryOperation (Variable var) (RelationOperation LessThan) t) (UnaryOperation PostfixIncrement (Variable var)))
+    build (\f t -> For (Just <| Decl TInt var (Just f)) (BinaryOperation (Variable var) (RelationOperation LessThan) t) (UnaryOperation PostfixIncrement (Variable var)))
         |> withExpression from
         |> withExpression to
-        |> withStatement (loop (Glsl.var var) unsafeNop)
-        |> withStatement next
-        |> buildStatement
+        |> withStatement (loop (Glsl.var var) nop)
+        |> withContinuation next
 
 
 forLeq :
     ( String, Expression Int, Expression Int )
-    -> (Expression Int -> Statement r -> Statement r)
-    -> Statement r
+    -> (Expression Int -> Statement () -> Statement ())
+    -> (() -> Statement r)
     -> Statement r
 forLeq ( var, from, to ) loop next =
-    build (\f t -> For (Decl TInt var (Just f) Nop) (BinaryOperation (Variable var) (RelationOperation LessThanOrEquals) t) (UnaryOperation PostfixIncrement (Variable var)))
+    build (\f t -> For (Just <| Decl TInt var (Just f)) (BinaryOperation (Variable var) (RelationOperation LessThanOrEquals) t) (UnaryOperation PostfixIncrement (Variable var)))
         |> withExpression from
         |> withExpression to
-        |> withStatement (loop (Glsl.var var) unsafeNop)
-        |> withStatement next
-        |> buildStatement
+        |> withStatement (loop (Glsl.var var) nop)
+        |> withContinuation next
 
 
 forDown :
     ( String, Expression Int, Expression Int )
-    -> (Expression Int -> Statement r -> Statement r)
-    -> Statement r
+    -> (Expression Int -> Statement () -> Statement ())
+    -> (() -> Statement r)
     -> Statement r
 forDown ( var, from, to ) loop next =
-    build (\f t -> For (Decl TInt var (Just f) Nop) (BinaryOperation (Variable var) (RelationOperation GreaterThan) t) (UnaryOperation PostfixDecrement (Variable var)))
+    build (\f t -> For (Just <| Decl TInt var (Just f)) (BinaryOperation (Variable var) (RelationOperation GreaterThan) t) (UnaryOperation PostfixDecrement (Variable var)))
         |> withExpression from
         |> withExpression to
-        |> withStatement (loop (Glsl.var var) unsafeNop)
-        |> withStatement next
-        |> buildStatement
+        |> withStatement (loop (Glsl.var var) nop)
+        |> withContinuation next
 
 
 return : Expression r -> Statement r
@@ -467,8 +464,7 @@ decl typeF name k =
             typeF name
     in
     build (Decl t n Nothing)
-        |> withStatement (k (var n))
-        |> buildStatement
+        |> withContinuation (\_ -> k (var n))
 
 
 def : TypingFunction t -> String -> Expression t -> (Expression t -> Statement r) -> Statement r
@@ -511,7 +507,7 @@ def1 ( tn0, val0 ) k =
             tn0
     in
     build
-        (\v0 k0 -> Decl t0 n0 (Just v0) k0)
+        (\v0 k0 -> Block [ Decl t0 n0 (Just v0), k0 ])
         |> withExpression val0
         |> withStatement (k (var n0))
         |> buildStatement
@@ -561,18 +557,12 @@ expr : Expression t -> (() -> Statement r) -> Statement r
 expr e s =
     build ExpressionStatement
         |> withExpression e
-        |> withStatement (s ())
-        |> buildStatement
+        |> withContinuation s
 
 
 nop : Statement ()
 nop =
-    Statement { stat = Nop, deps = SortedSet.empty }
-
-
-unsafeNop : Statement r
-unsafeNop =
-    Statement { stat = Nop, deps = SortedSet.empty }
+    Statement { stat = [], deps = SortedSet.empty }
 
 
 assignAdd : Expression t -> Expression t -> (() -> Statement q) -> Statement q
@@ -959,64 +949,3 @@ autovectorizingFloatOp ctx name inner e =
                             InvalidTypes
                                 ("Cannot calculate `" ++ name ++ "` for " ++ valueToString v)
             )
-
-
-interpret : Context -> Statement a -> Result ErrorValue ( Context, GlslValue )
-interpret ctx (Statement s) =
-    innerInterpret ctx s.stat
-
-
-innerInterpret : Context -> Stat -> Result ErrorValue ( Context, GlslValue )
-innerInterpret ctx stat =
-    case stat of
-        Return e ->
-            e
-                |> innerValue ctx
-                |> Result.map (\( ctx2, val ) -> ( ctx2, val ))
-
-        If c t n ->
-            c
-                |> innerValue ctx
-                |> Result.andThen
-                    (\( ctx2, cval ) ->
-                        case cval of
-                            VBool True ->
-                                innerInterpret ctx2 t
-                                    |> Result.andThen
-                                        (\( ctx3, res ) ->
-                                            case res of
-                                                -- TODO: Fix this
-                                                VVoid ->
-                                                    innerInterpret ctx3 n
-
-                                                _ ->
-                                                    Ok ( ctx3, res )
-                                        )
-
-                            VBool False ->
-                                innerInterpret ctx2 n
-
-                            _ ->
-                                Err <| InvalidTypes <| "Condition of if evaluated to " ++ Debug.toString cval
-                    )
-
-        IfElse _ _ _ _ ->
-            Debug.todo "branch 'IfElse _' not implemented"
-
-        Nop ->
-            Ok ( ctx, VVoid )
-
-        ExpressionStatement _ _ ->
-            Debug.todo "branch 'ExpressionStatement _' not implemented"
-
-        Decl _ _ _ _ ->
-            Debug.todo "branch 'Decl _ _ _' not implemented"
-
-        For _ _ _ _ _ ->
-            Debug.todo "branch 'For _ _ _ _ _ _ _' not implemented"
-
-        Break ->
-            Debug.todo "branch 'Break' not implemented"
-
-        Continue ->
-            Debug.todo "branch 'Continue' not implemented"

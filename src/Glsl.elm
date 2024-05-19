@@ -10,7 +10,7 @@ module Glsl exposing
     , unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5
     , unsafeMap, unsafeMap2, unsafeMap3
     , build, withExpression, withStatement, buildExpression, buildStatement
-    , Declaration(..), Uniform, WithDepsBuilder, dot4XY, float1, int1, unsafeTypecast
+    , Declaration(..), Uniform, WithDepsBuilder, dot4XY, float1, int1, unsafeTypecast, withContinuation
     )
 
 {-|
@@ -159,8 +159,27 @@ withExpression (Expression e) (WithDepsBuilder k deps) =
 
 withStatement : Statement r -> WithDepsBuilder (Stat -> k) -> WithDepsBuilder k
 withStatement (Statement s) (WithDepsBuilder k deps) =
-    WithDepsBuilder (k s.stat)
+    WithDepsBuilder
+        (case s.stat of
+            [ child ] ->
+                k child
+
+            _ ->
+                k (Block s.stat)
+        )
         (deps |> SortedSet.insertAll s.deps)
+
+
+withContinuation : (() -> Statement r) -> WithDepsBuilder Stat -> Statement r
+withContinuation next (WithDepsBuilder k deps) =
+    let
+        (Statement s) =
+            next ()
+    in
+    Statement
+        { stat = k :: s.stat
+        , deps = deps |> SortedSet.insertAll s.deps
+        }
 
 
 withDependencies : List String -> WithDepsBuilder k -> WithDepsBuilder k
@@ -172,7 +191,7 @@ withDependencies additionalDeps (WithDepsBuilder k deps) =
 buildStatement : WithDepsBuilder Stat -> Statement r
 buildStatement (WithDepsBuilder stat deps) =
     Statement
-        { stat = stat
+        { stat = [ stat ]
         , deps = deps
         }
 
@@ -304,7 +323,7 @@ type UnaryOperation
 
 type Statement r
     = Statement
-        { stat : Stat
+        { stat : List Stat
         , deps : SortedSet String
         }
 

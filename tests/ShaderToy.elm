@@ -3,9 +3,14 @@ module ShaderToy exposing (suite)
 import ErrorUtils
 import Expect
 import Glsl
+import Glsl.Generator
 import Glsl.Parser
 import Parser
 import Test exposing (Test, describe, test)
+
+
+a =
+    Glsl.Generator.and
 
 
 suite : Test
