@@ -404,11 +404,11 @@ for :
     -> (Expression Int -> Statement () -> Statement ())
     -> (() -> Statement r)
     -> Statement r
-for ( var, from, to ) loop next =
-    build (\f t -> For (Just <| Decl TInt var (Just f)) (BinaryOperation (Variable var) (RelationOperation LessThan) t) (UnaryOperation PostfixIncrement (Variable var)))
+for ( name, from, to ) loop next =
+    build (\f t -> For (Just <| Decl TInt name (Just f)) (BinaryOperation (Variable name) (RelationOperation LessThan) t) (UnaryOperation PostfixIncrement (Variable name)))
         |> withExpression from
         |> withExpression to
-        |> withStatement (loop (var var) nop)
+        |> withStatement (loop (var name) nop)
         |> withContinuation next
 
 
@@ -417,11 +417,11 @@ forLeq :
     -> (Expression Int -> Statement () -> Statement ())
     -> (() -> Statement r)
     -> Statement r
-forLeq ( var, from, to ) loop next =
-    build (\f t -> For (Just <| Decl TInt var (Just f)) (BinaryOperation (Variable var) (RelationOperation LessThanOrEquals) t) (UnaryOperation PostfixIncrement (Variable var)))
+forLeq ( name, from, to ) loop next =
+    build (\f t -> For (Just <| Decl TInt name (Just f)) (BinaryOperation (Variable name) (RelationOperation LessThanOrEquals) t) (UnaryOperation PostfixIncrement (Variable name)))
         |> withExpression from
         |> withExpression to
-        |> withStatement (loop (var var) nop)
+        |> withStatement (loop (var name) nop)
         |> withContinuation next
 
 
@@ -430,11 +430,11 @@ forDown :
     -> (Expression Int -> Statement () -> Statement ())
     -> (() -> Statement r)
     -> Statement r
-forDown ( var, from, to ) loop next =
-    build (\f t -> For (Just <| Decl TInt var (Just f)) (BinaryOperation (Variable var) (RelationOperation GreaterThan) t) (UnaryOperation PostfixDecrement (Variable var)))
+forDown ( name, from, to ) loop next =
+    build (\f t -> For (Just <| Decl TInt name (Just f)) (BinaryOperation (Variable name) (RelationOperation GreaterThan) t) (UnaryOperation PostfixDecrement (Variable name)))
         |> withExpression from
         |> withExpression to
-        |> withStatement (loop (var var) nop)
+        |> withStatement (loop (var name) nop)
         |> withContinuation next
 
 
