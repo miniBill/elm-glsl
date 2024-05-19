@@ -4,7 +4,7 @@ import ErrorUtils
 import Expect
 import ExpressionRoundtripTests
 import Fuzz exposing (Fuzzer)
-import Glsl exposing (BinaryOperation(..), Expr(..), RelationOperation(..), Stat(..), Type(..), UnaryOperation(..))
+import Glsl exposing (Expr(..), Stat(..), Type(..))
 import Glsl.Parser
 import Glsl.PrettyPrinter
 import Glsl.Simplify

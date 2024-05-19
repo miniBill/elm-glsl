@@ -1,7 +1,7 @@
-module Glsl.Parser exposing (expressionParser, file, function, statementParser)
+module Glsl.Parser exposing (expressionParser, file, function, preprocess, statementParser)
 
-import Glsl exposing (BinaryOperation(..), Declaration(..), Expr(..), Expression(..), ForDirection(..), Function, RelationOperation(..), Stat(..), Statement(..), Type(..), UnaryOperation(..))
-import Parser exposing ((|.), (|=), Parser, Step(..), Trailing(..), chompIf, chompWhile, getChompedString, keyword, loop, oneOf, sequence, spaces, succeed, symbol)
+import Glsl exposing (BinaryOperation(..), Declaration(..), Expr(..), Function, RelationOperation(..), Stat(..), Type(..), UnaryOperation(..))
+import Parser exposing ((|.), (|=), Parser, Step(..), Trailing(..), chompIf, chompWhile, getChompedString, keyword, loop, oneOf, sequence, succeed, symbol)
 import Parser.Workaround
 
 
@@ -132,7 +132,7 @@ statementParser =
 
 breakContinueParser : Parser Stat
 breakContinueParser =
-    Parser.oneOf
+    oneOf
         [ Parser.succeed Break
             |. keyword "break"
         , Parser.succeed Continue
@@ -482,12 +482,10 @@ prec3Parser =
 
 prec2Parser : Parser Expr
 prec2Parser =
-    oneOf
-        [ succeed (\a f -> f a)
-            |= prec1Parser
-            |. spaces
-            |= Parser.lazy prec2Suffixes
-        ]
+    succeed (\a f -> f a)
+        |= prec1Parser
+        |. spaces
+        |= Parser.lazy prec2Suffixes
 
 
 prec2Suffixes : () -> Parser (Expr -> Expr)
@@ -716,3 +714,65 @@ multiSequenceHelpLeft { separators, item } acc =
         [ separated
         , Parser.succeed (Done acc)
         ]
+
+
+preprocess : String -> String
+preprocess input =
+    input
+        |> String.split "\n"
+        |> spliceLines
+        |> removeComments
+        |> expandMacros
+        |> String.join "\n"
+
+
+spliceLines : List String -> List String
+spliceLines lines =
+    lines
+        |> List.foldl
+            (\e ( last, acc ) ->
+                case last of
+                    Nothing ->
+                        ( Just e, acc )
+
+                    Just l ->
+                        if String.endsWith "\\" l && not (String.endsWith "\\\\" l) then
+                            ( Just (String.dropRight 1 l ++ e), acc )
+
+                        else
+                            ( Just e, l :: acc )
+            )
+            ( Nothing, [] )
+        |> (\( last, acc ) ->
+                case last of
+                    Nothing ->
+                        List.reverse acc
+
+                    Just l ->
+                        List.reverse (l :: acc)
+           )
+
+
+removeComments : List String -> List String
+removeComments lines =
+    lines
+        |> List.map
+            (\line ->
+                case String.indexes "//" line of
+                    head :: _ ->
+                        String.left head line
+
+                    [] ->
+                        line
+            )
+
+
+expandMacros : List String -> List String
+expandMacros lines =
+    -- TODO: macros
+    lines
+
+
+spaces : Parser ()
+spaces =
+    chompWhile (\c -> c == ' ' || c == '\n' || c == '\u{000D}' || c == '\t')

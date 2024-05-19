@@ -1,6 +1,6 @@
 module Glsl.PrettyPrinter exposing (expr, float, stat, type_)
 
-import Glsl exposing (BinaryOperation(..), Expr(..), ForDirection(..), RelationOperation(..), Stat(..), Type(..), UnaryOperation(..))
+import Glsl exposing (BinaryOperation(..), Expr(..), RelationOperation(..), Stat(..), Type(..), UnaryOperation(..))
 
 
 stat : Int -> Stat -> String
@@ -296,11 +296,6 @@ type_ t =
 
 float : Float -> String
 float f =
-    let
-        s : String
-        s =
-            String.fromFloat f
-    in
     if isNaN f then
         "(0./0.)"
 
@@ -311,8 +306,14 @@ float f =
         else
             "(-1./0.)"
 
-    else if String.contains "." s || String.contains "e" s then
-        s
-
     else
-        s ++ "."
+        let
+            s : String
+            s =
+                String.fromFloat f
+        in
+        if String.contains "." s || String.contains "e" s then
+            s
+
+        else
+            s ++ "."

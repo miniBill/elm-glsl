@@ -3,7 +3,7 @@ module ExpressionRoundtripTests exposing (examples, fuzzer, isAlmostEqual, round
 import ErrorUtils
 import Expect
 import Fuzz exposing (Fuzzer)
-import Glsl exposing (BinaryOperation(..), Expr(..), RelationOperation(..), Stat(..), UnaryOperation(..))
+import Glsl exposing (BinaryOperation(..), Expr(..), RelationOperation(..), UnaryOperation(..))
 import Glsl.Parser
 import Glsl.PrettyPrinter
 import Glsl.Simplify

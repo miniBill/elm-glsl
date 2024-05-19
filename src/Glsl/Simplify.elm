@@ -1,6 +1,6 @@
 module Glsl.Simplify exposing (expr, stat)
 
-import Glsl exposing (BinaryOperation(..), Expr(..), Stat(..), UnaryOperation(..))
+import Glsl exposing (Expr(..), Stat(..), UnaryOperation(..))
 
 
 stat : Stat -> Stat

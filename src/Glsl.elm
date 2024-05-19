@@ -342,7 +342,6 @@ type Stat
 
 type ForDirection
     = PlusPlus
-    | MinusMinus
 
 
 type alias TypingFunction t =

@@ -3,7 +3,7 @@ module ErrorUtils exposing (errorToString, errorsToString, escape, problemToStri
 import Console
 import Json.Encode
 import List.Extra
-import Parser exposing (Problem(..))
+import Parser
 import SortedSet as Set
 
 

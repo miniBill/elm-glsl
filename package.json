@@ -2,6 +2,7 @@
     "devDependencies": {
         "elm-codegen": "^0.5.3",
         "elm-format": "^0.8.7",
+        "elm-review": "^2.11.2",
         "elm-test-rs": "^3.0.0-5"
     },
     "license": "BSD-3-Clause",
