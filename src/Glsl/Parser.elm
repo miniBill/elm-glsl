@@ -78,6 +78,7 @@ identifierParser =
 typeParser : Parser Type
 typeParser =
     let
+        baseParser : Parser Type
         baseParser =
             [ ( "void", TVoid )
             , ( "float", TFloat )
@@ -578,6 +579,7 @@ floatParser =
                     |> Parser.andThen
                         (\s ->
                             let
+                                withZero : String
                                 withZero =
                                     if String.endsWith "." s then
                                         s ++ "0"
@@ -696,6 +698,7 @@ multiSequenceHelpLeft :
     -> Parser (Step Expr Expr)
 multiSequenceHelpLeft { separators, item } acc =
     let
+        separated : Parser (Step Expr a)
         separated =
             separators
                 |> List.map

@@ -6,8 +6,8 @@ module Glsl.Operations exposing
     , by12, by13
     , by31
     , div11, div22, div33, div44
-    , lt, eq, gt
-    , arraym33, geq, leq
+    , arraym33
+    , lt, leq, eq, geq, gt
     )
 
 {-|
@@ -42,12 +42,12 @@ module Glsl.Operations exposing
 
 # Array access
 
-@docs array33
+@docs arraym33
 
 
 # Comparison
 
-@docs lt, eq, gt
+@docs lt, leq, eq, geq, gt
 
 -}
 
