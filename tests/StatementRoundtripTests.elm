@@ -140,6 +140,9 @@ isAlmostEqualS expected actual =
         ( If el em er, If al am ar ) ->
             isAlmostEqualE el al && isAlmostEqualS em am && isAlmostEqualMS er ar
 
+        ( IfElse el em er ep, IfElse al am ar ap ) ->
+            isAlmostEqualE el al && isAlmostEqualS em am && isAlmostEqualS er ar && isAlmostEqualMS ep ap
+
         ( For el em er ep eq, For al am ar ap aq ) ->
             isAlmostEqualMS el al && isAlmostEqualE em am && isAlmostEqualE er ar && isAlmostEqualS ep ap && isAlmostEqualMS eq aq
 
