@@ -186,17 +186,16 @@ excludeNonsensicalUnary op c =
 
 variableNameFuzzer : Fuzzer String
 variableNameFuzzer =
-    List.range (Char.toCode 'a') (Char.toCode 'z')
-        |> List.map Char.fromCode
-        |> Fuzz.oneOfValues
-        |> Fuzz.listOfLengthBetween 1 10
+    Fuzz.oneOf
+        [ List.range (Char.toCode 'a') (Char.toCode 'z')
+            |> List.map Char.fromCode
+            |> Fuzz.oneOfValues
+            |> Fuzz.listOfLengthBetween 1 10
+            |> Fuzz.map String.fromList
+        , Fuzz.oneOfValues (Set.toList reserved)
+        ]
         |> Fuzz.map
-            (\list ->
-                let
-                    str : String
-                    str =
-                        String.fromList list
-                in
+            (\str ->
                 if Set.member str reserved then
                     str ++ "_"
 

@@ -49,7 +49,7 @@ uniform =
                 , name = name
                 }
         )
-        |. symbol "uniform"
+        |. keyword "uniform"
         |. spaces
         |= typeParser
         |. spaces
@@ -127,11 +127,11 @@ breakContinueParser : Parser Stat
 breakContinueParser =
     Parser.oneOf
         [ Parser.succeed Break
-            |. symbol "break"
+            |. keyword "break"
             |. spaces
             |. symbol ";"
         , Parser.succeed Continue
-            |. symbol "continue"
+            |. keyword "continue"
             |. spaces
             |. symbol ";"
         ]
@@ -150,7 +150,7 @@ expressionStatementParser =
 ifParser : Parser Stat
 ifParser =
     Parser.succeed (\e s k -> k e s)
-        |. symbol "if"
+        |. keyword "if"
         |. spaces
         |. symbol "("
         |. spaces
@@ -162,7 +162,7 @@ ifParser =
         |. spaces
         |= oneOf
             [ succeed (\b k e s -> IfElse e s b k)
-                |. symbol "else"
+                |. keyword "else"
                 |. spaces
                 |= statementParser
                 |. spaces
@@ -184,7 +184,7 @@ maybeStatementParser =
 forParser : Parser Stat
 forParser =
     Parser.succeed For
-        |. symbol "for"
+        |. keyword "for"
         |. spaces
         |. symbol "("
         |. spaces
@@ -208,7 +208,7 @@ forParser =
 returnParser : Parser Stat
 returnParser =
     Parser.succeed Return
-        |. symbol "return"
+        |. keyword "return"
         |. spaces
         |= expressionParser
         |. spaces
@@ -579,9 +579,9 @@ prec1Parser =
             |. spaces
             |. symbol ")"
         , succeed (Bool True)
-            |. symbol "true"
+            |. keyword "true"
         , succeed (Bool False)
-            |. symbol "false"
+            |. keyword "false"
         , succeed Variable
             |= identifierParser
         , succeed Float |= floatParser
