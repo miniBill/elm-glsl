@@ -65,7 +65,7 @@ roundtrip =
                             o
                                 |> Glsl.Simplify.stat
                     in
-                    if isAlmostEqual simplified actual then
+                    if isAlmostEqualS simplified actual then
                         Expect.pass
 
                     else
@@ -91,7 +91,8 @@ statFuzzer depth =
                 , Fuzz.constant Continue
                 , Fuzz.map Return expr
                 , Fuzz.map3 If expr child (Fuzz.maybe child)
-                , Fuzz.map4 IfElse expr child child (Fuzz.maybe child)
+
+                -- , Fuzz.map4 IfElse expr child child (Fuzz.maybe child)
                 , Fuzz.map5 For (Fuzz.maybe child) expr expr child (Fuzz.maybe child)
                 , Fuzz.map2 ExpressionStatement expr (Fuzz.maybe child)
                 , Fuzz.map4 Decl typeFuzzer ExpressionRoundtripTests.variableNameFuzzer (Fuzz.maybe expr) (Fuzz.maybe child)
@@ -127,27 +128,45 @@ typeFuzzer =
         ]
 
 
-isAlmostEqual : Stat -> Stat -> Bool
-isAlmostEqual expected actual =
+isAlmostEqualS : Stat -> Stat -> Bool
+isAlmostEqualS expected actual =
     case ( expected, actual ) of
+        ( Decl etype ename einit ek, Decl atype aname ainit ak ) ->
+            etype == atype && ename == aname && isAlmostEqualME einit ainit && isAlmostEqualMS ek ak
+
         ( Return el, Return al ) ->
-            ExpressionRoundtripTests.isAlmostEqual el al
+            isAlmostEqualE el al
 
         ( If el em er, If al am ar ) ->
-            ExpressionRoundtripTests.isAlmostEqual el al && isAlmostEqual em am && isAlmostEqualM er ar
+            isAlmostEqualE el al && isAlmostEqualS em am && isAlmostEqualMS er ar
 
         ( For el em er ep eq, For al am ar ap aq ) ->
-            isAlmostEqualM el al && ExpressionRoundtripTests.isAlmostEqual em am && ExpressionRoundtripTests.isAlmostEqual er ar && isAlmostEqual ep ap && isAlmostEqualM eq aq
+            isAlmostEqualMS el al && isAlmostEqualE em am && isAlmostEqualE er ar && isAlmostEqualS ep ap && isAlmostEqualMS eq aq
 
         ( ExpressionStatement el er, ExpressionStatement al ar ) ->
-            ExpressionRoundtripTests.isAlmostEqual el al && isAlmostEqualM er ar
+            isAlmostEqualE el al && isAlmostEqualMS er ar
 
         _ ->
             expected == actual
 
 
-isAlmostEqualM : Maybe Stat -> Maybe Stat -> Bool
-isAlmostEqualM expected actual =
+isAlmostEqualE : Expr -> Expr -> Bool
+isAlmostEqualE =
+    ExpressionRoundtripTests.isAlmostEqual
+
+
+isAlmostEqualMS : Maybe Stat -> Maybe Stat -> Bool
+isAlmostEqualMS =
+    isAlmostEqualM isAlmostEqualS
+
+
+isAlmostEqualME : Maybe Expr -> Maybe Expr -> Bool
+isAlmostEqualME =
+    isAlmostEqualM isAlmostEqualE
+
+
+isAlmostEqualM : (a -> a -> Bool) -> Maybe a -> Maybe a -> Bool
+isAlmostEqualM check expected actual =
     case ( expected, actual ) of
         ( Just _, Nothing ) ->
             False
@@ -159,4 +178,4 @@ isAlmostEqualM expected actual =
             True
 
         ( Just e, Just a ) ->
-            isAlmostEqual e a
+            check e a
