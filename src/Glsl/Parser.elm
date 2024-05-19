@@ -114,19 +114,11 @@ statementParser =
             oneOf
                 [ blockParser
                 , returnParser
-                    |. spaces
-                    |. symbol ";"
                 , breakContinueParser
-                    |. spaces
-                    |. symbol ";"
                 , ifParser
                 , forParser
                 , defParser
-                    |. symbol ";"
-                    |. spaces
                 , expressionStatementParser
-                    |. spaces
-                    |. symbol ";"
                 ]
 
 
@@ -138,12 +130,16 @@ breakContinueParser =
         , succeed Continue
             |. keyword "continue"
         ]
+        |. spaces
+        |. symbol ";"
 
 
 expressionStatementParser : Parser Stat
 expressionStatementParser =
     succeed ExpressionStatement
         |= expressionParser
+        |. spaces
+        |. symbol ";"
 
 
 ifParser : Parser Stat
@@ -199,6 +195,8 @@ returnParser =
         |. keyword "return"
         |. spaces
         |= expressionParser
+        |. spaces
+        |. symbol ";"
 
 
 blockParser : Parser Stat
@@ -232,6 +230,8 @@ defParser =
                 |. spaces
             , succeed Nothing
             ]
+        |. spaces
+        |. symbol ";"
 
 
 expressionParser : Parser Expr
@@ -659,8 +659,6 @@ file =
                     , item =
                         oneOf
                             [ succeed Nothing
-                                |. Parser.Workaround.lineCommentAfter "//"
-                            , succeed Nothing
                                 |. Parser.Workaround.lineCommentAfter "precision highp"
                             , succeed Just
                                 |= uniform
