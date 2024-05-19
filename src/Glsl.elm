@@ -322,7 +322,7 @@ type Statement r
 type Stat
     = If Expr Stat Stat
     | IfElse Expr Stat Stat Stat
-    | For String Expr RelationOperation Expr ForDirection Stat Stat
+    | For Stat Expr Expr Stat Stat
     | Return Expr
     | Break
     | Continue

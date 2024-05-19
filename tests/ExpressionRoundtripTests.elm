@@ -1,4 +1,4 @@
-module ExpressionRoundtripTests exposing (examples, roundtrip)
+module ExpressionRoundtripTests exposing (examples, fuzzer, isAlmostEqual, roundtrip, variableNameFuzzer)
 
 import ErrorUtils
 import Expect
@@ -8,13 +8,15 @@ import Glsl.Parser
 import Glsl.PrettyPrinter
 import Glsl.Simplify
 import Parser exposing ((|.))
+import Set exposing (Set)
 import Test exposing (Test, describe, test)
 
 
 examples : Test
 examples =
-    describe "examples"
-        [ example "1" (Int 1)
+    describe "Expression examples"
+        [ example "-1" (UnaryOperation Negate (Int 1))
+        , example "1" (Int 1)
         , example "(false ? false : false)++" (UnaryOperation PostfixIncrement (Ternary (Bool False) (Bool False) (Bool False)))
         ]
 
@@ -30,12 +32,12 @@ example label expr =
 
 roundtrip : Test
 roundtrip =
-    Test.fuzz (exprFuzzer 3) "Roundtrips" <|
+    Test.fuzz (fuzzer 3) "Expression roundtrips" <|
         \expr ->
             let
                 simplified : Expr
                 simplified =
-                    Glsl.Simplify.simplify expr
+                    Glsl.Simplify.expr expr
 
                 str : String
                 str =
@@ -49,16 +51,17 @@ roundtrip =
 
                 Ok o ->
                     let
+                        actual : Expr
                         actual =
                             o
-                                |> Glsl.Simplify.simplify
+                                |> Glsl.Simplify.expr
                     in
                     if isAlmostEqual simplified actual then
                         Expect.pass
 
                     else
                         ( Glsl.PrettyPrinter.expr actual, actual )
-                            |> Expect.equal ( Glsl.PrettyPrinter.expr simplified, simplified )
+                            |> Expect.equal ( str, simplified )
 
 
 isAlmostEqual : Expr -> Expr -> Bool
@@ -101,8 +104,8 @@ isAlmostEqual expected actual =
             expected == actual
 
 
-exprFuzzer : Int -> Fuzzer Expr
-exprFuzzer depth =
+fuzzer : Int -> Fuzzer Expr
+fuzzer depth =
     let
         base : Fuzzer Expr
         base =
@@ -187,7 +190,28 @@ variableNameFuzzer =
         |> List.map Char.fromCode
         |> Fuzz.oneOfValues
         |> Fuzz.listOfLengthBetween 1 10
-        |> Fuzz.map String.fromList
+        |> Fuzz.map
+            (\list ->
+                let
+                    str : String
+                    str =
+                        String.fromList list
+                in
+                if Set.member str reserved then
+                    str ++ "_"
+
+                else
+                    str
+            )
+
+
+reserved : Set String
+reserved =
+    [ "break"
+    , "return"
+    , "continue"
+    ]
+        |> Set.fromList
 
 
 binaryOperationFuzzer : Fuzzer BinaryOperation

@@ -45,96 +45,7 @@ funDeclToGlsl (FunDecl { body }) =
 
 statementToGlsl : Statement s -> String
 statementToGlsl (Statement r) =
-    statToGlsl 1 r.stat
-
-
-statToGlsl : Int -> Stat -> String
-statToGlsl i c =
-    case c of
-        If cond t n ->
-            [ indent i ("if (" ++ Glsl.PrettyPrinter.expr cond ++ ") {")
-            , statToGlsl (i + 1) t
-            , indent i "}"
-            , ""
-            , statToGlsl i n
-            ]
-                |> String.join "\n"
-
-        IfElse cond t ((If _ _ _) as f) n ->
-            [ indent i ("if (" ++ Glsl.PrettyPrinter.expr cond ++ ") {")
-            , statToGlsl (i + 1) t
-            , indent i <| "} else " ++ String.trimLeft (statToGlsl i f)
-            , statToGlsl i n
-            ]
-                |> String.join "\n"
-
-        IfElse cond t ((IfElse _ _ _ _) as f) n ->
-            [ indent i ("if (" ++ Glsl.PrettyPrinter.expr cond ++ ") {")
-            , statToGlsl (i + 1) t
-            , indent i <| "} else " ++ String.trimLeft (statToGlsl i f)
-            , statToGlsl i n
-            ]
-                |> String.join "\n"
-
-        IfElse cond t f n ->
-            [ indent i ("if (" ++ Glsl.PrettyPrinter.expr cond ++ ") {")
-            , statToGlsl (i + 1) t
-            , indent i "} else {"
-            , statToGlsl (i + 1) f
-            , indent i "}"
-            , ""
-            , statToGlsl i n
-            ]
-                |> String.join "\n"
-
-        For var from rel to direction loop next ->
-            [ indent i ("for (int " ++ var ++ " = " ++ Glsl.PrettyPrinter.expr from ++ "; " ++ var ++ " " ++ relationToString rel ++ " " ++ Glsl.PrettyPrinter.expr to ++ "; " ++ var ++ directionToGlsl direction ++ ") {")
-            , statToGlsl (i + 1) loop
-            , indent i "}"
-            , ""
-            , statToGlsl i next
-            ]
-                |> String.join "\n"
-
-        Return e ->
-            indent i <| "return " ++ Glsl.PrettyPrinter.expr e ++ ";"
-
-        Break ->
-            indent i "break;"
-
-        Continue ->
-            indent i "continue;"
-
-        ExpressionStatement e Nop ->
-            indent i (Glsl.PrettyPrinter.expr e ++ ";")
-
-        Decl t n (Just e) Nop ->
-            indent i (typeToGlsl t ++ " " ++ n ++ " = " ++ Glsl.PrettyPrinter.expr e ++ ";")
-
-        Decl t n Nothing Nop ->
-            indent i (typeToGlsl t ++ " " ++ n ++ ";")
-
-        ExpressionStatement e next ->
-            indent i (Glsl.PrettyPrinter.expr e ++ ";\n") ++ statToGlsl i next
-
-        Decl t n (Just e) next ->
-            indent i (typeToGlsl t ++ " " ++ n ++ " = " ++ Glsl.PrettyPrinter.expr e ++ ";\n") ++ statToGlsl i next
-
-        Decl t n Nothing next ->
-            indent i (typeToGlsl t ++ " " ++ n ++ ";\n") ++ statToGlsl i next
-
-        Nop ->
-            ""
-
-
-directionToGlsl : ForDirection -> String
-directionToGlsl direction =
-    case direction of
-        PlusPlus ->
-            "++"
-
-        MinusMinus ->
-            "--"
+    Glsl.PrettyPrinter.stat 1 r.stat
 
 
 typeToGlsl : Type -> String
@@ -180,36 +91,9 @@ typeToGlsl type_ =
             "out " ++ typeToGlsl t
 
 
-relationToString : RelationOperation -> String
-relationToString rel =
-    case rel of
-        LessThan ->
-            "<"
-
-        LessThanOrEquals ->
-            "<="
-
-        Equals ->
-            "=="
-
-        NotEquals ->
-            "!="
-
-        GreaterThanOrEquals ->
-            ">="
-
-        GreaterThan ->
-            ">"
-
-
 expressionToGlsl : Expression t -> String
 expressionToGlsl (Expression tree) =
     Glsl.PrettyPrinter.expr tree.expr
-
-
-indent : Int -> String -> String
-indent i line =
-    String.repeat (4 * i) " " ++ line
 
 
 

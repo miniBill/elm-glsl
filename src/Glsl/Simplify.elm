@@ -1,100 +1,121 @@
-module Glsl.Simplify exposing (simplify)
+module Glsl.Simplify exposing (expr, stat)
 
-import Glsl exposing (BinaryOperation(..), Expr(..), UnaryOperation(..))
+import Glsl exposing (BinaryOperation(..), Expr(..), Stat(..), UnaryOperation(..))
 
 
-simplify : Expr -> Expr
-simplify expr =
-    case expr of
+stat : Stat -> Stat
+stat root =
+    case root of
+        ExpressionStatement e k ->
+            let
+                se =
+                    expr e
+
+                sk =
+                    stat k
+            in
+            if se == e && sk == k then
+                root
+
+            else
+                stat (ExpressionStatement se sk)
+
+        _ ->
+            root
+
+
+expr : Expr -> Expr
+expr root =
+    case root of
         Int i ->
             if i < 0 then
                 UnaryOperation Negate (Int -i)
 
             else
-                expr
+                root
 
         Float f ->
             if f < 0 then
                 UnaryOperation Negate (Float -f)
 
             else
-                expr
+                root
 
         Ternary c t f ->
             let
                 cs : Expr
                 cs =
-                    simplify c
+                    expr c
 
                 ts : Expr
                 ts =
-                    simplify t
+                    expr t
 
                 fs : Expr
                 fs =
-                    simplify f
+                    expr f
             in
             if cs == c && ts == t && fs == f then
-                expr
+                root
 
             else
-                simplify (Ternary cs ts fs)
+                expr (Ternary cs ts fs)
 
         Dot l r ->
             let
                 ls : Expr
                 ls =
-                    simplify l
+                    expr l
             in
             if ls == l then
-                expr
+                root
 
             else
-                simplify (Dot ls r)
+                expr (Dot ls r)
 
         BinaryOperation l op r ->
             let
                 ls : Expr
                 ls =
-                    simplify l
+                    expr l
 
                 rs : Expr
                 rs =
-                    simplify r
+                    expr r
             in
             if ls == l && rs == r then
-                expr
+                root
 
             else
-                simplify (BinaryOperation ls op rs)
+                expr (BinaryOperation ls op rs)
 
         UnaryOperation op l ->
             let
                 ls : Expr
                 ls =
-                    simplify l
+                    expr l
             in
             if ls == l then
-                expr
+                root
 
             else
-                simplify (UnaryOperation op ls)
+                expr (UnaryOperation op ls)
 
         Call l r ->
             let
                 ls : Expr
                 ls =
-                    simplify l
+                    expr l
 
                 rs : List Expr
                 rs =
-                    List.map simplify r
+                    List.map expr r
             in
             if ls == l && rs == r then
-                expr
+                root
 
             else
-                simplify (Call ls rs)
+                expr (Call ls rs)
 
         _ ->
-            expr
+            root

@@ -148,7 +148,10 @@ ifParser =
 
 maybeStatementParser : Parser Stat
 maybeStatementParser =
-    oneOf [ statement, succeed Nop ]
+    oneOf
+        [ statement
+        , succeed Nop
+        ]
 
 
 forParser : Parser Stat
@@ -158,48 +161,21 @@ forParser =
         |. spaces
         |. symbol "("
         |. spaces
-        |. symbol "int"
+        |= statement
         |. spaces
-        |= identifierParser
-        |. spaces
-        |. symbol "="
+        |. symbol ";"
         |. spaces
         |= expressionParser
         |. spaces
         |. symbol ";"
         |. spaces
-        |. identifierParser
-        |. spaces
-        |= relationOperationParser
-        |. spaces
         |= expressionParser
-        |. spaces
-        |. symbol ";"
-        |. spaces
-        |. identifierParser
-        |. spaces
-        |= oneOf
-            [ succeed PlusPlus |. symbol "++"
-            , succeed MinusMinus |. symbol "--"
-            ]
         |. spaces
         |. symbol ")"
         |. spaces
         |= statement
         |. spaces
         |= maybeStatementParser
-
-
-relationOperationParser : Parser RelationOperation
-relationOperationParser =
-    oneOf
-        [ succeed LessThanOrEquals |. symbol "<="
-        , succeed GreaterThanOrEquals |. symbol ">="
-        , succeed LessThan |. symbol "<"
-        , succeed GreaterThan |. symbol ">"
-        , succeed Equals |. symbol "=="
-        , succeed NotEquals |. symbol "!="
-        ]
 
 
 returnParser : Parser Stat
