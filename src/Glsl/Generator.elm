@@ -408,7 +408,7 @@ for ( var, from, to ) loop next =
     build (\f t -> For (Just <| Decl TInt var (Just f)) (BinaryOperation (Variable var) (RelationOperation LessThan) t) (UnaryOperation PostfixIncrement (Variable var)))
         |> withExpression from
         |> withExpression to
-        |> withStatement (loop (Glsl.var var) nop)
+        |> withStatement (loop (var var) nop)
         |> withContinuation next
 
 
@@ -421,7 +421,7 @@ forLeq ( var, from, to ) loop next =
     build (\f t -> For (Just <| Decl TInt var (Just f)) (BinaryOperation (Variable var) (RelationOperation LessThanOrEquals) t) (UnaryOperation PostfixIncrement (Variable var)))
         |> withExpression from
         |> withExpression to
-        |> withStatement (loop (Glsl.var var) nop)
+        |> withStatement (loop (var var) nop)
         |> withContinuation next
 
 
@@ -434,7 +434,7 @@ forDown ( var, from, to ) loop next =
     build (\f t -> For (Just <| Decl TInt var (Just f)) (BinaryOperation (Variable var) (RelationOperation GreaterThan) t) (UnaryOperation PostfixDecrement (Variable var)))
         |> withExpression from
         |> withExpression to
-        |> withStatement (loop (Glsl.var var) nop)
+        |> withStatement (loop (var var) nop)
         |> withContinuation next
 
 

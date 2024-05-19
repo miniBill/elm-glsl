@@ -133,22 +133,22 @@ statementParser =
 breakContinueParser : Parser Stat
 breakContinueParser =
     oneOf
-        [ Parser.succeed Break
+        [ succeed Break
             |. keyword "break"
-        , Parser.succeed Continue
+        , succeed Continue
             |. keyword "continue"
         ]
 
 
 expressionStatementParser : Parser Stat
 expressionStatementParser =
-    Parser.succeed ExpressionStatement
+    succeed ExpressionStatement
         |= expressionParser
 
 
 ifParser : Parser Stat
 ifParser =
-    Parser.succeed (\e s k -> k e s)
+    succeed (\e s k -> k e s)
         |. keyword "if"
         |. spaces
         |. symbol "("
@@ -170,7 +170,7 @@ ifParser =
 
 forParser : Parser Stat
 forParser =
-    Parser.succeed For
+    succeed For
         |. keyword "for"
         |. spaces
         |. symbol "("
@@ -195,7 +195,7 @@ forParser =
 
 returnParser : Parser Stat
 returnParser =
-    Parser.succeed Return
+    succeed Return
         |. keyword "return"
         |. spaces
         |= expressionParser
@@ -224,13 +224,13 @@ defParser =
         |. spaces
         |= identifierParser
         |. spaces
-        |= Parser.oneOf
-            [ Parser.succeed Just
+        |= oneOf
+            [ succeed Just
                 |. symbol "="
                 |. spaces
                 |= expressionParser
                 |. spaces
-            , Parser.succeed Nothing
+            , succeed Nothing
             ]
 
 
@@ -252,7 +252,7 @@ prec16Parser =
     succeed (\a f -> f a)
         |= prec15Parser
         |. spaces
-        |= Parser.oneOf
+        |= oneOf
             [ succeed (\r l -> BinaryOperation l Assign r)
                 |. singleSymbol "="
                 |. spaces
@@ -303,7 +303,7 @@ prec16Parser =
 
 prec15Parser : Parser Expr
 prec15Parser =
-    Parser.succeed (\k f -> f k)
+    succeed (\k f -> f k)
         |= prec14Parser
         |. spaces
         |= oneOf
@@ -386,7 +386,7 @@ singleSymbol s =
 
 symbolNotFollowedBy : String -> List String -> Parser ()
 symbolNotFollowedBy s nots =
-    Parser.succeed ()
+    succeed ()
         |. Parser.backtrackable (symbol s)
         |. oneOf
             [ succeed ()
@@ -457,7 +457,7 @@ prec4Parser =
 
 prec3Parser : Parser Expr
 prec3Parser =
-    Parser.oneOf
+    oneOf
         [ succeed (UnaryOperation PrefixIncrement)
             |. symbol "++"
             |= Parser.lazy (\_ -> prec3Parser)
@@ -490,7 +490,7 @@ prec2Parser =
 
 prec2Suffixes : () -> Parser (Expr -> Expr)
 prec2Suffixes () =
-    Parser.oneOf
+    oneOf
         [ succeed (\args k v -> k (Call v args))
             |= sequence
                 { start = "("
@@ -574,7 +574,7 @@ floatParser =
                             , succeed 0
                             ]
                     ]
-                    |> Parser.getChompedString
+                    |> getChompedString
                     |> Parser.andThen
                         (\s ->
                             let
@@ -587,7 +587,7 @@ floatParser =
                             in
                             case String.toFloat withZero of
                                 Just f ->
-                                    Parser.succeed f
+                                    succeed f
 
                                 Nothing ->
                                     Parser.problem ("Cannot parse \"" ++ s ++ "\" as float")
@@ -626,14 +626,14 @@ floatParser =
 intParser : Parser Int
 intParser =
     succeed ()
-        |. Parser.chompIf Char.isDigit
-        |. Parser.chompWhile Char.isDigit
-        |> Parser.getChompedString
+        |. chompIf Char.isDigit
+        |. chompWhile Char.isDigit
+        |> getChompedString
         |> Parser.andThen
             (\s ->
                 case String.toInt s of
                     Just i ->
-                        Parser.succeed i
+                        succeed i
 
                     Nothing ->
                         Parser.problem ("Cannot parse \"" ++ s ++ "\" as int")
@@ -642,29 +642,29 @@ intParser =
 
 file : Parser ( Maybe { version : String }, List Declaration )
 file =
-    Parser.succeed Tuple.pair
-        |= Parser.oneOf
-            [ Parser.succeed (\version -> Just { version = version })
+    succeed Tuple.pair
+        |= oneOf
+            [ succeed (\version -> Just { version = version })
                 |. symbol "#version "
-                |= (Parser.chompWhile Char.isDigit
-                        |> Parser.getChompedString
+                |= (chompWhile Char.isDigit
+                        |> getChompedString
                    )
-            , Parser.succeed Nothing
+            , succeed Nothing
             ]
         |. Parser.spaces
-        |= (Parser.succeed (List.filterMap identity)
-                |= Parser.sequence
+        |= (succeed (List.filterMap identity)
+                |= sequence
                     { start = ""
                     , separator = ""
                     , item =
-                        Parser.oneOf
-                            [ Parser.succeed Nothing
+                        oneOf
+                            [ succeed Nothing
                                 |. Parser.Workaround.lineCommentAfter "//"
-                            , Parser.succeed Nothing
+                            , succeed Nothing
                                 |. Parser.Workaround.lineCommentAfter "precision highp"
-                            , Parser.succeed Just
+                            , succeed Just
                                 |= uniform
-                            , Parser.succeed Just
+                            , succeed Just
                                 |= function
                             ]
                     , end = ""
@@ -702,17 +702,17 @@ multiSequenceHelpLeft { separators, item } acc =
             separators
                 |> List.map
                     (\( f, parser ) ->
-                        Parser.succeed (\e -> Loop <| f acc e)
+                        succeed (\e -> Loop <| f acc e)
                             |. parser
                             |. spaces
                             |= item
                             |. spaces
                     )
-                |> Parser.oneOf
+                |> oneOf
     in
-    Parser.oneOf
+    oneOf
         [ separated
-        , Parser.succeed (Done acc)
+        , succeed (Done acc)
         ]
 
 
