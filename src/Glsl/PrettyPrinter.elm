@@ -82,16 +82,6 @@ stat i c =
             ""
 
 
-forDirection : ForDirection -> String
-forDirection direction =
-    case direction of
-        PlusPlus ->
-            "++"
-
-        MinusMinus ->
-            "--"
-
-
 indent : Int -> String -> String
 indent i line =
     String.repeat (4 * i) " " ++ line
@@ -304,28 +294,6 @@ type_ t =
 
         TOut tt ->
             "out " ++ type_ tt
-
-
-relationOperation : RelationOperation -> String
-relationOperation rel =
-    case rel of
-        LessThan ->
-            "<"
-
-        LessThanOrEquals ->
-            "<="
-
-        Equals ->
-            "=="
-
-        NotEquals ->
-            "!="
-
-        GreaterThanOrEquals ->
-            ">="
-
-        GreaterThan ->
-            ">"
 
 
 float : Float -> String
