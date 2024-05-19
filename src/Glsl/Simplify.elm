@@ -18,6 +18,12 @@ stat root =
         IfElse e s1 s2 s3 ->
             map4 stat root IfElse expr e stat s1 stat s2 stat s3
 
+        Decl tipe name val k ->
+            map2 stat root (Decl tipe name) (Maybe.map expr) val stat k
+
+        For init check step loop k ->
+            map5 stat root For stat init expr check expr step stat loop stat k
+
         _ ->
             root
 
@@ -126,3 +132,28 @@ map4 rootKind root ctor kind1 val1 kind2 val2 kind3 val3 kind4 val4 =
 
     else
         rootKind (ctor val1s val2s val3s val4s)
+
+
+map5 : (a -> a) -> a -> (b -> c -> d -> e -> f -> a) -> (b -> b) -> b -> (c -> c) -> c -> (d -> d) -> d -> (e -> e) -> e -> (f -> f) -> f -> a
+map5 rootKind root ctor kind1 val1 kind2 val2 kind3 val3 kind4 val4 kind5 val5 =
+    let
+        val1s =
+            kind1 val1
+
+        val2s =
+            kind2 val2
+
+        val3s =
+            kind3 val3
+
+        val4s =
+            kind4 val4
+
+        val5s =
+            kind5 val5
+    in
+    if val1s == val1 && val2s == val2 && val3s == val3 && val4s == val4 && val5s == val5 then
+        root
+
+    else
+        rootKind (ctor val1s val2s val3s val4s val5s)

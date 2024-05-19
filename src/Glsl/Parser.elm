@@ -80,13 +80,15 @@ typeParser =
     let
         baseParser =
             [ ( "void", TVoid )
-            , ( "bool", TBool )
             , ( "float", TFloat )
             , ( "int", TInt )
+            , ( "bool", TBool )
             , ( "vec2", TVec2 )
-            , ( "ivec2", TIVec2 )
             , ( "vec3", TVec3 )
             , ( "vec4", TVec4 )
+            , ( "ivec2", TIVec2 )
+            , ( "ivec3", TIVec3 )
+            , ( "ivec4", TIVec4 )
             , ( "mat3", TMat3 )
             ]
                 |> List.map (\( s, t ) -> succeed t |. keyword s)
@@ -147,7 +149,7 @@ expressionStatementParser =
 
 ifParser : Parser Stat
 ifParser =
-    Parser.succeed If
+    Parser.succeed (\e s k -> k e s)
         |. symbol "if"
         |. spaces
         |. symbol "("
@@ -158,7 +160,16 @@ ifParser =
         |. spaces
         |= statementParser
         |. spaces
-        |= maybeStatementParser
+        |= oneOf
+            [ succeed (\b k e s -> IfElse e s b k)
+                |. symbol "else"
+                |. spaces
+                |= statementParser
+                |. spaces
+                |= maybeStatementParser
+            , succeed (\k e s -> If e s k)
+                |= maybeStatementParser
+            ]
 
 
 maybeStatementParser : Parser Stat

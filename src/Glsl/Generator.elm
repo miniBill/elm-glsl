@@ -786,7 +786,7 @@ innerValue ctx e =
                         _ ->
                             Err <|
                                 InvalidTypes
-                                    ("Cannot compare " ++ valueToString vl ++ " " ++ relationToString k ++ " " ++ valueToString vr)
+                                    ("Cannot compare " ++ valueToString vl ++ " " ++ Debug.toString k ++ " " ++ valueToString vr)
 
         Ternary _ _ _ ->
             Debug.todo "branch 'Ternary _ _ _' not implemented"
@@ -1012,7 +1012,7 @@ innerInterpret ctx stat =
         Decl _ _ _ _ ->
             Debug.todo "branch 'Decl _ _ _' not implemented"
 
-        For _ _ _ _ _ _ _ ->
+        For _ _ _ _ _ ->
             Debug.todo "branch 'For _ _ _ _ _ _ _' not implemented"
 
         Break ->
