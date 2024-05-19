@@ -205,7 +205,7 @@ blockParser =
         { start = "{"
         , item = statementParser
         , separator = ""
-        , spaces = Parser.spaces
+        , spaces = spaces
         , end = "}"
         , trailing = Parser.Optional
         }
@@ -651,7 +651,7 @@ file =
                    )
             , succeed Nothing
             ]
-        |. Parser.spaces
+        |. spaces
         |= (succeed (List.filterMap identity)
                 |= sequence
                     { start = ""
@@ -667,7 +667,7 @@ file =
                             ]
                     , end = ""
                     , trailing = Parser.Optional
-                    , spaces = Parser.spaces
+                    , spaces = spaces
                     }
            )
         |. Parser.end
