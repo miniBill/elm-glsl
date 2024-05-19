@@ -2,10 +2,13 @@ module ShaderToy exposing (suite)
 
 import ErrorUtils
 import Expect
-import Glsl
-import Glsl.Generator
+import Glsl exposing (Expression, float1)
+import Glsl.Functions exposing (dot33, fract1, sin1, sin3, vec31, vec3111)
+import Glsl.Generator exposing (float, floatT, fun1, return, vec3, vec3T, zero)
+import Glsl.Operations exposing (by11, by13, by33)
 import Glsl.Parser
 import Parser
+import SortedSet exposing (SortedSet)
 import Test exposing (Test, describe, test)
 
 
@@ -22,46 +25,65 @@ suite =
 
 isovalues3 : Test
 isovalues3 =
-    check "isovalues 3 - ldfczS" """// --- noise from procedural pseudo-Perlin (better but not so nice derivatives) ---------
+    check "isovalues 3 - ldfczS"
+        """// --- noise from procedural pseudo-Perlin (better but not so nice derivatives) ---------
                     // ( adapted from IQ )
 
 
 float hash3(vec3 p) {
     return fract(sin(1e3*dot(p,vec3(1,57,-13.7)))*4375.5453);        // rand
-} 
+}"""
+        {-
 
-float noise3( vec3 x ) {
-    vec3 p = floor(x),f = fract(x);
+           float noise3( vec3 x ) {
+               vec3 p = floor(x),f = fract(x);
 
-    f = f*f*(3.-2.*f);  // or smoothstep     // to make derivative continuous at borders
-
-    
-    return mix( mix(mix( hash3(p+vec3(0,0,0)), hash3(p+vec3(1,0,0)),f.x),       // triilinear interp
-                    mix( hash3(p+vec3(0,1,0)), hash3(p+vec3(1,1,0)),f.x),f.y),
-                mix(mix( hash3(p+vec3(0,0,1)), hash3(p+vec3(1,0,1)),f.x),       
-                    mix( hash3(p+vec3(0,1,1)), hash3(p+vec3(1,1,1)),f.x),f.y), f.z);
-}
-
-float noise(vec3 x) {
-    return (noise3(x)+noise3(x+11.5)) / 2.; // pseudoperlin improvement from foxes idea 
-}
+               f = f*f*(3.-2.*f);  // or smoothstep     // to make derivative continuous at borders
 
 
+               return mix( mix(mix( hash3(p+vec3(0,0,0)), hash3(p+vec3(1,0,0)),f.x),       // triilinear interp
+                               mix( hash3(p+vec3(0,1,0)), hash3(p+vec3(1,1,0)),f.x),f.y),
+                           mix(mix( hash3(p+vec3(0,0,1)), hash3(p+vec3(1,0,1)),f.x),
+                               mix( hash3(p+vec3(0,1,1)), hash3(p+vec3(1,1,1)),f.x),f.y), f.z);
+           }
 
-void mainImage( out vec4 O, vec2 U ) // ------------ draw isovalues
-{ 
-    vec2 R = iResolution.xy;
-    float n = noise(vec3(U*8./R.y, .1*iTime)),
-          v = sin(6.28*10.*n),
-        t = iTime;
-    
-    v = smoothstep(1.,0., .5*abs(v)/fwidth(v));
-    
-\tO = mix( exp(-33./R.y )* texture( iChannel0, (U+vec2(1,sin(t)))/R), // .97
-             .5+.5*sin(12.*n+vec4(0,2.1,-2.1,0)),
-             v );
- 
-}""" []
+           float noise(vec3 x) {
+               return (noise3(x)+noise3(x+11.5)) / 2.; // pseudoperlin improvement from foxes idea
+           }
+
+
+
+           void mainImage( out vec4 O, vec2 U ) // ------------ draw isovalues
+           {
+               vec2 R = iResolution.xy;
+               float n = noise(vec3(U*8./R.y, .1*iTime)),
+                     v = sin(6.28*10.*n),
+                   t = iTime;
+
+               v = smoothstep(1.,0., .5*abs(v)/fwidth(v));
+
+           \tO = mix( exp(-33./R.y )* texture( iChannel0, (U+vec2(1,sin(t)))/R), // .97
+                        .5+.5*sin(12.*n+vec4(0,2.1,-2.1,0)),
+                        v );
+
+           }"""
+        -}
+        [ (fun1 floatT "hash3" (vec3T "p") <|
+            \p ->
+                return
+                    (fract1
+                        (by11
+                            (sin1
+                                (by11
+                                    (float1 1.0e3)
+                                    (dot33 p (vec3111 (float1 1) (float1 57) (float1 -13.7)))
+                                )
+                            )
+                            (float1 4375.5453)
+                        )
+                    )
+          ).declaration
+        ]
 
 
 check : String -> String -> List Glsl.Declaration -> Test
