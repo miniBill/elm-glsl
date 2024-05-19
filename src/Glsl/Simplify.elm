@@ -9,20 +9,26 @@ stat root =
         Return e ->
             map stat root Return expr e
 
-        ExpressionStatement e k ->
-            map2 stat root ExpressionStatement expr e (Maybe.map stat) k
+        ExpressionStatement e ->
+            map stat root ExpressionStatement expr e
 
-        If e s1 s2 ->
-            map3 stat root If expr e stat s1 (Maybe.map stat) s2
+        If e s1 ->
+            map2 stat root If expr e stat s1
 
-        IfElse e s1 s2 s3 ->
-            map4 stat root IfElse expr e stat s1 stat s2 (Maybe.map stat) s3
+        IfElse e s1 s2 ->
+            map3 stat root IfElse expr e stat s1 stat s2
 
-        Decl tipe name val k ->
-            map2 stat root (Decl tipe name) (Maybe.map expr) val (Maybe.map stat) k
+        Decl tipe name val ->
+            map stat root (Decl tipe name) (Maybe.map expr) val
 
-        For init check step loop k ->
-            map5 stat root For (Maybe.map stat) init expr check expr step stat loop (Maybe.map stat) k
+        For init check step loop ->
+            map4 stat root For (Maybe.map stat) init expr check expr step stat loop
+
+        Block [ child ] ->
+            stat child
+
+        Block children ->
+            map stat root Block (List.map stat) children
 
         _ ->
             root
@@ -132,28 +138,3 @@ map4 rootKind root ctor kind1 val1 kind2 val2 kind3 val3 kind4 val4 =
 
     else
         rootKind (ctor val1s val2s val3s val4s)
-
-
-map5 : (a -> a) -> a -> (b -> c -> d -> e -> f -> a) -> (b -> b) -> b -> (c -> c) -> c -> (d -> d) -> d -> (e -> e) -> e -> (f -> f) -> f -> a
-map5 rootKind root ctor kind1 val1 kind2 val2 kind3 val3 kind4 val4 kind5 val5 =
-    let
-        val1s =
-            kind1 val1
-
-        val2s =
-            kind2 val2
-
-        val3s =
-            kind3 val3
-
-        val4s =
-            kind4 val4
-
-        val5s =
-            kind5 val5
-    in
-    if val1s == val1 && val2s == val2 && val3s == val3 && val4s == val4 && val5s == val5 then
-        root
-
-    else
-        rootKind (ctor val1s val2s val3s val4s val5s)

@@ -31,24 +31,24 @@ checkParses label source =
                                     { args = []
                                     , body = """void main()
 {
-  // comment
   pos3 = vec3(pos, 1);
 }"""
                                     , name = "main"
                                     , returnType = TVoid
                                     , stat =
-                                        ExpressionStatement
-                                            (BinaryOperation
-                                                (Variable "pos3")
-                                                Assign
-                                                (Call
-                                                    (Variable "vec3")
-                                                    [ Variable "pos"
-                                                    , Int 1
-                                                    ]
+                                        Block
+                                            [ ExpressionStatement
+                                                (BinaryOperation
+                                                    (Variable "pos3")
+                                                    Assign
+                                                    (Call
+                                                        (Variable "vec3")
+                                                        [ Variable "pos"
+                                                        , Int 1
+                                                        ]
+                                                    )
                                                 )
-                                            )
-                                            Nothing
+                                            ]
                                     }
                               ]
                             )
@@ -60,7 +60,6 @@ simpleSrc =
   
 void main()
 {
-  // comment
   pos3 = vec3(pos, 1);
 }
 """

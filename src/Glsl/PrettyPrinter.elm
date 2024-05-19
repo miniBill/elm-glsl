@@ -6,39 +6,27 @@ import Glsl exposing (BinaryOperation(..), Expr(..), ForDirection(..), RelationO
 stat : Int -> Stat -> String
 stat i c =
     case c of
-        If cond t Nothing ->
-            [ indent i ("if (" ++ expr cond ++ ") {")
-            , stat (i + 1) t
-            , indent i "}"
-            ]
+        Block [ child ] ->
+            stat i child
+
+        Block children ->
+            (indent i "{"
+                :: List.map (stat (i + 1)) children
+                ++ [ indent i "}" ]
+            )
                 |> String.join "\n"
 
-        If cond t (Just n) ->
-            [ indent i ("if (" ++ expr cond ++ ") {")
-            , stat (i + 1) t
-            , indent i "}"
-            , ""
-            , stat i n
-            ]
-                |> String.join "\n"
+        If cond t ->
+            indent i ("if (" ++ expr cond ++ ") ") ++ String.trimLeft (stat (i + 1) t)
 
-        IfElse cond t ((If _ _ _) as f) Nothing ->
+        IfElse cond t ((If _ _) as f) ->
             [ indent i ("if (" ++ expr cond ++ ") {")
             , stat (i + 1) t
             , indent i <| "} else " ++ String.trimLeft (stat i f)
             ]
                 |> String.join "\n"
 
-        IfElse cond t ((If _ _ _) as f) (Just n) ->
-            [ indent i ("if (" ++ expr cond ++ ") {")
-            , stat (i + 1) t
-            , indent i <| "} else " ++ String.trimLeft (stat i f)
-            , ""
-            , stat i n
-            ]
-                |> String.join "\n"
-
-        IfElse cond t ((IfElse _ _ _ _) as f) Nothing ->
+        IfElse cond t ((IfElse _ _ _) as f) ->
             [ indent i ("if (" ++ expr cond ++ ") {")
             , stat (i + 1) t
             , indent i "} else {"
@@ -47,18 +35,7 @@ stat i c =
             ]
                 |> String.join "\n"
 
-        IfElse cond t ((IfElse _ _ _ _) as f) (Just n) ->
-            [ indent i ("if (" ++ expr cond ++ ") {")
-            , stat (i + 1) t
-            , indent i "} else {"
-            , stat (i + 1) f
-            , indent i "}"
-            , ""
-            , stat i n
-            ]
-                |> String.join "\n"
-
-        IfElse cond t f Nothing ->
+        IfElse cond t f ->
             [ indent i ("if (" ++ expr cond ++ ") {")
             , stat (i + 1) t
             , indent i "} else {"
@@ -67,30 +44,10 @@ stat i c =
             ]
                 |> String.join "\n"
 
-        IfElse cond t f (Just n) ->
-            [ indent i ("if (" ++ expr cond ++ ") {")
-            , stat (i + 1) t
-            , indent i "} else {"
-            , stat (i + 1) f
-            , indent i "}"
-            , ""
-            , stat i n
-            ]
-                |> String.join "\n"
-
-        For init check step loop Nothing ->
+        For init check step loop ->
             [ indent i ("for ( " ++ maybeStat 0 init ++ "; " ++ expr check ++ "; " ++ expr step ++ ") {")
             , stat (i + 1) loop
             , indent i "}"
-            ]
-                |> String.join "\n"
-
-        For init check step loop (Just next) ->
-            [ indent i ("for ( " ++ maybeStat 0 init ++ "; " ++ expr check ++ "; " ++ expr step ++ ") {")
-            , stat (i + 1) loop
-            , indent i "}"
-            , ""
-            , stat i next
             ]
                 |> String.join "\n"
 
@@ -103,23 +60,14 @@ stat i c =
         Continue ->
             indent i "continue;"
 
-        ExpressionStatement e Nothing ->
+        ExpressionStatement e ->
             indent i (expr e ++ ";")
 
-        Decl t n (Just e) Nothing ->
+        Decl t n (Just e) ->
             indent i (type_ t ++ " " ++ n ++ " = " ++ expr e ++ ";")
 
-        Decl t n Nothing Nothing ->
+        Decl t n Nothing ->
             indent i (type_ t ++ " " ++ n ++ ";")
-
-        ExpressionStatement e (Just next) ->
-            indent i (expr e ++ ";\n") ++ stat i next
-
-        Decl t n (Just e) (Just next) ->
-            indent i (type_ t ++ " " ++ n ++ " = " ++ expr e ++ ";\n") ++ stat i next
-
-        Decl t n Nothing (Just next) ->
-            indent i (type_ t ++ " " ++ n ++ ";\n") ++ stat i next
 
 
 maybeStat : Int -> Maybe Stat -> String

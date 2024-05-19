@@ -112,14 +112,21 @@ statementParser =
     Parser.lazy <|
         \_ ->
             oneOf
-                [ commentParser
-                , blockParser
+                [ blockParser
                 , returnParser
+                    |. spaces
+                    |. symbol ";"
                 , breakContinueParser
+                    |. spaces
+                    |. symbol ";"
                 , ifParser
                 , forParser
                 , defParser
+                    |. symbol ";"
+                    |. spaces
                 , expressionStatementParser
+                    |. spaces
+                    |. symbol ";"
                 ]
 
 
@@ -128,12 +135,8 @@ breakContinueParser =
     Parser.oneOf
         [ Parser.succeed Break
             |. keyword "break"
-            |. spaces
-            |. symbol ";"
         , Parser.succeed Continue
             |. keyword "continue"
-            |. spaces
-            |. symbol ";"
         ]
 
 
@@ -141,10 +144,6 @@ expressionStatementParser : Parser Stat
 expressionStatementParser =
     Parser.succeed ExpressionStatement
         |= expressionParser
-        |. spaces
-        |. symbol ";"
-        |. spaces
-        |= maybeStatementParser
 
 
 ifParser : Parser Stat
@@ -161,24 +160,12 @@ ifParser =
         |= statementParser
         |. spaces
         |= oneOf
-            [ succeed (\b k e s -> IfElse e s b k)
+            [ succeed (\b e s -> IfElse e s b)
                 |. keyword "else"
                 |. spaces
                 |= statementParser
-                |. spaces
-                |= maybeStatementParser
-            , succeed (\k e s -> If e s k)
-                |= maybeStatementParser
+            , succeed If
             ]
-
-
-maybeStatementParser : Parser (Maybe Stat)
-maybeStatementParser =
-    oneOf
-        [ Parser.backtrackable maybeBlockParser
-        , succeed Just |= statementParser
-        , succeed Nothing
-        ]
 
 
 forParser : Parser Stat
@@ -188,7 +175,10 @@ forParser =
         |. spaces
         |. symbol "("
         |. spaces
-        |= maybeStatementParser
+        |= oneOf
+            [ succeed Just |= statementParser
+            , succeed Nothing
+            ]
         |. spaces
         |. symbol ";"
         |. spaces
@@ -201,8 +191,6 @@ forParser =
         |. symbol ")"
         |. spaces
         |= statementParser
-        |. spaces
-        |= maybeStatementParser
 
 
 returnParser : Parser Stat
@@ -211,34 +199,19 @@ returnParser =
         |. keyword "return"
         |. spaces
         |= expressionParser
-        |. spaces
-        |. symbol ";"
-
-
-commentParser : Parser Stat
-commentParser =
-    Parser.succeed identity
-        |. Parser.Workaround.lineCommentAfter "//"
-        |. spaces
-        |= statementParser
-
-
-maybeBlockParser : Parser (Maybe Stat)
-maybeBlockParser =
-    Parser.succeed Nothing
-        |. symbol "{"
-        |. spaces
-        |. symbol "}"
 
 
 blockParser : Parser Stat
 blockParser =
-    Parser.succeed identity
-        |. symbol "{"
-        |. spaces
-        |= statementParser
-        |. spaces
-        |. symbol "}"
+    sequence
+        { start = "{"
+        , item = statementParser
+        , separator = ""
+        , spaces = Parser.spaces
+        , end = "}"
+        , trailing = Parser.Optional
+        }
+        |> Parser.map Block
 
 
 defParser : Parser Stat
@@ -259,9 +232,6 @@ defParser =
                 |. spaces
             , Parser.succeed Nothing
             ]
-        |. symbol ";"
-        |. spaces
-        |= maybeStatementParser
 
 
 expressionParser : Parser Expr
@@ -692,8 +662,6 @@ file =
                         Parser.oneOf
                             [ Parser.succeed Nothing
                                 |. Parser.Workaround.lineCommentAfter "//"
-                            , Parser.succeed Nothing
-                                |. Parser.Workaround.lineCommentAfter "#define"
                             , Parser.succeed Nothing
                                 |. Parser.Workaround.lineCommentAfter "precision highp"
                             , Parser.succeed Just

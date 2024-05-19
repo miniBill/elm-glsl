@@ -3,7 +3,6 @@ module Glsl exposing
     , Statement(..), Stat(..), ForDirection(..)
     , Expression(..), ExprWithDeps, Expr(..)
     , BinaryOperation(..), UnaryOperation(..), RelationOperation(..)
-    , BisectSignature
     , true, false, var
     , unsafeDot, dot2X, dot2Y, dot3X, dot3Y, dot3Z
     , TypingFunction, TypedName(..), Type(..)
@@ -23,7 +22,6 @@ module Glsl exposing
 @docs Statement, Stat, ForDirection
 @docs Expression, ExprWithDeps, Expr
 @docs BinaryOperation, UnaryOperation, RelationOperation
-@docs BisectSignature
 
 
 # Utils
@@ -300,14 +298,6 @@ type UnaryOperation
     | Not
 
 
-type alias BisectSignature =
-    Expression Vec3
-    -> Expression Mat3
-    -> Expression Float
-    -> Expression (Out Vec3)
-    -> Expression Bool
-
-
 
 -- Typed statements
 
@@ -320,14 +310,15 @@ type Statement r
 
 
 type Stat
-    = If Expr Stat (Maybe Stat)
-    | IfElse Expr Stat Stat (Maybe Stat)
-    | For (Maybe Stat) Expr Expr Stat (Maybe Stat)
+    = If Expr Stat
+    | IfElse Expr Stat Stat
+    | For (Maybe Stat) Expr Expr Stat
     | Return Expr
     | Break
     | Continue
-    | ExpressionStatement Expr (Maybe Stat)
-    | Decl Type String (Maybe Expr) (Maybe Stat)
+    | ExpressionStatement Expr
+    | Decl Type String (Maybe Expr)
+    | Block (List Stat)
 
 
 type ForDirection

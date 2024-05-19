@@ -15,7 +15,7 @@ import Test exposing (Test, describe, test)
 examples : Test
 examples =
     describe "Statement examples"
-        [ example "1;" (ExpressionStatement (Int 1) Nothing)
+        [ example "1;" (ExpressionStatement (Int 1))
         , example """if (a) {
     1;
 } else {
@@ -23,9 +23,8 @@ examples =
 }"""
             (IfElse
                 (Variable "a")
-                (ExpressionStatement (Int 1) Nothing)
-                (ExpressionStatement (Int 0) Nothing)
-                Nothing
+                (ExpressionStatement (Int 1))
+                (ExpressionStatement (Int 0))
             )
         ]
 
@@ -90,12 +89,12 @@ statFuzzer depth =
                 [ Fuzz.constant Break
                 , Fuzz.constant Continue
                 , Fuzz.map Return expr
-                , Fuzz.map3 If expr child (Fuzz.maybe child)
-
-                -- , Fuzz.map4 IfElse expr child child (Fuzz.maybe child)
-                , Fuzz.map5 For (Fuzz.maybe child) expr expr child (Fuzz.maybe child)
-                , Fuzz.map2 ExpressionStatement expr (Fuzz.maybe child)
-                , Fuzz.map4 Decl typeFuzzer ExpressionRoundtripTests.variableNameFuzzer (Fuzz.maybe expr) (Fuzz.maybe child)
+                , Fuzz.map2 If expr child
+                , Fuzz.map3 IfElse expr child child
+                , Fuzz.map4 For (Fuzz.maybe child) expr expr child
+                , Fuzz.map ExpressionStatement expr
+                , Fuzz.map3 Decl typeFuzzer ExpressionRoundtripTests.variableNameFuzzer (Fuzz.maybe expr)
+                , Fuzz.map Block (Fuzz.list child)
                 ]
     in
     List.foldl (\i -> inner (ExpressionRoundtripTests.fuzzer i)) base (List.range 1 depth)
@@ -131,23 +130,37 @@ typeFuzzer =
 isAlmostEqualS : Stat -> Stat -> Bool
 isAlmostEqualS expected actual =
     case ( expected, actual ) of
-        ( Decl etype ename einit ek, Decl atype aname ainit ak ) ->
-            etype == atype && ename == aname && isAlmostEqualME einit ainit && isAlmostEqualMS ek ak
+        ( Decl etype ename einit, Decl atype aname ainit ) ->
+            etype == atype && ename == aname && isAlmostEqualME einit ainit
 
         ( Return el, Return al ) ->
             isAlmostEqualE el al
 
-        ( If el em er, If al am ar ) ->
-            isAlmostEqualE el al && isAlmostEqualS em am && isAlmostEqualMS er ar
+        ( If el em, If al am ) ->
+            isAlmostEqualE el al && isAlmostEqualS em am
 
-        ( IfElse el em er ep, IfElse al am ar ap ) ->
-            isAlmostEqualE el al && isAlmostEqualS em am && isAlmostEqualS er ar && isAlmostEqualMS ep ap
+        ( IfElse el em er, IfElse al am ar ) ->
+            isAlmostEqualE el al && isAlmostEqualS em am && isAlmostEqualS er ar
 
-        ( For el em er ep eq, For al am ar ap aq ) ->
-            isAlmostEqualMS el al && isAlmostEqualE em am && isAlmostEqualE er ar && isAlmostEqualS ep ap && isAlmostEqualMS eq aq
+        ( For el em er ep, For al am ar ap ) ->
+            isAlmostEqualMS el al && isAlmostEqualE em am && isAlmostEqualE er ar && isAlmostEqualS ep ap
 
-        ( ExpressionStatement el er, ExpressionStatement al ar ) ->
-            isAlmostEqualE el al && isAlmostEqualMS er ar
+        ( ExpressionStatement el, ExpressionStatement al ) ->
+            isAlmostEqualE el al
+
+        ( Block ec, Block ac ) ->
+            case ( ec, ac ) of
+                ( [], [] ) ->
+                    True
+
+                ( [], _ ) ->
+                    False
+
+                ( _, [] ) ->
+                    False
+
+                ( eh :: et, ah :: at ) ->
+                    isAlmostEqualS eh ah && isAlmostEqualS (Block et) (Block at)
 
         _ ->
             expected == actual
