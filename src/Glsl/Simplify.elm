@@ -73,7 +73,7 @@ expr root =
 map : (a -> a) -> a -> (b -> a) -> (b -> b) -> b -> a
 map rootKind root ctor kind val =
     let
-        vals : a
+        vals : b
         vals =
             kind val
     in
