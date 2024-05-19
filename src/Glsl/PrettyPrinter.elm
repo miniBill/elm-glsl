@@ -88,6 +88,7 @@ indent i line =
 expr : Expr -> String
 expr root =
     let
+        showParen : Bool -> String -> String
         showParen show e =
             if show then
                 "(" ++ e ++ ")"
@@ -95,12 +96,15 @@ expr root =
             else
                 e
 
+        infixl_ : Int -> Int -> Expr -> String -> Expr -> String
         infixl_ n p l op r =
             showParen (p > n) (go n l ++ " " ++ op ++ " " ++ go (n + 1) r)
 
+        infixr_ : Int -> Int -> Expr -> String -> Expr -> String
         infixr_ n p l op r =
             showParen (p > n) (go (n + 1) l ++ " " ++ op ++ " " ++ go n r)
 
+        go : Int -> Expr -> String
         go p tree =
             case tree of
                 Bool b ->
