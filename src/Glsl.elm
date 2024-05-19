@@ -1,16 +1,16 @@
 module Glsl exposing
-    ( Function
+    ( Declaration(..), Uniform, Function
     , Statement(..), Stat(..)
     , Expression(..), ExprWithDeps, Expr(..)
     , BinaryOperation(..), UnaryOperation(..), RelationOperation(..)
-    , true, false, var
-    , unsafeDot, dot2X, dot2Y, dot3X, dot3Y, dot3Z
+    , true, false, int1, float1, var
+    , unsafeDot, dot2X, dot2Y, dot3X, dot3Y, dot3Z, dot4XY
     , TypingFunction, TypedName(..), Type(..)
     , Vec2, Vec3, Vec4, IVec2, IVec3, IVec4, Mat3, Void, In, Out
     , unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5
     , unsafeMap, unsafeMap2, unsafeMap3
-    , build, withExpression, withStatement, buildExpression, buildStatement
-    , Declaration(..), Uniform, WithDepsBuilder, dot4XY, float1, int1, unsafeTypecast, withContinuation
+    , unsafeTypecast
+    , build, withExpression, withStatement, withContinuation, buildExpression, buildStatement, WithDepsBuilder
     )
 
 {-|
@@ -18,7 +18,7 @@ module Glsl exposing
 
 # Types
 
-@docs Function
+@docs Declaration, Uniform, Function
 @docs Statement, Stat
 @docs Expression, ExprWithDeps, Expr
 @docs BinaryOperation, UnaryOperation, RelationOperation
@@ -26,8 +26,8 @@ module Glsl exposing
 
 # Utils
 
-@docs true, false, int, float, var
-@docs unsafeDot, dot2X, dot2Y, dot3X, dot3Y, dot3Z
+@docs true, false, int1, float1, var
+@docs unsafeDot, dot2X, dot2Y, dot3X, dot3Y, dot3Z, dot4XY
 
 
 # Typelevel types
@@ -40,12 +40,12 @@ module Glsl exposing
 
 @docs unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5
 @docs unsafeMap, unsafeMap2, unsafeMap3
-@docs unsafeTypecase
+@docs unsafeTypecast
 
 
 # Building while tracking dependencies
 
-@docs build, withExpression, withStatement, buildExpression, buildStatement
+@docs build, withExpression, withStatement, withContinuation, buildExpression, buildStatement, WithDepsBuilder
 
 -}
 
