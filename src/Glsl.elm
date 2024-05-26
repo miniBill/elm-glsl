@@ -350,16 +350,81 @@ type TypedName t
 
 type Type
     = TVoid
-    | TFloat
-    | TInt
+      -- bool
     | TBool
-    | TVec2
-    | TVec3
-    | TVec4
+    | TBVec2
+    | TBVec3
+    | TBVec4
+      -- int
+    | TInt
     | TIVec2
     | TIVec3
     | TIVec4
+      -- uint
+    | TUint
+    | TUVec2
+    | TUVec3
+    | TUVec4
+      -- float
+    | TFloat
+    | TVec2
+    | TVec3
+    | TVec4
+      -- double
+    | TDouble
+    | TDVec2
+    | TDVec3
+    | TDVec4
+      -- mat
+    | TMat2
     | TMat3
+    | TMat4
+    | TMat23
+    | TMat24
+    | TMat32
+    | TMat34
+    | TMat42
+    | TMat43
+    | TDMat2
+    | TDMat3
+    | TDMat4
+    | TDMat23
+    | TDMat24
+    | TDMat32
+    | TDMat34
+    | TDMat42
+    | TDMat43
+      -- Sampler/image
+      -- | TSampler1D
+      -- | TImage1D
+      -- | TSampler2D
+      -- | TImage2D
+      -- | TSampler3D
+      -- | TImage3D
+      -- | TSamplerCube
+      -- | TImageCube
+      -- | TSampler2DRect
+      -- | TImage2DRect
+      -- | TSampler1DArray
+      -- | TImage1DArray
+      -- | TSampler2DArray
+      -- | TImage2DArray
+      -- | TSamplerBuffer
+      -- | TImageBuffer
+      -- | TSampler2DMS
+      -- | TImage2DMS
+      -- | TSampler2DMSArray
+      -- | TImage2DMSArray
+      -- | TSamplerCubeArray
+      -- | TImageCubeArray
+      -- | TSampler1DShadow
+      -- | TSampler2DShadow
+      -- | TSampler2DRectShadow
+      -- | TSampler1DArrayShadow
+      -- | TSampler2DArrayShadow
+      -- | TSamplerCubeShadow
+      -- | TSamplerCubeArrayShadow
+      -- in/on
     | TIn Type
     | TOut Type
 

@@ -124,6 +124,51 @@ typeToGlsl type_ =
         TMat3 ->
             "mat3"
 
+        TMat23 ->
+            "mat2x3"
+
+        TMat24 ->
+            "mat2x4"
+
+        TMat32 ->
+            "mat3x2"
+
+        TMat34 ->
+            "mat3x4"
+
+        TMat42 ->
+            "mat4x2"
+
+        TMat43 ->
+            "mat4x3"
+
+        TDMat2 ->
+            "dmatx2"
+
+        TDMat3 ->
+            "dmatx3"
+
+        TDMat4 ->
+            "dmatx4"
+
+        TDMat23 ->
+            "dmat2x3"
+
+        TDMat24 ->
+            "dmat2x4"
+
+        TDMat32 ->
+            "dmat3x2"
+
+        TDMat34 ->
+            "dmat3x4"
+
+        TDMat42 ->
+            "dmat4x2"
+
+        TDMat43 ->
+            "dmat4x3"
+
         TIn t ->
             "in " ++ typeToGlsl t
 
