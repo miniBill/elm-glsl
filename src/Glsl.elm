@@ -660,27 +660,27 @@ type Out t
 -- Utils
 
 
-true : Expression Bool
+true : Expression Bool_
 true =
     bool1 True
 
 
-false : Expression Bool
+false : Expression Bool_
 false =
     bool1 False
 
 
-bool1 : Bool -> Expression Bool
+bool1 : Bool -> Expression Bool_
 bool1 b =
     pure <| Bool b
 
 
-int1 : Int -> Expression Int
+int1 : Int -> Expression Int_
 int1 i =
     pure <| Int i
 
 
-float1 : Float -> Expression Float
+float1 : Float -> Expression Float_
 float1 i =
     pure <| Float i
 

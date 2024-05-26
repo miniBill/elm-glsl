@@ -1,6 +1,6 @@
 module Glsl.Generator exposing (File, FunDecl, adds2, adds3, adds4, and, ands, assign, assignAdd, assignBy, assignOut, boolT, break, continue, decl, def, def1, def2, def3, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun1_, fun2, fun2_, fun3, fun3_, fun4, fun4_, fun5, fun5_, funDeclToGlsl, gl_FragColor, gl_FragCoord, ifElse, if_, in_, intT, main_, mat3, mat3T, minusOne, nop, one, or, ors, out, return, statementToGlsl, ternary, ternary3, vec2, vec2T, vec2Zero, vec3, vec3T, vec3Zero, vec4, vec4T, vec4Zero, voidT, zero)
 
-import Glsl exposing (BinaryOperation(..), Declaration(..), Expr(..), Expression(..), In, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, false, float1, true, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap2, unsafeMap3, var, withContinuation, withExpression, withStatement)
+import Glsl exposing (BinaryOperation(..), Bool_, Declaration(..), Expr(..), Expression(..), Float_, In, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, false, float1, true, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap2, unsafeMap3, var, withContinuation, withExpression, withStatement)
 import Glsl.Functions exposing (vec211, vec3111, vec41111)
 import Glsl.Operations exposing (add22, add33, add44)
 import Glsl.PrettyPrinter
@@ -49,133 +49,6 @@ statementToGlsl (Statement r) =
         |> String.join "\n"
 
 
-typeToGlsl : Type -> String
-typeToGlsl type_ =
-    case type_ of
-        TVoid ->
-            "void"
-
-        TBool ->
-            "bool"
-
-        TBVec2 ->
-            "bvec2"
-
-        TBVec3 ->
-            "bvec3"
-
-        TBVec4 ->
-            "bvec4"
-
-        TInt ->
-            "int"
-
-        TIVec2 ->
-            "ivec2"
-
-        TIVec3 ->
-            "ivec3"
-
-        TIVec4 ->
-            "ivec4"
-
-        TUInt ->
-            "uint"
-
-        TUVec2 ->
-            "uvec2"
-
-        TUVec3 ->
-            "uvec3"
-
-        TUVec4 ->
-            "uvec4"
-
-        TFloat ->
-            "float"
-
-        TVec2 ->
-            "vec2"
-
-        TVec3 ->
-            "vec3"
-
-        TVec4 ->
-            "vec4"
-
-        TDouble ->
-            "double"
-
-        TDVec2 ->
-            "dvec2"
-
-        TDVec3 ->
-            "dvec3"
-
-        TDVec4 ->
-            "dvec4"
-
-        TMat2 ->
-            "mat2"
-
-        TMat4 ->
-            "mat4"
-
-        TMat3 ->
-            "mat3"
-
-        TMat23 ->
-            "mat2x3"
-
-        TMat24 ->
-            "mat2x4"
-
-        TMat32 ->
-            "mat3x2"
-
-        TMat34 ->
-            "mat3x4"
-
-        TMat42 ->
-            "mat4x2"
-
-        TMat43 ->
-            "mat4x3"
-
-        TDMat2 ->
-            "dmatx2"
-
-        TDMat3 ->
-            "dmatx3"
-
-        TDMat4 ->
-            "dmatx4"
-
-        TDMat23 ->
-            "dmat2x3"
-
-        TDMat24 ->
-            "dmat2x4"
-
-        TDMat32 ->
-            "dmat3x2"
-
-        TDMat34 ->
-            "dmat3x4"
-
-        TDMat42 ->
-            "dmat4x2"
-
-        TDMat43 ->
-            "dmat4x3"
-
-        TIn t ->
-            "in " ++ typeToGlsl t
-
-        TOut t ->
-            "out " ++ typeToGlsl t
-
-
 expressionToGlsl : Expression t -> String
 expressionToGlsl (Expression tree) =
     Glsl.PrettyPrinter.expr tree.expr
@@ -185,22 +58,22 @@ expressionToGlsl (Expression tree) =
 --EXPRESSIONS
 
 
-ternary : Expression Bool -> Expression t -> Expression t -> Expression t
+ternary : Expression Bool_ -> Expression t -> Expression t -> Expression t
 ternary =
     unsafeMap3 Ternary
 
 
-ternary3 : Expression Bool -> Expression Vec3 -> Expression Vec3 -> Expression Vec3
+ternary3 : Expression Bool_ -> Expression Vec3 -> Expression Vec3 -> Expression Vec3
 ternary3 =
     unsafeMap3 Ternary
 
 
-and : Expression Bool -> Expression Bool -> Expression Bool
+and : Expression Bool_ -> Expression Bool_ -> Expression Bool_
 and =
     unsafeMap2 (\l r -> BinaryOperation l And r)
 
 
-ands : List (Expression Bool) -> Expression Bool
+ands : List (Expression Bool_) -> Expression Bool_
 ands es =
     case es of
         [] ->
@@ -210,12 +83,12 @@ ands es =
             List.foldl (\e a -> and a e) h t
 
 
-or : Expression Bool -> Expression Bool -> Expression Bool
+or : Expression Bool_ -> Expression Bool_ -> Expression Bool_
 or =
     unsafeMap2 (\l r -> BinaryOperation l Or r)
 
 
-ors : List (Expression Bool) -> Expression Bool
+ors : List (Expression Bool_) -> Expression Bool_
 ors es =
     case es of
         [] ->
@@ -292,17 +165,17 @@ gl_FragCoord =
 ----------------
 
 
-zero : Expression Float
+zero : Expression Float_
 zero =
     float1 0
 
 
-one : Expression Float
+one : Expression Float_
 one =
     float1 1
 
 
-minusOne : Expression Float
+minusOne : Expression Float_
 minusOne =
     float1 -1
 
@@ -316,10 +189,10 @@ functionToGlsl (TypedName rt name) args body =
     let
         argsList : String
         argsList =
-            String.join ", " (List.map (\( t, n ) -> typeToGlsl t ++ " " ++ n) args)
+            String.join ", " (List.map (\( t, n ) -> Glsl.PrettyPrinter.type_ t ++ " " ++ n) args)
     in
     String.join "\n" <|
-        [ typeToGlsl rt ++ " " ++ name ++ "(" ++ argsList ++ ") {"
+        [ Glsl.PrettyPrinter.type_ rt ++ " " ++ name ++ "(" ++ argsList ++ ") {"
         , statementToGlsl body
         , "}"
         ]
@@ -566,7 +439,7 @@ fun5_ typeF name (TypedName t0 arg0) (TypedName t1 arg1) (TypedName t2 arg2) (Ty
         [ ( t0, arg0 ), ( t1, arg1 ), ( t2, arg2 ), ( t3, arg3 ), ( t4, arg4 ) ]
 
 
-if_ : Expression Bool -> Statement r -> (() -> Statement r) -> Statement r
+if_ : Expression Bool_ -> Statement r -> (() -> Statement r) -> Statement r
 if_ cond ifTrue next =
     build If
         |> withExpression cond
@@ -574,7 +447,7 @@ if_ cond ifTrue next =
         |> withContinuation next
 
 
-ifElse : Expression Bool -> Statement s -> Statement s -> (() -> Statement s) -> Statement s
+ifElse : Expression Bool_ -> Statement s -> Statement s -> (() -> Statement s) -> Statement s
 ifElse cond ifTrue ifFalse next =
     build IfElse
         |> withExpression cond
