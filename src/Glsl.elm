@@ -6,7 +6,12 @@ module Glsl exposing
     , true, false, int1, float1, var
     , unsafeDot, dotX, dotY, dotZ, dotXY
     , TypingFunction, TypedName(..), Type(..)
-    , Vec2, Vec3, Vec4, IVec2, IVec3, IVec4, Mat2, Mat3, Mat4, Void, In, Out
+    , Vec2, Vec3, Vec4
+    , IVec2, IVec3, IVec4
+    , BVec2, BVec3, BVec4
+    , UInt, UVec2, UVec3, UVec4
+    , Mat2, Mat3, Mat4
+    , Void, In, Out
     , unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5
     , unsafeMap, unsafeMap2, unsafeMap3
     , unsafeTypecast
@@ -33,7 +38,12 @@ module Glsl exposing
 # Typelevel types
 
 @docs TypingFunction, TypedName, Type
-@docs Vec2, Vec3, Vec4, IVec2, IVec3, IVec4, Mat2, Mat3, Mat4, Void, In, Out
+@docs Vec2, Vec3, Vec4
+@docs IVec2, IVec3, IVec4
+@docs BVec2, BVec3, BVec4
+@docs UInt, UVec2, UVec3, UVec4
+@docs Mat2, Mat3, Mat4
+@docs Void, In, Out
 
 
 # Escape hatches
@@ -500,6 +510,76 @@ type alias I4 =
     , y : Int
     , z : Int
     , w : Int
+    }
+
+
+type alias BVec2 =
+    Vec B2
+
+
+type alias BVec3 =
+    Vec B3
+
+
+type alias BVec4 =
+    Vec B4
+
+
+type alias B2 =
+    { x : Bool
+    , y : Bool
+    }
+
+
+type alias B3 =
+    { x : Bool
+    , y : Bool
+    , z : Bool
+    }
+
+
+type alias B4 =
+    { x : Bool
+    , y : Bool
+    , z : Bool
+    , w : Bool
+    }
+
+
+type UInt
+    = UInt
+
+
+type alias UVec2 =
+    Vec U2
+
+
+type alias UVec3 =
+    Vec U3
+
+
+type alias UVec4 =
+    Vec U4
+
+
+type alias U2 =
+    { x : UInt
+    , y : UInt
+    }
+
+
+type alias U3 =
+    { x : UInt
+    , y : UInt
+    , z : UInt
+    }
+
+
+type alias U4 =
+    { x : UInt
+    , y : UInt
+    , z : UInt
+    , w : UInt
     }
 
 

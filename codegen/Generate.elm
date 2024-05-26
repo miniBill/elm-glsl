@@ -136,6 +136,90 @@ typeToAnnotation type_ =
         TOut tt ->
             Gen.Glsl.annotation_.out (typeToAnnotation tt)
 
+        TBVec2 ->
+            Gen.Glsl.annotation_.bVec2
+
+        TBVec3 ->
+            Gen.Glsl.annotation_.bVec3
+
+        TBVec4 ->
+            Gen.Glsl.annotation_.bVec4
+
+        TUint ->
+            Gen.Glsl.annotation_.uInt
+
+        TUVec2 ->
+            Gen.Glsl.annotation_.uVec2
+
+        TUVec3 ->
+            Gen.Glsl.annotation_.uVec3
+
+        TUVec4 ->
+            Gen.Glsl.annotation_.uVec4
+
+        TDouble ->
+            Gen.Glsl.annotation_.double
+
+        TDVec2 ->
+            Gen.Glsl.annotation_.dVec2
+
+        TDVec3 ->
+            Gen.Glsl.annotation_.dVec3
+
+        TDVec4 ->
+            Gen.Glsl.annotation_.dVec4
+
+        TMat2 ->
+            Gen.Glsl.annotation_.mat2
+
+        TMat4 ->
+            Gen.Glsl.annotation_.mat4
+
+        TMat23 ->
+            Gen.Glsl.annotation_.mat23
+
+        TMat24 ->
+            Gen.Glsl.annotation_.mat24
+
+        TMat32 ->
+            Gen.Glsl.annotation_.mat32
+
+        TMat34 ->
+            Gen.Glsl.annotation_.mat34
+
+        TMat42 ->
+            Gen.Glsl.annotation_.mat42
+
+        TMat43 ->
+            Gen.Glsl.annotation_.mat43
+
+        TDMat2 ->
+            Gen.Glsl.annotation_.dMat2
+
+        TDMat3 ->
+            Gen.Glsl.annotation_.dMat3
+
+        TDMat4 ->
+            Gen.Glsl.annotation_.dMat4
+
+        TDMat23 ->
+            Gen.Glsl.annotation_.dMat23
+
+        TDMat24 ->
+            Gen.Glsl.annotation_.dMat24
+
+        TDMat32 ->
+            Gen.Glsl.annotation_.dMat32
+
+        TDMat34 ->
+            Gen.Glsl.annotation_.dMat34
+
+        TDMat42 ->
+            Gen.Glsl.annotation_.dMat42
+
+        TDMat43 ->
+            Gen.Glsl.annotation_.dMat43
+
 
 fullName : String -> List Type -> String
 fullName baseName argTypes =
@@ -172,11 +256,95 @@ typeToShort t =
         TMat3 ->
             "m33"
 
-        TVoid ->
-            "v"
-
         TBool ->
             "b1"
+
+        TBVec2 ->
+            "b2"
+
+        TBVec3 ->
+            "b3"
+
+        TBVec4 ->
+            "b4"
+
+        TUint ->
+            "u1"
+
+        TUVec2 ->
+            "u2"
+
+        TUVec3 ->
+            "u3"
+
+        TUVec4 ->
+            "u4"
+
+        TDouble ->
+            "d1"
+
+        TDVec2 ->
+            "d2"
+
+        TDVec3 ->
+            "d3"
+
+        TDVec4 ->
+            "d4"
+
+        TMat2 ->
+            "m22"
+
+        TMat4 ->
+            "m44"
+
+        TMat23 ->
+            "m23"
+
+        TMat24 ->
+            "m24"
+
+        TMat32 ->
+            "m32"
+
+        TMat34 ->
+            "m34"
+
+        TMat42 ->
+            "m42"
+
+        TMat43 ->
+            "m43"
+
+        TDMat2 ->
+            "dm22"
+
+        TDMat3 ->
+            "dm33"
+
+        TDMat4 ->
+            "dm44"
+
+        TDMat23 ->
+            "dm23"
+
+        TDMat24 ->
+            "dm24"
+
+        TDMat32 ->
+            "dm32"
+
+        TDMat34 ->
+            "dm34"
+
+        TDMat42 ->
+            "dm42"
+
+        TDMat43 ->
+            "dm43"
+
+        TVoid ->
+            "v"
 
         TIn tt ->
             "n" ++ typeToShort tt
@@ -197,18 +365,20 @@ builtinFunctions =
 
         regular : List ( String, List Type, Type )
         regular =
-            [ builtin_v_v
-            , builtin_v_s
-            , builtin_vv_v
-            , builtin_vv_s
-            , builtin_vs_v
-            , builtin_sv_v
-            , builtin_vvv_v
-            , builtin_vss_v
-            , builtin_ssv_v
-            , builtin_vvs_v
-            ]
+            ([ builtin_v_v
+             , builtin_v_s
+             , builtin_vv_v
+             , builtin_vv_s
+             , builtin_vs_v
+             , builtin_sv_v
+             , builtin_vvv_v
+             , builtin_vss_v
+             , builtin_ssv_v
+             , builtin_vvs_v
+             ]
                 |> List.concatMap (\( names, kinds ) -> overload names kinds)
+            )
+                ++ builtin_new
 
         vecs : List ( String, List Type, Type )
         vecs =
@@ -279,9 +449,25 @@ builtinFunctions =
         |> Dict.fromList
 
 
-builtin_new : List ( String, List ( Type, Type ), List ( Type, Type ) )
+builtin_new : List ( String, List Type, Type )
 builtin_new =
-    [ ( "abs", genType |> toSame, genIType |> toSame ) ]
+    commonFunctions
+        |> List.concatMap (\( name, types ) -> List.map (\( f, t ) -> ( name, f, t )) types)
+
+
+commonFunctions : List ( String, List ( List Type, Type ) )
+commonFunctions =
+    [ ( "abs"
+      , unary genType identity
+            ++ unary genIType identity
+            ++ unary genDType identity
+      )
+    ]
+
+
+unary : List Type -> (Type -> Type) -> List ( List Type, Type )
+unary inputs toOutput =
+    List.map (\input -> ( [ input ], toOutput input )) inputs
 
 
 genType : List Type
@@ -307,16 +493,6 @@ genBType =
 genDType : List Type
 genDType =
     [ TDouble, TDVec2, TDVec3, TDVec4 ]
-
-
-toSame : List a -> List ( a, a )
-toSame list =
-    List.map (\x -> ( x, x )) list
-
-
-to : (a -> b) -> List a -> List b
-to f list =
-    List.map f list
 
 
 builtin_v_s : ( List String, List ( List Type, Type ) )
