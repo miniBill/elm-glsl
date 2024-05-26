@@ -372,7 +372,6 @@ builtinFunctions =
             , builtin_vv_s
             , builtin_sv_v
             , builtin_vvv_v
-            , builtin_vss_v
             , builtin_ssv_v
             , builtin_vvs_v
             ]
@@ -507,6 +506,11 @@ commonFunctions =
     , binary "max" genDType double always
     , binary "max" genIType int always
     , binary "max" genUType uint always
+    , ternary "clamp" genFDIUType genFDIUType genFDIUType (\a _ _ -> a)
+    , ternary "clamp" genType float float (\a _ _ -> a)
+    , ternary "clamp" genDType double double (\a _ _ -> a)
+    , ternary "clamp" genIType int int (\a _ _ -> a)
+    , ternary "clamp" genUType uint uint (\a _ _ -> a)
     ]
         |> List.concat
 
@@ -525,6 +529,7 @@ genericFunctions =
     , genericVecVecOutVec "modf"
     , genericVecVecVec "min"
     , genericVecVecVec "max"
+    , genericVecVecVecVec "clamp"
     ]
 
 
@@ -535,15 +540,67 @@ unary name inputs toOutput =
 
 binary : String -> List Type -> List Type -> (Type -> Type -> Type) -> List ( String, List Type, Type )
 binary name inputs1 inputs2 toOutput =
-    case ( inputs1, inputs2 ) of
-        ( [ input1 ], _ ) ->
-            List.map (\input2 -> ( name, [ input1, input2 ], toOutput input1 input2 )) inputs2
+    let
+        maxLen : Int
+        maxLen =
+            Maybe.withDefault 0 <| List.maximum <| List.map List.length [ inputs1, inputs2 ]
 
-        ( _, [ input2 ] ) ->
-            List.map (\input1 -> ( name, [ input1, input2 ], toOutput input1 input2 )) inputs1
+        inputs1_ : List Type
+        inputs1_ =
+            upTo maxLen inputs1
+
+        inputs2_ : List Type
+        inputs2_ =
+            upTo maxLen inputs2
+    in
+    List.map2 (\input1 input2 -> ( name, [ input1, input2 ], toOutput input1 input2 )) inputs1_ inputs2_
+
+
+ternary :
+    String
+    -> List Type
+    -> List Type
+    -> List Type
+    -> (Type -> Type -> Type -> Type)
+    -> List ( String, List Type, Type )
+ternary name inputs1 inputs2 inputs3 toOutput =
+    let
+        maxLen : Int
+        maxLen =
+            Maybe.withDefault 0 <| List.maximum <| List.map List.length [ inputs1, inputs2, inputs3 ]
+
+        inputs1_ : List Type
+        inputs1_ =
+            upTo maxLen inputs1
+
+        inputs2_ : List Type
+        inputs2_ =
+            upTo maxLen inputs2
+
+        inputs3_ : List Type
+        inputs3_ =
+            upTo maxLen inputs3
+    in
+    List.map3
+        (\input1 input2 input3 ->
+            ( name
+            , [ input1, input2, input3 ]
+            , toOutput input1 input2 input3
+            )
+        )
+        inputs1_
+        inputs2_
+        inputs3_
+
+
+upTo : Int -> List a -> List a
+upTo len inputs =
+    case inputs of
+        [ single ] ->
+            List.repeat len single
 
         _ ->
-            List.map2 (\input1 input2 -> ( name, [ input1, input2 ], toOutput input1 input2 )) inputs1 inputs2
+            inputs
 
 
 genType : List Type
@@ -696,24 +753,10 @@ builtin_ssv_v =
     )
 
 
-builtin_vss_v : ( List String, List ( List Type, Type ) )
-builtin_vss_v =
-    ( [ -- Other
-        "clamp"
-      ]
-    , [ ( [ TFloat, TFloat, TFloat ], TFloat )
-      , ( [ TVec2, TFloat, TFloat ], TVec2 )
-      , ( [ TVec3, TFloat, TFloat ], TVec3 )
-      , ( [ TVec4, TFloat, TFloat ], TVec4 )
-      ]
-    )
-
-
 builtin_vvv_v : ( List String, List ( List Type, Type ) )
 builtin_vvv_v =
     ( [ -- Other
-        "clamp"
-      , "mix"
+        "mix"
       , "smoothstep"
 
       -- Geometry
@@ -793,6 +836,27 @@ genericVecVecVec name =
                     }
                 )
                 [ Elm.string name, Elm.list [], a, b ]
+                |> Elm.withType (exprVecAnn "a")
+        )
+    )
+
+
+genericVecVecVecVec : String -> ( String, Elm.Expression )
+genericVecVecVecVec name =
+    ( name
+    , Elm.fn3
+        ( "a", Just (exprVecAnn "a") )
+        ( "b", Just (exprVecAnn "a") )
+        ( "c", Just (exprVecAnn "a") )
+        (\a b c ->
+            Elm.apply
+                (Elm.value
+                    { importFrom = [ "Glsl" ]
+                    , name = "unsafeCall3"
+                    , annotation = Nothing
+                    }
+                )
+                [ Elm.string name, Elm.list [], a, b, c ]
                 |> Elm.withType (exprVecAnn "a")
         )
     )

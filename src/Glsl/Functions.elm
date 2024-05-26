@@ -4,7 +4,7 @@ module Glsl.Functions exposing
     , asin1, asin2, asin3, asin4
     , atan1, atan11, atan2, atan22, atan3, atan33, atan4, atan44
     , ceil, ceil1, ceil2, ceil3, ceil4, ceild1, ceild2, ceild3, ceild4
-    , clamp111, clamp211, clamp222, clamp311, clamp333, clamp411, clamp444
+    , clamp, clamp111, clamp211, clamp222, clamp311, clamp333, clamp411, clamp444, clampd1d1d1, clampd2d1d1, clampd2d2d2, clampd3d1d1, clampd3d3d3, clampd4d1d1, clampd4d4d4, clampi1i1i1, clampi2i1i1, clampi2i2i2, clampi3i1i1, clampi3i3i3, clampi4i1i1, clampi4i4i4, clampu1u1u1, clampu2u1u1, clampu2u2u2, clampu3u1u1, clampu3u3u3, clampu4u1u1, clampu4u4u4
     , cos1, cos2, cos3, cos4
     , cross33
     , degrees1, degrees2, degrees3, degrees4
@@ -80,7 +80,7 @@ module Glsl.Functions exposing
 
 ## clamp
 
-@docs clamp111, clamp211, clamp222, clamp311, clamp333, clamp411, clamp444
+@docs clamp, clamp111, clamp211, clamp222, clamp311, clamp333, clamp411, clamp444, clampd1d1d1, clampd2d1d1, clampd2d2d2, clampd3d1d1, clampd3d3d3, clampd4d1d1, clampd4d4d4, clampi1i1i1, clampi2i1i1, clampi2i2i2, clampi3i1i1, clampi3i3i3, clampi4i1i1, clampi4i4i4, clampu1u1u1, clampu2u1u1, clampu2u2u2, clampu3u1u1, clampu3u3u3, clampu4u1u1, clampu4u4u4
 
 
 ## cos
@@ -554,6 +554,195 @@ clamp444 :
     -> Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Vec4
 clamp444 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampd1d1d1 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+clampd1d1d1 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampd2d1d1 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec2
+clampd2d1d1 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampd2d2d2 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+clampd2d2d2 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampd3d1d1 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec3
+clampd3d1d1 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampd3d3d3 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+clampd3d3d3 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampd4d1d1 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec4
+clampd4d1d1 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampd4d4d4 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+clampd4d4d4 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampi1i1i1 :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+clampi1i1i1 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampi2i1i1 :
+    Glsl.Expression Glsl.IVec2
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.IVec2
+clampi2i1i1 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampi2i2i2 :
+    Glsl.Expression Glsl.IVec2
+    -> Glsl.Expression Glsl.IVec2
+    -> Glsl.Expression Glsl.IVec2
+    -> Glsl.Expression Glsl.IVec2
+clampi2i2i2 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampi3i1i1 :
+    Glsl.Expression Glsl.IVec3
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.IVec3
+clampi3i1i1 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampi3i3i3 :
+    Glsl.Expression Glsl.IVec3
+    -> Glsl.Expression Glsl.IVec3
+    -> Glsl.Expression Glsl.IVec3
+    -> Glsl.Expression Glsl.IVec3
+clampi3i3i3 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampi4i1i1 :
+    Glsl.Expression Glsl.IVec4
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.IVec4
+clampi4i1i1 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampi4i4i4 :
+    Glsl.Expression Glsl.IVec4
+    -> Glsl.Expression Glsl.IVec4
+    -> Glsl.Expression Glsl.IVec4
+    -> Glsl.Expression Glsl.IVec4
+clampi4i4i4 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampu1u1u1 :
+    Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UInt
+clampu1u1u1 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampu2u1u1 :
+    Glsl.Expression Glsl.UVec2
+    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UVec2
+clampu2u1u1 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampu2u2u2 :
+    Glsl.Expression Glsl.UVec2
+    -> Glsl.Expression Glsl.UVec2
+    -> Glsl.Expression Glsl.UVec2
+    -> Glsl.Expression Glsl.UVec2
+clampu2u2u2 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampu3u1u1 :
+    Glsl.Expression Glsl.UVec3
+    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UVec3
+clampu3u1u1 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampu3u3u3 :
+    Glsl.Expression Glsl.UVec3
+    -> Glsl.Expression Glsl.UVec3
+    -> Glsl.Expression Glsl.UVec3
+    -> Glsl.Expression Glsl.UVec3
+clampu3u3u3 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampu4u1u1 :
+    Glsl.Expression Glsl.UVec4
+    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UVec4
+clampu4u1u1 a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
+
+
+clampu4u4u4 :
+    Glsl.Expression Glsl.UVec4
+    -> Glsl.Expression Glsl.UVec4
+    -> Glsl.Expression Glsl.UVec4
+    -> Glsl.Expression Glsl.UVec4
+clampu4u4u4 a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
 
 
@@ -2537,3 +2726,12 @@ max :
     -> Glsl.Expression (Glsl.Vec a)
 max a b =
     Glsl.unsafeCall2 "max" [] a b
+
+
+clamp :
+    Glsl.Expression (Glsl.Vec a)
+    -> Glsl.Expression (Glsl.Vec a)
+    -> Glsl.Expression (Glsl.Vec a)
+    -> Glsl.Expression (Glsl.Vec a)
+clamp a b c =
+    Glsl.unsafeCall3 "clamp" [] a b c
