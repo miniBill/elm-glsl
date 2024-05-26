@@ -14,55 +14,122 @@ import Test exposing (Test, describe, test)
 suite : Test
 suite =
     describe "ShaderTody examples"
-        [ isovalues3
+        [ hexagonal
         ]
 
 
-isovalues3 : Test
-isovalues3 =
-    check "isovalues 3 - ldfczS"
-        """// --- noise from procedural pseudo-Perlin (better but not so nice derivatives) ---------
-                    // ( adapted from IQ )
+hexagonal : Test
+hexagonal =
+    check "https://www.shadertoy.com/view/4d2GzV"
+        """const float s3 = 1.7320508075688772;
+const float i3 = 0.5773502691896258;
 
 
-float hash3(vec3 p) {
-    return fract(sin(1e3*dot(p,vec3(1,57,-13.7)))*4375.5453);        // rand
-}"""
-        {-
+const mat2 tri2cart = mat2(1.0, 0.0, -0.5, 0.5*s3);
 
-           float noise3( vec3 x ) {
-               vec3 p = floor(x),f = fract(x);
+const mat2 cart2tri = mat2(1.0, 0.0, i3, 2.0*i3);
 
-               f = f*f*(3.-2.*f);  // or smoothstep     // to make derivative continuous at borders
+vec3 L = vec3(i3, -i3, i3);
+
+vec4 pick3(vec4 a, vec4 b, vec4 c, float u) {
+    float v = fract(u * 0.3333333333333);
+    return mix(mix(a, b, step(0.3, v)), c, step(0.6, v));
+}
+
+vec4 closestHexCenters(vec2 p) {
+    
+    vec2 pi = floor(p);
+    vec2 pf = fract(p);
+
+    vec4 nn = pick3(vec4(0.0, 0.0, 2.0,  1.0),
+                    vec4(1.0, 1.0, 0.0, -1.0),
+                    vec4(1.0, 0.0, 0.0,  1.0),
+                    pi.x + pi.y);
+    
+    return ( mix(nn, nn.yxwz, step(pf.x, pf.y)) +
+             vec4(pi, pi) );
+    
+}
+
+vec3 perpBisector(vec2 p1, vec2 p2) {
+    vec2 p21 = p2-p1;
+    vec3 pa = vec3(p1+0.5*p21, 1.0);
+    vec3 pb = vec3(pa.x-p21.y, pa.y+p21.x, 1.0);
+    vec3 l = cross(pa, pb);
+    return l * inversesqrt(dot(l.xy, l.xy));
+}
+
+float hash(vec2 pos) {
+    return texture(iChannel0, fract(pos/511.0)).x;
+}
 
 
-               return mix( mix(mix( hash3(p+vec3(0,0,0)), hash3(p+vec3(1,0,0)),f.x),       // triilinear interp
-                               mix( hash3(p+vec3(0,1,0)), hash3(p+vec3(1,1,0)),f.x),f.y),
-                           mix(mix( hash3(p+vec3(0,0,1)), hash3(p+vec3(1,0,1)),f.x),
-                               mix( hash3(p+vec3(0,1,1)), hash3(p+vec3(1,1,1)),f.x),f.y), f.z);
-           }
+void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
+    
+    float scl = (0.03 + 0.02*(1.0+sin(0.31*iTime))) * 200.0 / min(iResolution.x, iResolution.y);
+    
+    float cx = 2.0 * cos(iTime*0.3) + 1.0 * cos(iTime*0.7+2.0);
+    float cy = 4.0 * sin(iTime*0.4) + 0.3 * sin(iTime*1.2+4.0);
+    float theta = 0.05*iTime;
+        
+    vec2 pos = (fragCoord.xy - 0.5*iResolution.xy)*scl + vec2(cx, cy);
+    
+    float ct = cos(theta);
+    float st = sin(theta);
+    
+    pos = mat2(ct, -st, st, ct) * pos;
+    L.xy = mat2(ct, -st, st, ct) * L.xy;
+    
+    vec4 h = closestHexCenters(cart2tri*pos);
+    
+    vec2 q1 = tri2cart * h.xy;
+    
+    float s = step(hash(h.xy), 0.5)*2.0-1.0;
+    
+    vec2 d1 = pos - q1;
+    
+    float l = min(min(distance(d1, vec2(-s*1.0, 0.0)), 
+                      distance(d1, vec2(s*0.5, 0.5*s3))), 
+                      distance(d1, vec2(s*0.5, -0.5*s3)));
+    
+    
+    const float r = 0.5;
 
-           float noise(vec3 x) {
-               return (noise3(x)+noise3(x+11.5)) / 2.; // pseudoperlin improvement from foxes idea
-           }
+    vec4 truchet = vec4(vec3(smoothstep(0.1+scl, 0.1, abs(l-r))), 1.0);
+    
+    vec2 q2 = tri2cart * h.zw;
+    
+    vec4 rgb = pick3(vec4(1.0, 0.0, 0.0, 1.0),
+                     vec4(0.0, 1.0, 0.0, 1.0),
+                     vec4(0.0, 0.0, 1.0, 1.0),
+                     h.x);
+    
+    vec3 line = perpBisector(q1, q2);
 
+    float d = dot(vec3(pos, 1.0), line);
 
-
-           void mainImage( out vec4 O, vec2 U ) // ------------ draw isovalues
-           {
-               vec2 R = iResolution.xy;
-               float n = noise(vec3(U*8./R.y, .1*iTime)),
-                     v = sin(6.28*10.*n),
-                   t = iTime;
-
-               v = smoothstep(1.,0., .5*abs(v)/fwidth(v));
-
-           \tO = mix( exp(-33./R.y )* texture( iChannel0, (U+vec2(1,sin(t)))/R), // .97
-                        .5+.5*sin(12.*n+vec4(0,2.1,-2.1,0)),
-                        v );
-
-           }"""
-        -}
+    vec4 black = vec4(vec3(0.), 1.0);
+    
+    vec2 nxy = mix(0.4*line.xy, vec2(0.0), smoothstep(0.3, 0.3+scl, d));
+    
+    vec3 N = vec3(nxy, sqrt(1.0-dot(nxy,nxy)));
+    float ln = clamp(0.0, 1.0, dot(L, N));
+    
+    vec4 lite = mix(rgb, vec4(1.0), clamp(0.0, 1.0, 2.0*ln-1.0));
+    vec4 dark = mix(black, rgb, clamp(0.0, 1.0, 2.0*ln));
+    vec4 lrgb = mix(dark, lite, step(0.5, ln));
+    
+    vec4 crgb = mix(black, lrgb, smoothstep(0.01, 0.01+scl, d));
+    
+    float t = fract(0.04*iTime);
+    float invb = 4.0;
+    
+    float k = smoothstep(0.0, 1.0, min(t*invb-0.5*invb+1.0, -t*invb+invb));
+        
+    fragColor = mix(crgb, truchet, k);
+    
+}
+"""
         [ (fun1_ floatT "hash3" (vec3T "p") <|
             \p ->
                 return
