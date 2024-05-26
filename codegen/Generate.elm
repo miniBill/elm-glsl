@@ -294,6 +294,21 @@ genIType =
     [ TInt, TIVec2, TIVec3, TIVec4 ]
 
 
+genUType : List Type
+genUType =
+    [ TUint, TUVec2, TUVec3, TUVec4 ]
+
+
+genBType : List Type
+genBType =
+    [ TBool, TBVec2, TBVec3, TBVec4 ]
+
+
+genDType : List Type
+genDType =
+    [ TDouble, TDVec2, TDVec3, TDVec4 ]
+
+
 toSame : List a -> List ( a, a )
 toSame list =
     List.map (\x -> ( x, x )) list
