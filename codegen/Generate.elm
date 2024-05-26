@@ -429,33 +429,12 @@ builtinFunctions =
 
 builtin_new : List ( String, List Type, Type )
 builtin_new =
-    functionsTrigonometry ++ functionsExponential ++ functionsCommon ++ functionsGeometric ++ functionsDerivative
+    functionsExponential ++ functionsCommon ++ functionsGeometric
 
 
 genericFunctions : List ( String, Elm.Expression )
 genericFunctions =
     genericTrigonometry ++ genericExponential ++ genericCommon ++ genericGeometric ++ genericDerivative
-
-
-functionsTrigonometry : List ( String, List Type, Type )
-functionsTrigonometry =
-    [ unary genType "radians" genType
-    , unary genType "degrees" genType
-    , unary genType "sin" genType
-    , unary genType "cos" genType
-    , unary genType "tan" genType
-    , unary genType "asin" genType
-    , unary genType "acos" genType
-    , unary genType "atan" genType
-    , binary genType "atan" genType genType
-    , unary genType "sinh" genType
-    , unary genType "cosh" genType
-    , unary genType "tanh" genType
-    , unary genType "asinh" genType
-    , unary genType "acosh" genType
-    , unary genType "atanh" genType
-    ]
-        |> List.concat
 
 
 genericTrigonometry : List ( String, Elm.Expression )
@@ -480,12 +459,7 @@ genericTrigonometry =
 
 functionsExponential : List ( String, List Type, Type )
 functionsExponential =
-    [ binary genType "pow" genType genType
-    , unary genType "exp" genType
-    , unary genType "log" genType
-    , unary genType "exp2" genType
-    , unary genType "log2" genType
-    , unary genFDType "sqrt" genFDType
+    [ unary genFDType "sqrt" genFDType
     , unary genFDType "inversesqrt" genFDType
     ]
         |> List.concat
@@ -597,21 +571,6 @@ genericGeometric =
     , generic2 "reflect"
     , generic "refract" [ exprVecAnn, exprVecAnn, exprFloat ] exprVecAnn
     ]
-
-
-functionsDerivative : List ( String, List Type, Type )
-functionsDerivative =
-    [ unary genType "dFdx" genType
-    , unary genType "dFdy" genType
-    , unary genType "dFdxFine" genType
-    , unary genType "dFdyFine" genType
-    , unary genType "dFdxCoarse" genType
-    , unary genType "dFdyCoarse" genType
-    , unary genType "fwidth" genType
-    , unary genType "fwidthFine" genType
-    , unary genType "fwidthCoarse" genType
-    ]
-        |> List.concat
 
 
 genericDerivative : List ( String, Elm.Expression )
