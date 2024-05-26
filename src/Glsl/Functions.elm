@@ -6,13 +6,13 @@ module Glsl.Functions exposing
     , ceil, ceil1, ceil2, ceil3, ceil4, ceild1, ceild2, ceild3, ceild4
     , clamp, clamp111, clamp211, clamp222, clamp311, clamp333, clamp411, clamp444, clampd1d1d1, clampd2d1d1, clampd2d2d2, clampd3d1d1, clampd3d3d3, clampd4d1d1, clampd4d4d4, clampi1i1i1, clampi2i1i1, clampi2i2i2, clampi3i1i1, clampi3i3i3, clampi4i1i1, clampi4i4i4, clampu1u1u1, clampu2u1u1, clampu2u2u2, clampu3u1u1, clampu3u3u3, clampu4u1u1, clampu4u4u4
     , cos1, cos2, cos3, cos4
-    , cross33
+    , cross33, crossd3d3
     , degrees1, degrees2, degrees3, degrees4
     , distance, distance11, distance22, distance33, distance44, distanced1d1, distanced2d2, distanced3d3, distanced4d4
     , dot, dot11, dot22, dot33, dot44, dotd1d1, dotd2d2, dotd3d3, dotd4d4
     , exp1, exp2, exp3, exp4
     , exp21, exp22, exp23, exp24
-    , faceforward111, faceforward222, faceforward333, faceforward444
+    , faceforward, faceforward111, faceforward222, faceforward333, faceforward444, faceforwardd1d1d1, faceforwardd2d2d2, faceforwardd3d3d3, faceforwardd4d4d4
     , floati1
     , floatBitsToInt1, floatBitsToInt2, floatBitsToInt3, floatBitsToInt4
     , floatBitsToUint1, floatBitsToUint2, floatBitsToUint3, floatBitsToUint4
@@ -39,7 +39,7 @@ module Glsl.Functions exposing
     , mix, mix111, mix221, mix222, mix331, mix333, mix441, mix444, mixd1d1d1, mixd2d2d1, mixd2d2d2, mixd3d3d1, mixd3d3d3, mixd4d4d1, mixd4d4d4
     , mod, mod11, mod21, mod22, mod31, mod33, mod41, mod44, modd1d1, modd2d1, modd2d2, modd3d1, modd3d3, modd4d1, modd4d4
     , modf, modf1o1, modf2o2, modf3o3, modf4o4, modfd1od1, modfd2od2, modfd3od3, modfd4od4
-    , normalize1, normalize2, normalize3, normalize4
+    , normalize, normalize1, normalize2, normalize3, normalize4, normalized1, normalized2, normalized3, normalized4
     , pow11, pow22, pow33, pow44
     , radians1, radians2, radians3, radians4
     , reflect11, reflect22, reflect33, reflect44
@@ -99,7 +99,7 @@ module Glsl.Functions exposing
 
 ## cross
 
-@docs cross33
+@docs cross33, crossd3d3
 
 
 ## degrees
@@ -129,7 +129,7 @@ module Glsl.Functions exposing
 
 ## faceforward
 
-@docs faceforward111, faceforward222, faceforward333, faceforward444
+@docs faceforward, faceforward111, faceforward222, faceforward333, faceforward444, faceforwardd1d1d1, faceforwardd2d2d2, faceforwardd3d3d3, faceforwardd4d4d4
 
 
 ## float
@@ -264,7 +264,7 @@ module Glsl.Functions exposing
 
 ## normalize
 
-@docs normalize1, normalize2, normalize3, normalize4
+@docs normalize, normalize1, normalize2, normalize3, normalize4, normalized1, normalized2, normalized3, normalized4
 
 
 ## pow
@@ -828,6 +828,14 @@ cross33 a b =
     Glsl.unsafeCall2 "cross" [] a b
 
 
+crossd3d3 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+crossd3d3 a b =
+    Glsl.unsafeCall2 "cross" [] a b
+
+
 degrees1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 degrees1 a =
     Glsl.unsafeCall1 "degrees" [] a
@@ -1049,6 +1057,42 @@ faceforward444 :
     -> Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Vec4
 faceforward444 a b c =
+    Glsl.unsafeCall3 "faceforward" [] a b c
+
+
+faceforwardd1d1d1 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+faceforwardd1d1d1 a b c =
+    Glsl.unsafeCall3 "faceforward" [] a b c
+
+
+faceforwardd2d2d2 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+faceforwardd2d2d2 a b c =
+    Glsl.unsafeCall3 "faceforward" [] a b c
+
+
+faceforwardd3d3d3 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+faceforwardd3d3d3 a b c =
+    Glsl.unsafeCall3 "faceforward" [] a b c
+
+
+faceforwardd4d4d4 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+faceforwardd4d4d4 a b c =
     Glsl.unsafeCall3 "faceforward" [] a b c
 
 
@@ -2408,6 +2452,26 @@ normalize4 a =
     Glsl.unsafeCall1 "normalize" [] a
 
 
+normalized1 : Glsl.Expression Glsl.Double -> Glsl.Expression Glsl.Double
+normalized1 a =
+    Glsl.unsafeCall1 "normalize" [] a
+
+
+normalized2 : Glsl.Expression Glsl.DVec2 -> Glsl.Expression Glsl.DVec2
+normalized2 a =
+    Glsl.unsafeCall1 "normalize" [] a
+
+
+normalized3 : Glsl.Expression Glsl.DVec3 -> Glsl.Expression Glsl.DVec3
+normalized3 a =
+    Glsl.unsafeCall1 "normalize" [] a
+
+
+normalized4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
+normalized4 a =
+    Glsl.unsafeCall1 "normalize" [] a
+
+
 pow11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3471,3 +3535,17 @@ dot :
     -> Glsl.Expression (Glsl.Vec t Glsl.D1)
 dot a b =
     Glsl.unsafeCall2 "dot" [] a b
+
+
+normalize : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
+normalize a =
+    Glsl.unsafeCall1 "normalize" [] a
+
+
+faceforward :
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+faceforward a b c =
+    Glsl.unsafeCall3 "faceforward" [] a b c

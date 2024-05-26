@@ -369,7 +369,6 @@ builtinFunctions =
             [ builtin_v_v
             , builtin_vv_v
             , builtin_vv_s
-            , builtin_vvv_v
             , builtin_vvs_v
             ]
                 |> List.concatMap (\( names, kinds ) -> overload names kinds)
@@ -427,8 +426,7 @@ builtinFunctions =
 
         others : List ( String, List Type, Type )
         others =
-            [ ( "cross", [ TVec3, TVec3 ], TVec3 )
-            , ( "float", [ TInt ], TFloat )
+            [ ( "float", [ TInt ], TFloat )
             , ( "int", [ TFloat ], TInt )
             ]
 
@@ -493,15 +491,28 @@ commonFunctions =
 
 geometricFunctions : List ( String, List Type, Type )
 geometricFunctions =
+    let
+        fdvec3 : List Type
+        fdvec3 =
+            [ TVec3, TDVec3 ]
+    in
     [ unary fdType "length" genFDType
     , binary fdType "distance" genFDType genFDType
     , binary fdType "dot" genFDType genFDType
+    , binary fdvec3 "cross" fdvec3 fdvec3
+    , unary genFDType "normalize" genFDType
+    , ternary genFDType "faceforward" genFDType genFDType genFDType
     ]
         |> List.concat
 
 
 genericFunctions : List ( String, Elm.Expression )
 genericFunctions =
+    genericCommon ++ genericGeometric
+
+
+genericCommon : List ( String, Elm.Expression )
+genericCommon =
     [ generic1 "abs"
     , generic1 "sign"
     , generic1 "floor"
@@ -519,9 +530,16 @@ genericFunctions =
     , generic2 "step"
     , generic3 "smoothstep"
     , generic3 "fma"
-    , generic1_toscalar "length"
+    ]
+
+
+genericGeometric : List ( String, Elm.Expression )
+genericGeometric =
+    [ generic1_toscalar "length"
     , generic2_toscalar "distance"
     , generic2_toscalar "dot"
+    , generic1 "normalize"
+    , generic3 "faceforward"
     ]
 
 
@@ -702,19 +720,6 @@ builtin_vvs_v =
       , ( [ TVec2, TVec2, TFloat ], TVec2 )
       , ( [ TVec3, TVec3, TFloat ], TVec3 )
       , ( [ TVec4, TVec4, TFloat ], TVec4 )
-      ]
-    )
-
-
-builtin_vvv_v : ( List String, List ( List Type, Type ) )
-builtin_vvv_v =
-    ( [ -- Geometry
-        "faceforward"
-      ]
-    , [ ( [ TFloat, TFloat, TFloat ], TFloat )
-      , ( [ TVec2, TVec2, TVec2 ], TVec2 )
-      , ( [ TVec3, TVec3, TVec3 ], TVec3 )
-      , ( [ TVec4, TVec4, TVec4 ], TVec4 )
       ]
     )
 
