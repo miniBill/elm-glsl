@@ -55,14 +55,44 @@ typeToGlsl type_ =
         TVoid ->
             "void"
 
-        TFloat ->
-            "float"
+        TBool ->
+            "bool"
+
+        TBVec2 ->
+            "bvec2"
+
+        TBVec3 ->
+            "bvec3"
+
+        TBVec4 ->
+            "bvec4"
 
         TInt ->
             "int"
 
-        TBool ->
-            "bool"
+        TIVec2 ->
+            "ivec2"
+
+        TIVec3 ->
+            "ivec3"
+
+        TIVec4 ->
+            "ivec4"
+
+        TUint ->
+            "uint"
+
+        TUVec2 ->
+            "uvec2"
+
+        TUVec3 ->
+            "uvec3"
+
+        TUVec4 ->
+            "uvec4"
+
+        TFloat ->
+            "float"
 
         TVec2 ->
             "vec2"
@@ -73,14 +103,23 @@ typeToGlsl type_ =
         TVec4 ->
             "vec4"
 
-        TIVec2 ->
-            "ivec2"
+        TDouble ->
+            "double"
 
-        TIVec3 ->
-            "ivec3"
+        TDVec2 ->
+            "dvec2"
 
-        TIVec4 ->
-            "ivec4"
+        TDVec3 ->
+            "dvec3"
+
+        TDVec4 ->
+            "dvec4"
+
+        TMat2 ->
+            "mat2"
+
+        TMat4 ->
+            "mat4"
 
         TMat3 ->
             "mat3"
