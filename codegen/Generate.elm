@@ -511,6 +511,9 @@ commonFunctions =
     , ternary "clamp" genDType double double (\a _ _ -> a)
     , ternary "clamp" genIType int int (\a _ _ -> a)
     , ternary "clamp" genUType uint uint (\a _ _ -> a)
+    , ternary "mix" genFDType genFDType genFDType (\a _ _ -> a)
+    , ternary "mix" genType genType float (\a _ _ -> a)
+    , ternary "mix" genDType genDType double (\a _ _ -> a)
     ]
         |> List.concat
 
@@ -530,6 +533,7 @@ genericFunctions =
     , genericVecVecVec "min"
     , genericVecVecVec "max"
     , genericVecVecVecVec "clamp"
+    , genericVecVecVecVec "mix"
     ]
 
 

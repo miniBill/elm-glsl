@@ -28,7 +28,7 @@ module Glsl.Functions exposing
     , mat3333
     , max, max11, max21, max22, max31, max33, max41, max44, maxd1d1, maxd2d1, maxd2d2, maxd3d1, maxd3d3, maxd4d1, maxd4d4, maxi1i1, maxi2i1, maxi2i2, maxi3i1, maxi3i3, maxi4i1, maxi4i4, maxu1u1, maxu2u1, maxu2u2, maxu3u1, maxu3u3, maxu4u1, maxu4u4
     , min, min11, min21, min22, min31, min33, min41, min44, mind1d1, mind2d1, mind2d2, mind3d1, mind3d3, mind4d1, mind4d4, mini1i1, mini2i1, mini2i2, mini3i1, mini3i3, mini4i1, mini4i4, minu1u1, minu2u1, minu2u2, minu3u1, minu3u3, minu4u1, minu4u4
-    , mix111, mix221, mix222, mix331, mix333, mix441, mix444
+    , mix, mix111, mix221, mix222, mix331, mix333, mix441, mix444, mixd1d1d1, mixd2d2d1, mixd2d2d2, mixd3d3d1, mixd3d3d3, mixd4d4d1, mixd4d4d4
     , mod, mod11, mod21, mod22, mod31, mod33, mod41, mod44, modd1d1, modd2d1, modd2d2, modd3d1, modd3d3, modd4d1, modd4d4
     , modf, modf1o1, modf2o2, modf3o3, modf4o4, modfd1od1, modfd2od2, modfd3od3, modfd4od4
     , normalize1, normalize2, normalize3, normalize4
@@ -200,7 +200,7 @@ module Glsl.Functions exposing
 
 ## mix
 
-@docs mix111, mix221, mix222, mix331, mix333, mix441, mix444
+@docs mix, mix111, mix221, mix222, mix331, mix333, mix441, mix444, mixd1d1d1, mixd2d2d1, mixd2d2d2, mixd3d3d1, mixd3d3d3, mixd4d4d1, mixd4d4d4
 
 
 ## mod
@@ -1671,6 +1671,69 @@ mix444 a b c =
     Glsl.unsafeCall3 "mix" [] a b c
 
 
+mixd1d1d1 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+mixd1d1d1 a b c =
+    Glsl.unsafeCall3 "mix" [] a b c
+
+
+mixd2d2d1 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec2
+mixd2d2d1 a b c =
+    Glsl.unsafeCall3 "mix" [] a b c
+
+
+mixd2d2d2 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+mixd2d2d2 a b c =
+    Glsl.unsafeCall3 "mix" [] a b c
+
+
+mixd3d3d1 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec3
+mixd3d3d1 a b c =
+    Glsl.unsafeCall3 "mix" [] a b c
+
+
+mixd3d3d3 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+mixd3d3d3 a b c =
+    Glsl.unsafeCall3 "mix" [] a b c
+
+
+mixd4d4d1 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec4
+mixd4d4d1 a b c =
+    Glsl.unsafeCall3 "mix" [] a b c
+
+
+mixd4d4d4 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+mixd4d4d4 a b c =
+    Glsl.unsafeCall3 "mix" [] a b c
+
+
 mod11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2735,3 +2798,12 @@ clamp :
     -> Glsl.Expression (Glsl.Vec a)
 clamp a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
+
+
+mix :
+    Glsl.Expression (Glsl.Vec a)
+    -> Glsl.Expression (Glsl.Vec a)
+    -> Glsl.Expression (Glsl.Vec a)
+    -> Glsl.Expression (Glsl.Vec a)
+mix a b c =
+    Glsl.unsafeCall3 "mix" [] a b c
