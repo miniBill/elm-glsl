@@ -3,12 +3,11 @@ module ShaderToy exposing (suite)
 import ErrorUtils
 import Expect
 import Glsl exposing (float1)
-import Glsl.Functions exposing (dot, dot33, fract, fract1, sin1, sin_, vec3111)
+import Glsl.Functions exposing (dot, fract, sin_, vec3111)
 import Glsl.Generator exposing (floatT, fun1_, return, vec3T)
-import Glsl.Operations exposing (by, by11)
+import Glsl.Operations exposing (by)
 import Glsl.Parser
 import Parser
-import String.Extra exposing (quote)
 import Test exposing (Test, describe, test)
 
 

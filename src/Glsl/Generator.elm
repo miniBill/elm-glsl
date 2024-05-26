@@ -1,8 +1,7 @@
-module Glsl.Generator exposing (File, FunDecl, adds2, adds3, adds4, and, ands, assign, assignAdd, assignBy, assignOut, boolT, break, continue, decl, def, def1, def2, def3, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun1_, fun2, fun2_, fun3, fun3_, fun4, fun4_, fun5, fun5_, funDeclToGlsl, gl_FragColor, gl_FragCoord, ifElse, if_, in_, intT, main_, mat3, mat3T, minusOne, nop, one, or, ors, out, return, statementToGlsl, ternary, ternary3, vec2, vec2T, vec2Zero, vec3, vec3T, vec3Zero, vec4, vec4T, vec4Zero, voidT, zero)
+module Glsl.Generator exposing (File, FunDecl, and, ands, assign, assignAdd, assignBy, assignOut, boolT, break, continue, decl, def, def1, def2, def3, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun1_, fun2, fun2_, fun3, fun3_, fun4, fun4_, fun5, fun5_, funDeclToGlsl, gl_FragColor, gl_FragCoord, ifElse, if_, in_, intT, main_, mat3, mat3T, minusOne, nop, one, or, ors, out, return, statementToGlsl, ternary, ternary3, vec2, vec2T, vec2Zero, vec3, vec3T, vec3Zero, vec4, vec4T, vec4Zero, voidT, zero)
 
 import Glsl exposing (BinaryOperation(..), Bool_, Declaration(..), Expr(..), Expression(..), Float_, In, Int_, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, false, float1, true, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap2, unsafeMap3, var, withContinuation, withExpression, withStatement)
 import Glsl.Functions exposing (vec211, vec3111, vec41111)
-import Glsl.Operations exposing (add22, add33, add44)
 import Glsl.PrettyPrinter
 import Set
 import SortedSet
@@ -96,36 +95,6 @@ ors es =
 
         h :: t ->
             List.foldl (\e a -> or a e) h t
-
-
-adds2 : List (Expression Vec2) -> Expression Vec2
-adds2 es =
-    case es of
-        [] ->
-            vec2Zero
-
-        h :: t ->
-            List.foldl (\e a -> add22 a e) h t
-
-
-adds3 : List (Expression Vec3) -> Expression Vec3
-adds3 es =
-    case es of
-        [] ->
-            vec3Zero
-
-        h :: t ->
-            List.foldl (\e a -> add33 a e) h t
-
-
-adds4 : List (Expression Vec4) -> Expression Vec4
-adds4 es =
-    case es of
-        [] ->
-            vec4Zero
-
-        h :: t ->
-            List.foldl (\e a -> add44 a e) h t
 
 
 

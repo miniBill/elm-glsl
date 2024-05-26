@@ -1,14 +1,13 @@
 module Glsl.Operations exposing
-    ( add11, add22, add33, add44
-    , subtract11, subtract22, subtract33, subtract44
-    , negate1, negate2, negate3, negate4
-    , by11, by22, by33, by44
-    , by12, by13
-    , by31
-    , div11, div22, div33, div44
+    ( add, adds, adds2, adds3, adds4
+    , subtract
+    , negate
+    , by
+    , by12, by13, by14
+    , by21, by31, by41
+    , div, div21, div31, div41
     , arraym33
     , lt, leq, eq, geq, gt
-    , by
     )
 
 {-|
@@ -16,29 +15,29 @@ module Glsl.Operations exposing
 
 # Addition
 
-@docs add11, add22, add33, add44
+@docs add, adds, adds2, adds3, adds4
 
 
 # Subtraction
 
-@docs subtract11, subtract22, subtract33, subtract44
+@docs subtract
 
 
 # Negate
 
-@docs negate1, negate2, negate3, negate4
+@docs negate
 
 
 # Multiplication
 
-@docs by11, by22, by33, by44
-@docs by12, by13
-@docs by31
+@docs by
+@docs by12, by13, by14
+@docs by21, by31, by41
 
 
 # Division
 
-@docs div11, div22, div33, div44
+@docs div, div21, div31, div41
 
 
 # Array access
@@ -52,99 +51,76 @@ module Glsl.Operations exposing
 
 -}
 
-import Glsl exposing (BinaryOperation(..), Expr(..), Expression, Float_, Mat3, RelationOperation(..), UnaryOperation(..), Vec, Vec2, Vec3, Vec4)
-
-
-unsafeBinary : BinaryOperation -> Expression a -> Expression b -> Expression c
-unsafeBinary op =
-    Glsl.unsafeMap2 (\l r -> BinaryOperation l op r)
+import Glsl exposing (BinaryOperation(..), Expr(..), Expression, Float_, Mat3, RelationOperation(..), UnaryOperation(..), Vec, Vec2, Vec3, Vec4, int1)
+import Glsl.Functions exposing (vec2i1, vec3i1, vec4i1)
 
 
 
 -- Addition
 
 
-add11 : Expression Float_ -> Expression Float_ -> Expression Float_
-add11 =
-    add
-
-
-add22 : Expression Vec2 -> Expression Vec2 -> Expression Vec2
-add22 =
-    add
-
-
-add33 : Expression Vec3 -> Expression Vec3 -> Expression Vec3
-add33 =
-    add
-
-
-add44 : Expression Vec4 -> Expression Vec4 -> Expression Vec4
-add44 =
-    add
-
-
-add : Expression a -> Expression a -> Expression a
+add : Expression (Vec Float d) -> Expression (Vec Float d) -> Expression (Vec Float d)
 add =
     unsafeBinary Add
+
+
+adds : Expression (Vec Float d) -> List (Expression (Vec Float d)) -> Expression (Vec Float d)
+adds vecZero es =
+    case es of
+        [] ->
+            vecZero
+
+        h :: t ->
+            List.foldl (\e a -> add a e) h t
+
+
+vec2Zero : Expression Vec2
+vec2Zero =
+    vec2i1 (int1 0)
+
+
+vec3Zero : Expression Vec3
+vec3Zero =
+    vec3i1 (int1 0)
+
+
+vec4Zero : Expression Vec4
+vec4Zero =
+    vec4i1 (int1 0)
+
+
+adds2 : List (Expression Vec2) -> Expression Vec2
+adds2 =
+    adds vec2Zero
+
+
+adds3 : List (Expression Vec3) -> Expression Vec3
+adds3 =
+    adds vec3Zero
+
+
+adds4 : List (Expression Vec4) -> Expression Vec4
+adds4 =
+    adds vec4Zero
 
 
 
 -- Subtraction
 
 
-subtract11 : Expression Float_ -> Expression Float_ -> Expression Float_
-subtract11 =
-    subtract
-
-
-subtract22 : Expression Vec2 -> Expression Vec2 -> Expression Vec2
-subtract22 =
-    subtract
-
-
-subtract33 : Expression Vec3 -> Expression Vec3 -> Expression Vec3
-subtract33 =
-    subtract
-
-
-subtract44 : Expression Vec4 -> Expression Vec4 -> Expression Vec4
-subtract44 =
-    subtract
-
-
-subtract : Expression a -> Expression a -> Expression a
+subtract : Expression (Vec Float d) -> Expression (Vec Float d) -> Expression (Vec Float d)
 subtract =
     unsafeBinary Subtract
 
 
-
--- Negation
-
-
-negate1 : Expression Float_ -> Expression Float_
-negate1 =
-    negate
-
-
-negate2 : Expression Vec2 -> Expression Vec2
-negate2 =
-    negate
-
-
-negate3 : Expression Vec3 -> Expression Vec3
-negate3 =
-    negate
-
-
-negate4 : Expression Vec4 -> Expression Vec4
-negate4 =
-    negate
-
-
-negate : Expression a -> Expression a
+negate : Expression (Vec Float d) -> Expression (Vec Float d)
 negate l =
     Glsl.unsafeMap (UnaryOperation Negate) l
+
+
+unsafeBinary : BinaryOperation -> Expression a -> Expression b -> Expression c
+unsafeBinary op =
+    Glsl.unsafeMap2 (\l r -> BinaryOperation l op r)
 
 
 
@@ -161,12 +137,27 @@ by13 =
     unsafeBinary By
 
 
+by14 : Expression Float_ -> Expression Vec4 -> Expression Vec4
+by14 =
+    unsafeBinary By
+
+
+by21 : Expression Vec2 -> Expression Float_ -> Expression Vec2
+by21 =
+    unsafeBinary By
+
+
 by31 : Expression Vec3 -> Expression Float_ -> Expression Vec3
 by31 =
     unsafeBinary By
 
 
-by : Expression (Vec t d) -> Expression (Vec t d) -> Expression (Vec t d)
+by41 : Expression Vec4 -> Expression Float_ -> Expression Vec4
+by41 =
+    unsafeBinary By
+
+
+by : Expression (Vec Float d) -> Expression (Vec Float d) -> Expression (Vec Float d)
 by =
     unsafeBinary By
 
@@ -175,27 +166,22 @@ by =
 -- Division
 
 
-div11 : Expression Float_ -> Expression Float_ -> Expression Float_
-div11 =
-    div
+div21 : Expression Vec2 -> Expression Float_ -> Expression Vec2
+div21 =
+    unsafeBinary Div
 
 
-div22 : Expression Vec2 -> Expression Vec2 -> Expression Vec2
-div22 =
-    div
+div31 : Expression Vec3 -> Expression Float_ -> Expression Vec3
+div31 =
+    unsafeBinary Div
 
 
-div33 : Expression Vec3 -> Expression Vec3 -> Expression Vec3
-div33 =
-    div
+div41 : Expression Vec4 -> Expression Float_ -> Expression Vec4
+div41 =
+    unsafeBinary Div
 
 
-div44 : Expression Vec4 -> Expression Vec4 -> Expression Vec4
-div44 =
-    div
-
-
-div : Expression a -> Expression a -> Expression a
+div : Expression (Vec Float d) -> Expression (Vec Float d) -> Expression (Vec Float d)
 div =
     unsafeBinary Div
 
