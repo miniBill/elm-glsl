@@ -451,35 +451,6 @@ builtin_new =
 
 commonFunctions : List ( String, List Type, Type )
 commonFunctions =
-    let
-        genFDType : List Type
-        genFDType =
-            genType ++ genDType
-
-        genFIDType : List Type
-        genFIDType =
-            genType ++ genIType ++ genDType
-
-        genFDIUType : List Type
-        genFDIUType =
-            genType ++ genDType ++ genIType ++ genUType
-
-        float : List Type
-        float =
-            [ TFloat ]
-
-        double : List Type
-        double =
-            [ TDouble ]
-
-        int : List Type
-        int =
-            [ TInt ]
-
-        uint : List Type
-        uint =
-            [ TUint ]
-    in
     [ unary genFIDType "abs" genFIDType
     , unary genFIDType "sign" genFIDType
     , unary genFDType "floor" genFDType
@@ -650,6 +621,41 @@ genBType =
 genDType : List Type
 genDType =
     [ TDouble, TDVec2, TDVec3, TDVec4 ]
+
+
+genFDType : List Type
+genFDType =
+    genType ++ genDType
+
+
+genFIDType : List Type
+genFIDType =
+    genType ++ genIType ++ genDType
+
+
+genFDIUType : List Type
+genFDIUType =
+    genType ++ genDType ++ genIType ++ genUType
+
+
+float : List Type
+float =
+    [ TFloat ]
+
+
+double : List Type
+double =
+    [ TDouble ]
+
+
+int : List Type
+int =
+    [ TInt ]
+
+
+uint : List Type
+uint =
+    [ TUint ]
 
 
 builtin_v_s : ( List String, List ( List Type, Type ) )
