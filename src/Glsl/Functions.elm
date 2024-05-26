@@ -2930,108 +2930,108 @@ vec4i1i1i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
-abs : Glsl.Expression (Glsl.Vec a) -> Glsl.Expression (Glsl.Vec a)
+abs : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
 abs a =
     Glsl.unsafeCall1 "abs" [] a
 
 
-sign : Glsl.Expression (Glsl.Vec a) -> Glsl.Expression (Glsl.Vec a)
+sign : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
 sign a =
     Glsl.unsafeCall1 "sign" [] a
 
 
-floor : Glsl.Expression (Glsl.Vec a) -> Glsl.Expression (Glsl.Vec a)
+floor : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
 floor a =
     Glsl.unsafeCall1 "floor" [] a
 
 
-trunc : Glsl.Expression (Glsl.Vec a) -> Glsl.Expression (Glsl.Vec a)
+trunc : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
 trunc a =
     Glsl.unsafeCall1 "trunc" [] a
 
 
-round : Glsl.Expression (Glsl.Vec a) -> Glsl.Expression (Glsl.Vec a)
+round : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
 round a =
     Glsl.unsafeCall1 "round" [] a
 
 
-roundEven : Glsl.Expression (Glsl.Vec a) -> Glsl.Expression (Glsl.Vec a)
+roundEven : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
 roundEven a =
     Glsl.unsafeCall1 "roundEven" [] a
 
 
-ceil : Glsl.Expression (Glsl.Vec a) -> Glsl.Expression (Glsl.Vec a)
+ceil : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
 ceil a =
     Glsl.unsafeCall1 "ceil" [] a
 
 
-fract : Glsl.Expression (Glsl.Vec a) -> Glsl.Expression (Glsl.Vec a)
+fract : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
 fract a =
     Glsl.unsafeCall1 "fract" [] a
 
 
 mod :
-    Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Vec a)
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
 mod a b =
     Glsl.unsafeCall2 "mod" [] a b
 
 
 modf :
-    Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Out (Glsl.Vec a))
-    -> Glsl.Expression (Glsl.Vec a)
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Out (Glsl.Vec t a))
+    -> Glsl.Expression (Glsl.Vec t a)
 modf a b =
     Glsl.unsafeCall2 "modf" [] a b
 
 
 min :
-    Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Vec a)
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
 min a b =
     Glsl.unsafeCall2 "min" [] a b
 
 
 max :
-    Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Vec a)
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
 max a b =
     Glsl.unsafeCall2 "max" [] a b
 
 
 clamp :
-    Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Vec a)
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
 clamp a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
 
 
 mix :
-    Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Vec a)
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
 mix a b c =
     Glsl.unsafeCall3 "mix" [] a b c
 
 
 step :
-    Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Vec a)
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
 step a b =
     Glsl.unsafeCall2 "step" [] a b
 
 
 smoothstep :
-    Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Vec a)
-    -> Glsl.Expression (Glsl.Vec a)
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
 smoothstep a b c =
     Glsl.unsafeCall3 "smoothstep" [] a b c

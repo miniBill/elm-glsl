@@ -863,7 +863,7 @@ generic2_out2 name =
 exprOutVecAnn : String -> Type.Annotation
 exprOutVecAnn inner =
     Type.var inner
-        |> Gen.Glsl.annotation_.vec
+        |> Gen.Glsl.annotation_.vec (Type.var "t")
         |> Gen.Glsl.annotation_.out
         |> Gen.Glsl.annotation_.expression
 
@@ -871,7 +871,7 @@ exprOutVecAnn inner =
 exprVecAnn : String -> Type.Annotation
 exprVecAnn inner =
     Type.var inner
-        |> Gen.Glsl.annotation_.vec
+        |> Gen.Glsl.annotation_.vec (Type.var "t")
         |> Gen.Glsl.annotation_.expression
 
 
