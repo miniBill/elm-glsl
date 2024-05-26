@@ -480,44 +480,47 @@ commonFunctions =
         uint =
             [ TUInt ]
     in
-    [ unary "abs" genFIDType identity
-    , unary "sign" genFIDType identity
-    , unary "floor" genFDType identity
-    , unary "trunc" genFDType identity
-    , unary "round" genFDType identity
-    , unary "roundEven" genFDType identity
-    , unary "ceil" genFDType identity
-    , unary "fract" genFDType identity
-    , binary "mod" genType float always
-    , binary "mod" genType genType always
-    , binary "mod" genDType double always
-    , binary "mod" genDType genDType always
-    , binary "modf" genType (List.map TOut genType) always
-    , binary "modf" genDType (List.map TOut genDType) always
-    , binary "min" genFDIUType genFDIUType always
-    , binary "min" genType float always
-    , binary "min" genDType double always
-    , binary "min" genIType int always
-    , binary "min" genUType uint always
-    , binary "max" genFDIUType genFDIUType always
-    , binary "max" genType float always
-    , binary "max" genDType double always
-    , binary "max" genIType int always
-    , binary "max" genUType uint always
-    , ternary "clamp" genFDIUType genFDIUType genFDIUType (\a _ _ -> a)
-    , ternary "clamp" genType float float (\a _ _ -> a)
-    , ternary "clamp" genDType double double (\a _ _ -> a)
-    , ternary "clamp" genIType int int (\a _ _ -> a)
-    , ternary "clamp" genUType uint uint (\a _ _ -> a)
-    , ternary "mix" genFDType genFDType genFDType (\a _ _ -> a)
-    , ternary "mix" genType genType float (\a _ _ -> a)
-    , ternary "mix" genDType genDType double (\a _ _ -> a)
-    , binary "step" genFDType genFDType always
-    , binary "step" float genType (always identity)
-    , binary "step" double genDType (always identity)
-    , ternary "smoothstep" genFDType genFDType genFDType (\_ _ r -> r)
-    , ternary "smoothstep" float float genType (\_ _ r -> r)
-    , ternary "smoothstep" double double genDType (\_ _ r -> r)
+    [ unary genFIDType "abs" genFIDType
+    , unary genFIDType "sign" genFIDType
+    , unary genFDType "floor" genFDType
+    , unary genFDType "trunc" genFDType
+    , unary genFDType "round" genFDType
+    , unary genFDType "roundEven" genFDType
+    , unary genFDType "ceil" genFDType
+    , unary genFDType "fract" genFDType
+    , binary genFDType "mod" genFDType genFDType
+    , binary genType "mod" genType float
+    , binary genDType "mod" genDType double
+    , binary genType "modf" genType (List.map TOut genType)
+    , binary genDType "modf" genDType (List.map TOut genDType)
+    , binary genFDIUType "min" genFDIUType genFDIUType
+    , binary genType "min" genType float
+    , binary genDType "min" genDType double
+    , binary genIType "min" genIType int
+    , binary genUType "min" genUType uint
+    , binary genFDIUType "max" genFDIUType genFDIUType
+    , binary genType "max" genType float
+    , binary genDType "max" genDType double
+    , binary genIType "max" genIType int
+    , binary genUType "max" genUType uint
+    , ternary genFDIUType "clamp" genFDIUType genFDIUType genFDIUType
+    , ternary genType "clamp" genType float float
+    , ternary genDType "clamp" genDType double double
+    , ternary genIType "clamp" genIType int int
+    , ternary genUType "clamp" genUType uint uint
+    , ternary genFDType "mix" genFDType genFDType genFDType
+    , ternary genType "mix" genType genType float
+    , ternary genDType "mix" genDType genDType double
+    , binary genFDType "step" genFDType genFDType
+    , binary genType "step" float genType
+    , binary genDType "step" double genDType
+    , ternary genFDType "smoothstep" genFDType genFDType genFDType
+    , ternary genType "smoothstep" float float genType
+    , ternary genDType "smoothstep" double double genDType
+    , unary genBType "isnan" genType
+    , unary genBType "isnan" genDType
+    , unary genBType "isinf" genType
+    , unary genBType "isinf" genDType
     ]
         |> List.concat
 
@@ -543,13 +546,13 @@ genericFunctions =
     ]
 
 
-unary : String -> List Type -> (Type -> Type) -> List ( String, List Type, Type )
-unary name inputs toOutput =
-    List.map (\input -> ( name, [ input ], toOutput input )) inputs
+unary : List Type -> String -> List Type -> List ( String, List Type, Type )
+unary outputs name inputs =
+    List.map2 (\input output -> ( name, [ input ], output )) inputs outputs
 
 
-binary : String -> List Type -> List Type -> (Type -> Type -> Type) -> List ( String, List Type, Type )
-binary name inputs1 inputs2 toOutput =
+binary : List Type -> String -> List Type -> List Type -> List ( String, List Type, Type )
+binary outputs name inputs1 inputs2 =
     let
         maxLen : Int
         maxLen =
@@ -563,17 +566,17 @@ binary name inputs1 inputs2 toOutput =
         inputs2_ =
             upTo maxLen inputs2
     in
-    List.map2 (\input1 input2 -> ( name, [ input1, input2 ], toOutput input1 input2 )) inputs1_ inputs2_
+    List.map3 (\input1 input2 output -> ( name, [ input1, input2 ], output )) inputs1_ inputs2_ outputs
 
 
 ternary :
-    String
+    List Type
+    -> String
     -> List Type
     -> List Type
     -> List Type
-    -> (Type -> Type -> Type -> Type)
     -> List ( String, List Type, Type )
-ternary name inputs1 inputs2 inputs3 toOutput =
+ternary outputs name inputs1 inputs2 inputs3 =
     let
         maxLen : Int
         maxLen =
@@ -591,16 +594,17 @@ ternary name inputs1 inputs2 inputs3 toOutput =
         inputs3_ =
             upTo maxLen inputs3
     in
-    List.map3
-        (\input1 input2 input3 ->
+    List.map4
+        (\input1 input2 input3 output ->
             ( name
             , [ input1, input2, input3 ]
-            , toOutput input1 input2 input3
+            , output
             )
         )
         inputs1_
         inputs2_
         inputs3_
+        outputs
 
 
 upTo : Int -> List a -> List a
