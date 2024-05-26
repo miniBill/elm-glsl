@@ -29,6 +29,7 @@ module Glsl.Functions exposing
     , ivec2i1i1
     , ivec3i1i1i1
     , ivec4i1i1i1i1
+    , ldexp1i1, ldexp2i2, ldexp3i3, ldexp4i4, ldexpd1i1, ldexpd2i2, ldexpd3i3, ldexpd4i4
     , length1, length2, length3, length4
     , log1, log2, log3, log4
     , log21, log22, log23, log24
@@ -209,6 +210,11 @@ module Glsl.Functions exposing
 ## ivec4
 
 @docs ivec4i1i1i1i1
+
+
+## ldexp
+
+@docs ldexp1i1, ldexp2i2, ldexp3i3, ldexp4i4, ldexpd1i1, ldexpd2i2, ldexpd3i3, ldexpd4i4
 
 
 ## length
@@ -1413,6 +1419,70 @@ ivec4i1i1i1i1 :
     -> Glsl.Expression Glsl.Vec4
 ivec4i1i1i1i1 a b c d =
     Glsl.unsafeCall4 "ivec4" [] a b c d
+
+
+ldexp1i1 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+ldexp1i1 a b =
+    Glsl.unsafeCall2 "ldexp" [] a b
+
+
+ldexp2i2 :
+    Glsl.Expression Glsl.Vec2
+    -> Glsl.Expression Glsl.IVec2
+    -> Glsl.Expression Glsl.Vec2
+ldexp2i2 a b =
+    Glsl.unsafeCall2 "ldexp" [] a b
+
+
+ldexp3i3 :
+    Glsl.Expression Glsl.Vec3
+    -> Glsl.Expression Glsl.IVec3
+    -> Glsl.Expression Glsl.Vec3
+ldexp3i3 a b =
+    Glsl.unsafeCall2 "ldexp" [] a b
+
+
+ldexp4i4 :
+    Glsl.Expression Glsl.Vec4
+    -> Glsl.Expression Glsl.IVec4
+    -> Glsl.Expression Glsl.Vec4
+ldexp4i4 a b =
+    Glsl.unsafeCall2 "ldexp" [] a b
+
+
+ldexpd1i1 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Double
+ldexpd1i1 a b =
+    Glsl.unsafeCall2 "ldexp" [] a b
+
+
+ldexpd2i2 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.IVec2
+    -> Glsl.Expression Glsl.DVec2
+ldexpd2i2 a b =
+    Glsl.unsafeCall2 "ldexp" [] a b
+
+
+ldexpd3i3 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.IVec3
+    -> Glsl.Expression Glsl.DVec3
+ldexpd3i3 a b =
+    Glsl.unsafeCall2 "ldexp" [] a b
+
+
+ldexpd4i4 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.IVec4
+    -> Glsl.Expression Glsl.DVec4
+ldexpd4i4 a b =
+    Glsl.unsafeCall2 "ldexp" [] a b
 
 
 length1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_

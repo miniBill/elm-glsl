@@ -528,6 +528,8 @@ commonFunctions =
     , ternary genFDType "fma" genFDType genFDType genFDType
     , binary genType "frexp" genType (List.map TOut genIType)
     , binary genDType "frexp" genDType (List.map TOut genIType)
+    , binary genType "ldexp" genType genIType
+    , binary genDType "ldexp" genDType genIType
     ]
         |> List.concat
 
