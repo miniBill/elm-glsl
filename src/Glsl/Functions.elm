@@ -26,7 +26,9 @@ module Glsl.Functions exposing
     , fma, fma111, fma222, fma333, fma444, fmad1d1d1, fmad2d2d2, fmad3d3d3, fmad4d4d4
     , fract, fract1, fract2, fract3, fract4, fractd1, fractd2, fractd3, fractd4
     , frexp1oi1, frexp2oi2, frexp3oi3, frexp4oi4, frexpd1oi1, frexpd2oi2, frexpd3oi3, frexpd4oi4
-    , fwidth1, fwidth2, fwidth3, fwidth4
+    , fwidth, fwidth1, fwidth2, fwidth3, fwidth4
+    , fwidthCoarse, fwidthCoarse1, fwidthCoarse2, fwidthCoarse3, fwidthCoarse4
+    , fwidthFine, fwidthFine1, fwidthFine2, fwidthFine3, fwidthFine4
     , int1
     , intBitsToFloati1, intBitsToFloati2, intBitsToFloati3, intBitsToFloati4
     , inversesqrt1, inversesqrt2, inversesqrt3, inversesqrt4
@@ -205,7 +207,17 @@ module Glsl.Functions exposing
 
 ## fwidth
 
-@docs fwidth1, fwidth2, fwidth3, fwidth4
+@docs fwidth, fwidth1, fwidth2, fwidth3, fwidth4
+
+
+## fwidthCoarse
+
+@docs fwidthCoarse, fwidthCoarse1, fwidthCoarse2, fwidthCoarse3, fwidthCoarse4
+
+
+## fwidthFine
+
+@docs fwidthFine, fwidthFine1, fwidthFine2, fwidthFine3, fwidthFine4
 
 
 ## int
@@ -1531,6 +1543,46 @@ fwidth3 a =
 fwidth4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Vec4
 fwidth4 a =
     Glsl.unsafeCall1 "fwidth" [] a
+
+
+fwidthCoarse1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
+fwidthCoarse1 a =
+    Glsl.unsafeCall1 "fwidthCoarse" [] a
+
+
+fwidthCoarse2 : Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.Vec2
+fwidthCoarse2 a =
+    Glsl.unsafeCall1 "fwidthCoarse" [] a
+
+
+fwidthCoarse3 : Glsl.Expression Glsl.Vec3 -> Glsl.Expression Glsl.Vec3
+fwidthCoarse3 a =
+    Glsl.unsafeCall1 "fwidthCoarse" [] a
+
+
+fwidthCoarse4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Vec4
+fwidthCoarse4 a =
+    Glsl.unsafeCall1 "fwidthCoarse" [] a
+
+
+fwidthFine1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
+fwidthFine1 a =
+    Glsl.unsafeCall1 "fwidthFine" [] a
+
+
+fwidthFine2 : Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.Vec2
+fwidthFine2 a =
+    Glsl.unsafeCall1 "fwidthFine" [] a
+
+
+fwidthFine3 : Glsl.Expression Glsl.Vec3 -> Glsl.Expression Glsl.Vec3
+fwidthFine3 a =
+    Glsl.unsafeCall1 "fwidthFine" [] a
+
+
+fwidthFine4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Vec4
+fwidthFine4 a =
+    Glsl.unsafeCall1 "fwidthFine" [] a
 
 
 int1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Int_
@@ -3820,3 +3872,18 @@ dFdxCoarse a =
 dFdyCoarse : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
 dFdyCoarse a =
     Glsl.unsafeCall1 "dFdyCoarse" [] a
+
+
+fwidth : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
+fwidth a =
+    Glsl.unsafeCall1 "fwidth" [] a
+
+
+fwidthFine : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
+fwidthFine a =
+    Glsl.unsafeCall1 "fwidthFine" [] a
+
+
+fwidthCoarse : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
+fwidthCoarse a =
+    Glsl.unsafeCall1 "fwidthCoarse" [] a

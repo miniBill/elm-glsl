@@ -554,6 +554,9 @@ functionsDerivative =
     , unary genType "dFdyFine" genType
     , unary genType "dFdxCoarse" genType
     , unary genType "dFdyCoarse" genType
+    , unary genType "fwidth" genType
+    , unary genType "fwidthFine" genType
+    , unary genType "fwidthCoarse" genType
     ]
         |> List.concat
 
@@ -566,6 +569,9 @@ genericDerivative =
     , generic1F "dFdyFine"
     , generic1F "dFdxCoarse"
     , generic1F "dFdyCoarse"
+    , generic1F "fwidth"
+    , generic1F "fwidthFine"
+    , generic1F "fwidthCoarse"
     ]
 
 
@@ -672,10 +678,8 @@ fdiuType =
 
 builtin_v_v : ( List String, List ( List Type, Type ) )
 builtin_v_v =
-    ( [ "fwidth"
-
-      -- Complex and power
-      , "exp"
+    ( [ -- Complex and power
+        "exp"
       , "exp2"
       , "inversesqrt"
       , "log"
