@@ -146,7 +146,7 @@ typeToAnnotation type_ =
         TBVec4 ->
             Gen.Glsl.annotation_.bVec4
 
-        TUint ->
+        TUInt ->
             Gen.Glsl.annotation_.uInt
 
         TUVec2 ->
@@ -269,7 +269,7 @@ typeToShort t =
         TBVec4 ->
             "b4"
 
-        TUint ->
+        TUInt ->
             "u1"
 
         TUVec2 ->
@@ -370,7 +370,6 @@ builtinFunctions =
             , builtin_v_s
             , builtin_vv_v
             , builtin_vv_s
-            , builtin_vs_v
             , builtin_sv_v
             , builtin_vvv_v
             , builtin_vss_v
@@ -455,20 +454,59 @@ builtin_new =
 
 commonFunctions : List ( String, List Type, Type )
 commonFunctions =
-    [ unary "abs" (genType ++ genIType ++ genDType) identity
-    , unary "sign" (genType ++ genIType ++ genDType) identity
-    , unary "floor" (genType ++ genDType) identity
-    , unary "trunc" (genType ++ genDType) identity
-    , unary "round" (genType ++ genDType) identity
-    , unary "roundEven" (genType ++ genDType) identity
-    , unary "ceil" (genType ++ genDType) identity
-    , unary "fract" (genType ++ genDType) identity
-    , binary "mod" genType [ TFloat ] always
+    let
+        genFDType : List Type
+        genFDType =
+            genType ++ genDType
+
+        genFIDType : List Type
+        genFIDType =
+            genType ++ genIType ++ genDType
+
+        genFDIUType : List Type
+        genFDIUType =
+            genType ++ genDType ++ genIType ++ genUType
+
+        float : List Type
+        float =
+            [ TFloat ]
+
+        double : List Type
+        double =
+            [ TDouble ]
+
+        int : List Type
+        int =
+            [ TInt ]
+
+        uint : List Type
+        uint =
+            [ TUInt ]
+    in
+    [ unary "abs" genFIDType identity
+    , unary "sign" genFIDType identity
+    , unary "floor" genFDType identity
+    , unary "trunc" genFDType identity
+    , unary "round" genFDType identity
+    , unary "roundEven" genFDType identity
+    , unary "ceil" genFDType identity
+    , unary "fract" genFDType identity
+    , binary "mod" genType float always
     , binary "mod" genType genType always
-    , binary "mod" genDType [ TDouble ] always
+    , binary "mod" genDType double always
     , binary "mod" genDType genDType always
     , binary "modf" genType (List.map TOut genType) always
     , binary "modf" genDType (List.map TOut genDType) always
+    , binary "min" genFDIUType genFDIUType always
+    , binary "min" genType float always
+    , binary "min" genDType double always
+    , binary "min" genIType int always
+    , binary "min" genUType uint always
+    , binary "max" genFDIUType genFDIUType always
+    , binary "max" genType float always
+    , binary "max" genDType double always
+    , binary "max" genIType int always
+    , binary "max" genUType uint always
     ]
         |> List.concat
 
@@ -485,6 +523,8 @@ genericFunctions =
     , genericVecVec "fract"
     , genericVecVecVec "mod"
     , genericVecVecOutVec "modf"
+    , genericVecVecVec "min"
+    , genericVecVecVec "max"
     ]
 
 
@@ -518,7 +558,7 @@ genIType =
 
 genUType : List Type
 genUType =
-    [ TUint, TUVec2, TUVec3, TUVec4 ]
+    [ TUInt, TUVec2, TUVec3, TUVec4 ]
 
 
 genBType : List Type
@@ -578,8 +618,7 @@ builtin_v_v =
 builtin_vv_v : ( List String, List ( List Type, Type ) )
 builtin_vv_v =
     ( [ -- Comparison
-        "min"
-      , "max"
+        "max"
 
       -- Complex and power
       , "pow"
@@ -610,20 +649,6 @@ builtin_sv_v =
       , ( [ TFloat, TVec2 ], TVec2 )
       , ( [ TFloat, TVec3 ], TVec3 )
       , ( [ TFloat, TVec4 ], TVec4 )
-      ]
-    )
-
-
-builtin_vs_v : ( List String, List ( List Type, Type ) )
-builtin_vs_v =
-    ( [ -- Comparison
-        "min"
-      , "max"
-      ]
-    , [ ( [ TFloat, TFloat ], TFloat )
-      , ( [ TVec2, TFloat ], TVec2 )
-      , ( [ TVec3, TFloat ], TVec3 )
-      , ( [ TVec4, TFloat ], TVec4 )
       ]
     )
 

@@ -79,7 +79,7 @@ typeToGlsl type_ =
         TIVec4 ->
             "ivec4"
 
-        TUint ->
+        TUInt ->
             "uint"
 
         TUVec2 ->

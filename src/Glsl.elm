@@ -375,7 +375,7 @@ type Type
     | TIVec3
     | TIVec4
       -- uint
-    | TUint
+    | TUInt
     | TUVec2
     | TUVec3
     | TUVec4

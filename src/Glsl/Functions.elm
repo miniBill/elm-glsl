@@ -26,8 +26,8 @@ module Glsl.Functions exposing
     , log1, log2, log3, log4
     , log21, log22, log23, log24
     , mat3333
-    , max11, max21, max22, max31, max33, max41, max44
-    , min11, min21, min22, min31, min33, min41, min44
+    , max, max11, max21, max22, max31, max33, max41, max44, maxd1d1, maxd2d1, maxd2d2, maxd3d1, maxd3d3, maxd4d1, maxd4d4, maxi1i1, maxi2i1, maxi2i2, maxi3i1, maxi3i3, maxi4i1, maxi4i4, maxu1u1, maxu2u1, maxu2u2, maxu3u1, maxu3u3, maxu4u1, maxu4u4
+    , min, min11, min21, min22, min31, min33, min41, min44, mind1d1, mind2d1, mind2d2, mind3d1, mind3d3, mind4d1, mind4d4, mini1i1, mini2i1, mini2i2, mini3i1, mini3i3, mini4i1, mini4i4, minu1u1, minu2u1, minu2u2, minu3u1, minu3u3, minu4u1, minu4u4
     , mix111, mix221, mix222, mix331, mix333, mix441, mix444
     , mod, mod11, mod21, mod22, mod31, mod33, mod41, mod44, modd1d1, modd2d1, modd2d2, modd3d1, modd3d3, modd4d1, modd4d4
     , modf, modf1o1, modf2o2, modf3o3, modf4o4, modfd1od1, modfd2od2, modfd3od3, modfd4od4
@@ -190,12 +190,12 @@ module Glsl.Functions exposing
 
 ## max
 
-@docs max11, max21, max22, max31, max33, max41, max44
+@docs max, max11, max21, max22, max31, max33, max41, max44, maxd1d1, maxd2d1, maxd2d2, maxd3d1, maxd3d3, maxd4d1, maxd4d4, maxi1i1, maxi2i1, maxi2i2, maxi3i1, maxi3i3, maxi4i1, maxi4i4, maxu1u1, maxu2u1, maxu2u2, maxu3u1, maxu3u3, maxu4u1, maxu4u4
 
 
 ## min
 
-@docs min11, min21, min22, min31, min33, min41, min44
+@docs min, min11, min21, min22, min31, min33, min41, min44, mind1d1, mind2d1, mind2d2, mind3d1, mind3d3, mind4d1, mind4d4, mini1i1, mini2i1, mini2i2, mini3i1, mini3i3, mini4i1, mini4i4, minu1u1, minu2u1, minu2u2, minu3u1, minu3u3, minu4u1, minu4u4
 
 
 ## mix
@@ -1027,6 +1027,174 @@ max44 a b =
     Glsl.unsafeCall2 "max" [] a b
 
 
+maxd1d1 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+maxd1d1 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxd2d1 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec2
+maxd2d1 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxd2d2 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+maxd2d2 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxd3d1 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec3
+maxd3d1 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxd3d3 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+maxd3d3 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxd4d1 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec4
+maxd4d1 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxd4d4 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+maxd4d4 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxi1i1 :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+maxi1i1 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxi2i1 :
+    Glsl.Expression Glsl.IVec2
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.IVec2
+maxi2i1 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxi2i2 :
+    Glsl.Expression Glsl.IVec2
+    -> Glsl.Expression Glsl.IVec2
+    -> Glsl.Expression Glsl.IVec2
+maxi2i2 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxi3i1 :
+    Glsl.Expression Glsl.IVec3
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.IVec3
+maxi3i1 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxi3i3 :
+    Glsl.Expression Glsl.IVec3
+    -> Glsl.Expression Glsl.IVec3
+    -> Glsl.Expression Glsl.IVec3
+maxi3i3 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxi4i1 :
+    Glsl.Expression Glsl.IVec4
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.IVec4
+maxi4i1 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxi4i4 :
+    Glsl.Expression Glsl.IVec4
+    -> Glsl.Expression Glsl.IVec4
+    -> Glsl.Expression Glsl.IVec4
+maxi4i4 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxu1u1 :
+    Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UInt
+maxu1u1 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxu2u1 :
+    Glsl.Expression Glsl.UVec2
+    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UVec2
+maxu2u1 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxu2u2 :
+    Glsl.Expression Glsl.UVec2
+    -> Glsl.Expression Glsl.UVec2
+    -> Glsl.Expression Glsl.UVec2
+maxu2u2 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxu3u1 :
+    Glsl.Expression Glsl.UVec3
+    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UVec3
+maxu3u1 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxu3u3 :
+    Glsl.Expression Glsl.UVec3
+    -> Glsl.Expression Glsl.UVec3
+    -> Glsl.Expression Glsl.UVec3
+maxu3u3 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxu4u1 :
+    Glsl.Expression Glsl.UVec4
+    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UVec4
+maxu4u1 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
+maxu4u4 :
+    Glsl.Expression Glsl.UVec4
+    -> Glsl.Expression Glsl.UVec4
+    -> Glsl.Expression Glsl.UVec4
+maxu4u4 a b =
+    Glsl.unsafeCall2 "max" [] a b
+
+
 min11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -1080,6 +1248,174 @@ min44 :
     -> Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Vec4
 min44 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+mind1d1 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+mind1d1 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+mind2d1 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec2
+mind2d1 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+mind2d2 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+mind2d2 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+mind3d1 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec3
+mind3d1 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+mind3d3 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+mind3d3 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+mind4d1 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec4
+mind4d1 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+mind4d4 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+mind4d4 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+mini1i1 :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+mini1i1 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+mini2i1 :
+    Glsl.Expression Glsl.IVec2
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.IVec2
+mini2i1 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+mini2i2 :
+    Glsl.Expression Glsl.IVec2
+    -> Glsl.Expression Glsl.IVec2
+    -> Glsl.Expression Glsl.IVec2
+mini2i2 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+mini3i1 :
+    Glsl.Expression Glsl.IVec3
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.IVec3
+mini3i1 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+mini3i3 :
+    Glsl.Expression Glsl.IVec3
+    -> Glsl.Expression Glsl.IVec3
+    -> Glsl.Expression Glsl.IVec3
+mini3i3 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+mini4i1 :
+    Glsl.Expression Glsl.IVec4
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.IVec4
+mini4i1 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+mini4i4 :
+    Glsl.Expression Glsl.IVec4
+    -> Glsl.Expression Glsl.IVec4
+    -> Glsl.Expression Glsl.IVec4
+mini4i4 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+minu1u1 :
+    Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UInt
+minu1u1 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+minu2u1 :
+    Glsl.Expression Glsl.UVec2
+    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UVec2
+minu2u1 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+minu2u2 :
+    Glsl.Expression Glsl.UVec2
+    -> Glsl.Expression Glsl.UVec2
+    -> Glsl.Expression Glsl.UVec2
+minu2u2 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+minu3u1 :
+    Glsl.Expression Glsl.UVec3
+    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UVec3
+minu3u1 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+minu3u3 :
+    Glsl.Expression Glsl.UVec3
+    -> Glsl.Expression Glsl.UVec3
+    -> Glsl.Expression Glsl.UVec3
+minu3u3 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+minu4u1 :
+    Glsl.Expression Glsl.UVec4
+    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.UVec4
+minu4u1 a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+minu4u4 :
+    Glsl.Expression Glsl.UVec4
+    -> Glsl.Expression Glsl.UVec4
+    -> Glsl.Expression Glsl.UVec4
+minu4u4 a b =
     Glsl.unsafeCall2 "min" [] a b
 
 
@@ -2185,3 +2521,19 @@ modf :
     -> Glsl.Expression (Glsl.Vec a)
 modf a b =
     Glsl.unsafeCall2 "modf" [] a b
+
+
+min :
+    Glsl.Expression (Glsl.Vec a)
+    -> Glsl.Expression (Glsl.Vec a)
+    -> Glsl.Expression (Glsl.Vec a)
+min a b =
+    Glsl.unsafeCall2 "min" [] a b
+
+
+max :
+    Glsl.Expression (Glsl.Vec a)
+    -> Glsl.Expression (Glsl.Vec a)
+    -> Glsl.Expression (Glsl.Vec a)
+max a b =
+    Glsl.unsafeCall2 "max" [] a b
