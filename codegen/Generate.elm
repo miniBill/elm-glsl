@@ -146,8 +146,8 @@ typeToAnnotation type_ =
         TBVec4 ->
             Gen.Glsl.annotation_.bVec4
 
-        TUInt ->
-            Gen.Glsl.annotation_.uInt
+        TUint ->
+            Gen.Glsl.annotation_.uint
 
         TUVec2 ->
             Gen.Glsl.annotation_.uVec2
@@ -269,7 +269,7 @@ typeToShort t =
         TBVec4 ->
             "b4"
 
-        TUInt ->
+        TUint ->
             "u1"
 
         TUVec2 ->
@@ -478,7 +478,7 @@ commonFunctions =
 
         uint : List Type
         uint =
-            [ TUInt ]
+            [ TUint ]
     in
     [ unary genFIDType "abs" genFIDType
     , unary genFIDType "sign" genFIDType
@@ -521,6 +521,10 @@ commonFunctions =
     , unary genBType "isnan" genDType
     , unary genBType "isinf" genType
     , unary genBType "isinf" genDType
+    , unary genIType "floatBitsToInt" genType
+    , unary genUType "floatBitsToUint" genType
+    , unary genType "intBitsToFloat" genIType
+    , unary genType "uintBitsToFloat" genUType
     ]
         |> List.concat
 
@@ -629,7 +633,7 @@ genIType =
 
 genUType : List Type
 genUType =
-    [ TUInt, TUVec2, TUVec3, TUVec4 ]
+    [ TUint, TUVec2, TUVec3, TUVec4 ]
 
 
 genBType : List Type

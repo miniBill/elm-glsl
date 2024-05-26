@@ -14,10 +14,13 @@ module Glsl.Functions exposing
     , exp21, exp22, exp23, exp24
     , faceforward111, faceforward222, faceforward333, faceforward444
     , floati1
+    , floatBitsToInt1, floatBitsToInt2, floatBitsToInt3, floatBitsToInt4
+    , floatBitsToUint1, floatBitsToUint2, floatBitsToUint3, floatBitsToUint4
     , floor, floor1, floor2, floor3, floor4, floord1, floord2, floord3, floord4
     , fract, fract1, fract2, fract3, fract4, fractd1, fractd2, fractd3, fractd4
     , fwidth1, fwidth2, fwidth3, fwidth4
     , int1
+    , intBitsToFloati1, intBitsToFloati2, intBitsToFloati3, intBitsToFloati4
     , inversesqrt1, inversesqrt2, inversesqrt3, inversesqrt4
     , isinf1, isinf2, isinf3, isinf4, isinfd1, isinfd2, isinfd3, isinfd4
     , isnan1, isnan2, isnan3, isnan4, isnand1, isnand2, isnand3, isnand4
@@ -47,6 +50,7 @@ module Glsl.Functions exposing
     , step, step11, step12, step13, step14, step22, step33, step44, stepd1d1, stepd1d2, stepd1d3, stepd1d4, stepd2d2, stepd3d3, stepd4d4
     , tan1, tan2, tan3, tan4
     , trunc, trunc1, trunc2, trunc3, trunc4, truncd1, truncd2, truncd3, truncd4
+    , uintBitsToFloatu1, uintBitsToFloatu2, uintBitsToFloatu3, uintBitsToFloatu4
     , vec21, vec211, vec21i1, vec2i1, vec2i11, vec2i1i1
     , vec31, vec3111, vec311i1, vec31i11, vec31i1i1, vec3i1, vec3i111, vec3i11i1, vec3i1i11, vec3i1i1i1
     , vec41, vec41111, vec4111i1, vec411i11, vec411i1i1, vec413, vec41i111, vec41i11i1, vec41i1i11, vec41i1i1i1, vec431, vec4i1, vec4i1111, vec4i111i1, vec4i11i11, vec4i11i1i1, vec4i1i111, vec4i1i11i1, vec4i1i1i11, vec4i1i1i1i1
@@ -130,6 +134,16 @@ module Glsl.Functions exposing
 @docs floati1
 
 
+## floatBitsToInt
+
+@docs floatBitsToInt1, floatBitsToInt2, floatBitsToInt3, floatBitsToInt4
+
+
+## floatBitsToUint
+
+@docs floatBitsToUint1, floatBitsToUint2, floatBitsToUint3, floatBitsToUint4
+
+
 ## floor
 
 @docs floor, floor1, floor2, floor3, floor4, floord1, floord2, floord3, floord4
@@ -148,6 +162,11 @@ module Glsl.Functions exposing
 ## int
 
 @docs int1
+
+
+## intBitsToFloat
+
+@docs intBitsToFloati1, intBitsToFloati2, intBitsToFloati3, intBitsToFloati4
 
 
 ## inversesqrt
@@ -293,6 +312,11 @@ module Glsl.Functions exposing
 ## trunc
 
 @docs trunc, trunc1, trunc2, trunc3, trunc4, truncd1, truncd2, truncd3, truncd4
+
+
+## uintBitsToFloat
+
+@docs uintBitsToFloatu1, uintBitsToFloatu2, uintBitsToFloatu3, uintBitsToFloatu4
 
 
 ## vec2
@@ -696,18 +720,18 @@ clampi4i4i4 a b c =
 
 
 clampu1u1u1 :
-    Glsl.Expression Glsl.UInt
-    -> Glsl.Expression Glsl.UInt
-    -> Glsl.Expression Glsl.UInt
-    -> Glsl.Expression Glsl.UInt
+    Glsl.Expression Glsl.Uint
+    -> Glsl.Expression Glsl.Uint
+    -> Glsl.Expression Glsl.Uint
+    -> Glsl.Expression Glsl.Uint
 clampu1u1u1 a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
 
 
 clampu2u1u1 :
     Glsl.Expression Glsl.UVec2
-    -> Glsl.Expression Glsl.UInt
-    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.Uint
+    -> Glsl.Expression Glsl.Uint
     -> Glsl.Expression Glsl.UVec2
 clampu2u1u1 a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
@@ -724,8 +748,8 @@ clampu2u2u2 a b c =
 
 clampu3u1u1 :
     Glsl.Expression Glsl.UVec3
-    -> Glsl.Expression Glsl.UInt
-    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.Uint
+    -> Glsl.Expression Glsl.Uint
     -> Glsl.Expression Glsl.UVec3
 clampu3u1u1 a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
@@ -742,8 +766,8 @@ clampu3u3u3 a b c =
 
 clampu4u1u1 :
     Glsl.Expression Glsl.UVec4
-    -> Glsl.Expression Glsl.UInt
-    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.Uint
+    -> Glsl.Expression Glsl.Uint
     -> Glsl.Expression Glsl.UVec4
 clampu4u1u1 a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
@@ -946,6 +970,46 @@ faceforward444 a b c =
     Glsl.unsafeCall3 "faceforward" [] a b c
 
 
+floatBitsToInt1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Int_
+floatBitsToInt1 a =
+    Glsl.unsafeCall1 "floatBitsToInt" [] a
+
+
+floatBitsToInt2 : Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.IVec2
+floatBitsToInt2 a =
+    Glsl.unsafeCall1 "floatBitsToInt" [] a
+
+
+floatBitsToInt3 : Glsl.Expression Glsl.Vec3 -> Glsl.Expression Glsl.IVec3
+floatBitsToInt3 a =
+    Glsl.unsafeCall1 "floatBitsToInt" [] a
+
+
+floatBitsToInt4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.IVec4
+floatBitsToInt4 a =
+    Glsl.unsafeCall1 "floatBitsToInt" [] a
+
+
+floatBitsToUint1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Uint
+floatBitsToUint1 a =
+    Glsl.unsafeCall1 "floatBitsToUint" [] a
+
+
+floatBitsToUint2 : Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.UVec2
+floatBitsToUint2 a =
+    Glsl.unsafeCall1 "floatBitsToUint" [] a
+
+
+floatBitsToUint3 : Glsl.Expression Glsl.Vec3 -> Glsl.Expression Glsl.UVec3
+floatBitsToUint3 a =
+    Glsl.unsafeCall1 "floatBitsToUint" [] a
+
+
+floatBitsToUint4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.UVec4
+floatBitsToUint4 a =
+    Glsl.unsafeCall1 "floatBitsToUint" [] a
+
+
 floati1 : Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Float_
 floati1 a =
     Glsl.unsafeCall1 "float" [] a
@@ -1054,6 +1118,26 @@ fwidth4 a =
 int1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Int_
 int1 a =
     Glsl.unsafeCall1 "int" [] a
+
+
+intBitsToFloati1 : Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Float_
+intBitsToFloati1 a =
+    Glsl.unsafeCall1 "intBitsToFloat" [] a
+
+
+intBitsToFloati2 : Glsl.Expression Glsl.IVec2 -> Glsl.Expression Glsl.Vec2
+intBitsToFloati2 a =
+    Glsl.unsafeCall1 "intBitsToFloat" [] a
+
+
+intBitsToFloati3 : Glsl.Expression Glsl.IVec3 -> Glsl.Expression Glsl.Vec3
+intBitsToFloati3 a =
+    Glsl.unsafeCall1 "intBitsToFloat" [] a
+
+
+intBitsToFloati4 : Glsl.Expression Glsl.IVec4 -> Glsl.Expression Glsl.Vec4
+intBitsToFloati4 a =
+    Glsl.unsafeCall1 "intBitsToFloat" [] a
 
 
 inversesqrt1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
@@ -1421,16 +1505,16 @@ maxi4i4 a b =
 
 
 maxu1u1 :
-    Glsl.Expression Glsl.UInt
-    -> Glsl.Expression Glsl.UInt
-    -> Glsl.Expression Glsl.UInt
+    Glsl.Expression Glsl.Uint
+    -> Glsl.Expression Glsl.Uint
+    -> Glsl.Expression Glsl.Uint
 maxu1u1 a b =
     Glsl.unsafeCall2 "max" [] a b
 
 
 maxu2u1 :
     Glsl.Expression Glsl.UVec2
-    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.Uint
     -> Glsl.Expression Glsl.UVec2
 maxu2u1 a b =
     Glsl.unsafeCall2 "max" [] a b
@@ -1446,7 +1530,7 @@ maxu2u2 a b =
 
 maxu3u1 :
     Glsl.Expression Glsl.UVec3
-    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.Uint
     -> Glsl.Expression Glsl.UVec3
 maxu3u1 a b =
     Glsl.unsafeCall2 "max" [] a b
@@ -1462,7 +1546,7 @@ maxu3u3 a b =
 
 maxu4u1 :
     Glsl.Expression Glsl.UVec4
-    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.Uint
     -> Glsl.Expression Glsl.UVec4
 maxu4u1 a b =
     Glsl.unsafeCall2 "max" [] a b
@@ -1645,16 +1729,16 @@ mini4i4 a b =
 
 
 minu1u1 :
-    Glsl.Expression Glsl.UInt
-    -> Glsl.Expression Glsl.UInt
-    -> Glsl.Expression Glsl.UInt
+    Glsl.Expression Glsl.Uint
+    -> Glsl.Expression Glsl.Uint
+    -> Glsl.Expression Glsl.Uint
 minu1u1 a b =
     Glsl.unsafeCall2 "min" [] a b
 
 
 minu2u1 :
     Glsl.Expression Glsl.UVec2
-    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.Uint
     -> Glsl.Expression Glsl.UVec2
 minu2u1 a b =
     Glsl.unsafeCall2 "min" [] a b
@@ -1670,7 +1754,7 @@ minu2u2 a b =
 
 minu3u1 :
     Glsl.Expression Glsl.UVec3
-    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.Uint
     -> Glsl.Expression Glsl.UVec3
 minu3u1 a b =
     Glsl.unsafeCall2 "min" [] a b
@@ -1686,7 +1770,7 @@ minu3u3 a b =
 
 minu4u1 :
     Glsl.Expression Glsl.UVec4
-    -> Glsl.Expression Glsl.UInt
+    -> Glsl.Expression Glsl.Uint
     -> Glsl.Expression Glsl.UVec4
 minu4u1 a b =
     Glsl.unsafeCall2 "min" [] a b
@@ -2618,6 +2702,26 @@ truncd3 a =
 truncd4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
 truncd4 a =
     Glsl.unsafeCall1 "trunc" [] a
+
+
+uintBitsToFloatu1 : Glsl.Expression Glsl.Uint -> Glsl.Expression Glsl.Float_
+uintBitsToFloatu1 a =
+    Glsl.unsafeCall1 "uintBitsToFloat" [] a
+
+
+uintBitsToFloatu2 : Glsl.Expression Glsl.UVec2 -> Glsl.Expression Glsl.Vec2
+uintBitsToFloatu2 a =
+    Glsl.unsafeCall1 "uintBitsToFloat" [] a
+
+
+uintBitsToFloatu3 : Glsl.Expression Glsl.UVec3 -> Glsl.Expression Glsl.Vec3
+uintBitsToFloatu3 a =
+    Glsl.unsafeCall1 "uintBitsToFloat" [] a
+
+
+uintBitsToFloatu4 : Glsl.Expression Glsl.UVec4 -> Glsl.Expression Glsl.Vec4
+uintBitsToFloatu4 a =
+    Glsl.unsafeCall1 "uintBitsToFloat" [] a
 
 
 vec21 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Vec2

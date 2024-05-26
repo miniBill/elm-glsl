@@ -10,7 +10,7 @@ module Glsl exposing
     , Float_, Vec2, Vec3, Vec4
     , Int_, IVec2, IVec3, IVec4
     , Bool_, BVec2, BVec3, BVec4
-    , UInt, UInt_, UVec2, UVec3, UVec4
+    , Uint, Uint_, UVec2, UVec3, UVec4
     , Double, Double_, DVec2, DVec3, DVec4
     , Mat2, Mat3, Mat4, Mat23, Mat24, Mat32, Mat34, Mat42, Mat43
     , DMat2, DMat3, DMat4, DMat23, DMat24, DMat32, DMat34, DMat42, DMat43
@@ -45,7 +45,7 @@ module Glsl exposing
 @docs Float_, Vec2, Vec3, Vec4
 @docs Int_, IVec2, IVec3, IVec4
 @docs Bool_, BVec2, BVec3, BVec4
-@docs UInt, UInt_, UVec2, UVec3, UVec4
+@docs Uint, Uint_, UVec2, UVec3, UVec4
 @docs Double, Double_, DVec2, DVec3, DVec4
 @docs Mat2, Mat3, Mat4, Mat23, Mat24, Mat32, Mat34, Mat42, Mat43
 @docs DMat2, DMat3, DMat4, DMat23, DMat24, DMat32, DMat34, DMat42, DMat43
@@ -377,7 +377,7 @@ type Type
     | TIVec3
     | TIVec4
       -- uint
-    | TUInt
+    | TUint
     | TUVec2
     | TUVec3
     | TUVec4
@@ -526,24 +526,24 @@ type alias BVec4 =
     Vec Bool D4
 
 
-type UInt
-    = UInt
+type Uint
+    = Uint
 
 
-type alias UInt_ =
-    Vec UInt D1
+type alias Uint_ =
+    Vec Uint D1
 
 
 type alias UVec2 =
-    Vec UInt D2
+    Vec Uint D2
 
 
 type alias UVec3 =
-    Vec UInt D3
+    Vec Uint D3
 
 
 type alias UVec4 =
-    Vec UInt D4
+    Vec Uint D4
 
 
 type Double
