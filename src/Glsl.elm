@@ -10,6 +10,7 @@ module Glsl exposing
     , IVec2, IVec3, IVec4
     , BVec2, BVec3, BVec4
     , UInt, UVec2, UVec3, UVec4
+    , Double, DVec2, DVec3, DVec4
     , Mat2, Mat3, Mat4
     , Void, In, Out
     , unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5
@@ -42,6 +43,7 @@ module Glsl exposing
 @docs IVec2, IVec3, IVec4
 @docs BVec2, BVec3, BVec4
 @docs UInt, UVec2, UVec3, UVec4
+@docs Double, DVec2, DVec3, DVec4
 @docs Mat2, Mat3, Mat4
 @docs Void, In, Out
 
@@ -580,6 +582,43 @@ type alias U4 =
     , y : UInt
     , z : UInt
     , w : UInt
+    }
+
+
+type Double
+    = Double
+
+
+type alias DVec2 =
+    Vec D2
+
+
+type alias DVec3 =
+    Vec D3
+
+
+type alias DVec4 =
+    Vec D4
+
+
+type alias D2 =
+    { x : Double
+    , y : Double
+    }
+
+
+type alias D3 =
+    { x : Double
+    , y : Double
+    , z : Double
+    }
+
+
+type alias D4 =
+    { x : Double
+    , y : Double
+    , z : Double
+    , w : Double
     }
 
 
