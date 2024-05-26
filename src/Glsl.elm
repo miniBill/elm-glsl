@@ -3,9 +3,7 @@ module Glsl exposing
     , Statement(..), Stat(..)
     , Expression(..), ExprWithDeps, Expr(..)
     , BinaryOperation(..), UnaryOperation(..), RelationOperation(..)
-    , true, false, int1, float1, var
-    , unsafeDot, dotX, dotY, dotZ
-    , dot1, dot2, dot3, dot4, dx, dy, dz, dw
+    , true, false, int1, float1
     , TypingFunction, TypedName(..), Type(..)
     , Vec, D1, D2, D3, D4
     , Float_, Vec2, Vec3, Vec4
@@ -19,6 +17,8 @@ module Glsl exposing
     , unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5
     , unsafeMap, unsafeMap2, unsafeMap3
     , unsafeTypecast
+    , unsafeVar
+    , unsafeDot
     , build, withExpression, withStatement, withContinuation, buildExpression, buildStatement, WithDepsBuilder
     )
 
@@ -35,9 +35,7 @@ module Glsl exposing
 
 # Utils
 
-@docs true, false, int1, float1, var
-@docs unsafeDot, dotX, dotY, dotZ
-@docs dot1, dot2, dot3, dot4, dx, dy, dz, dw
+@docs true, false, int1, float1
 
 
 # Typelevel types
@@ -59,6 +57,8 @@ module Glsl exposing
 @docs unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5
 @docs unsafeMap, unsafeMap2, unsafeMap3
 @docs unsafeTypecast
+@docs unsafeVar
+@docs unsafeDot
 
 
 # Building while tracking dependencies
@@ -685,68 +685,9 @@ float1 i =
     pure <| Float i
 
 
-var : String -> Expression t
-var v =
+unsafeVar : String -> Expression t
+unsafeVar v =
     pure <| Variable v
-
-
-type Dot q
-    = Dotter Char
-
-
-dx : Dot { a | x : x }
-dx =
-    Dotter 'x'
-
-
-dy : Dot { a | y : y }
-dy =
-    Dotter 'y'
-
-
-dz : Dot { a | z : z }
-dz =
-    Dotter 'z'
-
-
-dw : Dot { a | w : w }
-dw =
-    Dotter 'w'
-
-
-dot1 : Dot q -> Expression (Vec t q) -> Expression (Vec t D1)
-dot1 (Dotter d1) e =
-    unsafeDot e (String.fromList [ d1 ])
-
-
-dot2 : Dot q -> Dot q -> Expression (Vec t q) -> Expression (Vec t D2)
-dot2 (Dotter d1) (Dotter d2) e =
-    unsafeDot e (String.fromList [ d1, d2 ])
-
-
-dot3 : Dot q -> Dot q -> Dot q -> Expression (Vec t q) -> Expression (Vec t D3)
-dot3 (Dotter d1) (Dotter d2) (Dotter d3) e =
-    unsafeDot e (String.fromList [ d1, d2, d3 ])
-
-
-dot4 : Dot q -> Dot q -> Dot q -> Dot q -> Expression (Vec t q) -> Expression (Vec t D4)
-dot4 (Dotter d1) (Dotter d2) (Dotter d3) (Dotter d4) e =
-    unsafeDot e (String.fromList [ d1, d2, d3, d4 ])
-
-
-dotX : Expression (Vec t { a | x : x }) -> Expression (Vec t D1)
-dotX e =
-    dot1 dx e
-
-
-dotY : Expression (Vec t { a | y : y }) -> Expression (Vec t D1)
-dotY e =
-    dot1 dy e
-
-
-dotZ : Expression (Vec t { a | z : z }) -> Expression (Vec t D1)
-dotZ e =
-    dot1 dz e
 
 
 unsafeDot : Expression t -> String -> Expression a

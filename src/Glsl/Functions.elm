@@ -7,7 +7,7 @@ module Glsl.Functions exposing
     , asin1, asin2, asin3, asin4
     , asin_
     , asinh, asinh1, asinh2, asinh3, asinh4
-    , atan1, atan11, atan2, atan22, atan3, atan33, atan4, atan44
+    , atan1, atan11, atan22, atan2_, atan3, atan33, atan4, atan44
     , atan_
     , atanh, atanh1, atanh2, atanh3, atanh4
     , ceil, ceil1, ceil2, ceil3, ceil4, ceild1, ceild2, ceild3, ceild4
@@ -133,12 +133,12 @@ module Glsl.Functions exposing
 
 ## atan
 
-@docs atan1, atan11, atan2, atan22, atan3, atan33, atan4, atan44
+@docs atan1, atan11, atan22, atan2_, atan3, atan33, atan4, atan44
 
 
-## atan2
+## atan2\_
 
-@docs atan2
+@docs atan2_
 
 
 ## atan\_
@@ -688,17 +688,17 @@ atan11 a b =
     Glsl.unsafeCall2 "atan" [] a b
 
 
-atan2 : Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.Vec2
-atan2 a =
-    Glsl.unsafeCall1 "atan" [] a
-
-
 atan22 :
     Glsl.Expression Glsl.Vec2
     -> Glsl.Expression Glsl.Vec2
     -> Glsl.Expression Glsl.Vec2
 atan22 a b =
     Glsl.unsafeCall2 "atan" [] a b
+
+
+atan2_ : Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.Vec2
+atan2_ a =
+    Glsl.unsafeCall1 "atan" [] a
 
 
 atan3 : Glsl.Expression Glsl.Vec3 -> Glsl.Expression Glsl.Vec3
@@ -4007,11 +4007,11 @@ atan_ a =
     Glsl.unsafeCall1 "atan" [] a
 
 
-atan2 :
+atan2_ :
     Glsl.Expression (Glsl.Vec Float a)
     -> Glsl.Expression (Glsl.Vec Float a)
     -> Glsl.Expression (Glsl.Vec Float a)
-atan2 a b =
+atan2_ a b =
     Glsl.unsafeCall2 "atan" [] a b
 
 

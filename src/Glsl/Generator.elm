@@ -1,7 +1,6 @@
-module Glsl.Generator exposing (File, FunDecl, and, ands, assign, assignAdd, assignBy, assignOut, boolT, break, continue, decl, def, def1, def2, def3, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun1_, fun2, fun2_, fun3, fun3_, fun4, fun4_, fun5, fun5_, funDeclToGlsl, gl_FragColor, gl_FragCoord, ifElse, if_, in_, intT, main_, mat3, mat3T, minusOne, nop, one, or, ors, out, return, statementToGlsl, ternary, ternary3, vec2, vec2T, vec2Zero, vec3, vec3T, vec3Zero, vec4, vec4T, vec4Zero, voidT, zero)
+module Glsl.Generator exposing (File, FunDecl, assign, assignAdd, assignBy, assignOut, boolT, break, continue, decl, def, def1, def2, def3, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun1_, fun2, fun2_, fun3, fun3_, fun4, fun4_, fun5, fun5_, funDeclToGlsl, ifElse, if_, in_, intT, main_, mat3, mat3T, nop, out, return, statementToGlsl, vec2, vec2T, vec3, vec3T, vec4, vec4T, voidT)
 
-import Glsl exposing (BinaryOperation(..), Bool_, Declaration(..), Expr(..), Expression(..), Float_, In, Int_, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, false, float1, true, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap2, unsafeMap3, var, withContinuation, withExpression, withStatement)
-import Glsl.Functions exposing (vec211, vec3111, vec41111)
+import Glsl exposing (BinaryOperation(..), Bool_, Declaration(..), Expr(..), Expression(..), Float_, In, Int_, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap2, unsafeVar, withContinuation, withExpression, withStatement)
 import Glsl.PrettyPrinter
 import Set
 import SortedSet
@@ -51,102 +50,6 @@ statementToGlsl (Statement r) =
 expressionToGlsl : Expression t -> String
 expressionToGlsl (Expression tree) =
     Glsl.PrettyPrinter.expr tree.expr
-
-
-
---EXPRESSIONS
-
-
-ternary : Expression Bool_ -> Expression t -> Expression t -> Expression t
-ternary =
-    unsafeMap3 Ternary
-
-
-ternary3 : Expression Bool_ -> Expression Vec3 -> Expression Vec3 -> Expression Vec3
-ternary3 =
-    unsafeMap3 Ternary
-
-
-and : Expression Bool_ -> Expression Bool_ -> Expression Bool_
-and =
-    unsafeMap2 (\l r -> BinaryOperation l And r)
-
-
-ands : List (Expression Bool_) -> Expression Bool_
-ands es =
-    case es of
-        [] ->
-            true
-
-        h :: t ->
-            List.foldl (\e a -> and a e) h t
-
-
-or : Expression Bool_ -> Expression Bool_ -> Expression Bool_
-or =
-    unsafeMap2 (\l r -> BinaryOperation l Or r)
-
-
-ors : List (Expression Bool_) -> Expression Bool_
-ors es =
-    case es of
-        [] ->
-            false
-
-        h :: t ->
-            List.foldl (\e a -> or a e) h t
-
-
-
----------------
--- CONSTANTS --
----------------
-
-
-vec2Zero : Expression Vec2
-vec2Zero =
-    vec211 zero zero
-
-
-vec3Zero : Expression Vec3
-vec3Zero =
-    vec3111 zero zero zero
-
-
-vec4Zero : Expression Vec4
-vec4Zero =
-    vec41111 zero zero zero zero
-
-
-gl_FragColor : Expression Vec4
-gl_FragColor =
-    var "gl_FragColor"
-
-
-gl_FragCoord : Expression Vec4
-gl_FragCoord =
-    var "gl_FragCoord"
-
-
-
-----------------
--- CALL UTILS --
-----------------
-
-
-zero : Expression Float_
-zero =
-    float1 0
-
-
-one : Expression Float_
-one =
-    float1 1
-
-
-minusOne : Expression Float_
-minusOne =
-    float1 -1
 
 
 
@@ -262,7 +165,7 @@ fun1_ typeF name (TypedName t0 arg0) body =
     funX unsafeCall1
         typeF
         name
-        (body (var arg0))
+        (body (unsafeVar arg0))
         [ ( t0, arg0 ) ]
 
 
@@ -293,7 +196,7 @@ fun2_ typeF name (TypedName t0 arg0) (TypedName t1 arg1) body =
     funX unsafeCall2
         typeF
         name
-        (body (var arg0) (var arg1))
+        (body (unsafeVar arg0) (unsafeVar arg1))
         [ ( t0, arg0 ), ( t1, arg1 ) ]
 
 
@@ -327,7 +230,7 @@ fun3_ typeF name (TypedName t0 arg0) (TypedName t1 arg1) (TypedName t2 arg2) bod
     funX unsafeCall3
         typeF
         name
-        (body (var arg0) (var arg1) (var arg2))
+        (body (unsafeVar arg0) (unsafeVar arg1) (unsafeVar arg2))
         [ ( t0, arg0 ), ( t1, arg1 ), ( t2, arg2 ) ]
 
 
@@ -364,7 +267,7 @@ fun4_ typeF name (TypedName t0 arg0) (TypedName t1 arg1) (TypedName t2 arg2) (Ty
     funX unsafeCall4
         typeF
         name
-        (body (var arg0) (var arg1) (var arg2) (var arg3))
+        (body (unsafeVar arg0) (unsafeVar arg1) (unsafeVar arg2) (unsafeVar arg3))
         [ ( t0, arg0 ), ( t1, arg1 ), ( t2, arg2 ), ( t3, arg3 ) ]
 
 
@@ -404,7 +307,7 @@ fun5_ typeF name (TypedName t0 arg0) (TypedName t1 arg1) (TypedName t2 arg2) (Ty
     funX unsafeCall5
         typeF
         name
-        (body (var arg0) (var arg1) (var arg2) (var arg3) (var arg4))
+        (body (unsafeVar arg0) (unsafeVar arg1) (unsafeVar arg2) (unsafeVar arg3) (unsafeVar arg4))
         [ ( t0, arg0 ), ( t1, arg1 ), ( t2, arg2 ), ( t3, arg3 ), ( t4, arg4 ) ]
 
 
@@ -434,7 +337,7 @@ for ( name, from, to ) loop next =
     build (\f t -> For (Just <| Decl TInt name (Just f)) (BinaryOperation (Variable name) (RelationOperation LessThan) t) (UnaryOperation PostfixIncrement (Variable name)))
         |> withExpression from
         |> withExpression to
-        |> withStatement (loop (var name) nop)
+        |> withStatement (loop (unsafeVar name) nop)
         |> withContinuation next
 
 
@@ -447,7 +350,7 @@ forLeq ( name, from, to ) loop next =
     build (\f t -> For (Just <| Decl TInt name (Just f)) (BinaryOperation (Variable name) (RelationOperation LessThanOrEquals) t) (UnaryOperation PostfixIncrement (Variable name)))
         |> withExpression from
         |> withExpression to
-        |> withStatement (loop (var name) nop)
+        |> withStatement (loop (unsafeVar name) nop)
         |> withContinuation next
 
 
@@ -460,7 +363,7 @@ forDown ( name, from, to ) loop next =
     build (\f t -> For (Just <| Decl TInt name (Just f)) (BinaryOperation (Variable name) (RelationOperation GreaterThan) t) (UnaryOperation PostfixDecrement (Variable name)))
         |> withExpression from
         |> withExpression to
-        |> withStatement (loop (var name) nop)
+        |> withStatement (loop (unsafeVar name) nop)
         |> withContinuation next
 
 
@@ -490,7 +393,7 @@ decl typeF name k =
             typeF name
     in
     build (Decl t n Nothing)
-        |> withContinuation (\_ -> k (var n))
+        |> withContinuation (\_ -> k (unsafeVar n))
 
 
 def : TypingFunction t -> String -> Expression t -> (Expression t -> Statement r) -> Statement r
@@ -535,7 +438,7 @@ def1 ( tn0, val0 ) k =
     build
         (\v0 k0 -> Block [ Decl t0 n0 (Just v0), k0 ])
         |> withExpression val0
-        |> withStatement (k (var n0))
+        |> withStatement (k (unsafeVar n0))
         |> buildStatement
 
 

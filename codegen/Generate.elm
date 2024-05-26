@@ -226,6 +226,7 @@ typeToAnnotation type_ =
 fullName : String -> List Type -> String
 fullName baseName argTypes =
     String.concat (baseName :: List.map typeToShort argTypes)
+        |> avoidClash
 
 
 typeToShort : Type -> String
@@ -467,7 +468,7 @@ genericTrigonometry =
     , generic1F "asin"
     , generic1F "acos"
     , generic1F "atan"
-    , ( "atan2", Tuple.second <| generic2F "atan" )
+    , ( "atan2_", Tuple.second <| generic2F "atan" )
     , generic1F "sinh"
     , generic1F "cosh"
     , generic1F "tanh"
