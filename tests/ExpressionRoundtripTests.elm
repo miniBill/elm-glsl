@@ -43,7 +43,7 @@ roundtrip =
                 str =
                     Glsl.PrettyPrinter.expr simplified
             in
-            case Parser.run (Glsl.Parser.expressionParser |. Parser.end) str of
+            case Parser.run (Glsl.Parser.expression |. Parser.end) str of
                 Err errs ->
                     errs
                         |> ErrorUtils.errorsToString str

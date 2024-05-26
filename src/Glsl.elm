@@ -229,6 +229,7 @@ buildExpression (WithDepsBuilder expr deps) =
 type Declaration
     = FunctionDeclaration Function
     | UniformDeclaration Uniform
+    | ConstDeclaration Const
 
 
 type alias Function =
@@ -243,6 +244,13 @@ type alias Function =
 type alias Uniform =
     { tipe : Type
     , name : String
+    }
+
+
+type alias Const =
+    { tipe : Type
+    , name : String
+    , value : Expr
     }
 
 

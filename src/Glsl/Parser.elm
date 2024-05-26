@@ -1,8 +1,35 @@
-module Glsl.Parser exposing (expressionParser, file, function, preprocess, statementParser)
+module Glsl.Parser exposing (expression, file, function, preprocess, statement)
 
 import Glsl exposing (BinaryOperation(..), Declaration(..), Expr(..), Function, RelationOperation(..), Stat(..), Type(..), UnaryOperation(..))
 import Parser exposing ((|.), (|=), Parser, Step(..), Trailing(..), chompIf, chompWhile, getChompedString, keyword, loop, oneOf, sequence, succeed, symbol)
-import Parser.Workaround
+
+
+file : Parser ( Maybe { version : String }, List Declaration )
+file =
+    succeed Tuple.pair
+        |= oneOf
+            [ succeed (\version -> Just { version = version })
+                |. symbol "#version "
+                |= (chompWhile Char.isDigit
+                        |> getChompedString
+                   )
+            , succeed Nothing
+            ]
+        |. spaces
+        |= sequence
+            { start = ""
+            , separator = ""
+            , item =
+                oneOf
+                    [ const
+                    , uniform
+                    , function
+                    ]
+            , end = ""
+            , trailing = Parser.Optional
+            , spaces = spaces
+            }
+        |. Parser.end
 
 
 function : Parser Declaration
@@ -36,8 +63,30 @@ function =
             , trailing = Forbidden
             }
         |. spaces
-        |= statementParser
+        |= statement
         |= Parser.getOffset
+
+
+const : Parser Declaration
+const =
+    succeed
+        (\tipe name value ->
+            ConstDeclaration
+                { tipe = tipe
+                , name = name
+                , value = value
+                }
+        )
+        |. keyword "const"
+        |. spaces
+        |= typeParser
+        |. spaces
+        |= identifierParser
+        |. spaces
+        |. symbol "="
+        |. spaces
+        |= expression
+        |. symbol ";"
 
 
 uniform : Parser Declaration
@@ -90,26 +139,30 @@ typeParser =
             , ( "ivec2", TIVec2 )
             , ( "ivec3", TIVec3 )
             , ( "ivec4", TIVec4 )
+            , ( "mat2", TMat2 )
             , ( "mat3", TMat3 )
+            , ( "mat4", TMat4 )
             ]
                 |> List.map (\( s, t ) -> succeed t |. keyword s)
                 |> oneOf
     in
-    oneOf
-        [ succeed TOut
-            |. keyword "out"
-            |. spaces
-            |= baseParser
-        , succeed TIn
-            |. keyword "in"
-            |. spaces
-            |= baseParser
-        , baseParser
-        ]
+    succeed identity
+        |. oneOf [ keyword "const" |. spaces, succeed () ]
+        |= oneOf
+            [ succeed TOut
+                |. keyword "out"
+                |. spaces
+                |= baseParser
+            , succeed TIn
+                |. keyword "in"
+                |. spaces
+                |= baseParser
+            , baseParser
+            ]
 
 
-statementParser : Parser Stat
-statementParser =
+statement : Parser Stat
+statement =
     Parser.lazy <|
         \_ ->
             oneOf
@@ -138,7 +191,7 @@ breakContinueParser =
 expressionStatementParser : Parser Stat
 expressionStatementParser =
     succeed ExpressionStatement
-        |= expressionParser
+        |= expression
         |. spaces
         |. symbol ";"
 
@@ -150,17 +203,17 @@ ifParser =
         |. spaces
         |. symbol "("
         |. spaces
-        |= expressionParser
+        |= expression
         |. spaces
         |. symbol ")"
         |. spaces
-        |= statementParser
+        |= statement
         |. spaces
         |= oneOf
             [ succeed (\b e s -> IfElse e s b)
                 |. keyword "else"
                 |. spaces
-                |= statementParser
+                |= statement
             , succeed If
             ]
 
@@ -173,21 +226,21 @@ forParser =
         |. symbol "("
         |. spaces
         |= oneOf
-            [ succeed Just |= statementParser
+            [ succeed Just |= statement
             , succeed Nothing
             ]
         |. spaces
         |. symbol ";"
         |. spaces
-        |= expressionParser
+        |= expression
         |. spaces
         |. symbol ";"
         |. spaces
-        |= expressionParser
+        |= expression
         |. spaces
         |. symbol ")"
         |. spaces
-        |= statementParser
+        |= statement
 
 
 returnParser : Parser Stat
@@ -195,7 +248,7 @@ returnParser =
     succeed Return
         |. keyword "return"
         |. spaces
-        |= expressionParser
+        |= expression
         |. spaces
         |. symbol ";"
 
@@ -204,7 +257,7 @@ blockParser : Parser Stat
 blockParser =
     sequence
         { start = "{"
-        , item = statementParser
+        , item = statement
         , separator = ""
         , spaces = spaces
         , end = "}"
@@ -227,7 +280,7 @@ defParser =
             [ succeed Just
                 |. symbol "="
                 |. spaces
-                |= expressionParser
+                |= expression
                 |. spaces
             , succeed Nothing
             ]
@@ -235,8 +288,8 @@ defParser =
         |. symbol ";"
 
 
-expressionParser : Parser Expr
-expressionParser =
+expression : Parser Expr
+expression =
     prec17Parser
 
 
@@ -544,7 +597,7 @@ prec1Parser =
         [ succeed identity
             |. symbol "("
             |. spaces
-            |= Parser.lazy (\_ -> expressionParser)
+            |= Parser.lazy (\_ -> expression)
             |. spaces
             |. symbol ")"
         , succeed (Bool True)
@@ -640,39 +693,6 @@ intParser =
                     Nothing ->
                         Parser.problem ("Cannot parse \"" ++ s ++ "\" as int")
             )
-
-
-file : Parser ( Maybe { version : String }, List Declaration )
-file =
-    succeed Tuple.pair
-        |= oneOf
-            [ succeed (\version -> Just { version = version })
-                |. symbol "#version "
-                |= (chompWhile Char.isDigit
-                        |> getChompedString
-                   )
-            , succeed Nothing
-            ]
-        |. spaces
-        |= (succeed (List.filterMap identity)
-                |= sequence
-                    { start = ""
-                    , separator = ""
-                    , item =
-                        oneOf
-                            [ succeed Nothing
-                                |. Parser.Workaround.lineCommentAfter "precision highp"
-                            , succeed Just
-                                |= uniform
-                            , succeed Just
-                                |= function
-                            ]
-                    , end = ""
-                    , trailing = Parser.Optional
-                    , spaces = spaces
-                    }
-           )
-        |. Parser.end
 
 
 type alias SequenceData =
