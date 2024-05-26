@@ -457,22 +457,16 @@ commonFunctions : List ( String, List Type, Type )
 commonFunctions =
     [ unary "abs" (genType ++ genIType ++ genDType) identity
     , unary "sign" (genType ++ genIType ++ genDType) identity
-    , unary "floor" genType identity
-    , unary "floor" genDType identity
-    , unary "trunc" genType identity
-    , unary "trunc" genDType identity
-    , unary "round" genType identity
-    , unary "round" genDType identity
-    , unary "roundEven" genType identity
-    , unary "roundEven" genDType identity
-    , unary "ceil" genType identity
-    , unary "ceil" genDType identity
-    , unary "fract" genType identity
-    , unary "fract" genDType identity
+    , unary "floor" (genType ++ genDType) identity
+    , unary "trunc" (genType ++ genDType) identity
+    , unary "round" (genType ++ genDType) identity
+    , unary "roundEven" (genType ++ genDType) identity
+    , unary "ceil" (genType ++ genDType) identity
+    , unary "fract" (genType ++ genDType) identity
     , binary "mod" genType [ TFloat ] always
     , binary "mod" genType genType always
-    , binary "mod" genType [ TFloat ] always
-    , binary "mod" genType genType always
+    , binary "mod" genDType [ TDouble ] always
+    , binary "mod" genDType genDType always
     ]
         |> List.concat
 
@@ -497,7 +491,15 @@ unary name inputs toOutput =
 
 binary : String -> List Type -> List Type -> (Type -> Type -> Type) -> List ( String, List Type, Type )
 binary name inputs1 inputs2 toOutput =
-    List.map2 (\input1 input2 -> ( name, [ input1, input2 ], toOutput input1 input2 )) inputs1 inputs2
+    case ( inputs1, inputs2 ) of
+        ( [ input1 ], _ ) ->
+            List.map (\input2 -> ( name, [ input1, input2 ], toOutput input1 input2 )) inputs2
+
+        ( _, [ input2 ] ) ->
+            List.map (\input1 -> ( name, [ input1, input2 ], toOutput input1 input2 )) inputs1
+
+        _ ->
+            List.map2 (\input1 input2 -> ( name, [ input1, input2 ], toOutput input1 input2 )) inputs1 inputs2
 
 
 genType : List Type

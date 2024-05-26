@@ -29,7 +29,7 @@ module Glsl.Functions exposing
     , max11, max21, max22, max31, max33, max41, max44
     , min11, min21, min22, min31, min33, min41, min44
     , mix111, mix221, mix222, mix331, mix333, mix441, mix444
-    , mod11, mod22, mod33, mod44
+    , mod11, mod21, mod22, mod31, mod33, mod41, mod44, modd1d1, modd2d1, modd2d2, modd3d1, modd3d3, modd4d1, modd4d4
     , normalize1, normalize2, normalize3, normalize4
     , pow11, pow22, pow33, pow44
     , radians1, radians2, radians3, radians4
@@ -204,7 +204,7 @@ module Glsl.Functions exposing
 
 ## mod
 
-@docs mod11, mod22, mod33, mod44
+@docs mod11, mod21, mod22, mod31, mod33, mod41, mod44, modd1d1, modd2d1, modd2d2, modd3d1, modd3d3, modd4d1, modd4d4
 
 
 ## normalize
@@ -1148,11 +1148,27 @@ mod11 a b =
     Glsl.unsafeCall2 "mod" [] a b
 
 
+mod21 :
+    Glsl.Expression Glsl.Vec2
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec2
+mod21 a b =
+    Glsl.unsafeCall2 "mod" [] a b
+
+
 mod22 :
     Glsl.Expression Glsl.Vec2
     -> Glsl.Expression Glsl.Vec2
     -> Glsl.Expression Glsl.Vec2
 mod22 a b =
+    Glsl.unsafeCall2 "mod" [] a b
+
+
+mod31 :
+    Glsl.Expression Glsl.Vec3
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec3
+mod31 a b =
     Glsl.unsafeCall2 "mod" [] a b
 
 
@@ -1164,11 +1180,75 @@ mod33 a b =
     Glsl.unsafeCall2 "mod" [] a b
 
 
+mod41 :
+    Glsl.Expression Glsl.Vec4
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+mod41 a b =
+    Glsl.unsafeCall2 "mod" [] a b
+
+
 mod44 :
     Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Vec4
 mod44 a b =
+    Glsl.unsafeCall2 "mod" [] a b
+
+
+modd1d1 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+modd1d1 a b =
+    Glsl.unsafeCall2 "mod" [] a b
+
+
+modd2d1 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec2
+modd2d1 a b =
+    Glsl.unsafeCall2 "mod" [] a b
+
+
+modd2d2 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+modd2d2 a b =
+    Glsl.unsafeCall2 "mod" [] a b
+
+
+modd3d1 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec3
+modd3d1 a b =
+    Glsl.unsafeCall2 "mod" [] a b
+
+
+modd3d3 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+modd3d3 a b =
+    Glsl.unsafeCall2 "mod" [] a b
+
+
+modd4d1 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec4
+modd4d1 a b =
+    Glsl.unsafeCall2 "mod" [] a b
+
+
+modd4d4 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+modd4d4 a b =
     Glsl.unsafeCall2 "mod" [] a b
 
 
