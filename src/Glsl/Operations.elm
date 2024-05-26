@@ -8,6 +8,7 @@ module Glsl.Operations exposing
     , div11, div22, div33, div44
     , arraym33
     , lt, leq, eq, geq, gt
+    , by
     )
 
 {-|
@@ -51,7 +52,7 @@ module Glsl.Operations exposing
 
 -}
 
-import Glsl exposing (BinaryOperation(..), Expr(..), Expression, Mat3, RelationOperation(..), UnaryOperation(..), Vec2, Vec3, Vec4)
+import Glsl exposing (BinaryOperation(..), Expr(..), Expression, Float_, Mat3, RelationOperation(..), UnaryOperation(..), Vec, Vec2, Vec3, Vec4)
 
 
 unsafeBinary : BinaryOperation -> Expression a -> Expression b -> Expression c
@@ -63,7 +64,7 @@ unsafeBinary op =
 -- Addition
 
 
-add11 : Expression Float -> Expression Float -> Expression Float
+add11 : Expression Float_ -> Expression Float_ -> Expression Float_
 add11 =
     add
 
@@ -92,7 +93,7 @@ add =
 -- Subtraction
 
 
-subtract11 : Expression Float -> Expression Float -> Expression Float
+subtract11 : Expression Float_ -> Expression Float_ -> Expression Float_
 subtract11 =
     subtract
 
@@ -121,7 +122,7 @@ subtract =
 -- Negation
 
 
-negate1 : Expression Float -> Expression Float
+negate1 : Expression Float_ -> Expression Float_
 negate1 =
     negate
 
@@ -150,42 +151,22 @@ negate l =
 -- Multiplication
 
 
-by11 : Expression Float -> Expression Float -> Expression Float
-by11 =
-    by
-
-
-by22 : Expression Vec2 -> Expression Vec2 -> Expression Vec2
-by22 =
-    by
-
-
-by33 : Expression Vec3 -> Expression Vec3 -> Expression Vec3
-by33 =
-    by
-
-
-by44 : Expression Vec4 -> Expression Vec4 -> Expression Vec4
-by44 =
-    by
-
-
-by12 : Expression Float -> Expression Vec2 -> Expression Vec2
+by12 : Expression Float_ -> Expression Vec2 -> Expression Vec2
 by12 =
     unsafeBinary By
 
 
-by13 : Expression Float -> Expression Vec3 -> Expression Vec3
+by13 : Expression Float_ -> Expression Vec3 -> Expression Vec3
 by13 =
     unsafeBinary By
 
 
-by31 : Expression Vec3 -> Expression Float -> Expression Vec3
+by31 : Expression Vec3 -> Expression Float_ -> Expression Vec3
 by31 =
     unsafeBinary By
 
 
-by : Expression a -> Expression a -> Expression a
+by : Expression (Vec t d) -> Expression (Vec t d) -> Expression (Vec t d)
 by =
     unsafeBinary By
 
@@ -194,7 +175,7 @@ by =
 -- Division
 
 
-div11 : Expression Float -> Expression Float -> Expression Float
+div11 : Expression Float_ -> Expression Float_ -> Expression Float_
 div11 =
     div
 
@@ -232,22 +213,22 @@ arraym33 =
 -- Comparisons
 
 
-lt : Expression Float -> Expression Float -> Expression Bool
+lt : Expression Float_ -> Expression Float_ -> Expression Bool
 lt =
     unsafeBinary (RelationOperation LessThan)
 
 
-leq : Expression Float -> Expression Float -> Expression Bool
+leq : Expression Float_ -> Expression Float_ -> Expression Bool
 leq =
     unsafeBinary (RelationOperation LessThanOrEquals)
 
 
-gt : Expression Float -> Expression Float -> Expression Bool
+gt : Expression Float_ -> Expression Float_ -> Expression Bool
 gt =
     unsafeBinary (RelationOperation GreaterThan)
 
 
-geq : Expression Float -> Expression Float -> Expression Bool
+geq : Expression Float_ -> Expression Float_ -> Expression Bool
 geq =
     unsafeBinary (RelationOperation GreaterThanOrEquals)
 

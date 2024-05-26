@@ -1,6 +1,6 @@
 module Glsl.Generator exposing (File, FunDecl, adds2, adds3, adds4, and, ands, assign, assignAdd, assignBy, assignOut, boolT, break, continue, decl, def, def1, def2, def3, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun1_, fun2, fun2_, fun3, fun3_, fun4, fun4_, fun5, fun5_, funDeclToGlsl, gl_FragColor, gl_FragCoord, ifElse, if_, in_, intT, main_, mat3, mat3T, minusOne, nop, one, or, ors, out, return, statementToGlsl, ternary, ternary3, vec2, vec2T, vec2Zero, vec3, vec3T, vec3Zero, vec4, vec4T, vec4Zero, voidT, zero)
 
-import Glsl exposing (BinaryOperation(..), Bool_, Declaration(..), Expr(..), Expression(..), Float_, In, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, false, float1, true, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap2, unsafeMap3, var, withContinuation, withExpression, withStatement)
+import Glsl exposing (BinaryOperation(..), Bool_, Declaration(..), Expr(..), Expression(..), Float_, In, Int_, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, false, float1, true, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap2, unsafeMap3, var, withContinuation, withExpression, withStatement)
 import Glsl.Functions exposing (vec211, vec3111, vec41111)
 import Glsl.Operations exposing (add22, add33, add44)
 import Glsl.PrettyPrinter
@@ -529,7 +529,7 @@ def typeF name val k =
     def1 ( typeF name, val ) k
 
 
-float : String -> Expression Float -> (Expression Float -> Statement r) -> Statement r
+float : String -> Expression Float_ -> (Expression Float_ -> Statement r) -> Statement r
 float =
     def floatT
 
@@ -641,17 +641,17 @@ voidT n =
     TypedName TVoid n
 
 
-boolT : TypingFunction Bool
+boolT : TypingFunction Bool_
 boolT n =
     TypedName TBool n
 
 
-intT : TypingFunction Int
+intT : TypingFunction Int_
 intT n =
     TypedName TInt n
 
 
-floatT : TypingFunction Float
+floatT : TypingFunction Float_
 floatT n =
     TypedName TFloat n
 

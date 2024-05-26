@@ -1,14 +1,20 @@
 module Glsl.Functions exposing
-    ( abs, abs1, abs2, abs3, abs4, absd1, absd2, absd3, absd4, absi1, absi2, absi3, absi4
-    , acos, acos1, acos2, acos3, acos4
+    ( abs1, abs2, abs3, abs4, absd1, absd2, absd3, absd4, absi1, absi2, absi3, absi4
+    , abs_
+    , acos1, acos2, acos3, acos4
+    , acos_
     , acosh, acosh1, acosh2, acosh3, acosh4
-    , asin, asin1, asin2, asin3, asin4
+    , asin1, asin2, asin3, asin4
+    , asin_
     , asinh, asinh1, asinh2, asinh3, asinh4
-    , atan, atan1, atan11, atan2, atan22, atan3, atan33, atan4, atan44
+    , atan1, atan11, atan2, atan22, atan3, atan33, atan4, atan44
+    , atan_
     , atanh, atanh1, atanh2, atanh3, atanh4
     , ceil, ceil1, ceil2, ceil3, ceil4, ceild1, ceild2, ceild3, ceild4
-    , clamp, clamp111, clamp211, clamp222, clamp311, clamp333, clamp411, clamp444, clampd1d1d1, clampd2d1d1, clampd2d2d2, clampd3d1d1, clampd3d3d3, clampd4d1d1, clampd4d4d4, clampi1i1i1, clampi2i1i1, clampi2i2i2, clampi3i1i1, clampi3i3i3, clampi4i1i1, clampi4i4i4, clampu1u1u1, clampu2u1u1, clampu2u2u2, clampu3u1u1, clampu3u3u3, clampu4u1u1, clampu4u4u4
-    , cos, cos1, cos2, cos3, cos4
+    , clamp111, clamp211, clamp222, clamp311, clamp333, clamp411, clamp444, clampd1d1d1, clampd2d1d1, clampd2d2d2, clampd3d1d1, clampd3d3d3, clampd4d1d1, clampd4d4d4, clampi1i1i1, clampi2i1i1, clampi2i2i2, clampi3i1i1, clampi3i3i3, clampi4i1i1, clampi4i4i4, clampu1u1u1, clampu2u1u1, clampu2u2u2, clampu3u1u1, clampu3u3u3, clampu4u1u1, clampu4u4u4
+    , clamp_
+    , cos1, cos2, cos3, cos4
+    , cos_
     , cosh, cosh1, cosh2, cosh3, cosh4
     , cross33, crossd3d3
     , dFdx, dFdx1, dFdx2, dFdx3, dFdx4
@@ -17,7 +23,8 @@ module Glsl.Functions exposing
     , dFdy, dFdy1, dFdy2, dFdy3, dFdy4
     , dFdyCoarse, dFdyCoarse1, dFdyCoarse2, dFdyCoarse3, dFdyCoarse4
     , dFdyFine, dFdyFine1, dFdyFine2, dFdyFine3, dFdyFine4
-    , degrees, degrees1, degrees2, degrees3, degrees4
+    , degrees1, degrees2, degrees3, degrees4
+    , degrees_
     , distance, distance11, distance22, distance33, distance44, distanced1d1, distanced2d2, distanced3d3, distanced4d4
     , dot, dot11, dot22, dot33, dot44, dotd1d1, dotd2d2, dotd3d3, dotd4d4
     , exp, exp1, exp2, exp3, exp4
@@ -26,7 +33,8 @@ module Glsl.Functions exposing
     , floati1
     , floatBitsToInt1, floatBitsToInt2, floatBitsToInt3, floatBitsToInt4
     , floatBitsToUint1, floatBitsToUint2, floatBitsToUint3, floatBitsToUint4
-    , floor, floor1, floor2, floor3, floor4, floord1, floord2, floord3, floord4
+    , floor1, floor2, floor3, floor4, floord1, floord2, floord3, floord4
+    , floor_
     , fma, fma111, fma222, fma333, fma444, fmad1d1d1, fmad2d2d2, fmad3d3d3, fmad4d4d4
     , fract, fract1, fract2, fract3, fract4, fractd1, fractd2, fractd3, fractd4
     , frexp1oi1, frexp2oi2, frexp3oi3, frexp4oi4, frexpd1oi1, frexpd2oi2, frexpd3oi3, frexpd4oi4
@@ -46,25 +54,32 @@ module Glsl.Functions exposing
     , log, log1, log2, log3, log4
     , log21, log22, log23, log24
     , mat3333
-    , max, max11, max21, max22, max31, max33, max41, max44, maxd1d1, maxd2d1, maxd2d2, maxd3d1, maxd3d3, maxd4d1, maxd4d4, maxi1i1, maxi2i1, maxi2i2, maxi3i1, maxi3i3, maxi4i1, maxi4i4, maxu1u1, maxu2u1, maxu2u2, maxu3u1, maxu3u3, maxu4u1, maxu4u4
-    , min, min11, min21, min22, min31, min33, min41, min44, mind1d1, mind2d1, mind2d2, mind3d1, mind3d3, mind4d1, mind4d4, mini1i1, mini2i1, mini2i2, mini3i1, mini3i3, mini4i1, mini4i4, minu1u1, minu2u1, minu2u2, minu3u1, minu3u3, minu4u1, minu4u4
+    , max11, max21, max22, max31, max33, max41, max44, maxd1d1, maxd2d1, maxd2d2, maxd3d1, maxd3d3, maxd4d1, maxd4d4, maxi1i1, maxi2i1, maxi2i2, maxi3i1, maxi3i3, maxi4i1, maxi4i4, maxu1u1, maxu2u1, maxu2u2, maxu3u1, maxu3u3, maxu4u1, maxu4u4
+    , max_
+    , min11, min21, min22, min31, min33, min41, min44, mind1d1, mind2d1, mind2d2, mind3d1, mind3d3, mind4d1, mind4d4, mini1i1, mini2i1, mini2i2, mini3i1, mini3i3, mini4i1, mini4i4, minu1u1, minu2u1, minu2u2, minu3u1, minu3u3, minu4u1, minu4u4
+    , min_
     , mix, mix111, mix221, mix222, mix331, mix333, mix441, mix444, mixd1d1d1, mixd2d2d1, mixd2d2d2, mixd3d3d1, mixd3d3d3, mixd4d4d1, mixd4d4d4
     , mod, mod11, mod21, mod22, mod31, mod33, mod41, mod44, modd1d1, modd2d1, modd2d2, modd3d1, modd3d3, modd4d1, modd4d4
     , modf, modf1o1, modf2o2, modf3o3, modf4o4, modfd1od1, modfd2od2, modfd3od3, modfd4od4
     , normalize, normalize1, normalize2, normalize3, normalize4, normalized1, normalized2, normalized3, normalized4
     , pow, pow11, pow22, pow33, pow44
-    , radians, radians1, radians2, radians3, radians4
+    , radians1, radians2, radians3, radians4
+    , radians_
     , reflect, reflect11, reflect22, reflect33, reflect44, reflectd1d1, reflectd2d2, reflectd3d3, reflectd4d4
     , refract, refract111, refract221, refract331, refract441, refractd1d11, refractd2d21, refractd3d31, refractd4d41
-    , round, round1, round2, round3, round4, roundd1, roundd2, roundd3, roundd4
+    , round1, round2, round3, round4, roundd1, roundd2, roundd3, roundd4
     , roundEven, roundEven1, roundEven2, roundEven3, roundEven4, roundEvend1, roundEvend2, roundEvend3, roundEvend4
+    , round_
     , sign, sign1, sign2, sign3, sign4, signd1, signd2, signd3, signd4, signi1, signi2, signi3, signi4
-    , sin, sin1, sin2, sin3, sin4
+    , sin1, sin2, sin3, sin4
+    , sin_
     , sinh, sinh1, sinh2, sinh3, sinh4
     , smoothstep, smoothstep111, smoothstep112, smoothstep113, smoothstep114, smoothstep222, smoothstep333, smoothstep444, smoothstepd1d1d1, smoothstepd1d1d2, smoothstepd1d1d3, smoothstepd1d1d4, smoothstepd2d2d2, smoothstepd3d3d3, smoothstepd4d4d4
-    , sqrt, sqrt1, sqrt2, sqrt3, sqrt4, sqrtd1, sqrtd2, sqrtd3, sqrtd4
+    , sqrt1, sqrt2, sqrt3, sqrt4, sqrtd1, sqrtd2, sqrtd3, sqrtd4
+    , sqrt_
     , step, step11, step12, step13, step14, step22, step33, step44, stepd1d1, stepd1d2, stepd1d3, stepd1d4, stepd2d2, stepd3d3, stepd4d4
-    , tan, tan1, tan2, tan3, tan4
+    , tan1, tan2, tan3, tan4
+    , tan_
     , tanh, tanh1, tanh2, tanh3, tanh4
     , trunc, trunc1, trunc2, trunc3, trunc4, truncd1, truncd2, truncd3, truncd4
     , uintBitsToFloatu1, uintBitsToFloatu2, uintBitsToFloatu3, uintBitsToFloatu4
@@ -78,12 +93,22 @@ module Glsl.Functions exposing
 
 ## abs
 
-@docs abs, abs1, abs2, abs3, abs4, absd1, absd2, absd3, absd4, absi1, absi2, absi3, absi4
+@docs abs1, abs2, abs3, abs4, absd1, absd2, absd3, absd4, absi1, absi2, absi3, absi4
+
+
+## abs\_
+
+@docs abs_
 
 
 ## acos
 
-@docs acos, acos1, acos2, acos3, acos4
+@docs acos1, acos2, acos3, acos4
+
+
+## acos\_
+
+@docs acos_
 
 
 ## acosh
@@ -93,7 +118,12 @@ module Glsl.Functions exposing
 
 ## asin
 
-@docs asin, asin1, asin2, asin3, asin4
+@docs asin1, asin2, asin3, asin4
+
+
+## asin\_
+
+@docs asin_
 
 
 ## asinh
@@ -103,12 +133,17 @@ module Glsl.Functions exposing
 
 ## atan
 
-@docs atan, atan1, atan11, atan2, atan22, atan3, atan33, atan4, atan44
+@docs atan1, atan11, atan2, atan22, atan3, atan33, atan4, atan44
 
 
 ## atan2
 
 @docs atan2
+
+
+## atan\_
+
+@docs atan_
 
 
 ## atanh
@@ -123,12 +158,22 @@ module Glsl.Functions exposing
 
 ## clamp
 
-@docs clamp, clamp111, clamp211, clamp222, clamp311, clamp333, clamp411, clamp444, clampd1d1d1, clampd2d1d1, clampd2d2d2, clampd3d1d1, clampd3d3d3, clampd4d1d1, clampd4d4d4, clampi1i1i1, clampi2i1i1, clampi2i2i2, clampi3i1i1, clampi3i3i3, clampi4i1i1, clampi4i4i4, clampu1u1u1, clampu2u1u1, clampu2u2u2, clampu3u1u1, clampu3u3u3, clampu4u1u1, clampu4u4u4
+@docs clamp111, clamp211, clamp222, clamp311, clamp333, clamp411, clamp444, clampd1d1d1, clampd2d1d1, clampd2d2d2, clampd3d1d1, clampd3d3d3, clampd4d1d1, clampd4d4d4, clampi1i1i1, clampi2i1i1, clampi2i2i2, clampi3i1i1, clampi3i3i3, clampi4i1i1, clampi4i4i4, clampu1u1u1, clampu2u1u1, clampu2u2u2, clampu3u1u1, clampu3u3u3, clampu4u1u1, clampu4u4u4
+
+
+## clamp\_
+
+@docs clamp_
 
 
 ## cos
 
-@docs cos, cos1, cos2, cos3, cos4
+@docs cos1, cos2, cos3, cos4
+
+
+## cos\_
+
+@docs cos_
 
 
 ## cosh
@@ -173,7 +218,12 @@ module Glsl.Functions exposing
 
 ## degrees
 
-@docs degrees, degrees1, degrees2, degrees3, degrees4
+@docs degrees1, degrees2, degrees3, degrees4
+
+
+## degrees\_
+
+@docs degrees_
 
 
 ## distance
@@ -218,7 +268,12 @@ module Glsl.Functions exposing
 
 ## floor
 
-@docs floor, floor1, floor2, floor3, floor4, floord1, floord2, floord3, floord4
+@docs floor1, floor2, floor3, floor4, floord1, floord2, floord3, floord4
+
+
+## floor\_
+
+@docs floor_
 
 
 ## fma
@@ -318,12 +373,22 @@ module Glsl.Functions exposing
 
 ## max
 
-@docs max, max11, max21, max22, max31, max33, max41, max44, maxd1d1, maxd2d1, maxd2d2, maxd3d1, maxd3d3, maxd4d1, maxd4d4, maxi1i1, maxi2i1, maxi2i2, maxi3i1, maxi3i3, maxi4i1, maxi4i4, maxu1u1, maxu2u1, maxu2u2, maxu3u1, maxu3u3, maxu4u1, maxu4u4
+@docs max11, max21, max22, max31, max33, max41, max44, maxd1d1, maxd2d1, maxd2d2, maxd3d1, maxd3d3, maxd4d1, maxd4d4, maxi1i1, maxi2i1, maxi2i2, maxi3i1, maxi3i3, maxi4i1, maxi4i4, maxu1u1, maxu2u1, maxu2u2, maxu3u1, maxu3u3, maxu4u1, maxu4u4
+
+
+## max\_
+
+@docs max_
 
 
 ## min
 
-@docs min, min11, min21, min22, min31, min33, min41, min44, mind1d1, mind2d1, mind2d2, mind3d1, mind3d3, mind4d1, mind4d4, mini1i1, mini2i1, mini2i2, mini3i1, mini3i3, mini4i1, mini4i4, minu1u1, minu2u1, minu2u2, minu3u1, minu3u3, minu4u1, minu4u4
+@docs min11, min21, min22, min31, min33, min41, min44, mind1d1, mind2d1, mind2d2, mind3d1, mind3d3, mind4d1, mind4d4, mini1i1, mini2i1, mini2i2, mini3i1, mini3i3, mini4i1, mini4i4, minu1u1, minu2u1, minu2u2, minu3u1, minu3u3, minu4u1, minu4u4
+
+
+## min\_
+
+@docs min_
 
 
 ## mix
@@ -353,7 +418,12 @@ module Glsl.Functions exposing
 
 ## radians
 
-@docs radians, radians1, radians2, radians3, radians4
+@docs radians1, radians2, radians3, radians4
+
+
+## radians\_
+
+@docs radians_
 
 
 ## reflect
@@ -368,12 +438,17 @@ module Glsl.Functions exposing
 
 ## round
 
-@docs round, round1, round2, round3, round4, roundd1, roundd2, roundd3, roundd4
+@docs round1, round2, round3, round4, roundd1, roundd2, roundd3, roundd4
 
 
 ## roundEven
 
 @docs roundEven, roundEven1, roundEven2, roundEven3, roundEven4, roundEvend1, roundEvend2, roundEvend3, roundEvend4
+
+
+## round\_
+
+@docs round_
 
 
 ## sign
@@ -383,7 +458,12 @@ module Glsl.Functions exposing
 
 ## sin
 
-@docs sin, sin1, sin2, sin3, sin4
+@docs sin1, sin2, sin3, sin4
+
+
+## sin\_
+
+@docs sin_
 
 
 ## sinh
@@ -398,7 +478,12 @@ module Glsl.Functions exposing
 
 ## sqrt
 
-@docs sqrt, sqrt1, sqrt2, sqrt3, sqrt4, sqrtd1, sqrtd2, sqrtd3, sqrtd4
+@docs sqrt1, sqrt2, sqrt3, sqrt4, sqrtd1, sqrtd2, sqrtd3, sqrtd4
+
+
+## sqrt\_
+
+@docs sqrt_
 
 
 ## step
@@ -408,7 +493,12 @@ module Glsl.Functions exposing
 
 ## tan
 
-@docs tan, tan1, tan2, tan3, tan4
+@docs tan1, tan2, tan3, tan4
+
+
+## tan\_
+
+@docs tan_
 
 
 ## tanh
@@ -3877,43 +3967,43 @@ vec4i1i1i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
-radians : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
-radians a =
+radians_ : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
+radians_ a =
     Glsl.unsafeCall1 "radians" [] a
 
 
-degrees : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
-degrees a =
+degrees_ : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
+degrees_ a =
     Glsl.unsafeCall1 "degrees" [] a
 
 
-sin : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
-sin a =
+sin_ : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
+sin_ a =
     Glsl.unsafeCall1 "sin" [] a
 
 
-cos : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
-cos a =
+cos_ : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
+cos_ a =
     Glsl.unsafeCall1 "cos" [] a
 
 
-tan : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
-tan a =
+tan_ : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
+tan_ a =
     Glsl.unsafeCall1 "tan" [] a
 
 
-asin : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
-asin a =
+asin_ : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
+asin_ a =
     Glsl.unsafeCall1 "asin" [] a
 
 
-acos : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
-acos a =
+acos_ : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
+acos_ a =
     Glsl.unsafeCall1 "acos" [] a
 
 
-atan : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
-atan a =
+atan_ : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
+atan_ a =
     Glsl.unsafeCall1 "atan" [] a
 
 
@@ -3983,8 +4073,8 @@ log2 a =
     Glsl.unsafeCall1 "log2" [] a
 
 
-sqrt : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
-sqrt a =
+sqrt_ : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
+sqrt_ a =
     Glsl.unsafeCall1 "sqrt" [] a
 
 
@@ -3993,8 +4083,8 @@ inversesqrt a =
     Glsl.unsafeCall1 "inversesqrt" [] a
 
 
-abs : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
-abs a =
+abs_ : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
+abs_ a =
     Glsl.unsafeCall1 "abs" [] a
 
 
@@ -4003,8 +4093,8 @@ sign a =
     Glsl.unsafeCall1 "sign" [] a
 
 
-floor : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
-floor a =
+floor_ : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
+floor_ a =
     Glsl.unsafeCall1 "floor" [] a
 
 
@@ -4013,8 +4103,8 @@ trunc a =
     Glsl.unsafeCall1 "trunc" [] a
 
 
-round : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
-round a =
+round_ : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
+round_ a =
     Glsl.unsafeCall1 "round" [] a
 
 
@@ -4049,28 +4139,28 @@ modf a b =
     Glsl.unsafeCall2 "modf" [] a b
 
 
-min :
+min_ :
     Glsl.Expression (Glsl.Vec t a)
     -> Glsl.Expression (Glsl.Vec t a)
     -> Glsl.Expression (Glsl.Vec t a)
-min a b =
+min_ a b =
     Glsl.unsafeCall2 "min" [] a b
 
 
-max :
+max_ :
     Glsl.Expression (Glsl.Vec t a)
     -> Glsl.Expression (Glsl.Vec t a)
     -> Glsl.Expression (Glsl.Vec t a)
-max a b =
+max_ a b =
     Glsl.unsafeCall2 "max" [] a b
 
 
-clamp :
+clamp_ :
     Glsl.Expression (Glsl.Vec t a)
     -> Glsl.Expression (Glsl.Vec t a)
     -> Glsl.Expression (Glsl.Vec t a)
     -> Glsl.Expression (Glsl.Vec t a)
-clamp a b c =
+clamp_ a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
 
 

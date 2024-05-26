@@ -3,11 +3,12 @@ module ShaderToy exposing (suite)
 import ErrorUtils
 import Expect
 import Glsl exposing (float1)
-import Glsl.Functions exposing (dot33, fract1, sin1, vec3111)
+import Glsl.Functions exposing (dot, dot33, fract, fract1, sin1, sin_, vec3111)
 import Glsl.Generator exposing (floatT, fun1_, return, vec3T)
-import Glsl.Operations exposing (by11)
+import Glsl.Operations exposing (by, by11)
 import Glsl.Parser
 import Parser
+import String.Extra exposing (quote)
 import Test exposing (Test, describe, test)
 
 
@@ -66,12 +67,12 @@ float hash3(vec3 p) {
         [ (fun1_ floatT "hash3" (vec3T "p") <|
             \p ->
                 return
-                    (fract1
-                        (by11
-                            (sin1
-                                (by11
+                    (fract
+                        (by
+                            (sin_
+                                (by
                                     (float1 1.0e3)
-                                    (dot33 p (vec3111 (float1 1) (float1 57) (float1 -13.7)))
+                                    (dot p (vec3111 (float1 1) (float1 57) (float1 -13.7)))
                                 )
                             )
                             (float1 4375.5453)

@@ -7,6 +7,7 @@ import Gen.CodeGen.Generate as Generate
 import Gen.Glsl
 import Glsl exposing (BinaryOperation(..), Declaration(..), Expr(..), Expression(..), Stat(..), Statement(..), Type(..))
 import List.Extra
+import Set exposing (Set)
 import SortedSet exposing (SortedSet)
 
 
@@ -801,7 +802,7 @@ generic2_out2 name =
 
 generic : String -> List Type.Annotation -> Type.Annotation -> ( String, Elm.Expression )
 generic name tipes result =
-    ( name
+    ( avoidClash name
     , Elm.function
         (List.indexedMap
             (\i t ->
@@ -826,6 +827,56 @@ generic name tipes result =
                 |> Elm.withType result
         )
     )
+
+
+avoidClash : String -> String
+avoidClash name =
+    if Set.member name basicNames then
+        name ++ "_"
+
+    else
+        name
+
+
+basicNames : Set String
+basicNames =
+    [ "round"
+    , "floor"
+    , "ceiling"
+    , "truncate"
+    , "max"
+    , "min"
+    , "compare"
+    , "not"
+    , "xor"
+    , "modBy"
+    , "remainderBy"
+    , "negate"
+    , "abs"
+    , "clamp"
+    , "sqrt"
+    , "logBase"
+    , "e"
+    , "degrees"
+    , "radians"
+    , "turns"
+    , "pi"
+    , "cos"
+    , "sin"
+    , "tan"
+    , "acos"
+    , "asin"
+    , "atan"
+    , "atan2"
+    , "toPolar"
+    , "fromPolar"
+    , "isNaN"
+    , "isInfinite"
+    , "identity"
+    , "always"
+    , "never"
+    ]
+        |> Set.fromList
 
 
 exprOutVecAnn : Type.Annotation
