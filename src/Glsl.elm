@@ -6,11 +6,11 @@ module Glsl exposing
     , true, false, int1, float1, var
     , unsafeDot, dotX, dotY, dotZ, dotXY
     , TypingFunction, TypedName(..), Type(..)
-    , Vec2, Vec3, Vec4
-    , IVec2, IVec3, IVec4
-    , BVec2, BVec3, BVec4
-    , UInt, UVec2, UVec3, UVec4
-    , Double, DVec2, DVec3, DVec4
+    , Float_, Vec2, Vec3, Vec4
+    , Int_, IVec2, IVec3, IVec4
+    , Bool_, BVec2, BVec3, BVec4
+    , UInt, UInt_, UVec2, UVec3, UVec4
+    , Double, Double_, DVec2, DVec3, DVec4
     , Mat2, Mat3, Mat4, Mat23, Mat24, Mat32, Mat34, Mat42, Mat43
     , DMat2, DMat3, DMat4, DMat23, DMat24, DMat32, DMat34, DMat42, DMat43
     , Void, In, Out
@@ -40,11 +40,11 @@ module Glsl exposing
 # Typelevel types
 
 @docs TypingFunction, TypedName, Type
-@docs Vec2, Vec3, Vec4
-@docs IVec2, IVec3, IVec4
-@docs BVec2, BVec3, BVec4
-@docs UInt, UVec2, UVec3, UVec4
-@docs Double, DVec2, DVec3, DVec4
+@docs Float_, Vec2, Vec3, Vec4
+@docs Int_, IVec2, IVec3, IVec4
+@docs Bool_, BVec2, BVec3, BVec4
+@docs UInt, UInt_, UVec2, UVec3, UVec4
+@docs Double, Double_, DVec2, DVec3, DVec4
 @docs Mat2, Mat3, Mat4, Mat23, Mat24, Mat32, Mat34, Mat42, Mat43
 @docs DMat2, DMat3, DMat4, DMat23, DMat24, DMat32, DMat34, DMat42, DMat43
 @docs Void, In, Out
@@ -451,6 +451,10 @@ type Vec d
     = Vec
 
 
+type alias Float_ =
+    Vec F1
+
+
 type alias Vec2 =
     Vec F2
 
@@ -461,6 +465,10 @@ type alias Vec3 =
 
 type alias Vec4 =
     Vec F4
+
+
+type alias F1 =
+    Float
 
 
 type alias F2 =
@@ -484,6 +492,10 @@ type alias F4 =
     }
 
 
+type alias Int_ =
+    Vec I1
+
+
 type alias IVec2 =
     Vec I2
 
@@ -494,6 +506,10 @@ type alias IVec3 =
 
 type alias IVec4 =
     Vec I4
+
+
+type alias I1 =
+    Int
 
 
 type alias I2 =
@@ -517,6 +533,10 @@ type alias I4 =
     }
 
 
+type alias Bool_ =
+    Vec B1
+
+
 type alias BVec2 =
     Vec B2
 
@@ -527,6 +547,10 @@ type alias BVec3 =
 
 type alias BVec4 =
     Vec B4
+
+
+type alias B1 =
+    Bool
 
 
 type alias B2 =
@@ -554,6 +578,10 @@ type UInt
     = UInt
 
 
+type alias UInt_ =
+    Vec U1
+
+
 type alias UVec2 =
     Vec U2
 
@@ -564,6 +592,10 @@ type alias UVec3 =
 
 type alias UVec4 =
     Vec U4
+
+
+type alias U1 =
+    UInt
 
 
 type alias U2 =
@@ -591,6 +623,10 @@ type Double
     = Double
 
 
+type alias Double_ =
+    Vec D1
+
+
 type alias DVec2 =
     Vec D2
 
@@ -601,6 +637,10 @@ type alias DVec3 =
 
 type alias DVec4 =
     Vec D4
+
+
+type alias D1 =
+    Double
 
 
 type alias D2 =
