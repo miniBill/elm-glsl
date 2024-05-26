@@ -442,11 +442,16 @@ builtinFunctions =
 
 builtin_new : List ( String, List Type, Type )
 builtin_new =
-    commonFunctions ++ geometricFunctions
+    functionsCommon ++ functionsGeometric ++ functionsDerivative
 
 
-commonFunctions : List ( String, List Type, Type )
-commonFunctions =
+genericFunctions : List ( String, Elm.Expression )
+genericFunctions =
+    genericCommon ++ genericGeometric ++ genericDerivative
+
+
+functionsCommon : List ( String, List Type, Type )
+functionsCommon =
     [ unary genFIDType "abs" genFIDType
     , unary genFIDType "sign" genFIDType
     , unary genFDType "floor" genFDType
@@ -488,30 +493,6 @@ commonFunctions =
         |> List.concat
 
 
-geometricFunctions : List ( String, List Type, Type )
-geometricFunctions =
-    let
-        fdvec3 : List Type
-        fdvec3 =
-            [ TVec3, TDVec3 ]
-    in
-    [ unary fdType "length" genFDType
-    , binary fdType "distance" genFDType genFDType
-    , binary fdType "dot" genFDType genFDType
-    , binary fdvec3 "cross" fdvec3 fdvec3
-    , unary genFDType "normalize" genFDType
-    , ternary genFDType "faceforward" genFDType genFDType genFDType
-    , binary genFDType "reflect" genFDType genFDType
-    , ternary genFDType "refract" genFDType genFDType (float ++ float)
-    ]
-        |> List.concat
-
-
-genericFunctions : List ( String, Elm.Expression )
-genericFunctions =
-    genericCommon ++ genericGeometric
-
-
 genericCommon : List ( String, Elm.Expression )
 genericCommon =
     [ generic1 "abs"
@@ -534,6 +515,25 @@ genericCommon =
     ]
 
 
+functionsGeometric : List ( String, List Type, Type )
+functionsGeometric =
+    let
+        fdvec3 : List Type
+        fdvec3 =
+            [ TVec3, TDVec3 ]
+    in
+    [ unary fdType "length" genFDType
+    , binary fdType "distance" genFDType genFDType
+    , binary fdType "dot" genFDType genFDType
+    , binary fdvec3 "cross" fdvec3 fdvec3
+    , unary genFDType "normalize" genFDType
+    , ternary genFDType "faceforward" genFDType genFDType genFDType
+    , binary genFDType "reflect" genFDType genFDType
+    , ternary genFDType "refract" genFDType genFDType (float ++ float)
+    ]
+        |> List.concat
+
+
 genericGeometric : List ( String, Elm.Expression )
 genericGeometric =
     [ generic1_toscalar "length"
@@ -543,6 +543,29 @@ genericGeometric =
     , generic3 "faceforward"
     , generic2 "reflect"
     , generic "refract" [ exprVecAnn, exprVecAnn, exprFloat ] exprVecAnn
+    ]
+
+
+functionsDerivative : List ( String, List Type, Type )
+functionsDerivative =
+    [ unary genType "dFdx" genType
+    , unary genType "dFdy" genType
+    , unary genType "dFdxFine" genType
+    , unary genType "dFdyFine" genType
+    , unary genType "dFdxCoarse" genType
+    , unary genType "dFdyCoarse" genType
+    ]
+        |> List.concat
+
+
+genericDerivative : List ( String, Elm.Expression )
+genericDerivative =
+    [ generic1F "dFdx"
+    , generic1F "dFdy"
+    , generic1F "dFdxFine"
+    , generic1F "dFdyFine"
+    , generic1F "dFdxCoarse"
+    , generic1F "dFdyCoarse"
     ]
 
 
@@ -743,6 +766,11 @@ generic1 name =
     generic name [ exprVecAnn ] exprVecAnn
 
 
+generic1F : String -> ( String, Elm.Expression )
+generic1F name =
+    generic name [ exprVecFAnn ] exprVecFAnn
+
+
 generic1_toscalar : String -> ( String, Elm.Expression )
 generic1_toscalar name =
     generic name [ exprVecAnn ] exprScalar
@@ -809,6 +837,13 @@ exprVecAnn : Type.Annotation
 exprVecAnn =
     Type.var "a"
         |> Gen.Glsl.annotation_.vec (Type.var "t")
+        |> Gen.Glsl.annotation_.expression
+
+
+exprVecFAnn : Type.Annotation
+exprVecFAnn =
+    Type.var "a"
+        |> Gen.Glsl.annotation_.vec Type.float
         |> Gen.Glsl.annotation_.expression
 
 
