@@ -476,6 +476,18 @@ commonFunctions =
     ]
         |> List.concat
 
+genericFunctions : List ( String, Elm.Expression )
+genericFunctions =
+    [ genericVecVec "abs"
+    , genericVecVec "sign"
+    , genericVecVec "floor"
+    , genericVecVec "trunc"
+    , genericVecVec "round"
+    , genericVecVec "roundEven"
+    , genericVecVec "ceil"
+    , genericVecVec "fract"
+    ]
+
 
 unary : String -> List Type -> (Type -> Type) -> List ( String, List Type, Type )
 unary name inputs toOutput =
@@ -713,18 +725,6 @@ builtinDecls =
     in
     specific ++ generic
 
-
-genericFunctions : List ( String, Elm.Expression )
-genericFunctions =
-    [ genericVecVec "abs"
-    , genericVecVec "sign"
-    , genericVecVec "floor"
-    , genericVecVec "trunc"
-    , genericVecVec "round"
-    , genericVecVec "roundEven"
-    , genericVecVec "ceil"
-    , genericVecVec "fract"
-    ]
 
 
 genericVecVec : String -> ( String, Elm.Expression )
