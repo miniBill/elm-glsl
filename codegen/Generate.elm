@@ -467,6 +467,8 @@ commonFunctions =
     , binary "mod" genType genType always
     , binary "mod" genDType [ TDouble ] always
     , binary "mod" genDType genDType always
+    , binary "modf" genType (List.map TOut genType) always
+    , binary "modf" genDType (List.map TOut genDType) always
     ]
         |> List.concat
 
@@ -481,6 +483,8 @@ genericFunctions =
     , genericVecVec "roundEven"
     , genericVecVec "ceil"
     , genericVecVec "fract"
+    , genericVecVecVec "mod"
+    , genericVecVecOutVec "modf"
     ]
 
 
@@ -733,7 +737,8 @@ builtinDecls =
 genericVecVec : String -> ( String, Elm.Expression )
 genericVecVec name =
     ( name
-    , Elm.fn ( "a", Just (exprVecAnn "a") )
+    , Elm.fn
+        ( "a", Just (exprVecAnn "a") )
         (\a ->
             Elm.apply
                 (Elm.value
@@ -746,6 +751,54 @@ genericVecVec name =
                 |> Elm.withType (exprVecAnn "a")
         )
     )
+
+
+genericVecVecVec : String -> ( String, Elm.Expression )
+genericVecVecVec name =
+    ( name
+    , Elm.fn2
+        ( "a", Just (exprVecAnn "a") )
+        ( "b", Just (exprVecAnn "a") )
+        (\a b ->
+            Elm.apply
+                (Elm.value
+                    { importFrom = [ "Glsl" ]
+                    , name = "unsafeCall2"
+                    , annotation = Nothing
+                    }
+                )
+                [ Elm.string name, Elm.list [], a, b ]
+                |> Elm.withType (exprVecAnn "a")
+        )
+    )
+
+
+genericVecVecOutVec : String -> ( String, Elm.Expression )
+genericVecVecOutVec name =
+    ( name
+    , Elm.fn2
+        ( "a", Just (exprVecAnn "a") )
+        ( "b", Just (exprOutVecAnn "a") )
+        (\a b ->
+            Elm.apply
+                (Elm.value
+                    { importFrom = [ "Glsl" ]
+                    , name = "unsafeCall2"
+                    , annotation = Nothing
+                    }
+                )
+                [ Elm.string name, Elm.list [], a, b ]
+                |> Elm.withType (exprVecAnn "a")
+        )
+    )
+
+
+exprOutVecAnn : String -> Type.Annotation
+exprOutVecAnn inner =
+    Type.var inner
+        |> Gen.Glsl.annotation_.vec
+        |> Gen.Glsl.annotation_.out
+        |> Gen.Glsl.annotation_.expression
 
 
 exprVecAnn : String -> Type.Annotation
