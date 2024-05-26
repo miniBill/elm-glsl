@@ -442,12 +442,53 @@ builtinFunctions =
 
 builtin_new : List ( String, List Type, Type )
 builtin_new =
-    functionsCommon ++ functionsGeometric ++ functionsDerivative
+    functionsTrigonometry ++ functionsCommon ++ functionsGeometric ++ functionsDerivative
 
 
 genericFunctions : List ( String, Elm.Expression )
 genericFunctions =
-    genericCommon ++ genericGeometric ++ genericDerivative
+    genericTrigonometry ++ genericCommon ++ genericGeometric ++ genericDerivative
+
+
+functionsTrigonometry : List ( String, List Type, Type )
+functionsTrigonometry =
+    [ unary genType "radians" genType
+    , unary genType "degrees" genType
+    , unary genType "sin" genType
+    , unary genType "cos" genType
+    , unary genType "tan" genType
+    , unary genType "asin" genType
+    , unary genType "acos" genType
+    , unary genType "atan" genType
+    , binary genType "atan" genType genType
+    , unary genType "sinh" genType
+    , unary genType "cosh" genType
+    , unary genType "tanh" genType
+    , unary genType "asinh" genType
+    , unary genType "acosh" genType
+    , unary genType "atanh" genType
+    ]
+        |> List.concat
+
+
+genericTrigonometry : List ( String, Elm.Expression )
+genericTrigonometry =
+    [ generic1F "radians"
+    , generic1F "degrees"
+    , generic1F "sin"
+    , generic1F "cos"
+    , generic1F "tan"
+    , generic1F "asin"
+    , generic1F "acos"
+    , generic1F "atan"
+    , ( "atan2", Tuple.second <| generic2F "atan" )
+    , generic1F "sinh"
+    , generic1F "cosh"
+    , generic1F "tanh"
+    , generic1F "asinh"
+    , generic1F "acosh"
+    , generic1F "atanh"
+    ]
 
 
 functionsCommon : List ( String, List Type, Type )
@@ -685,16 +726,6 @@ builtin_v_v =
       , "log"
       , "log2"
       , "sqrt"
-
-      -- Trig
-      , "radians"
-      , "degrees"
-      , "sin"
-      , "cos"
-      , "tan"
-      , "asin"
-      , "acos"
-      , "atan"
       ]
     , [ ( [ TFloat ], TFloat )
       , ( [ TVec2 ], TVec2 )
@@ -708,9 +739,6 @@ builtin_vv_v : ( List String, List ( List Type, Type ) )
 builtin_vv_v =
     ( [ -- Complex and power
         "pow"
-
-      -- Trig
-      , "atan"
       ]
     , [ ( [ TFloat, TFloat ], TFloat )
       , ( [ TVec2, TVec2 ], TVec2 )
@@ -783,6 +811,11 @@ generic1_toscalar name =
 generic2 : String -> ( String, Elm.Expression )
 generic2 name =
     generic name [ exprVecAnn, exprVecAnn ] exprVecAnn
+
+
+generic2F : String -> ( String, Elm.Expression )
+generic2F name =
+    generic name [ exprVecFAnn, exprVecFAnn ] exprVecFAnn
 
 
 generic2_toscalar : String -> ( String, Elm.Expression )
