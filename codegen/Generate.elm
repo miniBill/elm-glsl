@@ -368,7 +368,6 @@ builtinFunctions =
         regular =
             [ builtin_v_v
             , builtin_vv_v
-            , builtin_vv_s
             , builtin_vvs_v
             ]
                 |> List.concatMap (\( names, kinds ) -> overload names kinds)
@@ -502,6 +501,8 @@ geometricFunctions =
     , binary fdvec3 "cross" fdvec3 fdvec3
     , unary genFDType "normalize" genFDType
     , ternary genFDType "faceforward" genFDType genFDType genFDType
+    , binary genFDType "reflect" genFDType genFDType
+    , ternary genFDType "refract" genFDType genFDType (float ++ float)
     ]
         |> List.concat
 
@@ -540,6 +541,8 @@ genericGeometric =
     , generic2_toscalar "dot"
     , generic1 "normalize"
     , generic3 "faceforward"
+    , generic2 "reflect"
+    , generic "refract" [ exprVecAnn, exprVecAnn, exprFloat ] exprVecAnn
     ]
 
 
@@ -665,7 +668,6 @@ builtin_v_v =
       , "asin"
       , "acos"
       , "atan"
-      , "normalize"
       ]
     , [ ( [ TFloat ], TFloat )
       , ( [ TVec2 ], TVec2 )
@@ -677,36 +679,16 @@ builtin_v_v =
 
 builtin_vv_v : ( List String, List ( List Type, Type ) )
 builtin_vv_v =
-    ( [ -- Comparison
-        "max"
-
-      -- Complex and power
-      , "pow"
+    ( [ -- Complex and power
+        "pow"
 
       -- Trig
       , "atan"
-
-      -- Geometry
-      , "reflect"
       ]
     , [ ( [ TFloat, TFloat ], TFloat )
       , ( [ TVec2, TVec2 ], TVec2 )
       , ( [ TVec3, TVec3 ], TVec3 )
       , ( [ TVec4, TVec4 ], TVec4 )
-      ]
-    )
-
-
-builtin_vv_s : ( List String, List ( List Type, Type ) )
-builtin_vv_s =
-    ( [ -- Geometric
-        "distance"
-      , "dot"
-      ]
-    , [ ( [ TFloat, TFloat ], TFloat )
-      , ( [ TVec2, TVec2 ], TFloat )
-      , ( [ TVec3, TVec3 ], TFloat )
-      , ( [ TVec4, TVec4 ], TFloat )
       ]
     )
 
@@ -744,8 +726,8 @@ builtinDecls =
                             |> Elm.exposeWith { exposeConstructor = False, group = Just baseName }
                     )
 
-        generic : List Elm.Declaration
-        generic =
+        generics : List Elm.Declaration
+        generics =
             genericFunctions
                 |> List.map
                     (\( baseName, body ) ->
@@ -753,124 +735,64 @@ builtinDecls =
                             |> Elm.exposeWith { exposeConstructor = False, group = Just baseName }
                     )
     in
-    specific ++ generic
+    specific ++ generics
 
 
 generic1 : String -> ( String, Elm.Expression )
 generic1 name =
-    ( name
-    , Elm.fn
-        ( "a", Just exprVecAnn )
-        (\a ->
-            Elm.apply
-                (Elm.value
-                    { importFrom = [ "Glsl" ]
-                    , name = "unsafeCall1"
-                    , annotation = Nothing
-                    }
-                )
-                [ Elm.string name, Elm.list [], a ]
-                |> Elm.withType exprVecAnn
-        )
-    )
+    generic name [ exprVecAnn ] exprVecAnn
 
 
 generic1_toscalar : String -> ( String, Elm.Expression )
 generic1_toscalar name =
-    ( name
-    , Elm.fn
-        ( "a", Just exprVecAnn )
-        (\a ->
-            Elm.apply
-                (Elm.value
-                    { importFrom = [ "Glsl" ]
-                    , name = "unsafeCall1"
-                    , annotation = Nothing
-                    }
-                )
-                [ Elm.string name, Elm.list [], a ]
-                |> Elm.withType exprScalar
-        )
-    )
+    generic name [ exprVecAnn ] exprScalar
 
 
 generic2 : String -> ( String, Elm.Expression )
 generic2 name =
-    ( name
-    , Elm.fn2
-        ( "a", Just exprVecAnn )
-        ( "b", Just exprVecAnn )
-        (\a b ->
-            Elm.apply
-                (Elm.value
-                    { importFrom = [ "Glsl" ]
-                    , name = "unsafeCall2"
-                    , annotation = Nothing
-                    }
-                )
-                [ Elm.string name, Elm.list [], a, b ]
-                |> Elm.withType exprVecAnn
-        )
-    )
+    generic name [ exprVecAnn, exprVecAnn ] exprVecAnn
 
 
 generic2_toscalar : String -> ( String, Elm.Expression )
 generic2_toscalar name =
-    ( name
-    , Elm.fn2
-        ( "a", Just exprVecAnn )
-        ( "b", Just exprVecAnn )
-        (\a b ->
-            Elm.apply
-                (Elm.value
-                    { importFrom = [ "Glsl" ]
-                    , name = "unsafeCall2"
-                    , annotation = Nothing
-                    }
-                )
-                [ Elm.string name, Elm.list [], a, b ]
-                |> Elm.withType exprScalar
-        )
-    )
+    generic name [ exprVecAnn, exprVecAnn ] exprScalar
 
 
 generic3 : String -> ( String, Elm.Expression )
 generic3 name =
-    ( name
-    , Elm.fn3
-        ( "a", Just exprVecAnn )
-        ( "b", Just exprVecAnn )
-        ( "c", Just exprVecAnn )
-        (\a b c ->
-            Elm.apply
-                (Elm.value
-                    { importFrom = [ "Glsl" ]
-                    , name = "unsafeCall3"
-                    , annotation = Nothing
-                    }
-                )
-                [ Elm.string name, Elm.list [], a, b, c ]
-                |> Elm.withType exprVecAnn
-        )
-    )
+    generic name [ exprVecAnn, exprVecAnn, exprVecAnn ] exprVecAnn
 
 
 generic2_out2 : String -> ( String, Elm.Expression )
 generic2_out2 name =
+    generic name [ exprVecAnn, exprOutVecAnn ] exprVecAnn
+
+
+generic : String -> List Type.Annotation -> Type.Annotation -> ( String, Elm.Expression )
+generic name tipes result =
     ( name
-    , Elm.fn2
-        ( "a", Just exprVecAnn )
-        ( "b", Just exprOutVecAnn )
-        (\a b ->
+    , Elm.function
+        (List.indexedMap
+            (\i t ->
+                let
+                    arg : String
+                    arg =
+                        String.fromChar (Char.fromCode (i + Char.toCode 'a'))
+                in
+                ( arg, Just t )
+            )
+            tipes
+        )
+        (\args ->
             Elm.apply
                 (Elm.value
                     { importFrom = [ "Glsl" ]
-                    , name = "unsafeCall2"
+                    , name = "unsafeCall" ++ String.fromInt (List.length tipes)
                     , annotation = Nothing
                     }
                 )
-                [ Elm.string name, Elm.list [], a, b ]
-                |> Elm.withType exprVecAnn
+                ([ Elm.string name, Elm.list [] ] ++ args)
+                |> Elm.withType result
         )
     )
 
@@ -894,6 +816,13 @@ exprScalar : Type.Annotation
 exprScalar =
     Gen.Glsl.annotation_.d1
         |> Gen.Glsl.annotation_.vec (Type.var "t")
+        |> Gen.Glsl.annotation_.expression
+
+
+exprFloat : Type.Annotation
+exprFloat =
+    Gen.Glsl.annotation_.d1
+        |> Gen.Glsl.annotation_.vec Type.float
         |> Gen.Glsl.annotation_.expression
 
 

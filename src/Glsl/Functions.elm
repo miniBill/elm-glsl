@@ -42,8 +42,8 @@ module Glsl.Functions exposing
     , normalize, normalize1, normalize2, normalize3, normalize4, normalized1, normalized2, normalized3, normalized4
     , pow11, pow22, pow33, pow44
     , radians1, radians2, radians3, radians4
-    , reflect11, reflect22, reflect33, reflect44
-    , refract111, refract221, refract331, refract441
+    , reflect, reflect11, reflect22, reflect33, reflect44, reflectd1d1, reflectd2d2, reflectd3d3, reflectd4d4
+    , refract, refract111, refract221, refract331, refract441, refractd1d11, refractd2d21, refractd3d31, refractd4d41
     , round, round1, round2, round3, round4, roundd1, roundd2, roundd3, roundd4
     , roundEven, roundEven1, roundEven2, roundEven3, roundEven4, roundEvend1, roundEvend2, roundEvend3, roundEvend4
     , sign, sign1, sign2, sign3, sign4, signd1, signd2, signd3, signd4, signi1, signi2, signi3, signi4
@@ -279,12 +279,12 @@ module Glsl.Functions exposing
 
 ## reflect
 
-@docs reflect11, reflect22, reflect33, reflect44
+@docs reflect, reflect11, reflect22, reflect33, reflect44, reflectd1d1, reflectd2d2, reflectd3d3, reflectd4d4
 
 
 ## refract
 
-@docs refract111, refract221, refract331, refract441
+@docs refract, refract111, refract221, refract331, refract441, refractd1d11, refractd2d21, refractd3d31, refractd4d41
 
 
 ## round
@@ -2556,6 +2556,38 @@ reflect44 a b =
     Glsl.unsafeCall2 "reflect" [] a b
 
 
+reflectd1d1 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+reflectd1d1 a b =
+    Glsl.unsafeCall2 "reflect" [] a b
+
+
+reflectd2d2 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+reflectd2d2 a b =
+    Glsl.unsafeCall2 "reflect" [] a b
+
+
+reflectd3d3 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+reflectd3d3 a b =
+    Glsl.unsafeCall2 "reflect" [] a b
+
+
+reflectd4d4 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+reflectd4d4 a b =
+    Glsl.unsafeCall2 "reflect" [] a b
+
+
 refract111 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2589,6 +2621,42 @@ refract441 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
 refract441 a b c =
+    Glsl.unsafeCall3 "refract" [] a b c
+
+
+refractd1d11 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Double
+refractd1d11 a b c =
+    Glsl.unsafeCall3 "refract" [] a b c
+
+
+refractd2d21 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.DVec2
+refractd2d21 a b c =
+    Glsl.unsafeCall3 "refract" [] a b c
+
+
+refractd3d31 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.DVec3
+refractd3d31 a b c =
+    Glsl.unsafeCall3 "refract" [] a b c
+
+
+refractd4d41 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.DVec4
+refractd4d41 a b c =
     Glsl.unsafeCall3 "refract" [] a b c
 
 
@@ -3549,3 +3617,20 @@ faceforward :
     -> Glsl.Expression (Glsl.Vec t a)
 faceforward a b c =
     Glsl.unsafeCall3 "faceforward" [] a b c
+
+
+reflect :
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+reflect a b =
+    Glsl.unsafeCall2 "reflect" [] a b
+
+
+refract :
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec Float Glsl.D1)
+    -> Glsl.Expression (Glsl.Vec t a)
+refract a b c =
+    Glsl.unsafeCall3 "refract" [] a b c
