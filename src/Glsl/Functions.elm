@@ -40,9 +40,9 @@ module Glsl.Functions exposing
     , roundEven, roundEven1, roundEven2, roundEven3, roundEven4, roundEvend1, roundEvend2, roundEvend3, roundEvend4
     , sign, sign1, sign2, sign3, sign4, signd1, signd2, signd3, signd4, signi1, signi2, signi3, signi4
     , sin1, sin2, sin3, sin4
-    , smoothstep111, smoothstep112, smoothstep113, smoothstep114, smoothstep222, smoothstep333, smoothstep444
+    , smoothstep, smoothstep111, smoothstep112, smoothstep113, smoothstep114, smoothstep222, smoothstep333, smoothstep444, smoothstepd1d1d1, smoothstepd1d1d2, smoothstepd1d1d3, smoothstepd1d1d4, smoothstepd2d2d2, smoothstepd3d3d3, smoothstepd4d4d4
     , sqrt1, sqrt2, sqrt3, sqrt4
-    , step11, step12, step13, step14, step22, step33, step44
+    , step, step11, step12, step13, step14, step22, step33, step44, stepd1d1, stepd1d2, stepd1d3, stepd1d4, stepd2d2, stepd3d3, stepd4d4
     , tan1, tan2, tan3, tan4
     , trunc, trunc1, trunc2, trunc3, trunc4, truncd1, truncd2, truncd3, truncd4
     , vec21, vec211, vec21i1, vec2i1, vec2i11, vec2i1i1
@@ -260,7 +260,7 @@ module Glsl.Functions exposing
 
 ## smoothstep
 
-@docs smoothstep111, smoothstep112, smoothstep113, smoothstep114, smoothstep222, smoothstep333, smoothstep444
+@docs smoothstep, smoothstep111, smoothstep112, smoothstep113, smoothstep114, smoothstep222, smoothstep333, smoothstep444, smoothstepd1d1d1, smoothstepd1d1d2, smoothstepd1d1d3, smoothstepd1d1d4, smoothstepd2d2d2, smoothstepd3d3d3, smoothstepd4d4d4
 
 
 ## sqrt
@@ -270,7 +270,7 @@ module Glsl.Functions exposing
 
 ## step
 
-@docs step11, step12, step13, step14, step22, step33, step44
+@docs step, step11, step12, step13, step14, step22, step33, step44, stepd1d1, stepd1d2, stepd1d3, stepd1d4, stepd2d2, stepd3d3, stepd4d4
 
 
 ## tan
@@ -2273,6 +2273,69 @@ smoothstep444 a b c =
     Glsl.unsafeCall3 "smoothstep" [] a b c
 
 
+smoothstepd1d1d1 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+smoothstepd1d1d1 a b c =
+    Glsl.unsafeCall3 "smoothstep" [] a b c
+
+
+smoothstepd1d1d2 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+smoothstepd1d1d2 a b c =
+    Glsl.unsafeCall3 "smoothstep" [] a b c
+
+
+smoothstepd1d1d3 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+smoothstepd1d1d3 a b c =
+    Glsl.unsafeCall3 "smoothstep" [] a b c
+
+
+smoothstepd1d1d4 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+smoothstepd1d1d4 a b c =
+    Glsl.unsafeCall3 "smoothstep" [] a b c
+
+
+smoothstepd2d2d2 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+smoothstepd2d2d2 a b c =
+    Glsl.unsafeCall3 "smoothstep" [] a b c
+
+
+smoothstepd3d3d3 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+smoothstepd3d3d3 a b c =
+    Glsl.unsafeCall3 "smoothstep" [] a b c
+
+
+smoothstepd4d4d4 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+smoothstepd4d4d4 a b c =
+    Glsl.unsafeCall3 "smoothstep" [] a b c
+
+
 sqrt1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 sqrt1 a =
     Glsl.unsafeCall1 "sqrt" [] a
@@ -2346,6 +2409,62 @@ step44 :
     -> Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Vec4
 step44 a b =
+    Glsl.unsafeCall2 "step" [] a b
+
+
+stepd1d1 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+stepd1d1 a b =
+    Glsl.unsafeCall2 "step" [] a b
+
+
+stepd1d2 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+stepd1d2 a b =
+    Glsl.unsafeCall2 "step" [] a b
+
+
+stepd1d3 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+stepd1d3 a b =
+    Glsl.unsafeCall2 "step" [] a b
+
+
+stepd1d4 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+stepd1d4 a b =
+    Glsl.unsafeCall2 "step" [] a b
+
+
+stepd2d2 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+stepd2d2 a b =
+    Glsl.unsafeCall2 "step" [] a b
+
+
+stepd3d3 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+stepd3d3 a b =
+    Glsl.unsafeCall2 "step" [] a b
+
+
+stepd4d4 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+stepd4d4 a b =
     Glsl.unsafeCall2 "step" [] a b
 
 
@@ -2807,3 +2926,20 @@ mix :
     -> Glsl.Expression (Glsl.Vec a)
 mix a b c =
     Glsl.unsafeCall3 "mix" [] a b c
+
+
+step :
+    Glsl.Expression (Glsl.Vec a)
+    -> Glsl.Expression (Glsl.Vec a)
+    -> Glsl.Expression (Glsl.Vec a)
+step a b =
+    Glsl.unsafeCall2 "step" [] a b
+
+
+smoothstep :
+    Glsl.Expression (Glsl.Vec a)
+    -> Glsl.Expression (Glsl.Vec a)
+    -> Glsl.Expression (Glsl.Vec a)
+    -> Glsl.Expression (Glsl.Vec a)
+smoothstep a b c =
+    Glsl.unsafeCall3 "smoothstep" [] a b c

@@ -370,9 +370,7 @@ builtinFunctions =
             , builtin_v_s
             , builtin_vv_v
             , builtin_vv_s
-            , builtin_sv_v
             , builtin_vvv_v
-            , builtin_ssv_v
             , builtin_vvs_v
             ]
                 |> List.concatMap (\( names, kinds ) -> overload names kinds)
@@ -514,26 +512,34 @@ commonFunctions =
     , ternary "mix" genFDType genFDType genFDType (\a _ _ -> a)
     , ternary "mix" genType genType float (\a _ _ -> a)
     , ternary "mix" genDType genDType double (\a _ _ -> a)
+    , binary "step" genFDType genFDType always
+    , binary "step" float genType (always identity)
+    , binary "step" double genDType (always identity)
+    , ternary "smoothstep" genFDType genFDType genFDType (\_ _ r -> r)
+    , ternary "smoothstep" float float genType (\_ _ r -> r)
+    , ternary "smoothstep" double double genDType (\_ _ r -> r)
     ]
         |> List.concat
 
 
 genericFunctions : List ( String, Elm.Expression )
 genericFunctions =
-    [ genericVecVec "abs"
-    , genericVecVec "sign"
-    , genericVecVec "floor"
-    , genericVecVec "trunc"
-    , genericVecVec "round"
-    , genericVecVec "roundEven"
-    , genericVecVec "ceil"
-    , genericVecVec "fract"
-    , genericVecVecVec "mod"
-    , genericVecVecOutVec "modf"
-    , genericVecVecVec "min"
-    , genericVecVecVec "max"
-    , genericVecVecVecVec "clamp"
-    , genericVecVecVecVec "mix"
+    [ generic1 "abs"
+    , generic1 "sign"
+    , generic1 "floor"
+    , generic1 "trunc"
+    , generic1 "round"
+    , generic1 "roundEven"
+    , generic1 "ceil"
+    , generic1 "fract"
+    , generic2 "mod"
+    , generic2_out2 "modf"
+    , generic2 "min"
+    , generic2 "max"
+    , generic3 "clamp"
+    , generic3 "mix"
+    , generic2 "step"
+    , generic3 "smoothstep"
     ]
 
 
@@ -689,27 +695,11 @@ builtin_vv_v =
 
       -- Geometry
       , "reflect"
-
-      -- Other
-      , "step"
       ]
     , [ ( [ TFloat, TFloat ], TFloat )
       , ( [ TVec2, TVec2 ], TVec2 )
       , ( [ TVec3, TVec3 ], TVec3 )
       , ( [ TVec4, TVec4 ], TVec4 )
-      ]
-    )
-
-
-builtin_sv_v : ( List String, List ( List Type, Type ) )
-builtin_sv_v =
-    ( [ -- Other
-        "step"
-      ]
-    , [ ( [ TFloat, TFloat ], TFloat )
-      , ( [ TFloat, TVec2 ], TVec2 )
-      , ( [ TFloat, TVec3 ], TVec3 )
-      , ( [ TFloat, TVec4 ], TVec4 )
       ]
     )
 
@@ -732,9 +722,6 @@ builtin_vvs_v : ( List String, List ( List Type, Type ) )
 builtin_vvs_v =
     ( [ --Geometric
         "refract"
-
-      -- Other
-      , "mix"
       ]
     , [ ( [ TFloat, TFloat, TFloat ], TFloat )
       , ( [ TVec2, TVec2, TFloat ], TVec2 )
@@ -744,27 +731,10 @@ builtin_vvs_v =
     )
 
 
-builtin_ssv_v : ( List String, List ( List Type, Type ) )
-builtin_ssv_v =
-    ( [ -- Other
-        "smoothstep"
-      ]
-    , [ ( [ TFloat, TFloat, TFloat ], TFloat )
-      , ( [ TFloat, TFloat, TVec2 ], TVec2 )
-      , ( [ TFloat, TFloat, TVec3 ], TVec3 )
-      , ( [ TFloat, TFloat, TVec4 ], TVec4 )
-      ]
-    )
-
-
 builtin_vvv_v : ( List String, List ( List Type, Type ) )
 builtin_vvv_v =
-    ( [ -- Other
-        "mix"
-      , "smoothstep"
-
-      -- Geometry
-      , "faceforward"
+    ( [ -- Geometry
+        "faceforward"
       ]
     , [ ( [ TFloat, TFloat, TFloat ], TFloat )
       , ( [ TVec2, TVec2, TVec2 ], TVec2 )
@@ -806,8 +776,8 @@ builtinDecls =
     specific ++ generic
 
 
-genericVecVec : String -> ( String, Elm.Expression )
-genericVecVec name =
+generic1 : String -> ( String, Elm.Expression )
+generic1 name =
     ( name
     , Elm.fn
         ( "a", Just (exprVecAnn "a") )
@@ -825,8 +795,8 @@ genericVecVec name =
     )
 
 
-genericVecVecVec : String -> ( String, Elm.Expression )
-genericVecVecVec name =
+generic2 : String -> ( String, Elm.Expression )
+generic2 name =
     ( name
     , Elm.fn2
         ( "a", Just (exprVecAnn "a") )
@@ -845,8 +815,8 @@ genericVecVecVec name =
     )
 
 
-genericVecVecVecVec : String -> ( String, Elm.Expression )
-genericVecVecVecVec name =
+generic3 : String -> ( String, Elm.Expression )
+generic3 name =
     ( name
     , Elm.fn3
         ( "a", Just (exprVecAnn "a") )
@@ -866,8 +836,8 @@ genericVecVecVecVec name =
     )
 
 
-genericVecVecOutVec : String -> ( String, Elm.Expression )
-genericVecVecOutVec name =
+generic2_out2 : String -> ( String, Elm.Expression )
+generic2_out2 name =
     ( name
     , Elm.fn2
         ( "a", Just (exprVecAnn "a") )
