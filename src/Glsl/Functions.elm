@@ -3,7 +3,7 @@ module Glsl.Functions exposing
     , acos1, acos2, acos3, acos4
     , asin1, asin2, asin3, asin4
     , atan1, atan11, atan2, atan22, atan3, atan33, atan4, atan44
-    , ceil1, ceil2, ceil3, ceil4
+    , ceil, ceil1, ceil2, ceil3, ceil4, ceild1, ceild2, ceild3, ceild4
     , clamp111, clamp211, clamp222, clamp311, clamp333, clamp411, clamp444
     , cos1, cos2, cos3, cos4
     , cross33
@@ -14,8 +14,8 @@ module Glsl.Functions exposing
     , exp21, exp22, exp23, exp24
     , faceforward111, faceforward222, faceforward333, faceforward444
     , floati1
-    , floor1, floor2, floor3, floor4
-    , fract1, fract2, fract3, fract4
+    , floor, floor1, floor2, floor3, floor4, floord1, floord2, floord3, floord4
+    , fract, fract1, fract2, fract3, fract4, fractd1, fractd2, fractd3, fractd4
     , fwidth1, fwidth2, fwidth3, fwidth4
     , int1
     , inversesqrt1, inversesqrt2, inversesqrt3, inversesqrt4
@@ -35,12 +35,15 @@ module Glsl.Functions exposing
     , radians1, radians2, radians3, radians4
     , reflect11, reflect22, reflect33, reflect44
     , refract111, refract221, refract331, refract441
+    , round, round1, round2, round3, round4, roundd1, roundd2, roundd3, roundd4
+    , roundEven, roundEven1, roundEven2, roundEven3, roundEven4, roundEvend1, roundEvend2, roundEvend3, roundEvend4
     , sign, sign1, sign2, sign3, sign4, signd1, signd2, signd3, signd4, signi1, signi2, signi3, signi4
     , sin1, sin2, sin3, sin4
     , smoothstep111, smoothstep112, smoothstep113, smoothstep114, smoothstep222, smoothstep333, smoothstep444
     , sqrt1, sqrt2, sqrt3, sqrt4
     , step11, step12, step13, step14, step22, step33, step44
     , tan1, tan2, tan3, tan4
+    , trunc, trunc1, trunc2, trunc3, trunc4, truncd1, truncd2, truncd3, truncd4
     , vec21, vec211, vec21i1, vec2i1, vec2i11, vec2i1i1
     , vec31, vec3111, vec311i1, vec31i11, vec31i1i1, vec3i1, vec3i111, vec3i11i1, vec3i1i11, vec3i1i1i1
     , vec41, vec41111, vec4111i1, vec411i11, vec411i1i1, vec413, vec41i111, vec41i11i1, vec41i1i11, vec41i1i1i1, vec431, vec4i1, vec4i1111, vec4i111i1, vec4i11i11, vec4i11i1i1, vec4i1i111, vec4i1i11i1, vec4i1i1i11, vec4i1i1i1i1
@@ -71,7 +74,7 @@ module Glsl.Functions exposing
 
 ## ceil
 
-@docs ceil1, ceil2, ceil3, ceil4
+@docs ceil, ceil1, ceil2, ceil3, ceil4, ceild1, ceild2, ceild3, ceild4
 
 
 ## clamp
@@ -126,12 +129,12 @@ module Glsl.Functions exposing
 
 ## floor
 
-@docs floor1, floor2, floor3, floor4
+@docs floor, floor1, floor2, floor3, floor4, floord1, floord2, floord3, floord4
 
 
 ## fract
 
-@docs fract1, fract2, fract3, fract4
+@docs fract, fract1, fract2, fract3, fract4, fractd1, fractd2, fractd3, fractd4
 
 
 ## fwidth
@@ -229,6 +232,16 @@ module Glsl.Functions exposing
 @docs refract111, refract221, refract331, refract441
 
 
+## round
+
+@docs round, round1, round2, round3, round4, roundd1, roundd2, roundd3, roundd4
+
+
+## roundEven
+
+@docs roundEven, roundEven1, roundEven2, roundEven3, roundEven4, roundEvend1, roundEvend2, roundEvend3, roundEvend4
+
+
 ## sign
 
 @docs sign, sign1, sign2, sign3, sign4, signd1, signd2, signd3, signd4, signi1, signi2, signi3, signi4
@@ -257,6 +270,11 @@ module Glsl.Functions exposing
 ## tan
 
 @docs tan1, tan2, tan3, tan4
+
+
+## trunc
+
+@docs trunc, trunc1, trunc2, trunc3, trunc4, truncd1, truncd2, truncd3, truncd4
 
 
 ## vec2
@@ -444,6 +462,26 @@ ceil3 a =
 
 ceil4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Vec4
 ceil4 a =
+    Glsl.unsafeCall1 "ceil" [] a
+
+
+ceild1 : Glsl.Expression Glsl.Double -> Glsl.Expression Glsl.Double
+ceild1 a =
+    Glsl.unsafeCall1 "ceil" [] a
+
+
+ceild2 : Glsl.Expression Glsl.DVec2 -> Glsl.Expression Glsl.DVec2
+ceild2 a =
+    Glsl.unsafeCall1 "ceil" [] a
+
+
+ceild3 : Glsl.Expression Glsl.DVec3 -> Glsl.Expression Glsl.DVec3
+ceild3 a =
+    Glsl.unsafeCall1 "ceil" [] a
+
+
+ceild4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
+ceild4 a =
     Glsl.unsafeCall1 "ceil" [] a
 
 
@@ -717,6 +755,26 @@ floor4 a =
     Glsl.unsafeCall1 "floor" [] a
 
 
+floord1 : Glsl.Expression Glsl.Double -> Glsl.Expression Glsl.Double
+floord1 a =
+    Glsl.unsafeCall1 "floor" [] a
+
+
+floord2 : Glsl.Expression Glsl.DVec2 -> Glsl.Expression Glsl.DVec2
+floord2 a =
+    Glsl.unsafeCall1 "floor" [] a
+
+
+floord3 : Glsl.Expression Glsl.DVec3 -> Glsl.Expression Glsl.DVec3
+floord3 a =
+    Glsl.unsafeCall1 "floor" [] a
+
+
+floord4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
+floord4 a =
+    Glsl.unsafeCall1 "floor" [] a
+
+
 fract1 : Glsl.Expression Float -> Glsl.Expression Float
 fract1 a =
     Glsl.unsafeCall1 "fract" [] a
@@ -734,6 +792,26 @@ fract3 a =
 
 fract4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Vec4
 fract4 a =
+    Glsl.unsafeCall1 "fract" [] a
+
+
+fractd1 : Glsl.Expression Glsl.Double -> Glsl.Expression Glsl.Double
+fractd1 a =
+    Glsl.unsafeCall1 "fract" [] a
+
+
+fractd2 : Glsl.Expression Glsl.DVec2 -> Glsl.Expression Glsl.DVec2
+fractd2 a =
+    Glsl.unsafeCall1 "fract" [] a
+
+
+fractd3 : Glsl.Expression Glsl.DVec3 -> Glsl.Expression Glsl.DVec3
+fractd3 a =
+    Glsl.unsafeCall1 "fract" [] a
+
+
+fractd4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
+fractd4 a =
     Glsl.unsafeCall1 "fract" [] a
 
 
@@ -1231,6 +1309,86 @@ refract441 a b c =
     Glsl.unsafeCall3 "refract" [] a b c
 
 
+round1 : Glsl.Expression Float -> Glsl.Expression Float
+round1 a =
+    Glsl.unsafeCall1 "round" [] a
+
+
+round2 : Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.Vec2
+round2 a =
+    Glsl.unsafeCall1 "round" [] a
+
+
+round3 : Glsl.Expression Glsl.Vec3 -> Glsl.Expression Glsl.Vec3
+round3 a =
+    Glsl.unsafeCall1 "round" [] a
+
+
+round4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Vec4
+round4 a =
+    Glsl.unsafeCall1 "round" [] a
+
+
+roundEven1 : Glsl.Expression Float -> Glsl.Expression Float
+roundEven1 a =
+    Glsl.unsafeCall1 "roundEven" [] a
+
+
+roundEven2 : Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.Vec2
+roundEven2 a =
+    Glsl.unsafeCall1 "roundEven" [] a
+
+
+roundEven3 : Glsl.Expression Glsl.Vec3 -> Glsl.Expression Glsl.Vec3
+roundEven3 a =
+    Glsl.unsafeCall1 "roundEven" [] a
+
+
+roundEven4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Vec4
+roundEven4 a =
+    Glsl.unsafeCall1 "roundEven" [] a
+
+
+roundEvend1 : Glsl.Expression Glsl.Double -> Glsl.Expression Glsl.Double
+roundEvend1 a =
+    Glsl.unsafeCall1 "roundEven" [] a
+
+
+roundEvend2 : Glsl.Expression Glsl.DVec2 -> Glsl.Expression Glsl.DVec2
+roundEvend2 a =
+    Glsl.unsafeCall1 "roundEven" [] a
+
+
+roundEvend3 : Glsl.Expression Glsl.DVec3 -> Glsl.Expression Glsl.DVec3
+roundEvend3 a =
+    Glsl.unsafeCall1 "roundEven" [] a
+
+
+roundEvend4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
+roundEvend4 a =
+    Glsl.unsafeCall1 "roundEven" [] a
+
+
+roundd1 : Glsl.Expression Glsl.Double -> Glsl.Expression Glsl.Double
+roundd1 a =
+    Glsl.unsafeCall1 "round" [] a
+
+
+roundd2 : Glsl.Expression Glsl.DVec2 -> Glsl.Expression Glsl.DVec2
+roundd2 a =
+    Glsl.unsafeCall1 "round" [] a
+
+
+roundd3 : Glsl.Expression Glsl.DVec3 -> Glsl.Expression Glsl.DVec3
+roundd3 a =
+    Glsl.unsafeCall1 "round" [] a
+
+
+roundd4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
+roundd4 a =
+    Glsl.unsafeCall1 "round" [] a
+
+
 sign1 : Glsl.Expression Float -> Glsl.Expression Float
 sign1 a =
     Glsl.unsafeCall1 "sign" [] a
@@ -1465,6 +1623,46 @@ tan3 a =
 tan4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Vec4
 tan4 a =
     Glsl.unsafeCall1 "tan" [] a
+
+
+trunc1 : Glsl.Expression Float -> Glsl.Expression Float
+trunc1 a =
+    Glsl.unsafeCall1 "trunc" [] a
+
+
+trunc2 : Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.Vec2
+trunc2 a =
+    Glsl.unsafeCall1 "trunc" [] a
+
+
+trunc3 : Glsl.Expression Glsl.Vec3 -> Glsl.Expression Glsl.Vec3
+trunc3 a =
+    Glsl.unsafeCall1 "trunc" [] a
+
+
+trunc4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Vec4
+trunc4 a =
+    Glsl.unsafeCall1 "trunc" [] a
+
+
+truncd1 : Glsl.Expression Glsl.Double -> Glsl.Expression Glsl.Double
+truncd1 a =
+    Glsl.unsafeCall1 "trunc" [] a
+
+
+truncd2 : Glsl.Expression Glsl.DVec2 -> Glsl.Expression Glsl.DVec2
+truncd2 a =
+    Glsl.unsafeCall1 "trunc" [] a
+
+
+truncd3 : Glsl.Expression Glsl.DVec3 -> Glsl.Expression Glsl.DVec3
+truncd3 a =
+    Glsl.unsafeCall1 "trunc" [] a
+
+
+truncd4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
+truncd4 a =
+    Glsl.unsafeCall1 "trunc" [] a
 
 
 vec21 : Glsl.Expression Float -> Glsl.Expression Glsl.Vec2
@@ -1773,3 +1971,33 @@ abs a =
 sign : Glsl.Expression (Glsl.Vec a) -> Glsl.Expression (Glsl.Vec a)
 sign a =
     Glsl.unsafeCall1 "sign" [] a
+
+
+floor : Glsl.Expression (Glsl.Vec a) -> Glsl.Expression (Glsl.Vec a)
+floor a =
+    Glsl.unsafeCall1 "floor" [] a
+
+
+trunc : Glsl.Expression (Glsl.Vec a) -> Glsl.Expression (Glsl.Vec a)
+trunc a =
+    Glsl.unsafeCall1 "trunc" [] a
+
+
+round : Glsl.Expression (Glsl.Vec a) -> Glsl.Expression (Glsl.Vec a)
+round a =
+    Glsl.unsafeCall1 "round" [] a
+
+
+roundEven : Glsl.Expression (Glsl.Vec a) -> Glsl.Expression (Glsl.Vec a)
+roundEven a =
+    Glsl.unsafeCall1 "roundEven" [] a
+
+
+ceil : Glsl.Expression (Glsl.Vec a) -> Glsl.Expression (Glsl.Vec a)
+ceil a =
+    Glsl.unsafeCall1 "ceil" [] a
+
+
+fract : Glsl.Expression (Glsl.Vec a) -> Glsl.Expression (Glsl.Vec a)
+fract a =
+    Glsl.unsafeCall1 "fract" [] a

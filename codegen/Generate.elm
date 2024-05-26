@@ -461,6 +461,18 @@ commonFunctions =
     , unary "sign" genType identity
     , unary "sign" genIType identity
     , unary "sign" genDType identity
+    , unary "floor" genType identity
+    , unary "floor" genDType identity
+    , unary "trunc" genType identity
+    , unary "trunc" genDType identity
+    , unary "round" genType identity
+    , unary "round" genDType identity
+    , unary "roundEven" genType identity
+    , unary "roundEven" genDType identity
+    , unary "ceil" genType identity
+    , unary "ceil" genDType identity
+    , unary "fract" genType identity
+    , unary "fract" genDType identity
     ]
         |> List.concat
 
@@ -511,11 +523,6 @@ builtin_v_s =
 builtin_v_v : ( List String, List ( List Type, Type ) )
 builtin_v_v =
     ( [ "fwidth"
-
-      -- Rounding
-      , "ceil"
-      , "floor"
-      , "fract"
 
       -- Complex and power
       , "exp"
@@ -711,6 +718,12 @@ genericFunctions : List ( String, Elm.Expression )
 genericFunctions =
     [ genericVecVec "abs"
     , genericVecVec "sign"
+    , genericVecVec "floor"
+    , genericVecVec "trunc"
+    , genericVecVec "round"
+    , genericVecVec "roundEven"
+    , genericVecVec "ceil"
+    , genericVecVec "fract"
     ]
 
 
