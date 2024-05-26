@@ -525,6 +525,9 @@ commonFunctions =
     , unary genUType "floatBitsToUint" genType
     , unary genType "intBitsToFloat" genIType
     , unary genType "uintBitsToFloat" genUType
+    , ternary genFDType "fma" genFDType genFDType genFDType
+    , binary genType "frexp" genType (List.map TOut genIType)
+    , binary genDType "frexp" genDType (List.map TOut genIType)
     ]
         |> List.concat
 
@@ -547,6 +550,7 @@ genericFunctions =
     , generic3 "mix"
     , generic2 "step"
     , generic3 "smoothstep"
+    , generic3 "fma"
     ]
 
 

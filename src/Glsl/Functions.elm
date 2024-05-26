@@ -17,7 +17,9 @@ module Glsl.Functions exposing
     , floatBitsToInt1, floatBitsToInt2, floatBitsToInt3, floatBitsToInt4
     , floatBitsToUint1, floatBitsToUint2, floatBitsToUint3, floatBitsToUint4
     , floor, floor1, floor2, floor3, floor4, floord1, floord2, floord3, floord4
+    , fma, fma111, fma222, fma333, fma444, fmad1d1d1, fmad2d2d2, fmad3d3d3, fmad4d4d4
     , fract, fract1, fract2, fract3, fract4, fractd1, fractd2, fractd3, fractd4
+    , frexp1oi1, frexp2oi2, frexp3oi3, frexp4oi4, frexpd1oi1, frexpd2oi2, frexpd3oi3, frexpd4oi4
     , fwidth1, fwidth2, fwidth3, fwidth4
     , int1
     , intBitsToFloati1, intBitsToFloati2, intBitsToFloati3, intBitsToFloati4
@@ -149,9 +151,19 @@ module Glsl.Functions exposing
 @docs floor, floor1, floor2, floor3, floor4, floord1, floord2, floord3, floord4
 
 
+## fma
+
+@docs fma, fma111, fma222, fma333, fma444, fmad1d1d1, fmad2d2d2, fmad3d3d3, fmad4d4d4
+
+
 ## fract
 
 @docs fract, fract1, fract2, fract3, fract4, fractd1, fractd2, fractd3, fractd4
+
+
+## frexp
+
+@docs frexp1oi1, frexp2oi2, frexp3oi3, frexp4oi4, frexpd1oi1, frexpd2oi2, frexpd3oi3, frexpd4oi4
 
 
 ## fwidth
@@ -1055,6 +1067,78 @@ floord4 a =
     Glsl.unsafeCall1 "floor" [] a
 
 
+fma111 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+fma111 a b c =
+    Glsl.unsafeCall3 "fma" [] a b c
+
+
+fma222 :
+    Glsl.Expression Glsl.Vec2
+    -> Glsl.Expression Glsl.Vec2
+    -> Glsl.Expression Glsl.Vec2
+    -> Glsl.Expression Glsl.Vec2
+fma222 a b c =
+    Glsl.unsafeCall3 "fma" [] a b c
+
+
+fma333 :
+    Glsl.Expression Glsl.Vec3
+    -> Glsl.Expression Glsl.Vec3
+    -> Glsl.Expression Glsl.Vec3
+    -> Glsl.Expression Glsl.Vec3
+fma333 a b c =
+    Glsl.unsafeCall3 "fma" [] a b c
+
+
+fma444 :
+    Glsl.Expression Glsl.Vec4
+    -> Glsl.Expression Glsl.Vec4
+    -> Glsl.Expression Glsl.Vec4
+    -> Glsl.Expression Glsl.Vec4
+fma444 a b c =
+    Glsl.unsafeCall3 "fma" [] a b c
+
+
+fmad1d1d1 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+fmad1d1d1 a b c =
+    Glsl.unsafeCall3 "fma" [] a b c
+
+
+fmad2d2d2 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+fmad2d2d2 a b c =
+    Glsl.unsafeCall3 "fma" [] a b c
+
+
+fmad3d3d3 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+fmad3d3d3 a b c =
+    Glsl.unsafeCall3 "fma" [] a b c
+
+
+fmad4d4d4 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+fmad4d4d4 a b c =
+    Glsl.unsafeCall3 "fma" [] a b c
+
+
 fract1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 fract1 a =
     Glsl.unsafeCall1 "fract" [] a
@@ -1093,6 +1177,70 @@ fractd3 a =
 fractd4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
 fractd4 a =
     Glsl.unsafeCall1 "fract" [] a
+
+
+frexp1oi1 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression (Glsl.Out Glsl.Int_)
+    -> Glsl.Expression Glsl.Float_
+frexp1oi1 a b =
+    Glsl.unsafeCall2 "frexp" [] a b
+
+
+frexp2oi2 :
+    Glsl.Expression Glsl.Vec2
+    -> Glsl.Expression (Glsl.Out Glsl.IVec2)
+    -> Glsl.Expression Glsl.Vec2
+frexp2oi2 a b =
+    Glsl.unsafeCall2 "frexp" [] a b
+
+
+frexp3oi3 :
+    Glsl.Expression Glsl.Vec3
+    -> Glsl.Expression (Glsl.Out Glsl.IVec3)
+    -> Glsl.Expression Glsl.Vec3
+frexp3oi3 a b =
+    Glsl.unsafeCall2 "frexp" [] a b
+
+
+frexp4oi4 :
+    Glsl.Expression Glsl.Vec4
+    -> Glsl.Expression (Glsl.Out Glsl.IVec4)
+    -> Glsl.Expression Glsl.Vec4
+frexp4oi4 a b =
+    Glsl.unsafeCall2 "frexp" [] a b
+
+
+frexpd1oi1 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression (Glsl.Out Glsl.Int_)
+    -> Glsl.Expression Glsl.Double
+frexpd1oi1 a b =
+    Glsl.unsafeCall2 "frexp" [] a b
+
+
+frexpd2oi2 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression (Glsl.Out Glsl.IVec2)
+    -> Glsl.Expression Glsl.DVec2
+frexpd2oi2 a b =
+    Glsl.unsafeCall2 "frexp" [] a b
+
+
+frexpd3oi3 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression (Glsl.Out Glsl.IVec3)
+    -> Glsl.Expression Glsl.DVec3
+frexpd3oi3 a b =
+    Glsl.unsafeCall2 "frexp" [] a b
+
+
+frexpd4oi4 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression (Glsl.Out Glsl.IVec4)
+    -> Glsl.Expression Glsl.DVec4
+frexpd4oi4 a b =
+    Glsl.unsafeCall2 "frexp" [] a b
 
 
 fwidth1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
@@ -3139,3 +3287,12 @@ smoothstep :
     -> Glsl.Expression (Glsl.Vec t a)
 smoothstep a b c =
     Glsl.unsafeCall3 "smoothstep" [] a b c
+
+
+fma :
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+fma a b c =
+    Glsl.unsafeCall3 "fma" [] a b c
