@@ -7,6 +7,6 @@
     },
     "license": "BSD-3-Clause",
     "scripts": {
-        "start": "yarn elm-codegen run --output src"
+        "start": "yarn elm-codegen run --output src; elm-format --yes src/Glsl/Functions.elm"
     }
 }
