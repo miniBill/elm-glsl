@@ -29,7 +29,7 @@ module Glsl.Functions exposing
     , max11, max21, max22, max31, max33, max41, max44
     , min11, min21, min22, min31, min33, min41, min44
     , mix111, mix221, mix222, mix331, mix333, mix441, mix444
-    , mod11, mod21, mod22, mod31, mod33, mod41, mod44
+    , mod11, mod22, mod33, mod44
     , normalize1, normalize2, normalize3, normalize4
     , pow11, pow22, pow33, pow44
     , radians1, radians2, radians3, radians4
@@ -204,7 +204,7 @@ module Glsl.Functions exposing
 
 ## mod
 
-@docs mod11, mod21, mod22, mod31, mod33, mod41, mod44
+@docs mod11, mod22, mod33, mod44
 
 
 ## normalize
@@ -296,7 +296,7 @@ module Glsl.Functions exposing
 import Glsl
 
 
-abs1 : Glsl.Expression Float -> Glsl.Expression Float
+abs1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 abs1 a =
     Glsl.unsafeCall1 "abs" [] a
 
@@ -336,7 +336,7 @@ absd4 a =
     Glsl.unsafeCall1 "abs" [] a
 
 
-absi1 : Glsl.Expression Int -> Glsl.Expression Int
+absi1 : Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Int_
 absi1 a =
     Glsl.unsafeCall1 "abs" [] a
 
@@ -356,7 +356,7 @@ absi4 a =
     Glsl.unsafeCall1 "abs" [] a
 
 
-acos1 : Glsl.Expression Float -> Glsl.Expression Float
+acos1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 acos1 a =
     Glsl.unsafeCall1 "acos" [] a
 
@@ -376,7 +376,7 @@ acos4 a =
     Glsl.unsafeCall1 "acos" [] a
 
 
-asin1 : Glsl.Expression Float -> Glsl.Expression Float
+asin1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 asin1 a =
     Glsl.unsafeCall1 "asin" [] a
 
@@ -396,12 +396,15 @@ asin4 a =
     Glsl.unsafeCall1 "asin" [] a
 
 
-atan1 : Glsl.Expression Float -> Glsl.Expression Float
+atan1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 atan1 a =
     Glsl.unsafeCall1 "atan" [] a
 
 
-atan11 : Glsl.Expression Float -> Glsl.Expression Float -> Glsl.Expression Float
+atan11 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
 atan11 a b =
     Glsl.unsafeCall2 "atan" [] a b
 
@@ -445,7 +448,7 @@ atan44 a b =
     Glsl.unsafeCall2 "atan" [] a b
 
 
-ceil1 : Glsl.Expression Float -> Glsl.Expression Float
+ceil1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 ceil1 a =
     Glsl.unsafeCall1 "ceil" [] a
 
@@ -486,18 +489,18 @@ ceild4 a =
 
 
 clamp111 :
-    Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
 clamp111 a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
 
 
 clamp211 :
     Glsl.Expression Glsl.Vec2
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec2
 clamp211 a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
@@ -514,8 +517,8 @@ clamp222 a b c =
 
 clamp311 :
     Glsl.Expression Glsl.Vec3
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec3
 clamp311 a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
@@ -532,8 +535,8 @@ clamp333 a b c =
 
 clamp411 :
     Glsl.Expression Glsl.Vec4
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
 clamp411 a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
@@ -548,7 +551,7 @@ clamp444 a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
 
 
-cos1 : Glsl.Expression Float -> Glsl.Expression Float
+cos1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 cos1 a =
     Glsl.unsafeCall1 "cos" [] a
 
@@ -576,7 +579,7 @@ cross33 a b =
     Glsl.unsafeCall2 "cross" [] a b
 
 
-degrees1 : Glsl.Expression Float -> Glsl.Expression Float
+degrees1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 degrees1 a =
     Glsl.unsafeCall1 "degrees" [] a
 
@@ -596,7 +599,10 @@ degrees4 a =
     Glsl.unsafeCall1 "degrees" [] a
 
 
-distance11 : Glsl.Expression Float -> Glsl.Expression Float -> Glsl.Expression Float
+distance11 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
 distance11 a b =
     Glsl.unsafeCall2 "distance" [] a b
 
@@ -604,7 +610,7 @@ distance11 a b =
 distance22 :
     Glsl.Expression Glsl.Vec2
     -> Glsl.Expression Glsl.Vec2
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
 distance22 a b =
     Glsl.unsafeCall2 "distance" [] a b
 
@@ -612,7 +618,7 @@ distance22 a b =
 distance33 :
     Glsl.Expression Glsl.Vec3
     -> Glsl.Expression Glsl.Vec3
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
 distance33 a b =
     Glsl.unsafeCall2 "distance" [] a b
 
@@ -620,12 +626,15 @@ distance33 a b =
 distance44 :
     Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Vec4
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
 distance44 a b =
     Glsl.unsafeCall2 "distance" [] a b
 
 
-dot11 : Glsl.Expression Float -> Glsl.Expression Float -> Glsl.Expression Float
+dot11 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
 dot11 a b =
     Glsl.unsafeCall2 "dot" [] a b
 
@@ -633,7 +642,7 @@ dot11 a b =
 dot22 :
     Glsl.Expression Glsl.Vec2
     -> Glsl.Expression Glsl.Vec2
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
 dot22 a b =
     Glsl.unsafeCall2 "dot" [] a b
 
@@ -641,7 +650,7 @@ dot22 a b =
 dot33 :
     Glsl.Expression Glsl.Vec3
     -> Glsl.Expression Glsl.Vec3
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
 dot33 a b =
     Glsl.unsafeCall2 "dot" [] a b
 
@@ -649,12 +658,12 @@ dot33 a b =
 dot44 :
     Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Vec4
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
 dot44 a b =
     Glsl.unsafeCall2 "dot" [] a b
 
 
-exp1 : Glsl.Expression Float -> Glsl.Expression Float
+exp1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 exp1 a =
     Glsl.unsafeCall1 "exp" [] a
 
@@ -664,7 +673,7 @@ exp2 a =
     Glsl.unsafeCall1 "exp" [] a
 
 
-exp21 : Glsl.Expression Float -> Glsl.Expression Float
+exp21 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 exp21 a =
     Glsl.unsafeCall1 "exp2" [] a
 
@@ -695,10 +704,10 @@ exp4 a =
 
 
 faceforward111 :
-    Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
 faceforward111 a b c =
     Glsl.unsafeCall3 "faceforward" [] a b c
 
@@ -730,12 +739,12 @@ faceforward444 a b c =
     Glsl.unsafeCall3 "faceforward" [] a b c
 
 
-floati1 : Glsl.Expression Int -> Glsl.Expression Float
+floati1 : Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Float_
 floati1 a =
     Glsl.unsafeCall1 "float" [] a
 
 
-floor1 : Glsl.Expression Float -> Glsl.Expression Float
+floor1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 floor1 a =
     Glsl.unsafeCall1 "floor" [] a
 
@@ -775,7 +784,7 @@ floord4 a =
     Glsl.unsafeCall1 "floor" [] a
 
 
-fract1 : Glsl.Expression Float -> Glsl.Expression Float
+fract1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 fract1 a =
     Glsl.unsafeCall1 "fract" [] a
 
@@ -815,7 +824,7 @@ fractd4 a =
     Glsl.unsafeCall1 "fract" [] a
 
 
-fwidth1 : Glsl.Expression Float -> Glsl.Expression Float
+fwidth1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 fwidth1 a =
     Glsl.unsafeCall1 "fwidth" [] a
 
@@ -835,12 +844,12 @@ fwidth4 a =
     Glsl.unsafeCall1 "fwidth" [] a
 
 
-int1 : Glsl.Expression Float -> Glsl.Expression Int
+int1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Int_
 int1 a =
     Glsl.unsafeCall1 "int" [] a
 
 
-inversesqrt1 : Glsl.Expression Float -> Glsl.Expression Float
+inversesqrt1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 inversesqrt1 a =
     Glsl.unsafeCall1 "inversesqrt" [] a
 
@@ -860,51 +869,54 @@ inversesqrt4 a =
     Glsl.unsafeCall1 "inversesqrt" [] a
 
 
-ivec2i1i1 : Glsl.Expression Int -> Glsl.Expression Int -> Glsl.Expression Glsl.Vec2
+ivec2i1i1 :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec2
 ivec2i1i1 a b =
     Glsl.unsafeCall2 "ivec2" [] a b
 
 
 ivec3i1i1i1 :
-    Glsl.Expression Int
-    -> Glsl.Expression Int
-    -> Glsl.Expression Int
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Vec3
 ivec3i1i1i1 a b c =
     Glsl.unsafeCall3 "ivec3" [] a b c
 
 
 ivec4i1i1i1i1 :
-    Glsl.Expression Int
-    -> Glsl.Expression Int
-    -> Glsl.Expression Int
-    -> Glsl.Expression Int
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Vec4
 ivec4i1i1i1i1 a b c d =
     Glsl.unsafeCall4 "ivec4" [] a b c d
 
 
-length1 : Glsl.Expression Float -> Glsl.Expression Float
+length1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 length1 a =
     Glsl.unsafeCall1 "length" [] a
 
 
-length2 : Glsl.Expression Glsl.Vec2 -> Glsl.Expression Float
+length2 : Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.Float_
 length2 a =
     Glsl.unsafeCall1 "length" [] a
 
 
-length3 : Glsl.Expression Glsl.Vec3 -> Glsl.Expression Float
+length3 : Glsl.Expression Glsl.Vec3 -> Glsl.Expression Glsl.Float_
 length3 a =
     Glsl.unsafeCall1 "length" [] a
 
 
-length4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Float
+length4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Float_
 length4 a =
     Glsl.unsafeCall1 "length" [] a
 
 
-log1 : Glsl.Expression Float -> Glsl.Expression Float
+log1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 log1 a =
     Glsl.unsafeCall1 "log" [] a
 
@@ -914,7 +926,7 @@ log2 a =
     Glsl.unsafeCall1 "log" [] a
 
 
-log21 : Glsl.Expression Float -> Glsl.Expression Float
+log21 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 log21 a =
     Glsl.unsafeCall1 "log2" [] a
 
@@ -953,14 +965,17 @@ mat3333 a b c =
     Glsl.unsafeCall3 "mat3" [] a b c
 
 
-max11 : Glsl.Expression Float -> Glsl.Expression Float -> Glsl.Expression Float
+max11 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
 max11 a b =
     Glsl.unsafeCall2 "max" [] a b
 
 
 max21 :
     Glsl.Expression Glsl.Vec2
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec2
 max21 a b =
     Glsl.unsafeCall2 "max" [] a b
@@ -976,7 +991,7 @@ max22 a b =
 
 max31 :
     Glsl.Expression Glsl.Vec3
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec3
 max31 a b =
     Glsl.unsafeCall2 "max" [] a b
@@ -992,7 +1007,7 @@ max33 a b =
 
 max41 :
     Glsl.Expression Glsl.Vec4
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
 max41 a b =
     Glsl.unsafeCall2 "max" [] a b
@@ -1006,14 +1021,17 @@ max44 a b =
     Glsl.unsafeCall2 "max" [] a b
 
 
-min11 : Glsl.Expression Float -> Glsl.Expression Float -> Glsl.Expression Float
+min11 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
 min11 a b =
     Glsl.unsafeCall2 "min" [] a b
 
 
 min21 :
     Glsl.Expression Glsl.Vec2
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec2
 min21 a b =
     Glsl.unsafeCall2 "min" [] a b
@@ -1029,7 +1047,7 @@ min22 a b =
 
 min31 :
     Glsl.Expression Glsl.Vec3
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec3
 min31 a b =
     Glsl.unsafeCall2 "min" [] a b
@@ -1045,7 +1063,7 @@ min33 a b =
 
 min41 :
     Glsl.Expression Glsl.Vec4
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
 min41 a b =
     Glsl.unsafeCall2 "min" [] a b
@@ -1060,10 +1078,10 @@ min44 a b =
 
 
 mix111 :
-    Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
 mix111 a b c =
     Glsl.unsafeCall3 "mix" [] a b c
 
@@ -1071,7 +1089,7 @@ mix111 a b c =
 mix221 :
     Glsl.Expression Glsl.Vec2
     -> Glsl.Expression Glsl.Vec2
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec2
 mix221 a b c =
     Glsl.unsafeCall3 "mix" [] a b c
@@ -1089,7 +1107,7 @@ mix222 a b c =
 mix331 :
     Glsl.Expression Glsl.Vec3
     -> Glsl.Expression Glsl.Vec3
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec3
 mix331 a b c =
     Glsl.unsafeCall3 "mix" [] a b c
@@ -1107,7 +1125,7 @@ mix333 a b c =
 mix441 :
     Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Vec4
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
 mix441 a b c =
     Glsl.unsafeCall3 "mix" [] a b c
@@ -1122,16 +1140,11 @@ mix444 a b c =
     Glsl.unsafeCall3 "mix" [] a b c
 
 
-mod11 : Glsl.Expression Float -> Glsl.Expression Float -> Glsl.Expression Float
+mod11 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
 mod11 a b =
-    Glsl.unsafeCall2 "mod" [] a b
-
-
-mod21 :
-    Glsl.Expression Glsl.Vec2
-    -> Glsl.Expression Float
-    -> Glsl.Expression Glsl.Vec2
-mod21 a b =
     Glsl.unsafeCall2 "mod" [] a b
 
 
@@ -1143,27 +1156,11 @@ mod22 a b =
     Glsl.unsafeCall2 "mod" [] a b
 
 
-mod31 :
-    Glsl.Expression Glsl.Vec3
-    -> Glsl.Expression Float
-    -> Glsl.Expression Glsl.Vec3
-mod31 a b =
-    Glsl.unsafeCall2 "mod" [] a b
-
-
 mod33 :
     Glsl.Expression Glsl.Vec3
     -> Glsl.Expression Glsl.Vec3
     -> Glsl.Expression Glsl.Vec3
 mod33 a b =
-    Glsl.unsafeCall2 "mod" [] a b
-
-
-mod41 :
-    Glsl.Expression Glsl.Vec4
-    -> Glsl.Expression Float
-    -> Glsl.Expression Glsl.Vec4
-mod41 a b =
     Glsl.unsafeCall2 "mod" [] a b
 
 
@@ -1175,7 +1172,7 @@ mod44 a b =
     Glsl.unsafeCall2 "mod" [] a b
 
 
-normalize1 : Glsl.Expression Float -> Glsl.Expression Float
+normalize1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 normalize1 a =
     Glsl.unsafeCall1 "normalize" [] a
 
@@ -1195,7 +1192,10 @@ normalize4 a =
     Glsl.unsafeCall1 "normalize" [] a
 
 
-pow11 : Glsl.Expression Float -> Glsl.Expression Float -> Glsl.Expression Float
+pow11 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
 pow11 a b =
     Glsl.unsafeCall2 "pow" [] a b
 
@@ -1224,7 +1224,7 @@ pow44 a b =
     Glsl.unsafeCall2 "pow" [] a b
 
 
-radians1 : Glsl.Expression Float -> Glsl.Expression Float
+radians1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 radians1 a =
     Glsl.unsafeCall1 "radians" [] a
 
@@ -1244,7 +1244,10 @@ radians4 a =
     Glsl.unsafeCall1 "radians" [] a
 
 
-reflect11 : Glsl.Expression Float -> Glsl.Expression Float -> Glsl.Expression Float
+reflect11 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
 reflect11 a b =
     Glsl.unsafeCall2 "reflect" [] a b
 
@@ -1274,10 +1277,10 @@ reflect44 a b =
 
 
 refract111 :
-    Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
 refract111 a b c =
     Glsl.unsafeCall3 "refract" [] a b c
 
@@ -1285,7 +1288,7 @@ refract111 a b c =
 refract221 :
     Glsl.Expression Glsl.Vec2
     -> Glsl.Expression Glsl.Vec2
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec2
 refract221 a b c =
     Glsl.unsafeCall3 "refract" [] a b c
@@ -1294,7 +1297,7 @@ refract221 a b c =
 refract331 :
     Glsl.Expression Glsl.Vec3
     -> Glsl.Expression Glsl.Vec3
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec3
 refract331 a b c =
     Glsl.unsafeCall3 "refract" [] a b c
@@ -1303,13 +1306,13 @@ refract331 a b c =
 refract441 :
     Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Vec4
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
 refract441 a b c =
     Glsl.unsafeCall3 "refract" [] a b c
 
 
-round1 : Glsl.Expression Float -> Glsl.Expression Float
+round1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 round1 a =
     Glsl.unsafeCall1 "round" [] a
 
@@ -1329,7 +1332,7 @@ round4 a =
     Glsl.unsafeCall1 "round" [] a
 
 
-roundEven1 : Glsl.Expression Float -> Glsl.Expression Float
+roundEven1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 roundEven1 a =
     Glsl.unsafeCall1 "roundEven" [] a
 
@@ -1389,7 +1392,7 @@ roundd4 a =
     Glsl.unsafeCall1 "round" [] a
 
 
-sign1 : Glsl.Expression Float -> Glsl.Expression Float
+sign1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 sign1 a =
     Glsl.unsafeCall1 "sign" [] a
 
@@ -1429,7 +1432,7 @@ signd4 a =
     Glsl.unsafeCall1 "sign" [] a
 
 
-signi1 : Glsl.Expression Int -> Glsl.Expression Int
+signi1 : Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Int_
 signi1 a =
     Glsl.unsafeCall1 "sign" [] a
 
@@ -1449,7 +1452,7 @@ signi4 a =
     Glsl.unsafeCall1 "sign" [] a
 
 
-sin1 : Glsl.Expression Float -> Glsl.Expression Float
+sin1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 sin1 a =
     Glsl.unsafeCall1 "sin" [] a
 
@@ -1470,17 +1473,17 @@ sin4 a =
 
 
 smoothstep111 :
-    Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
 smoothstep111 a b c =
     Glsl.unsafeCall3 "smoothstep" [] a b c
 
 
 smoothstep112 :
-    Glsl.Expression Float
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec2
     -> Glsl.Expression Glsl.Vec2
 smoothstep112 a b c =
@@ -1488,8 +1491,8 @@ smoothstep112 a b c =
 
 
 smoothstep113 :
-    Glsl.Expression Float
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec3
     -> Glsl.Expression Glsl.Vec3
 smoothstep113 a b c =
@@ -1497,8 +1500,8 @@ smoothstep113 a b c =
 
 
 smoothstep114 :
-    Glsl.Expression Float
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Vec4
 smoothstep114 a b c =
@@ -1532,7 +1535,7 @@ smoothstep444 a b c =
     Glsl.unsafeCall3 "smoothstep" [] a b c
 
 
-sqrt1 : Glsl.Expression Float -> Glsl.Expression Float
+sqrt1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 sqrt1 a =
     Glsl.unsafeCall1 "sqrt" [] a
 
@@ -1552,13 +1555,16 @@ sqrt4 a =
     Glsl.unsafeCall1 "sqrt" [] a
 
 
-step11 : Glsl.Expression Float -> Glsl.Expression Float -> Glsl.Expression Float
+step11 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
 step11 a b =
     Glsl.unsafeCall2 "step" [] a b
 
 
 step12 :
-    Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec2
     -> Glsl.Expression Glsl.Vec2
 step12 a b =
@@ -1566,7 +1572,7 @@ step12 a b =
 
 
 step13 :
-    Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec3
     -> Glsl.Expression Glsl.Vec3
 step13 a b =
@@ -1574,7 +1580,7 @@ step13 a b =
 
 
 step14 :
-    Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Vec4
 step14 a b =
@@ -1605,7 +1611,7 @@ step44 a b =
     Glsl.unsafeCall2 "step" [] a b
 
 
-tan1 : Glsl.Expression Float -> Glsl.Expression Float
+tan1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 tan1 a =
     Glsl.unsafeCall1 "tan" [] a
 
@@ -1625,7 +1631,7 @@ tan4 a =
     Glsl.unsafeCall1 "tan" [] a
 
 
-trunc1 : Glsl.Expression Float -> Glsl.Expression Float
+trunc1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 trunc1 a =
     Glsl.unsafeCall1 "trunc" [] a
 
@@ -1665,165 +1671,177 @@ truncd4 a =
     Glsl.unsafeCall1 "trunc" [] a
 
 
-vec21 : Glsl.Expression Float -> Glsl.Expression Glsl.Vec2
+vec21 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Vec2
 vec21 a =
     Glsl.unsafeCall1 "vec2" [] a
 
 
-vec211 : Glsl.Expression Float -> Glsl.Expression Float -> Glsl.Expression Glsl.Vec2
+vec211 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec2
 vec211 a b =
     Glsl.unsafeCall2 "vec2" [] a b
 
 
-vec21i1 : Glsl.Expression Float -> Glsl.Expression Int -> Glsl.Expression Glsl.Vec2
+vec21i1 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec2
 vec21i1 a b =
     Glsl.unsafeCall2 "vec2" [] a b
 
 
-vec2i1 : Glsl.Expression Int -> Glsl.Expression Glsl.Vec2
+vec2i1 : Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec2
 vec2i1 a =
     Glsl.unsafeCall1 "vec2" [] a
 
 
-vec2i11 : Glsl.Expression Int -> Glsl.Expression Float -> Glsl.Expression Glsl.Vec2
+vec2i11 :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec2
 vec2i11 a b =
     Glsl.unsafeCall2 "vec2" [] a b
 
 
-vec2i1i1 : Glsl.Expression Int -> Glsl.Expression Int -> Glsl.Expression Glsl.Vec2
+vec2i1i1 :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec2
 vec2i1i1 a b =
     Glsl.unsafeCall2 "vec2" [] a b
 
 
-vec31 : Glsl.Expression Float -> Glsl.Expression Glsl.Vec3
+vec31 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Vec3
 vec31 a =
     Glsl.unsafeCall1 "vec3" [] a
 
 
 vec3111 :
-    Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec3
 vec3111 a b c =
     Glsl.unsafeCall3 "vec3" [] a b c
 
 
 vec311i1 :
-    Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Int
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Vec3
 vec311i1 a b c =
     Glsl.unsafeCall3 "vec3" [] a b c
 
 
 vec31i11 :
-    Glsl.Expression Float
-    -> Glsl.Expression Int
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec3
 vec31i11 a b c =
     Glsl.unsafeCall3 "vec3" [] a b c
 
 
 vec31i1i1 :
-    Glsl.Expression Float
-    -> Glsl.Expression Int
-    -> Glsl.Expression Int
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Vec3
 vec31i1i1 a b c =
     Glsl.unsafeCall3 "vec3" [] a b c
 
 
-vec3i1 : Glsl.Expression Int -> Glsl.Expression Glsl.Vec3
+vec3i1 : Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec3
 vec3i1 a =
     Glsl.unsafeCall1 "vec3" [] a
 
 
 vec3i111 :
-    Glsl.Expression Int
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec3
 vec3i111 a b c =
     Glsl.unsafeCall3 "vec3" [] a b c
 
 
 vec3i11i1 :
-    Glsl.Expression Int
-    -> Glsl.Expression Float
-    -> Glsl.Expression Int
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Vec3
 vec3i11i1 a b c =
     Glsl.unsafeCall3 "vec3" [] a b c
 
 
 vec3i1i11 :
-    Glsl.Expression Int
-    -> Glsl.Expression Int
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec3
 vec3i1i11 a b c =
     Glsl.unsafeCall3 "vec3" [] a b c
 
 
 vec3i1i1i1 :
-    Glsl.Expression Int
-    -> Glsl.Expression Int
-    -> Glsl.Expression Int
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Vec3
 vec3i1i1i1 a b c =
     Glsl.unsafeCall3 "vec3" [] a b c
 
 
-vec41 : Glsl.Expression Float -> Glsl.Expression Glsl.Vec4
+vec41 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Vec4
 vec41 a =
     Glsl.unsafeCall1 "vec4" [] a
 
 
 vec41111 :
-    Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
 vec41111 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
 vec4111i1 :
-    Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Int
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Vec4
 vec4111i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
 vec411i11 :
-    Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Int
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
 vec411i11 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
 vec411i1i1 :
-    Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Int
-    -> Glsl.Expression Int
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Vec4
 vec411i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
 vec413 :
-    Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec3
     -> Glsl.Expression Glsl.Vec4
 vec413 a b =
@@ -1831,40 +1849,40 @@ vec413 a b =
 
 
 vec41i111 :
-    Glsl.Expression Float
-    -> Glsl.Expression Int
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
 vec41i111 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
 vec41i11i1 :
-    Glsl.Expression Float
-    -> Glsl.Expression Int
-    -> Glsl.Expression Float
-    -> Glsl.Expression Int
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Vec4
 vec41i11i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
 vec41i1i11 :
-    Glsl.Expression Float
-    -> Glsl.Expression Int
-    -> Glsl.Expression Int
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
 vec41i1i11 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
 vec41i1i1i1 :
-    Glsl.Expression Float
-    -> Glsl.Expression Int
-    -> Glsl.Expression Int
-    -> Glsl.Expression Int
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Vec4
 vec41i1i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
@@ -1872,92 +1890,92 @@ vec41i1i1i1 a b c d =
 
 vec431 :
     Glsl.Expression Glsl.Vec3
-    -> Glsl.Expression Float
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
 vec431 a b =
     Glsl.unsafeCall2 "vec4" [] a b
 
 
-vec4i1 : Glsl.Expression Int -> Glsl.Expression Glsl.Vec4
+vec4i1 : Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec4
 vec4i1 a =
     Glsl.unsafeCall1 "vec4" [] a
 
 
 vec4i1111 :
-    Glsl.Expression Int
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
 vec4i1111 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
 vec4i111i1 :
-    Glsl.Expression Int
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
-    -> Glsl.Expression Int
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Vec4
 vec4i111i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
 vec4i11i11 :
-    Glsl.Expression Int
-    -> Glsl.Expression Float
-    -> Glsl.Expression Int
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
 vec4i11i11 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
 vec4i11i1i1 :
-    Glsl.Expression Int
-    -> Glsl.Expression Float
-    -> Glsl.Expression Int
-    -> Glsl.Expression Int
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Vec4
 vec4i11i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
 vec4i1i111 :
-    Glsl.Expression Int
-    -> Glsl.Expression Int
-    -> Glsl.Expression Float
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
 vec4i1i111 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
 vec4i1i11i1 :
-    Glsl.Expression Int
-    -> Glsl.Expression Int
-    -> Glsl.Expression Float
-    -> Glsl.Expression Int
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Vec4
 vec4i1i11i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
 vec4i1i1i11 :
-    Glsl.Expression Int
-    -> Glsl.Expression Int
-    -> Glsl.Expression Int
-    -> Glsl.Expression Float
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
 vec4i1i1i11 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
 vec4i1i1i1i1 :
-    Glsl.Expression Int
-    -> Glsl.Expression Int
-    -> Glsl.Expression Int
-    -> Glsl.Expression Int
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Vec4
 vec4i1i1i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d

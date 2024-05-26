@@ -99,13 +99,13 @@ typeToAnnotation : Type -> Type.Annotation
 typeToAnnotation type_ =
     case type_ of
         TBool ->
-            Type.bool
+            Gen.Glsl.annotation_.bool_
 
         TFloat ->
-            Type.float
+            Gen.Glsl.annotation_.float_
 
         TInt ->
-            Type.int
+            Gen.Glsl.annotation_.int_
 
         TVec2 ->
             Gen.Glsl.annotation_.vec2
@@ -455,12 +455,8 @@ builtin_new =
 
 commonFunctions : List ( String, List Type, Type )
 commonFunctions =
-    [ unary "abs" genType identity
-    , unary "abs" genIType identity
-    , unary "abs" genDType identity
-    , unary "sign" genType identity
-    , unary "sign" genIType identity
-    , unary "sign" genDType identity
+    [ unary "abs" (genType ++ genIType ++ genDType) identity
+    , unary "sign" (genType ++ genIType ++ genDType) identity
     , unary "floor" genType identity
     , unary "floor" genDType identity
     , unary "trunc" genType identity
@@ -473,8 +469,13 @@ commonFunctions =
     , unary "ceil" genDType identity
     , unary "fract" genType identity
     , unary "fract" genDType identity
+    , binary "mod" genType [ TFloat ] always
+    , binary "mod" genType genType always
+    , binary "mod" genType [ TFloat ] always
+    , binary "mod" genType genType always
     ]
         |> List.concat
+
 
 genericFunctions : List ( String, Elm.Expression )
 genericFunctions =
@@ -492,6 +493,11 @@ genericFunctions =
 unary : String -> List Type -> (Type -> Type) -> List ( String, List Type, Type )
 unary name inputs toOutput =
     List.map (\input -> ( name, [ input ], toOutput input )) inputs
+
+
+binary : String -> List Type -> List Type -> (Type -> Type -> Type) -> List ( String, List Type, Type )
+binary name inputs1 inputs2 toOutput =
+    List.map2 (\input1 input2 -> ( name, [ input1, input2 ], toOutput input1 input2 )) inputs1 inputs2
 
 
 genType : List Type
@@ -579,7 +585,6 @@ builtin_vv_v =
       , "reflect"
 
       -- Other
-      , "mod"
       , "step"
       ]
     , [ ( [ TFloat, TFloat ], TFloat )
@@ -608,9 +613,6 @@ builtin_vs_v =
     ( [ -- Comparison
         "min"
       , "max"
-
-      -- Other
-      , "mod"
       ]
     , [ ( [ TFloat, TFloat ], TFloat )
       , ( [ TVec2, TFloat ], TVec2 )
@@ -724,7 +726,6 @@ builtinDecls =
                     )
     in
     specific ++ generic
-
 
 
 genericVecVec : String -> ( String, Elm.Expression )
