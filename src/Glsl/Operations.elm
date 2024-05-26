@@ -10,7 +10,7 @@ module Glsl.Operations exposing
     , lt, leq, eq, geq, gt
     , ternary
     , and, or, ands, ors
-    , dot1, dot2, dot3, dot4, dotX, dotY, dotZ, dw, dx, dy, dz
+    , dot1, dot2, dot3, dot4, dotX, dotY, dotZ, dx, dy, dz, dw
     )
 
 {-|
@@ -57,6 +57,11 @@ module Glsl.Operations exposing
 
 @docs ternary
 @docs and, or, ands, ors
+
+
+# Swizzle
+
+@docs dot1, dot2, dot3, dot4, dotX, dotY, dotZ, dx, dy, dz, dw
 
 -}
 
