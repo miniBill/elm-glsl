@@ -4,9 +4,9 @@ module Glsl exposing
     , Expression(..), ExprWithDeps, Expr(..)
     , BinaryOperation(..), UnaryOperation(..), RelationOperation(..)
     , true, false, int1, float1, var
-    , unsafeDot, dot2X, dot2Y, dot3X, dot3Y, dot3Z, dot4XY
+    , unsafeDot, dotX, dotY, dotZ, dotXY
     , TypingFunction, TypedName(..), Type(..)
-    , Vec2, Vec3, Vec4, IVec2, IVec3, IVec4, Mat3, Void, In, Out
+    , Vec2, Vec3, Vec4, IVec2, IVec3, IVec4, Mat2, Mat3, Mat4, Void, In, Out
     , unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5
     , unsafeMap, unsafeMap2, unsafeMap3
     , unsafeTypecast
@@ -27,13 +27,13 @@ module Glsl exposing
 # Utils
 
 @docs true, false, int1, float1, var
-@docs unsafeDot, dot2X, dot2Y, dot3X, dot3Y, dot3Z, dot4XY
+@docs unsafeDot, dotX, dotY, dotZ, dotXY
 
 
 # Typelevel types
 
 @docs TypingFunction, TypedName, Type
-@docs Vec2, Vec3, Vec4, IVec2, IVec3, IVec4, Mat3, Void, In, Out
+@docs Vec2, Vec3, Vec4, IVec2, IVec3, IVec4, Mat2, Mat3, Mat4, Void, In, Out
 
 
 # Escape hatches
@@ -433,32 +433,90 @@ type Type
 -- Typelevel types. Eh.
 
 
-type Vec2
-    = Vec2
+type Vec d
+    = Vec
 
 
-type Vec3
-    = Vec3
+type alias Vec2 =
+    Vec F2
 
 
-type Vec4
-    = Vec4
+type alias Vec3 =
+    Vec F3
 
 
-type IVec2
-    = IVec2
+type alias Vec4 =
+    Vec F4
 
 
-type IVec3
-    = IVec3
+type alias F2 =
+    { x : Float
+    , y : Float
+    }
 
 
-type IVec4
-    = IVec4
+type alias F3 =
+    { x : Float
+    , y : Float
+    , z : Float
+    }
 
 
-type Mat3
-    = Mat3
+type alias F4 =
+    { x : Float
+    , y : Float
+    , z : Float
+    , w : Float
+    }
+
+
+type alias IVec2 =
+    Vec I2
+
+
+type alias IVec3 =
+    Vec I3
+
+
+type alias IVec4 =
+    Vec I4
+
+
+type alias I2 =
+    { x : Int
+    , y : Int
+    }
+
+
+type alias I3 =
+    { x : Int
+    , y : Int
+    , z : Int
+    }
+
+
+type alias I4 =
+    { x : Int
+    , y : Int
+    , z : Int
+    , w : Int
+    }
+
+
+type Mat r c
+    = Mat
+
+
+type alias Mat2 =
+    Mat F2 F2
+
+
+type alias Mat3 =
+    Mat F3 F3
+
+
+type alias Mat4 =
+    Mat F4 F4
 
 
 type Void
@@ -507,33 +565,23 @@ var v =
     pure <| Variable v
 
 
-dot2X : Expression Vec2 -> Expression Float
-dot2X e =
+dotX : Expression (Vec { a | x : x }) -> Expression x
+dotX e =
     unsafeDot e "x"
 
 
-dot2Y : Expression Vec2 -> Expression Float
-dot2Y e =
+dotY : Expression (Vec { a | y : y }) -> Expression y
+dotY e =
     unsafeDot e "y"
 
 
-dot3X : Expression Vec3 -> Expression Float
-dot3X e =
-    unsafeDot e "x"
-
-
-dot3Y : Expression Vec3 -> Expression Float
-dot3Y e =
-    unsafeDot e "y"
-
-
-dot3Z : Expression Vec3 -> Expression Float
-dot3Z e =
+dotZ : Expression (Vec { a | z : z }) -> Expression z
+dotZ e =
     unsafeDot e "z"
 
 
-dot4XY : Expression Vec4 -> Expression Vec2
-dot4XY e =
+dotXY : Expression (Vec { a | x : x, y : y }) -> Expression (Vec { x : x, y : y })
+dotXY e =
     unsafeDot e "xy"
 
 
