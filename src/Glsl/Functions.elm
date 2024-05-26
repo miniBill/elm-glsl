@@ -20,7 +20,7 @@ module Glsl.Functions exposing
     , degrees, degrees1, degrees2, degrees3, degrees4
     , distance, distance11, distance22, distance33, distance44, distanced1d1, distanced2d2, distanced3d3, distanced4d4
     , dot, dot11, dot22, dot33, dot44, dotd1d1, dotd2d2, dotd3d3, dotd4d4
-    , exp1, exp2, exp3, exp4
+    , exp, exp1, exp2, exp3, exp4
     , exp21, exp22, exp23, exp24
     , faceforward, faceforward111, faceforward222, faceforward333, faceforward444, faceforwardd1d1d1, faceforwardd2d2d2, faceforwardd3d3d3, faceforwardd4d4d4
     , floati1
@@ -35,7 +35,7 @@ module Glsl.Functions exposing
     , fwidthFine, fwidthFine1, fwidthFine2, fwidthFine3, fwidthFine4
     , int1
     , intBitsToFloati1, intBitsToFloati2, intBitsToFloati3, intBitsToFloati4
-    , inversesqrt1, inversesqrt2, inversesqrt3, inversesqrt4
+    , inversesqrt, inversesqrt1, inversesqrt2, inversesqrt3, inversesqrt4, inversesqrtd1, inversesqrtd2, inversesqrtd3, inversesqrtd4
     , isinf1, isinf2, isinf3, isinf4, isinfd1, isinfd2, isinfd3, isinfd4
     , isnan1, isnan2, isnan3, isnan4, isnand1, isnand2, isnand3, isnand4
     , ivec2i1i1
@@ -43,7 +43,7 @@ module Glsl.Functions exposing
     , ivec4i1i1i1i1
     , ldexp1i1, ldexp2i2, ldexp3i3, ldexp4i4, ldexpd1i1, ldexpd2i2, ldexpd3i3, ldexpd4i4
     , length, length1, length2, length3, length4, lengthd1, lengthd2, lengthd3, lengthd4
-    , log1, log2, log3, log4
+    , log, log1, log2, log3, log4
     , log21, log22, log23, log24
     , mat3333
     , max, max11, max21, max22, max31, max33, max41, max44, maxd1d1, maxd2d1, maxd2d2, maxd3d1, maxd3d3, maxd4d1, maxd4d4, maxi1i1, maxi2i1, maxi2i2, maxi3i1, maxi3i3, maxi4i1, maxi4i4, maxu1u1, maxu2u1, maxu2u2, maxu3u1, maxu3u3, maxu4u1, maxu4u4
@@ -52,7 +52,7 @@ module Glsl.Functions exposing
     , mod, mod11, mod21, mod22, mod31, mod33, mod41, mod44, modd1d1, modd2d1, modd2d2, modd3d1, modd3d3, modd4d1, modd4d4
     , modf, modf1o1, modf2o2, modf3o3, modf4o4, modfd1od1, modfd2od2, modfd3od3, modfd4od4
     , normalize, normalize1, normalize2, normalize3, normalize4, normalized1, normalized2, normalized3, normalized4
-    , pow11, pow22, pow33, pow44
+    , pow, pow11, pow22, pow33, pow44
     , radians, radians1, radians2, radians3, radians4
     , reflect, reflect11, reflect22, reflect33, reflect44, reflectd1d1, reflectd2d2, reflectd3d3, reflectd4d4
     , refract, refract111, refract221, refract331, refract441, refractd1d11, refractd2d21, refractd3d31, refractd4d41
@@ -62,7 +62,7 @@ module Glsl.Functions exposing
     , sin, sin1, sin2, sin3, sin4
     , sinh, sinh1, sinh2, sinh3, sinh4
     , smoothstep, smoothstep111, smoothstep112, smoothstep113, smoothstep114, smoothstep222, smoothstep333, smoothstep444, smoothstepd1d1d1, smoothstepd1d1d2, smoothstepd1d1d3, smoothstepd1d1d4, smoothstepd2d2d2, smoothstepd3d3d3, smoothstepd4d4d4
-    , sqrt1, sqrt2, sqrt3, sqrt4
+    , sqrt, sqrt1, sqrt2, sqrt3, sqrt4, sqrtd1, sqrtd2, sqrtd3, sqrtd4
     , step, step11, step12, step13, step14, step22, step33, step44, stepd1d1, stepd1d2, stepd1d3, stepd1d4, stepd2d2, stepd3d3, stepd4d4
     , tan, tan1, tan2, tan3, tan4
     , tanh, tanh1, tanh2, tanh3, tanh4
@@ -188,12 +188,12 @@ module Glsl.Functions exposing
 
 ## exp
 
-@docs exp1, exp2, exp3, exp4
+@docs exp, exp1, exp2, exp3, exp4
 
 
 ## exp2
 
-@docs exp21, exp22, exp23, exp24
+@docs exp2, exp21, exp22, exp23, exp24
 
 
 ## faceforward
@@ -263,7 +263,7 @@ module Glsl.Functions exposing
 
 ## inversesqrt
 
-@docs inversesqrt1, inversesqrt2, inversesqrt3, inversesqrt4
+@docs inversesqrt, inversesqrt1, inversesqrt2, inversesqrt3, inversesqrt4, inversesqrtd1, inversesqrtd2, inversesqrtd3, inversesqrtd4
 
 
 ## isinf
@@ -303,12 +303,12 @@ module Glsl.Functions exposing
 
 ## log
 
-@docs log1, log2, log3, log4
+@docs log, log1, log2, log3, log4
 
 
 ## log2
 
-@docs log21, log22, log23, log24
+@docs log2, log21, log22, log23, log24
 
 
 ## mat3
@@ -348,7 +348,7 @@ module Glsl.Functions exposing
 
 ## pow
 
-@docs pow11, pow22, pow33, pow44
+@docs pow, pow11, pow22, pow33, pow44
 
 
 ## radians
@@ -398,7 +398,7 @@ module Glsl.Functions exposing
 
 ## sqrt
 
-@docs sqrt1, sqrt2, sqrt3, sqrt4
+@docs sqrt, sqrt1, sqrt2, sqrt3, sqrt4, sqrtd1, sqrtd2, sqrtd3, sqrtd4
 
 
 ## step
@@ -1748,6 +1748,26 @@ inversesqrt3 a =
 
 inversesqrt4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Vec4
 inversesqrt4 a =
+    Glsl.unsafeCall1 "inversesqrt" [] a
+
+
+inversesqrtd1 : Glsl.Expression Glsl.Double -> Glsl.Expression Glsl.Double
+inversesqrtd1 a =
+    Glsl.unsafeCall1 "inversesqrt" [] a
+
+
+inversesqrtd2 : Glsl.Expression Glsl.DVec2 -> Glsl.Expression Glsl.DVec2
+inversesqrtd2 a =
+    Glsl.unsafeCall1 "inversesqrt" [] a
+
+
+inversesqrtd3 : Glsl.Expression Glsl.DVec3 -> Glsl.Expression Glsl.DVec3
+inversesqrtd3 a =
+    Glsl.unsafeCall1 "inversesqrt" [] a
+
+
+inversesqrtd4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
+inversesqrtd4 a =
     Glsl.unsafeCall1 "inversesqrt" [] a
 
 
@@ -3315,6 +3335,26 @@ sqrt4 a =
     Glsl.unsafeCall1 "sqrt" [] a
 
 
+sqrtd1 : Glsl.Expression Glsl.Double -> Glsl.Expression Glsl.Double
+sqrtd1 a =
+    Glsl.unsafeCall1 "sqrt" [] a
+
+
+sqrtd2 : Glsl.Expression Glsl.DVec2 -> Glsl.Expression Glsl.DVec2
+sqrtd2 a =
+    Glsl.unsafeCall1 "sqrt" [] a
+
+
+sqrtd3 : Glsl.Expression Glsl.DVec3 -> Glsl.Expression Glsl.DVec3
+sqrtd3 a =
+    Glsl.unsafeCall1 "sqrt" [] a
+
+
+sqrtd4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
+sqrtd4 a =
+    Glsl.unsafeCall1 "sqrt" [] a
+
+
 step11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3913,6 +3953,44 @@ acosh a =
 atanh : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
 atanh a =
     Glsl.unsafeCall1 "atanh" [] a
+
+
+pow :
+    Glsl.Expression (Glsl.Vec Float a)
+    -> Glsl.Expression (Glsl.Vec Float a)
+    -> Glsl.Expression (Glsl.Vec Float a)
+pow a b =
+    Glsl.unsafeCall2 "pow" [] a b
+
+
+exp : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
+exp a =
+    Glsl.unsafeCall1 "exp" [] a
+
+
+log : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
+log a =
+    Glsl.unsafeCall1 "log" [] a
+
+
+exp2 : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
+exp2 a =
+    Glsl.unsafeCall1 "exp2" [] a
+
+
+log2 : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)
+log2 a =
+    Glsl.unsafeCall1 "log2" [] a
+
+
+sqrt : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
+sqrt a =
+    Glsl.unsafeCall1 "sqrt" [] a
+
+
+inversesqrt : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
+inversesqrt a =
+    Glsl.unsafeCall1 "inversesqrt" [] a
 
 
 abs : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)

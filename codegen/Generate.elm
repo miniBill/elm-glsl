@@ -357,21 +357,6 @@ typeToShort t =
 builtinFunctions : Dict String { baseName : String, args : List Type, return : Type }
 builtinFunctions =
     let
-        overload : List String -> List ( List Type, Type ) -> List ( String, List Type, Type )
-        overload names kinds =
-            List.Extra.lift2
-                (\name ( inTypes, result ) -> ( name, inTypes, result ))
-                names
-                kinds
-
-        regular : List ( String, List Type, Type )
-        regular =
-            [ builtin_v_v
-            , builtin_vv_v
-            , builtin_vvs_v
-            ]
-                |> List.concatMap (\( names, kinds ) -> overload names kinds)
-
         vecs : List ( String, List Type, Type )
         vecs =
             [ ( 2, TVec2 )
@@ -435,19 +420,19 @@ builtinFunctions =
         builtTuple ( name, inTypes, resultType ) =
             ( fullName name inTypes, { baseName = name, args = inTypes, return = resultType } )
     in
-    (builtin_new ++ regular ++ vecs ++ ivecs ++ mats ++ others)
+    (builtin_new ++ vecs ++ ivecs ++ mats ++ others)
         |> List.map builtTuple
         |> Dict.fromList
 
 
 builtin_new : List ( String, List Type, Type )
 builtin_new =
-    functionsTrigonometry ++ functionsCommon ++ functionsGeometric ++ functionsDerivative
+    functionsTrigonometry ++ functionsExponential ++ functionsCommon ++ functionsGeometric ++ functionsDerivative
 
 
 genericFunctions : List ( String, Elm.Expression )
 genericFunctions =
-    genericTrigonometry ++ genericCommon ++ genericGeometric ++ genericDerivative
+    genericTrigonometry ++ genericExponential ++ genericCommon ++ genericGeometric ++ genericDerivative
 
 
 functionsTrigonometry : List ( String, List Type, Type )
@@ -488,6 +473,31 @@ genericTrigonometry =
     , generic1F "asinh"
     , generic1F "acosh"
     , generic1F "atanh"
+    ]
+
+
+functionsExponential : List ( String, List Type, Type )
+functionsExponential =
+    [ binary genType "pow" genType genType
+    , unary genType "exp" genType
+    , unary genType "log" genType
+    , unary genType "exp2" genType
+    , unary genType "log2" genType
+    , unary genFDType "sqrt" genFDType
+    , unary genFDType "inversesqrt" genFDType
+    ]
+        |> List.concat
+
+
+genericExponential : List ( String, Elm.Expression )
+genericExponential =
+    [ generic2F "pow"
+    , generic1F "exp"
+    , generic1F "log"
+    , generic1F "exp2"
+    , generic1F "log2"
+    , generic1 "sqrt"
+    , generic1 "inversesqrt"
     ]
 
 
@@ -715,50 +725,6 @@ fdType =
 fdiuType : List Type
 fdiuType =
     float ++ double ++ int ++ uint
-
-
-builtin_v_v : ( List String, List ( List Type, Type ) )
-builtin_v_v =
-    ( [ -- Complex and power
-        "exp"
-      , "exp2"
-      , "inversesqrt"
-      , "log"
-      , "log2"
-      , "sqrt"
-      ]
-    , [ ( [ TFloat ], TFloat )
-      , ( [ TVec2 ], TVec2 )
-      , ( [ TVec3 ], TVec3 )
-      , ( [ TVec4 ], TVec4 )
-      ]
-    )
-
-
-builtin_vv_v : ( List String, List ( List Type, Type ) )
-builtin_vv_v =
-    ( [ -- Complex and power
-        "pow"
-      ]
-    , [ ( [ TFloat, TFloat ], TFloat )
-      , ( [ TVec2, TVec2 ], TVec2 )
-      , ( [ TVec3, TVec3 ], TVec3 )
-      , ( [ TVec4, TVec4 ], TVec4 )
-      ]
-    )
-
-
-builtin_vvs_v : ( List String, List ( List Type, Type ) )
-builtin_vvs_v =
-    ( [ --Geometric
-        "refract"
-      ]
-    , [ ( [ TFloat, TFloat, TFloat ], TFloat )
-      , ( [ TVec2, TVec2, TFloat ], TVec2 )
-      , ( [ TVec3, TVec3, TFloat ], TVec3 )
-      , ( [ TVec4, TVec4, TFloat ], TVec4 )
-      ]
-    )
 
 
 builtinDecls : List Elm.Declaration
