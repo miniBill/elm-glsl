@@ -11,7 +11,8 @@ module Glsl exposing
     , BVec2, BVec3, BVec4
     , UInt, UVec2, UVec3, UVec4
     , Double, DVec2, DVec3, DVec4
-    , Mat2, Mat3, Mat4
+    , Mat2, Mat3, Mat4, Mat23, Mat24, Mat32, Mat34, Mat42, Mat43
+    , DMat2, DMat3, DMat4, DMat23, DMat24, DMat32, DMat34, DMat42, DMat43
     , Void, In, Out
     , unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5
     , unsafeMap, unsafeMap2, unsafeMap3
@@ -44,7 +45,8 @@ module Glsl exposing
 @docs BVec2, BVec3, BVec4
 @docs UInt, UVec2, UVec3, UVec4
 @docs Double, DVec2, DVec3, DVec4
-@docs Mat2, Mat3, Mat4
+@docs Mat2, Mat3, Mat4, Mat23, Mat24, Mat32, Mat34, Mat42, Mat43
+@docs DMat2, DMat3, DMat4, DMat23, DMat24, DMat32, DMat34, DMat42, DMat43
 @docs Void, In, Out
 
 
@@ -636,6 +638,66 @@ type alias Mat3 =
 
 type alias Mat4 =
     Mat F4 F4
+
+
+type alias Mat23 =
+    Mat F2 F3
+
+
+type alias Mat24 =
+    Mat F2 F4
+
+
+type alias Mat32 =
+    Mat F3 F2
+
+
+type alias Mat34 =
+    Mat F3 F4
+
+
+type alias Mat42 =
+    Mat F4 F2
+
+
+type alias Mat43 =
+    Mat F4 F3
+
+
+type alias DMat2 =
+    Mat D2 D2
+
+
+type alias DMat3 =
+    Mat D3 D3
+
+
+type alias DMat4 =
+    Mat D4 D4
+
+
+type alias DMat23 =
+    Mat D2 D3
+
+
+type alias DMat24 =
+    Mat D2 D4
+
+
+type alias DMat32 =
+    Mat D3 D2
+
+
+type alias DMat34 =
+    Mat D3 D4
+
+
+type alias DMat42 =
+    Mat D4 D2
+
+
+type alias DMat43 =
+    Mat D4 D3
 
 
 type Void
