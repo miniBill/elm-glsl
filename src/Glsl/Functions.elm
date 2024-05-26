@@ -8,8 +8,8 @@ module Glsl.Functions exposing
     , cos1, cos2, cos3, cos4
     , cross33
     , degrees1, degrees2, degrees3, degrees4
-    , distance11, distance22, distance33, distance44
-    , dot11, dot22, dot33, dot44
+    , distance, distance11, distance22, distance33, distance44, distanced1d1, distanced2d2, distanced3d3, distanced4d4
+    , dot, dot11, dot22, dot33, dot44, dotd1d1, dotd2d2, dotd3d3, dotd4d4
     , exp1, exp2, exp3, exp4
     , exp21, exp22, exp23, exp24
     , faceforward111, faceforward222, faceforward333, faceforward444
@@ -30,7 +30,7 @@ module Glsl.Functions exposing
     , ivec3i1i1i1
     , ivec4i1i1i1i1
     , ldexp1i1, ldexp2i2, ldexp3i3, ldexp4i4, ldexpd1i1, ldexpd2i2, ldexpd3i3, ldexpd4i4
-    , length1, length2, length3, length4
+    , length, length1, length2, length3, length4, lengthd1, lengthd2, lengthd3, lengthd4
     , log1, log2, log3, log4
     , log21, log22, log23, log24
     , mat3333
@@ -109,12 +109,12 @@ module Glsl.Functions exposing
 
 ## distance
 
-@docs distance11, distance22, distance33, distance44
+@docs distance, distance11, distance22, distance33, distance44, distanced1d1, distanced2d2, distanced3d3, distanced4d4
 
 
 ## dot
 
-@docs dot11, dot22, dot33, dot44
+@docs dot, dot11, dot22, dot33, dot44, dotd1d1, dotd2d2, dotd3d3, dotd4d4
 
 
 ## exp
@@ -219,7 +219,7 @@ module Glsl.Functions exposing
 
 ## length
 
-@docs length1, length2, length3, length4
+@docs length, length1, length2, length3, length4, lengthd1, lengthd2, lengthd3, lengthd4
 
 
 ## log
@@ -880,6 +880,38 @@ distance44 a b =
     Glsl.unsafeCall2 "distance" [] a b
 
 
+distanced1d1 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+distanced1d1 a b =
+    Glsl.unsafeCall2 "distance" [] a b
+
+
+distanced2d2 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.Double
+distanced2d2 a b =
+    Glsl.unsafeCall2 "distance" [] a b
+
+
+distanced3d3 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.Double
+distanced3d3 a b =
+    Glsl.unsafeCall2 "distance" [] a b
+
+
+distanced4d4 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.Double
+distanced4d4 a b =
+    Glsl.unsafeCall2 "distance" [] a b
+
+
 dot11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -909,6 +941,38 @@ dot44 :
     -> Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Float_
 dot44 a b =
+    Glsl.unsafeCall2 "dot" [] a b
+
+
+dotd1d1 :
+    Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+    -> Glsl.Expression Glsl.Double
+dotd1d1 a b =
+    Glsl.unsafeCall2 "dot" [] a b
+
+
+dotd2d2 :
+    Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.DVec2
+    -> Glsl.Expression Glsl.Double
+dotd2d2 a b =
+    Glsl.unsafeCall2 "dot" [] a b
+
+
+dotd3d3 :
+    Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.DVec3
+    -> Glsl.Expression Glsl.Double
+dotd3d3 a b =
+    Glsl.unsafeCall2 "dot" [] a b
+
+
+dotd4d4 :
+    Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.DVec4
+    -> Glsl.Expression Glsl.Double
+dotd4d4 a b =
     Glsl.unsafeCall2 "dot" [] a b
 
 
@@ -1502,6 +1566,26 @@ length3 a =
 
 length4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Float_
 length4 a =
+    Glsl.unsafeCall1 "length" [] a
+
+
+lengthd1 : Glsl.Expression Glsl.Double -> Glsl.Expression Glsl.Double
+lengthd1 a =
+    Glsl.unsafeCall1 "length" [] a
+
+
+lengthd2 : Glsl.Expression Glsl.DVec2 -> Glsl.Expression Glsl.Double
+lengthd2 a =
+    Glsl.unsafeCall1 "length" [] a
+
+
+lengthd3 : Glsl.Expression Glsl.DVec3 -> Glsl.Expression Glsl.Double
+lengthd3 a =
+    Glsl.unsafeCall1 "length" [] a
+
+
+lengthd4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.Double
+lengthd4 a =
     Glsl.unsafeCall1 "length" [] a
 
 
@@ -3366,3 +3450,24 @@ fma :
     -> Glsl.Expression (Glsl.Vec t a)
 fma a b c =
     Glsl.unsafeCall3 "fma" [] a b c
+
+
+length : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t Glsl.D1)
+length a =
+    Glsl.unsafeCall1 "length" [] a
+
+
+distance :
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t Glsl.D1)
+distance a b =
+    Glsl.unsafeCall2 "distance" [] a b
+
+
+dot :
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t Glsl.D1)
+dot a b =
+    Glsl.unsafeCall2 "dot" [] a b

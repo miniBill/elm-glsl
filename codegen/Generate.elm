@@ -367,7 +367,6 @@ builtinFunctions =
         regular : List ( String, List Type, Type )
         regular =
             [ builtin_v_v
-            , builtin_v_s
             , builtin_vv_v
             , builtin_vv_s
             , builtin_vvv_v
@@ -446,7 +445,7 @@ builtinFunctions =
 
 builtin_new : List ( String, List Type, Type )
 builtin_new =
-    commonFunctions
+    commonFunctions ++ geometricFunctions
 
 
 commonFunctions : List ( String, List Type, Type )
@@ -460,34 +459,21 @@ commonFunctions =
     , unary genFDType "ceil" genFDType
     , unary genFDType "fract" genFDType
     , binary genFDType "mod" genFDType genFDType
-    , binary genType "mod" genType float
-    , binary genDType "mod" genDType double
+    , binary genFDType "mod" genFDType fdType
     , binary genType "modf" genType (List.map TOut genType)
     , binary genDType "modf" genDType (List.map TOut genDType)
     , binary genFDIUType "min" genFDIUType genFDIUType
-    , binary genType "min" genType float
-    , binary genDType "min" genDType double
-    , binary genIType "min" genIType int
-    , binary genUType "min" genUType uint
+    , binary genFDIUType "min" genFDIUType fdiuType
     , binary genFDIUType "max" genFDIUType genFDIUType
-    , binary genType "max" genType float
-    , binary genDType "max" genDType double
-    , binary genIType "max" genIType int
-    , binary genUType "max" genUType uint
+    , binary genFDIUType "max" genFDIUType fdiuType
     , ternary genFDIUType "clamp" genFDIUType genFDIUType genFDIUType
-    , ternary genType "clamp" genType float float
-    , ternary genDType "clamp" genDType double double
-    , ternary genIType "clamp" genIType int int
-    , ternary genUType "clamp" genUType uint uint
+    , ternary genFDIUType "clamp" genFDIUType fdiuType fdiuType
     , ternary genFDType "mix" genFDType genFDType genFDType
-    , ternary genType "mix" genType genType float
-    , ternary genDType "mix" genDType genDType double
+    , ternary genFDType "mix" genFDType genFDType fdType
     , binary genFDType "step" genFDType genFDType
-    , binary genType "step" float genType
-    , binary genDType "step" double genDType
+    , binary genFDType "step" fdType genFDType
     , ternary genFDType "smoothstep" genFDType genFDType genFDType
-    , ternary genType "smoothstep" float float genType
-    , ternary genDType "smoothstep" double double genDType
+    , ternary genFDType "smoothstep" fdType fdType genFDType
     , unary genBType "isnan" genType
     , unary genBType "isnan" genDType
     , unary genBType "isinf" genType
@@ -501,6 +487,15 @@ commonFunctions =
     , binary genDType "frexp" genDType (List.map TOut genIType)
     , binary genType "ldexp" genType genIType
     , binary genDType "ldexp" genDType genIType
+    ]
+        |> List.concat
+
+
+geometricFunctions : List ( String, List Type, Type )
+geometricFunctions =
+    [ unary fdType "length" genFDType
+    , binary fdType "distance" genFDType genFDType
+    , binary fdType "dot" genFDType genFDType
     ]
         |> List.concat
 
@@ -524,6 +519,9 @@ genericFunctions =
     , generic2 "step"
     , generic3 "smoothstep"
     , generic3 "fma"
+    , generic1_toscalar "length"
+    , generic2_toscalar "distance"
+    , generic2_toscalar "dot"
     ]
 
 
@@ -534,20 +532,7 @@ unary outputs name inputs =
 
 binary : List Type -> String -> List Type -> List Type -> List ( String, List Type, Type )
 binary outputs name inputs1 inputs2 =
-    let
-        maxLen : Int
-        maxLen =
-            Maybe.withDefault 0 <| List.maximum <| List.map List.length [ inputs1, inputs2 ]
-
-        inputs1_ : List Type
-        inputs1_ =
-            upTo maxLen inputs1
-
-        inputs2_ : List Type
-        inputs2_ =
-            upTo maxLen inputs2
-    in
-    List.map3 (\input1 input2 output -> ( name, [ input1, input2 ], output )) inputs1_ inputs2_ outputs
+    List.map3 (\input1 input2 output -> ( name, [ input1, input2 ], output )) inputs1 inputs2 outputs
 
 
 ternary :
@@ -558,23 +543,6 @@ ternary :
     -> List Type
     -> List ( String, List Type, Type )
 ternary outputs name inputs1 inputs2 inputs3 =
-    let
-        maxLen : Int
-        maxLen =
-            Maybe.withDefault 0 <| List.maximum <| List.map List.length [ inputs1, inputs2, inputs3 ]
-
-        inputs1_ : List Type
-        inputs1_ =
-            upTo maxLen inputs1
-
-        inputs2_ : List Type
-        inputs2_ =
-            upTo maxLen inputs2
-
-        inputs3_ : List Type
-        inputs3_ =
-            upTo maxLen inputs3
-    in
     List.map4
         (\input1 input2 input3 output ->
             ( name
@@ -582,20 +550,10 @@ ternary outputs name inputs1 inputs2 inputs3 =
             , output
             )
         )
-        inputs1_
-        inputs2_
-        inputs3_
+        inputs1
+        inputs2
+        inputs3
         outputs
-
-
-upTo : Int -> List a -> List a
-upTo len inputs =
-    case inputs of
-        [ single ] ->
-            List.repeat len single
-
-        _ ->
-            inputs
 
 
 genType : List Type
@@ -640,35 +598,32 @@ genFDIUType =
 
 float : List Type
 float =
-    [ TFloat ]
+    List.repeat 4 TFloat
 
 
 double : List Type
 double =
-    [ TDouble ]
+    List.repeat 4 TDouble
 
 
 int : List Type
 int =
-    [ TInt ]
+    List.repeat 4 TInt
 
 
 uint : List Type
 uint =
-    [ TUint ]
+    List.repeat 4 TUint
 
 
-builtin_v_s : ( List String, List ( List Type, Type ) )
-builtin_v_s =
-    ( [ -- Geometric
-        "length"
-      ]
-    , [ ( [ TFloat ], TFloat )
-      , ( [ TVec2 ], TFloat )
-      , ( [ TVec3 ], TFloat )
-      , ( [ TVec4 ], TFloat )
-      ]
-    )
+fdType : List Type
+fdType =
+    float ++ double
+
+
+fdiuType : List Type
+fdiuType =
+    float ++ double ++ int ++ uint
 
 
 builtin_v_v : ( List String, List ( List Type, Type ) )
@@ -800,7 +755,7 @@ generic1 : String -> ( String, Elm.Expression )
 generic1 name =
     ( name
     , Elm.fn
-        ( "a", Just (exprVecAnn "a") )
+        ( "a", Just exprVecAnn )
         (\a ->
             Elm.apply
                 (Elm.value
@@ -810,7 +765,26 @@ generic1 name =
                     }
                 )
                 [ Elm.string name, Elm.list [], a ]
-                |> Elm.withType (exprVecAnn "a")
+                |> Elm.withType exprVecAnn
+        )
+    )
+
+
+generic1_toscalar : String -> ( String, Elm.Expression )
+generic1_toscalar name =
+    ( name
+    , Elm.fn
+        ( "a", Just exprVecAnn )
+        (\a ->
+            Elm.apply
+                (Elm.value
+                    { importFrom = [ "Glsl" ]
+                    , name = "unsafeCall1"
+                    , annotation = Nothing
+                    }
+                )
+                [ Elm.string name, Elm.list [], a ]
+                |> Elm.withType exprScalar
         )
     )
 
@@ -819,8 +793,8 @@ generic2 : String -> ( String, Elm.Expression )
 generic2 name =
     ( name
     , Elm.fn2
-        ( "a", Just (exprVecAnn "a") )
-        ( "b", Just (exprVecAnn "a") )
+        ( "a", Just exprVecAnn )
+        ( "b", Just exprVecAnn )
         (\a b ->
             Elm.apply
                 (Elm.value
@@ -830,7 +804,27 @@ generic2 name =
                     }
                 )
                 [ Elm.string name, Elm.list [], a, b ]
-                |> Elm.withType (exprVecAnn "a")
+                |> Elm.withType exprVecAnn
+        )
+    )
+
+
+generic2_toscalar : String -> ( String, Elm.Expression )
+generic2_toscalar name =
+    ( name
+    , Elm.fn2
+        ( "a", Just exprVecAnn )
+        ( "b", Just exprVecAnn )
+        (\a b ->
+            Elm.apply
+                (Elm.value
+                    { importFrom = [ "Glsl" ]
+                    , name = "unsafeCall2"
+                    , annotation = Nothing
+                    }
+                )
+                [ Elm.string name, Elm.list [], a, b ]
+                |> Elm.withType exprScalar
         )
     )
 
@@ -839,9 +833,9 @@ generic3 : String -> ( String, Elm.Expression )
 generic3 name =
     ( name
     , Elm.fn3
-        ( "a", Just (exprVecAnn "a") )
-        ( "b", Just (exprVecAnn "a") )
-        ( "c", Just (exprVecAnn "a") )
+        ( "a", Just exprVecAnn )
+        ( "b", Just exprVecAnn )
+        ( "c", Just exprVecAnn )
         (\a b c ->
             Elm.apply
                 (Elm.value
@@ -851,7 +845,7 @@ generic3 name =
                     }
                 )
                 [ Elm.string name, Elm.list [], a, b, c ]
-                |> Elm.withType (exprVecAnn "a")
+                |> Elm.withType exprVecAnn
         )
     )
 
@@ -860,8 +854,8 @@ generic2_out2 : String -> ( String, Elm.Expression )
 generic2_out2 name =
     ( name
     , Elm.fn2
-        ( "a", Just (exprVecAnn "a") )
-        ( "b", Just (exprOutVecAnn "a") )
+        ( "a", Just exprVecAnn )
+        ( "b", Just exprOutVecAnn )
         (\a b ->
             Elm.apply
                 (Elm.value
@@ -871,22 +865,29 @@ generic2_out2 name =
                     }
                 )
                 [ Elm.string name, Elm.list [], a, b ]
-                |> Elm.withType (exprVecAnn "a")
+                |> Elm.withType exprVecAnn
         )
     )
 
 
-exprOutVecAnn : String -> Type.Annotation
-exprOutVecAnn inner =
-    Type.var inner
+exprOutVecAnn : Type.Annotation
+exprOutVecAnn =
+    Type.var "a"
         |> Gen.Glsl.annotation_.vec (Type.var "t")
         |> Gen.Glsl.annotation_.out
         |> Gen.Glsl.annotation_.expression
 
 
-exprVecAnn : String -> Type.Annotation
-exprVecAnn inner =
-    Type.var inner
+exprVecAnn : Type.Annotation
+exprVecAnn =
+    Type.var "a"
+        |> Gen.Glsl.annotation_.vec (Type.var "t")
+        |> Gen.Glsl.annotation_.expression
+
+
+exprScalar : Type.Annotation
+exprScalar =
+    Gen.Glsl.annotation_.d1
         |> Gen.Glsl.annotation_.vec (Type.var "t")
         |> Gen.Glsl.annotation_.expression
 
