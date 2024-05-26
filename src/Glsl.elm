@@ -5,7 +5,7 @@ module Glsl exposing
     , BinaryOperation(..), UnaryOperation(..), RelationOperation(..)
     , true, false, int1, float1, var
     , unsafeDot, dotX, dotY, dotZ, dotXY
-    , TypingFunction, TypedName(..), Type(..)
+    , TypingFunction, TypedName(..), Type(..), Vec
     , Float_, Vec2, Vec3, Vec4
     , Int_, IVec2, IVec3, IVec4
     , Bool_, BVec2, BVec3, BVec4
@@ -39,7 +39,7 @@ module Glsl exposing
 
 # Typelevel types
 
-@docs TypingFunction, TypedName, Type
+@docs TypingFunction, TypedName, Type, Vec
 @docs Float_, Vec2, Vec3, Vec4
 @docs Int_, IVec2, IVec3, IVec4
 @docs Bool_, BVec2, BVec3, BVec4

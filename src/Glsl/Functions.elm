@@ -1,5 +1,5 @@
 module Glsl.Functions exposing
-    ( abs1, abs2, abs3, abs4, absd1, absd2, absd3, absd4, absi1, absi2, absi3, absi4
+    ( abs, abs1, abs2, abs3, abs4, absd1, absd2, absd3, absd4, absi1, absi2, absi3, absi4
     , acos1, acos2, acos3, acos4
     , asin1, asin2, asin3, asin4
     , atan1, atan11, atan2, atan22, atan3, atan33, atan4, atan44
@@ -51,7 +51,7 @@ module Glsl.Functions exposing
 
 ## abs
 
-@docs abs1, abs2, abs3, abs4, absd1, absd2, absd3, absd4, absi1, absi2, absi3, absi4
+@docs abs, abs1, abs2, abs3, abs4, absd1, absd2, absd3, absd4, absi1, absi2, absi3, absi4
 
 
 ## acos
@@ -1723,3 +1723,8 @@ vec4i1i1i1i1 :
     -> Glsl.Expression Glsl.Vec4
 vec4i1i1i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
+
+
+abs : Glsl.Expression (Glsl.Vec q) -> Glsl.Expression (Glsl.Vec q)
+abs a =
+    Glsl.unsafeCall1 "abs" [] a

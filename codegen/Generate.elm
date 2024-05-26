@@ -31,6 +31,7 @@ main =
 wrapFunction : String -> SortedSet String -> List ( Type, String ) -> Type -> Elm.Declaration
 wrapFunction name deps args returnType =
     let
+        fname : String
         fname =
             fullName name (List.map Tuple.first args)
 
@@ -450,22 +451,20 @@ builtinFunctions =
 builtin_new : List ( String, List Type, Type )
 builtin_new =
     commonFunctions
-        |> List.concatMap (\( name, types ) -> List.map (\( f, t ) -> ( name, f, t )) types)
 
 
-commonFunctions : List ( String, List ( List Type, Type ) )
+commonFunctions : List ( String, List Type, Type )
 commonFunctions =
-    [ ( "abs"
-      , unary genType identity
-            ++ unary genIType identity
-            ++ unary genDType identity
-      )
+    [ unary "abs" genType identity
+    , unary "abs" genIType identity
+    , unary "abs" genDType identity
     ]
+        |> List.concat
 
 
-unary : List Type -> (Type -> Type) -> List ( List Type, Type )
-unary inputs toOutput =
-    List.map (\input -> ( [ input ], toOutput input )) inputs
+unary : String -> List Type -> (Type -> Type) -> List ( String, List Type, Type )
+unary name inputs toOutput =
+    List.map (\input -> ( name, [ input ], toOutput input )) inputs
 
 
 genType : List Type
@@ -696,9 +695,37 @@ builtinDecls =
 
         generic : List Elm.Declaration
         generic =
-            []
+            genericFunctions
+                |> List.map
+                    (\( baseName, body ) ->
+                        Elm.declaration baseName body
+                            |> Elm.exposeWith { exposeConstructor = False, group = Just baseName }
+                    )
     in
     specific ++ generic
+
+
+genericFunctions : List ( String, Elm.Expression )
+genericFunctions =
+    [ genericVecVec "abs" ]
+
+
+genericVecVec : String -> ( String, Elm.Expression )
+genericVecVec name =
+    ( name
+    , Elm.fn ( "a", Just (exprVecAnn "a") )
+        (\a ->
+            Gen.Glsl.unsafeCall1 name [] a
+                |> Elm.withType (exprVecAnn "a")
+        )
+    )
+
+
+exprVecAnn : String -> Type.Annotation
+exprVecAnn inner =
+    Type.var inner
+        |> Gen.Glsl.annotation_.vec
+        |> Gen.Glsl.annotation_.expression
 
 
 indexedVar : Int -> String
