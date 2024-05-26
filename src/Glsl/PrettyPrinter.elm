@@ -291,6 +291,90 @@ type_ t =
         TBool ->
             "bool"
 
+        TBVec2 ->
+            "bvec2"
+
+        TBVec3 ->
+            "bvec3"
+
+        TBVec4 ->
+            "bvec4"
+
+        TUint ->
+            "uint"
+
+        TUVec2 ->
+            "uvec2"
+
+        TUVec3 ->
+            "uvec3"
+
+        TUVec4 ->
+            "uvec4"
+
+        TDouble ->
+            "double"
+
+        TDVec2 ->
+            "dvec2"
+
+        TDVec3 ->
+            "dvec3"
+
+        TDVec4 ->
+            "dvec4"
+
+        TMat2 ->
+            "mat2"
+
+        TMat4 ->
+            "mat4"
+
+        TMat23 ->
+            "mat2x3"
+
+        TMat24 ->
+            "mat2x4"
+
+        TMat32 ->
+            "mat3x2"
+
+        TMat34 ->
+            "mat3x4"
+
+        TMat42 ->
+            "mat4x2"
+
+        TMat43 ->
+            "mat4x3"
+
+        TDMat2 ->
+            "dmat2"
+
+        TDMat3 ->
+            "dmat3"
+
+        TDMat4 ->
+            "dmat4"
+
+        TDMat23 ->
+            "dmat2x3"
+
+        TDMat24 ->
+            "dmat2x4"
+
+        TDMat32 ->
+            "dmat3x2"
+
+        TDMat34 ->
+            "dmat3x4"
+
+        TDMat42 ->
+            "dmat4x2"
+
+        TDMat43 ->
+            "dmat4x3"
+
         TIn tt ->
             "in " ++ type_ tt
 
