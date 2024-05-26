@@ -365,20 +365,18 @@ builtinFunctions =
 
         regular : List ( String, List Type, Type )
         regular =
-            ([ builtin_v_v
-             , builtin_v_s
-             , builtin_vv_v
-             , builtin_vv_s
-             , builtin_vs_v
-             , builtin_sv_v
-             , builtin_vvv_v
-             , builtin_vss_v
-             , builtin_ssv_v
-             , builtin_vvs_v
-             ]
+            [ builtin_v_v
+            , builtin_v_s
+            , builtin_vv_v
+            , builtin_vv_s
+            , builtin_vs_v
+            , builtin_sv_v
+            , builtin_vvv_v
+            , builtin_vss_v
+            , builtin_ssv_v
+            , builtin_vvs_v
+            ]
                 |> List.concatMap (\( names, kinds ) -> overload names kinds)
-            )
-                ++ builtin_new
 
         vecs : List ( String, List Type, Type )
         vecs =
@@ -444,7 +442,7 @@ builtinFunctions =
         builtTuple ( name, inTypes, resultType ) =
             ( fullName name inTypes, { baseName = name, args = inTypes, return = resultType } )
     in
-    (regular ++ vecs ++ ivecs ++ mats ++ others)
+    (builtin_new ++ regular ++ vecs ++ ivecs ++ mats ++ others)
         |> List.map builtTuple
         |> Dict.fromList
 
@@ -518,7 +516,6 @@ builtin_v_v =
       , "fract"
 
       -- Complex and power
-      , "abs"
       , "exp"
       , "exp2"
       , "inversesqrt"
@@ -679,20 +676,29 @@ builtin_vvv_v =
 
 builtinDecls : List Elm.Declaration
 builtinDecls =
-    builtinFunctions
-        |> Dict.toList
-        |> List.map
-            (\( _, { baseName, args, return } ) ->
-                wrapFunction
-                    baseName
-                    SortedSet.empty
-                    (List.indexedMap
-                        (\i type_ -> ( type_, indexedVar i ))
-                        args
+    let
+        specific : List Elm.Declaration
+        specific =
+            builtinFunctions
+                |> Dict.toList
+                |> List.map
+                    (\( _, { baseName, args, return } ) ->
+                        wrapFunction
+                            baseName
+                            SortedSet.empty
+                            (List.indexedMap
+                                (\i type_ -> ( type_, indexedVar i ))
+                                args
+                            )
+                            return
+                            |> Elm.exposeWith { exposeConstructor = False, group = Just baseName }
                     )
-                    return
-                    |> Elm.exposeWith { exposeConstructor = False, group = Just baseName }
-            )
+
+        generic : List Elm.Declaration
+        generic =
+            []
+    in
+    specific ++ generic
 
 
 indexedVar : Int -> String
