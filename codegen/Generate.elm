@@ -458,6 +458,9 @@ commonFunctions =
     [ unary "abs" genType identity
     , unary "abs" genIType identity
     , unary "abs" genDType identity
+    , unary "sign" genType identity
+    , unary "sign" genIType identity
+    , unary "sign" genDType identity
     ]
         |> List.concat
 
@@ -520,7 +523,6 @@ builtin_v_v =
       , "inversesqrt"
       , "log"
       , "log2"
-      , "sign"
       , "sqrt"
 
       -- Trig
@@ -707,7 +709,9 @@ builtinDecls =
 
 genericFunctions : List ( String, Elm.Expression )
 genericFunctions =
-    [ genericVecVec "abs" ]
+    [ genericVecVec "abs"
+    , genericVecVec "sign"
+    ]
 
 
 genericVecVec : String -> ( String, Elm.Expression )
@@ -715,7 +719,14 @@ genericVecVec name =
     ( name
     , Elm.fn ( "a", Just (exprVecAnn "a") )
         (\a ->
-            Gen.Glsl.unsafeCall1 name [] a
+            Elm.apply
+                (Elm.value
+                    { importFrom = [ "Glsl" ]
+                    , name = "unsafeCall1"
+                    , annotation = Nothing
+                    }
+                )
+                [ Elm.string name, Elm.list [], a ]
                 |> Elm.withType (exprVecAnn "a")
         )
     )

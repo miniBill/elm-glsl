@@ -35,7 +35,7 @@ module Glsl.Functions exposing
     , radians1, radians2, radians3, radians4
     , reflect11, reflect22, reflect33, reflect44
     , refract111, refract221, refract331, refract441
-    , sign1, sign2, sign3, sign4
+    , sign, sign1, sign2, sign3, sign4, signd1, signd2, signd3, signd4, signi1, signi2, signi3, signi4
     , sin1, sin2, sin3, sin4
     , smoothstep111, smoothstep112, smoothstep113, smoothstep114, smoothstep222, smoothstep333, smoothstep444
     , sqrt1, sqrt2, sqrt3, sqrt4
@@ -231,7 +231,7 @@ module Glsl.Functions exposing
 
 ## sign
 
-@docs sign1, sign2, sign3, sign4
+@docs sign, sign1, sign2, sign3, sign4, signd1, signd2, signd3, signd4, signi1, signi2, signi3, signi4
 
 
 ## sin
@@ -1251,6 +1251,46 @@ sign4 a =
     Glsl.unsafeCall1 "sign" [] a
 
 
+signd1 : Glsl.Expression Glsl.Double -> Glsl.Expression Glsl.Double
+signd1 a =
+    Glsl.unsafeCall1 "sign" [] a
+
+
+signd2 : Glsl.Expression Glsl.DVec2 -> Glsl.Expression Glsl.DVec2
+signd2 a =
+    Glsl.unsafeCall1 "sign" [] a
+
+
+signd3 : Glsl.Expression Glsl.DVec3 -> Glsl.Expression Glsl.DVec3
+signd3 a =
+    Glsl.unsafeCall1 "sign" [] a
+
+
+signd4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
+signd4 a =
+    Glsl.unsafeCall1 "sign" [] a
+
+
+signi1 : Glsl.Expression Int -> Glsl.Expression Int
+signi1 a =
+    Glsl.unsafeCall1 "sign" [] a
+
+
+signi2 : Glsl.Expression Glsl.IVec2 -> Glsl.Expression Glsl.IVec2
+signi2 a =
+    Glsl.unsafeCall1 "sign" [] a
+
+
+signi3 : Glsl.Expression Glsl.IVec3 -> Glsl.Expression Glsl.IVec3
+signi3 a =
+    Glsl.unsafeCall1 "sign" [] a
+
+
+signi4 : Glsl.Expression Glsl.IVec4 -> Glsl.Expression Glsl.IVec4
+signi4 a =
+    Glsl.unsafeCall1 "sign" [] a
+
+
 sin1 : Glsl.Expression Float -> Glsl.Expression Float
 sin1 a =
     Glsl.unsafeCall1 "sin" [] a
@@ -1725,6 +1765,11 @@ vec4i1i1i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
-abs : Glsl.Expression (Glsl.Vec q) -> Glsl.Expression (Glsl.Vec q)
+abs : Glsl.Expression (Glsl.Vec a) -> Glsl.Expression (Glsl.Vec a)
 abs a =
     Glsl.unsafeCall1 "abs" [] a
+
+
+sign : Glsl.Expression (Glsl.Vec a) -> Glsl.Expression (Glsl.Vec a)
+sign a =
+    Glsl.unsafeCall1 "sign" [] a
