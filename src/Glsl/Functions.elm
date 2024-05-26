@@ -19,6 +19,8 @@ module Glsl.Functions exposing
     , fwidth1, fwidth2, fwidth3, fwidth4
     , int1
     , inversesqrt1, inversesqrt2, inversesqrt3, inversesqrt4
+    , isinf1, isinf2, isinf3, isinf4, isinfd1, isinfd2, isinfd3, isinfd4
+    , isnan1, isnan2, isnan3, isnan4, isnand1, isnand2, isnand3, isnand4
     , ivec2i1i1
     , ivec3i1i1i1
     , ivec4i1i1i1i1
@@ -151,6 +153,16 @@ module Glsl.Functions exposing
 ## inversesqrt
 
 @docs inversesqrt1, inversesqrt2, inversesqrt3, inversesqrt4
+
+
+## isinf
+
+@docs isinf1, isinf2, isinf3, isinf4, isinfd1, isinfd2, isinfd3, isinfd4
+
+
+## isnan
+
+@docs isnan1, isnan2, isnan3, isnan4, isnand1, isnand2, isnand3, isnand4
 
 
 ## ivec2
@@ -1062,6 +1074,86 @@ inversesqrt3 a =
 inversesqrt4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Vec4
 inversesqrt4 a =
     Glsl.unsafeCall1 "inversesqrt" [] a
+
+
+isinf1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Bool_
+isinf1 a =
+    Glsl.unsafeCall1 "isinf" [] a
+
+
+isinf2 : Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.BVec2
+isinf2 a =
+    Glsl.unsafeCall1 "isinf" [] a
+
+
+isinf3 : Glsl.Expression Glsl.Vec3 -> Glsl.Expression Glsl.BVec3
+isinf3 a =
+    Glsl.unsafeCall1 "isinf" [] a
+
+
+isinf4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.BVec4
+isinf4 a =
+    Glsl.unsafeCall1 "isinf" [] a
+
+
+isinfd1 : Glsl.Expression Glsl.Double -> Glsl.Expression Glsl.Bool_
+isinfd1 a =
+    Glsl.unsafeCall1 "isinf" [] a
+
+
+isinfd2 : Glsl.Expression Glsl.DVec2 -> Glsl.Expression Glsl.BVec2
+isinfd2 a =
+    Glsl.unsafeCall1 "isinf" [] a
+
+
+isinfd3 : Glsl.Expression Glsl.DVec3 -> Glsl.Expression Glsl.BVec3
+isinfd3 a =
+    Glsl.unsafeCall1 "isinf" [] a
+
+
+isinfd4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.BVec4
+isinfd4 a =
+    Glsl.unsafeCall1 "isinf" [] a
+
+
+isnan1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Bool_
+isnan1 a =
+    Glsl.unsafeCall1 "isnan" [] a
+
+
+isnan2 : Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.BVec2
+isnan2 a =
+    Glsl.unsafeCall1 "isnan" [] a
+
+
+isnan3 : Glsl.Expression Glsl.Vec3 -> Glsl.Expression Glsl.BVec3
+isnan3 a =
+    Glsl.unsafeCall1 "isnan" [] a
+
+
+isnan4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.BVec4
+isnan4 a =
+    Glsl.unsafeCall1 "isnan" [] a
+
+
+isnand1 : Glsl.Expression Glsl.Double -> Glsl.Expression Glsl.Bool_
+isnand1 a =
+    Glsl.unsafeCall1 "isnan" [] a
+
+
+isnand2 : Glsl.Expression Glsl.DVec2 -> Glsl.Expression Glsl.BVec2
+isnand2 a =
+    Glsl.unsafeCall1 "isnan" [] a
+
+
+isnand3 : Glsl.Expression Glsl.DVec3 -> Glsl.Expression Glsl.BVec3
+isnand3 a =
+    Glsl.unsafeCall1 "isnan" [] a
+
+
+isnand4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.BVec4
+isnand4 a =
+    Glsl.unsafeCall1 "isnan" [] a
 
 
 ivec2i1i1 :

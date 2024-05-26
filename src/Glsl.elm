@@ -4,7 +4,8 @@ module Glsl exposing
     , Expression(..), ExprWithDeps, Expr(..)
     , BinaryOperation(..), UnaryOperation(..), RelationOperation(..)
     , true, false, int1, float1, var
-    , unsafeDot, dotX, dotY, dotZ, dotXY
+    , unsafeDot, dotX, dotY, dotZ
+    , dot1, dot2, dot3, dot4, dx, dy, dz, dw
     , TypingFunction, TypedName(..), Type(..), Vec
     , Float_, Vec2, Vec3, Vec4
     , Int_, IVec2, IVec3, IVec4
@@ -34,7 +35,8 @@ module Glsl exposing
 # Utils
 
 @docs true, false, int1, float1, var
-@docs unsafeDot, dotX, dotY, dotZ, dotXY
+@docs unsafeDot, dotX, dotY, dotZ
+@docs dot1, dot2, dot3, dot4, dx, dy, dz, dw
 
 
 # Typelevel types
@@ -447,131 +449,81 @@ type Type
 -- Typelevel types. Eh.
 
 
-type Vec d
+type Vec t d
     = Vec
 
 
 type alias Float_ =
-    Vec F1
+    Vec Float D1
 
 
 type alias Vec2 =
-    Vec F2
+    Vec Float D2
 
 
 type alias Vec3 =
-    Vec F3
+    Vec Float D3
 
 
 type alias Vec4 =
-    Vec F4
+    Vec Float D4
 
 
-type alias F1 =
-    Float
+type alias D1 =
+    {}
 
 
-type alias F2 =
-    { x : Float
-    , y : Float
+type alias D2 =
+    { x : ()
+    , y : ()
     }
 
 
-type alias F3 =
-    { x : Float
-    , y : Float
-    , z : Float
+type alias D3 =
+    { x : ()
+    , y : ()
+    , z : ()
     }
 
 
-type alias F4 =
-    { x : Float
-    , y : Float
-    , z : Float
-    , w : Float
+type alias D4 =
+    { x : ()
+    , y : ()
+    , z : ()
+    , w : ()
     }
 
 
 type alias Int_ =
-    Vec I1
+    Vec Int D1
 
 
 type alias IVec2 =
-    Vec I2
+    Vec Int D2
 
 
 type alias IVec3 =
-    Vec I3
+    Vec Int D3
 
 
 type alias IVec4 =
-    Vec I4
-
-
-type alias I1 =
-    Int
-
-
-type alias I2 =
-    { x : Int
-    , y : Int
-    }
-
-
-type alias I3 =
-    { x : Int
-    , y : Int
-    , z : Int
-    }
-
-
-type alias I4 =
-    { x : Int
-    , y : Int
-    , z : Int
-    , w : Int
-    }
+    Vec Int D4
 
 
 type alias Bool_ =
-    Vec B1
+    Vec Bool D1
 
 
 type alias BVec2 =
-    Vec B2
+    Vec Bool D2
 
 
 type alias BVec3 =
-    Vec B3
+    Vec Bool D3
 
 
 type alias BVec4 =
-    Vec B4
-
-
-type alias B1 =
-    Bool
-
-
-type alias B2 =
-    { x : Bool
-    , y : Bool
-    }
-
-
-type alias B3 =
-    { x : Bool
-    , y : Bool
-    , z : Bool
-    }
-
-
-type alias B4 =
-    { x : Bool
-    , y : Bool
-    , z : Bool
-    , w : Bool
-    }
+    Vec Bool D4
 
 
 type UInt
@@ -579,44 +531,19 @@ type UInt
 
 
 type alias UInt_ =
-    Vec U1
+    Vec UInt D1
 
 
 type alias UVec2 =
-    Vec U2
+    Vec UInt D2
 
 
 type alias UVec3 =
-    Vec U3
+    Vec UInt D3
 
 
 type alias UVec4 =
-    Vec U4
-
-
-type alias U1 =
-    UInt
-
-
-type alias U2 =
-    { x : UInt
-    , y : UInt
-    }
-
-
-type alias U3 =
-    { x : UInt
-    , y : UInt
-    , z : UInt
-    }
-
-
-type alias U4 =
-    { x : UInt
-    , y : UInt
-    , z : UInt
-    , w : UInt
-    }
+    Vec UInt D4
 
 
 type Double
@@ -624,120 +551,95 @@ type Double
 
 
 type alias Double_ =
-    Vec D1
+    Vec Double D1
 
 
 type alias DVec2 =
-    Vec D2
+    Vec Double D2
 
 
 type alias DVec3 =
-    Vec D3
+    Vec Double D3
 
 
 type alias DVec4 =
-    Vec D4
+    Vec Double D4
 
 
-type alias D1 =
-    Double
-
-
-type alias D2 =
-    { x : Double
-    , y : Double
-    }
-
-
-type alias D3 =
-    { x : Double
-    , y : Double
-    , z : Double
-    }
-
-
-type alias D4 =
-    { x : Double
-    , y : Double
-    , z : Double
-    , w : Double
-    }
-
-
-type Mat r c
+type Mat t r c
     = Mat
 
 
 type alias Mat2 =
-    Mat F2 F2
+    Mat Float D2 D2
 
 
 type alias Mat3 =
-    Mat F3 F3
+    Mat Float D3 D3
 
 
 type alias Mat4 =
-    Mat F4 F4
+    Mat Float D4 D4
 
 
 type alias Mat23 =
-    Mat F2 F3
+    Mat Float D2 D3
 
 
 type alias Mat24 =
-    Mat F2 F4
+    Mat Float D2 D4
 
 
 type alias Mat32 =
-    Mat F3 F2
+    Mat Float D3 D2
 
 
 type alias Mat34 =
-    Mat F3 F4
+    Mat Float D3 D4
 
 
 type alias Mat42 =
-    Mat F4 F2
+    Mat Float D4 D2
 
 
 type alias Mat43 =
-    Mat F4 F3
+    Mat Float D4 D3
 
 
 type alias DMat2 =
-    Mat D2 D2
+    Mat Double D2 D2
 
 
 type alias DMat3 =
-    Mat D3 D3
+    Mat Double D3 D3
 
 
 type alias DMat4 =
-    Mat D4 D4
+    Mat Double D4 D4
 
 
 type alias DMat23 =
-    Mat D2 D3
+    Mat Double D2 D3
 
 
 type alias DMat24 =
-    Mat D2 D4
+    Mat Double D2 D4
 
 
 type alias DMat32 =
-    Mat D3 D2
+    Mat Double D3 D2
 
 
 type alias DMat34 =
-    Mat D3 D4
+    Mat Double D3 D4
 
 
 type alias DMat42 =
-    Mat D4 D2
+    Mat Double D4 D2
 
 
 type alias DMat43 =
-    Mat D4 D3
+    Mat Double D4 D3
 
 
 type Void
@@ -786,24 +688,63 @@ var v =
     pure <| Variable v
 
 
-dotX : Expression (Vec { a | x : x }) -> Expression x
+type Dot q
+    = Dotter Char
+
+
+dx : Dot { a | x : x }
+dx =
+    Dotter 'x'
+
+
+dy : Dot { a | y : y }
+dy =
+    Dotter 'y'
+
+
+dz : Dot { a | z : z }
+dz =
+    Dotter 'z'
+
+
+dw : Dot { a | w : w }
+dw =
+    Dotter 'w'
+
+
+dot1 : Dot q -> Expression (Vec t q) -> Expression (Vec t D1)
+dot1 (Dotter d1) e =
+    unsafeDot e (String.fromList [ d1 ])
+
+
+dot2 : Dot q -> Dot q -> Expression (Vec t q) -> Expression (Vec t D2)
+dot2 (Dotter d1) (Dotter d2) e =
+    unsafeDot e (String.fromList [ d1, d2 ])
+
+
+dot3 : Dot q -> Dot q -> Dot q -> Expression (Vec t q) -> Expression (Vec t D3)
+dot3 (Dotter d1) (Dotter d2) (Dotter d3) e =
+    unsafeDot e (String.fromList [ d1, d2, d3 ])
+
+
+dot4 : Dot q -> Dot q -> Dot q -> Dot q -> Expression (Vec t q) -> Expression (Vec t D4)
+dot4 (Dotter d1) (Dotter d2) (Dotter d3) (Dotter d4) e =
+    unsafeDot e (String.fromList [ d1, d2, d3, d4 ])
+
+
+dotX : Expression (Vec t { a | x : x }) -> Expression (Vec t D1)
 dotX e =
-    unsafeDot e "x"
+    dot1 dx e
 
 
-dotY : Expression (Vec { a | y : y }) -> Expression y
+dotY : Expression (Vec t { a | y : y }) -> Expression (Vec t D1)
 dotY e =
-    unsafeDot e "y"
+    dot1 dy e
 
 
-dotZ : Expression (Vec { a | z : z }) -> Expression z
+dotZ : Expression (Vec t { a | z : z }) -> Expression (Vec t D1)
 dotZ e =
-    unsafeDot e "z"
-
-
-dotXY : Expression (Vec { a | x : x, y : y }) -> Expression (Vec { x : x, y : y })
-dotXY e =
-    unsafeDot e "xy"
+    dot1 dz e
 
 
 unsafeDot : Expression t -> String -> Expression a
