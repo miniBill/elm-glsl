@@ -6,6 +6,7 @@ import Elm.Annotation as Type
 import Gen.CodeGen.Generate as Generate
 import Gen.Glsl
 import Glsl exposing (BinaryOperation(..), Declaration(..), Expr(..), Expression(..), Stat(..), Statement(..), Type(..))
+import Glsl.PrettyPrinter
 import List.Extra
 import Set exposing (Set)
 import SortedSet exposing (SortedSet)
@@ -390,10 +391,12 @@ builtinFunctions =
 
         mats : List ( String, List Type, Type )
         mats =
-            [ ( [ TVec3, TVec3, TVec3 ], 3, TMat3 ) ]
+            [ ( [ TVec3, TVec3, TVec3 ], TMat3 )
+            , ( List.repeat 4 TFloat, TMat4 )
+            ]
                 |> List.map
-                    (\( inTypes, size, type_ ) ->
-                        ( "mat" ++ String.fromInt size
+                    (\( inTypes, type_ ) ->
+                        ( Glsl.PrettyPrinter.type_ type_
                         , inTypes
                         , type_
                         )
