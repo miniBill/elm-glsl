@@ -4,7 +4,7 @@ import ErrorUtils
 import Expect
 import Glsl exposing (float1)
 import Glsl.Functions exposing (dot, fract, sin_, vec3111)
-import Glsl.Generator exposing (floatT, fun1_, return, vec3T)
+import Glsl.Generator exposing (const_, floatT, fun1_, mat2T, return, vec3T)
 import Glsl.Operations exposing (by)
 import Glsl.Parser
 import Parser
@@ -125,7 +125,10 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
 
 }
 """
-        [ (fun1_ floatT "hash3" (vec3T "p") <|
+        [ (const_ floatT "s3" (float1 1.7320508075688772)).declaration
+        , (const_ floatT "i3" (float1 0.5773502691896258)).declaration
+        , const_ mat2T "tri2cart" (mat21111 one zero s3 s3)
+        , (fun1_ floatT "hash3" (vec3T "p") <|
             \p ->
                 return
                     (fract
@@ -154,4 +157,18 @@ check label input expected =
 
                 Ok ( _, declarations ) ->
                     declarations
-                        |> Expect.equal expected
+                        |> expectEqualList expected
+
+
+expectEqualList : List Glsl.Declaration -> List Glsl.Declaration -> Expect.Expectation
+expectEqualList l r =
+    case ( l, r ) of
+        ( lh :: lt, rh :: rt ) ->
+            if lh == rh then
+                expectEqualList lt rt
+
+            else
+                Expect.equal lh rh
+
+        _ ->
+            Expect.equal l r
