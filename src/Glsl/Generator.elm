@@ -1,6 +1,6 @@
-module Glsl.Generator exposing (File, FunDecl, assign, assignAdd, assignBy, assignOut, boolT, break, continue, decl, def, def1, def2, def3, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun1_, fun2, fun2_, fun3, fun3_, fun4, fun4_, fun5, fun5_, funDeclToGlsl, ifElse, if_, in_, intT, main_, mat3, mat3T, nop, out, return, statementToGlsl, vec2, vec2T, vec3, vec3T, vec4, vec4T, voidT)
+module Glsl.Generator exposing (File, FunDecl, assign, assignAdd, assignBy, assignOut, boolT, break, const, const_, continue, decl, def, def1, def2, def3, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun1_, fun2, fun2_, fun3, fun3_, fun4, fun4_, fun5, fun5_, funDeclToGlsl, ifElse, if_, in_, intT, main_, mat2T, mat3, mat3T, nop, out, return, statementToGlsl, vec2, vec2T, vec3, vec3T, vec4, vec4T, voidT)
 
-import Glsl exposing (BinaryOperation(..), Bool_, Declaration(..), Expr(..), Expression(..), Float_, In, Int_, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap2, unsafeVar, withContinuation, withExpression, withStatement)
+import Glsl exposing (BinaryOperation(..), Bool_, Declaration(..), Expr(..), Expression(..), Float_, In, Int_, Mat2, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap, unsafeMap2, unsafeVar, withContinuation, withExpression, withStatement)
 import Glsl.PrettyPrinter
 import Set
 import SortedSet
@@ -115,6 +115,42 @@ funX call typeF name body args =
                 |> SortedSet.insert funGlsl
                 |> SortedSet.toList
             )
+    }
+
+
+const :
+    (String -> TypedName t)
+    -> String
+    -> Expression t
+    -> Expression t
+const typeF name value =
+    (const_ typeF name value).value
+
+
+const_ :
+    (String -> TypedName t)
+    -> String
+    -> Expression t
+    ->
+        { declaration : Declaration
+        , value : Expression t
+        }
+const_ typeF name value =
+    let
+        (TypedName constType _) =
+            typeF name
+
+        (Expression e) =
+            value
+    in
+    { declaration =
+        ConstDeclaration
+            { tipe = constType
+            , name = name
+            , value = e.expr
+            }
+    , value =
+        unsafeMap (\_ -> Variable name) value
     }
 
 
@@ -541,6 +577,11 @@ vec3T n =
 vec4T : TypingFunction Vec4
 vec4T n =
     TypedName TVec4 n
+
+
+mat2T : TypingFunction Mat2
+mat2T n =
+    TypedName TMat2 n
 
 
 mat3T : TypingFunction Mat3

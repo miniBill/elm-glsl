@@ -50,6 +50,7 @@ module Glsl.Functions exposing
     , log
     , log2
     , mat3333
+    , mat41111
     , max11, max21, max22, max31, max33, max41, max44, maxd1d1, maxd2d1, maxd2d2, maxd3d1, maxd3d3, maxd4d1, maxd4d4, maxi1i1, maxi2i1, maxi2i2, maxi3i1, maxi3i3, maxi4i1, maxi4i4, maxu1u1, maxu2u1, maxu2u2, maxu3u1, maxu3u3, maxu4u1, maxu4u4
     , max_
     , min11, min21, min22, min31, min33, min41, min44, mind1d1, mind2d1, mind2d2, mind3d1, mind3d3, mind4d1, mind4d4, mini1i1, mini2i1, mini2i2, mini3i1, mini3i3, mini4i1, mini4i4, minu1u1, minu2u1, minu2u2, minu3u1, minu3u3, minu4u1, minu4u4
@@ -337,6 +338,11 @@ module Glsl.Functions exposing
 ## mat3
 
 @docs mat3333
+
+
+## mat4
+
+@docs mat41111
 
 
 ## max
@@ -1600,6 +1606,16 @@ mat3333 :
     -> Glsl.Expression Glsl.Mat3
 mat3333 a b c =
     Glsl.unsafeCall3 "mat3" [] a b c
+
+
+mat41111 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Mat4
+mat41111 a b c d =
+    Glsl.unsafeCall4 "mat4" [] a b c d
 
 
 max11 :

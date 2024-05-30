@@ -65,7 +65,7 @@ module Glsl.Operations exposing
 
 -}
 
-import Glsl exposing (BinaryOperation(..), Bool_, D1, D2, D3, D4, Expr(..), Expression, Float_, Mat3, RelationOperation(..), UnaryOperation(..), Vec, Vec2, Vec3, Vec4, false, int1, true, unsafeDot, unsafeMap2, unsafeMap3)
+import Glsl exposing (BinaryOperation(..), Bool_, D1, D2, D3, D4, Expr(..), Expression, Float_, Mat3, RelationOperation(..), UnaryOperation(..), Vec, Vec2, Vec3, Vec4, false, int1, true, unsafeDot, unsafeMap, unsafeMap2, unsafeMap3)
 import Glsl.Functions exposing (vec2i1, vec3i1, vec4i1)
 
 
@@ -129,12 +129,12 @@ subtract =
 
 negate : Expression (Vec Float d) -> Expression (Vec Float d)
 negate l =
-    Glsl.unsafeMap (UnaryOperation Negate) l
+    unsafeMap (UnaryOperation Negate) l
 
 
 unsafeBinary : BinaryOperation -> Expression a -> Expression b -> Expression c
 unsafeBinary op =
-    Glsl.unsafeMap2 (\l r -> BinaryOperation l op r)
+    unsafeMap2 (\l r -> BinaryOperation l op r)
 
 
 
@@ -311,7 +311,7 @@ dw =
 
 dot1 : Dot q -> Expression (Vec t q) -> Expression (Vec t D1)
 dot1 (Dotter d1) e =
-    unsafeDot e (String.fromList [ d1 ])
+    unsafeDot e (String.fromChar d1)
 
 
 dot2 : Dot q -> Dot q -> Expression (Vec t q) -> Expression (Vec t D2)
