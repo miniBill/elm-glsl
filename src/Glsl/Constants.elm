@@ -17,7 +17,7 @@ module Glsl.Constants exposing
 
 -}
 
-import Glsl exposing (Expression(..), Float_, Vec4, float1, unsafeVar)
+import Glsl exposing (Expression, Float_, Vec4, float1, unsafeVar)
 
 
 gl_FragColor : Expression Vec4

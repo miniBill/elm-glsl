@@ -3,7 +3,8 @@ module ShaderToy exposing (suite)
 import ErrorUtils
 import Expect
 import Glsl exposing (float1)
-import Glsl.Functions exposing (dot, fract, sin_, vec3111)
+import Glsl.Constants exposing (one, zero)
+import Glsl.Functions exposing (dot, fract, mat21111, sin_, vec3111)
 import Glsl.Generator exposing (const_, floatT, fun1_, mat2T, return, vec3T)
 import Glsl.Operations exposing (by)
 import Glsl.Parser
@@ -125,9 +126,15 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
 
 }
 """
-        [ (const_ floatT "s3" (float1 1.7320508075688772)).declaration
+    <|
+        let
+            s3 : { declaration : Glsl.Declaration, value : Glsl.Expression Glsl.Float_ }
+            s3 =
+                const_ floatT "s3" (float1 1.7320508075688772)
+        in
+        [ s3.declaration
         , (const_ floatT "i3" (float1 0.5773502691896258)).declaration
-        , const_ mat2T "tri2cart" (mat21111 one zero s3 s3)
+        , (const_ mat2T "tri2cart" (mat21111 one zero s3.value s3.value)).declaration
         , (fun1_ floatT "hash3" (vec3T "p") <|
             \p ->
                 return
