@@ -521,7 +521,18 @@ prec3Parser =
         , succeed (UnaryOperation PrefixDecrement)
             |. symbol "--"
             |= Parser.lazy (\_ -> prec3Parser)
-        , succeed (UnaryOperation Negate)
+        , succeed
+            (\c ->
+                case c of
+                    Float f ->
+                        Float -f
+
+                    Int i ->
+                        Int -i
+
+                    _ ->
+                        UnaryOperation Negate c
+            )
             |. singleSymbol "-"
             |= Parser.lazy (\_ -> prec3Parser)
         , succeed (UnaryOperation Invert)
