@@ -96,6 +96,9 @@ excludeNonsensicalBinary l op r =
         ( Float _, ArraySubscript, _ ) ->
             r
 
+        ( Int _, ArraySubscript, _ ) ->
+            r
+
         _ ->
             BinaryOperation l op r
 
