@@ -15,22 +15,28 @@ import SortedSet exposing (SortedSet)
 main : Program {} () ()
 main =
     Generate.run
-        [ Elm.fileWith [ "Glsl", "Functions" ]
-            { docs =
-                List.map
-                    (\{ group, members } ->
-                        Elm.docs
-                            { group = group
-                            , members = List.sort members
-                            }
-                    )
-            , aliases = []
-            }
-            builtinDecls
+        [ builtinDecls
+            |> List.Extra.gatherEqualsBy .group
+            |> List.map
+                (\( { group } as head, tail ) ->
+                    List.map .declaration (head :: tail)
+                        |> Elm.group { title = group, docs = "aaa" }
+                )
+            |> Elm.fileWith [ "Glsl", "Functions" ]
+                { docs =
+                    List.map
+                        (\{ group, members } ->
+                            Elm.docs
+                                { group = group
+                                , members = List.sort members
+                                }
+                        )
+                , aliases = []
+                }
         ]
 
 
-wrapFunction : String -> SortedSet String -> List ( Type, String ) -> Type -> Elm.Declaration
+wrapFunction : String -> SortedSet String -> List ( Type, String ) -> Type -> { declaration : Elm.Declaration, group : String }
 wrapFunction name deps args returnType =
     let
         fname : String
@@ -71,6 +77,21 @@ wrapFunction name deps args returnType =
                 [ arg0, arg1, arg2, arg3 ] ->
                     Gen.Glsl.call_.unsafeCall4 (Elm.string name) depsExpr arg0 arg1 arg2 arg3
 
+                [ arg0, arg1, arg2, arg3, arg4 ] ->
+                    Gen.Glsl.call_.unsafeCall5 (Elm.string name) depsExpr arg0 arg1 arg2 arg3 arg4
+
+                [ arg0, arg1, arg2, arg3, arg4, arg5 ] ->
+                    Gen.Glsl.call_.unsafeCall6 (Elm.string name) depsExpr arg0 arg1 arg2 arg3 arg4 arg5
+
+                [ arg0, arg1, arg2, arg3, arg4, arg5, arg6 ] ->
+                    Gen.Glsl.call_.unsafeCall7 (Elm.string name) depsExpr arg0 arg1 arg2 arg3 arg4 arg5 arg6
+
+                [ arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7 ] ->
+                    Gen.Glsl.call_.unsafeCall8 (Elm.string name) depsExpr arg0 arg1 arg2 arg3 arg4 arg5 arg6 arg7
+
+                [ arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8 ] ->
+                    Gen.Glsl.call_.unsafeCall9 (Elm.string name) depsExpr arg0 arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8
+
                 _ :: _ :: _ ->
                     Elm.string "TODO"
 
@@ -80,21 +101,20 @@ wrapFunction name deps args returnType =
                 argValues
                 |> Elm.withType (Gen.Glsl.annotation_.expression (typeToAnnotation returnType))
     in
-    Elm.function argDecls expr
-        |> Elm.declaration fname
-        |> Elm.exposeWith
-            { exposeConstructor = False
-            , group =
-                Just <|
-                    if
-                        List.member (String.left 1 name) [ "g", "i", "c" ]
-                            && not (List.member name [ "cbrt", "increment", "cosh", "is_even", "is_odd" ])
-                    then
-                        String.dropLeft 1 name
+    { declaration =
+        Elm.function argDecls expr
+            |> Elm.declaration fname
+            |> Elm.expose
+    , group =
+        if
+            List.member (String.left 1 name) [ "g", "i", "c" ]
+                && not (List.member name [ "cbrt", "increment", "cosh", "is_even", "is_odd" ])
+        then
+            String.dropLeft 1 name
 
-                    else
-                        name
-            }
+        else
+            name
+    }
 
 
 typeToAnnotation : Type -> Type.Annotation
@@ -391,8 +411,12 @@ builtinFunctions =
 
         mats : List ( String, List Type, Type )
         mats =
-            [ ( [ TVec3, TVec3, TVec3 ], TMat3 )
-            , ( List.repeat 4 TFloat, TMat4 )
+            [ ( List.repeat 2 TVec2, TMat2 )
+            , ( List.repeat (2 ^ 2) TFloat, TMat2 )
+            , ( List.repeat 3 TVec3, TMat3 )
+            , ( List.repeat (3 ^ 2) TFloat, TMat3 )
+            , ( List.repeat 4 TVec4, TMat4 )
+            , ( List.repeat (4 ^ 2) TFloat, TMat4 )
             ]
                 |> List.map
                     (\( inTypes, type_ ) ->
@@ -691,33 +715,39 @@ fdiuType =
     float ++ double ++ int ++ uint
 
 
-builtinDecls : List Elm.Declaration
+builtinDecls : List { declaration : Elm.Declaration, group : String }
 builtinDecls =
     let
-        specific : List Elm.Declaration
+        specific : List { declaration : Elm.Declaration, group : String }
         specific =
             builtinFunctions
                 |> Dict.toList
                 |> List.map
                     (\( _, { baseName, args, return } ) ->
-                        wrapFunction
-                            baseName
-                            SortedSet.empty
-                            (List.indexedMap
-                                (\i type_ -> ( type_, indexedVar i ))
-                                args
-                            )
-                            return
-                            |> Elm.exposeWith { exposeConstructor = False, group = Just baseName }
+                        { declaration =
+                            (wrapFunction
+                                baseName
+                                SortedSet.empty
+                                (List.indexedMap
+                                    (\i type_ -> ( type_, indexedVar i ))
+                                    args
+                                )
+                                return
+                            ).declaration
+                        , group = baseName
+                        }
                     )
 
-        generics : List Elm.Declaration
+        generics : List { declaration : Elm.Declaration, group : String }
         generics =
             genericFunctions
                 |> List.map
                     (\( baseName, body ) ->
-                        Elm.declaration baseName body
-                            |> Elm.exposeWith { exposeConstructor = False, group = Just baseName }
+                        { declaration =
+                            Elm.declaration baseName body
+                                |> Elm.expose
+                        , group = baseName
+                        }
                     )
     in
     specific ++ generics
