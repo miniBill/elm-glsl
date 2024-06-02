@@ -538,8 +538,8 @@ unaryOperation op =
 declaration : Declaration -> String
 declaration decl =
     case decl of
-        ConstDeclaration _ ->
-            Debug.toString decl
+        ConstDeclaration const ->
+            "const " ++ type_ const.tipe ++ " " ++ const.name ++ " = " ++ expr const.value ++ ";"
 
         FunctionDeclaration function ->
             let
@@ -551,5 +551,5 @@ declaration decl =
             in
             type_ function.returnType ++ " " ++ function.name ++ "(" ++ argsString ++ ") " ++ stat 0 function.stat
 
-        UniformDeclaration _ ->
-            Debug.toString decl
+        UniformDeclaration uniform ->
+            "uniform " ++ type_ uniform.tipe ++ " " ++ uniform.name ++ ";"
