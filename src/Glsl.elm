@@ -14,7 +14,7 @@ module Glsl exposing
     , Mat2, Mat3, Mat4, Mat23, Mat24, Mat32, Mat34, Mat42, Mat43
     , DMat2, DMat3, DMat4, DMat23, DMat24, DMat32, DMat34, DMat42, DMat43
     , Void, In, Out
-    , unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5
+    , unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeCall6, unsafeCall7, unsafeCall8, unsafeCall9
     , unsafeMap, unsafeMap2, unsafeMap3
     , unsafeTypecast
     , unsafeVar
@@ -54,7 +54,7 @@ module Glsl exposing
 
 # Escape hatches
 
-@docs unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5
+@docs unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeCall6, unsafeCall7, unsafeCall8, unsafeCall9
 @docs unsafeMap, unsafeMap2, unsafeMap3
 @docs unsafeTypecast
 @docs unsafeVar
@@ -128,6 +128,64 @@ unsafeCall5 name deps arg0 arg1 arg2 arg3 arg4 =
         |> withExpression arg2
         |> withExpression arg3
         |> withExpression arg4
+        |> buildExpression
+
+
+unsafeCall6 : String -> List String -> Expression a -> Expression b -> Expression c -> Expression d -> Expression e -> Expression f -> Expression r
+unsafeCall6 name deps arg0 arg1 arg2 arg3 arg4 arg5 =
+    build (\a0 a1 a2 a3 a4 a5 -> Call (Variable name) [ a0, a1, a2, a3, a4, a5 ])
+        |> withDependencies deps
+        |> withExpression arg0
+        |> withExpression arg1
+        |> withExpression arg2
+        |> withExpression arg3
+        |> withExpression arg4
+        |> withExpression arg5
+        |> buildExpression
+
+
+unsafeCall7 : String -> List String -> Expression a -> Expression b -> Expression c -> Expression d -> Expression e -> Expression f -> Expression g -> Expression r
+unsafeCall7 name deps arg0 arg1 arg2 arg3 arg4 arg5 arg6 =
+    build (\a0 a1 a2 a3 a4 a5 a6 -> Call (Variable name) [ a0, a1, a2, a3, a4, a5, a6 ])
+        |> withDependencies deps
+        |> withExpression arg0
+        |> withExpression arg1
+        |> withExpression arg2
+        |> withExpression arg3
+        |> withExpression arg4
+        |> withExpression arg5
+        |> withExpression arg6
+        |> buildExpression
+
+
+unsafeCall8 : String -> List String -> Expression a -> Expression b -> Expression c -> Expression d -> Expression e -> Expression f -> Expression g -> Expression h -> Expression r
+unsafeCall8 name deps arg0 arg1 arg2 arg3 arg4 arg5 arg6 arg7 =
+    build (\a0 a1 a2 a3 a4 a5 a6 a7 -> Call (Variable name) [ a0, a1, a2, a3, a4, a5, a6, a7 ])
+        |> withDependencies deps
+        |> withExpression arg0
+        |> withExpression arg1
+        |> withExpression arg2
+        |> withExpression arg3
+        |> withExpression arg4
+        |> withExpression arg5
+        |> withExpression arg6
+        |> withExpression arg7
+        |> buildExpression
+
+
+unsafeCall9 : String -> List String -> Expression a -> Expression b -> Expression c -> Expression d -> Expression e -> Expression f -> Expression g -> Expression h -> Expression i -> Expression r
+unsafeCall9 name deps arg0 arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8 =
+    build (\a0 a1 a2 a3 a4 a5 a6 a7 a8 -> Call (Variable name) [ a0, a1, a2, a3, a4, a5, a6, a7, a8 ])
+        |> withDependencies deps
+        |> withExpression arg0
+        |> withExpression arg1
+        |> withExpression arg2
+        |> withExpression arg3
+        |> withExpression arg4
+        |> withExpression arg5
+        |> withExpression arg6
+        |> withExpression arg7
+        |> withExpression arg8
         |> buildExpression
 
 
