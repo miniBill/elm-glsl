@@ -472,7 +472,14 @@ def1 ( tn0, val0 ) k =
             tn0
     in
     build
-        (\v0 k0 -> Block [ Decl t0 n0 (Just v0), k0 ])
+        (\v0 k0 ->
+            case k0 of
+                Block kb ->
+                    Block (Decl t0 n0 (Just v0) :: kb)
+
+                _ ->
+                    Block [ Decl t0 n0 (Just v0), k0 ]
+        )
         |> withExpression val0
         |> withStatement (k (unsafeVar n0))
         |> buildStatement

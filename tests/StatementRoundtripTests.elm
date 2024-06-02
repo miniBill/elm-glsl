@@ -79,7 +79,16 @@ statFuzzer depth =
                 , Fuzz.map4 For (Fuzz.maybe child) expr expr child
                 , Fuzz.map ExpressionStatement expr
                 , Fuzz.map3 Decl typeFuzzer ExpressionRoundtripTests.variableNameFuzzer (Fuzz.maybe expr)
-                , Fuzz.map Block (Fuzz.list child)
+                , Fuzz.map
+                    (\s ->
+                        case s of
+                            [ c ] ->
+                                c
+
+                            _ ->
+                                Block s
+                    )
+                    (Fuzz.list child)
                 ]
     in
     List.foldl (\i -> inner (ExpressionRoundtripTests.fuzzer i)) base (List.range 1 depth)

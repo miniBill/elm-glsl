@@ -183,6 +183,12 @@ innerStat expected actual =
         ( ExpressionStatement el, ExpressionStatement al ) ->
             expr el al
 
+        ( Block [ ec ], _ ) ->
+            innerStat ec actual
+
+        ( _, Block [ ac ] ) ->
+            innerStat expected ac
+
         ( Block ec, Block ac ) ->
             list innerStat ec ac
 
