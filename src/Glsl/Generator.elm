@@ -1,4 +1,4 @@
-module Glsl.Generator exposing (File, FunDecl, assign, assignAdd, assignBy, assignOut, boolT, break, const, const_, continue, decl, def, def1, def2, def3, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun1_, fun2, fun2_, fun3, fun3_, fun4, fun4_, fun5, fun5_, funDeclToGlsl, ifElse, if_, in_, intT, main_, mat2T, mat3, mat3T, nop, out, return, statementToGlsl, vec2, vec2T, vec3, vec3T, vec4, vec4T, voidT)
+module Glsl.Generator exposing (File, FunDecl, assign, assignAdd, assignBy, assignOut, boolT, break, const, const_, continue, decl, def, def1, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun1_, fun2, fun2_, fun3, fun3_, fun4, fun4_, fun5, fun5_, funDeclToGlsl, ifElse, if_, in_, intT, main_, mat2T, mat3, mat3T, nop, out, return, statementToGlsl, vec2, vec2T, vec3, vec3T, vec4, vec4T, voidT)
 
 import Glsl exposing (BinaryOperation(..), Bool_, Declaration(..), Expr(..), Expression(..), Float_, In, Int_, Mat2, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap, unsafeMap2, unsafeVar, withContinuation, withExpression, withStatement)
 import Glsl.PrettyPrinter
@@ -434,7 +434,22 @@ decl typeF name k =
 
 def : TypingFunction t -> String -> Expression t -> (Expression t -> Statement r) -> Statement r
 def typeF name val k =
-    def1 ( typeF name, val ) k
+    let
+        (TypedName t0 n0) =
+            typeF name
+    in
+    build
+        (\v0 k0 ->
+            case k0 of
+                Block kb ->
+                    Block (Decl t0 n0 (Just v0) :: kb)
+
+                _ ->
+                    Block [ Decl t0 n0 (Just v0), k0 ]
+        )
+        |> withExpression val
+        |> withStatement (k (unsafeVar n0))
+        |> buildStatement
 
 
 float : String -> Expression Float_ -> (Expression Float_ -> Statement r) -> Statement r
@@ -483,36 +498,6 @@ def1 ( tn0, val0 ) k =
         |> withExpression val0
         |> withStatement (k (unsafeVar n0))
         |> buildStatement
-
-
-def2 :
-    ( TypedName a, Expression a )
-    -> ( TypedName b, Expression b )
-    -> (Expression a -> Expression b -> Statement r)
-    -> Statement r
-def2 ( tn0, val0 ) ( tn1, val1 ) k =
-    def1 ( tn0, val0 )
-        (\v0 ->
-            def1 ( tn1, val1 )
-                (\v1 -> k v0 v1)
-        )
-
-
-def3 :
-    ( TypedName a, Expression a )
-    -> ( TypedName b, Expression b )
-    -> ( TypedName c, Expression c )
-    -> (Expression a -> Expression b -> Expression c -> Statement r)
-    -> Statement r
-def3 ( tn0, val0 ) ( tn1, val1 ) ( tn2, val2 ) k =
-    def1 ( tn0, val0 )
-        (\v0 ->
-            def1 ( tn1, val1 )
-                (\v1 ->
-                    def1 ( tn2, val2 )
-                        (\v2 -> k v0 v1 v2)
-                )
-        )
 
 
 assign : Expression t -> Expression t -> Expression t
