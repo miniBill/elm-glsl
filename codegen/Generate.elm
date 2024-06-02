@@ -401,6 +401,7 @@ builtinFunctions =
                                         , [ TFloat ]
                                         , [ TFloat, TVec3 ]
                                         , [ TVec3, TFloat ]
+                                        , [ TVec2, TVec2 ]
                                         ]
 
                                      else
@@ -416,7 +417,8 @@ builtinFunctions =
             , ( List.repeat 3 TVec3, TMat3 )
             , ( List.repeat (3 ^ 2) TFloat, TMat3 )
             , ( List.repeat 4 TVec4, TMat4 )
-            , ( List.repeat (4 ^ 2) TFloat, TMat4 )
+
+            -- , ( List.repeat (4 ^ 2) TFloat, TMat4 )
             ]
                 |> List.map
                     (\( inTypes, type_ ) ->

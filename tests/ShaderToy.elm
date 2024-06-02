@@ -2,12 +2,13 @@ module ShaderToy exposing (suite)
 
 import ErrorUtils
 import Expect
-import Glsl exposing (float1)
-import Glsl.Constants exposing (one, zero)
-import Glsl.Functions exposing (dot, fract, mat21111, sin_, vec3111)
-import Glsl.Generator exposing (const_, floatT, fun1_, mat2T, return, vec3T)
-import Glsl.Operations exposing (by)
+import Glsl exposing (Declaration, Expression, Float_, float1)
+import Glsl.Constants exposing (minusOne, one, zero)
+import Glsl.Functions exposing (floor_, fract, mat21111, mix441, step, vec3111, vec41111, vec422)
+import Glsl.Generator exposing (const_, def, floatT, fun1_, fun2_, fun4_, mat2T, return, vec2T, vec3T, vec4T)
+import Glsl.Operations exposing (add, by, dot4, dotX, dotY, dw, dx, dy, dz)
 import Glsl.Parser
+import IsAlmostEquals
 import Parser
 import Test exposing (Test, describe, test)
 
@@ -22,7 +23,8 @@ suite =
 hexagonal : Test
 hexagonal =
     check "https://www.shadertoy.com/view/4d2GzV"
-        """const float s3 = 1.7320508075688772;
+        """
+const float s3 = 1.7320508075688772;
 const float i3 = 0.5773502691896258;
 
 const mat2 tri2cart = mat2(1.0, 0.0, -0.5, 0.5*s3);
@@ -128,54 +130,72 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
 """
     <|
         let
-            s3 : { declaration : Glsl.Declaration, value : Glsl.Expression Glsl.Float_ }
+            s3 : { declaration : Declaration, value : Expression Float_ }
             s3 =
                 const_ floatT "s3" (float1 1.7320508075688772)
+
+            i3 : { declaration : Declaration, value : Expression Float_ }
+            i3 =
+                const_ floatT "i3" (float1 0.5773502691896258)
+
+            pick3 :
+                { declaration : Declaration
+                , call : Expression Glsl.Vec4 -> Expression Glsl.Vec4 -> Expression Glsl.Vec4 -> Expression Float_ -> Expression Glsl.Vec4
+                }
+            pick3 =
+                fun4_ vec4T "pick3" (vec4T "a") (vec4T "b") (vec4T "c") (floatT "u") <| \a b c u ->
+                def floatT "v" (fract (by u (float1 (1 / 3)))) <| \v ->
+                return (mix441 (mix441 a b (step (float1 0.3) v)) c (step (float1 0.6) v))
+
+            closestHexCenters :
+                { declaration : Declaration
+                , call : Expression Glsl.Vec2 -> Expression Glsl.Vec4
+                }
+            closestHexCenters =
+                fun1_ vec4T "closestHexCenters" (vec2T "p") <| \p ->
+                def vec2T "pi" (floor_ p) <| \pi ->
+                def vec2T "pf" (fract p) <| \pf ->
+                def vec4T
+                    "nn"
+                    (pick3.call
+                        (vec41111 zero zero (float1 2) one)
+                        (vec41111 one one zero minusOne)
+                        (vec41111 one zero zero one)
+                        (add (pi |> dotX) (pi |> dotY))
+                    )
+                <| \nn ->
+                return
+                    (add
+                        (mix441 nn (nn |> dot4 dy dx dw dz) (step (pf |> dotX) (pf |> dotY)))
+                        (vec422 pi pi)
+                    )
         in
         [ s3.declaration
-        , (const_ floatT "i3" (float1 0.5773502691896258)).declaration
-        , (const_ mat2T "tri2cart" (mat21111 one zero s3.value s3.value)).declaration
-        , (fun1_ floatT "hash3" (vec3T "p") <|
-            \p ->
-                return
-                    (fract
-                        (by
-                            (sin_
-                                (by
-                                    (float1 1.0e3)
-                                    (dot p (vec3111 (float1 1) (float1 57) (float1 -13.7)))
-                                )
-                            )
-                            (float1 4375.5453)
-                        )
-                    )
+        , i3.declaration
+        , (const_ mat2T "tri2cart" (mat21111 one zero (float1 -0.5) (by (float1 0.5) s3.value))).declaration
+        , (const_ mat2T "cart2tri" (mat21111 one zero i3.value (by (float1 2.0) i3.value))).declaration
+        , pick3.declaration
+        , closestHexCenters.declaration
+        , (fun2_ vec3T "perpBisector" (vec2T "p1") (vec2T "p2") <| \_ _ ->
+        return (vec3111 zero zero zero)
+          ).declaration
+        , (fun2_ vec3T "perpBisector" (vec2T "p1") (vec2T "p2") <| \_ _ ->
+        return (vec3111 zero zero zero)
+          ).declaration
+        , (fun2_ vec3T "perpBisector" (vec2T "p1") (vec2T "p2") <| \_ _ ->
+        return (vec3111 zero zero zero)
           ).declaration
         ]
 
 
-check : String -> String -> List Glsl.Declaration -> Test
+check : String -> String -> List Declaration -> Test
 check label input expected =
-    test label <|
-        \_ ->
-            case Parser.run Glsl.Parser.file (Glsl.Parser.preprocess input) of
-                Err e ->
-                    ErrorUtils.errorsToString input e
-                        |> Expect.fail
+    test label <| \_ ->
+    case Parser.run Glsl.Parser.file (Glsl.Parser.preprocess input) of
+        Err e ->
+            ErrorUtils.errorsToString input e
+                |> Expect.fail
 
-                Ok ( _, declarations ) ->
-                    declarations
-                        |> expectEqualList expected
-
-
-expectEqualList : List Glsl.Declaration -> List Glsl.Declaration -> Expect.Expectation
-expectEqualList l r =
-    case ( l, r ) of
-        ( lh :: lt, rh :: rt ) ->
-            if lh == rh then
-                expectEqualList lt rt
-
-            else
-                Expect.equal lh rh
-
-        _ ->
-            Expect.equal l r
+        Ok ( _, actual ) ->
+            IsAlmostEquals.list IsAlmostEquals.declaration expected actual
+                |> IsAlmostEquals.toExpectation

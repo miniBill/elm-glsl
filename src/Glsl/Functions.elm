@@ -1,493 +1,8 @@
-module Glsl.Functions exposing
-    ( abs1, abs2, abs3, abs4, absd1, absd2, absd3, absd4, absi1, absi2, absi3, absi4
-    , abs_
-    , acos_
-    , acosh
-    , asin_
-    , asinh
-    , atan2_
-    , atan_
-    , atanh
-    , ceil, ceil1, ceil2, ceil3, ceil4, ceild1, ceild2, ceild3, ceild4
-    , clamp111, clamp211, clamp222, clamp311, clamp333, clamp411, clamp444, clampd1d1d1, clampd2d1d1, clampd2d2d2, clampd3d1d1, clampd3d3d3, clampd4d1d1, clampd4d4d4, clampi1i1i1, clampi2i1i1, clampi2i2i2, clampi3i1i1, clampi3i3i3, clampi4i1i1, clampi4i4i4, clampu1u1u1, clampu2u1u1, clampu2u2u2, clampu3u1u1, clampu3u3u3, clampu4u1u1, clampu4u4u4
-    , clamp_
-    , cos_
-    , cosh
-    , cross33, crossd3d3
-    , dFdx
-    , dFdxCoarse
-    , dFdxFine
-    , dFdy
-    , dFdyCoarse
-    , dFdyFine
-    , degrees_
-    , distance, distance11, distance22, distance33, distance44, distanced1d1, distanced2d2, distanced3d3, distanced4d4
-    , dot, dot11, dot22, dot33, dot44, dotd1d1, dotd2d2, dotd3d3, dotd4d4
-    , exp
-    , exp2
-    , faceforward, faceforward111, faceforward222, faceforward333, faceforward444, faceforwardd1d1d1, faceforwardd2d2d2, faceforwardd3d3d3, faceforwardd4d4d4
-    , floati1
-    , floatBitsToInt1, floatBitsToInt2, floatBitsToInt3, floatBitsToInt4
-    , floatBitsToUint1, floatBitsToUint2, floatBitsToUint3, floatBitsToUint4
-    , floor1, floor2, floor3, floor4, floord1, floord2, floord3, floord4
-    , floor_
-    , fma, fma111, fma222, fma333, fma444, fmad1d1d1, fmad2d2d2, fmad3d3d3, fmad4d4d4
-    , fract, fract1, fract2, fract3, fract4, fractd1, fractd2, fractd3, fractd4
-    , frexp1oi1, frexp2oi2, frexp3oi3, frexp4oi4, frexpd1oi1, frexpd2oi2, frexpd3oi3, frexpd4oi4
-    , fwidth
-    , fwidthCoarse
-    , fwidthFine
-    , int1
-    , intBitsToFloati1, intBitsToFloati2, intBitsToFloati3, intBitsToFloati4
-    , inversesqrt, inversesqrt1, inversesqrt2, inversesqrt3, inversesqrt4, inversesqrtd1, inversesqrtd2, inversesqrtd3, inversesqrtd4
-    , isinf1, isinf2, isinf3, isinf4, isinfd1, isinfd2, isinfd3, isinfd4
-    , isnan1, isnan2, isnan3, isnan4, isnand1, isnand2, isnand3, isnand4
-    , ivec2i1i1
-    , ivec3i1i1i1
-    , ivec4i1i1i1i1
-    , ldexp1i1, ldexp2i2, ldexp3i3, ldexp4i4, ldexpd1i1, ldexpd2i2, ldexpd3i3, ldexpd4i4
-    , length, length1, length2, length3, length4, lengthd1, lengthd2, lengthd3, lengthd4
-    , log
-    , log2
-    , mat3333
-    , mat41111
-    , max11, max21, max22, max31, max33, max41, max44, maxd1d1, maxd2d1, maxd2d2, maxd3d1, maxd3d3, maxd4d1, maxd4d4, maxi1i1, maxi2i1, maxi2i2, maxi3i1, maxi3i3, maxi4i1, maxi4i4, maxu1u1, maxu2u1, maxu2u2, maxu3u1, maxu3u3, maxu4u1, maxu4u4
-    , max_
-    , min11, min21, min22, min31, min33, min41, min44, mind1d1, mind2d1, mind2d2, mind3d1, mind3d3, mind4d1, mind4d4, mini1i1, mini2i1, mini2i2, mini3i1, mini3i3, mini4i1, mini4i4, minu1u1, minu2u1, minu2u2, minu3u1, minu3u3, minu4u1, minu4u4
-    , min_
-    , mix, mix111, mix221, mix222, mix331, mix333, mix441, mix444, mixd1d1d1, mixd2d2d1, mixd2d2d2, mixd3d3d1, mixd3d3d3, mixd4d4d1, mixd4d4d4
-    , mod, mod11, mod21, mod22, mod31, mod33, mod41, mod44, modd1d1, modd2d1, modd2d2, modd3d1, modd3d3, modd4d1, modd4d4
-    , modf, modf1o1, modf2o2, modf3o3, modf4o4, modfd1od1, modfd2od2, modfd3od3, modfd4od4
-    , normalize, normalize1, normalize2, normalize3, normalize4, normalized1, normalized2, normalized3, normalized4
-    , pow
-    , radians_
-    , reflect, reflect11, reflect22, reflect33, reflect44, reflectd1d1, reflectd2d2, reflectd3d3, reflectd4d4
-    , refract, refract111, refract221, refract331, refract441, refractd1d11, refractd2d21, refractd3d31, refractd4d41
-    , round1, round2, round3, round4, roundd1, roundd2, roundd3, roundd4
-    , roundEven, roundEven1, roundEven2, roundEven3, roundEven4, roundEvend1, roundEvend2, roundEvend3, roundEvend4
-    , round_
-    , sign, sign1, sign2, sign3, sign4, signd1, signd2, signd3, signd4, signi1, signi2, signi3, signi4
-    , sin_
-    , sinh
-    , smoothstep, smoothstep111, smoothstep112, smoothstep113, smoothstep114, smoothstep222, smoothstep333, smoothstep444, smoothstepd1d1d1, smoothstepd1d1d2, smoothstepd1d1d3, smoothstepd1d1d4, smoothstepd2d2d2, smoothstepd3d3d3, smoothstepd4d4d4
-    , sqrt1, sqrt2, sqrt3, sqrt4, sqrtd1, sqrtd2, sqrtd3, sqrtd4
-    , sqrt_
-    , step, step11, step12, step13, step14, step22, step33, step44, stepd1d1, stepd1d2, stepd1d3, stepd1d4, stepd2d2, stepd3d3, stepd4d4
-    , tan_
-    , tanh
-    , trunc, trunc1, trunc2, trunc3, trunc4, truncd1, truncd2, truncd3, truncd4
-    , uintBitsToFloatu1, uintBitsToFloatu2, uintBitsToFloatu3, uintBitsToFloatu4
-    , vec21, vec211, vec21i1, vec2i1, vec2i11, vec2i1i1
-    , vec31, vec3111, vec311i1, vec31i11, vec31i1i1, vec3i1, vec3i111, vec3i11i1, vec3i1i11, vec3i1i1i1
-    , vec41, vec41111, vec4111i1, vec411i11, vec411i1i1, vec413, vec41i111, vec41i11i1, vec41i1i11, vec41i1i1i1, vec431, vec4i1, vec4i1111, vec4i111i1, vec4i11i11, vec4i11i1i1, vec4i1i111, vec4i1i11i1, vec4i1i1i11, vec4i1i1i1i1
-    )
+module Glsl.Functions exposing (abs1, abs2, abs3, abs4, abs_, absd1, absd2, absd3, absd4, absi1, absi2, absi3, absi4, acos_, acosh, asin_, asinh, atan2_, atan_, atanh, ceil, ceil1, ceil2, ceil3, ceil4, ceild1, ceild2, ceild3, ceild4, clamp111, clamp211, clamp222, clamp311, clamp333, clamp411, clamp444, clamp_, clampd1d1d1, clampd2d1d1, clampd2d2d2, clampd3d1d1, clampd3d3d3, clampd4d1d1, clampd4d4d4, clampi1i1i1, clampi2i1i1, clampi2i2i2, clampi3i1i1, clampi3i3i3, clampi4i1i1, clampi4i4i4, clampu1u1u1, clampu2u1u1, clampu2u2u2, clampu3u1u1, clampu3u3u3, clampu4u1u1, clampu4u4u4, cos_, cosh, cross33, crossd3d3, dFdx, dFdxCoarse, dFdxFine, dFdy, dFdyCoarse, dFdyFine, degrees_, distance, distance11, distance22, distance33, distance44, distanced1d1, distanced2d2, distanced3d3, distanced4d4, dot, dot11, dot22, dot33, dot44, dotd1d1, dotd2d2, dotd3d3, dotd4d4, exp, exp2, faceforward, faceforward111, faceforward222, faceforward333, faceforward444, faceforwardd1d1d1, faceforwardd2d2d2, faceforwardd3d3d3, faceforwardd4d4d4, floatBitsToInt1, floatBitsToInt2, floatBitsToInt3, floatBitsToInt4, floatBitsToUint1, floatBitsToUint2, floatBitsToUint3, floatBitsToUint4, floati1, floor1, floor2, floor3, floor4, floor_, floord1, floord2, floord3, floord4, fma, fma111, fma222, fma333, fma444, fmad1d1d1, fmad2d2d2, fmad3d3d3, fmad4d4d4, fract, fract1, fract2, fract3, fract4, fractd1, fractd2, fractd3, fractd4, frexp1oi1, frexp2oi2, frexp3oi3, frexp4oi4, frexpd1oi1, frexpd2oi2, frexpd3oi3, frexpd4oi4, fwidth, fwidthCoarse, fwidthFine, int1, intBitsToFloati1, intBitsToFloati2, intBitsToFloati3, intBitsToFloati4, inversesqrt, inversesqrt1, inversesqrt2, inversesqrt3, inversesqrt4, inversesqrtd1, inversesqrtd2, inversesqrtd3, inversesqrtd4, isinf1, isinf2, isinf3, isinf4, isinfd1, isinfd2, isinfd3, isinfd4, isnan1, isnan2, isnan3, isnan4, isnand1, isnand2, isnand3, isnand4, ivec2i1i1, ivec3i1i1i1, ivec4i1i1i1i1, ldexp1i1, ldexp2i2, ldexp3i3, ldexp4i4, ldexpd1i1, ldexpd2i2, ldexpd3i3, ldexpd4i4, length, length1, length2, length3, length4, lengthd1, lengthd2, lengthd3, lengthd4, log, log2, mat21111, mat222, mat3111111111, mat3333, mat44444, max11, max21, max22, max31, max33, max41, max44, max_, maxd1d1, maxd2d1, maxd2d2, maxd3d1, maxd3d3, maxd4d1, maxd4d4, maxi1i1, maxi2i1, maxi2i2, maxi3i1, maxi3i3, maxi4i1, maxi4i4, maxu1u1, maxu2u1, maxu2u2, maxu3u1, maxu3u3, maxu4u1, maxu4u4, min11, min21, min22, min31, min33, min41, min44, min_, mind1d1, mind2d1, mind2d2, mind3d1, mind3d3, mind4d1, mind4d4, mini1i1, mini2i1, mini2i2, mini3i1, mini3i3, mini4i1, mini4i4, minu1u1, minu2u1, minu2u2, minu3u1, minu3u3, minu4u1, minu4u4, mix, mix111, mix221, mix222, mix331, mix333, mix441, mix444, mixd1d1d1, mixd2d2d1, mixd2d2d2, mixd3d3d1, mixd3d3d3, mixd4d4d1, mixd4d4d4, mod, mod11, mod21, mod22, mod31, mod33, mod41, mod44, modd1d1, modd2d1, modd2d2, modd3d1, modd3d3, modd4d1, modd4d4, modf, modf1o1, modf2o2, modf3o3, modf4o4, modfd1od1, modfd2od2, modfd3od3, modfd4od4, normalize, normalize1, normalize2, normalize3, normalize4, normalized1, normalized2, normalized3, normalized4, pow, radians_, reflect, reflect11, reflect22, reflect33, reflect44, reflectd1d1, reflectd2d2, reflectd3d3, reflectd4d4, refract, refract111, refract221, refract331, refract441, refractd1d11, refractd2d21, refractd3d31, refractd4d41, round1, round2, round3, round4, roundEven, roundEven1, roundEven2, roundEven3, roundEven4, roundEvend1, roundEvend2, roundEvend3, roundEvend4, round_, roundd1, roundd2, roundd3, roundd4, sign, sign1, sign2, sign3, sign4, signd1, signd2, signd3, signd4, signi1, signi2, signi3, signi4, sin_, sinh, smoothstep, smoothstep111, smoothstep112, smoothstep113, smoothstep114, smoothstep222, smoothstep333, smoothstep444, smoothstepd1d1d1, smoothstepd1d1d2, smoothstepd1d1d3, smoothstepd1d1d4, smoothstepd2d2d2, smoothstepd3d3d3, smoothstepd4d4d4, sqrt1, sqrt2, sqrt3, sqrt4, sqrt_, sqrtd1, sqrtd2, sqrtd3, sqrtd4, step, step11, step12, step13, step14, step22, step33, step44, stepd1d1, stepd1d2, stepd1d3, stepd1d4, stepd2d2, stepd3d3, stepd4d4, tan_, tanh, trunc, trunc1, trunc2, trunc3, trunc4, truncd1, truncd2, truncd3, truncd4, uintBitsToFloatu1, uintBitsToFloatu2, uintBitsToFloatu3, uintBitsToFloatu4, vec21, vec211, vec21i1, vec2i1, vec2i11, vec2i1i1, vec31, vec3111, vec311i1, vec31i11, vec31i1i1, vec3i1, vec3i111, vec3i11i1, vec3i1i11, vec3i1i1i1, vec41, vec41111, vec4111i1, vec411i11, vec411i1i1, vec413, vec41i111, vec41i11i1, vec41i1i11, vec41i1i1i1, vec422, vec431, vec4i1, vec4i1111, vec4i111i1, vec4i11i11, vec4i11i1i1, vec4i1i111, vec4i1i11i1, vec4i1i1i11, vec4i1i1i1i1)
 
 {-|
 
-
-## abs
-
-@docs abs1, abs2, abs3, abs4, absd1, absd2, absd3, absd4, absi1, absi2, absi3, absi4
-
-
-## abs\_
-
-@docs abs_
-
-
-## acos\_
-
-@docs acos_
-
-
-## acosh
-
-@docs acosh
-
-
-## asin\_
-
-@docs asin_
-
-
-## asinh
-
-@docs asinh
-
-
-## atan2\_
-
-@docs atan2_
-
-
-## atan\_
-
-@docs atan_
-
-
-## atanh
-
-@docs atanh
-
-
-## ceil
-
-@docs ceil, ceil1, ceil2, ceil3, ceil4, ceild1, ceild2, ceild3, ceild4
-
-
-## clamp
-
-@docs clamp111, clamp211, clamp222, clamp311, clamp333, clamp411, clamp444, clampd1d1d1, clampd2d1d1, clampd2d2d2, clampd3d1d1, clampd3d3d3, clampd4d1d1, clampd4d4d4, clampi1i1i1, clampi2i1i1, clampi2i2i2, clampi3i1i1, clampi3i3i3, clampi4i1i1, clampi4i4i4, clampu1u1u1, clampu2u1u1, clampu2u2u2, clampu3u1u1, clampu3u3u3, clampu4u1u1, clampu4u4u4
-
-
-## clamp\_
-
-@docs clamp_
-
-
-## cos\_
-
-@docs cos_
-
-
-## cosh
-
-@docs cosh
-
-
-## cross
-
-@docs cross33, crossd3d3
-
-
-## dFdx
-
-@docs dFdx
-
-
-## dFdxCoarse
-
-@docs dFdxCoarse
-
-
-## dFdxFine
-
-@docs dFdxFine
-
-
-## dFdy
-
-@docs dFdy
-
-
-## dFdyCoarse
-
-@docs dFdyCoarse
-
-
-## dFdyFine
-
-@docs dFdyFine
-
-
-## degrees\_
-
-@docs degrees_
-
-
-## distance
-
-@docs distance, distance11, distance22, distance33, distance44, distanced1d1, distanced2d2, distanced3d3, distanced4d4
-
-
-## dot
-
-@docs dot, dot11, dot22, dot33, dot44, dotd1d1, dotd2d2, dotd3d3, dotd4d4
-
-
-## exp
-
-@docs exp
-
-
-## exp2
-
-@docs exp2
-
-
-## faceforward
-
-@docs faceforward, faceforward111, faceforward222, faceforward333, faceforward444, faceforwardd1d1d1, faceforwardd2d2d2, faceforwardd3d3d3, faceforwardd4d4d4
-
-
-## float
-
-@docs floati1
-
-
-## floatBitsToInt
-
-@docs floatBitsToInt1, floatBitsToInt2, floatBitsToInt3, floatBitsToInt4
-
-
-## floatBitsToUint
-
-@docs floatBitsToUint1, floatBitsToUint2, floatBitsToUint3, floatBitsToUint4
-
-
-## floor
-
-@docs floor1, floor2, floor3, floor4, floord1, floord2, floord3, floord4
-
-
-## floor\_
-
-@docs floor_
-
-
-## fma
-
-@docs fma, fma111, fma222, fma333, fma444, fmad1d1d1, fmad2d2d2, fmad3d3d3, fmad4d4d4
-
-
-## fract
-
-@docs fract, fract1, fract2, fract3, fract4, fractd1, fractd2, fractd3, fractd4
-
-
-## frexp
-
-@docs frexp1oi1, frexp2oi2, frexp3oi3, frexp4oi4, frexpd1oi1, frexpd2oi2, frexpd3oi3, frexpd4oi4
-
-
-## fwidth
-
-@docs fwidth
-
-
-## fwidthCoarse
-
-@docs fwidthCoarse
-
-
-## fwidthFine
-
-@docs fwidthFine
-
-
-## int
-
-@docs int1
-
-
-## intBitsToFloat
-
-@docs intBitsToFloati1, intBitsToFloati2, intBitsToFloati3, intBitsToFloati4
-
-
-## inversesqrt
-
-@docs inversesqrt, inversesqrt1, inversesqrt2, inversesqrt3, inversesqrt4, inversesqrtd1, inversesqrtd2, inversesqrtd3, inversesqrtd4
-
-
-## isinf
-
-@docs isinf1, isinf2, isinf3, isinf4, isinfd1, isinfd2, isinfd3, isinfd4
-
-
-## isnan
-
-@docs isnan1, isnan2, isnan3, isnan4, isnand1, isnand2, isnand3, isnand4
-
-
-## ivec2
-
-@docs ivec2i1i1
-
-
-## ivec3
-
-@docs ivec3i1i1i1
-
-
-## ivec4
-
-@docs ivec4i1i1i1i1
-
-
-## ldexp
-
-@docs ldexp1i1, ldexp2i2, ldexp3i3, ldexp4i4, ldexpd1i1, ldexpd2i2, ldexpd3i3, ldexpd4i4
-
-
-## length
-
-@docs length, length1, length2, length3, length4, lengthd1, lengthd2, lengthd3, lengthd4
-
-
-## log
-
-@docs log
-
-
-## log2
-
-@docs log2
-
-
-## mat3
-
-@docs mat3333
-
-
-## mat4
-
-@docs mat41111
-
-
-## max
-
-@docs max11, max21, max22, max31, max33, max41, max44, maxd1d1, maxd2d1, maxd2d2, maxd3d1, maxd3d3, maxd4d1, maxd4d4, maxi1i1, maxi2i1, maxi2i2, maxi3i1, maxi3i3, maxi4i1, maxi4i4, maxu1u1, maxu2u1, maxu2u2, maxu3u1, maxu3u3, maxu4u1, maxu4u4
-
-
-## max\_
-
-@docs max_
-
-
-## min
-
-@docs min11, min21, min22, min31, min33, min41, min44, mind1d1, mind2d1, mind2d2, mind3d1, mind3d3, mind4d1, mind4d4, mini1i1, mini2i1, mini2i2, mini3i1, mini3i3, mini4i1, mini4i4, minu1u1, minu2u1, minu2u2, minu3u1, minu3u3, minu4u1, minu4u4
-
-
-## min\_
-
-@docs min_
-
-
-## mix
-
-@docs mix, mix111, mix221, mix222, mix331, mix333, mix441, mix444, mixd1d1d1, mixd2d2d1, mixd2d2d2, mixd3d3d1, mixd3d3d3, mixd4d4d1, mixd4d4d4
-
-
-## mod
-
-@docs mod, mod11, mod21, mod22, mod31, mod33, mod41, mod44, modd1d1, modd2d1, modd2d2, modd3d1, modd3d3, modd4d1, modd4d4
-
-
-## modf
-
-@docs modf, modf1o1, modf2o2, modf3o3, modf4o4, modfd1od1, modfd2od2, modfd3od3, modfd4od4
-
-
-## normalize
-
-@docs normalize, normalize1, normalize2, normalize3, normalize4, normalized1, normalized2, normalized3, normalized4
-
-
-## pow
-
-@docs pow
-
-
-## radians\_
-
-@docs radians_
-
-
-## reflect
-
-@docs reflect, reflect11, reflect22, reflect33, reflect44, reflectd1d1, reflectd2d2, reflectd3d3, reflectd4d4
-
-
-## refract
-
-@docs refract, refract111, refract221, refract331, refract441, refractd1d11, refractd2d21, refractd3d31, refractd4d41
-
-
-## round
-
-@docs round1, round2, round3, round4, roundd1, roundd2, roundd3, roundd4
-
-
-## roundEven
-
-@docs roundEven, roundEven1, roundEven2, roundEven3, roundEven4, roundEvend1, roundEvend2, roundEvend3, roundEvend4
-
-
-## round\_
-
-@docs round_
-
-
-## sign
-
-@docs sign, sign1, sign2, sign3, sign4, signd1, signd2, signd3, signd4, signi1, signi2, signi3, signi4
-
-
-## sin\_
-
-@docs sin_
-
-
-## sinh
-
-@docs sinh
-
-
-## smoothstep
-
-@docs smoothstep, smoothstep111, smoothstep112, smoothstep113, smoothstep114, smoothstep222, smoothstep333, smoothstep444, smoothstepd1d1d1, smoothstepd1d1d2, smoothstepd1d1d3, smoothstepd1d1d4, smoothstepd2d2d2, smoothstepd3d3d3, smoothstepd4d4d4
-
-
-## sqrt
-
-@docs sqrt1, sqrt2, sqrt3, sqrt4, sqrtd1, sqrtd2, sqrtd3, sqrtd4
-
-
-## sqrt\_
-
-@docs sqrt_
-
-
-## step
-
-@docs step, step11, step12, step13, step14, step22, step33, step44, stepd1d1, stepd1d2, stepd1d3, stepd1d4, stepd2d2, stepd3d3, stepd4d4
-
-
-## tan\_
-
-@docs tan_
-
-
-## tanh
-
-@docs tanh
-
-
-## trunc
-
-@docs trunc, trunc1, trunc2, trunc3, trunc4, truncd1, truncd2, truncd3, truncd4
-
-
-## uintBitsToFloat
-
-@docs uintBitsToFloatu1, uintBitsToFloatu2, uintBitsToFloatu3, uintBitsToFloatu4
-
-
-## vec2
-
-@docs vec21, vec211, vec21i1, vec2i1, vec2i11, vec2i1i1
-
-
-## vec3
-
-@docs vec31, vec3111, vec311i1, vec31i11, vec31i1i1, vec3i1, vec3i111, vec3i11i1, vec3i1i11, vec3i1i1i1
-
-
-## vec4
-
-@docs vec41, vec41111, vec4111i1, vec411i11, vec411i1i1, vec413, vec41i111, vec41i11i1, vec41i1i11, vec41i1i1i1, vec431, vec4i1, vec4i1111, vec4i111i1, vec4i11i11, vec4i11i1i1, vec4i1i111, vec4i1i11i1, vec4i1i1i11, vec4i1i1i1i1
+@docs abs1, abs2, abs3, abs4, abs_, absd1, absd2, absd3, absd4, absi1, absi2, absi3, absi4, acos_, acosh, asin_, asinh, atan2_, atan_, atanh, ceil, ceil1, ceil2, ceil3, ceil4, ceild1, ceild2, ceild3, ceild4, clamp111, clamp211, clamp222, clamp311, clamp333, clamp411, clamp444, clamp_, clampd1d1d1, clampd2d1d1, clampd2d2d2, clampd3d1d1, clampd3d3d3, clampd4d1d1, clampd4d4d4, clampi1i1i1, clampi2i1i1, clampi2i2i2, clampi3i1i1, clampi3i3i3, clampi4i1i1, clampi4i4i4, clampu1u1u1, clampu2u1u1, clampu2u2u2, clampu3u1u1, clampu3u3u3, clampu4u1u1, clampu4u4u4, cos_, cosh, cross33, crossd3d3, dFdx, dFdxCoarse, dFdxFine, dFdy, dFdyCoarse, dFdyFine, degrees_, distance, distance11, distance22, distance33, distance44, distanced1d1, distanced2d2, distanced3d3, distanced4d4, dot, dot11, dot22, dot33, dot44, dotd1d1, dotd2d2, dotd3d3, dotd4d4, exp, exp2, faceforward, faceforward111, faceforward222, faceforward333, faceforward444, faceforwardd1d1d1, faceforwardd2d2d2, faceforwardd3d3d3, faceforwardd4d4d4, floatBitsToInt1, floatBitsToInt2, floatBitsToInt3, floatBitsToInt4, floatBitsToUint1, floatBitsToUint2, floatBitsToUint3, floatBitsToUint4, floati1, floor1, floor2, floor3, floor4, floor_, floord1, floord2, floord3, floord4, fma, fma111, fma222, fma333, fma444, fmad1d1d1, fmad2d2d2, fmad3d3d3, fmad4d4d4, fract, fract1, fract2, fract3, fract4, fractd1, fractd2, fractd3, fractd4, frexp1oi1, frexp2oi2, frexp3oi3, frexp4oi4, frexpd1oi1, frexpd2oi2, frexpd3oi3, frexpd4oi4, fwidth, fwidthCoarse, fwidthFine, int1, intBitsToFloati1, intBitsToFloati2, intBitsToFloati3, intBitsToFloati4, inversesqrt, inversesqrt1, inversesqrt2, inversesqrt3, inversesqrt4, inversesqrtd1, inversesqrtd2, inversesqrtd3, inversesqrtd4, isinf1, isinf2, isinf3, isinf4, isinfd1, isinfd2, isinfd3, isinfd4, isnan1, isnan2, isnan3, isnan4, isnand1, isnand2, isnand3, isnand4, ivec2i1i1, ivec3i1i1i1, ivec4i1i1i1i1, ldexp1i1, ldexp2i2, ldexp3i3, ldexp4i4, ldexpd1i1, ldexpd2i2, ldexpd3i3, ldexpd4i4, length, length1, length2, length3, length4, lengthd1, lengthd2, lengthd3, lengthd4, log, log2, mat21111, mat222, mat3111111111, mat3333, mat44444, max11, max21, max22, max31, max33, max41, max44, max_, maxd1d1, maxd2d1, maxd2d2, maxd3d1, maxd3d3, maxd4d1, maxd4d4, maxi1i1, maxi2i1, maxi2i2, maxi3i1, maxi3i3, maxi4i1, maxi4i4, maxu1u1, maxu2u1, maxu2u2, maxu3u1, maxu3u3, maxu4u1, maxu4u4, min11, min21, min22, min31, min33, min41, min44, min_, mind1d1, mind2d1, mind2d2, mind3d1, mind3d3, mind4d1, mind4d4, mini1i1, mini2i1, mini2i2, mini3i1, mini3i3, mini4i1, mini4i4, minu1u1, minu2u1, minu2u2, minu3u1, minu3u3, minu4u1, minu4u4, mix, mix111, mix221, mix222, mix331, mix333, mix441, mix444, mixd1d1d1, mixd2d2d1, mixd2d2d2, mixd3d3d1, mixd3d3d3, mixd4d4d1, mixd4d4d4, mod, mod11, mod21, mod22, mod31, mod33, mod41, mod44, modd1d1, modd2d1, modd2d2, modd3d1, modd3d3, modd4d1, modd4d4, modf, modf1o1, modf2o2, modf3o3, modf4o4, modfd1od1, modfd2od2, modfd3od3, modfd4od4, normalize, normalize1, normalize2, normalize3, normalize4, normalized1, normalized2, normalized3, normalized4, pow, radians_, reflect, reflect11, reflect22, reflect33, reflect44, reflectd1d1, reflectd2d2, reflectd3d3, reflectd4d4, refract, refract111, refract221, refract331, refract441, refractd1d11, refractd2d21, refractd3d31, refractd4d41, round1, round2, round3, round4, roundEven, roundEven1, roundEven2, roundEven3, roundEven4, roundEvend1, roundEvend2, roundEvend3, roundEvend4, round_, roundd1, roundd2, roundd3, roundd4, sign, sign1, sign2, sign3, sign4, signd1, signd2, signd3, signd4, signi1, signi2, signi3, signi4, sin_, sinh, smoothstep, smoothstep111, smoothstep112, smoothstep113, smoothstep114, smoothstep222, smoothstep333, smoothstep444, smoothstepd1d1d1, smoothstepd1d1d2, smoothstepd1d1d3, smoothstepd1d1d4, smoothstepd2d2d2, smoothstepd3d3d3, smoothstepd4d4d4, sqrt1, sqrt2, sqrt3, sqrt4, sqrt_, sqrtd1, sqrtd2, sqrtd3, sqrtd4, step, step11, step12, step13, step14, step22, step33, step44, stepd1d1, stepd1d2, stepd1d3, stepd1d4, stepd2d2, stepd3d3, stepd4d4, tan_, tanh, trunc, trunc1, trunc2, trunc3, trunc4, truncd1, truncd2, truncd3, truncd4, uintBitsToFloatu1, uintBitsToFloatu2, uintBitsToFloatu3, uintBitsToFloatu4, vec21, vec211, vec21i1, vec2i1, vec2i11, vec2i1i1, vec31, vec3111, vec311i1, vec31i11, vec31i1i1, vec3i1, vec3i111, vec3i11i1, vec3i1i11, vec3i1i1i1, vec41, vec41111, vec4111i1, vec411i11, vec411i1i1, vec413, vec41i111, vec41i11i1, vec41i1i11, vec41i1i1i1, vec422, vec431, vec4i1, vec4i1111, vec4i111i1, vec4i11i11, vec4i11i1i1, vec4i1i111, vec4i1i11i1, vec4i1i1i11, vec4i1i1i1i1
 
 -}
 
@@ -591,6 +106,11 @@ ceild3 a =
 
 ceild4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
 ceild4 a =
+    Glsl.unsafeCall1 "ceil" [] a
+
+
+ceil : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
+ceil a =
     Glsl.unsafeCall1 "ceil" [] a
 
 
@@ -926,6 +446,14 @@ distanced4d4 a b =
     Glsl.unsafeCall2 "distance" [] a b
 
 
+distance :
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t Glsl.D1)
+distance a b =
+    Glsl.unsafeCall2 "distance" [] a b
+
+
 dot11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -987,6 +515,14 @@ dotd4d4 :
     -> Glsl.Expression Glsl.DVec4
     -> Glsl.Expression Glsl.Double
 dotd4d4 a b =
+    Glsl.unsafeCall2 "dot" [] a b
+
+
+dot :
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t Glsl.D1)
+dot a b =
     Glsl.unsafeCall2 "dot" [] a b
 
 
@@ -1059,6 +595,15 @@ faceforwardd4d4d4 :
     -> Glsl.Expression Glsl.DVec4
     -> Glsl.Expression Glsl.DVec4
 faceforwardd4d4d4 a b c =
+    Glsl.unsafeCall3 "faceforward" [] a b c
+
+
+faceforward :
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+faceforward a b c =
     Glsl.unsafeCall3 "faceforward" [] a b c
 
 
@@ -1219,6 +764,15 @@ fmad4d4d4 a b c =
     Glsl.unsafeCall3 "fma" [] a b c
 
 
+fma :
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+fma a b c =
+    Glsl.unsafeCall3 "fma" [] a b c
+
+
 fract1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 fract1 a =
     Glsl.unsafeCall1 "fract" [] a
@@ -1256,6 +810,11 @@ fractd3 a =
 
 fractd4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
 fractd4 a =
+    Glsl.unsafeCall1 "fract" [] a
+
+
+fract : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
+fract a =
     Glsl.unsafeCall1 "fract" [] a
 
 
@@ -1385,6 +944,11 @@ inversesqrtd3 a =
 
 inversesqrtd4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
 inversesqrtd4 a =
+    Glsl.unsafeCall1 "inversesqrt" [] a
+
+
+inversesqrt : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
+inversesqrt a =
     Glsl.unsafeCall1 "inversesqrt" [] a
 
 
@@ -1599,6 +1163,44 @@ lengthd4 a =
     Glsl.unsafeCall1 "length" [] a
 
 
+length : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t Glsl.D1)
+length a =
+    Glsl.unsafeCall1 "length" [] a
+
+
+mat21111 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Mat2
+mat21111 a b c d =
+    Glsl.unsafeCall4 "mat2" [] a b c d
+
+
+mat222 :
+    Glsl.Expression Glsl.Vec2
+    -> Glsl.Expression Glsl.Vec2
+    -> Glsl.Expression Glsl.Mat2
+mat222 a b =
+    Glsl.unsafeCall2 "mat2" [] a b
+
+
+mat3111111111 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Mat3
+mat3111111111 a b c d e f g h i =
+    Glsl.unsafeCall9 "mat3" [] a b c d e f g h i
+
+
 mat3333 :
     Glsl.Expression Glsl.Vec3
     -> Glsl.Expression Glsl.Vec3
@@ -1608,13 +1210,13 @@ mat3333 a b c =
     Glsl.unsafeCall3 "mat3" [] a b c
 
 
-mat41111 :
-    Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
+mat44444 :
+    Glsl.Expression Glsl.Vec4
+    -> Glsl.Expression Glsl.Vec4
+    -> Glsl.Expression Glsl.Vec4
+    -> Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Mat4
-mat41111 a b c d =
+mat44444 a b c d =
     Glsl.unsafeCall4 "mat4" [] a b c d
 
 
@@ -2192,6 +1794,15 @@ mixd4d4d4 a b c =
     Glsl.unsafeCall3 "mix" [] a b c
 
 
+mix :
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+mix a b c =
+    Glsl.unsafeCall3 "mix" [] a b c
+
+
 mod11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2304,6 +1915,14 @@ modd4d4 a b =
     Glsl.unsafeCall2 "mod" [] a b
 
 
+mod :
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+mod a b =
+    Glsl.unsafeCall2 "mod" [] a b
+
+
 modf1o1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression (Glsl.Out Glsl.Float_)
@@ -2368,6 +1987,14 @@ modfd4od4 a b =
     Glsl.unsafeCall2 "modf" [] a b
 
 
+modf :
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Out (Glsl.Vec t a))
+    -> Glsl.Expression (Glsl.Vec t a)
+modf a b =
+    Glsl.unsafeCall2 "modf" [] a b
+
+
 normalize1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 normalize1 a =
     Glsl.unsafeCall1 "normalize" [] a
@@ -2405,6 +2032,11 @@ normalized3 a =
 
 normalized4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
 normalized4 a =
+    Glsl.unsafeCall1 "normalize" [] a
+
+
+normalize : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
+normalize a =
     Glsl.unsafeCall1 "normalize" [] a
 
 
@@ -2469,6 +2101,14 @@ reflectd4d4 :
     -> Glsl.Expression Glsl.DVec4
     -> Glsl.Expression Glsl.DVec4
 reflectd4d4 a b =
+    Glsl.unsafeCall2 "reflect" [] a b
+
+
+reflect :
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+reflect a b =
     Glsl.unsafeCall2 "reflect" [] a b
 
 
@@ -2544,6 +2184,15 @@ refractd4d41 a b c =
     Glsl.unsafeCall3 "refract" [] a b c
 
 
+refract :
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec Float Glsl.D1)
+    -> Glsl.Expression (Glsl.Vec t a)
+refract a b c =
+    Glsl.unsafeCall3 "refract" [] a b c
+
+
 round1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 round1 a =
     Glsl.unsafeCall1 "round" [] a
@@ -2561,6 +2210,26 @@ round3 a =
 
 round4 : Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Vec4
 round4 a =
+    Glsl.unsafeCall1 "round" [] a
+
+
+roundd1 : Glsl.Expression Glsl.Double -> Glsl.Expression Glsl.Double
+roundd1 a =
+    Glsl.unsafeCall1 "round" [] a
+
+
+roundd2 : Glsl.Expression Glsl.DVec2 -> Glsl.Expression Glsl.DVec2
+roundd2 a =
+    Glsl.unsafeCall1 "round" [] a
+
+
+roundd3 : Glsl.Expression Glsl.DVec3 -> Glsl.Expression Glsl.DVec3
+roundd3 a =
+    Glsl.unsafeCall1 "round" [] a
+
+
+roundd4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
+roundd4 a =
     Glsl.unsafeCall1 "round" [] a
 
 
@@ -2604,24 +2273,9 @@ roundEvend4 a =
     Glsl.unsafeCall1 "roundEven" [] a
 
 
-roundd1 : Glsl.Expression Glsl.Double -> Glsl.Expression Glsl.Double
-roundd1 a =
-    Glsl.unsafeCall1 "round" [] a
-
-
-roundd2 : Glsl.Expression Glsl.DVec2 -> Glsl.Expression Glsl.DVec2
-roundd2 a =
-    Glsl.unsafeCall1 "round" [] a
-
-
-roundd3 : Glsl.Expression Glsl.DVec3 -> Glsl.Expression Glsl.DVec3
-roundd3 a =
-    Glsl.unsafeCall1 "round" [] a
-
-
-roundd4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
-roundd4 a =
-    Glsl.unsafeCall1 "round" [] a
+roundEven : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
+roundEven a =
+    Glsl.unsafeCall1 "roundEven" [] a
 
 
 sign1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
@@ -2681,6 +2335,11 @@ signi3 a =
 
 signi4 : Glsl.Expression Glsl.IVec4 -> Glsl.Expression Glsl.IVec4
 signi4 a =
+    Glsl.unsafeCall1 "sign" [] a
+
+
+sign : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
+sign a =
     Glsl.unsafeCall1 "sign" [] a
 
 
@@ -2807,6 +2466,15 @@ smoothstepd4d4d4 :
     -> Glsl.Expression Glsl.DVec4
     -> Glsl.Expression Glsl.DVec4
 smoothstepd4d4d4 a b c =
+    Glsl.unsafeCall3 "smoothstep" [] a b c
+
+
+smoothstep :
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+smoothstep a b c =
     Glsl.unsafeCall3 "smoothstep" [] a b c
 
 
@@ -2962,6 +2630,14 @@ stepd4d4 a b =
     Glsl.unsafeCall2 "step" [] a b
 
 
+step :
+    Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+    -> Glsl.Expression (Glsl.Vec t a)
+step a b =
+    Glsl.unsafeCall2 "step" [] a b
+
+
 trunc1 : Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
 trunc1 a =
     Glsl.unsafeCall1 "trunc" [] a
@@ -2999,6 +2675,11 @@ truncd3 a =
 
 truncd4 : Glsl.Expression Glsl.DVec4 -> Glsl.Expression Glsl.DVec4
 truncd4 a =
+    Glsl.unsafeCall1 "trunc" [] a
+
+
+trunc : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
+trunc a =
     Glsl.unsafeCall1 "trunc" [] a
 
 
@@ -3239,6 +2920,11 @@ vec41i1i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
+vec422 : Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.Vec4
+vec422 a b =
+    Glsl.unsafeCall2 "vec4" [] a b
+
+
 vec431 :
     Glsl.Expression Glsl.Vec3
     -> Glsl.Expression Glsl.Float_
@@ -3443,19 +3129,9 @@ sqrt_ a =
     Glsl.unsafeCall1 "sqrt" [] a
 
 
-inversesqrt : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
-inversesqrt a =
-    Glsl.unsafeCall1 "inversesqrt" [] a
-
-
 abs_ : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
 abs_ a =
     Glsl.unsafeCall1 "abs" [] a
-
-
-sign : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
-sign a =
-    Glsl.unsafeCall1 "sign" [] a
 
 
 floor_ : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
@@ -3463,45 +3139,9 @@ floor_ a =
     Glsl.unsafeCall1 "floor" [] a
 
 
-trunc : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
-trunc a =
-    Glsl.unsafeCall1 "trunc" [] a
-
-
 round_ : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
 round_ a =
     Glsl.unsafeCall1 "round" [] a
-
-
-roundEven : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
-roundEven a =
-    Glsl.unsafeCall1 "roundEven" [] a
-
-
-ceil : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
-ceil a =
-    Glsl.unsafeCall1 "ceil" [] a
-
-
-fract : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
-fract a =
-    Glsl.unsafeCall1 "fract" [] a
-
-
-mod :
-    Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-mod a b =
-    Glsl.unsafeCall2 "mod" [] a b
-
-
-modf :
-    Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Out (Glsl.Vec t a))
-    -> Glsl.Expression (Glsl.Vec t a)
-modf a b =
-    Glsl.unsafeCall2 "modf" [] a b
 
 
 min_ :
@@ -3527,93 +3167,6 @@ clamp_ :
     -> Glsl.Expression (Glsl.Vec t a)
 clamp_ a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
-
-
-mix :
-    Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-mix a b c =
-    Glsl.unsafeCall3 "mix" [] a b c
-
-
-step :
-    Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-step a b =
-    Glsl.unsafeCall2 "step" [] a b
-
-
-smoothstep :
-    Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-smoothstep a b c =
-    Glsl.unsafeCall3 "smoothstep" [] a b c
-
-
-fma :
-    Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-fma a b c =
-    Glsl.unsafeCall3 "fma" [] a b c
-
-
-length : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t Glsl.D1)
-length a =
-    Glsl.unsafeCall1 "length" [] a
-
-
-distance :
-    Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t Glsl.D1)
-distance a b =
-    Glsl.unsafeCall2 "distance" [] a b
-
-
-dot :
-    Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t Glsl.D1)
-dot a b =
-    Glsl.unsafeCall2 "dot" [] a b
-
-
-normalize : Glsl.Expression (Glsl.Vec t a) -> Glsl.Expression (Glsl.Vec t a)
-normalize a =
-    Glsl.unsafeCall1 "normalize" [] a
-
-
-faceforward :
-    Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-faceforward a b c =
-    Glsl.unsafeCall3 "faceforward" [] a b c
-
-
-reflect :
-    Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-reflect a b =
-    Glsl.unsafeCall2 "reflect" [] a b
-
-
-refract :
-    Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec t a)
-    -> Glsl.Expression (Glsl.Vec Float Glsl.D1)
-    -> Glsl.Expression (Glsl.Vec t a)
-refract a b c =
-    Glsl.unsafeCall3 "refract" [] a b c
 
 
 dFdx : Glsl.Expression (Glsl.Vec Float a) -> Glsl.Expression (Glsl.Vec Float a)

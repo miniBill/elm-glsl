@@ -37,20 +37,6 @@ stat root =
 expr : Expr -> Expr
 expr root =
     case root of
-        Int i ->
-            if i < 0 then
-                UnaryOperation Negate (Int -i)
-
-            else
-                root
-
-        Float f ->
-            if f < 0 then
-                UnaryOperation Negate (Float -f)
-
-            else
-                root
-
         Ternary c t f ->
             map3 expr root Ternary expr c expr t expr f
 
@@ -59,6 +45,12 @@ expr root =
 
         BinaryOperation l op r ->
             map3 expr root BinaryOperation expr l identity op expr r
+
+        UnaryOperation Negate (Int i) ->
+            Int -i
+
+        UnaryOperation Negate (Float f) ->
+            Float -f
 
         UnaryOperation op l ->
             map expr root (UnaryOperation op) expr l

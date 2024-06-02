@@ -1,6 +1,6 @@
-module Glsl.PrettyPrinter exposing (expr, float, stat, type_)
+module Glsl.PrettyPrinter exposing (binaryOperation, declaration, expr, float, stat, type_, unaryOperation)
 
-import Glsl exposing (BinaryOperation(..), Expr(..), RelationOperation(..), Stat(..), Type(..), UnaryOperation(..))
+import Glsl exposing (BinaryOperation(..), Declaration(..), Expr(..), RelationOperation(..), Stat(..), Type(..), UnaryOperation(..))
 
 
 stat : Int -> Stat -> String
@@ -255,6 +255,106 @@ expr root =
     go 0 root
 
 
+binaryOperation : BinaryOperation -> String
+binaryOperation op =
+    case op of
+        By ->
+            "*"
+
+        Div ->
+            "/"
+
+        Mod ->
+            "%"
+
+        Add ->
+            "+"
+
+        Subtract ->
+            "-"
+
+        ShiftLeft ->
+            "<<"
+
+        ShiftRight ->
+            ">>"
+
+        RelationOperation LessThan ->
+            "<"
+
+        RelationOperation LessThanOrEquals ->
+            "<="
+
+        RelationOperation GreaterThan ->
+            ">"
+
+        RelationOperation GreaterThanOrEquals ->
+            ">="
+
+        RelationOperation Equals ->
+            "=="
+
+        RelationOperation NotEquals ->
+            "!="
+
+        BitwiseAnd ->
+            "&"
+
+        BitwiseXor ->
+            "^"
+
+        BitwiseOr ->
+            "|"
+
+        And ->
+            "&&"
+
+        Xor ->
+            "^^"
+
+        Or ->
+            "||"
+
+        Assign ->
+            "="
+
+        ComboAdd ->
+            "+="
+
+        ComboSubtract ->
+            "-="
+
+        ComboBy ->
+            "*="
+
+        ComboDiv ->
+            "/="
+
+        ComboMod ->
+            "%="
+
+        ComboLeftShift ->
+            "<<="
+
+        ComboRightShift ->
+            ">>="
+
+        ComboBitwiseAnd ->
+            "&="
+
+        ComboBitwiseXor ->
+            "^="
+
+        ComboBitwiseOr ->
+            "|="
+
+        Comma ->
+            ","
+
+        ArraySubscript ->
+            "[]"
+
+
 type_ : Type -> String
 type_ t =
     case t of
@@ -405,3 +505,44 @@ float f =
 
         else
             s ++ "."
+
+
+unaryOperation : UnaryOperation -> String
+unaryOperation op =
+    case op of
+        Negate ->
+            "-"
+
+        PostfixIncrement ->
+            "++"
+
+        PostfixDecrement ->
+            "--"
+
+        PrefixIncrement ->
+            "(++)"
+
+        PrefixDecrement ->
+            "(--)"
+
+        Plus ->
+            "+"
+
+        Invert ->
+            "~"
+
+        Not ->
+            "!"
+
+
+declaration : Declaration -> String
+declaration decl =
+    case decl of
+        ConstDeclaration _ ->
+            Debug.toString decl
+
+        FunctionDeclaration _ ->
+            Debug.toString decl
+
+        UniformDeclaration _ ->
+            Debug.toString decl
