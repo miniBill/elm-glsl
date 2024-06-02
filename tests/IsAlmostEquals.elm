@@ -246,7 +246,7 @@ toExpectation check =
         Err err ->
             let
                 ( expectedString, actualString ) =
-                    if err.expected /= err.actual || err.expectedDebug == err.actualDebug then
+                    if err.expectedDebug == err.actualDebug then
                         ( err.expected, err.actual )
 
                     else
