@@ -144,7 +144,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                 }
             pick3 =
                 fun4_ vec4T "pick3" (vec4T "a") (vec4T "b") (vec4T "c") (floatT "u") <| \a b c u ->
-                def floatT "v" (fract (by u (float1 (1 / 3)))) <| \v ->
+                def floatT "v" (fract (by u (float1 0.3333333333333))) <| \v ->
                 return (mix441 (mix441 a b (step (float1 0.3) v)) c (step (float1 0.6) v))
 
             closestHexCenters :

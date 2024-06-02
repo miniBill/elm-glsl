@@ -1,7 +1,7 @@
 module IsAlmostEquals exposing (Check, Path, declaration, expr, list, maybe, stat, toExpectation)
 
 import Expect exposing (Expectation)
-import Glsl exposing (Declaration(..), Expr(..), Stat(..))
+import Glsl exposing (Declaration(..), Expr(..), Stat(..), Type)
 import Glsl.PrettyPrinter
 import Glsl.Simplify
 
@@ -66,7 +66,7 @@ innerExpr expected actual =
                 "child"
                 (innerExpr el al)
                 "fields"
-                (equals identity er ar)
+                (string er ar)
 
         ( Float l, Float r ) ->
             if isInfinite l && isInfinite r then
@@ -133,13 +133,20 @@ withPath piece result =
 
 stat : Stat -> Stat -> Check
 stat expected actual =
+    innerStat
+        (Glsl.Simplify.stat expected)
+        (Glsl.Simplify.stat actual)
+
+
+innerStat : Stat -> Stat -> Check
+innerStat expected actual =
     case ( expected, actual ) of
         ( Decl etype ename einit, Decl atype aname ainit ) ->
             map3
                 "type"
-                (equals Glsl.PrettyPrinter.type_ etype atype)
+                (type_ etype atype)
                 "name"
-                (equals identity ename aname)
+                (string ename aname)
                 "value"
                 (maybe expr einit ainit)
 
@@ -151,33 +158,33 @@ stat expected actual =
                 "condition"
                 (expr el al)
                 "statement"
-                (stat em am)
+                (innerStat em am)
 
         ( IfElse el em er, IfElse al am ar ) ->
             map3
                 "condition"
                 (expr el al)
                 "true branch"
-                (stat em am)
+                (innerStat em am)
                 "false branch"
-                (stat er ar)
+                (innerStat er ar)
 
         ( For el em er ep, For al am ar ap ) ->
             map4
                 "init"
-                (maybe stat el al)
+                (maybe innerStat el al)
                 "check"
                 (expr em am)
                 "step"
                 (expr er ar)
                 "child"
-                (stat ep ap)
+                (innerStat ep ap)
 
         ( ExpressionStatement el, ExpressionStatement al ) ->
             expr el al
 
         ( Block ec, Block ac ) ->
-            list stat ec ac
+            list innerStat ec ac
 
         _ ->
             equals (Glsl.PrettyPrinter.stat 0) expected actual
@@ -189,14 +196,49 @@ declaration expected actual =
         ( ConstDeclaration ec, ConstDeclaration ac ) ->
             map3
                 "type"
-                (equals Glsl.PrettyPrinter.type_ ec.tipe ac.tipe)
+                (type_ ec.tipe ac.tipe)
                 "name"
-                (equals identity ec.name ac.name)
+                (string ec.name ac.name)
                 "value"
                 (innerExpr ec.value ac.value)
 
+        ( FunctionDeclaration ef, FunctionDeclaration af ) ->
+            map4
+                "type"
+                (type_ ef.returnType af.returnType)
+                "name"
+                (string ef.name af.name)
+                "args"
+                (list (tuple type_ string) ef.args af.args)
+                "stat"
+                (innerStat ef.stat af.stat)
+
         _ ->
             equals Glsl.PrettyPrinter.declaration expected actual
+
+
+tuple :
+    (a -> a -> Check)
+    -> (b -> b -> Check)
+    -> ( a, b )
+    -> ( a, b )
+    -> Check
+tuple f s ( ef, es ) ( af, as_ ) =
+    map2
+        "first"
+        (f ef af)
+        "second"
+        (s es as_)
+
+
+type_ : Type -> Type -> Check
+type_ expected actual =
+    equals Glsl.PrettyPrinter.type_ expected actual
+
+
+string : String -> String -> Check
+string expected actual =
+    equals identity expected actual
 
 
 list : (a -> a -> Check) -> List a -> List a -> Check
@@ -254,11 +296,10 @@ toExpectation check =
                         , err.actual ++ " (" ++ err.actualDebug ++ ")"
                         )
             in
-            Expect.fail ("At " ++ pathToString err.path ++ "\n\n  expected: " ++ expectedString ++ "\n\n    actual: " ++ actualString)
+            Expect.fail ("At " ++ pathToString err.path ++ "\n\nExpected: " ++ expectedString ++ "\n\nActual:   " ++ actualString)
 
 
 pathToString : Path -> String
 pathToString path =
     path
-        |> List.reverse
         |> String.join " -> "

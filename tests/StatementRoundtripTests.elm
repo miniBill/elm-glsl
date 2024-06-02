@@ -7,7 +7,6 @@ import Fuzz exposing (Fuzzer)
 import Glsl exposing (Expr(..), Stat(..), Type(..))
 import Glsl.Parser
 import Glsl.PrettyPrinter
-import Glsl.Simplify
 import IsAlmostEquals
 import Parser exposing ((|.))
 import Test exposing (Test, describe, test)
@@ -40,15 +39,11 @@ example label expr =
 
 roundtrip : Test
 roundtrip =
-    Test.fuzz (statFuzzer 3) "Statement roundtrips" <| \stat ->
+    Test.fuzz (statFuzzer 3) "Statement roundtrips" <| \expected ->
     let
-        simplified : Stat
-        simplified =
-            Glsl.Simplify.stat stat
-
         str : String
         str =
-            Glsl.PrettyPrinter.stat 0 simplified
+            Glsl.PrettyPrinter.stat 0 expected
     in
     case Parser.run (Glsl.Parser.statement |. Parser.end) str of
         Err errs ->
@@ -56,14 +51,9 @@ roundtrip =
                 |> ErrorUtils.errorsToString str
                 |> Expect.fail
 
-        Ok o ->
-            let
-                actual : Stat
-                actual =
-                    o
-                        |> Glsl.Simplify.stat
-            in
-            IsAlmostEquals.stat simplified actual
+        Ok actual ->
+            actual
+                |> IsAlmostEquals.stat expected
                 |> IsAlmostEquals.toExpectation
 
 

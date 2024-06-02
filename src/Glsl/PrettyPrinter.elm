@@ -541,8 +541,15 @@ declaration decl =
         ConstDeclaration _ ->
             Debug.toString decl
 
-        FunctionDeclaration _ ->
-            Debug.toString decl
+        FunctionDeclaration function ->
+            let
+                argsString : String
+                argsString =
+                    function.args
+                        |> List.map (\( atype, aname ) -> type_ atype ++ " " ++ aname)
+                        |> String.join ", "
+            in
+            type_ function.returnType ++ " " ++ function.name ++ "(" ++ argsString ++ ") " ++ stat 0 function.stat
 
         UniformDeclaration _ ->
             Debug.toString decl
