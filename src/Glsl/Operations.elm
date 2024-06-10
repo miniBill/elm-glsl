@@ -10,7 +10,7 @@ module Glsl.Operations exposing
     , lt, leq, eq, geq, gt
     , ternary
     , and, or, ands, ors
-    , subtract1f
+    , subtract1f, subtractf1
     )
 
 {-|
@@ -135,6 +135,11 @@ subtract =
 subtract1f : Expression Float_ -> Float -> Expression Float_
 subtract1f l r =
     subtract l (float1 r)
+
+
+subtractf1 : Float -> Expression Float_ -> Expression Float_
+subtractf1 l r =
+    subtract (float1 l) r
 
 
 negate_ : Expression (Vec Float d) -> Expression (Vec Float d)

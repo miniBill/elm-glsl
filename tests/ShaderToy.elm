@@ -3,10 +3,10 @@ module ShaderToy exposing (suite)
 import ErrorUtils
 import Expect
 import Glsl exposing (Declaration, Expression, Float_, Vec2, Vec3, Vec4, float1)
-import Glsl.Dot as Dot exposing (dot4, dotX, dotY)
-import Glsl.Functions exposing (cos_, cross33, dot, floor_, fract, inversesqrt, mat21111, mat2ff11, mat2fff1, mix441, sin_, step, step1f, stepf1, vec211, vec3111, vec311f, vec32f, vec422, vec4ffff)
+import Glsl.Dot as Dot exposing (dot4)
+import Glsl.Functions exposing (abs_, clampff1, cos_, cross33, distance, dot, floor_, fract, inversesqrt, mat21111, mat2ff11, mat2fff1, min_, mix221, mix441, sin_, smoothstep1f1, smoothstepf11, smoothstepff1, sqrt_, step, step1f, stepf1, vec211, vec21f, vec2f, vec31, vec3111, vec311f, vec321, vec32f, vec3f, vec422, vec43f, vec4f, vec4ffff)
 import Glsl.Helpers exposing (assign, const_, expr, float, floatT, fun1_, fun2_, fun4_, in_, mat2T, nop, out, return, vec2, vec2T, vec3, vec3T, vec4, vec4T, voidT)
-import Glsl.Operations exposing (add, add1f, byfv, bymv, byv1, byvf, divvf, negate_, subtract, subtract1f)
+import Glsl.Operations exposing (add, add1f, addf1, by, byfv, bymv, byv1, byvf, divvf, negate_, subtract, subtract1f, subtractf1)
 import Glsl.Parser
 import IsAlmostEquals
 import Parser
@@ -91,7 +91,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
 
     vec2 d1 = pos - q1;
 
-    float l = min(min(distance(d1, vec2(-s*1.0, 0.0)),
+    float l = min(min(distance(d1, vec2(s*-1.0, 0.0)),
                       distance(d1, vec2(s*0.5, 0.5*s3))),
                       distance(d1, vec2(s*0.5, -0.5*s3)));
 
@@ -173,12 +173,16 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                         (vec4ffff 0 0 2 1)
                         (vec4ffff 1 1 0 -1)
                         (vec4ffff 1 0 0 1)
-                        (add (pi |> dotX) (pi |> dotY))
+                        (add (pi |> Dot.x) (pi |> Dot.y))
                     )
                 <| \nn ->
                 return
                     (add
-                        (mix441 nn (nn |> dot4 Dot.y Dot.x Dot.w Dot.z) (step (pf |> dotX) (pf |> dotY)))
+                        (mix441
+                            nn
+                            (nn |> dot4 Dot.dy Dot.dx Dot.dw Dot.dz)
+                            (step (pf |> Dot.x) (pf |> Dot.y))
+                        )
                         (vec422 pi pi)
                     )
 
@@ -192,8 +196,8 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                 vec3 "pa" (vec32f (add p1 (byfv 0.5 p21)) 1) <| \pa ->
                 vec3 "pb"
                     (vec311f
-                        (subtract (pa |> dotX) (p21 |> dotY))
-                        (add (pa |> dotY) (p21 |> dotX))
+                        (subtract (pa |> Dot.x) (p21 |> Dot.y))
+                        (add (pa |> Dot.y) (p21 |> Dot.x))
                         1
                     )
                 <| \pb ->
@@ -211,7 +215,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                 }
             hash =
                 fun1_ floatT "hash" (vec2T "pos") <| \pos ->
-                return (fract (divvf pos 511) |> dotX)
+                return (fract (divvf pos 511) |> Dot.x)
 
             mainImage :
                 { declaration : Declaration
@@ -275,6 +279,54 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                         1
                     )
                 <| \s ->
+                vec2 "d1" (subtract pos q1) <| \d1 ->
+                float "l"
+                    (min_
+                        (min_
+                            (distance d1 (vec21f (byvf s -1) 0))
+                            (distance d1 (vec211 (byvf s 0.5) (byfv 0.5 s3.value)))
+                        )
+                        (distance d1 (vec211 (byvf s 0.5) (byfv -0.5 s3.value)))
+                    )
+                <| \l ->
+                float "r" (float1 0.5) <| \r ->
+                vec4 "truchet"
+                    (vec43f
+                        (vec31 (smoothstep1f1 (addf1 0.1 scl) 0.1 (abs_ (subtract l r))))
+                        1
+                    )
+                <| \truchet ->
+                vec2 "q2" (bymv tri2cart.value (h |> Dot.zw)) <| \q2 ->
+                vec4 "rgb"
+                    (pick3.call
+                        (vec4ffff 1 0 0 1)
+                        (vec4ffff 0 1 0 1)
+                        (vec4ffff 0 0 1 1)
+                        (h |> Dot.x)
+                    )
+                <| \rgb ->
+                vec3 "line" (perpBisector.call q1 q2) <| \line ->
+                float "d" (dot (vec32f pos 1) line) <| \d ->
+                vec4 "black" (vec43f (vec3f 0) 1) <| \black ->
+                vec2 "nxy" (mix221 (byfv 0.4 (line |> Dot.xy)) (vec2f 0) (smoothstepf11 0.3 (addf1 0.3 scl) d)) <| \nxy ->
+                vec3 "N" (vec321 nxy (sqrt_ (subtractf1 1 (dot nxy nxy)))) <| \uN ->
+                float "ln" (clampff1 0 1 (dot uL uN)) <| \ln ->
+                vec4 "lite" (mix441 rgb (vec4f 1) (clampff1 0 1 (subtract1f (byfv 2 ln) 1))) <| \lite ->
+                vec4 "dark" (mix441 black rgb (clampff1 0 1 (byfv 2 ln))) <| \dark ->
+                vec4 "lrgb" (mix441 dark lite (stepf1 0.5 ln)) <| \lrgb ->
+                vec4 "crgb" (mix441 black lrgb (smoothstepf11 0.01 (addf1 0.01 scl) d)) <| \crgb ->
+                float "t" (fract (byfv 0.04 iTime)) <| \t ->
+                float "invb" (float1 4) <| \invb ->
+                float "k"
+                    (smoothstepff1 0
+                        1
+                        (min_
+                            (add1f (subtract (by t invb) (byfv 0.5 invb)) 1)
+                            (add (by (negate_ t) invb) invb)
+                        )
+                    )
+                <| \k ->
+                expr (assign fragColor (mix441 crgb truchet k)) <| \() ->
                 nop
         in
         [ s3.declaration

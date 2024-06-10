@@ -1,24 +1,31 @@
 module Glsl.Dot exposing
-    ( Dot(..)
-    , dot1, dot2, dot3, dot4
-    , x, y, z, w
-    , dotX, dotY, dotZ, dotW
+    ( x, y, z, w
     , xx, xy, xz, xw
     , yx, yy, yz, yw
     , zx, zy, zz, zw
     , wx, wy, wz, ww
+    , Dot(..)
+    , dot1, dot2, dot3, dot4
+    , dx, dy, dz, dw
     )
 
 {-|
 
-@docs Dot
-@docs dot1, dot2, dot3, dot4
+
+# Simple swizzles
+
 @docs x, y, z, w
-@docs dotX, dotY, dotZ, dotW
 @docs xx, xy, xz, xw
 @docs yx, yy, yz, yw
 @docs zx, zy, zz, zw
 @docs wx, wy, wz, ww
+
+
+# Arbitrary swizzles
+
+@docs Dot
+@docs dot1, dot2, dot3, dot4
+@docs dx, dy, dz, dw
 
 -}
 
@@ -29,23 +36,23 @@ type Dot q
     = Dotter Char
 
 
-x : Dot { a | x : x }
-x =
+dx : Dot { a | x : x }
+dx =
     Dotter 'x'
 
 
-y : Dot { a | y : y }
-y =
+dy : Dot { a | y : y }
+dy =
     Dotter 'y'
 
 
-z : Dot { a | z : z }
-z =
+dz : Dot { a | z : z }
+dz =
     Dotter 'z'
 
 
-w : Dot { a | w : w }
-w =
+dw : Dot { a | w : w }
+dw =
     Dotter 'w'
 
 
@@ -61,82 +68,82 @@ dot2 (Dotter d1) (Dotter d2) e =
 
 xx : Expression (Vec t { a | x : x }) -> Expression (Vec t D2)
 xx =
-    dot2 x x
+    dot2 dx dx
 
 
 xy : Expression (Vec t { a | x : x, y : y }) -> Expression (Vec t D2)
 xy =
-    dot2 x y
+    dot2 dx dy
 
 
 xz : Expression (Vec t { a | x : x, z : z }) -> Expression (Vec t D2)
 xz =
-    dot2 x z
+    dot2 dx dz
 
 
 xw : Expression (Vec t { a | x : x, w : w }) -> Expression (Vec t D2)
 xw =
-    dot2 x w
+    dot2 dx dw
 
 
 yx : Expression (Vec t { a | y : y, x : x }) -> Expression (Vec t D2)
 yx =
-    dot2 y x
+    dot2 dy dx
 
 
 yy : Expression (Vec t { a | y : y }) -> Expression (Vec t D2)
 yy =
-    dot2 y y
+    dot2 dy dy
 
 
 yz : Expression (Vec t { a | y : y, z : z }) -> Expression (Vec t D2)
 yz =
-    dot2 y z
+    dot2 dy dz
 
 
 yw : Expression (Vec t { a | y : y, w : w }) -> Expression (Vec t D2)
 yw =
-    dot2 y w
+    dot2 dy dw
 
 
 zx : Expression (Vec t { a | z : z, x : x }) -> Expression (Vec t D2)
 zx =
-    dot2 z x
+    dot2 dz dx
 
 
 zy : Expression (Vec t { a | z : z, y : y }) -> Expression (Vec t D2)
 zy =
-    dot2 z y
+    dot2 dz dy
 
 
 zz : Expression (Vec t { a | z : z }) -> Expression (Vec t D2)
 zz =
-    dot2 z z
+    dot2 dz dz
 
 
 zw : Expression (Vec t { a | z : z, w : w }) -> Expression (Vec t D2)
 zw =
-    dot2 z w
+    dot2 dz dw
 
 
 wx : Expression (Vec t { a | w : w, x : x }) -> Expression (Vec t D2)
 wx =
-    dot2 w x
+    dot2 dw dx
 
 
 wy : Expression (Vec t { a | w : w, y : y }) -> Expression (Vec t D2)
 wy =
-    dot2 w y
+    dot2 dw dy
 
 
 wz : Expression (Vec t { a | w : w, z : z }) -> Expression (Vec t D2)
 wz =
-    dot2 w z
+    dot2 dw dz
 
 
 ww : Expression (Vec t { a | w : w }) -> Expression (Vec t D2)
 ww =
-    dot2 w w
+    dot2 dw dw
 
 
 dot3 : Dot q -> Dot q -> Dot q -> Expression (Vec t q) -> Expression (Vec t D3)
@@ -149,21 +156,21 @@ dot4 (Dotter d1) (Dotter d2) (Dotter d3) (Dotter d4) e =
     unsafeDot e (String.fromList [ d1, d2, d3, d4 ])
 
 
-dotX : Expression (Vec t { a | x : x }) -> Expression (Vec t D1)
-dotX e =
-    dot1 x e
+x : Expression (Vec t { a | x : x }) -> Expression (Vec t D1)
+x e =
+    dot1 dx e
 
 
-dotY : Expression (Vec t { a | y : y }) -> Expression (Vec t D1)
-dotY e =
-    dot1 y e
+y : Expression (Vec t { a | y : y }) -> Expression (Vec t D1)
+y e =
+    dot1 dy e
 
 
-dotZ : Expression (Vec t { a | z : z }) -> Expression (Vec t D1)
-dotZ e =
-    dot1 z e
+z : Expression (Vec t { a | z : z }) -> Expression (Vec t D1)
+z e =
+    dot1 dz e
 
 
-dotW : Expression (Vec t { a | w : w }) -> Expression (Vec t D1)
-dotW e =
-    dot1 w e
+w : Expression (Vec t { a | w : w }) -> Expression (Vec t D1)
+w e =
+    dot1 dw e

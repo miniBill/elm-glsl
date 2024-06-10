@@ -23,30 +23,32 @@ examples =
 
 example : String -> Expr -> Test
 example label expr =
-    test label <| \_ ->
-    expr
-        |> Glsl.PrettyPrinter.expr
-        |> Expect.equal label
+    test label <|
+        \_ ->
+            expr
+                |> Glsl.PrettyPrinter.expr
+                |> Expect.equal label
 
 
 roundtrip : Test
 roundtrip =
-    Test.fuzz (fuzzer 3) "Expression roundtrips" <| \expr ->
-    let
-        str : String
-        str =
-            Glsl.PrettyPrinter.expr expr
-    in
-    case Parser.run (Glsl.Parser.expression |. Parser.end) str of
-        Err errs ->
-            errs
-                |> ErrorUtils.errorsToString str
-                |> Expect.fail
+    Test.fuzz (fuzzer 3) "Expression roundtrips" <|
+        \expr ->
+            let
+                str : String
+                str =
+                    Glsl.PrettyPrinter.expr expr
+            in
+            case Parser.run (Glsl.Parser.expression |. Parser.end) str of
+                Err errs ->
+                    errs
+                        |> ErrorUtils.errorsToString str
+                        |> Expect.fail
 
-        Ok actual ->
-            actual
-                |> IsAlmostEquals.expr expr
-                |> IsAlmostEquals.toExpectation
+                Ok actual ->
+                    actual
+                        |> IsAlmostEquals.expr expr
+                        |> IsAlmostEquals.toExpectation
 
 
 fuzzer : Int -> Fuzzer Expr

@@ -31,30 +31,32 @@ examples =
 
 example : String -> Stat -> Test
 example label expr =
-    test label <| \_ ->
-    expr
-        |> Glsl.PrettyPrinter.stat 0
-        |> Expect.equal label
+    test label <|
+        \_ ->
+            expr
+                |> Glsl.PrettyPrinter.stat 0
+                |> Expect.equal label
 
 
 roundtrip : Test
 roundtrip =
-    Test.fuzz (statFuzzer 3) "Statement roundtrips" <| \expected ->
-    let
-        str : String
-        str =
-            Glsl.PrettyPrinter.stat 0 expected
-    in
-    case Parser.run (Glsl.Parser.statement |. Parser.end) str of
-        Err errs ->
-            errs
-                |> ErrorUtils.errorsToString str
-                |> Expect.fail
+    Test.fuzz (statFuzzer 3) "Statement roundtrips" <|
+        \expected ->
+            let
+                str : String
+                str =
+                    Glsl.PrettyPrinter.stat 0 expected
+            in
+            case Parser.run (Glsl.Parser.statement |. Parser.end) str of
+                Err errs ->
+                    errs
+                        |> ErrorUtils.errorsToString str
+                        |> Expect.fail
 
-        Ok actual ->
-            actual
-                |> IsAlmostEquals.stat expected
-                |> IsAlmostEquals.toExpectation
+                Ok actual ->
+                    actual
+                        |> IsAlmostEquals.stat expected
+                        |> IsAlmostEquals.toExpectation
 
 
 statFuzzer : Int -> Fuzzer Stat
