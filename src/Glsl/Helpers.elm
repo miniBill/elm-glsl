@@ -1,6 +1,6 @@
-module Glsl.Generator exposing (File, FunDecl, assign, assignAdd, assignBy, assignOut, boolT, break, const, const_, continue, decl, def, def1, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun1_, fun2, fun2_, fun3, fun3_, fun4, fun4_, fun5, fun5_, funDeclToGlsl, ifElse, if_, in_, intT, main_, mat2T, mat3, mat3T, nop, out, return, statementToGlsl, vec2, vec2T, vec3, vec3T, vec4, vec4T, voidT)
+module Glsl.Helpers exposing (File, FunDecl, assign, assignAdd, assignBy, assignOut, boolT, break, const, const_, continue, decl, def, def1, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun1_, fun2, fun2_, fun3, fun3_, fun4, fun4_, fun5, fun5_, funDeclToGlsl, ifElse, if_, in_, intT, main_, mat2T, mat3, mat3T, nop, out, return, statementToGlsl, vec2, vec2T, vec3, vec3T, vec4, vec4T, voidT)
 
-import Glsl exposing (BinaryOperation(..), Bool_, Declaration(..), Expr(..), Expression(..), Float_, In, Int_, Mat2, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap, unsafeMap2, unsafeVar, withContinuation, withExpression, withStatement)
+import Glsl exposing (BinaryOperation(..), Bool_, Declaration(..), Expr(..), Expression(..), Float_, Int_, Mat2, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap, unsafeMap2, unsafeVar, withContinuation, withExpression, withStatement)
 import Glsl.PrettyPrinter
 import Set
 import SortedSet
@@ -581,7 +581,7 @@ mat3T n =
     TypedName TMat3 n
 
 
-out : TypingFunction t -> TypingFunction (Out t)
+out : TypingFunction t -> TypingFunction t
 out inner n =
     let
         (TypedName t name) =
@@ -590,7 +590,7 @@ out inner n =
     TypedName (TOut t) name
 
 
-in_ : TypingFunction t -> TypingFunction (In t)
+in_ : TypingFunction t -> TypingFunction t
 in_ inner n =
     let
         (TypedName t name) =

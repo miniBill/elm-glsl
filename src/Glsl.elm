@@ -3,9 +3,9 @@ module Glsl exposing
     , Statement(..), Stat(..)
     , Expression(..), ExprWithDeps, Expr(..)
     , BinaryOperation(..), UnaryOperation(..), RelationOperation(..)
-    , true, false, int1, float1
+    , true, false, int1, float1, bool1, double1, uint1
     , TypingFunction, TypedName(..), Type(..)
-    , Vec, D1, D2, D3, D4
+    , Vec, Mat, D1, D2, D3, D4
     , Float_, Vec2, Vec3, Vec4
     , Int_, IVec2, IVec3, IVec4
     , Bool_, BVec2, BVec3, BVec4
@@ -35,13 +35,13 @@ module Glsl exposing
 
 # Utils
 
-@docs true, false, int1, float1
+@docs true, false, int1, float1, bool1, double1, uint1
 
 
 # Typelevel types
 
 @docs TypingFunction, TypedName, Type
-@docs Vec, D1, D2, D3, D4
+@docs Vec, Mat, D1, D2, D3, D4
 @docs Float_, Vec2, Vec3, Vec4
 @docs Int_, IVec2, IVec3, IVec4
 @docs Bool_, BVec2, BVec3, BVec4
@@ -326,6 +326,8 @@ type Expr
     = Bool Bool
     | Int Int
     | Float Float
+    | Uint Int
+    | Double Float
     | Variable String
     | Ternary Expr Expr Expr
     | UnaryOperation UnaryOperation Expr
@@ -595,7 +597,7 @@ type alias BVec4 =
 
 
 type Uint
-    = Uint
+    = UintType
 
 
 type alias Uint_ =
@@ -615,7 +617,7 @@ type alias UVec4 =
 
 
 type Double
-    = Double
+    = DoubleType
 
 
 type alias Double_ =
@@ -749,6 +751,16 @@ int1 i =
 float1 : Float -> Expression Float_
 float1 i =
     pure <| Float i
+
+
+uint1 : Int -> Expression Uint
+uint1 i =
+    pure <| Uint i
+
+
+double1 : Float -> Expression Double_
+double1 i =
+    pure <| Double i
 
 
 unsafeVar : String -> Expression t

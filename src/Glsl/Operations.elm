@@ -1,16 +1,13 @@
 module Glsl.Operations exposing
     ( add, adds, adds2, adds3, adds4
     , subtract
-    , negate
-    , by
-    , by12, by13, by14
-    , by21, by31, by41
-    , div, div21, div31, div41
-    , arraym33
+    , negate_
+    , by, by1v, byv1, bymv
+    , div, divv1
+    , arraymi
     , lt, leq, eq, geq, gt
     , ternary
     , and, or, ands, ors
-    , dot1, dot2, dot3, dot4, dotX, dotY, dotZ, dx, dy, dz, dw
     )
 
 {-|
@@ -28,24 +25,22 @@ module Glsl.Operations exposing
 
 # Negate
 
-@docs negate
+@docs negate_
 
 
 # Multiplication
 
-@docs by
-@docs by12, by13, by14
-@docs by21, by31, by41
+@docs by, by1v, byv1, bymv
 
 
 # Division
 
-@docs div, div21, div31, div41
+@docs div, divv1
 
 
 # Array access
 
-@docs arraym33
+@docs arraymi
 
 
 # Comparison
@@ -58,14 +53,9 @@ module Glsl.Operations exposing
 @docs ternary
 @docs and, or, ands, ors
 
-
-# Swizzle
-
-@docs dot1, dot2, dot3, dot4, dotX, dotY, dotZ, dx, dy, dz, dw
-
 -}
 
-import Glsl exposing (BinaryOperation(..), Bool_, D1, D2, D3, D4, Expr(..), Expression, Float_, Mat3, RelationOperation(..), UnaryOperation(..), Vec, Vec2, Vec3, Vec4, false, int1, true, unsafeDot, unsafeMap, unsafeMap2, unsafeMap3)
+import Glsl exposing (BinaryOperation(..), Bool_, D2, Expr(..), Expression, Float_, Mat, RelationOperation(..), UnaryOperation(..), Vec, Vec2, Vec3, Vec4, false, int1, true, unsafeMap, unsafeMap2, unsafeMap3)
 import Glsl.Functions exposing (vec2i1, vec3i1, vec4i1)
 
 
@@ -127,8 +117,8 @@ subtract =
     unsafeBinary Subtract
 
 
-negate : Expression (Vec Float d) -> Expression (Vec Float d)
-negate l =
+negate_ : Expression (Vec Float d) -> Expression (Vec Float d)
+negate_ l =
     unsafeMap (UnaryOperation Negate) l
 
 
@@ -141,33 +131,18 @@ unsafeBinary op =
 -- Multiplication
 
 
-by12 : Expression Float_ -> Expression Vec2 -> Expression Vec2
-by12 =
+by1v : Expression Float_ -> Expression (Vec Float d) -> Expression (Vec Float d)
+by1v =
     unsafeBinary By
 
 
-by13 : Expression Float_ -> Expression Vec3 -> Expression Vec3
-by13 =
+byv1 : Expression (Vec Float d) -> Expression Float_ -> Expression (Vec Float d)
+byv1 =
     unsafeBinary By
 
 
-by14 : Expression Float_ -> Expression Vec4 -> Expression Vec4
-by14 =
-    unsafeBinary By
-
-
-by21 : Expression Vec2 -> Expression Float_ -> Expression Vec2
-by21 =
-    unsafeBinary By
-
-
-by31 : Expression Vec3 -> Expression Float_ -> Expression Vec3
-by31 =
-    unsafeBinary By
-
-
-by41 : Expression Vec4 -> Expression Float_ -> Expression Vec4
-by41 =
+bymv : Expression (Mat Float D2 d) -> Expression (Vec Float d) -> Expression (Vec Float d)
+bymv =
     unsafeBinary By
 
 
@@ -180,18 +155,8 @@ by =
 -- Division
 
 
-div21 : Expression Vec2 -> Expression Float_ -> Expression Vec2
-div21 =
-    unsafeBinary Div
-
-
-div31 : Expression Vec3 -> Expression Float_ -> Expression Vec3
-div31 =
-    unsafeBinary Div
-
-
-div41 : Expression Vec4 -> Expression Float_ -> Expression Vec4
-div41 =
+divv1 : Expression (Vec Float d) -> Expression Float_ -> Expression (Vec Float d)
+divv1 =
     unsafeBinary Div
 
 
@@ -204,8 +169,8 @@ div =
 -- Array access
 
 
-arraym33 : Expression Mat3 -> Expression Int -> Expression Vec3
-arraym33 =
+arraymi : Expression (Mat Float d d) -> Expression Int -> Expression (Vec Float d)
+arraymi =
     unsafeBinary ArraySubscript
 
 
@@ -279,66 +244,3 @@ ors es =
 
         h :: t ->
             List.foldl (\e a -> or a e) h t
-
-
-
--- Dot
-
-
-type Dot q
-    = Dotter Char
-
-
-dx : Dot { a | x : x }
-dx =
-    Dotter 'x'
-
-
-dy : Dot { a | y : y }
-dy =
-    Dotter 'y'
-
-
-dz : Dot { a | z : z }
-dz =
-    Dotter 'z'
-
-
-dw : Dot { a | w : w }
-dw =
-    Dotter 'w'
-
-
-dot1 : Dot q -> Expression (Vec t q) -> Expression (Vec t D1)
-dot1 (Dotter d1) e =
-    unsafeDot e (String.fromChar d1)
-
-
-dot2 : Dot q -> Dot q -> Expression (Vec t q) -> Expression (Vec t D2)
-dot2 (Dotter d1) (Dotter d2) e =
-    unsafeDot e (String.fromList [ d1, d2 ])
-
-
-dot3 : Dot q -> Dot q -> Dot q -> Expression (Vec t q) -> Expression (Vec t D3)
-dot3 (Dotter d1) (Dotter d2) (Dotter d3) e =
-    unsafeDot e (String.fromList [ d1, d2, d3 ])
-
-
-dot4 : Dot q -> Dot q -> Dot q -> Dot q -> Expression (Vec t q) -> Expression (Vec t D4)
-dot4 (Dotter d1) (Dotter d2) (Dotter d3) (Dotter d4) e =
-    unsafeDot e (String.fromList [ d1, d2, d3, d4 ])
-
-
-dotX : Expression (Vec t { a | x : x }) -> Expression (Vec t D1)
-dotX e =
-    dot1 dx e
-
-
-dotY : Expression (Vec t { a | y : y }) -> Expression (Vec t D1)
-dotY e =
-    dot1 dy e
-
-
-dotZ : Expression (Vec t { a | z : z }) -> Expression (Vec t D1)
-dotZ e =
-    dot1 dz e

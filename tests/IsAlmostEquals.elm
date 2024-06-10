@@ -198,26 +198,37 @@ innerStat expected actual =
 
 declaration : Declaration -> Declaration -> Check
 declaration expected actual =
+    let
+        names : { a | name : String } -> { a | name : String } -> String
+        names ex ac =
+            if ex.name == ac.name then
+                ex.name
+
+            else
+                ex.name ++ "/" ++ ac.name
+    in
     case ( expected, actual ) of
         ( ConstDeclaration ec, ConstDeclaration ac ) ->
-            map3
-                "type"
-                (type_ ec.tipe ac.tipe)
-                "name"
-                (string ec.name ac.name)
-                "value"
-                (innerExpr ec.value ac.value)
+            withPath ("const " ++ names ec ac) <|
+                map3
+                    "type"
+                    (type_ ec.tipe ac.tipe)
+                    "name"
+                    (string ec.name ac.name)
+                    "value"
+                    (innerExpr ec.value ac.value)
 
         ( FunctionDeclaration ef, FunctionDeclaration af ) ->
-            map4
-                "type"
-                (type_ ef.returnType af.returnType)
-                "name"
-                (string ef.name af.name)
-                "args"
-                (list (tuple type_ string) ef.args af.args)
-                "stat"
-                (innerStat ef.stat af.stat)
+            withPath ("function " ++ names ef af) <|
+                map4
+                    "type"
+                    (type_ ef.returnType af.returnType)
+                    "name"
+                    (string ef.name af.name)
+                    "args"
+                    (list (tuple type_ string) ef.args af.args)
+                    "stat"
+                    (innerStat ef.stat af.stat)
 
         _ ->
             equals Glsl.PrettyPrinter.declaration expected actual

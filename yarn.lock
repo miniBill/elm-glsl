@@ -356,10 +356,8 @@ eastasianwidth@^0.2.0:
   resolved "https://registry.yarnpkg.com/eastasianwidth/-/eastasianwidth-0.2.0.tgz#696ce2ec0aa0e6ea93a397ffcf24aa7840c827cb"
   integrity sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==
 
-elm-codegen@^0.5.3:
+elm-codegen@../elm-codegen:
   version "0.5.3"
-  resolved "https://registry.yarnpkg.com/elm-codegen/-/elm-codegen-0.5.3.tgz#28ab430fe6addd7e3938a346d4d0c3bfd8ca4917"
-  integrity sha512-LKscQHnDeNGQsvaoDXq1nxlm9XlsWaIQCUiqBgJjXk/gPU6PtcXVC0ji1ytmmSW+/N0zb+DWegSbPPYGeV4eew==
   dependencies:
     chalk "^4.1.1"
     chokidar "^3.5.1"
