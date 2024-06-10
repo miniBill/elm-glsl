@@ -5,9 +5,9 @@ import Expect
 import Glsl exposing (Declaration, Expression, Float_, Vec2, Vec3, Vec4, float1)
 import Glsl.Constants exposing (minusOne, one, zero)
 import Glsl.Dot as Dot exposing (dot2, dot4, dotX, dotY)
-import Glsl.Functions exposing (cos_, cross33, dot, floor_, fract, inversesqrt, mat21111, mix441, sin_, step, vec211, vec3111, vec321, vec41111, vec422)
+import Glsl.Functions exposing (cos_, cross33, dot, floor_, fract, inversesqrt, mat21111, mat2ff11, mat2fff1, mix441, sin_, step, stepf1, vec211, vec3111, vec321, vec41111, vec422)
 import Glsl.Helpers exposing (assign, const_, expr, float, floatT, fun1_, fun2_, fun4_, in_, mat2T, nop, out, return, vec2, vec2T, vec3, vec3T, vec4, vec4T, voidT)
-import Glsl.Operations exposing (add, by, by1v, bymv, byv1, divv1, negate_, subtract)
+import Glsl.Operations exposing (add, add1f, byfv, bymv, byv1, byvf, divvf, negate_, subtract)
 import Glsl.Parser
 import IsAlmostEquals
 import Parser
@@ -145,11 +145,11 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
 
             tri2cart : { declaration : Declaration, value : Expression Glsl.Mat2 }
             tri2cart =
-                const_ mat2T "tri2cart" (mat21111 one zero (float1 -0.5) (by (float1 0.5) s3.value))
+                const_ mat2T "tri2cart" (mat2fff1 1 0 -0.5 (byfv 0.5 s3.value))
 
             cart2tri : { declaration : Declaration, value : Expression Glsl.Mat2 }
             cart2tri =
-                const_ mat2T "cart2tri" (mat21111 one zero i3.value (by (float1 2.0) i3.value))
+                const_ mat2T "cart2tri" (mat2ff11 1 0 i3.value (byfv 2.0 i3.value))
 
             pick3 :
                 { declaration : Declaration
@@ -157,8 +157,8 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                 }
             pick3 =
                 fun4_ vec4T "pick3" (vec4T "a") (vec4T "b") (vec4T "c") (floatT "u") <| \a b c u ->
-                float "v" (fract (by u (float1 0.3333333333333))) <| \v ->
-                return (mix441 (mix441 a b (step (float1 0.3) v)) c (step (float1 0.6) v))
+                float "v" (fract (byvf u 0.3333333333333)) <| \v ->
+                return (mix441 (mix441 a b (stepf1 0.3 v)) c (stepf1 0.6 v))
 
             closestHexCenters :
                 { declaration : Declaration
@@ -190,7 +190,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
             perpBisector =
                 fun2_ vec3T "perpBisector" (vec2T "p1") (vec2T "p2") <| \p1 p2 ->
                 vec2 "p21" (subtract p2 p1) <| \p21 ->
-                vec3 "pa" (vec321 (add p1 (by1v (float1 0.5) p21)) one) <| \pa ->
+                vec3 "pa" (vec321 (add p1 (byfv 0.5 p21)) one) <| \pa ->
                 vec3 "pb"
                     (vec3111
                         (subtract (pa |> dotX) (p21 |> dotY))
@@ -212,29 +212,29 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                 }
             hash =
                 fun1_ floatT "hash" (vec2T "pos") <| \pos ->
-                return (fract (divv1 pos (float1 511)) |> dotX)
+                return (fract (divvf pos 511) |> dotX)
 
             mainImage :
                 { declaration : Declaration
                 , call : Expression Vec4 -> Expression Vec2 -> Expression ()
                 }
             mainImage =
-                fun2_ voidT "mainImage" (out vec4T "fragColor") (in_ vec2T "fragCoord") <| \fragColor fragCoord ->
+                fun2_ voidT "mainImage" (out vec4T "fragColor") (in_ vec2T "fragCoord") <| \_ fragCoord ->
                 float "scl" zero <| \scl ->
                 float "iTime" zero <| \iTime ->
                 float "cx"
                     (add
-                        (by (float1 2) (cos_ (by iTime (float1 0.3))))
-                        (by one (cos_ (add (by iTime (float1 0.7)) (float1 2.0))))
+                        (byfv 2 (cos_ (byvf iTime 0.3)))
+                        (byfv 1 (cos_ (add1f (byvf iTime 0.7) 2.0)))
                     )
                 <| \cx ->
                 float "cy"
                     (add
-                        (by (float1 4) (sin_ (by iTime (float1 0.4))))
-                        (by (float1 0.3) (sin_ (add (by iTime (float1 1.2)) (float1 4.0))))
+                        (byfv 4 (sin_ (byvf iTime 0.4)))
+                        (byfv 0.3 (sin_ (add1f (byvf iTime 1.2) 4.0)))
                     )
                 <| \cy ->
-                float "theta" (by (float1 0.05) iTime) <| \theta ->
+                float "theta" (byfv 0.05 iTime) <| \theta ->
                 vec2 "pos"
                     (add
                         (byv1 (fragCoord |> dot2 Dot.x Dot.y) scl)
@@ -245,14 +245,14 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                 float "st" (sin_ theta) <| \st ->
                 expr
                     (assign
+                        pos
                         (bymv
                             (mat21111 ct (negate_ st) st ct)
                             pos
                         )
-                        pos
                     )
                 <| \() ->
-                vec3 "L" (vec3111 i3.value i3.value i3.value) <| \uL ->
+                vec3 "L" (vec3111 i3.value (negate_ i3.value) i3.value) <| \uL ->
                 expr
                     (assign
                         (uL |> dot2 Dot.x Dot.y)
@@ -262,13 +262,13 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                         )
                     )
                 <| \() ->
-                vec4 "h" (closestHexCenters.call (by cart2tri pos)) <| \h ->
+                vec4 "h" (closestHexCenters.call (bymv cart2tri.value pos)) <| \_ ->
                 nop
         in
         [ s3.declaration
         , i3.declaration
-        , (const_ mat2T "tri2cart" (mat21111 one zero (float1 -0.5) (by (float1 0.5) s3.value))).declaration
-        , (const_ mat2T "cart2tri" (mat21111 one zero i3.value (by (float1 2.0) i3.value))).declaration
+        , (const_ mat2T "tri2cart" (mat2fff1 1 0 -0.5 (byfv 0.5 s3.value))).declaration
+        , (const_ mat2T "cart2tri" (mat2ff11 1 0 i3.value (byfv 2.0 i3.value))).declaration
         , pick3.declaration
         , closestHexCenters.declaration
         , perpBisector.declaration

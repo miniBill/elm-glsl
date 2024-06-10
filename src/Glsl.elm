@@ -253,7 +253,23 @@ withContinuation next (WithDepsBuilder k deps) =
             next ()
     in
     Statement
-        { stat = k :: s.stat
+        { stat =
+            let
+                unwrappedSStat : List Stat
+                unwrappedSStat =
+                    case s.stat of
+                        [ Block children ] ->
+                            children
+
+                        _ ->
+                            s.stat
+            in
+            case k of
+                Block children ->
+                    children ++ unwrappedSStat
+
+                _ ->
+                    k :: unwrappedSStat
         , deps = deps |> SortedSet.insertAll s.deps
         }
 

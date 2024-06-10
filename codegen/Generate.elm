@@ -344,7 +344,7 @@ typeToShort ( t, wrap ) =
             "1"
 
         ( TFloat, True ) ->
-            "w1"
+            "f"
 
         ( TInt, False ) ->
             "i1"

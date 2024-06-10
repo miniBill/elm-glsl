@@ -1,8 +1,8 @@
-module Glsl.Functions exposing (abs1, abs2, abs3, abs4, abs_, absd1, absd2, absd3, absd4, absi1, absi2, absi3, absi4, absw1, abswd1, abswi1, acos_, acosh, asin_, asinh, atan2_, atan_, atanh, ceil, ceil1, ceil2, ceil3, ceil4, ceild1, ceild2, ceild3, ceild4, ceilw1, ceilwd1, clamp111, clamp11w1, clamp1w11, clamp1w1w1, clamp211, clamp21w1, clamp222, clamp2w11, clamp2w1w1, clamp311, clamp31w1, clamp333, clamp3w11, clamp3w1w1, clamp411, clamp41w1, clamp444, clamp4w11, clamp4w1w1, clamp_, clampd1d1d1, clampd1d1wd1, clampd1wd1d1, clampd1wd1wd1, clampd2d1d1, clampd2d1wd1, clampd2d2d2, clampd2wd1d1, clampd2wd1wd1, clampd3d1d1, clampd3d1wd1, clampd3d3d3, clampd3wd1d1, clampd3wd1wd1, clampd4d1d1, clampd4d1wd1, clampd4d4d4, clampd4wd1d1, clampd4wd1wd1, clampi1i1i1, clampi1i1wi1, clampi1wi1i1, clampi1wi1wi1, clampi2i1i1, clampi2i1wi1, clampi2i2i2, clampi2wi1i1, clampi2wi1wi1, clampi3i1i1, clampi3i1wi1, clampi3i3i3, clampi3wi1i1, clampi3wi1wi1, clampi4i1i1, clampi4i1wi1, clampi4i4i4, clampi4wi1i1, clampi4wi1wi1, clampu1u1u1, clampu1u1wu1, clampu1wu1u1, clampu1wu1wu1, clampu2u1u1, clampu2u1wu1, clampu2u2u2, clampu2wu1u1, clampu2wu1wu1, clampu3u1u1, clampu3u1wu1, clampu3u3u3, clampu3wu1u1, clampu3wu1wu1, clampu4u1u1, clampu4u1wu1, clampu4u4u4, clampu4wu1u1, clampu4wu1wu1, clampw111, clampw11w1, clampw1w11, clampw1w1w1, clampwd1d1d1, clampwd1d1wd1, clampwd1wd1d1, clampwd1wd1wd1, clampwi1i1i1, clampwi1i1wi1, clampwi1wi1i1, clampwi1wi1wi1, clampwu1u1u1, clampwu1u1wu1, clampwu1wu1u1, clampwu1wu1wu1, cos_, cosh, cross33, crossd3d3, dFdx, dFdxCoarse, dFdxFine, dFdy, dFdyCoarse, dFdyFine, degrees_, distance, distance11, distance1w1, distance22, distance33, distance44, distanced1d1, distanced1wd1, distanced2d2, distanced3d3, distanced4d4, distancew11, distancew1w1, distancewd1d1, distancewd1wd1, dot, dot11, dot1w1, dot22, dot33, dot44, dotd1d1, dotd1wd1, dotd2d2, dotd3d3, dotd4d4, dotw11, dotw1w1, dotwd1d1, dotwd1wd1, exp, exp2, faceforward, faceforward111, faceforward11w1, faceforward1w11, faceforward1w1w1, faceforward222, faceforward333, faceforward444, faceforwardd1d1d1, faceforwardd1d1wd1, faceforwardd1wd1d1, faceforwardd1wd1wd1, faceforwardd2d2d2, faceforwardd3d3d3, faceforwardd4d4d4, faceforwardw111, faceforwardw11w1, faceforwardw1w11, faceforwardw1w1w1, faceforwardwd1d1d1, faceforwardwd1d1wd1, faceforwardwd1wd1d1, faceforwardwd1wd1wd1, floatBitsToInt1, floatBitsToInt2, floatBitsToInt3, floatBitsToInt4, floatBitsToIntw1, floatBitsToUint1, floatBitsToUint2, floatBitsToUint3, floatBitsToUint4, floatBitsToUintw1, floati1, floatwi1, floor1, floor2, floor3, floor4, floor_, floord1, floord2, floord3, floord4, floorw1, floorwd1, fma, fma111, fma11w1, fma1w11, fma1w1w1, fma222, fma333, fma444, fmad1d1d1, fmad1d1wd1, fmad1wd1d1, fmad1wd1wd1, fmad2d2d2, fmad3d3d3, fmad4d4d4, fmaw111, fmaw11w1, fmaw1w11, fmaw1w1w1, fmawd1d1d1, fmawd1d1wd1, fmawd1wd1d1, fmawd1wd1wd1, fract, fract1, fract2, fract3, fract4, fractd1, fractd2, fractd3, fractd4, fractw1, fractwd1, frexp1oi1, frexp1owi1, frexp2oi2, frexp3oi3, frexp4oi4, frexpd1oi1, frexpd1owi1, frexpd2oi2, frexpd3oi3, frexpd4oi4, frexpw1oi1, frexpw1owi1, frexpwd1oi1, frexpwd1owi1, fwidth, fwidthCoarse, fwidthFine, int1, intBitsToFloati1, intBitsToFloati2, intBitsToFloati3, intBitsToFloati4, intBitsToFloatwi1, intw1, inversesqrt, inversesqrt1, inversesqrt2, inversesqrt3, inversesqrt4, inversesqrtd1, inversesqrtd2, inversesqrtd3, inversesqrtd4, inversesqrtw1, inversesqrtwd1, isinf1, isinf2, isinf3, isinf4, isinfd1, isinfd2, isinfd3, isinfd4, isinfw1, isinfwd1, isnan1, isnan2, isnan3, isnan4, isnand1, isnand2, isnand3, isnand4, isnanw1, isnanwd1, ivec2i1i1, ivec2i1wi1, ivec2wi1i1, ivec2wi1wi1, ivec3i1i1i1, ivec3i1i1wi1, ivec3i1wi1i1, ivec3i1wi1wi1, ivec3wi1i1i1, ivec3wi1i1wi1, ivec3wi1wi1i1, ivec3wi1wi1wi1, ivec4i1i1i1i1, ivec4i1i1i1wi1, ivec4i1i1wi1i1, ivec4i1i1wi1wi1, ivec4i1wi1i1i1, ivec4i1wi1i1wi1, ivec4i1wi1wi1i1, ivec4i1wi1wi1wi1, ivec4wi1i1i1i1, ivec4wi1i1i1wi1, ivec4wi1i1wi1i1, ivec4wi1i1wi1wi1, ivec4wi1wi1i1i1, ivec4wi1wi1i1wi1, ivec4wi1wi1wi1i1, ivec4wi1wi1wi1wi1, ldexp1i1, ldexp1wi1, ldexp2i2, ldexp3i3, ldexp4i4, ldexpd1i1, ldexpd1wi1, ldexpd2i2, ldexpd3i3, ldexpd4i4, ldexpw1i1, ldexpw1wi1, ldexpwd1i1, ldexpwd1wi1, length, length1, length2, length3, length4, lengthd1, lengthd2, lengthd3, lengthd4, lengthw1, lengthwd1, log, log2, mat21111, mat2111w1, mat211w11, mat211w1w1, mat21w111, mat21w11w1, mat21w1w11, mat21w1w1w1, mat222, mat2w1111, mat2w111w1, mat2w11w11, mat2w11w1w1, mat2w1w111, mat2w1w11w1, mat2w1w1w11, mat2w1w1w1w1, mat3111111111, mat311111111w1, mat31111111w11, mat31111111w1w1, mat3111111w111, mat3111111w11w1, mat3111111w1w11, mat3111111w1w1w1, mat311111w1111, mat311111w111w1, mat311111w11w11, mat311111w11w1w1, mat311111w1w111, mat311111w1w11w1, mat311111w1w1w11, mat311111w1w1w1w1, mat31111w11111, mat31111w1111w1, mat31111w111w11, mat31111w111w1w1, mat31111w11w111, mat31111w11w11w1, mat31111w11w1w11, mat31111w11w1w1w1, mat31111w1w1111, mat31111w1w111w1, mat31111w1w11w11, mat31111w1w11w1w1, mat31111w1w1w111, mat31111w1w1w11w1, mat31111w1w1w1w11, mat31111w1w1w1w1w1, mat3111w111111, mat3111w11111w1, mat3111w1111w11, mat3111w1111w1w1, mat3111w111w111, mat3111w111w11w1, mat3111w111w1w11, mat3111w111w1w1w1, mat3111w11w1111, mat3111w11w111w1, mat3111w11w11w11, mat3111w11w11w1w1, mat3111w11w1w111, mat3111w11w1w11w1, mat3111w11w1w1w11, mat3111w11w1w1w1w1, mat3111w1w11111, mat3111w1w1111w1, mat3111w1w111w11, mat3111w1w111w1w1, mat3111w1w11w111, mat3111w1w11w11w1, mat3111w1w11w1w11, mat3111w1w11w1w1w1, mat3111w1w1w1111, mat3111w1w1w111w1, mat3111w1w1w11w11, mat3111w1w1w11w1w1, mat3111w1w1w1w111, mat3111w1w1w1w11w1, mat3111w1w1w1w1w11, mat3111w1w1w1w1w1w1, mat311w1111111, mat311w111111w1, mat311w11111w11, mat311w11111w1w1, mat311w1111w111, mat311w1111w11w1, mat311w1111w1w11, mat311w1111w1w1w1, mat311w111w1111, mat311w111w111w1, mat311w111w11w11, mat311w111w11w1w1, mat311w111w1w111, mat311w111w1w11w1, mat311w111w1w1w11, mat311w111w1w1w1w1, mat311w11w11111, mat311w11w1111w1, mat311w11w111w11, mat311w11w111w1w1, mat311w11w11w111, mat311w11w11w11w1, mat311w11w11w1w11, mat311w11w11w1w1w1, mat311w11w1w1111, mat311w11w1w111w1, mat311w11w1w11w11, mat311w11w1w11w1w1, mat311w11w1w1w111, mat311w11w1w1w11w1, mat311w11w1w1w1w11, mat311w11w1w1w1w1w1, mat311w1w111111, mat311w1w11111w1, mat311w1w1111w11, mat311w1w1111w1w1, mat311w1w111w111, mat311w1w111w11w1, mat311w1w111w1w11, mat311w1w111w1w1w1, mat311w1w11w1111, mat311w1w11w111w1, mat311w1w11w11w11, mat311w1w11w11w1w1, mat311w1w11w1w111, mat311w1w11w1w11w1, mat311w1w11w1w1w11, mat311w1w11w1w1w1w1, mat311w1w1w11111, mat311w1w1w1111w1, mat311w1w1w111w11, mat311w1w1w111w1w1, mat311w1w1w11w111, mat311w1w1w11w11w1, mat311w1w1w11w1w11, mat311w1w1w11w1w1w1, mat311w1w1w1w1111, mat311w1w1w1w111w1, mat311w1w1w1w11w11, mat311w1w1w1w11w1w1, mat311w1w1w1w1w111, mat311w1w1w1w1w11w1, mat311w1w1w1w1w1w11, mat311w1w1w1w1w1w1w1, mat31w11111111, mat31w1111111w1, mat31w111111w11, mat31w111111w1w1, mat31w11111w111, mat31w11111w11w1, mat31w11111w1w11, mat31w11111w1w1w1, mat31w1111w1111, mat31w1111w111w1, mat31w1111w11w11, mat31w1111w11w1w1, mat31w1111w1w111, mat31w1111w1w11w1, mat31w1111w1w1w11, mat31w1111w1w1w1w1, mat31w111w11111, mat31w111w1111w1, mat31w111w111w11, mat31w111w111w1w1, mat31w111w11w111, mat31w111w11w11w1, mat31w111w11w1w11, mat31w111w11w1w1w1, mat31w111w1w1111, mat31w111w1w111w1, mat31w111w1w11w11, mat31w111w1w11w1w1, mat31w111w1w1w111, mat31w111w1w1w11w1, mat31w111w1w1w1w11, mat31w111w1w1w1w1w1, mat31w11w111111, mat31w11w11111w1, mat31w11w1111w11, mat31w11w1111w1w1, mat31w11w111w111, mat31w11w111w11w1, mat31w11w111w1w11, mat31w11w111w1w1w1, mat31w11w11w1111, mat31w11w11w111w1, mat31w11w11w11w11, mat31w11w11w11w1w1, mat31w11w11w1w111, mat31w11w11w1w11w1, mat31w11w11w1w1w11, mat31w11w11w1w1w1w1, mat31w11w1w11111, mat31w11w1w1111w1, mat31w11w1w111w11, mat31w11w1w111w1w1, mat31w11w1w11w111, mat31w11w1w11w11w1, mat31w11w1w11w1w11, mat31w11w1w11w1w1w1, mat31w11w1w1w1111, mat31w11w1w1w111w1, mat31w11w1w1w11w11, mat31w11w1w1w11w1w1, mat31w11w1w1w1w111, mat31w11w1w1w1w11w1, mat31w11w1w1w1w1w11, mat31w11w1w1w1w1w1w1, mat31w1w1111111, mat31w1w111111w1, mat31w1w11111w11, mat31w1w11111w1w1, mat31w1w1111w111, mat31w1w1111w11w1, mat31w1w1111w1w11, mat31w1w1111w1w1w1, mat31w1w111w1111, mat31w1w111w111w1, mat31w1w111w11w11, mat31w1w111w11w1w1, mat31w1w111w1w111, mat31w1w111w1w11w1, mat31w1w111w1w1w11, mat31w1w111w1w1w1w1, mat31w1w11w11111, mat31w1w11w1111w1, mat31w1w11w111w11, mat31w1w11w111w1w1, mat31w1w11w11w111, mat31w1w11w11w11w1, mat31w1w11w11w1w11, mat31w1w11w11w1w1w1, mat31w1w11w1w1111, mat31w1w11w1w111w1, mat31w1w11w1w11w11, mat31w1w11w1w11w1w1, mat31w1w11w1w1w111, mat31w1w11w1w1w11w1, mat31w1w11w1w1w1w11, mat31w1w11w1w1w1w1w1, mat31w1w1w111111, mat31w1w1w11111w1, mat31w1w1w1111w11, mat31w1w1w1111w1w1, mat31w1w1w111w111, mat31w1w1w111w11w1, mat31w1w1w111w1w11, mat31w1w1w111w1w1w1, mat31w1w1w11w1111, mat31w1w1w11w111w1, mat31w1w1w11w11w11, mat31w1w1w11w11w1w1, mat31w1w1w11w1w111, mat31w1w1w11w1w11w1, mat31w1w1w11w1w1w11, mat31w1w1w11w1w1w1w1, mat31w1w1w1w11111, mat31w1w1w1w1111w1, mat31w1w1w1w111w11, mat31w1w1w1w111w1w1, mat31w1w1w1w11w111, mat31w1w1w1w11w11w1, mat31w1w1w1w11w1w11, mat31w1w1w1w11w1w1w1, mat31w1w1w1w1w1111, mat31w1w1w1w1w111w1, mat31w1w1w1w1w11w11, mat31w1w1w1w1w11w1w1, mat31w1w1w1w1w1w111, mat31w1w1w1w1w1w11w1, mat31w1w1w1w1w1w1w11, mat31w1w1w1w1w1w1w1w1, mat3333, mat3w111111111, mat3w11111111w1, mat3w1111111w11, mat3w1111111w1w1, mat3w111111w111, mat3w111111w11w1, mat3w111111w1w11, mat3w111111w1w1w1, mat3w11111w1111, mat3w11111w111w1, mat3w11111w11w11, mat3w11111w11w1w1, mat3w11111w1w111, mat3w11111w1w11w1, mat3w11111w1w1w11, mat3w11111w1w1w1w1, mat3w1111w11111, mat3w1111w1111w1, mat3w1111w111w11, mat3w1111w111w1w1, mat3w1111w11w111, mat3w1111w11w11w1, mat3w1111w11w1w11, mat3w1111w11w1w1w1, mat3w1111w1w1111, mat3w1111w1w111w1, mat3w1111w1w11w11, mat3w1111w1w11w1w1, mat3w1111w1w1w111, mat3w1111w1w1w11w1, mat3w1111w1w1w1w11, mat3w1111w1w1w1w1w1, mat3w111w111111, mat3w111w11111w1, mat3w111w1111w11, mat3w111w1111w1w1, mat3w111w111w111, mat3w111w111w11w1, mat3w111w111w1w11, mat3w111w111w1w1w1, mat3w111w11w1111, mat3w111w11w111w1, mat3w111w11w11w11, mat3w111w11w11w1w1, mat3w111w11w1w111, mat3w111w11w1w11w1, mat3w111w11w1w1w11, mat3w111w11w1w1w1w1, mat3w111w1w11111, mat3w111w1w1111w1, mat3w111w1w111w11, mat3w111w1w111w1w1, mat3w111w1w11w111, mat3w111w1w11w11w1, mat3w111w1w11w1w11, mat3w111w1w11w1w1w1, mat3w111w1w1w1111, mat3w111w1w1w111w1, mat3w111w1w1w11w11, mat3w111w1w1w11w1w1, mat3w111w1w1w1w111, mat3w111w1w1w1w11w1, mat3w111w1w1w1w1w11, mat3w111w1w1w1w1w1w1, mat3w11w1111111, mat3w11w111111w1, mat3w11w11111w11, mat3w11w11111w1w1, mat3w11w1111w111, mat3w11w1111w11w1, mat3w11w1111w1w11, mat3w11w1111w1w1w1, mat3w11w111w1111, mat3w11w111w111w1, mat3w11w111w11w11, mat3w11w111w11w1w1, mat3w11w111w1w111, mat3w11w111w1w11w1, mat3w11w111w1w1w11, mat3w11w111w1w1w1w1, mat3w11w11w11111, mat3w11w11w1111w1, mat3w11w11w111w11, mat3w11w11w111w1w1, mat3w11w11w11w111, mat3w11w11w11w11w1, mat3w11w11w11w1w11, mat3w11w11w11w1w1w1, mat3w11w11w1w1111, mat3w11w11w1w111w1, mat3w11w11w1w11w11, mat3w11w11w1w11w1w1, mat3w11w11w1w1w111, mat3w11w11w1w1w11w1, mat3w11w11w1w1w1w11, mat3w11w11w1w1w1w1w1, mat3w11w1w111111, mat3w11w1w11111w1, mat3w11w1w1111w11, mat3w11w1w1111w1w1, mat3w11w1w111w111, mat3w11w1w111w11w1, mat3w11w1w111w1w11, mat3w11w1w111w1w1w1, mat3w11w1w11w1111, mat3w11w1w11w111w1, mat3w11w1w11w11w11, mat3w11w1w11w11w1w1, mat3w11w1w11w1w111, mat3w11w1w11w1w11w1, mat3w11w1w11w1w1w11, mat3w11w1w11w1w1w1w1, mat3w11w1w1w11111, mat3w11w1w1w1111w1, mat3w11w1w1w111w11, mat3w11w1w1w111w1w1, mat3w11w1w1w11w111, mat3w11w1w1w11w11w1, mat3w11w1w1w11w1w11, mat3w11w1w1w11w1w1w1, mat3w11w1w1w1w1111, mat3w11w1w1w1w111w1, mat3w11w1w1w1w11w11, mat3w11w1w1w1w11w1w1, mat3w11w1w1w1w1w111, mat3w11w1w1w1w1w11w1, mat3w11w1w1w1w1w1w11, mat3w11w1w1w1w1w1w1w1, mat3w1w11111111, mat3w1w1111111w1, mat3w1w111111w11, mat3w1w111111w1w1, mat3w1w11111w111, mat3w1w11111w11w1, mat3w1w11111w1w11, mat3w1w11111w1w1w1, mat3w1w1111w1111, mat3w1w1111w111w1, mat3w1w1111w11w11, mat3w1w1111w11w1w1, mat3w1w1111w1w111, mat3w1w1111w1w11w1, mat3w1w1111w1w1w11, mat3w1w1111w1w1w1w1, mat3w1w111w11111, mat3w1w111w1111w1, mat3w1w111w111w11, mat3w1w111w111w1w1, mat3w1w111w11w111, mat3w1w111w11w11w1, mat3w1w111w11w1w11, mat3w1w111w11w1w1w1, mat3w1w111w1w1111, mat3w1w111w1w111w1, mat3w1w111w1w11w11, mat3w1w111w1w11w1w1, mat3w1w111w1w1w111, mat3w1w111w1w1w11w1, mat3w1w111w1w1w1w11, mat3w1w111w1w1w1w1w1, mat3w1w11w111111, mat3w1w11w11111w1, mat3w1w11w1111w11, mat3w1w11w1111w1w1, mat3w1w11w111w111, mat3w1w11w111w11w1, mat3w1w11w111w1w11, mat3w1w11w111w1w1w1, mat3w1w11w11w1111, mat3w1w11w11w111w1, mat3w1w11w11w11w11, mat3w1w11w11w11w1w1, mat3w1w11w11w1w111, mat3w1w11w11w1w11w1, mat3w1w11w11w1w1w11, mat3w1w11w11w1w1w1w1, mat3w1w11w1w11111, mat3w1w11w1w1111w1, mat3w1w11w1w111w11, mat3w1w11w1w111w1w1, mat3w1w11w1w11w111, mat3w1w11w1w11w11w1, mat3w1w11w1w11w1w11, mat3w1w11w1w11w1w1w1, mat3w1w11w1w1w1111, mat3w1w11w1w1w111w1, mat3w1w11w1w1w11w11, mat3w1w11w1w1w11w1w1, mat3w1w11w1w1w1w111, mat3w1w11w1w1w1w11w1, mat3w1w11w1w1w1w1w11, mat3w1w11w1w1w1w1w1w1, mat3w1w1w1111111, mat3w1w1w111111w1, mat3w1w1w11111w11, mat3w1w1w11111w1w1, mat3w1w1w1111w111, mat3w1w1w1111w11w1, mat3w1w1w1111w1w11, mat3w1w1w1111w1w1w1, mat3w1w1w111w1111, mat3w1w1w111w111w1, mat3w1w1w111w11w11, mat3w1w1w111w11w1w1, mat3w1w1w111w1w111, mat3w1w1w111w1w11w1, mat3w1w1w111w1w1w11, mat3w1w1w111w1w1w1w1, mat3w1w1w11w11111, mat3w1w1w11w1111w1, mat3w1w1w11w111w11, mat3w1w1w11w111w1w1, mat3w1w1w11w11w111, mat3w1w1w11w11w11w1, mat3w1w1w11w11w1w11, mat3w1w1w11w11w1w1w1, mat3w1w1w11w1w1111, mat3w1w1w11w1w111w1, mat3w1w1w11w1w11w11, mat3w1w1w11w1w11w1w1, mat3w1w1w11w1w1w111, mat3w1w1w11w1w1w11w1, mat3w1w1w11w1w1w1w11, mat3w1w1w11w1w1w1w1w1, mat3w1w1w1w111111, mat3w1w1w1w11111w1, mat3w1w1w1w1111w11, mat3w1w1w1w1111w1w1, mat3w1w1w1w111w111, mat3w1w1w1w111w11w1, mat3w1w1w1w111w1w11, mat3w1w1w1w111w1w1w1, mat3w1w1w1w11w1111, mat3w1w1w1w11w111w1, mat3w1w1w1w11w11w11, mat3w1w1w1w11w11w1w1, mat3w1w1w1w11w1w111, mat3w1w1w1w11w1w11w1, mat3w1w1w1w11w1w1w11, mat3w1w1w1w11w1w1w1w1, mat3w1w1w1w1w11111, mat3w1w1w1w1w1111w1, mat3w1w1w1w1w111w11, mat3w1w1w1w1w111w1w1, mat3w1w1w1w1w11w111, mat3w1w1w1w1w11w11w1, mat3w1w1w1w1w11w1w11, mat3w1w1w1w1w11w1w1w1, mat3w1w1w1w1w1w1111, mat3w1w1w1w1w1w111w1, mat3w1w1w1w1w1w11w11, mat3w1w1w1w1w1w11w1w1, mat3w1w1w1w1w1w1w111, mat3w1w1w1w1w1w1w11w1, mat3w1w1w1w1w1w1w1w11, mat3w1w1w1w1w1w1w1w1w1, mat44444, max11, max1w1, max21, max22, max2w1, max31, max33, max3w1, max41, max44, max4w1, max_, maxd1d1, maxd1wd1, maxd2d1, maxd2d2, maxd2wd1, maxd3d1, maxd3d3, maxd3wd1, maxd4d1, maxd4d4, maxd4wd1, maxi1i1, maxi1wi1, maxi2i1, maxi2i2, maxi2wi1, maxi3i1, maxi3i3, maxi3wi1, maxi4i1, maxi4i4, maxi4wi1, maxu1u1, maxu1wu1, maxu2u1, maxu2u2, maxu2wu1, maxu3u1, maxu3u3, maxu3wu1, maxu4u1, maxu4u4, maxu4wu1, maxw11, maxw1w1, maxwd1d1, maxwd1wd1, maxwi1i1, maxwi1wi1, maxwu1u1, maxwu1wu1, min11, min1w1, min21, min22, min2w1, min31, min33, min3w1, min41, min44, min4w1, min_, mind1d1, mind1wd1, mind2d1, mind2d2, mind2wd1, mind3d1, mind3d3, mind3wd1, mind4d1, mind4d4, mind4wd1, mini1i1, mini1wi1, mini2i1, mini2i2, mini2wi1, mini3i1, mini3i3, mini3wi1, mini4i1, mini4i4, mini4wi1, minu1u1, minu1wu1, minu2u1, minu2u2, minu2wu1, minu3u1, minu3u3, minu3wu1, minu4u1, minu4u4, minu4wu1, minw11, minw1w1, minwd1d1, minwd1wd1, minwi1i1, minwi1wi1, minwu1u1, minwu1wu1, mix, mix111, mix11w1, mix1w11, mix1w1w1, mix221, mix222, mix22w1, mix331, mix333, mix33w1, mix441, mix444, mix44w1, mixd1d1d1, mixd1d1wd1, mixd1wd1d1, mixd1wd1wd1, mixd2d2d1, mixd2d2d2, mixd2d2wd1, mixd3d3d1, mixd3d3d3, mixd3d3wd1, mixd4d4d1, mixd4d4d4, mixd4d4wd1, mixw111, mixw11w1, mixw1w11, mixw1w1w1, mixwd1d1d1, mixwd1d1wd1, mixwd1wd1d1, mixwd1wd1wd1, mod, mod11, mod1w1, mod21, mod22, mod2w1, mod31, mod33, mod3w1, mod41, mod44, mod4w1, modd1d1, modd1wd1, modd2d1, modd2d2, modd2wd1, modd3d1, modd3d3, modd3wd1, modd4d1, modd4d4, modd4wd1, modf, modf1o1, modf1ow1, modf2o2, modf3o3, modf4o4, modfd1od1, modfd1owd1, modfd2od2, modfd3od3, modfd4od4, modfw1o1, modfw1ow1, modfwd1od1, modfwd1owd1, modw11, modw1w1, modwd1d1, modwd1wd1, normalize, normalize1, normalize2, normalize3, normalize4, normalized1, normalized2, normalized3, normalized4, normalizew1, normalizewd1, pow, radians_, reflect, reflect11, reflect1w1, reflect22, reflect33, reflect44, reflectd1d1, reflectd1wd1, reflectd2d2, reflectd3d3, reflectd4d4, reflectw11, reflectw1w1, reflectwd1d1, reflectwd1wd1, refract, refract111, refract11w1, refract1w11, refract1w1w1, refract221, refract22w1, refract331, refract33w1, refract441, refract44w1, refractd1d11, refractd1d1w1, refractd1wd11, refractd1wd1w1, refractd2d21, refractd2d2w1, refractd3d31, refractd3d3w1, refractd4d41, refractd4d4w1, refractw111, refractw11w1, refractw1w11, refractw1w1w1, refractwd1d11, refractwd1d1w1, refractwd1wd11, refractwd1wd1w1, round1, round2, round3, round4, roundEven, roundEven1, roundEven2, roundEven3, roundEven4, roundEvend1, roundEvend2, roundEvend3, roundEvend4, roundEvenw1, roundEvenwd1, round_, roundd1, roundd2, roundd3, roundd4, roundw1, roundwd1, sign, sign1, sign2, sign3, sign4, signd1, signd2, signd3, signd4, signi1, signi2, signi3, signi4, signw1, signwd1, signwi1, sin_, sinh, smoothstep, smoothstep111, smoothstep112, smoothstep113, smoothstep114, smoothstep11w1, smoothstep1w11, smoothstep1w12, smoothstep1w13, smoothstep1w14, smoothstep1w1w1, smoothstep222, smoothstep333, smoothstep444, smoothstepd1d1d1, smoothstepd1d1d2, smoothstepd1d1d3, smoothstepd1d1d4, smoothstepd1d1wd1, smoothstepd1wd1d1, smoothstepd1wd1d2, smoothstepd1wd1d3, smoothstepd1wd1d4, smoothstepd1wd1wd1, smoothstepd2d2d2, smoothstepd3d3d3, smoothstepd4d4d4, smoothstepw111, smoothstepw112, smoothstepw113, smoothstepw114, smoothstepw11w1, smoothstepw1w11, smoothstepw1w12, smoothstepw1w13, smoothstepw1w14, smoothstepw1w1w1, smoothstepwd1d1d1, smoothstepwd1d1d2, smoothstepwd1d1d3, smoothstepwd1d1d4, smoothstepwd1d1wd1, smoothstepwd1wd1d1, smoothstepwd1wd1d2, smoothstepwd1wd1d3, smoothstepwd1wd1d4, smoothstepwd1wd1wd1, sqrt1, sqrt2, sqrt3, sqrt4, sqrt_, sqrtd1, sqrtd2, sqrtd3, sqrtd4, sqrtw1, sqrtwd1, step, step11, step12, step13, step14, step1w1, step22, step33, step44, stepd1d1, stepd1d2, stepd1d3, stepd1d4, stepd1wd1, stepd2d2, stepd3d3, stepd4d4, stepw11, stepw12, stepw13, stepw14, stepw1w1, stepwd1d1, stepwd1d2, stepwd1d3, stepwd1d4, stepwd1wd1, tan_, tanh, trunc, trunc1, trunc2, trunc3, trunc4, truncd1, truncd2, truncd3, truncd4, truncw1, truncwd1, uintBitsToFloatu1, uintBitsToFloatu2, uintBitsToFloatu3, uintBitsToFloatu4, uintBitsToFloatwu1, vec21, vec211, vec21i1, vec21w1, vec21wi1, vec2i1, vec2i11, vec2i1i1, vec2i1w1, vec2i1wi1, vec2w1, vec2w11, vec2w1i1, vec2w1w1, vec2w1wi1, vec2wi1, vec2wi11, vec2wi1i1, vec2wi1w1, vec2wi1wi1, vec31, vec3111, vec311i1, vec311w1, vec311wi1, vec312, vec31i11, vec31i1i1, vec31i1w1, vec31i1wi1, vec31w11, vec31w1i1, vec31w1w1, vec31w1wi1, vec31wi11, vec31wi1i1, vec31wi1w1, vec31wi1wi1, vec321, vec32w1, vec3i1, vec3i111, vec3i11i1, vec3i11w1, vec3i11wi1, vec3i1i11, vec3i1i1i1, vec3i1i1w1, vec3i1i1wi1, vec3i1w11, vec3i1w1i1, vec3i1w1w1, vec3i1w1wi1, vec3i1wi11, vec3i1wi1i1, vec3i1wi1w1, vec3i1wi1wi1, vec3w1, vec3w111, vec3w11i1, vec3w11w1, vec3w11wi1, vec3w12, vec3w1i11, vec3w1i1i1, vec3w1i1w1, vec3w1i1wi1, vec3w1w11, vec3w1w1i1, vec3w1w1w1, vec3w1w1wi1, vec3w1wi11, vec3w1wi1i1, vec3w1wi1w1, vec3w1wi1wi1, vec3wi1, vec3wi111, vec3wi11i1, vec3wi11w1, vec3wi11wi1, vec3wi1i11, vec3wi1i1i1, vec3wi1i1w1, vec3wi1i1wi1, vec3wi1w11, vec3wi1w1i1, vec3wi1w1w1, vec3wi1w1wi1, vec3wi1wi11, vec3wi1wi1i1, vec3wi1wi1w1, vec3wi1wi1wi1, vec41, vec41111, vec4111i1, vec4111w1, vec4111wi1, vec411i11, vec411i1i1, vec411i1w1, vec411i1wi1, vec411w11, vec411w1i1, vec411w1w1, vec411w1wi1, vec411wi11, vec411wi1i1, vec411wi1w1, vec411wi1wi1, vec413, vec41i111, vec41i11i1, vec41i11w1, vec41i11wi1, vec41i1i11, vec41i1i1i1, vec41i1i1w1, vec41i1i1wi1, vec41i1w11, vec41i1w1i1, vec41i1w1w1, vec41i1w1wi1, vec41i1wi11, vec41i1wi1i1, vec41i1wi1w1, vec41i1wi1wi1, vec41w111, vec41w11i1, vec41w11w1, vec41w11wi1, vec41w1i11, vec41w1i1i1, vec41w1i1w1, vec41w1i1wi1, vec41w1w11, vec41w1w1i1, vec41w1w1w1, vec41w1w1wi1, vec41w1wi11, vec41w1wi1i1, vec41w1wi1w1, vec41w1wi1wi1, vec41wi111, vec41wi11i1, vec41wi11w1, vec41wi11wi1, vec41wi1i11, vec41wi1i1i1, vec41wi1i1w1, vec41wi1i1wi1, vec41wi1w11, vec41wi1w1i1, vec41wi1w1w1, vec41wi1w1wi1, vec41wi1wi11, vec41wi1wi1i1, vec41wi1wi1w1, vec41wi1wi1wi1, vec422, vec431, vec43w1, vec4i1, vec4i1111, vec4i111i1, vec4i111w1, vec4i111wi1, vec4i11i11, vec4i11i1i1, vec4i11i1w1, vec4i11i1wi1, vec4i11w11, vec4i11w1i1, vec4i11w1w1, vec4i11w1wi1, vec4i11wi11, vec4i11wi1i1, vec4i11wi1w1, vec4i11wi1wi1, vec4i1i111, vec4i1i11i1, vec4i1i11w1, vec4i1i11wi1, vec4i1i1i11, vec4i1i1i1i1, vec4i1i1i1w1, vec4i1i1i1wi1, vec4i1i1w11, vec4i1i1w1i1, vec4i1i1w1w1, vec4i1i1w1wi1, vec4i1i1wi11, vec4i1i1wi1i1, vec4i1i1wi1w1, vec4i1i1wi1wi1, vec4i1w111, vec4i1w11i1, vec4i1w11w1, vec4i1w11wi1, vec4i1w1i11, vec4i1w1i1i1, vec4i1w1i1w1, vec4i1w1i1wi1, vec4i1w1w11, vec4i1w1w1i1, vec4i1w1w1w1, vec4i1w1w1wi1, vec4i1w1wi11, vec4i1w1wi1i1, vec4i1w1wi1w1, vec4i1w1wi1wi1, vec4i1wi111, vec4i1wi11i1, vec4i1wi11w1, vec4i1wi11wi1, vec4i1wi1i11, vec4i1wi1i1i1, vec4i1wi1i1w1, vec4i1wi1i1wi1, vec4i1wi1w11, vec4i1wi1w1i1, vec4i1wi1w1w1, vec4i1wi1w1wi1, vec4i1wi1wi11, vec4i1wi1wi1i1, vec4i1wi1wi1w1, vec4i1wi1wi1wi1, vec4w1, vec4w1111, vec4w111i1, vec4w111w1, vec4w111wi1, vec4w11i11, vec4w11i1i1, vec4w11i1w1, vec4w11i1wi1, vec4w11w11, vec4w11w1i1, vec4w11w1w1, vec4w11w1wi1, vec4w11wi11, vec4w11wi1i1, vec4w11wi1w1, vec4w11wi1wi1, vec4w13, vec4w1i111, vec4w1i11i1, vec4w1i11w1, vec4w1i11wi1, vec4w1i1i11, vec4w1i1i1i1, vec4w1i1i1w1, vec4w1i1i1wi1, vec4w1i1w11, vec4w1i1w1i1, vec4w1i1w1w1, vec4w1i1w1wi1, vec4w1i1wi11, vec4w1i1wi1i1, vec4w1i1wi1w1, vec4w1i1wi1wi1, vec4w1w111, vec4w1w11i1, vec4w1w11w1, vec4w1w11wi1, vec4w1w1i11, vec4w1w1i1i1, vec4w1w1i1w1, vec4w1w1i1wi1, vec4w1w1w11, vec4w1w1w1i1, vec4w1w1w1w1, vec4w1w1w1wi1, vec4w1w1wi11, vec4w1w1wi1i1, vec4w1w1wi1w1, vec4w1w1wi1wi1, vec4w1wi111, vec4w1wi11i1, vec4w1wi11w1, vec4w1wi11wi1, vec4w1wi1i11, vec4w1wi1i1i1, vec4w1wi1i1w1, vec4w1wi1i1wi1, vec4w1wi1w11, vec4w1wi1w1i1, vec4w1wi1w1w1, vec4w1wi1w1wi1, vec4w1wi1wi11, vec4w1wi1wi1i1, vec4w1wi1wi1w1, vec4w1wi1wi1wi1, vec4wi1, vec4wi1111, vec4wi111i1, vec4wi111w1, vec4wi111wi1, vec4wi11i11, vec4wi11i1i1, vec4wi11i1w1, vec4wi11i1wi1, vec4wi11w11, vec4wi11w1i1, vec4wi11w1w1, vec4wi11w1wi1, vec4wi11wi11, vec4wi11wi1i1, vec4wi11wi1w1, vec4wi11wi1wi1, vec4wi1i111, vec4wi1i11i1, vec4wi1i11w1, vec4wi1i11wi1, vec4wi1i1i11, vec4wi1i1i1i1, vec4wi1i1i1w1, vec4wi1i1i1wi1, vec4wi1i1w11, vec4wi1i1w1i1, vec4wi1i1w1w1, vec4wi1i1w1wi1, vec4wi1i1wi11, vec4wi1i1wi1i1, vec4wi1i1wi1w1, vec4wi1i1wi1wi1, vec4wi1w111, vec4wi1w11i1, vec4wi1w11w1, vec4wi1w11wi1, vec4wi1w1i11, vec4wi1w1i1i1, vec4wi1w1i1w1, vec4wi1w1i1wi1, vec4wi1w1w11, vec4wi1w1w1i1, vec4wi1w1w1w1, vec4wi1w1w1wi1, vec4wi1w1wi11, vec4wi1w1wi1i1, vec4wi1w1wi1w1, vec4wi1w1wi1wi1, vec4wi1wi111, vec4wi1wi11i1, vec4wi1wi11w1, vec4wi1wi11wi1, vec4wi1wi1i11, vec4wi1wi1i1i1, vec4wi1wi1i1w1, vec4wi1wi1i1wi1, vec4wi1wi1w11, vec4wi1wi1w1i1, vec4wi1wi1w1w1, vec4wi1wi1w1wi1, vec4wi1wi1wi11, vec4wi1wi1wi1i1, vec4wi1wi1wi1w1, vec4wi1wi1wi1wi1)
+module Glsl.Functions exposing (abs1, abs2, abs3, abs4, abs_, absd1, absd2, absd3, absd4, absf, absi1, absi2, absi3, absi4, abswd1, abswi1, acos_, acosh, asin_, asinh, atan2_, atan_, atanh, ceil, ceil1, ceil2, ceil3, ceil4, ceild1, ceild2, ceild3, ceild4, ceilf, ceilwd1, clamp111, clamp11f, clamp1f1, clamp1ff, clamp211, clamp21f, clamp222, clamp2f1, clamp2ff, clamp311, clamp31f, clamp333, clamp3f1, clamp3ff, clamp411, clamp41f, clamp444, clamp4f1, clamp4ff, clamp_, clampd1d1d1, clampd1d1wd1, clampd1wd1d1, clampd1wd1wd1, clampd2d1d1, clampd2d1wd1, clampd2d2d2, clampd2wd1d1, clampd2wd1wd1, clampd3d1d1, clampd3d1wd1, clampd3d3d3, clampd3wd1d1, clampd3wd1wd1, clampd4d1d1, clampd4d1wd1, clampd4d4d4, clampd4wd1d1, clampd4wd1wd1, clampf11, clampf1f, clampff1, clampfff, clampi1i1i1, clampi1i1wi1, clampi1wi1i1, clampi1wi1wi1, clampi2i1i1, clampi2i1wi1, clampi2i2i2, clampi2wi1i1, clampi2wi1wi1, clampi3i1i1, clampi3i1wi1, clampi3i3i3, clampi3wi1i1, clampi3wi1wi1, clampi4i1i1, clampi4i1wi1, clampi4i4i4, clampi4wi1i1, clampi4wi1wi1, clampu1u1u1, clampu1u1wu1, clampu1wu1u1, clampu1wu1wu1, clampu2u1u1, clampu2u1wu1, clampu2u2u2, clampu2wu1u1, clampu2wu1wu1, clampu3u1u1, clampu3u1wu1, clampu3u3u3, clampu3wu1u1, clampu3wu1wu1, clampu4u1u1, clampu4u1wu1, clampu4u4u4, clampu4wu1u1, clampu4wu1wu1, clampwd1d1d1, clampwd1d1wd1, clampwd1wd1d1, clampwd1wd1wd1, clampwi1i1i1, clampwi1i1wi1, clampwi1wi1i1, clampwi1wi1wi1, clampwu1u1u1, clampwu1u1wu1, clampwu1wu1u1, clampwu1wu1wu1, cos_, cosh, cross33, crossd3d3, dFdx, dFdxCoarse, dFdxFine, dFdy, dFdyCoarse, dFdyFine, degrees_, distance, distance11, distance1f, distance22, distance33, distance44, distanced1d1, distanced1wd1, distanced2d2, distanced3d3, distanced4d4, distancef1, distanceff, distancewd1d1, distancewd1wd1, dot, dot11, dot1f, dot22, dot33, dot44, dotd1d1, dotd1wd1, dotd2d2, dotd3d3, dotd4d4, dotf1, dotff, dotwd1d1, dotwd1wd1, exp, exp2, faceforward, faceforward111, faceforward11f, faceforward1f1, faceforward1ff, faceforward222, faceforward333, faceforward444, faceforwardd1d1d1, faceforwardd1d1wd1, faceforwardd1wd1d1, faceforwardd1wd1wd1, faceforwardd2d2d2, faceforwardd3d3d3, faceforwardd4d4d4, faceforwardf11, faceforwardf1f, faceforwardff1, faceforwardfff, faceforwardwd1d1d1, faceforwardwd1d1wd1, faceforwardwd1wd1d1, faceforwardwd1wd1wd1, floatBitsToInt1, floatBitsToInt2, floatBitsToInt3, floatBitsToInt4, floatBitsToIntf, floatBitsToUint1, floatBitsToUint2, floatBitsToUint3, floatBitsToUint4, floatBitsToUintf, floati1, floatwi1, floor1, floor2, floor3, floor4, floor_, floord1, floord2, floord3, floord4, floorf, floorwd1, fma, fma111, fma11f, fma1f1, fma1ff, fma222, fma333, fma444, fmad1d1d1, fmad1d1wd1, fmad1wd1d1, fmad1wd1wd1, fmad2d2d2, fmad3d3d3, fmad4d4d4, fmaf11, fmaf1f, fmaff1, fmafff, fmawd1d1d1, fmawd1d1wd1, fmawd1wd1d1, fmawd1wd1wd1, fract, fract1, fract2, fract3, fract4, fractd1, fractd2, fractd3, fractd4, fractf, fractwd1, frexp1oi1, frexp1owi1, frexp2oi2, frexp3oi3, frexp4oi4, frexpd1oi1, frexpd1owi1, frexpd2oi2, frexpd3oi3, frexpd4oi4, frexpfoi1, frexpfowi1, frexpwd1oi1, frexpwd1owi1, fwidth, fwidthCoarse, fwidthFine, int1, intBitsToFloati1, intBitsToFloati2, intBitsToFloati3, intBitsToFloati4, intBitsToFloatwi1, intf, inversesqrt, inversesqrt1, inversesqrt2, inversesqrt3, inversesqrt4, inversesqrtd1, inversesqrtd2, inversesqrtd3, inversesqrtd4, inversesqrtf, inversesqrtwd1, isinf1, isinf2, isinf3, isinf4, isinfd1, isinfd2, isinfd3, isinfd4, isinff, isinfwd1, isnan1, isnan2, isnan3, isnan4, isnand1, isnand2, isnand3, isnand4, isnanf, isnanwd1, ivec2i1i1, ivec2i1wi1, ivec2wi1i1, ivec2wi1wi1, ivec3i1i1i1, ivec3i1i1wi1, ivec3i1wi1i1, ivec3i1wi1wi1, ivec3wi1i1i1, ivec3wi1i1wi1, ivec3wi1wi1i1, ivec3wi1wi1wi1, ivec4i1i1i1i1, ivec4i1i1i1wi1, ivec4i1i1wi1i1, ivec4i1i1wi1wi1, ivec4i1wi1i1i1, ivec4i1wi1i1wi1, ivec4i1wi1wi1i1, ivec4i1wi1wi1wi1, ivec4wi1i1i1i1, ivec4wi1i1i1wi1, ivec4wi1i1wi1i1, ivec4wi1i1wi1wi1, ivec4wi1wi1i1i1, ivec4wi1wi1i1wi1, ivec4wi1wi1wi1i1, ivec4wi1wi1wi1wi1, ldexp1i1, ldexp1wi1, ldexp2i2, ldexp3i3, ldexp4i4, ldexpd1i1, ldexpd1wi1, ldexpd2i2, ldexpd3i3, ldexpd4i4, ldexpfi1, ldexpfwi1, ldexpwd1i1, ldexpwd1wi1, length, length1, length2, length3, length4, lengthd1, lengthd2, lengthd3, lengthd4, lengthf, lengthwd1, log, log2, mat21111, mat2111f, mat211f1, mat211ff, mat21f11, mat21f1f, mat21ff1, mat21fff, mat222, mat2f111, mat2f11f, mat2f1f1, mat2f1ff, mat2ff11, mat2ff1f, mat2fff1, mat2ffff, mat3111111111, mat311111111f, mat31111111f1, mat31111111ff, mat3111111f11, mat3111111f1f, mat3111111ff1, mat3111111fff, mat311111f111, mat311111f11f, mat311111f1f1, mat311111f1ff, mat311111ff11, mat311111ff1f, mat311111fff1, mat311111ffff, mat31111f1111, mat31111f111f, mat31111f11f1, mat31111f11ff, mat31111f1f11, mat31111f1f1f, mat31111f1ff1, mat31111f1fff, mat31111ff111, mat31111ff11f, mat31111ff1f1, mat31111ff1ff, mat31111fff11, mat31111fff1f, mat31111ffff1, mat31111fffff, mat3111f11111, mat3111f1111f, mat3111f111f1, mat3111f111ff, mat3111f11f11, mat3111f11f1f, mat3111f11ff1, mat3111f11fff, mat3111f1f111, mat3111f1f11f, mat3111f1f1f1, mat3111f1f1ff, mat3111f1ff11, mat3111f1ff1f, mat3111f1fff1, mat3111f1ffff, mat3111ff1111, mat3111ff111f, mat3111ff11f1, mat3111ff11ff, mat3111ff1f11, mat3111ff1f1f, mat3111ff1ff1, mat3111ff1fff, mat3111fff111, mat3111fff11f, mat3111fff1f1, mat3111fff1ff, mat3111ffff11, mat3111ffff1f, mat3111fffff1, mat3111ffffff, mat311f111111, mat311f11111f, mat311f1111f1, mat311f1111ff, mat311f111f11, mat311f111f1f, mat311f111ff1, mat311f111fff, mat311f11f111, mat311f11f11f, mat311f11f1f1, mat311f11f1ff, mat311f11ff11, mat311f11ff1f, mat311f11fff1, mat311f11ffff, mat311f1f1111, mat311f1f111f, mat311f1f11f1, mat311f1f11ff, mat311f1f1f11, mat311f1f1f1f, mat311f1f1ff1, mat311f1f1fff, mat311f1ff111, mat311f1ff11f, mat311f1ff1f1, mat311f1ff1ff, mat311f1fff11, mat311f1fff1f, mat311f1ffff1, mat311f1fffff, mat311ff11111, mat311ff1111f, mat311ff111f1, mat311ff111ff, mat311ff11f11, mat311ff11f1f, mat311ff11ff1, mat311ff11fff, mat311ff1f111, mat311ff1f11f, mat311ff1f1f1, mat311ff1f1ff, mat311ff1ff11, mat311ff1ff1f, mat311ff1fff1, mat311ff1ffff, mat311fff1111, mat311fff111f, mat311fff11f1, mat311fff11ff, mat311fff1f11, mat311fff1f1f, mat311fff1ff1, mat311fff1fff, mat311ffff111, mat311ffff11f, mat311ffff1f1, mat311ffff1ff, mat311fffff11, mat311fffff1f, mat311ffffff1, mat311fffffff, mat31f1111111, mat31f111111f, mat31f11111f1, mat31f11111ff, mat31f1111f11, mat31f1111f1f, mat31f1111ff1, mat31f1111fff, mat31f111f111, mat31f111f11f, mat31f111f1f1, mat31f111f1ff, mat31f111ff11, mat31f111ff1f, mat31f111fff1, mat31f111ffff, mat31f11f1111, mat31f11f111f, mat31f11f11f1, mat31f11f11ff, mat31f11f1f11, mat31f11f1f1f, mat31f11f1ff1, mat31f11f1fff, mat31f11ff111, mat31f11ff11f, mat31f11ff1f1, mat31f11ff1ff, mat31f11fff11, mat31f11fff1f, mat31f11ffff1, mat31f11fffff, mat31f1f11111, mat31f1f1111f, mat31f1f111f1, mat31f1f111ff, mat31f1f11f11, mat31f1f11f1f, mat31f1f11ff1, mat31f1f11fff, mat31f1f1f111, mat31f1f1f11f, mat31f1f1f1f1, mat31f1f1f1ff, mat31f1f1ff11, mat31f1f1ff1f, mat31f1f1fff1, mat31f1f1ffff, mat31f1ff1111, mat31f1ff111f, mat31f1ff11f1, mat31f1ff11ff, mat31f1ff1f11, mat31f1ff1f1f, mat31f1ff1ff1, mat31f1ff1fff, mat31f1fff111, mat31f1fff11f, mat31f1fff1f1, mat31f1fff1ff, mat31f1ffff11, mat31f1ffff1f, mat31f1fffff1, mat31f1ffffff, mat31ff111111, mat31ff11111f, mat31ff1111f1, mat31ff1111ff, mat31ff111f11, mat31ff111f1f, mat31ff111ff1, mat31ff111fff, mat31ff11f111, mat31ff11f11f, mat31ff11f1f1, mat31ff11f1ff, mat31ff11ff11, mat31ff11ff1f, mat31ff11fff1, mat31ff11ffff, mat31ff1f1111, mat31ff1f111f, mat31ff1f11f1, mat31ff1f11ff, mat31ff1f1f11, mat31ff1f1f1f, mat31ff1f1ff1, mat31ff1f1fff, mat31ff1ff111, mat31ff1ff11f, mat31ff1ff1f1, mat31ff1ff1ff, mat31ff1fff11, mat31ff1fff1f, mat31ff1ffff1, mat31ff1fffff, mat31fff11111, mat31fff1111f, mat31fff111f1, mat31fff111ff, mat31fff11f11, mat31fff11f1f, mat31fff11ff1, mat31fff11fff, mat31fff1f111, mat31fff1f11f, mat31fff1f1f1, mat31fff1f1ff, mat31fff1ff11, mat31fff1ff1f, mat31fff1fff1, mat31fff1ffff, mat31ffff1111, mat31ffff111f, mat31ffff11f1, mat31ffff11ff, mat31ffff1f11, mat31ffff1f1f, mat31ffff1ff1, mat31ffff1fff, mat31fffff111, mat31fffff11f, mat31fffff1f1, mat31fffff1ff, mat31ffffff11, mat31ffffff1f, mat31fffffff1, mat31ffffffff, mat3333, mat3f11111111, mat3f1111111f, mat3f111111f1, mat3f111111ff, mat3f11111f11, mat3f11111f1f, mat3f11111ff1, mat3f11111fff, mat3f1111f111, mat3f1111f11f, mat3f1111f1f1, mat3f1111f1ff, mat3f1111ff11, mat3f1111ff1f, mat3f1111fff1, mat3f1111ffff, mat3f111f1111, mat3f111f111f, mat3f111f11f1, mat3f111f11ff, mat3f111f1f11, mat3f111f1f1f, mat3f111f1ff1, mat3f111f1fff, mat3f111ff111, mat3f111ff11f, mat3f111ff1f1, mat3f111ff1ff, mat3f111fff11, mat3f111fff1f, mat3f111ffff1, mat3f111fffff, mat3f11f11111, mat3f11f1111f, mat3f11f111f1, mat3f11f111ff, mat3f11f11f11, mat3f11f11f1f, mat3f11f11ff1, mat3f11f11fff, mat3f11f1f111, mat3f11f1f11f, mat3f11f1f1f1, mat3f11f1f1ff, mat3f11f1ff11, mat3f11f1ff1f, mat3f11f1fff1, mat3f11f1ffff, mat3f11ff1111, mat3f11ff111f, mat3f11ff11f1, mat3f11ff11ff, mat3f11ff1f11, mat3f11ff1f1f, mat3f11ff1ff1, mat3f11ff1fff, mat3f11fff111, mat3f11fff11f, mat3f11fff1f1, mat3f11fff1ff, mat3f11ffff11, mat3f11ffff1f, mat3f11fffff1, mat3f11ffffff, mat3f1f111111, mat3f1f11111f, mat3f1f1111f1, mat3f1f1111ff, mat3f1f111f11, mat3f1f111f1f, mat3f1f111ff1, mat3f1f111fff, mat3f1f11f111, mat3f1f11f11f, mat3f1f11f1f1, mat3f1f11f1ff, mat3f1f11ff11, mat3f1f11ff1f, mat3f1f11fff1, mat3f1f11ffff, mat3f1f1f1111, mat3f1f1f111f, mat3f1f1f11f1, mat3f1f1f11ff, mat3f1f1f1f11, mat3f1f1f1f1f, mat3f1f1f1ff1, mat3f1f1f1fff, mat3f1f1ff111, mat3f1f1ff11f, mat3f1f1ff1f1, mat3f1f1ff1ff, mat3f1f1fff11, mat3f1f1fff1f, mat3f1f1ffff1, mat3f1f1fffff, mat3f1ff11111, mat3f1ff1111f, mat3f1ff111f1, mat3f1ff111ff, mat3f1ff11f11, mat3f1ff11f1f, mat3f1ff11ff1, mat3f1ff11fff, mat3f1ff1f111, mat3f1ff1f11f, mat3f1ff1f1f1, mat3f1ff1f1ff, mat3f1ff1ff11, mat3f1ff1ff1f, mat3f1ff1fff1, mat3f1ff1ffff, mat3f1fff1111, mat3f1fff111f, mat3f1fff11f1, mat3f1fff11ff, mat3f1fff1f11, mat3f1fff1f1f, mat3f1fff1ff1, mat3f1fff1fff, mat3f1ffff111, mat3f1ffff11f, mat3f1ffff1f1, mat3f1ffff1ff, mat3f1fffff11, mat3f1fffff1f, mat3f1ffffff1, mat3f1fffffff, mat3ff1111111, mat3ff111111f, mat3ff11111f1, mat3ff11111ff, mat3ff1111f11, mat3ff1111f1f, mat3ff1111ff1, mat3ff1111fff, mat3ff111f111, mat3ff111f11f, mat3ff111f1f1, mat3ff111f1ff, mat3ff111ff11, mat3ff111ff1f, mat3ff111fff1, mat3ff111ffff, mat3ff11f1111, mat3ff11f111f, mat3ff11f11f1, mat3ff11f11ff, mat3ff11f1f11, mat3ff11f1f1f, mat3ff11f1ff1, mat3ff11f1fff, mat3ff11ff111, mat3ff11ff11f, mat3ff11ff1f1, mat3ff11ff1ff, mat3ff11fff11, mat3ff11fff1f, mat3ff11ffff1, mat3ff11fffff, mat3ff1f11111, mat3ff1f1111f, mat3ff1f111f1, mat3ff1f111ff, mat3ff1f11f11, mat3ff1f11f1f, mat3ff1f11ff1, mat3ff1f11fff, mat3ff1f1f111, mat3ff1f1f11f, mat3ff1f1f1f1, mat3ff1f1f1ff, mat3ff1f1ff11, mat3ff1f1ff1f, mat3ff1f1fff1, mat3ff1f1ffff, mat3ff1ff1111, mat3ff1ff111f, mat3ff1ff11f1, mat3ff1ff11ff, mat3ff1ff1f11, mat3ff1ff1f1f, mat3ff1ff1ff1, mat3ff1ff1fff, mat3ff1fff111, mat3ff1fff11f, mat3ff1fff1f1, mat3ff1fff1ff, mat3ff1ffff11, mat3ff1ffff1f, mat3ff1fffff1, mat3ff1ffffff, mat3fff111111, mat3fff11111f, mat3fff1111f1, mat3fff1111ff, mat3fff111f11, mat3fff111f1f, mat3fff111ff1, mat3fff111fff, mat3fff11f111, mat3fff11f11f, mat3fff11f1f1, mat3fff11f1ff, mat3fff11ff11, mat3fff11ff1f, mat3fff11fff1, mat3fff11ffff, mat3fff1f1111, mat3fff1f111f, mat3fff1f11f1, mat3fff1f11ff, mat3fff1f1f11, mat3fff1f1f1f, mat3fff1f1ff1, mat3fff1f1fff, mat3fff1ff111, mat3fff1ff11f, mat3fff1ff1f1, mat3fff1ff1ff, mat3fff1fff11, mat3fff1fff1f, mat3fff1ffff1, mat3fff1fffff, mat3ffff11111, mat3ffff1111f, mat3ffff111f1, mat3ffff111ff, mat3ffff11f11, mat3ffff11f1f, mat3ffff11ff1, mat3ffff11fff, mat3ffff1f111, mat3ffff1f11f, mat3ffff1f1f1, mat3ffff1f1ff, mat3ffff1ff11, mat3ffff1ff1f, mat3ffff1fff1, mat3ffff1ffff, mat3fffff1111, mat3fffff111f, mat3fffff11f1, mat3fffff11ff, mat3fffff1f11, mat3fffff1f1f, mat3fffff1ff1, mat3fffff1fff, mat3ffffff111, mat3ffffff11f, mat3ffffff1f1, mat3ffffff1ff, mat3fffffff11, mat3fffffff1f, mat3ffffffff1, mat3fffffffff, mat44444, max11, max1f, max21, max22, max2f, max31, max33, max3f, max41, max44, max4f, max_, maxd1d1, maxd1wd1, maxd2d1, maxd2d2, maxd2wd1, maxd3d1, maxd3d3, maxd3wd1, maxd4d1, maxd4d4, maxd4wd1, maxf1, maxff, maxi1i1, maxi1wi1, maxi2i1, maxi2i2, maxi2wi1, maxi3i1, maxi3i3, maxi3wi1, maxi4i1, maxi4i4, maxi4wi1, maxu1u1, maxu1wu1, maxu2u1, maxu2u2, maxu2wu1, maxu3u1, maxu3u3, maxu3wu1, maxu4u1, maxu4u4, maxu4wu1, maxwd1d1, maxwd1wd1, maxwi1i1, maxwi1wi1, maxwu1u1, maxwu1wu1, min11, min1f, min21, min22, min2f, min31, min33, min3f, min41, min44, min4f, min_, mind1d1, mind1wd1, mind2d1, mind2d2, mind2wd1, mind3d1, mind3d3, mind3wd1, mind4d1, mind4d4, mind4wd1, minf1, minff, mini1i1, mini1wi1, mini2i1, mini2i2, mini2wi1, mini3i1, mini3i3, mini3wi1, mini4i1, mini4i4, mini4wi1, minu1u1, minu1wu1, minu2u1, minu2u2, minu2wu1, minu3u1, minu3u3, minu3wu1, minu4u1, minu4u4, minu4wu1, minwd1d1, minwd1wd1, minwi1i1, minwi1wi1, minwu1u1, minwu1wu1, mix, mix111, mix11f, mix1f1, mix1ff, mix221, mix222, mix22f, mix331, mix333, mix33f, mix441, mix444, mix44f, mixd1d1d1, mixd1d1wd1, mixd1wd1d1, mixd1wd1wd1, mixd2d2d1, mixd2d2d2, mixd2d2wd1, mixd3d3d1, mixd3d3d3, mixd3d3wd1, mixd4d4d1, mixd4d4d4, mixd4d4wd1, mixf11, mixf1f, mixff1, mixfff, mixwd1d1d1, mixwd1d1wd1, mixwd1wd1d1, mixwd1wd1wd1, mod, mod11, mod1f, mod21, mod22, mod2f, mod31, mod33, mod3f, mod41, mod44, mod4f, modd1d1, modd1wd1, modd2d1, modd2d2, modd2wd1, modd3d1, modd3d3, modd3wd1, modd4d1, modd4d4, modd4wd1, modf, modf1, modf1o1, modf1of, modf2o2, modf3o3, modf4o4, modfd1od1, modfd1owd1, modfd2od2, modfd3od3, modfd4od4, modff, modffo1, modffof, modfwd1od1, modfwd1owd1, modwd1d1, modwd1wd1, normalize, normalize1, normalize2, normalize3, normalize4, normalized1, normalized2, normalized3, normalized4, normalizef, normalizewd1, pow, radians_, reflect, reflect11, reflect1f, reflect22, reflect33, reflect44, reflectd1d1, reflectd1wd1, reflectd2d2, reflectd3d3, reflectd4d4, reflectf1, reflectff, reflectwd1d1, reflectwd1wd1, refract, refract111, refract11f, refract1f1, refract1ff, refract221, refract22f, refract331, refract33f, refract441, refract44f, refractd1d11, refractd1d1f, refractd1wd11, refractd1wd1f, refractd2d21, refractd2d2f, refractd3d31, refractd3d3f, refractd4d41, refractd4d4f, refractf11, refractf1f, refractff1, refractfff, refractwd1d11, refractwd1d1f, refractwd1wd11, refractwd1wd1f, round1, round2, round3, round4, roundEven, roundEven1, roundEven2, roundEven3, roundEven4, roundEvend1, roundEvend2, roundEvend3, roundEvend4, roundEvenf, roundEvenwd1, round_, roundd1, roundd2, roundd3, roundd4, roundf, roundwd1, sign, sign1, sign2, sign3, sign4, signd1, signd2, signd3, signd4, signf, signi1, signi2, signi3, signi4, signwd1, signwi1, sin_, sinh, smoothstep, smoothstep111, smoothstep112, smoothstep113, smoothstep114, smoothstep11f, smoothstep1f1, smoothstep1f2, smoothstep1f3, smoothstep1f4, smoothstep1ff, smoothstep222, smoothstep333, smoothstep444, smoothstepd1d1d1, smoothstepd1d1d2, smoothstepd1d1d3, smoothstepd1d1d4, smoothstepd1d1wd1, smoothstepd1wd1d1, smoothstepd1wd1d2, smoothstepd1wd1d3, smoothstepd1wd1d4, smoothstepd1wd1wd1, smoothstepd2d2d2, smoothstepd3d3d3, smoothstepd4d4d4, smoothstepf11, smoothstepf12, smoothstepf13, smoothstepf14, smoothstepf1f, smoothstepff1, smoothstepff2, smoothstepff3, smoothstepff4, smoothstepfff, smoothstepwd1d1d1, smoothstepwd1d1d2, smoothstepwd1d1d3, smoothstepwd1d1d4, smoothstepwd1d1wd1, smoothstepwd1wd1d1, smoothstepwd1wd1d2, smoothstepwd1wd1d3, smoothstepwd1wd1d4, smoothstepwd1wd1wd1, sqrt1, sqrt2, sqrt3, sqrt4, sqrt_, sqrtd1, sqrtd2, sqrtd3, sqrtd4, sqrtf, sqrtwd1, step, step11, step12, step13, step14, step1f, step22, step33, step44, stepd1d1, stepd1d2, stepd1d3, stepd1d4, stepd1wd1, stepd2d2, stepd3d3, stepd4d4, stepf1, stepf2, stepf3, stepf4, stepff, stepwd1d1, stepwd1d2, stepwd1d3, stepwd1d4, stepwd1wd1, tan_, tanh, trunc, trunc1, trunc2, trunc3, trunc4, truncd1, truncd2, truncd3, truncd4, truncf, truncwd1, uintBitsToFloatu1, uintBitsToFloatu2, uintBitsToFloatu3, uintBitsToFloatu4, uintBitsToFloatwu1, vec21, vec211, vec21f, vec21i1, vec21wi1, vec2f, vec2f1, vec2ff, vec2fi1, vec2fwi1, vec2i1, vec2i11, vec2i1f, vec2i1i1, vec2i1wi1, vec2wi1, vec2wi11, vec2wi1f, vec2wi1i1, vec2wi1wi1, vec31, vec3111, vec311f, vec311i1, vec311wi1, vec312, vec31f1, vec31ff, vec31fi1, vec31fwi1, vec31i11, vec31i1f, vec31i1i1, vec31i1wi1, vec31wi11, vec31wi1f, vec31wi1i1, vec31wi1wi1, vec321, vec32f, vec3f, vec3f11, vec3f1f, vec3f1i1, vec3f1wi1, vec3f2, vec3ff1, vec3fff, vec3ffi1, vec3ffwi1, vec3fi11, vec3fi1f, vec3fi1i1, vec3fi1wi1, vec3fwi11, vec3fwi1f, vec3fwi1i1, vec3fwi1wi1, vec3i1, vec3i111, vec3i11f, vec3i11i1, vec3i11wi1, vec3i1f1, vec3i1ff, vec3i1fi1, vec3i1fwi1, vec3i1i11, vec3i1i1f, vec3i1i1i1, vec3i1i1wi1, vec3i1wi11, vec3i1wi1f, vec3i1wi1i1, vec3i1wi1wi1, vec3wi1, vec3wi111, vec3wi11f, vec3wi11i1, vec3wi11wi1, vec3wi1f1, vec3wi1ff, vec3wi1fi1, vec3wi1fwi1, vec3wi1i11, vec3wi1i1f, vec3wi1i1i1, vec3wi1i1wi1, vec3wi1wi11, vec3wi1wi1f, vec3wi1wi1i1, vec3wi1wi1wi1, vec41, vec41111, vec4111f, vec4111i1, vec4111wi1, vec411f1, vec411ff, vec411fi1, vec411fwi1, vec411i11, vec411i1f, vec411i1i1, vec411i1wi1, vec411wi11, vec411wi1f, vec411wi1i1, vec411wi1wi1, vec413, vec41f11, vec41f1f, vec41f1i1, vec41f1wi1, vec41ff1, vec41fff, vec41ffi1, vec41ffwi1, vec41fi11, vec41fi1f, vec41fi1i1, vec41fi1wi1, vec41fwi11, vec41fwi1f, vec41fwi1i1, vec41fwi1wi1, vec41i111, vec41i11f, vec41i11i1, vec41i11wi1, vec41i1f1, vec41i1ff, vec41i1fi1, vec41i1fwi1, vec41i1i11, vec41i1i1f, vec41i1i1i1, vec41i1i1wi1, vec41i1wi11, vec41i1wi1f, vec41i1wi1i1, vec41i1wi1wi1, vec41wi111, vec41wi11f, vec41wi11i1, vec41wi11wi1, vec41wi1f1, vec41wi1ff, vec41wi1fi1, vec41wi1fwi1, vec41wi1i11, vec41wi1i1f, vec41wi1i1i1, vec41wi1i1wi1, vec41wi1wi11, vec41wi1wi1f, vec41wi1wi1i1, vec41wi1wi1wi1, vec422, vec431, vec43f, vec4f, vec4f111, vec4f11f, vec4f11i1, vec4f11wi1, vec4f1f1, vec4f1ff, vec4f1fi1, vec4f1fwi1, vec4f1i11, vec4f1i1f, vec4f1i1i1, vec4f1i1wi1, vec4f1wi11, vec4f1wi1f, vec4f1wi1i1, vec4f1wi1wi1, vec4f3, vec4ff11, vec4ff1f, vec4ff1i1, vec4ff1wi1, vec4fff1, vec4ffff, vec4fffi1, vec4fffwi1, vec4ffi11, vec4ffi1f, vec4ffi1i1, vec4ffi1wi1, vec4ffwi11, vec4ffwi1f, vec4ffwi1i1, vec4ffwi1wi1, vec4fi111, vec4fi11f, vec4fi11i1, vec4fi11wi1, vec4fi1f1, vec4fi1ff, vec4fi1fi1, vec4fi1fwi1, vec4fi1i11, vec4fi1i1f, vec4fi1i1i1, vec4fi1i1wi1, vec4fi1wi11, vec4fi1wi1f, vec4fi1wi1i1, vec4fi1wi1wi1, vec4fwi111, vec4fwi11f, vec4fwi11i1, vec4fwi11wi1, vec4fwi1f1, vec4fwi1ff, vec4fwi1fi1, vec4fwi1fwi1, vec4fwi1i11, vec4fwi1i1f, vec4fwi1i1i1, vec4fwi1i1wi1, vec4fwi1wi11, vec4fwi1wi1f, vec4fwi1wi1i1, vec4fwi1wi1wi1, vec4i1, vec4i1111, vec4i111f, vec4i111i1, vec4i111wi1, vec4i11f1, vec4i11ff, vec4i11fi1, vec4i11fwi1, vec4i11i11, vec4i11i1f, vec4i11i1i1, vec4i11i1wi1, vec4i11wi11, vec4i11wi1f, vec4i11wi1i1, vec4i11wi1wi1, vec4i1f11, vec4i1f1f, vec4i1f1i1, vec4i1f1wi1, vec4i1ff1, vec4i1fff, vec4i1ffi1, vec4i1ffwi1, vec4i1fi11, vec4i1fi1f, vec4i1fi1i1, vec4i1fi1wi1, vec4i1fwi11, vec4i1fwi1f, vec4i1fwi1i1, vec4i1fwi1wi1, vec4i1i111, vec4i1i11f, vec4i1i11i1, vec4i1i11wi1, vec4i1i1f1, vec4i1i1ff, vec4i1i1fi1, vec4i1i1fwi1, vec4i1i1i11, vec4i1i1i1f, vec4i1i1i1i1, vec4i1i1i1wi1, vec4i1i1wi11, vec4i1i1wi1f, vec4i1i1wi1i1, vec4i1i1wi1wi1, vec4i1wi111, vec4i1wi11f, vec4i1wi11i1, vec4i1wi11wi1, vec4i1wi1f1, vec4i1wi1ff, vec4i1wi1fi1, vec4i1wi1fwi1, vec4i1wi1i11, vec4i1wi1i1f, vec4i1wi1i1i1, vec4i1wi1i1wi1, vec4i1wi1wi11, vec4i1wi1wi1f, vec4i1wi1wi1i1, vec4i1wi1wi1wi1, vec4wi1, vec4wi1111, vec4wi111f, vec4wi111i1, vec4wi111wi1, vec4wi11f1, vec4wi11ff, vec4wi11fi1, vec4wi11fwi1, vec4wi11i11, vec4wi11i1f, vec4wi11i1i1, vec4wi11i1wi1, vec4wi11wi11, vec4wi11wi1f, vec4wi11wi1i1, vec4wi11wi1wi1, vec4wi1f11, vec4wi1f1f, vec4wi1f1i1, vec4wi1f1wi1, vec4wi1ff1, vec4wi1fff, vec4wi1ffi1, vec4wi1ffwi1, vec4wi1fi11, vec4wi1fi1f, vec4wi1fi1i1, vec4wi1fi1wi1, vec4wi1fwi11, vec4wi1fwi1f, vec4wi1fwi1i1, vec4wi1fwi1wi1, vec4wi1i111, vec4wi1i11f, vec4wi1i11i1, vec4wi1i11wi1, vec4wi1i1f1, vec4wi1i1ff, vec4wi1i1fi1, vec4wi1i1fwi1, vec4wi1i1i11, vec4wi1i1i1f, vec4wi1i1i1i1, vec4wi1i1i1wi1, vec4wi1i1wi11, vec4wi1i1wi1f, vec4wi1i1wi1i1, vec4wi1i1wi1wi1, vec4wi1wi111, vec4wi1wi11f, vec4wi1wi11i1, vec4wi1wi11wi1, vec4wi1wi1f1, vec4wi1wi1ff, vec4wi1wi1fi1, vec4wi1wi1fwi1, vec4wi1wi1i11, vec4wi1wi1i1f, vec4wi1wi1i1i1, vec4wi1wi1i1wi1, vec4wi1wi1wi11, vec4wi1wi1wi1f, vec4wi1wi1wi1i1, vec4wi1wi1wi1wi1)
 
 {-|
 
-@docs abs1, abs2, abs3, abs4, abs_, absd1, absd2, absd3, absd4, absi1, absi2, absi3, absi4, absw1, abswd1, abswi1, acos_, acosh, asin_, asinh, atan2_, atan_, atanh, ceil, ceil1, ceil2, ceil3, ceil4, ceild1, ceild2, ceild3, ceild4, ceilw1, ceilwd1, clamp111, clamp11w1, clamp1w11, clamp1w1w1, clamp211, clamp21w1, clamp222, clamp2w11, clamp2w1w1, clamp311, clamp31w1, clamp333, clamp3w11, clamp3w1w1, clamp411, clamp41w1, clamp444, clamp4w11, clamp4w1w1, clamp_, clampd1d1d1, clampd1d1wd1, clampd1wd1d1, clampd1wd1wd1, clampd2d1d1, clampd2d1wd1, clampd2d2d2, clampd2wd1d1, clampd2wd1wd1, clampd3d1d1, clampd3d1wd1, clampd3d3d3, clampd3wd1d1, clampd3wd1wd1, clampd4d1d1, clampd4d1wd1, clampd4d4d4, clampd4wd1d1, clampd4wd1wd1, clampi1i1i1, clampi1i1wi1, clampi1wi1i1, clampi1wi1wi1, clampi2i1i1, clampi2i1wi1, clampi2i2i2, clampi2wi1i1, clampi2wi1wi1, clampi3i1i1, clampi3i1wi1, clampi3i3i3, clampi3wi1i1, clampi3wi1wi1, clampi4i1i1, clampi4i1wi1, clampi4i4i4, clampi4wi1i1, clampi4wi1wi1, clampu1u1u1, clampu1u1wu1, clampu1wu1u1, clampu1wu1wu1, clampu2u1u1, clampu2u1wu1, clampu2u2u2, clampu2wu1u1, clampu2wu1wu1, clampu3u1u1, clampu3u1wu1, clampu3u3u3, clampu3wu1u1, clampu3wu1wu1, clampu4u1u1, clampu4u1wu1, clampu4u4u4, clampu4wu1u1, clampu4wu1wu1, clampw111, clampw11w1, clampw1w11, clampw1w1w1, clampwd1d1d1, clampwd1d1wd1, clampwd1wd1d1, clampwd1wd1wd1, clampwi1i1i1, clampwi1i1wi1, clampwi1wi1i1, clampwi1wi1wi1, clampwu1u1u1, clampwu1u1wu1, clampwu1wu1u1, clampwu1wu1wu1, cos_, cosh, cross33, crossd3d3, dFdx, dFdxCoarse, dFdxFine, dFdy, dFdyCoarse, dFdyFine, degrees_, distance, distance11, distance1w1, distance22, distance33, distance44, distanced1d1, distanced1wd1, distanced2d2, distanced3d3, distanced4d4, distancew11, distancew1w1, distancewd1d1, distancewd1wd1, dot, dot11, dot1w1, dot22, dot33, dot44, dotd1d1, dotd1wd1, dotd2d2, dotd3d3, dotd4d4, dotw11, dotw1w1, dotwd1d1, dotwd1wd1, exp, exp2, faceforward, faceforward111, faceforward11w1, faceforward1w11, faceforward1w1w1, faceforward222, faceforward333, faceforward444, faceforwardd1d1d1, faceforwardd1d1wd1, faceforwardd1wd1d1, faceforwardd1wd1wd1, faceforwardd2d2d2, faceforwardd3d3d3, faceforwardd4d4d4, faceforwardw111, faceforwardw11w1, faceforwardw1w11, faceforwardw1w1w1, faceforwardwd1d1d1, faceforwardwd1d1wd1, faceforwardwd1wd1d1, faceforwardwd1wd1wd1, floatBitsToInt1, floatBitsToInt2, floatBitsToInt3, floatBitsToInt4, floatBitsToIntw1, floatBitsToUint1, floatBitsToUint2, floatBitsToUint3, floatBitsToUint4, floatBitsToUintw1, floati1, floatwi1, floor1, floor2, floor3, floor4, floor_, floord1, floord2, floord3, floord4, floorw1, floorwd1, fma, fma111, fma11w1, fma1w11, fma1w1w1, fma222, fma333, fma444, fmad1d1d1, fmad1d1wd1, fmad1wd1d1, fmad1wd1wd1, fmad2d2d2, fmad3d3d3, fmad4d4d4, fmaw111, fmaw11w1, fmaw1w11, fmaw1w1w1, fmawd1d1d1, fmawd1d1wd1, fmawd1wd1d1, fmawd1wd1wd1, fract, fract1, fract2, fract3, fract4, fractd1, fractd2, fractd3, fractd4, fractw1, fractwd1, frexp1oi1, frexp1owi1, frexp2oi2, frexp3oi3, frexp4oi4, frexpd1oi1, frexpd1owi1, frexpd2oi2, frexpd3oi3, frexpd4oi4, frexpw1oi1, frexpw1owi1, frexpwd1oi1, frexpwd1owi1, fwidth, fwidthCoarse, fwidthFine, int1, intBitsToFloati1, intBitsToFloati2, intBitsToFloati3, intBitsToFloati4, intBitsToFloatwi1, intw1, inversesqrt, inversesqrt1, inversesqrt2, inversesqrt3, inversesqrt4, inversesqrtd1, inversesqrtd2, inversesqrtd3, inversesqrtd4, inversesqrtw1, inversesqrtwd1, isinf1, isinf2, isinf3, isinf4, isinfd1, isinfd2, isinfd3, isinfd4, isinfw1, isinfwd1, isnan1, isnan2, isnan3, isnan4, isnand1, isnand2, isnand3, isnand4, isnanw1, isnanwd1, ivec2i1i1, ivec2i1wi1, ivec2wi1i1, ivec2wi1wi1, ivec3i1i1i1, ivec3i1i1wi1, ivec3i1wi1i1, ivec3i1wi1wi1, ivec3wi1i1i1, ivec3wi1i1wi1, ivec3wi1wi1i1, ivec3wi1wi1wi1, ivec4i1i1i1i1, ivec4i1i1i1wi1, ivec4i1i1wi1i1, ivec4i1i1wi1wi1, ivec4i1wi1i1i1, ivec4i1wi1i1wi1, ivec4i1wi1wi1i1, ivec4i1wi1wi1wi1, ivec4wi1i1i1i1, ivec4wi1i1i1wi1, ivec4wi1i1wi1i1, ivec4wi1i1wi1wi1, ivec4wi1wi1i1i1, ivec4wi1wi1i1wi1, ivec4wi1wi1wi1i1, ivec4wi1wi1wi1wi1, ldexp1i1, ldexp1wi1, ldexp2i2, ldexp3i3, ldexp4i4, ldexpd1i1, ldexpd1wi1, ldexpd2i2, ldexpd3i3, ldexpd4i4, ldexpw1i1, ldexpw1wi1, ldexpwd1i1, ldexpwd1wi1, length, length1, length2, length3, length4, lengthd1, lengthd2, lengthd3, lengthd4, lengthw1, lengthwd1, log, log2, mat21111, mat2111w1, mat211w11, mat211w1w1, mat21w111, mat21w11w1, mat21w1w11, mat21w1w1w1, mat222, mat2w1111, mat2w111w1, mat2w11w11, mat2w11w1w1, mat2w1w111, mat2w1w11w1, mat2w1w1w11, mat2w1w1w1w1, mat3111111111, mat311111111w1, mat31111111w11, mat31111111w1w1, mat3111111w111, mat3111111w11w1, mat3111111w1w11, mat3111111w1w1w1, mat311111w1111, mat311111w111w1, mat311111w11w11, mat311111w11w1w1, mat311111w1w111, mat311111w1w11w1, mat311111w1w1w11, mat311111w1w1w1w1, mat31111w11111, mat31111w1111w1, mat31111w111w11, mat31111w111w1w1, mat31111w11w111, mat31111w11w11w1, mat31111w11w1w11, mat31111w11w1w1w1, mat31111w1w1111, mat31111w1w111w1, mat31111w1w11w11, mat31111w1w11w1w1, mat31111w1w1w111, mat31111w1w1w11w1, mat31111w1w1w1w11, mat31111w1w1w1w1w1, mat3111w111111, mat3111w11111w1, mat3111w1111w11, mat3111w1111w1w1, mat3111w111w111, mat3111w111w11w1, mat3111w111w1w11, mat3111w111w1w1w1, mat3111w11w1111, mat3111w11w111w1, mat3111w11w11w11, mat3111w11w11w1w1, mat3111w11w1w111, mat3111w11w1w11w1, mat3111w11w1w1w11, mat3111w11w1w1w1w1, mat3111w1w11111, mat3111w1w1111w1, mat3111w1w111w11, mat3111w1w111w1w1, mat3111w1w11w111, mat3111w1w11w11w1, mat3111w1w11w1w11, mat3111w1w11w1w1w1, mat3111w1w1w1111, mat3111w1w1w111w1, mat3111w1w1w11w11, mat3111w1w1w11w1w1, mat3111w1w1w1w111, mat3111w1w1w1w11w1, mat3111w1w1w1w1w11, mat3111w1w1w1w1w1w1, mat311w1111111, mat311w111111w1, mat311w11111w11, mat311w11111w1w1, mat311w1111w111, mat311w1111w11w1, mat311w1111w1w11, mat311w1111w1w1w1, mat311w111w1111, mat311w111w111w1, mat311w111w11w11, mat311w111w11w1w1, mat311w111w1w111, mat311w111w1w11w1, mat311w111w1w1w11, mat311w111w1w1w1w1, mat311w11w11111, mat311w11w1111w1, mat311w11w111w11, mat311w11w111w1w1, mat311w11w11w111, mat311w11w11w11w1, mat311w11w11w1w11, mat311w11w11w1w1w1, mat311w11w1w1111, mat311w11w1w111w1, mat311w11w1w11w11, mat311w11w1w11w1w1, mat311w11w1w1w111, mat311w11w1w1w11w1, mat311w11w1w1w1w11, mat311w11w1w1w1w1w1, mat311w1w111111, mat311w1w11111w1, mat311w1w1111w11, mat311w1w1111w1w1, mat311w1w111w111, mat311w1w111w11w1, mat311w1w111w1w11, mat311w1w111w1w1w1, mat311w1w11w1111, mat311w1w11w111w1, mat311w1w11w11w11, mat311w1w11w11w1w1, mat311w1w11w1w111, mat311w1w11w1w11w1, mat311w1w11w1w1w11, mat311w1w11w1w1w1w1, mat311w1w1w11111, mat311w1w1w1111w1, mat311w1w1w111w11, mat311w1w1w111w1w1, mat311w1w1w11w111, mat311w1w1w11w11w1, mat311w1w1w11w1w11, mat311w1w1w11w1w1w1, mat311w1w1w1w1111, mat311w1w1w1w111w1, mat311w1w1w1w11w11, mat311w1w1w1w11w1w1, mat311w1w1w1w1w111, mat311w1w1w1w1w11w1, mat311w1w1w1w1w1w11, mat311w1w1w1w1w1w1w1, mat31w11111111, mat31w1111111w1, mat31w111111w11, mat31w111111w1w1, mat31w11111w111, mat31w11111w11w1, mat31w11111w1w11, mat31w11111w1w1w1, mat31w1111w1111, mat31w1111w111w1, mat31w1111w11w11, mat31w1111w11w1w1, mat31w1111w1w111, mat31w1111w1w11w1, mat31w1111w1w1w11, mat31w1111w1w1w1w1, mat31w111w11111, mat31w111w1111w1, mat31w111w111w11, mat31w111w111w1w1, mat31w111w11w111, mat31w111w11w11w1, mat31w111w11w1w11, mat31w111w11w1w1w1, mat31w111w1w1111, mat31w111w1w111w1, mat31w111w1w11w11, mat31w111w1w11w1w1, mat31w111w1w1w111, mat31w111w1w1w11w1, mat31w111w1w1w1w11, mat31w111w1w1w1w1w1, mat31w11w111111, mat31w11w11111w1, mat31w11w1111w11, mat31w11w1111w1w1, mat31w11w111w111, mat31w11w111w11w1, mat31w11w111w1w11, mat31w11w111w1w1w1, mat31w11w11w1111, mat31w11w11w111w1, mat31w11w11w11w11, mat31w11w11w11w1w1, mat31w11w11w1w111, mat31w11w11w1w11w1, mat31w11w11w1w1w11, mat31w11w11w1w1w1w1, mat31w11w1w11111, mat31w11w1w1111w1, mat31w11w1w111w11, mat31w11w1w111w1w1, mat31w11w1w11w111, mat31w11w1w11w11w1, mat31w11w1w11w1w11, mat31w11w1w11w1w1w1, mat31w11w1w1w1111, mat31w11w1w1w111w1, mat31w11w1w1w11w11, mat31w11w1w1w11w1w1, mat31w11w1w1w1w111, mat31w11w1w1w1w11w1, mat31w11w1w1w1w1w11, mat31w11w1w1w1w1w1w1, mat31w1w1111111, mat31w1w111111w1, mat31w1w11111w11, mat31w1w11111w1w1, mat31w1w1111w111, mat31w1w1111w11w1, mat31w1w1111w1w11, mat31w1w1111w1w1w1, mat31w1w111w1111, mat31w1w111w111w1, mat31w1w111w11w11, mat31w1w111w11w1w1, mat31w1w111w1w111, mat31w1w111w1w11w1, mat31w1w111w1w1w11, mat31w1w111w1w1w1w1, mat31w1w11w11111, mat31w1w11w1111w1, mat31w1w11w111w11, mat31w1w11w111w1w1, mat31w1w11w11w111, mat31w1w11w11w11w1, mat31w1w11w11w1w11, mat31w1w11w11w1w1w1, mat31w1w11w1w1111, mat31w1w11w1w111w1, mat31w1w11w1w11w11, mat31w1w11w1w11w1w1, mat31w1w11w1w1w111, mat31w1w11w1w1w11w1, mat31w1w11w1w1w1w11, mat31w1w11w1w1w1w1w1, mat31w1w1w111111, mat31w1w1w11111w1, mat31w1w1w1111w11, mat31w1w1w1111w1w1, mat31w1w1w111w111, mat31w1w1w111w11w1, mat31w1w1w111w1w11, mat31w1w1w111w1w1w1, mat31w1w1w11w1111, mat31w1w1w11w111w1, mat31w1w1w11w11w11, mat31w1w1w11w11w1w1, mat31w1w1w11w1w111, mat31w1w1w11w1w11w1, mat31w1w1w11w1w1w11, mat31w1w1w11w1w1w1w1, mat31w1w1w1w11111, mat31w1w1w1w1111w1, mat31w1w1w1w111w11, mat31w1w1w1w111w1w1, mat31w1w1w1w11w111, mat31w1w1w1w11w11w1, mat31w1w1w1w11w1w11, mat31w1w1w1w11w1w1w1, mat31w1w1w1w1w1111, mat31w1w1w1w1w111w1, mat31w1w1w1w1w11w11, mat31w1w1w1w1w11w1w1, mat31w1w1w1w1w1w111, mat31w1w1w1w1w1w11w1, mat31w1w1w1w1w1w1w11, mat31w1w1w1w1w1w1w1w1, mat3333, mat3w111111111, mat3w11111111w1, mat3w1111111w11, mat3w1111111w1w1, mat3w111111w111, mat3w111111w11w1, mat3w111111w1w11, mat3w111111w1w1w1, mat3w11111w1111, mat3w11111w111w1, mat3w11111w11w11, mat3w11111w11w1w1, mat3w11111w1w111, mat3w11111w1w11w1, mat3w11111w1w1w11, mat3w11111w1w1w1w1, mat3w1111w11111, mat3w1111w1111w1, mat3w1111w111w11, mat3w1111w111w1w1, mat3w1111w11w111, mat3w1111w11w11w1, mat3w1111w11w1w11, mat3w1111w11w1w1w1, mat3w1111w1w1111, mat3w1111w1w111w1, mat3w1111w1w11w11, mat3w1111w1w11w1w1, mat3w1111w1w1w111, mat3w1111w1w1w11w1, mat3w1111w1w1w1w11, mat3w1111w1w1w1w1w1, mat3w111w111111, mat3w111w11111w1, mat3w111w1111w11, mat3w111w1111w1w1, mat3w111w111w111, mat3w111w111w11w1, mat3w111w111w1w11, mat3w111w111w1w1w1, mat3w111w11w1111, mat3w111w11w111w1, mat3w111w11w11w11, mat3w111w11w11w1w1, mat3w111w11w1w111, mat3w111w11w1w11w1, mat3w111w11w1w1w11, mat3w111w11w1w1w1w1, mat3w111w1w11111, mat3w111w1w1111w1, mat3w111w1w111w11, mat3w111w1w111w1w1, mat3w111w1w11w111, mat3w111w1w11w11w1, mat3w111w1w11w1w11, mat3w111w1w11w1w1w1, mat3w111w1w1w1111, mat3w111w1w1w111w1, mat3w111w1w1w11w11, mat3w111w1w1w11w1w1, mat3w111w1w1w1w111, mat3w111w1w1w1w11w1, mat3w111w1w1w1w1w11, mat3w111w1w1w1w1w1w1, mat3w11w1111111, mat3w11w111111w1, mat3w11w11111w11, mat3w11w11111w1w1, mat3w11w1111w111, mat3w11w1111w11w1, mat3w11w1111w1w11, mat3w11w1111w1w1w1, mat3w11w111w1111, mat3w11w111w111w1, mat3w11w111w11w11, mat3w11w111w11w1w1, mat3w11w111w1w111, mat3w11w111w1w11w1, mat3w11w111w1w1w11, mat3w11w111w1w1w1w1, mat3w11w11w11111, mat3w11w11w1111w1, mat3w11w11w111w11, mat3w11w11w111w1w1, mat3w11w11w11w111, mat3w11w11w11w11w1, mat3w11w11w11w1w11, mat3w11w11w11w1w1w1, mat3w11w11w1w1111, mat3w11w11w1w111w1, mat3w11w11w1w11w11, mat3w11w11w1w11w1w1, mat3w11w11w1w1w111, mat3w11w11w1w1w11w1, mat3w11w11w1w1w1w11, mat3w11w11w1w1w1w1w1, mat3w11w1w111111, mat3w11w1w11111w1, mat3w11w1w1111w11, mat3w11w1w1111w1w1, mat3w11w1w111w111, mat3w11w1w111w11w1, mat3w11w1w111w1w11, mat3w11w1w111w1w1w1, mat3w11w1w11w1111, mat3w11w1w11w111w1, mat3w11w1w11w11w11, mat3w11w1w11w11w1w1, mat3w11w1w11w1w111, mat3w11w1w11w1w11w1, mat3w11w1w11w1w1w11, mat3w11w1w11w1w1w1w1, mat3w11w1w1w11111, mat3w11w1w1w1111w1, mat3w11w1w1w111w11, mat3w11w1w1w111w1w1, mat3w11w1w1w11w111, mat3w11w1w1w11w11w1, mat3w11w1w1w11w1w11, mat3w11w1w1w11w1w1w1, mat3w11w1w1w1w1111, mat3w11w1w1w1w111w1, mat3w11w1w1w1w11w11, mat3w11w1w1w1w11w1w1, mat3w11w1w1w1w1w111, mat3w11w1w1w1w1w11w1, mat3w11w1w1w1w1w1w11, mat3w11w1w1w1w1w1w1w1, mat3w1w11111111, mat3w1w1111111w1, mat3w1w111111w11, mat3w1w111111w1w1, mat3w1w11111w111, mat3w1w11111w11w1, mat3w1w11111w1w11, mat3w1w11111w1w1w1, mat3w1w1111w1111, mat3w1w1111w111w1, mat3w1w1111w11w11, mat3w1w1111w11w1w1, mat3w1w1111w1w111, mat3w1w1111w1w11w1, mat3w1w1111w1w1w11, mat3w1w1111w1w1w1w1, mat3w1w111w11111, mat3w1w111w1111w1, mat3w1w111w111w11, mat3w1w111w111w1w1, mat3w1w111w11w111, mat3w1w111w11w11w1, mat3w1w111w11w1w11, mat3w1w111w11w1w1w1, mat3w1w111w1w1111, mat3w1w111w1w111w1, mat3w1w111w1w11w11, mat3w1w111w1w11w1w1, mat3w1w111w1w1w111, mat3w1w111w1w1w11w1, mat3w1w111w1w1w1w11, mat3w1w111w1w1w1w1w1, mat3w1w11w111111, mat3w1w11w11111w1, mat3w1w11w1111w11, mat3w1w11w1111w1w1, mat3w1w11w111w111, mat3w1w11w111w11w1, mat3w1w11w111w1w11, mat3w1w11w111w1w1w1, mat3w1w11w11w1111, mat3w1w11w11w111w1, mat3w1w11w11w11w11, mat3w1w11w11w11w1w1, mat3w1w11w11w1w111, mat3w1w11w11w1w11w1, mat3w1w11w11w1w1w11, mat3w1w11w11w1w1w1w1, mat3w1w11w1w11111, mat3w1w11w1w1111w1, mat3w1w11w1w111w11, mat3w1w11w1w111w1w1, mat3w1w11w1w11w111, mat3w1w11w1w11w11w1, mat3w1w11w1w11w1w11, mat3w1w11w1w11w1w1w1, mat3w1w11w1w1w1111, mat3w1w11w1w1w111w1, mat3w1w11w1w1w11w11, mat3w1w11w1w1w11w1w1, mat3w1w11w1w1w1w111, mat3w1w11w1w1w1w11w1, mat3w1w11w1w1w1w1w11, mat3w1w11w1w1w1w1w1w1, mat3w1w1w1111111, mat3w1w1w111111w1, mat3w1w1w11111w11, mat3w1w1w11111w1w1, mat3w1w1w1111w111, mat3w1w1w1111w11w1, mat3w1w1w1111w1w11, mat3w1w1w1111w1w1w1, mat3w1w1w111w1111, mat3w1w1w111w111w1, mat3w1w1w111w11w11, mat3w1w1w111w11w1w1, mat3w1w1w111w1w111, mat3w1w1w111w1w11w1, mat3w1w1w111w1w1w11, mat3w1w1w111w1w1w1w1, mat3w1w1w11w11111, mat3w1w1w11w1111w1, mat3w1w1w11w111w11, mat3w1w1w11w111w1w1, mat3w1w1w11w11w111, mat3w1w1w11w11w11w1, mat3w1w1w11w11w1w11, mat3w1w1w11w11w1w1w1, mat3w1w1w11w1w1111, mat3w1w1w11w1w111w1, mat3w1w1w11w1w11w11, mat3w1w1w11w1w11w1w1, mat3w1w1w11w1w1w111, mat3w1w1w11w1w1w11w1, mat3w1w1w11w1w1w1w11, mat3w1w1w11w1w1w1w1w1, mat3w1w1w1w111111, mat3w1w1w1w11111w1, mat3w1w1w1w1111w11, mat3w1w1w1w1111w1w1, mat3w1w1w1w111w111, mat3w1w1w1w111w11w1, mat3w1w1w1w111w1w11, mat3w1w1w1w111w1w1w1, mat3w1w1w1w11w1111, mat3w1w1w1w11w111w1, mat3w1w1w1w11w11w11, mat3w1w1w1w11w11w1w1, mat3w1w1w1w11w1w111, mat3w1w1w1w11w1w11w1, mat3w1w1w1w11w1w1w11, mat3w1w1w1w11w1w1w1w1, mat3w1w1w1w1w11111, mat3w1w1w1w1w1111w1, mat3w1w1w1w1w111w11, mat3w1w1w1w1w111w1w1, mat3w1w1w1w1w11w111, mat3w1w1w1w1w11w11w1, mat3w1w1w1w1w11w1w11, mat3w1w1w1w1w11w1w1w1, mat3w1w1w1w1w1w1111, mat3w1w1w1w1w1w111w1, mat3w1w1w1w1w1w11w11, mat3w1w1w1w1w1w11w1w1, mat3w1w1w1w1w1w1w111, mat3w1w1w1w1w1w1w11w1, mat3w1w1w1w1w1w1w1w11, mat3w1w1w1w1w1w1w1w1w1, mat44444, max11, max1w1, max21, max22, max2w1, max31, max33, max3w1, max41, max44, max4w1, max_, maxd1d1, maxd1wd1, maxd2d1, maxd2d2, maxd2wd1, maxd3d1, maxd3d3, maxd3wd1, maxd4d1, maxd4d4, maxd4wd1, maxi1i1, maxi1wi1, maxi2i1, maxi2i2, maxi2wi1, maxi3i1, maxi3i3, maxi3wi1, maxi4i1, maxi4i4, maxi4wi1, maxu1u1, maxu1wu1, maxu2u1, maxu2u2, maxu2wu1, maxu3u1, maxu3u3, maxu3wu1, maxu4u1, maxu4u4, maxu4wu1, maxw11, maxw1w1, maxwd1d1, maxwd1wd1, maxwi1i1, maxwi1wi1, maxwu1u1, maxwu1wu1, min11, min1w1, min21, min22, min2w1, min31, min33, min3w1, min41, min44, min4w1, min_, mind1d1, mind1wd1, mind2d1, mind2d2, mind2wd1, mind3d1, mind3d3, mind3wd1, mind4d1, mind4d4, mind4wd1, mini1i1, mini1wi1, mini2i1, mini2i2, mini2wi1, mini3i1, mini3i3, mini3wi1, mini4i1, mini4i4, mini4wi1, minu1u1, minu1wu1, minu2u1, minu2u2, minu2wu1, minu3u1, minu3u3, minu3wu1, minu4u1, minu4u4, minu4wu1, minw11, minw1w1, minwd1d1, minwd1wd1, minwi1i1, minwi1wi1, minwu1u1, minwu1wu1, mix, mix111, mix11w1, mix1w11, mix1w1w1, mix221, mix222, mix22w1, mix331, mix333, mix33w1, mix441, mix444, mix44w1, mixd1d1d1, mixd1d1wd1, mixd1wd1d1, mixd1wd1wd1, mixd2d2d1, mixd2d2d2, mixd2d2wd1, mixd3d3d1, mixd3d3d3, mixd3d3wd1, mixd4d4d1, mixd4d4d4, mixd4d4wd1, mixw111, mixw11w1, mixw1w11, mixw1w1w1, mixwd1d1d1, mixwd1d1wd1, mixwd1wd1d1, mixwd1wd1wd1, mod, mod11, mod1w1, mod21, mod22, mod2w1, mod31, mod33, mod3w1, mod41, mod44, mod4w1, modd1d1, modd1wd1, modd2d1, modd2d2, modd2wd1, modd3d1, modd3d3, modd3wd1, modd4d1, modd4d4, modd4wd1, modf, modf1o1, modf1ow1, modf2o2, modf3o3, modf4o4, modfd1od1, modfd1owd1, modfd2od2, modfd3od3, modfd4od4, modfw1o1, modfw1ow1, modfwd1od1, modfwd1owd1, modw11, modw1w1, modwd1d1, modwd1wd1, normalize, normalize1, normalize2, normalize3, normalize4, normalized1, normalized2, normalized3, normalized4, normalizew1, normalizewd1, pow, radians_, reflect, reflect11, reflect1w1, reflect22, reflect33, reflect44, reflectd1d1, reflectd1wd1, reflectd2d2, reflectd3d3, reflectd4d4, reflectw11, reflectw1w1, reflectwd1d1, reflectwd1wd1, refract, refract111, refract11w1, refract1w11, refract1w1w1, refract221, refract22w1, refract331, refract33w1, refract441, refract44w1, refractd1d11, refractd1d1w1, refractd1wd11, refractd1wd1w1, refractd2d21, refractd2d2w1, refractd3d31, refractd3d3w1, refractd4d41, refractd4d4w1, refractw111, refractw11w1, refractw1w11, refractw1w1w1, refractwd1d11, refractwd1d1w1, refractwd1wd11, refractwd1wd1w1, round1, round2, round3, round4, roundEven, roundEven1, roundEven2, roundEven3, roundEven4, roundEvend1, roundEvend2, roundEvend3, roundEvend4, roundEvenw1, roundEvenwd1, round_, roundd1, roundd2, roundd3, roundd4, roundw1, roundwd1, sign, sign1, sign2, sign3, sign4, signd1, signd2, signd3, signd4, signi1, signi2, signi3, signi4, signw1, signwd1, signwi1, sin_, sinh, smoothstep, smoothstep111, smoothstep112, smoothstep113, smoothstep114, smoothstep11w1, smoothstep1w11, smoothstep1w12, smoothstep1w13, smoothstep1w14, smoothstep1w1w1, smoothstep222, smoothstep333, smoothstep444, smoothstepd1d1d1, smoothstepd1d1d2, smoothstepd1d1d3, smoothstepd1d1d4, smoothstepd1d1wd1, smoothstepd1wd1d1, smoothstepd1wd1d2, smoothstepd1wd1d3, smoothstepd1wd1d4, smoothstepd1wd1wd1, smoothstepd2d2d2, smoothstepd3d3d3, smoothstepd4d4d4, smoothstepw111, smoothstepw112, smoothstepw113, smoothstepw114, smoothstepw11w1, smoothstepw1w11, smoothstepw1w12, smoothstepw1w13, smoothstepw1w14, smoothstepw1w1w1, smoothstepwd1d1d1, smoothstepwd1d1d2, smoothstepwd1d1d3, smoothstepwd1d1d4, smoothstepwd1d1wd1, smoothstepwd1wd1d1, smoothstepwd1wd1d2, smoothstepwd1wd1d3, smoothstepwd1wd1d4, smoothstepwd1wd1wd1, sqrt1, sqrt2, sqrt3, sqrt4, sqrt_, sqrtd1, sqrtd2, sqrtd3, sqrtd4, sqrtw1, sqrtwd1, step, step11, step12, step13, step14, step1w1, step22, step33, step44, stepd1d1, stepd1d2, stepd1d3, stepd1d4, stepd1wd1, stepd2d2, stepd3d3, stepd4d4, stepw11, stepw12, stepw13, stepw14, stepw1w1, stepwd1d1, stepwd1d2, stepwd1d3, stepwd1d4, stepwd1wd1, tan_, tanh, trunc, trunc1, trunc2, trunc3, trunc4, truncd1, truncd2, truncd3, truncd4, truncw1, truncwd1, uintBitsToFloatu1, uintBitsToFloatu2, uintBitsToFloatu3, uintBitsToFloatu4, uintBitsToFloatwu1, vec21, vec211, vec21i1, vec21w1, vec21wi1, vec2i1, vec2i11, vec2i1i1, vec2i1w1, vec2i1wi1, vec2w1, vec2w11, vec2w1i1, vec2w1w1, vec2w1wi1, vec2wi1, vec2wi11, vec2wi1i1, vec2wi1w1, vec2wi1wi1, vec31, vec3111, vec311i1, vec311w1, vec311wi1, vec312, vec31i11, vec31i1i1, vec31i1w1, vec31i1wi1, vec31w11, vec31w1i1, vec31w1w1, vec31w1wi1, vec31wi11, vec31wi1i1, vec31wi1w1, vec31wi1wi1, vec321, vec32w1, vec3i1, vec3i111, vec3i11i1, vec3i11w1, vec3i11wi1, vec3i1i11, vec3i1i1i1, vec3i1i1w1, vec3i1i1wi1, vec3i1w11, vec3i1w1i1, vec3i1w1w1, vec3i1w1wi1, vec3i1wi11, vec3i1wi1i1, vec3i1wi1w1, vec3i1wi1wi1, vec3w1, vec3w111, vec3w11i1, vec3w11w1, vec3w11wi1, vec3w12, vec3w1i11, vec3w1i1i1, vec3w1i1w1, vec3w1i1wi1, vec3w1w11, vec3w1w1i1, vec3w1w1w1, vec3w1w1wi1, vec3w1wi11, vec3w1wi1i1, vec3w1wi1w1, vec3w1wi1wi1, vec3wi1, vec3wi111, vec3wi11i1, vec3wi11w1, vec3wi11wi1, vec3wi1i11, vec3wi1i1i1, vec3wi1i1w1, vec3wi1i1wi1, vec3wi1w11, vec3wi1w1i1, vec3wi1w1w1, vec3wi1w1wi1, vec3wi1wi11, vec3wi1wi1i1, vec3wi1wi1w1, vec3wi1wi1wi1, vec41, vec41111, vec4111i1, vec4111w1, vec4111wi1, vec411i11, vec411i1i1, vec411i1w1, vec411i1wi1, vec411w11, vec411w1i1, vec411w1w1, vec411w1wi1, vec411wi11, vec411wi1i1, vec411wi1w1, vec411wi1wi1, vec413, vec41i111, vec41i11i1, vec41i11w1, vec41i11wi1, vec41i1i11, vec41i1i1i1, vec41i1i1w1, vec41i1i1wi1, vec41i1w11, vec41i1w1i1, vec41i1w1w1, vec41i1w1wi1, vec41i1wi11, vec41i1wi1i1, vec41i1wi1w1, vec41i1wi1wi1, vec41w111, vec41w11i1, vec41w11w1, vec41w11wi1, vec41w1i11, vec41w1i1i1, vec41w1i1w1, vec41w1i1wi1, vec41w1w11, vec41w1w1i1, vec41w1w1w1, vec41w1w1wi1, vec41w1wi11, vec41w1wi1i1, vec41w1wi1w1, vec41w1wi1wi1, vec41wi111, vec41wi11i1, vec41wi11w1, vec41wi11wi1, vec41wi1i11, vec41wi1i1i1, vec41wi1i1w1, vec41wi1i1wi1, vec41wi1w11, vec41wi1w1i1, vec41wi1w1w1, vec41wi1w1wi1, vec41wi1wi11, vec41wi1wi1i1, vec41wi1wi1w1, vec41wi1wi1wi1, vec422, vec431, vec43w1, vec4i1, vec4i1111, vec4i111i1, vec4i111w1, vec4i111wi1, vec4i11i11, vec4i11i1i1, vec4i11i1w1, vec4i11i1wi1, vec4i11w11, vec4i11w1i1, vec4i11w1w1, vec4i11w1wi1, vec4i11wi11, vec4i11wi1i1, vec4i11wi1w1, vec4i11wi1wi1, vec4i1i111, vec4i1i11i1, vec4i1i11w1, vec4i1i11wi1, vec4i1i1i11, vec4i1i1i1i1, vec4i1i1i1w1, vec4i1i1i1wi1, vec4i1i1w11, vec4i1i1w1i1, vec4i1i1w1w1, vec4i1i1w1wi1, vec4i1i1wi11, vec4i1i1wi1i1, vec4i1i1wi1w1, vec4i1i1wi1wi1, vec4i1w111, vec4i1w11i1, vec4i1w11w1, vec4i1w11wi1, vec4i1w1i11, vec4i1w1i1i1, vec4i1w1i1w1, vec4i1w1i1wi1, vec4i1w1w11, vec4i1w1w1i1, vec4i1w1w1w1, vec4i1w1w1wi1, vec4i1w1wi11, vec4i1w1wi1i1, vec4i1w1wi1w1, vec4i1w1wi1wi1, vec4i1wi111, vec4i1wi11i1, vec4i1wi11w1, vec4i1wi11wi1, vec4i1wi1i11, vec4i1wi1i1i1, vec4i1wi1i1w1, vec4i1wi1i1wi1, vec4i1wi1w11, vec4i1wi1w1i1, vec4i1wi1w1w1, vec4i1wi1w1wi1, vec4i1wi1wi11, vec4i1wi1wi1i1, vec4i1wi1wi1w1, vec4i1wi1wi1wi1, vec4w1, vec4w1111, vec4w111i1, vec4w111w1, vec4w111wi1, vec4w11i11, vec4w11i1i1, vec4w11i1w1, vec4w11i1wi1, vec4w11w11, vec4w11w1i1, vec4w11w1w1, vec4w11w1wi1, vec4w11wi11, vec4w11wi1i1, vec4w11wi1w1, vec4w11wi1wi1, vec4w13, vec4w1i111, vec4w1i11i1, vec4w1i11w1, vec4w1i11wi1, vec4w1i1i11, vec4w1i1i1i1, vec4w1i1i1w1, vec4w1i1i1wi1, vec4w1i1w11, vec4w1i1w1i1, vec4w1i1w1w1, vec4w1i1w1wi1, vec4w1i1wi11, vec4w1i1wi1i1, vec4w1i1wi1w1, vec4w1i1wi1wi1, vec4w1w111, vec4w1w11i1, vec4w1w11w1, vec4w1w11wi1, vec4w1w1i11, vec4w1w1i1i1, vec4w1w1i1w1, vec4w1w1i1wi1, vec4w1w1w11, vec4w1w1w1i1, vec4w1w1w1w1, vec4w1w1w1wi1, vec4w1w1wi11, vec4w1w1wi1i1, vec4w1w1wi1w1, vec4w1w1wi1wi1, vec4w1wi111, vec4w1wi11i1, vec4w1wi11w1, vec4w1wi11wi1, vec4w1wi1i11, vec4w1wi1i1i1, vec4w1wi1i1w1, vec4w1wi1i1wi1, vec4w1wi1w11, vec4w1wi1w1i1, vec4w1wi1w1w1, vec4w1wi1w1wi1, vec4w1wi1wi11, vec4w1wi1wi1i1, vec4w1wi1wi1w1, vec4w1wi1wi1wi1, vec4wi1, vec4wi1111, vec4wi111i1, vec4wi111w1, vec4wi111wi1, vec4wi11i11, vec4wi11i1i1, vec4wi11i1w1, vec4wi11i1wi1, vec4wi11w11, vec4wi11w1i1, vec4wi11w1w1, vec4wi11w1wi1, vec4wi11wi11, vec4wi11wi1i1, vec4wi11wi1w1, vec4wi11wi1wi1, vec4wi1i111, vec4wi1i11i1, vec4wi1i11w1, vec4wi1i11wi1, vec4wi1i1i11, vec4wi1i1i1i1, vec4wi1i1i1w1, vec4wi1i1i1wi1, vec4wi1i1w11, vec4wi1i1w1i1, vec4wi1i1w1w1, vec4wi1i1w1wi1, vec4wi1i1wi11, vec4wi1i1wi1i1, vec4wi1i1wi1w1, vec4wi1i1wi1wi1, vec4wi1w111, vec4wi1w11i1, vec4wi1w11w1, vec4wi1w11wi1, vec4wi1w1i11, vec4wi1w1i1i1, vec4wi1w1i1w1, vec4wi1w1i1wi1, vec4wi1w1w11, vec4wi1w1w1i1, vec4wi1w1w1w1, vec4wi1w1w1wi1, vec4wi1w1wi11, vec4wi1w1wi1i1, vec4wi1w1wi1w1, vec4wi1w1wi1wi1, vec4wi1wi111, vec4wi1wi11i1, vec4wi1wi11w1, vec4wi1wi11wi1, vec4wi1wi1i11, vec4wi1wi1i1i1, vec4wi1wi1i1w1, vec4wi1wi1i1wi1, vec4wi1wi1w11, vec4wi1wi1w1i1, vec4wi1wi1w1w1, vec4wi1wi1w1wi1, vec4wi1wi1wi11, vec4wi1wi1wi1i1, vec4wi1wi1wi1w1, vec4wi1wi1wi1wi1
+@docs abs1, abs2, abs3, abs4, abs_, absd1, absd2, absd3, absd4, absf, absi1, absi2, absi3, absi4, abswd1, abswi1, acos_, acosh, asin_, asinh, atan2_, atan_, atanh, ceil, ceil1, ceil2, ceil3, ceil4, ceild1, ceild2, ceild3, ceild4, ceilf, ceilwd1, clamp111, clamp11f, clamp1f1, clamp1ff, clamp211, clamp21f, clamp222, clamp2f1, clamp2ff, clamp311, clamp31f, clamp333, clamp3f1, clamp3ff, clamp411, clamp41f, clamp444, clamp4f1, clamp4ff, clamp_, clampd1d1d1, clampd1d1wd1, clampd1wd1d1, clampd1wd1wd1, clampd2d1d1, clampd2d1wd1, clampd2d2d2, clampd2wd1d1, clampd2wd1wd1, clampd3d1d1, clampd3d1wd1, clampd3d3d3, clampd3wd1d1, clampd3wd1wd1, clampd4d1d1, clampd4d1wd1, clampd4d4d4, clampd4wd1d1, clampd4wd1wd1, clampf11, clampf1f, clampff1, clampfff, clampi1i1i1, clampi1i1wi1, clampi1wi1i1, clampi1wi1wi1, clampi2i1i1, clampi2i1wi1, clampi2i2i2, clampi2wi1i1, clampi2wi1wi1, clampi3i1i1, clampi3i1wi1, clampi3i3i3, clampi3wi1i1, clampi3wi1wi1, clampi4i1i1, clampi4i1wi1, clampi4i4i4, clampi4wi1i1, clampi4wi1wi1, clampu1u1u1, clampu1u1wu1, clampu1wu1u1, clampu1wu1wu1, clampu2u1u1, clampu2u1wu1, clampu2u2u2, clampu2wu1u1, clampu2wu1wu1, clampu3u1u1, clampu3u1wu1, clampu3u3u3, clampu3wu1u1, clampu3wu1wu1, clampu4u1u1, clampu4u1wu1, clampu4u4u4, clampu4wu1u1, clampu4wu1wu1, clampwd1d1d1, clampwd1d1wd1, clampwd1wd1d1, clampwd1wd1wd1, clampwi1i1i1, clampwi1i1wi1, clampwi1wi1i1, clampwi1wi1wi1, clampwu1u1u1, clampwu1u1wu1, clampwu1wu1u1, clampwu1wu1wu1, cos_, cosh, cross33, crossd3d3, dFdx, dFdxCoarse, dFdxFine, dFdy, dFdyCoarse, dFdyFine, degrees_, distance, distance11, distance1f, distance22, distance33, distance44, distanced1d1, distanced1wd1, distanced2d2, distanced3d3, distanced4d4, distancef1, distanceff, distancewd1d1, distancewd1wd1, dot, dot11, dot1f, dot22, dot33, dot44, dotd1d1, dotd1wd1, dotd2d2, dotd3d3, dotd4d4, dotf1, dotff, dotwd1d1, dotwd1wd1, exp, exp2, faceforward, faceforward111, faceforward11f, faceforward1f1, faceforward1ff, faceforward222, faceforward333, faceforward444, faceforwardd1d1d1, faceforwardd1d1wd1, faceforwardd1wd1d1, faceforwardd1wd1wd1, faceforwardd2d2d2, faceforwardd3d3d3, faceforwardd4d4d4, faceforwardf11, faceforwardf1f, faceforwardff1, faceforwardfff, faceforwardwd1d1d1, faceforwardwd1d1wd1, faceforwardwd1wd1d1, faceforwardwd1wd1wd1, floatBitsToInt1, floatBitsToInt2, floatBitsToInt3, floatBitsToInt4, floatBitsToIntf, floatBitsToUint1, floatBitsToUint2, floatBitsToUint3, floatBitsToUint4, floatBitsToUintf, floati1, floatwi1, floor1, floor2, floor3, floor4, floor_, floord1, floord2, floord3, floord4, floorf, floorwd1, fma, fma111, fma11f, fma1f1, fma1ff, fma222, fma333, fma444, fmad1d1d1, fmad1d1wd1, fmad1wd1d1, fmad1wd1wd1, fmad2d2d2, fmad3d3d3, fmad4d4d4, fmaf11, fmaf1f, fmaff1, fmafff, fmawd1d1d1, fmawd1d1wd1, fmawd1wd1d1, fmawd1wd1wd1, fract, fract1, fract2, fract3, fract4, fractd1, fractd2, fractd3, fractd4, fractf, fractwd1, frexp1oi1, frexp1owi1, frexp2oi2, frexp3oi3, frexp4oi4, frexpd1oi1, frexpd1owi1, frexpd2oi2, frexpd3oi3, frexpd4oi4, frexpfoi1, frexpfowi1, frexpwd1oi1, frexpwd1owi1, fwidth, fwidthCoarse, fwidthFine, int1, intBitsToFloati1, intBitsToFloati2, intBitsToFloati3, intBitsToFloati4, intBitsToFloatwi1, intf, inversesqrt, inversesqrt1, inversesqrt2, inversesqrt3, inversesqrt4, inversesqrtd1, inversesqrtd2, inversesqrtd3, inversesqrtd4, inversesqrtf, inversesqrtwd1, isinf1, isinf2, isinf3, isinf4, isinfd1, isinfd2, isinfd3, isinfd4, isinff, isinfwd1, isnan1, isnan2, isnan3, isnan4, isnand1, isnand2, isnand3, isnand4, isnanf, isnanwd1, ivec2i1i1, ivec2i1wi1, ivec2wi1i1, ivec2wi1wi1, ivec3i1i1i1, ivec3i1i1wi1, ivec3i1wi1i1, ivec3i1wi1wi1, ivec3wi1i1i1, ivec3wi1i1wi1, ivec3wi1wi1i1, ivec3wi1wi1wi1, ivec4i1i1i1i1, ivec4i1i1i1wi1, ivec4i1i1wi1i1, ivec4i1i1wi1wi1, ivec4i1wi1i1i1, ivec4i1wi1i1wi1, ivec4i1wi1wi1i1, ivec4i1wi1wi1wi1, ivec4wi1i1i1i1, ivec4wi1i1i1wi1, ivec4wi1i1wi1i1, ivec4wi1i1wi1wi1, ivec4wi1wi1i1i1, ivec4wi1wi1i1wi1, ivec4wi1wi1wi1i1, ivec4wi1wi1wi1wi1, ldexp1i1, ldexp1wi1, ldexp2i2, ldexp3i3, ldexp4i4, ldexpd1i1, ldexpd1wi1, ldexpd2i2, ldexpd3i3, ldexpd4i4, ldexpfi1, ldexpfwi1, ldexpwd1i1, ldexpwd1wi1, length, length1, length2, length3, length4, lengthd1, lengthd2, lengthd3, lengthd4, lengthf, lengthwd1, log, log2, mat21111, mat2111f, mat211f1, mat211ff, mat21f11, mat21f1f, mat21ff1, mat21fff, mat222, mat2f111, mat2f11f, mat2f1f1, mat2f1ff, mat2ff11, mat2ff1f, mat2fff1, mat2ffff, mat3111111111, mat311111111f, mat31111111f1, mat31111111ff, mat3111111f11, mat3111111f1f, mat3111111ff1, mat3111111fff, mat311111f111, mat311111f11f, mat311111f1f1, mat311111f1ff, mat311111ff11, mat311111ff1f, mat311111fff1, mat311111ffff, mat31111f1111, mat31111f111f, mat31111f11f1, mat31111f11ff, mat31111f1f11, mat31111f1f1f, mat31111f1ff1, mat31111f1fff, mat31111ff111, mat31111ff11f, mat31111ff1f1, mat31111ff1ff, mat31111fff11, mat31111fff1f, mat31111ffff1, mat31111fffff, mat3111f11111, mat3111f1111f, mat3111f111f1, mat3111f111ff, mat3111f11f11, mat3111f11f1f, mat3111f11ff1, mat3111f11fff, mat3111f1f111, mat3111f1f11f, mat3111f1f1f1, mat3111f1f1ff, mat3111f1ff11, mat3111f1ff1f, mat3111f1fff1, mat3111f1ffff, mat3111ff1111, mat3111ff111f, mat3111ff11f1, mat3111ff11ff, mat3111ff1f11, mat3111ff1f1f, mat3111ff1ff1, mat3111ff1fff, mat3111fff111, mat3111fff11f, mat3111fff1f1, mat3111fff1ff, mat3111ffff11, mat3111ffff1f, mat3111fffff1, mat3111ffffff, mat311f111111, mat311f11111f, mat311f1111f1, mat311f1111ff, mat311f111f11, mat311f111f1f, mat311f111ff1, mat311f111fff, mat311f11f111, mat311f11f11f, mat311f11f1f1, mat311f11f1ff, mat311f11ff11, mat311f11ff1f, mat311f11fff1, mat311f11ffff, mat311f1f1111, mat311f1f111f, mat311f1f11f1, mat311f1f11ff, mat311f1f1f11, mat311f1f1f1f, mat311f1f1ff1, mat311f1f1fff, mat311f1ff111, mat311f1ff11f, mat311f1ff1f1, mat311f1ff1ff, mat311f1fff11, mat311f1fff1f, mat311f1ffff1, mat311f1fffff, mat311ff11111, mat311ff1111f, mat311ff111f1, mat311ff111ff, mat311ff11f11, mat311ff11f1f, mat311ff11ff1, mat311ff11fff, mat311ff1f111, mat311ff1f11f, mat311ff1f1f1, mat311ff1f1ff, mat311ff1ff11, mat311ff1ff1f, mat311ff1fff1, mat311ff1ffff, mat311fff1111, mat311fff111f, mat311fff11f1, mat311fff11ff, mat311fff1f11, mat311fff1f1f, mat311fff1ff1, mat311fff1fff, mat311ffff111, mat311ffff11f, mat311ffff1f1, mat311ffff1ff, mat311fffff11, mat311fffff1f, mat311ffffff1, mat311fffffff, mat31f1111111, mat31f111111f, mat31f11111f1, mat31f11111ff, mat31f1111f11, mat31f1111f1f, mat31f1111ff1, mat31f1111fff, mat31f111f111, mat31f111f11f, mat31f111f1f1, mat31f111f1ff, mat31f111ff11, mat31f111ff1f, mat31f111fff1, mat31f111ffff, mat31f11f1111, mat31f11f111f, mat31f11f11f1, mat31f11f11ff, mat31f11f1f11, mat31f11f1f1f, mat31f11f1ff1, mat31f11f1fff, mat31f11ff111, mat31f11ff11f, mat31f11ff1f1, mat31f11ff1ff, mat31f11fff11, mat31f11fff1f, mat31f11ffff1, mat31f11fffff, mat31f1f11111, mat31f1f1111f, mat31f1f111f1, mat31f1f111ff, mat31f1f11f11, mat31f1f11f1f, mat31f1f11ff1, mat31f1f11fff, mat31f1f1f111, mat31f1f1f11f, mat31f1f1f1f1, mat31f1f1f1ff, mat31f1f1ff11, mat31f1f1ff1f, mat31f1f1fff1, mat31f1f1ffff, mat31f1ff1111, mat31f1ff111f, mat31f1ff11f1, mat31f1ff11ff, mat31f1ff1f11, mat31f1ff1f1f, mat31f1ff1ff1, mat31f1ff1fff, mat31f1fff111, mat31f1fff11f, mat31f1fff1f1, mat31f1fff1ff, mat31f1ffff11, mat31f1ffff1f, mat31f1fffff1, mat31f1ffffff, mat31ff111111, mat31ff11111f, mat31ff1111f1, mat31ff1111ff, mat31ff111f11, mat31ff111f1f, mat31ff111ff1, mat31ff111fff, mat31ff11f111, mat31ff11f11f, mat31ff11f1f1, mat31ff11f1ff, mat31ff11ff11, mat31ff11ff1f, mat31ff11fff1, mat31ff11ffff, mat31ff1f1111, mat31ff1f111f, mat31ff1f11f1, mat31ff1f11ff, mat31ff1f1f11, mat31ff1f1f1f, mat31ff1f1ff1, mat31ff1f1fff, mat31ff1ff111, mat31ff1ff11f, mat31ff1ff1f1, mat31ff1ff1ff, mat31ff1fff11, mat31ff1fff1f, mat31ff1ffff1, mat31ff1fffff, mat31fff11111, mat31fff1111f, mat31fff111f1, mat31fff111ff, mat31fff11f11, mat31fff11f1f, mat31fff11ff1, mat31fff11fff, mat31fff1f111, mat31fff1f11f, mat31fff1f1f1, mat31fff1f1ff, mat31fff1ff11, mat31fff1ff1f, mat31fff1fff1, mat31fff1ffff, mat31ffff1111, mat31ffff111f, mat31ffff11f1, mat31ffff11ff, mat31ffff1f11, mat31ffff1f1f, mat31ffff1ff1, mat31ffff1fff, mat31fffff111, mat31fffff11f, mat31fffff1f1, mat31fffff1ff, mat31ffffff11, mat31ffffff1f, mat31fffffff1, mat31ffffffff, mat3333, mat3f11111111, mat3f1111111f, mat3f111111f1, mat3f111111ff, mat3f11111f11, mat3f11111f1f, mat3f11111ff1, mat3f11111fff, mat3f1111f111, mat3f1111f11f, mat3f1111f1f1, mat3f1111f1ff, mat3f1111ff11, mat3f1111ff1f, mat3f1111fff1, mat3f1111ffff, mat3f111f1111, mat3f111f111f, mat3f111f11f1, mat3f111f11ff, mat3f111f1f11, mat3f111f1f1f, mat3f111f1ff1, mat3f111f1fff, mat3f111ff111, mat3f111ff11f, mat3f111ff1f1, mat3f111ff1ff, mat3f111fff11, mat3f111fff1f, mat3f111ffff1, mat3f111fffff, mat3f11f11111, mat3f11f1111f, mat3f11f111f1, mat3f11f111ff, mat3f11f11f11, mat3f11f11f1f, mat3f11f11ff1, mat3f11f11fff, mat3f11f1f111, mat3f11f1f11f, mat3f11f1f1f1, mat3f11f1f1ff, mat3f11f1ff11, mat3f11f1ff1f, mat3f11f1fff1, mat3f11f1ffff, mat3f11ff1111, mat3f11ff111f, mat3f11ff11f1, mat3f11ff11ff, mat3f11ff1f11, mat3f11ff1f1f, mat3f11ff1ff1, mat3f11ff1fff, mat3f11fff111, mat3f11fff11f, mat3f11fff1f1, mat3f11fff1ff, mat3f11ffff11, mat3f11ffff1f, mat3f11fffff1, mat3f11ffffff, mat3f1f111111, mat3f1f11111f, mat3f1f1111f1, mat3f1f1111ff, mat3f1f111f11, mat3f1f111f1f, mat3f1f111ff1, mat3f1f111fff, mat3f1f11f111, mat3f1f11f11f, mat3f1f11f1f1, mat3f1f11f1ff, mat3f1f11ff11, mat3f1f11ff1f, mat3f1f11fff1, mat3f1f11ffff, mat3f1f1f1111, mat3f1f1f111f, mat3f1f1f11f1, mat3f1f1f11ff, mat3f1f1f1f11, mat3f1f1f1f1f, mat3f1f1f1ff1, mat3f1f1f1fff, mat3f1f1ff111, mat3f1f1ff11f, mat3f1f1ff1f1, mat3f1f1ff1ff, mat3f1f1fff11, mat3f1f1fff1f, mat3f1f1ffff1, mat3f1f1fffff, mat3f1ff11111, mat3f1ff1111f, mat3f1ff111f1, mat3f1ff111ff, mat3f1ff11f11, mat3f1ff11f1f, mat3f1ff11ff1, mat3f1ff11fff, mat3f1ff1f111, mat3f1ff1f11f, mat3f1ff1f1f1, mat3f1ff1f1ff, mat3f1ff1ff11, mat3f1ff1ff1f, mat3f1ff1fff1, mat3f1ff1ffff, mat3f1fff1111, mat3f1fff111f, mat3f1fff11f1, mat3f1fff11ff, mat3f1fff1f11, mat3f1fff1f1f, mat3f1fff1ff1, mat3f1fff1fff, mat3f1ffff111, mat3f1ffff11f, mat3f1ffff1f1, mat3f1ffff1ff, mat3f1fffff11, mat3f1fffff1f, mat3f1ffffff1, mat3f1fffffff, mat3ff1111111, mat3ff111111f, mat3ff11111f1, mat3ff11111ff, mat3ff1111f11, mat3ff1111f1f, mat3ff1111ff1, mat3ff1111fff, mat3ff111f111, mat3ff111f11f, mat3ff111f1f1, mat3ff111f1ff, mat3ff111ff11, mat3ff111ff1f, mat3ff111fff1, mat3ff111ffff, mat3ff11f1111, mat3ff11f111f, mat3ff11f11f1, mat3ff11f11ff, mat3ff11f1f11, mat3ff11f1f1f, mat3ff11f1ff1, mat3ff11f1fff, mat3ff11ff111, mat3ff11ff11f, mat3ff11ff1f1, mat3ff11ff1ff, mat3ff11fff11, mat3ff11fff1f, mat3ff11ffff1, mat3ff11fffff, mat3ff1f11111, mat3ff1f1111f, mat3ff1f111f1, mat3ff1f111ff, mat3ff1f11f11, mat3ff1f11f1f, mat3ff1f11ff1, mat3ff1f11fff, mat3ff1f1f111, mat3ff1f1f11f, mat3ff1f1f1f1, mat3ff1f1f1ff, mat3ff1f1ff11, mat3ff1f1ff1f, mat3ff1f1fff1, mat3ff1f1ffff, mat3ff1ff1111, mat3ff1ff111f, mat3ff1ff11f1, mat3ff1ff11ff, mat3ff1ff1f11, mat3ff1ff1f1f, mat3ff1ff1ff1, mat3ff1ff1fff, mat3ff1fff111, mat3ff1fff11f, mat3ff1fff1f1, mat3ff1fff1ff, mat3ff1ffff11, mat3ff1ffff1f, mat3ff1fffff1, mat3ff1ffffff, mat3fff111111, mat3fff11111f, mat3fff1111f1, mat3fff1111ff, mat3fff111f11, mat3fff111f1f, mat3fff111ff1, mat3fff111fff, mat3fff11f111, mat3fff11f11f, mat3fff11f1f1, mat3fff11f1ff, mat3fff11ff11, mat3fff11ff1f, mat3fff11fff1, mat3fff11ffff, mat3fff1f1111, mat3fff1f111f, mat3fff1f11f1, mat3fff1f11ff, mat3fff1f1f11, mat3fff1f1f1f, mat3fff1f1ff1, mat3fff1f1fff, mat3fff1ff111, mat3fff1ff11f, mat3fff1ff1f1, mat3fff1ff1ff, mat3fff1fff11, mat3fff1fff1f, mat3fff1ffff1, mat3fff1fffff, mat3ffff11111, mat3ffff1111f, mat3ffff111f1, mat3ffff111ff, mat3ffff11f11, mat3ffff11f1f, mat3ffff11ff1, mat3ffff11fff, mat3ffff1f111, mat3ffff1f11f, mat3ffff1f1f1, mat3ffff1f1ff, mat3ffff1ff11, mat3ffff1ff1f, mat3ffff1fff1, mat3ffff1ffff, mat3fffff1111, mat3fffff111f, mat3fffff11f1, mat3fffff11ff, mat3fffff1f11, mat3fffff1f1f, mat3fffff1ff1, mat3fffff1fff, mat3ffffff111, mat3ffffff11f, mat3ffffff1f1, mat3ffffff1ff, mat3fffffff11, mat3fffffff1f, mat3ffffffff1, mat3fffffffff, mat44444, max11, max1f, max21, max22, max2f, max31, max33, max3f, max41, max44, max4f, max_, maxd1d1, maxd1wd1, maxd2d1, maxd2d2, maxd2wd1, maxd3d1, maxd3d3, maxd3wd1, maxd4d1, maxd4d4, maxd4wd1, maxf1, maxff, maxi1i1, maxi1wi1, maxi2i1, maxi2i2, maxi2wi1, maxi3i1, maxi3i3, maxi3wi1, maxi4i1, maxi4i4, maxi4wi1, maxu1u1, maxu1wu1, maxu2u1, maxu2u2, maxu2wu1, maxu3u1, maxu3u3, maxu3wu1, maxu4u1, maxu4u4, maxu4wu1, maxwd1d1, maxwd1wd1, maxwi1i1, maxwi1wi1, maxwu1u1, maxwu1wu1, min11, min1f, min21, min22, min2f, min31, min33, min3f, min41, min44, min4f, min_, mind1d1, mind1wd1, mind2d1, mind2d2, mind2wd1, mind3d1, mind3d3, mind3wd1, mind4d1, mind4d4, mind4wd1, minf1, minff, mini1i1, mini1wi1, mini2i1, mini2i2, mini2wi1, mini3i1, mini3i3, mini3wi1, mini4i1, mini4i4, mini4wi1, minu1u1, minu1wu1, minu2u1, minu2u2, minu2wu1, minu3u1, minu3u3, minu3wu1, minu4u1, minu4u4, minu4wu1, minwd1d1, minwd1wd1, minwi1i1, minwi1wi1, minwu1u1, minwu1wu1, mix, mix111, mix11f, mix1f1, mix1ff, mix221, mix222, mix22f, mix331, mix333, mix33f, mix441, mix444, mix44f, mixd1d1d1, mixd1d1wd1, mixd1wd1d1, mixd1wd1wd1, mixd2d2d1, mixd2d2d2, mixd2d2wd1, mixd3d3d1, mixd3d3d3, mixd3d3wd1, mixd4d4d1, mixd4d4d4, mixd4d4wd1, mixf11, mixf1f, mixff1, mixfff, mixwd1d1d1, mixwd1d1wd1, mixwd1wd1d1, mixwd1wd1wd1, mod, mod11, mod1f, mod21, mod22, mod2f, mod31, mod33, mod3f, mod41, mod44, mod4f, modd1d1, modd1wd1, modd2d1, modd2d2, modd2wd1, modd3d1, modd3d3, modd3wd1, modd4d1, modd4d4, modd4wd1, modf, modf1, modf1o1, modf1of, modf2o2, modf3o3, modf4o4, modfd1od1, modfd1owd1, modfd2od2, modfd3od3, modfd4od4, modff, modffo1, modffof, modfwd1od1, modfwd1owd1, modwd1d1, modwd1wd1, normalize, normalize1, normalize2, normalize3, normalize4, normalized1, normalized2, normalized3, normalized4, normalizef, normalizewd1, pow, radians_, reflect, reflect11, reflect1f, reflect22, reflect33, reflect44, reflectd1d1, reflectd1wd1, reflectd2d2, reflectd3d3, reflectd4d4, reflectf1, reflectff, reflectwd1d1, reflectwd1wd1, refract, refract111, refract11f, refract1f1, refract1ff, refract221, refract22f, refract331, refract33f, refract441, refract44f, refractd1d11, refractd1d1f, refractd1wd11, refractd1wd1f, refractd2d21, refractd2d2f, refractd3d31, refractd3d3f, refractd4d41, refractd4d4f, refractf11, refractf1f, refractff1, refractfff, refractwd1d11, refractwd1d1f, refractwd1wd11, refractwd1wd1f, round1, round2, round3, round4, roundEven, roundEven1, roundEven2, roundEven3, roundEven4, roundEvend1, roundEvend2, roundEvend3, roundEvend4, roundEvenf, roundEvenwd1, round_, roundd1, roundd2, roundd3, roundd4, roundf, roundwd1, sign, sign1, sign2, sign3, sign4, signd1, signd2, signd3, signd4, signf, signi1, signi2, signi3, signi4, signwd1, signwi1, sin_, sinh, smoothstep, smoothstep111, smoothstep112, smoothstep113, smoothstep114, smoothstep11f, smoothstep1f1, smoothstep1f2, smoothstep1f3, smoothstep1f4, smoothstep1ff, smoothstep222, smoothstep333, smoothstep444, smoothstepd1d1d1, smoothstepd1d1d2, smoothstepd1d1d3, smoothstepd1d1d4, smoothstepd1d1wd1, smoothstepd1wd1d1, smoothstepd1wd1d2, smoothstepd1wd1d3, smoothstepd1wd1d4, smoothstepd1wd1wd1, smoothstepd2d2d2, smoothstepd3d3d3, smoothstepd4d4d4, smoothstepf11, smoothstepf12, smoothstepf13, smoothstepf14, smoothstepf1f, smoothstepff1, smoothstepff2, smoothstepff3, smoothstepff4, smoothstepfff, smoothstepwd1d1d1, smoothstepwd1d1d2, smoothstepwd1d1d3, smoothstepwd1d1d4, smoothstepwd1d1wd1, smoothstepwd1wd1d1, smoothstepwd1wd1d2, smoothstepwd1wd1d3, smoothstepwd1wd1d4, smoothstepwd1wd1wd1, sqrt1, sqrt2, sqrt3, sqrt4, sqrt_, sqrtd1, sqrtd2, sqrtd3, sqrtd4, sqrtf, sqrtwd1, step, step11, step12, step13, step14, step1f, step22, step33, step44, stepd1d1, stepd1d2, stepd1d3, stepd1d4, stepd1wd1, stepd2d2, stepd3d3, stepd4d4, stepf1, stepf2, stepf3, stepf4, stepff, stepwd1d1, stepwd1d2, stepwd1d3, stepwd1d4, stepwd1wd1, tan_, tanh, trunc, trunc1, trunc2, trunc3, trunc4, truncd1, truncd2, truncd3, truncd4, truncf, truncwd1, uintBitsToFloatu1, uintBitsToFloatu2, uintBitsToFloatu3, uintBitsToFloatu4, uintBitsToFloatwu1, vec21, vec211, vec21f, vec21i1, vec21wi1, vec2f, vec2f1, vec2ff, vec2fi1, vec2fwi1, vec2i1, vec2i11, vec2i1f, vec2i1i1, vec2i1wi1, vec2wi1, vec2wi11, vec2wi1f, vec2wi1i1, vec2wi1wi1, vec31, vec3111, vec311f, vec311i1, vec311wi1, vec312, vec31f1, vec31ff, vec31fi1, vec31fwi1, vec31i11, vec31i1f, vec31i1i1, vec31i1wi1, vec31wi11, vec31wi1f, vec31wi1i1, vec31wi1wi1, vec321, vec32f, vec3f, vec3f11, vec3f1f, vec3f1i1, vec3f1wi1, vec3f2, vec3ff1, vec3fff, vec3ffi1, vec3ffwi1, vec3fi11, vec3fi1f, vec3fi1i1, vec3fi1wi1, vec3fwi11, vec3fwi1f, vec3fwi1i1, vec3fwi1wi1, vec3i1, vec3i111, vec3i11f, vec3i11i1, vec3i11wi1, vec3i1f1, vec3i1ff, vec3i1fi1, vec3i1fwi1, vec3i1i11, vec3i1i1f, vec3i1i1i1, vec3i1i1wi1, vec3i1wi11, vec3i1wi1f, vec3i1wi1i1, vec3i1wi1wi1, vec3wi1, vec3wi111, vec3wi11f, vec3wi11i1, vec3wi11wi1, vec3wi1f1, vec3wi1ff, vec3wi1fi1, vec3wi1fwi1, vec3wi1i11, vec3wi1i1f, vec3wi1i1i1, vec3wi1i1wi1, vec3wi1wi11, vec3wi1wi1f, vec3wi1wi1i1, vec3wi1wi1wi1, vec41, vec41111, vec4111f, vec4111i1, vec4111wi1, vec411f1, vec411ff, vec411fi1, vec411fwi1, vec411i11, vec411i1f, vec411i1i1, vec411i1wi1, vec411wi11, vec411wi1f, vec411wi1i1, vec411wi1wi1, vec413, vec41f11, vec41f1f, vec41f1i1, vec41f1wi1, vec41ff1, vec41fff, vec41ffi1, vec41ffwi1, vec41fi11, vec41fi1f, vec41fi1i1, vec41fi1wi1, vec41fwi11, vec41fwi1f, vec41fwi1i1, vec41fwi1wi1, vec41i111, vec41i11f, vec41i11i1, vec41i11wi1, vec41i1f1, vec41i1ff, vec41i1fi1, vec41i1fwi1, vec41i1i11, vec41i1i1f, vec41i1i1i1, vec41i1i1wi1, vec41i1wi11, vec41i1wi1f, vec41i1wi1i1, vec41i1wi1wi1, vec41wi111, vec41wi11f, vec41wi11i1, vec41wi11wi1, vec41wi1f1, vec41wi1ff, vec41wi1fi1, vec41wi1fwi1, vec41wi1i11, vec41wi1i1f, vec41wi1i1i1, vec41wi1i1wi1, vec41wi1wi11, vec41wi1wi1f, vec41wi1wi1i1, vec41wi1wi1wi1, vec422, vec431, vec43f, vec4f, vec4f111, vec4f11f, vec4f11i1, vec4f11wi1, vec4f1f1, vec4f1ff, vec4f1fi1, vec4f1fwi1, vec4f1i11, vec4f1i1f, vec4f1i1i1, vec4f1i1wi1, vec4f1wi11, vec4f1wi1f, vec4f1wi1i1, vec4f1wi1wi1, vec4f3, vec4ff11, vec4ff1f, vec4ff1i1, vec4ff1wi1, vec4fff1, vec4ffff, vec4fffi1, vec4fffwi1, vec4ffi11, vec4ffi1f, vec4ffi1i1, vec4ffi1wi1, vec4ffwi11, vec4ffwi1f, vec4ffwi1i1, vec4ffwi1wi1, vec4fi111, vec4fi11f, vec4fi11i1, vec4fi11wi1, vec4fi1f1, vec4fi1ff, vec4fi1fi1, vec4fi1fwi1, vec4fi1i11, vec4fi1i1f, vec4fi1i1i1, vec4fi1i1wi1, vec4fi1wi11, vec4fi1wi1f, vec4fi1wi1i1, vec4fi1wi1wi1, vec4fwi111, vec4fwi11f, vec4fwi11i1, vec4fwi11wi1, vec4fwi1f1, vec4fwi1ff, vec4fwi1fi1, vec4fwi1fwi1, vec4fwi1i11, vec4fwi1i1f, vec4fwi1i1i1, vec4fwi1i1wi1, vec4fwi1wi11, vec4fwi1wi1f, vec4fwi1wi1i1, vec4fwi1wi1wi1, vec4i1, vec4i1111, vec4i111f, vec4i111i1, vec4i111wi1, vec4i11f1, vec4i11ff, vec4i11fi1, vec4i11fwi1, vec4i11i11, vec4i11i1f, vec4i11i1i1, vec4i11i1wi1, vec4i11wi11, vec4i11wi1f, vec4i11wi1i1, vec4i11wi1wi1, vec4i1f11, vec4i1f1f, vec4i1f1i1, vec4i1f1wi1, vec4i1ff1, vec4i1fff, vec4i1ffi1, vec4i1ffwi1, vec4i1fi11, vec4i1fi1f, vec4i1fi1i1, vec4i1fi1wi1, vec4i1fwi11, vec4i1fwi1f, vec4i1fwi1i1, vec4i1fwi1wi1, vec4i1i111, vec4i1i11f, vec4i1i11i1, vec4i1i11wi1, vec4i1i1f1, vec4i1i1ff, vec4i1i1fi1, vec4i1i1fwi1, vec4i1i1i11, vec4i1i1i1f, vec4i1i1i1i1, vec4i1i1i1wi1, vec4i1i1wi11, vec4i1i1wi1f, vec4i1i1wi1i1, vec4i1i1wi1wi1, vec4i1wi111, vec4i1wi11f, vec4i1wi11i1, vec4i1wi11wi1, vec4i1wi1f1, vec4i1wi1ff, vec4i1wi1fi1, vec4i1wi1fwi1, vec4i1wi1i11, vec4i1wi1i1f, vec4i1wi1i1i1, vec4i1wi1i1wi1, vec4i1wi1wi11, vec4i1wi1wi1f, vec4i1wi1wi1i1, vec4i1wi1wi1wi1, vec4wi1, vec4wi1111, vec4wi111f, vec4wi111i1, vec4wi111wi1, vec4wi11f1, vec4wi11ff, vec4wi11fi1, vec4wi11fwi1, vec4wi11i11, vec4wi11i1f, vec4wi11i1i1, vec4wi11i1wi1, vec4wi11wi11, vec4wi11wi1f, vec4wi11wi1i1, vec4wi11wi1wi1, vec4wi1f11, vec4wi1f1f, vec4wi1f1i1, vec4wi1f1wi1, vec4wi1ff1, vec4wi1fff, vec4wi1ffi1, vec4wi1ffwi1, vec4wi1fi11, vec4wi1fi1f, vec4wi1fi1i1, vec4wi1fi1wi1, vec4wi1fwi11, vec4wi1fwi1f, vec4wi1fwi1i1, vec4wi1fwi1wi1, vec4wi1i111, vec4wi1i11f, vec4wi1i11i1, vec4wi1i11wi1, vec4wi1i1f1, vec4wi1i1ff, vec4wi1i1fi1, vec4wi1i1fwi1, vec4wi1i1i11, vec4wi1i1i1f, vec4wi1i1i1i1, vec4wi1i1i1wi1, vec4wi1i1wi11, vec4wi1i1wi1f, vec4wi1i1wi1i1, vec4wi1i1wi1wi1, vec4wi1wi111, vec4wi1wi11f, vec4wi1wi11i1, vec4wi1wi11wi1, vec4wi1wi1f1, vec4wi1wi1ff, vec4wi1wi1fi1, vec4wi1wi1fwi1, vec4wi1wi1i11, vec4wi1wi1i1f, vec4wi1wi1i1i1, vec4wi1wi1i1wi1, vec4wi1wi1wi11, vec4wi1wi1wi1f, vec4wi1wi1wi1i1, vec4wi1wi1wi1wi1
 
 -}
 
@@ -49,6 +49,11 @@ absd4 a =
     Glsl.unsafeCall1 "abs" [] a
 
 
+absf : Float -> Glsl.Expression Glsl.Float_
+absf a =
+    Glsl.unsafeCall1 "abs" [] (Glsl.float1 a)
+
+
 absi1 : Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Int_
 absi1 a =
     Glsl.unsafeCall1 "abs" [] a
@@ -67,11 +72,6 @@ absi3 a =
 absi4 : Glsl.Expression Glsl.IVec4 -> Glsl.Expression Glsl.IVec4
 absi4 a =
     Glsl.unsafeCall1 "abs" [] a
-
-
-absw1 : Float -> Glsl.Expression Glsl.Float_
-absw1 a =
-    Glsl.unsafeCall1 "abs" [] (Glsl.float1 a)
 
 
 abswd1 : Float -> Glsl.Expression Glsl.Double
@@ -124,8 +124,8 @@ ceild4 a =
     Glsl.unsafeCall1 "ceil" [] a
 
 
-ceilw1 : Float -> Glsl.Expression Glsl.Float_
-ceilw1 a =
+ceilf : Float -> Glsl.Expression Glsl.Float_
+ceilf a =
     Glsl.unsafeCall1 "ceil" [] (Glsl.float1 a)
 
 
@@ -148,26 +148,26 @@ clamp111 a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
 
 
-clamp11w1 :
+clamp11f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
-clamp11w1 a b c =
+clamp11f a b c =
     Glsl.unsafeCall3 "clamp" [] a b (Glsl.float1 c)
 
 
-clamp1w11 :
+clamp1f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
-clamp1w11 a b c =
+clamp1f1 a b c =
     Glsl.unsafeCall3 "clamp" [] a (Glsl.float1 b) c
 
 
-clamp1w1w1 : Glsl.Expression Glsl.Float_ -> Float -> Float -> Glsl.Expression Glsl.Float_
-clamp1w1w1 a b c =
+clamp1ff : Glsl.Expression Glsl.Float_ -> Float -> Float -> Glsl.Expression Glsl.Float_
+clamp1ff a b c =
     Glsl.unsafeCall3 "clamp" [] a (Glsl.float1 b) (Glsl.float1 c)
 
 
@@ -180,12 +180,12 @@ clamp211 a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
 
 
-clamp21w1 :
+clamp21f :
     Glsl.Expression Glsl.Vec2
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Vec2
-clamp21w1 a b c =
+clamp21f a b c =
     Glsl.unsafeCall3 "clamp" [] a b (Glsl.float1 c)
 
 
@@ -198,17 +198,17 @@ clamp222 a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
 
 
-clamp2w11 :
+clamp2f1 :
     Glsl.Expression Glsl.Vec2
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec2
-clamp2w11 a b c =
+clamp2f1 a b c =
     Glsl.unsafeCall3 "clamp" [] a (Glsl.float1 b) c
 
 
-clamp2w1w1 : Glsl.Expression Glsl.Vec2 -> Float -> Float -> Glsl.Expression Glsl.Vec2
-clamp2w1w1 a b c =
+clamp2ff : Glsl.Expression Glsl.Vec2 -> Float -> Float -> Glsl.Expression Glsl.Vec2
+clamp2ff a b c =
     Glsl.unsafeCall3 "clamp" [] a (Glsl.float1 b) (Glsl.float1 c)
 
 
@@ -221,12 +221,12 @@ clamp311 a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
 
 
-clamp31w1 :
+clamp31f :
     Glsl.Expression Glsl.Vec3
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Vec3
-clamp31w1 a b c =
+clamp31f a b c =
     Glsl.unsafeCall3 "clamp" [] a b (Glsl.float1 c)
 
 
@@ -239,17 +239,17 @@ clamp333 a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
 
 
-clamp3w11 :
+clamp3f1 :
     Glsl.Expression Glsl.Vec3
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec3
-clamp3w11 a b c =
+clamp3f1 a b c =
     Glsl.unsafeCall3 "clamp" [] a (Glsl.float1 b) c
 
 
-clamp3w1w1 : Glsl.Expression Glsl.Vec3 -> Float -> Float -> Glsl.Expression Glsl.Vec3
-clamp3w1w1 a b c =
+clamp3ff : Glsl.Expression Glsl.Vec3 -> Float -> Float -> Glsl.Expression Glsl.Vec3
+clamp3ff a b c =
     Glsl.unsafeCall3 "clamp" [] a (Glsl.float1 b) (Glsl.float1 c)
 
 
@@ -262,12 +262,12 @@ clamp411 a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
 
 
-clamp41w1 :
+clamp41f :
     Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Vec4
-clamp41w1 a b c =
+clamp41f a b c =
     Glsl.unsafeCall3 "clamp" [] a b (Glsl.float1 c)
 
 
@@ -280,17 +280,17 @@ clamp444 a b c =
     Glsl.unsafeCall3 "clamp" [] a b c
 
 
-clamp4w11 :
+clamp4f1 :
     Glsl.Expression Glsl.Vec4
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
-clamp4w11 a b c =
+clamp4f1 a b c =
     Glsl.unsafeCall3 "clamp" [] a (Glsl.float1 b) c
 
 
-clamp4w1w1 : Glsl.Expression Glsl.Vec4 -> Float -> Float -> Glsl.Expression Glsl.Vec4
-clamp4w1w1 a b c =
+clamp4ff : Glsl.Expression Glsl.Vec4 -> Float -> Float -> Glsl.Expression Glsl.Vec4
+clamp4ff a b c =
     Glsl.unsafeCall3 "clamp" [] a (Glsl.float1 b) (Glsl.float1 c)
 
 
@@ -447,6 +447,30 @@ clampd4wd1d1 a b c =
 clampd4wd1wd1 : Glsl.Expression Glsl.DVec4 -> Float -> Float -> Glsl.Expression Glsl.DVec4
 clampd4wd1wd1 a b c =
     Glsl.unsafeCall3 "clamp" [] a (Glsl.double1 b) (Glsl.double1 c)
+
+
+clampf11 :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+clampf11 a b c =
+    Glsl.unsafeCall3 "clamp" [] (Glsl.float1 a) b c
+
+
+clampf1f : Float -> Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
+clampf1f a b c =
+    Glsl.unsafeCall3 "clamp" [] (Glsl.float1 a) b (Glsl.float1 c)
+
+
+clampff1 : Float -> Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
+clampff1 a b c =
+    Glsl.unsafeCall3 "clamp" [] (Glsl.float1 a) (Glsl.float1 b) c
+
+
+clampfff : Float -> Float -> Float -> Glsl.Expression Glsl.Float_
+clampfff a b c =
+    Glsl.unsafeCall3 "clamp" [] (Glsl.float1 a) (Glsl.float1 b) (Glsl.float1 c)
 
 
 clampi1i1i1 :
@@ -759,30 +783,6 @@ clampu4wu1wu1 a b c =
     Glsl.unsafeCall3 "clamp" [] a (Glsl.uint1 b) (Glsl.uint1 c)
 
 
-clampw111 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-clampw111 a b c =
-    Glsl.unsafeCall3 "clamp" [] (Glsl.float1 a) b c
-
-
-clampw11w1 : Float -> Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
-clampw11w1 a b c =
-    Glsl.unsafeCall3 "clamp" [] (Glsl.float1 a) b (Glsl.float1 c)
-
-
-clampw1w11 : Float -> Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
-clampw1w11 a b c =
-    Glsl.unsafeCall3 "clamp" [] (Glsl.float1 a) (Glsl.float1 b) c
-
-
-clampw1w1w1 : Float -> Float -> Float -> Glsl.Expression Glsl.Float_
-clampw1w1w1 a b c =
-    Glsl.unsafeCall3 "clamp" [] (Glsl.float1 a) (Glsl.float1 b) (Glsl.float1 c)
-
-
 clampwd1d1d1 :
     Float
     -> Glsl.Expression Glsl.Double
@@ -884,8 +884,8 @@ distance11 a b =
     Glsl.unsafeCall2 "distance" [] a b
 
 
-distance1w1 : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
-distance1w1 a b =
+distance1f : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
+distance1f a b =
     Glsl.unsafeCall2 "distance" [] a (Glsl.float1 b)
 
 
@@ -950,13 +950,13 @@ distanced4d4 a b =
     Glsl.unsafeCall2 "distance" [] a b
 
 
-distancew11 : Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
-distancew11 a b =
+distancef1 : Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
+distancef1 a b =
     Glsl.unsafeCall2 "distance" [] (Glsl.float1 a) b
 
 
-distancew1w1 : Float -> Float -> Glsl.Expression Glsl.Float_
-distancew1w1 a b =
+distanceff : Float -> Float -> Glsl.Expression Glsl.Float_
+distanceff a b =
     Glsl.unsafeCall2 "distance" [] (Glsl.float1 a) (Glsl.float1 b)
 
 
@@ -986,8 +986,8 @@ dot11 a b =
     Glsl.unsafeCall2 "dot" [] a b
 
 
-dot1w1 : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
-dot1w1 a b =
+dot1f : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
+dot1f a b =
     Glsl.unsafeCall2 "dot" [] a (Glsl.float1 b)
 
 
@@ -1052,13 +1052,13 @@ dotd4d4 a b =
     Glsl.unsafeCall2 "dot" [] a b
 
 
-dotw11 : Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
-dotw11 a b =
+dotf1 : Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
+dotf1 a b =
     Glsl.unsafeCall2 "dot" [] (Glsl.float1 a) b
 
 
-dotw1w1 : Float -> Float -> Glsl.Expression Glsl.Float_
-dotw1w1 a b =
+dotff : Float -> Float -> Glsl.Expression Glsl.Float_
+dotff a b =
     Glsl.unsafeCall2 "dot" [] (Glsl.float1 a) (Glsl.float1 b)
 
 
@@ -1089,26 +1089,26 @@ faceforward111 a b c =
     Glsl.unsafeCall3 "faceforward" [] a b c
 
 
-faceforward11w1 :
+faceforward11f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
-faceforward11w1 a b c =
+faceforward11f a b c =
     Glsl.unsafeCall3 "faceforward" [] a b (Glsl.float1 c)
 
 
-faceforward1w11 :
+faceforward1f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
-faceforward1w11 a b c =
+faceforward1f1 a b c =
     Glsl.unsafeCall3 "faceforward" [] a (Glsl.float1 b) c
 
 
-faceforward1w1w1 : Glsl.Expression Glsl.Float_ -> Float -> Float -> Glsl.Expression Glsl.Float_
-faceforward1w1w1 a b c =
+faceforward1ff : Glsl.Expression Glsl.Float_ -> Float -> Float -> Glsl.Expression Glsl.Float_
+faceforward1ff a b c =
     Glsl.unsafeCall3 "faceforward" [] a (Glsl.float1 b) (Glsl.float1 c)
 
 
@@ -1198,27 +1198,27 @@ faceforwardd4d4d4 a b c =
     Glsl.unsafeCall3 "faceforward" [] a b c
 
 
-faceforwardw111 :
+faceforwardf11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
-faceforwardw111 a b c =
+faceforwardf11 a b c =
     Glsl.unsafeCall3 "faceforward" [] (Glsl.float1 a) b c
 
 
-faceforwardw11w1 : Float -> Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
-faceforwardw11w1 a b c =
+faceforwardf1f : Float -> Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
+faceforwardf1f a b c =
     Glsl.unsafeCall3 "faceforward" [] (Glsl.float1 a) b (Glsl.float1 c)
 
 
-faceforwardw1w11 : Float -> Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
-faceforwardw1w11 a b c =
+faceforwardff1 : Float -> Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
+faceforwardff1 a b c =
     Glsl.unsafeCall3 "faceforward" [] (Glsl.float1 a) (Glsl.float1 b) c
 
 
-faceforwardw1w1w1 : Float -> Float -> Float -> Glsl.Expression Glsl.Float_
-faceforwardw1w1w1 a b c =
+faceforwardfff : Float -> Float -> Float -> Glsl.Expression Glsl.Float_
+faceforwardfff a b c =
     Glsl.unsafeCall3
         "faceforward"
         []
@@ -1285,8 +1285,8 @@ floatBitsToInt4 a =
     Glsl.unsafeCall1 "floatBitsToInt" [] a
 
 
-floatBitsToIntw1 : Float -> Glsl.Expression Glsl.Int_
-floatBitsToIntw1 a =
+floatBitsToIntf : Float -> Glsl.Expression Glsl.Int_
+floatBitsToIntf a =
     Glsl.unsafeCall1 "floatBitsToInt" [] (Glsl.float1 a)
 
 
@@ -1310,8 +1310,8 @@ floatBitsToUint4 a =
     Glsl.unsafeCall1 "floatBitsToUint" [] a
 
 
-floatBitsToUintw1 : Float -> Glsl.Expression Glsl.Uint
-floatBitsToUintw1 a =
+floatBitsToUintf : Float -> Glsl.Expression Glsl.Uint
+floatBitsToUintf a =
     Glsl.unsafeCall1 "floatBitsToUint" [] (Glsl.float1 a)
 
 
@@ -1365,8 +1365,8 @@ floord4 a =
     Glsl.unsafeCall1 "floor" [] a
 
 
-floorw1 : Float -> Glsl.Expression Glsl.Float_
-floorw1 a =
+floorf : Float -> Glsl.Expression Glsl.Float_
+floorf a =
     Glsl.unsafeCall1 "floor" [] (Glsl.float1 a)
 
 
@@ -1384,26 +1384,26 @@ fma111 a b c =
     Glsl.unsafeCall3 "fma" [] a b c
 
 
-fma11w1 :
+fma11f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
-fma11w1 a b c =
+fma11f a b c =
     Glsl.unsafeCall3 "fma" [] a b (Glsl.float1 c)
 
 
-fma1w11 :
+fma1f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
-fma1w11 a b c =
+fma1f1 a b c =
     Glsl.unsafeCall3 "fma" [] a (Glsl.float1 b) c
 
 
-fma1w1w1 : Glsl.Expression Glsl.Float_ -> Float -> Float -> Glsl.Expression Glsl.Float_
-fma1w1w1 a b c =
+fma1ff : Glsl.Expression Glsl.Float_ -> Float -> Float -> Glsl.Expression Glsl.Float_
+fma1ff a b c =
     Glsl.unsafeCall3 "fma" [] a (Glsl.float1 b) (Glsl.float1 c)
 
 
@@ -1493,27 +1493,27 @@ fmad4d4d4 a b c =
     Glsl.unsafeCall3 "fma" [] a b c
 
 
-fmaw111 :
+fmaf11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
-fmaw111 a b c =
+fmaf11 a b c =
     Glsl.unsafeCall3 "fma" [] (Glsl.float1 a) b c
 
 
-fmaw11w1 : Float -> Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
-fmaw11w1 a b c =
+fmaf1f : Float -> Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
+fmaf1f a b c =
     Glsl.unsafeCall3 "fma" [] (Glsl.float1 a) b (Glsl.float1 c)
 
 
-fmaw1w11 : Float -> Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
-fmaw1w11 a b c =
+fmaff1 : Float -> Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
+fmaff1 a b c =
     Glsl.unsafeCall3 "fma" [] (Glsl.float1 a) (Glsl.float1 b) c
 
 
-fmaw1w1w1 : Float -> Float -> Float -> Glsl.Expression Glsl.Float_
-fmaw1w1w1 a b c =
+fmafff : Float -> Float -> Float -> Glsl.Expression Glsl.Float_
+fmafff a b c =
     Glsl.unsafeCall3 "fma" [] (Glsl.float1 a) (Glsl.float1 b) (Glsl.float1 c)
 
 
@@ -1590,8 +1590,8 @@ fractd4 a =
     Glsl.unsafeCall1 "fract" [] a
 
 
-fractw1 : Float -> Glsl.Expression Glsl.Float_
-fractw1 a =
+fractf : Float -> Glsl.Expression Glsl.Float_
+fractf a =
     Glsl.unsafeCall1 "fract" [] (Glsl.float1 a)
 
 
@@ -1679,13 +1679,13 @@ frexpd4oi4 a b =
     Glsl.unsafeCall2 "frexp" [] a b
 
 
-frexpw1oi1 : Float -> Glsl.Expression (Glsl.Out Glsl.Int_) -> Glsl.Expression Glsl.Float_
-frexpw1oi1 a b =
+frexpfoi1 : Float -> Glsl.Expression (Glsl.Out Glsl.Int_) -> Glsl.Expression Glsl.Float_
+frexpfoi1 a b =
     Glsl.unsafeCall2 "frexp" [] (Glsl.float1 a) b
 
 
-frexpw1owi1 : Float -> Int -> Glsl.Expression Glsl.Float_
-frexpw1owi1 a b =
+frexpfowi1 : Float -> Int -> Glsl.Expression Glsl.Float_
+frexpfowi1 a b =
     Glsl.unsafeCall2 "frexp" [] (Glsl.float1 a) (Glsl.int1 b)
 
 
@@ -1704,8 +1704,8 @@ int1 a =
     Glsl.unsafeCall1 "int" [] a
 
 
-intw1 : Float -> Glsl.Expression Glsl.Int_
-intw1 a =
+intf : Float -> Glsl.Expression Glsl.Int_
+intf a =
     Glsl.unsafeCall1 "int" [] (Glsl.float1 a)
 
 
@@ -1774,8 +1774,8 @@ inversesqrtd4 a =
     Glsl.unsafeCall1 "inversesqrt" [] a
 
 
-inversesqrtw1 : Float -> Glsl.Expression Glsl.Float_
-inversesqrtw1 a =
+inversesqrtf : Float -> Glsl.Expression Glsl.Float_
+inversesqrtf a =
     Glsl.unsafeCall1 "inversesqrt" [] (Glsl.float1 a)
 
 
@@ -1829,8 +1829,8 @@ isinfd4 a =
     Glsl.unsafeCall1 "isinf" [] a
 
 
-isinfw1 : Float -> Glsl.Expression Glsl.Bool_
-isinfw1 a =
+isinff : Float -> Glsl.Expression Glsl.Bool_
+isinff a =
     Glsl.unsafeCall1 "isinf" [] (Glsl.float1 a)
 
 
@@ -1879,8 +1879,8 @@ isnand4 a =
     Glsl.unsafeCall1 "isnan" [] a
 
 
-isnanw1 : Float -> Glsl.Expression Glsl.Bool_
-isnanw1 a =
+isnanf : Float -> Glsl.Expression Glsl.Bool_
+isnanf a =
     Glsl.unsafeCall1 "isnan" [] (Glsl.float1 a)
 
 
@@ -2183,13 +2183,13 @@ ldexpd4i4 a b =
     Glsl.unsafeCall2 "ldexp" [] a b
 
 
-ldexpw1i1 : Float -> Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Float_
-ldexpw1i1 a b =
+ldexpfi1 : Float -> Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Float_
+ldexpfi1 a b =
     Glsl.unsafeCall2 "ldexp" [] (Glsl.float1 a) b
 
 
-ldexpw1wi1 : Float -> Int -> Glsl.Expression Glsl.Float_
-ldexpw1wi1 a b =
+ldexpfwi1 : Float -> Int -> Glsl.Expression Glsl.Float_
+ldexpfwi1 a b =
     Glsl.unsafeCall2 "ldexp" [] (Glsl.float1 a) (Glsl.int1 b)
 
 
@@ -2243,8 +2243,8 @@ lengthd4 a =
     Glsl.unsafeCall1 "length" [] a
 
 
-lengthw1 : Float -> Glsl.Expression Glsl.Float_
-lengthw1 a =
+lengthf : Float -> Glsl.Expression Glsl.Float_
+lengthf a =
     Glsl.unsafeCall1 "length" [] (Glsl.float1 a)
 
 
@@ -2268,73 +2268,73 @@ mat21111 a b c d =
     Glsl.unsafeCall4 "mat2" [] a b c d
 
 
-mat2111w1 :
+mat2111f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat2
-mat2111w1 a b c d =
+mat2111f a b c d =
     Glsl.unsafeCall4 "mat2" [] a b c (Glsl.float1 d)
 
 
-mat211w11 :
+mat211f1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat2
-mat211w11 a b c d =
+mat211f1 a b c d =
     Glsl.unsafeCall4 "mat2" [] a b (Glsl.float1 c) d
 
 
-mat211w1w1 :
+mat211ff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat2
-mat211w1w1 a b c d =
+mat211ff a b c d =
     Glsl.unsafeCall4 "mat2" [] a b (Glsl.float1 c) (Glsl.float1 d)
 
 
-mat21w111 :
+mat21f11 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat2
-mat21w111 a b c d =
+mat21f11 a b c d =
     Glsl.unsafeCall4 "mat2" [] a (Glsl.float1 b) c d
 
 
-mat21w11w1 :
+mat21f1f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat2
-mat21w11w1 a b c d =
+mat21f1f a b c d =
     Glsl.unsafeCall4 "mat2" [] a (Glsl.float1 b) c (Glsl.float1 d)
 
 
-mat21w1w11 :
+mat21ff1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat2
-mat21w1w11 a b c d =
+mat21ff1 a b c d =
     Glsl.unsafeCall4 "mat2" [] a (Glsl.float1 b) (Glsl.float1 c) d
 
 
-mat21w1w1w1 :
+mat21fff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat2
-mat21w1w1w1 a b c d =
+mat21fff a b c d =
     Glsl.unsafeCall4 "mat2" [] a (Glsl.float1 b) (Glsl.float1 c) (Glsl.float1 d)
 
 
@@ -2346,78 +2346,78 @@ mat222 a b =
     Glsl.unsafeCall2 "mat2" [] a b
 
 
-mat2w1111 :
+mat2f111 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat2
-mat2w1111 a b c d =
+mat2f111 a b c d =
     Glsl.unsafeCall4 "mat2" [] (Glsl.float1 a) b c d
 
 
-mat2w111w1 :
+mat2f11f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat2
-mat2w111w1 a b c d =
+mat2f11f a b c d =
     Glsl.unsafeCall4 "mat2" [] (Glsl.float1 a) b c (Glsl.float1 d)
 
 
-mat2w11w11 :
+mat2f1f1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat2
-mat2w11w11 a b c d =
+mat2f1f1 a b c d =
     Glsl.unsafeCall4 "mat2" [] (Glsl.float1 a) b (Glsl.float1 c) d
 
 
-mat2w11w1w1 :
+mat2f1ff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat2
-mat2w11w1w1 a b c d =
+mat2f1ff a b c d =
     Glsl.unsafeCall4 "mat2" [] (Glsl.float1 a) b (Glsl.float1 c) (Glsl.float1 d)
 
 
-mat2w1w111 :
+mat2ff11 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat2
-mat2w1w111 a b c d =
+mat2ff11 a b c d =
     Glsl.unsafeCall4 "mat2" [] (Glsl.float1 a) (Glsl.float1 b) c d
 
 
-mat2w1w11w1 :
+mat2ff1f :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat2
-mat2w1w11w1 a b c d =
+mat2ff1f a b c d =
     Glsl.unsafeCall4 "mat2" [] (Glsl.float1 a) (Glsl.float1 b) c (Glsl.float1 d)
 
 
-mat2w1w1w11 :
+mat2fff1 :
     Float
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat2
-mat2w1w1w11 a b c d =
+mat2fff1 a b c d =
     Glsl.unsafeCall4 "mat2" [] (Glsl.float1 a) (Glsl.float1 b) (Glsl.float1 c) d
 
 
-mat2w1w1w1w1 : Float -> Float -> Float -> Float -> Glsl.Expression Glsl.Mat2
-mat2w1w1w1w1 a b c d =
+mat2ffff : Float -> Float -> Float -> Float -> Glsl.Expression Glsl.Mat2
+mat2ffff a b c d =
     Glsl.unsafeCall4
         "mat2"
         []
@@ -2442,7 +2442,7 @@ mat3111111111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c d e f g h i
 
 
-mat311111111w1 :
+mat311111111f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2453,11 +2453,11 @@ mat311111111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311111111w1 a b c d e f g h i =
+mat311111111f a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c d e f g h (Glsl.float1 i)
 
 
-mat31111111w11 :
+mat31111111f1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2468,11 +2468,11 @@ mat31111111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31111111w11 a b c d e f g h i =
+mat31111111f1 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c d e f g (Glsl.float1 h) i
 
 
-mat31111111w1w1 :
+mat31111111ff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2483,11 +2483,11 @@ mat31111111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31111111w1w1 a b c d e f g h i =
+mat31111111ff a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c d e f g (Glsl.float1 h) (Glsl.float1 i)
 
 
-mat3111111w111 :
+mat3111111f11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2498,11 +2498,11 @@ mat3111111w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111111w111 a b c d e f g h i =
+mat3111111f11 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c d e f (Glsl.float1 g) h i
 
 
-mat3111111w11w1 :
+mat3111111f1f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2513,11 +2513,11 @@ mat3111111w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111111w11w1 a b c d e f g h i =
+mat3111111f1f a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c d e f (Glsl.float1 g) h (Glsl.float1 i)
 
 
-mat3111111w1w11 :
+mat3111111ff1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2528,11 +2528,11 @@ mat3111111w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111111w1w11 a b c d e f g h i =
+mat3111111ff1 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c d e f (Glsl.float1 g) (Glsl.float1 h) i
 
 
-mat3111111w1w1w1 :
+mat3111111fff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2543,7 +2543,7 @@ mat3111111w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111111w1w1w1 a b c d e f g h i =
+mat3111111fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -2558,7 +2558,7 @@ mat3111111w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311111w1111 :
+mat311111f111 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2569,11 +2569,11 @@ mat311111w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311111w1111 a b c d e f g h i =
+mat311111f111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c d e (Glsl.float1 f) g h i
 
 
-mat311111w111w1 :
+mat311111f11f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2584,11 +2584,11 @@ mat311111w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311111w111w1 a b c d e f g h i =
+mat311111f11f a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c d e (Glsl.float1 f) g h (Glsl.float1 i)
 
 
-mat311111w11w11 :
+mat311111f1f1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2599,11 +2599,11 @@ mat311111w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311111w11w11 a b c d e f g h i =
+mat311111f1f1 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c d e (Glsl.float1 f) g (Glsl.float1 h) i
 
 
-mat311111w11w1w1 :
+mat311111f1ff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2614,7 +2614,7 @@ mat311111w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311111w11w1w1 a b c d e f g h i =
+mat311111f1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -2629,7 +2629,7 @@ mat311111w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311111w1w111 :
+mat311111ff11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2640,11 +2640,11 @@ mat311111w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311111w1w111 a b c d e f g h i =
+mat311111ff11 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c d e (Glsl.float1 f) (Glsl.float1 g) h i
 
 
-mat311111w1w11w1 :
+mat311111ff1f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2655,7 +2655,7 @@ mat311111w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311111w1w11w1 a b c d e f g h i =
+mat311111ff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -2670,7 +2670,7 @@ mat311111w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311111w1w1w11 :
+mat311111fff1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2681,7 +2681,7 @@ mat311111w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311111w1w1w11 a b c d e f g h i =
+mat311111fff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -2696,7 +2696,7 @@ mat311111w1w1w11 a b c d e f g h i =
         i
 
 
-mat311111w1w1w1w1 :
+mat311111ffff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2707,7 +2707,7 @@ mat311111w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311111w1w1w1w1 a b c d e f g h i =
+mat311111ffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -2722,7 +2722,7 @@ mat311111w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31111w11111 :
+mat31111f1111 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2733,11 +2733,11 @@ mat31111w11111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31111w11111 a b c d e f g h i =
+mat31111f1111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c d (Glsl.float1 e) f g h i
 
 
-mat31111w1111w1 :
+mat31111f111f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2748,11 +2748,11 @@ mat31111w1111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31111w1111w1 a b c d e f g h i =
+mat31111f111f a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c d (Glsl.float1 e) f g h (Glsl.float1 i)
 
 
-mat31111w111w11 :
+mat31111f11f1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2763,11 +2763,11 @@ mat31111w111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31111w111w11 a b c d e f g h i =
+mat31111f11f1 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c d (Glsl.float1 e) f g (Glsl.float1 h) i
 
 
-mat31111w111w1w1 :
+mat31111f11ff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2778,7 +2778,7 @@ mat31111w111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31111w111w1w1 a b c d e f g h i =
+mat31111f11ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -2793,7 +2793,7 @@ mat31111w111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31111w11w111 :
+mat31111f1f11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2804,11 +2804,11 @@ mat31111w11w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31111w11w111 a b c d e f g h i =
+mat31111f1f11 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c d (Glsl.float1 e) f (Glsl.float1 g) h i
 
 
-mat31111w11w11w1 :
+mat31111f1f1f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2819,7 +2819,7 @@ mat31111w11w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31111w11w11w1 a b c d e f g h i =
+mat31111f1f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -2834,7 +2834,7 @@ mat31111w11w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31111w11w1w11 :
+mat31111f1ff1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2845,7 +2845,7 @@ mat31111w11w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31111w11w1w11 a b c d e f g h i =
+mat31111f1ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -2860,7 +2860,7 @@ mat31111w11w1w11 a b c d e f g h i =
         i
 
 
-mat31111w11w1w1w1 :
+mat31111f1fff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2871,7 +2871,7 @@ mat31111w11w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31111w11w1w1w1 a b c d e f g h i =
+mat31111f1fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -2886,7 +2886,7 @@ mat31111w11w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31111w1w1111 :
+mat31111ff111 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2897,11 +2897,11 @@ mat31111w1w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31111w1w1111 a b c d e f g h i =
+mat31111ff111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c d (Glsl.float1 e) (Glsl.float1 f) g h i
 
 
-mat31111w1w111w1 :
+mat31111ff11f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2912,7 +2912,7 @@ mat31111w1w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31111w1w111w1 a b c d e f g h i =
+mat31111ff11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -2927,7 +2927,7 @@ mat31111w1w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31111w1w11w11 :
+mat31111ff1f1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2938,7 +2938,7 @@ mat31111w1w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31111w1w11w11 a b c d e f g h i =
+mat31111ff1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -2953,7 +2953,7 @@ mat31111w1w11w11 a b c d e f g h i =
         i
 
 
-mat31111w1w11w1w1 :
+mat31111ff1ff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2964,7 +2964,7 @@ mat31111w1w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31111w1w11w1w1 a b c d e f g h i =
+mat31111ff1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -2979,7 +2979,7 @@ mat31111w1w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31111w1w1w111 :
+mat31111fff11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -2990,7 +2990,7 @@ mat31111w1w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31111w1w1w111 a b c d e f g h i =
+mat31111fff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3005,7 +3005,7 @@ mat31111w1w1w111 a b c d e f g h i =
         i
 
 
-mat31111w1w1w11w1 :
+mat31111fff1f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3016,7 +3016,7 @@ mat31111w1w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31111w1w1w11w1 a b c d e f g h i =
+mat31111fff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3031,7 +3031,7 @@ mat31111w1w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31111w1w1w1w11 :
+mat31111ffff1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3042,7 +3042,7 @@ mat31111w1w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31111w1w1w1w11 a b c d e f g h i =
+mat31111ffff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3057,7 +3057,7 @@ mat31111w1w1w1w11 a b c d e f g h i =
         i
 
 
-mat31111w1w1w1w1w1 :
+mat31111fffff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3068,7 +3068,7 @@ mat31111w1w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31111w1w1w1w1w1 a b c d e f g h i =
+mat31111fffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3083,7 +3083,7 @@ mat31111w1w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3111w111111 :
+mat3111f11111 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3094,11 +3094,11 @@ mat3111w111111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111w111111 a b c d e f g h i =
+mat3111f11111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c (Glsl.float1 d) e f g h i
 
 
-mat3111w11111w1 :
+mat3111f1111f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3109,11 +3109,11 @@ mat3111w11111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111w11111w1 a b c d e f g h i =
+mat3111f1111f a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c (Glsl.float1 d) e f g h (Glsl.float1 i)
 
 
-mat3111w1111w11 :
+mat3111f111f1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3124,11 +3124,11 @@ mat3111w1111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111w1111w11 a b c d e f g h i =
+mat3111f111f1 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c (Glsl.float1 d) e f g (Glsl.float1 h) i
 
 
-mat3111w1111w1w1 :
+mat3111f111ff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3139,7 +3139,7 @@ mat3111w1111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111w1111w1w1 a b c d e f g h i =
+mat3111f111ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3154,7 +3154,7 @@ mat3111w1111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3111w111w111 :
+mat3111f11f11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3165,11 +3165,11 @@ mat3111w111w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111w111w111 a b c d e f g h i =
+mat3111f11f11 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c (Glsl.float1 d) e f (Glsl.float1 g) h i
 
 
-mat3111w111w11w1 :
+mat3111f11f1f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3180,7 +3180,7 @@ mat3111w111w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111w111w11w1 a b c d e f g h i =
+mat3111f11f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3195,7 +3195,7 @@ mat3111w111w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3111w111w1w11 :
+mat3111f11ff1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3206,7 +3206,7 @@ mat3111w111w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111w111w1w11 a b c d e f g h i =
+mat3111f11ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3221,7 +3221,7 @@ mat3111w111w1w11 a b c d e f g h i =
         i
 
 
-mat3111w111w1w1w1 :
+mat3111f11fff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3232,7 +3232,7 @@ mat3111w111w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111w111w1w1w1 a b c d e f g h i =
+mat3111f11fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3247,7 +3247,7 @@ mat3111w111w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3111w11w1111 :
+mat3111f1f111 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3258,11 +3258,11 @@ mat3111w11w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111w11w1111 a b c d e f g h i =
+mat3111f1f111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c (Glsl.float1 d) e (Glsl.float1 f) g h i
 
 
-mat3111w11w111w1 :
+mat3111f1f11f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3273,7 +3273,7 @@ mat3111w11w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111w11w111w1 a b c d e f g h i =
+mat3111f1f11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3288,7 +3288,7 @@ mat3111w11w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3111w11w11w11 :
+mat3111f1f1f1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3299,7 +3299,7 @@ mat3111w11w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111w11w11w11 a b c d e f g h i =
+mat3111f1f1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3314,7 +3314,7 @@ mat3111w11w11w11 a b c d e f g h i =
         i
 
 
-mat3111w11w11w1w1 :
+mat3111f1f1ff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3325,7 +3325,7 @@ mat3111w11w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111w11w11w1w1 a b c d e f g h i =
+mat3111f1f1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3340,7 +3340,7 @@ mat3111w11w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3111w11w1w111 :
+mat3111f1ff11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3351,7 +3351,7 @@ mat3111w11w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111w11w1w111 a b c d e f g h i =
+mat3111f1ff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3366,7 +3366,7 @@ mat3111w11w1w111 a b c d e f g h i =
         i
 
 
-mat3111w11w1w11w1 :
+mat3111f1ff1f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3377,7 +3377,7 @@ mat3111w11w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111w11w1w11w1 a b c d e f g h i =
+mat3111f1ff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3392,7 +3392,7 @@ mat3111w11w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3111w11w1w1w11 :
+mat3111f1fff1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3403,7 +3403,7 @@ mat3111w11w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111w11w1w1w11 a b c d e f g h i =
+mat3111f1fff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3418,7 +3418,7 @@ mat3111w11w1w1w11 a b c d e f g h i =
         i
 
 
-mat3111w11w1w1w1w1 :
+mat3111f1ffff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3429,7 +3429,7 @@ mat3111w11w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111w11w1w1w1w1 a b c d e f g h i =
+mat3111f1ffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3444,7 +3444,7 @@ mat3111w11w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3111w1w11111 :
+mat3111ff1111 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3455,11 +3455,11 @@ mat3111w1w11111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111w1w11111 a b c d e f g h i =
+mat3111ff1111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b c (Glsl.float1 d) (Glsl.float1 e) f g h i
 
 
-mat3111w1w1111w1 :
+mat3111ff111f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3470,7 +3470,7 @@ mat3111w1w1111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111w1w1111w1 a b c d e f g h i =
+mat3111ff111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3485,7 +3485,7 @@ mat3111w1w1111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3111w1w111w11 :
+mat3111ff11f1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3496,7 +3496,7 @@ mat3111w1w111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111w1w111w11 a b c d e f g h i =
+mat3111ff11f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3511,7 +3511,7 @@ mat3111w1w111w11 a b c d e f g h i =
         i
 
 
-mat3111w1w111w1w1 :
+mat3111ff11ff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3522,7 +3522,7 @@ mat3111w1w111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111w1w111w1w1 a b c d e f g h i =
+mat3111ff11ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3537,7 +3537,7 @@ mat3111w1w111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3111w1w11w111 :
+mat3111ff1f11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3548,7 +3548,7 @@ mat3111w1w11w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111w1w11w111 a b c d e f g h i =
+mat3111ff1f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3563,7 +3563,7 @@ mat3111w1w11w111 a b c d e f g h i =
         i
 
 
-mat3111w1w11w11w1 :
+mat3111ff1f1f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3574,7 +3574,7 @@ mat3111w1w11w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111w1w11w11w1 a b c d e f g h i =
+mat3111ff1f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3589,7 +3589,7 @@ mat3111w1w11w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3111w1w11w1w11 :
+mat3111ff1ff1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3600,7 +3600,7 @@ mat3111w1w11w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111w1w11w1w11 a b c d e f g h i =
+mat3111ff1ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3615,7 +3615,7 @@ mat3111w1w11w1w11 a b c d e f g h i =
         i
 
 
-mat3111w1w11w1w1w1 :
+mat3111ff1fff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3626,7 +3626,7 @@ mat3111w1w11w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111w1w11w1w1w1 a b c d e f g h i =
+mat3111ff1fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3641,7 +3641,7 @@ mat3111w1w11w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3111w1w1w1111 :
+mat3111fff111 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3652,7 +3652,7 @@ mat3111w1w1w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111w1w1w1111 a b c d e f g h i =
+mat3111fff111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3667,7 +3667,7 @@ mat3111w1w1w1111 a b c d e f g h i =
         i
 
 
-mat3111w1w1w111w1 :
+mat3111fff11f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3678,7 +3678,7 @@ mat3111w1w1w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111w1w1w111w1 a b c d e f g h i =
+mat3111fff11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3693,7 +3693,7 @@ mat3111w1w1w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3111w1w1w11w11 :
+mat3111fff1f1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3704,7 +3704,7 @@ mat3111w1w1w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111w1w1w11w11 a b c d e f g h i =
+mat3111fff1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3719,7 +3719,7 @@ mat3111w1w1w11w11 a b c d e f g h i =
         i
 
 
-mat3111w1w1w11w1w1 :
+mat3111fff1ff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3730,7 +3730,7 @@ mat3111w1w1w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111w1w1w11w1w1 a b c d e f g h i =
+mat3111fff1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3745,7 +3745,7 @@ mat3111w1w1w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3111w1w1w1w111 :
+mat3111ffff11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3756,7 +3756,7 @@ mat3111w1w1w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111w1w1w1w111 a b c d e f g h i =
+mat3111ffff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3771,7 +3771,7 @@ mat3111w1w1w1w111 a b c d e f g h i =
         i
 
 
-mat3111w1w1w1w11w1 :
+mat3111ffff1f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3782,7 +3782,7 @@ mat3111w1w1w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111w1w1w1w11w1 a b c d e f g h i =
+mat3111ffff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3797,7 +3797,7 @@ mat3111w1w1w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3111w1w1w1w1w11 :
+mat3111fffff1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3808,7 +3808,7 @@ mat3111w1w1w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3111w1w1w1w1w11 a b c d e f g h i =
+mat3111fffff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3823,7 +3823,7 @@ mat3111w1w1w1w1w11 a b c d e f g h i =
         i
 
 
-mat3111w1w1w1w1w1w1 :
+mat3111ffffff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -3834,7 +3834,7 @@ mat3111w1w1w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3111w1w1w1w1w1w1 a b c d e f g h i =
+mat3111ffffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3849,7 +3849,7 @@ mat3111w1w1w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1111111 :
+mat311f111111 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -3860,11 +3860,11 @@ mat311w1111111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1111111 a b c d e f g h i =
+mat311f111111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b (Glsl.float1 c) d e f g h i
 
 
-mat311w111111w1 :
+mat311f11111f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -3875,11 +3875,11 @@ mat311w111111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w111111w1 a b c d e f g h i =
+mat311f11111f a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b (Glsl.float1 c) d e f g h (Glsl.float1 i)
 
 
-mat311w11111w11 :
+mat311f1111f1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -3890,11 +3890,11 @@ mat311w11111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w11111w11 a b c d e f g h i =
+mat311f1111f1 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b (Glsl.float1 c) d e f g (Glsl.float1 h) i
 
 
-mat311w11111w1w1 :
+mat311f1111ff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -3905,7 +3905,7 @@ mat311w11111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w11111w1w1 a b c d e f g h i =
+mat311f1111ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3920,7 +3920,7 @@ mat311w11111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1111w111 :
+mat311f111f11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -3931,11 +3931,11 @@ mat311w1111w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1111w111 a b c d e f g h i =
+mat311f111f11 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b (Glsl.float1 c) d e f (Glsl.float1 g) h i
 
 
-mat311w1111w11w1 :
+mat311f111f1f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -3946,7 +3946,7 @@ mat311w1111w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1111w11w1 a b c d e f g h i =
+mat311f111f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3961,7 +3961,7 @@ mat311w1111w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1111w1w11 :
+mat311f111ff1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -3972,7 +3972,7 @@ mat311w1111w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1111w1w11 a b c d e f g h i =
+mat311f111ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -3987,7 +3987,7 @@ mat311w1111w1w11 a b c d e f g h i =
         i
 
 
-mat311w1111w1w1w1 :
+mat311f111fff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -3998,7 +3998,7 @@ mat311w1111w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1111w1w1w1 a b c d e f g h i =
+mat311f111fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4013,7 +4013,7 @@ mat311w1111w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w111w1111 :
+mat311f11f111 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4024,11 +4024,11 @@ mat311w111w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w111w1111 a b c d e f g h i =
+mat311f11f111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b (Glsl.float1 c) d e (Glsl.float1 f) g h i
 
 
-mat311w111w111w1 :
+mat311f11f11f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4039,7 +4039,7 @@ mat311w111w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w111w111w1 a b c d e f g h i =
+mat311f11f11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4054,7 +4054,7 @@ mat311w111w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w111w11w11 :
+mat311f11f1f1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4065,7 +4065,7 @@ mat311w111w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w111w11w11 a b c d e f g h i =
+mat311f11f1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4080,7 +4080,7 @@ mat311w111w11w11 a b c d e f g h i =
         i
 
 
-mat311w111w11w1w1 :
+mat311f11f1ff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4091,7 +4091,7 @@ mat311w111w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w111w11w1w1 a b c d e f g h i =
+mat311f11f1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4106,7 +4106,7 @@ mat311w111w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w111w1w111 :
+mat311f11ff11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4117,7 +4117,7 @@ mat311w111w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w111w1w111 a b c d e f g h i =
+mat311f11ff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4132,7 +4132,7 @@ mat311w111w1w111 a b c d e f g h i =
         i
 
 
-mat311w111w1w11w1 :
+mat311f11ff1f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4143,7 +4143,7 @@ mat311w111w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w111w1w11w1 a b c d e f g h i =
+mat311f11ff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4158,7 +4158,7 @@ mat311w111w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w111w1w1w11 :
+mat311f11fff1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4169,7 +4169,7 @@ mat311w111w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w111w1w1w11 a b c d e f g h i =
+mat311f11fff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4184,7 +4184,7 @@ mat311w111w1w1w11 a b c d e f g h i =
         i
 
 
-mat311w111w1w1w1w1 :
+mat311f11ffff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4195,7 +4195,7 @@ mat311w111w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w111w1w1w1w1 a b c d e f g h i =
+mat311f11ffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4210,7 +4210,7 @@ mat311w111w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w11w11111 :
+mat311f1f1111 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4221,11 +4221,11 @@ mat311w11w11111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w11w11111 a b c d e f g h i =
+mat311f1f1111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b (Glsl.float1 c) d (Glsl.float1 e) f g h i
 
 
-mat311w11w1111w1 :
+mat311f1f111f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4236,7 +4236,7 @@ mat311w11w1111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w11w1111w1 a b c d e f g h i =
+mat311f1f111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4251,7 +4251,7 @@ mat311w11w1111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w11w111w11 :
+mat311f1f11f1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4262,7 +4262,7 @@ mat311w11w111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w11w111w11 a b c d e f g h i =
+mat311f1f11f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4277,7 +4277,7 @@ mat311w11w111w11 a b c d e f g h i =
         i
 
 
-mat311w11w111w1w1 :
+mat311f1f11ff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4288,7 +4288,7 @@ mat311w11w111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w11w111w1w1 a b c d e f g h i =
+mat311f1f11ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4303,7 +4303,7 @@ mat311w11w111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w11w11w111 :
+mat311f1f1f11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4314,7 +4314,7 @@ mat311w11w11w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w11w11w111 a b c d e f g h i =
+mat311f1f1f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4329,7 +4329,7 @@ mat311w11w11w111 a b c d e f g h i =
         i
 
 
-mat311w11w11w11w1 :
+mat311f1f1f1f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4340,7 +4340,7 @@ mat311w11w11w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w11w11w11w1 a b c d e f g h i =
+mat311f1f1f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4355,7 +4355,7 @@ mat311w11w11w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w11w11w1w11 :
+mat311f1f1ff1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4366,7 +4366,7 @@ mat311w11w11w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w11w11w1w11 a b c d e f g h i =
+mat311f1f1ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4381,7 +4381,7 @@ mat311w11w11w1w11 a b c d e f g h i =
         i
 
 
-mat311w11w11w1w1w1 :
+mat311f1f1fff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4392,7 +4392,7 @@ mat311w11w11w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w11w11w1w1w1 a b c d e f g h i =
+mat311f1f1fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4407,7 +4407,7 @@ mat311w11w11w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w11w1w1111 :
+mat311f1ff111 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4418,7 +4418,7 @@ mat311w11w1w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w11w1w1111 a b c d e f g h i =
+mat311f1ff111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4433,7 +4433,7 @@ mat311w11w1w1111 a b c d e f g h i =
         i
 
 
-mat311w11w1w111w1 :
+mat311f1ff11f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4444,7 +4444,7 @@ mat311w11w1w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w11w1w111w1 a b c d e f g h i =
+mat311f1ff11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4459,7 +4459,7 @@ mat311w11w1w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w11w1w11w11 :
+mat311f1ff1f1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4470,7 +4470,7 @@ mat311w11w1w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w11w1w11w11 a b c d e f g h i =
+mat311f1ff1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4485,7 +4485,7 @@ mat311w11w1w11w11 a b c d e f g h i =
         i
 
 
-mat311w11w1w11w1w1 :
+mat311f1ff1ff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4496,7 +4496,7 @@ mat311w11w1w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w11w1w11w1w1 a b c d e f g h i =
+mat311f1ff1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4511,7 +4511,7 @@ mat311w11w1w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w11w1w1w111 :
+mat311f1fff11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4522,7 +4522,7 @@ mat311w11w1w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w11w1w1w111 a b c d e f g h i =
+mat311f1fff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4537,7 +4537,7 @@ mat311w11w1w1w111 a b c d e f g h i =
         i
 
 
-mat311w11w1w1w11w1 :
+mat311f1fff1f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4548,7 +4548,7 @@ mat311w11w1w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w11w1w1w11w1 a b c d e f g h i =
+mat311f1fff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4563,7 +4563,7 @@ mat311w11w1w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w11w1w1w1w11 :
+mat311f1ffff1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4574,7 +4574,7 @@ mat311w11w1w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w11w1w1w1w11 a b c d e f g h i =
+mat311f1ffff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4589,7 +4589,7 @@ mat311w11w1w1w1w11 a b c d e f g h i =
         i
 
 
-mat311w11w1w1w1w1w1 :
+mat311f1fffff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4600,7 +4600,7 @@ mat311w11w1w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w11w1w1w1w1w1 a b c d e f g h i =
+mat311f1fffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4615,7 +4615,7 @@ mat311w11w1w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1w111111 :
+mat311ff11111 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4626,11 +4626,11 @@ mat311w1w111111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1w111111 a b c d e f g h i =
+mat311ff11111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a b (Glsl.float1 c) (Glsl.float1 d) e f g h i
 
 
-mat311w1w11111w1 :
+mat311ff1111f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4641,7 +4641,7 @@ mat311w1w11111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1w11111w1 a b c d e f g h i =
+mat311ff1111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4656,7 +4656,7 @@ mat311w1w11111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1w1111w11 :
+mat311ff111f1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4667,7 +4667,7 @@ mat311w1w1111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1111w11 a b c d e f g h i =
+mat311ff111f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4682,7 +4682,7 @@ mat311w1w1111w11 a b c d e f g h i =
         i
 
 
-mat311w1w1111w1w1 :
+mat311ff111ff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4693,7 +4693,7 @@ mat311w1w1111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1111w1w1 a b c d e f g h i =
+mat311ff111ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4708,7 +4708,7 @@ mat311w1w1111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1w111w111 :
+mat311ff11f11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4719,7 +4719,7 @@ mat311w1w111w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1w111w111 a b c d e f g h i =
+mat311ff11f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4734,7 +4734,7 @@ mat311w1w111w111 a b c d e f g h i =
         i
 
 
-mat311w1w111w11w1 :
+mat311ff11f1f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4745,7 +4745,7 @@ mat311w1w111w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1w111w11w1 a b c d e f g h i =
+mat311ff11f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4760,7 +4760,7 @@ mat311w1w111w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1w111w1w11 :
+mat311ff11ff1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4771,7 +4771,7 @@ mat311w1w111w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1w111w1w11 a b c d e f g h i =
+mat311ff11ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4786,7 +4786,7 @@ mat311w1w111w1w11 a b c d e f g h i =
         i
 
 
-mat311w1w111w1w1w1 :
+mat311ff11fff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4797,7 +4797,7 @@ mat311w1w111w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1w111w1w1w1 a b c d e f g h i =
+mat311ff11fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4812,7 +4812,7 @@ mat311w1w111w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1w11w1111 :
+mat311ff1f111 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4823,7 +4823,7 @@ mat311w1w11w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1w11w1111 a b c d e f g h i =
+mat311ff1f111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4838,7 +4838,7 @@ mat311w1w11w1111 a b c d e f g h i =
         i
 
 
-mat311w1w11w111w1 :
+mat311ff1f11f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4849,7 +4849,7 @@ mat311w1w11w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1w11w111w1 a b c d e f g h i =
+mat311ff1f11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4864,7 +4864,7 @@ mat311w1w11w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1w11w11w11 :
+mat311ff1f1f1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4875,7 +4875,7 @@ mat311w1w11w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1w11w11w11 a b c d e f g h i =
+mat311ff1f1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4890,7 +4890,7 @@ mat311w1w11w11w11 a b c d e f g h i =
         i
 
 
-mat311w1w11w11w1w1 :
+mat311ff1f1ff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4901,7 +4901,7 @@ mat311w1w11w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1w11w11w1w1 a b c d e f g h i =
+mat311ff1f1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4916,7 +4916,7 @@ mat311w1w11w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1w11w1w111 :
+mat311ff1ff11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4927,7 +4927,7 @@ mat311w1w11w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1w11w1w111 a b c d e f g h i =
+mat311ff1ff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4942,7 +4942,7 @@ mat311w1w11w1w111 a b c d e f g h i =
         i
 
 
-mat311w1w11w1w11w1 :
+mat311ff1ff1f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4953,7 +4953,7 @@ mat311w1w11w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1w11w1w11w1 a b c d e f g h i =
+mat311ff1ff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4968,7 +4968,7 @@ mat311w1w11w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1w11w1w1w11 :
+mat311ff1fff1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -4979,7 +4979,7 @@ mat311w1w11w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1w11w1w1w11 a b c d e f g h i =
+mat311ff1fff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -4994,7 +4994,7 @@ mat311w1w11w1w1w11 a b c d e f g h i =
         i
 
 
-mat311w1w11w1w1w1w1 :
+mat311ff1ffff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -5005,7 +5005,7 @@ mat311w1w11w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1w11w1w1w1w1 a b c d e f g h i =
+mat311ff1ffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5020,7 +5020,7 @@ mat311w1w11w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1w1w11111 :
+mat311fff1111 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -5031,7 +5031,7 @@ mat311w1w1w11111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1w11111 a b c d e f g h i =
+mat311fff1111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5046,7 +5046,7 @@ mat311w1w1w11111 a b c d e f g h i =
         i
 
 
-mat311w1w1w1111w1 :
+mat311fff111f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -5057,7 +5057,7 @@ mat311w1w1w1111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1w1111w1 a b c d e f g h i =
+mat311fff111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5072,7 +5072,7 @@ mat311w1w1w1111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1w1w111w11 :
+mat311fff11f1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -5083,7 +5083,7 @@ mat311w1w1w111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1w111w11 a b c d e f g h i =
+mat311fff11f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5098,7 +5098,7 @@ mat311w1w1w111w11 a b c d e f g h i =
         i
 
 
-mat311w1w1w111w1w1 :
+mat311fff11ff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -5109,7 +5109,7 @@ mat311w1w1w111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1w111w1w1 a b c d e f g h i =
+mat311fff11ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5124,7 +5124,7 @@ mat311w1w1w111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1w1w11w111 :
+mat311fff1f11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -5135,7 +5135,7 @@ mat311w1w1w11w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1w11w111 a b c d e f g h i =
+mat311fff1f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5150,7 +5150,7 @@ mat311w1w1w11w111 a b c d e f g h i =
         i
 
 
-mat311w1w1w11w11w1 :
+mat311fff1f1f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -5161,7 +5161,7 @@ mat311w1w1w11w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1w11w11w1 a b c d e f g h i =
+mat311fff1f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5176,7 +5176,7 @@ mat311w1w1w11w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1w1w11w1w11 :
+mat311fff1ff1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -5187,7 +5187,7 @@ mat311w1w1w11w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1w11w1w11 a b c d e f g h i =
+mat311fff1ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5202,7 +5202,7 @@ mat311w1w1w11w1w11 a b c d e f g h i =
         i
 
 
-mat311w1w1w11w1w1w1 :
+mat311fff1fff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -5213,7 +5213,7 @@ mat311w1w1w11w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1w11w1w1w1 a b c d e f g h i =
+mat311fff1fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5228,7 +5228,7 @@ mat311w1w1w11w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1w1w1w1111 :
+mat311ffff111 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -5239,7 +5239,7 @@ mat311w1w1w1w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1w1w1111 a b c d e f g h i =
+mat311ffff111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5254,7 +5254,7 @@ mat311w1w1w1w1111 a b c d e f g h i =
         i
 
 
-mat311w1w1w1w111w1 :
+mat311ffff11f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -5265,7 +5265,7 @@ mat311w1w1w1w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1w1w111w1 a b c d e f g h i =
+mat311ffff11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5280,7 +5280,7 @@ mat311w1w1w1w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1w1w1w11w11 :
+mat311ffff1f1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -5291,7 +5291,7 @@ mat311w1w1w1w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1w1w11w11 a b c d e f g h i =
+mat311ffff1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5306,7 +5306,7 @@ mat311w1w1w1w11w11 a b c d e f g h i =
         i
 
 
-mat311w1w1w1w11w1w1 :
+mat311ffff1ff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -5317,7 +5317,7 @@ mat311w1w1w1w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1w1w11w1w1 a b c d e f g h i =
+mat311ffff1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5332,7 +5332,7 @@ mat311w1w1w1w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1w1w1w1w111 :
+mat311fffff11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -5343,7 +5343,7 @@ mat311w1w1w1w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1w1w1w111 a b c d e f g h i =
+mat311fffff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5358,7 +5358,7 @@ mat311w1w1w1w1w111 a b c d e f g h i =
         i
 
 
-mat311w1w1w1w1w11w1 :
+mat311fffff1f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -5369,7 +5369,7 @@ mat311w1w1w1w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1w1w1w11w1 a b c d e f g h i =
+mat311fffff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5384,7 +5384,7 @@ mat311w1w1w1w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat311w1w1w1w1w1w11 :
+mat311ffffff1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -5395,7 +5395,7 @@ mat311w1w1w1w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1w1w1w1w11 a b c d e f g h i =
+mat311ffffff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5410,7 +5410,7 @@ mat311w1w1w1w1w1w11 a b c d e f g h i =
         i
 
 
-mat311w1w1w1w1w1w1w1 :
+mat311fffffff :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -5421,7 +5421,7 @@ mat311w1w1w1w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat311w1w1w1w1w1w1w1 a b c d e f g h i =
+mat311fffffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5436,7 +5436,7 @@ mat311w1w1w1w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11111111 :
+mat31f1111111 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5447,11 +5447,11 @@ mat31w11111111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11111111 a b c d e f g h i =
+mat31f1111111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a (Glsl.float1 b) c d e f g h i
 
 
-mat31w1111111w1 :
+mat31f111111f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5462,11 +5462,11 @@ mat31w1111111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1111111w1 a b c d e f g h i =
+mat31f111111f a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a (Glsl.float1 b) c d e f g h (Glsl.float1 i)
 
 
-mat31w111111w11 :
+mat31f11111f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5477,11 +5477,11 @@ mat31w111111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w111111w11 a b c d e f g h i =
+mat31f11111f1 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a (Glsl.float1 b) c d e f g (Glsl.float1 h) i
 
 
-mat31w111111w1w1 :
+mat31f11111ff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5492,7 +5492,7 @@ mat31w111111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w111111w1w1 a b c d e f g h i =
+mat31f11111ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5507,7 +5507,7 @@ mat31w111111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11111w111 :
+mat31f1111f11 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5518,11 +5518,11 @@ mat31w11111w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11111w111 a b c d e f g h i =
+mat31f1111f11 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a (Glsl.float1 b) c d e f (Glsl.float1 g) h i
 
 
-mat31w11111w11w1 :
+mat31f1111f1f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5533,7 +5533,7 @@ mat31w11111w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11111w11w1 a b c d e f g h i =
+mat31f1111f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5548,7 +5548,7 @@ mat31w11111w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11111w1w11 :
+mat31f1111ff1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5559,7 +5559,7 @@ mat31w11111w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11111w1w11 a b c d e f g h i =
+mat31f1111ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5574,7 +5574,7 @@ mat31w11111w1w11 a b c d e f g h i =
         i
 
 
-mat31w11111w1w1w1 :
+mat31f1111fff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5585,7 +5585,7 @@ mat31w11111w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11111w1w1w1 a b c d e f g h i =
+mat31f1111fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5600,7 +5600,7 @@ mat31w11111w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1111w1111 :
+mat31f111f111 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5611,11 +5611,11 @@ mat31w1111w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1111w1111 a b c d e f g h i =
+mat31f111f111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a (Glsl.float1 b) c d e (Glsl.float1 f) g h i
 
 
-mat31w1111w111w1 :
+mat31f111f11f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5626,7 +5626,7 @@ mat31w1111w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1111w111w1 a b c d e f g h i =
+mat31f111f11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5641,7 +5641,7 @@ mat31w1111w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1111w11w11 :
+mat31f111f1f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5652,7 +5652,7 @@ mat31w1111w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1111w11w11 a b c d e f g h i =
+mat31f111f1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5667,7 +5667,7 @@ mat31w1111w11w11 a b c d e f g h i =
         i
 
 
-mat31w1111w11w1w1 :
+mat31f111f1ff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5678,7 +5678,7 @@ mat31w1111w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1111w11w1w1 a b c d e f g h i =
+mat31f111f1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5693,7 +5693,7 @@ mat31w1111w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1111w1w111 :
+mat31f111ff11 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5704,7 +5704,7 @@ mat31w1111w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1111w1w111 a b c d e f g h i =
+mat31f111ff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5719,7 +5719,7 @@ mat31w1111w1w111 a b c d e f g h i =
         i
 
 
-mat31w1111w1w11w1 :
+mat31f111ff1f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5730,7 +5730,7 @@ mat31w1111w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1111w1w11w1 a b c d e f g h i =
+mat31f111ff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5745,7 +5745,7 @@ mat31w1111w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1111w1w1w11 :
+mat31f111fff1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5756,7 +5756,7 @@ mat31w1111w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1111w1w1w11 a b c d e f g h i =
+mat31f111fff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5771,7 +5771,7 @@ mat31w1111w1w1w11 a b c d e f g h i =
         i
 
 
-mat31w1111w1w1w1w1 :
+mat31f111ffff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5782,7 +5782,7 @@ mat31w1111w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1111w1w1w1w1 a b c d e f g h i =
+mat31f111ffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5797,7 +5797,7 @@ mat31w1111w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w111w11111 :
+mat31f11f1111 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5808,11 +5808,11 @@ mat31w111w11111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w111w11111 a b c d e f g h i =
+mat31f11f1111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a (Glsl.float1 b) c d (Glsl.float1 e) f g h i
 
 
-mat31w111w1111w1 :
+mat31f11f111f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5823,7 +5823,7 @@ mat31w111w1111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w111w1111w1 a b c d e f g h i =
+mat31f11f111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5838,7 +5838,7 @@ mat31w111w1111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w111w111w11 :
+mat31f11f11f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5849,7 +5849,7 @@ mat31w111w111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w111w111w11 a b c d e f g h i =
+mat31f11f11f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5864,7 +5864,7 @@ mat31w111w111w11 a b c d e f g h i =
         i
 
 
-mat31w111w111w1w1 :
+mat31f11f11ff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5875,7 +5875,7 @@ mat31w111w111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w111w111w1w1 a b c d e f g h i =
+mat31f11f11ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5890,7 +5890,7 @@ mat31w111w111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w111w11w111 :
+mat31f11f1f11 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5901,7 +5901,7 @@ mat31w111w11w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w111w11w111 a b c d e f g h i =
+mat31f11f1f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5916,7 +5916,7 @@ mat31w111w11w111 a b c d e f g h i =
         i
 
 
-mat31w111w11w11w1 :
+mat31f11f1f1f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5927,7 +5927,7 @@ mat31w111w11w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w111w11w11w1 a b c d e f g h i =
+mat31f11f1f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5942,7 +5942,7 @@ mat31w111w11w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w111w11w1w11 :
+mat31f11f1ff1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5953,7 +5953,7 @@ mat31w111w11w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w111w11w1w11 a b c d e f g h i =
+mat31f11f1ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5968,7 +5968,7 @@ mat31w111w11w1w11 a b c d e f g h i =
         i
 
 
-mat31w111w11w1w1w1 :
+mat31f11f1fff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -5979,7 +5979,7 @@ mat31w111w11w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w111w11w1w1w1 a b c d e f g h i =
+mat31f11f1fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -5994,7 +5994,7 @@ mat31w111w11w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w111w1w1111 :
+mat31f11ff111 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6005,7 +6005,7 @@ mat31w111w1w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w111w1w1111 a b c d e f g h i =
+mat31f11ff111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6020,7 +6020,7 @@ mat31w111w1w1111 a b c d e f g h i =
         i
 
 
-mat31w111w1w111w1 :
+mat31f11ff11f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6031,7 +6031,7 @@ mat31w111w1w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w111w1w111w1 a b c d e f g h i =
+mat31f11ff11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6046,7 +6046,7 @@ mat31w111w1w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w111w1w11w11 :
+mat31f11ff1f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6057,7 +6057,7 @@ mat31w111w1w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w111w1w11w11 a b c d e f g h i =
+mat31f11ff1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6072,7 +6072,7 @@ mat31w111w1w11w11 a b c d e f g h i =
         i
 
 
-mat31w111w1w11w1w1 :
+mat31f11ff1ff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6083,7 +6083,7 @@ mat31w111w1w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w111w1w11w1w1 a b c d e f g h i =
+mat31f11ff1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6098,7 +6098,7 @@ mat31w111w1w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w111w1w1w111 :
+mat31f11fff11 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6109,7 +6109,7 @@ mat31w111w1w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w111w1w1w111 a b c d e f g h i =
+mat31f11fff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6124,7 +6124,7 @@ mat31w111w1w1w111 a b c d e f g h i =
         i
 
 
-mat31w111w1w1w11w1 :
+mat31f11fff1f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6135,7 +6135,7 @@ mat31w111w1w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w111w1w1w11w1 a b c d e f g h i =
+mat31f11fff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6150,7 +6150,7 @@ mat31w111w1w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w111w1w1w1w11 :
+mat31f11ffff1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6161,7 +6161,7 @@ mat31w111w1w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w111w1w1w1w11 a b c d e f g h i =
+mat31f11ffff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6176,7 +6176,7 @@ mat31w111w1w1w1w11 a b c d e f g h i =
         i
 
 
-mat31w111w1w1w1w1w1 :
+mat31f11fffff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6187,7 +6187,7 @@ mat31w111w1w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w111w1w1w1w1w1 a b c d e f g h i =
+mat31f11fffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6202,7 +6202,7 @@ mat31w111w1w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11w111111 :
+mat31f1f11111 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6213,11 +6213,11 @@ mat31w11w111111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11w111111 a b c d e f g h i =
+mat31f1f11111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a (Glsl.float1 b) c (Glsl.float1 d) e f g h i
 
 
-mat31w11w11111w1 :
+mat31f1f1111f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6228,7 +6228,7 @@ mat31w11w11111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11w11111w1 a b c d e f g h i =
+mat31f1f1111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6243,7 +6243,7 @@ mat31w11w11111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11w1111w11 :
+mat31f1f111f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6254,7 +6254,7 @@ mat31w11w1111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1111w11 a b c d e f g h i =
+mat31f1f111f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6269,7 +6269,7 @@ mat31w11w1111w11 a b c d e f g h i =
         i
 
 
-mat31w11w1111w1w1 :
+mat31f1f111ff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6280,7 +6280,7 @@ mat31w11w1111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1111w1w1 a b c d e f g h i =
+mat31f1f111ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6295,7 +6295,7 @@ mat31w11w1111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11w111w111 :
+mat31f1f11f11 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6306,7 +6306,7 @@ mat31w11w111w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11w111w111 a b c d e f g h i =
+mat31f1f11f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6321,7 +6321,7 @@ mat31w11w111w111 a b c d e f g h i =
         i
 
 
-mat31w11w111w11w1 :
+mat31f1f11f1f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6332,7 +6332,7 @@ mat31w11w111w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11w111w11w1 a b c d e f g h i =
+mat31f1f11f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6347,7 +6347,7 @@ mat31w11w111w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11w111w1w11 :
+mat31f1f11ff1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6358,7 +6358,7 @@ mat31w11w111w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11w111w1w11 a b c d e f g h i =
+mat31f1f11ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6373,7 +6373,7 @@ mat31w11w111w1w11 a b c d e f g h i =
         i
 
 
-mat31w11w111w1w1w1 :
+mat31f1f11fff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6384,7 +6384,7 @@ mat31w11w111w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11w111w1w1w1 a b c d e f g h i =
+mat31f1f11fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6399,7 +6399,7 @@ mat31w11w111w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11w11w1111 :
+mat31f1f1f111 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6410,7 +6410,7 @@ mat31w11w11w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11w11w1111 a b c d e f g h i =
+mat31f1f1f111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6425,7 +6425,7 @@ mat31w11w11w1111 a b c d e f g h i =
         i
 
 
-mat31w11w11w111w1 :
+mat31f1f1f11f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6436,7 +6436,7 @@ mat31w11w11w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11w11w111w1 a b c d e f g h i =
+mat31f1f1f11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6451,7 +6451,7 @@ mat31w11w11w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11w11w11w11 :
+mat31f1f1f1f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6462,7 +6462,7 @@ mat31w11w11w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11w11w11w11 a b c d e f g h i =
+mat31f1f1f1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6477,7 +6477,7 @@ mat31w11w11w11w11 a b c d e f g h i =
         i
 
 
-mat31w11w11w11w1w1 :
+mat31f1f1f1ff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6488,7 +6488,7 @@ mat31w11w11w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11w11w11w1w1 a b c d e f g h i =
+mat31f1f1f1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6503,7 +6503,7 @@ mat31w11w11w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11w11w1w111 :
+mat31f1f1ff11 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6514,7 +6514,7 @@ mat31w11w11w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11w11w1w111 a b c d e f g h i =
+mat31f1f1ff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6529,7 +6529,7 @@ mat31w11w11w1w111 a b c d e f g h i =
         i
 
 
-mat31w11w11w1w11w1 :
+mat31f1f1ff1f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6540,7 +6540,7 @@ mat31w11w11w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11w11w1w11w1 a b c d e f g h i =
+mat31f1f1ff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6555,7 +6555,7 @@ mat31w11w11w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11w11w1w1w11 :
+mat31f1f1fff1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6566,7 +6566,7 @@ mat31w11w11w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11w11w1w1w11 a b c d e f g h i =
+mat31f1f1fff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6581,7 +6581,7 @@ mat31w11w11w1w1w11 a b c d e f g h i =
         i
 
 
-mat31w11w11w1w1w1w1 :
+mat31f1f1ffff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6592,7 +6592,7 @@ mat31w11w11w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11w11w1w1w1w1 a b c d e f g h i =
+mat31f1f1ffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6607,7 +6607,7 @@ mat31w11w11w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11w1w11111 :
+mat31f1ff1111 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6618,7 +6618,7 @@ mat31w11w1w11111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1w11111 a b c d e f g h i =
+mat31f1ff1111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6633,7 +6633,7 @@ mat31w11w1w11111 a b c d e f g h i =
         i
 
 
-mat31w11w1w1111w1 :
+mat31f1ff111f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6644,7 +6644,7 @@ mat31w11w1w1111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1w1111w1 a b c d e f g h i =
+mat31f1ff111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6659,7 +6659,7 @@ mat31w11w1w1111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11w1w111w11 :
+mat31f1ff11f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6670,7 +6670,7 @@ mat31w11w1w111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1w111w11 a b c d e f g h i =
+mat31f1ff11f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6685,7 +6685,7 @@ mat31w11w1w111w11 a b c d e f g h i =
         i
 
 
-mat31w11w1w111w1w1 :
+mat31f1ff11ff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6696,7 +6696,7 @@ mat31w11w1w111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1w111w1w1 a b c d e f g h i =
+mat31f1ff11ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6711,7 +6711,7 @@ mat31w11w1w111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11w1w11w111 :
+mat31f1ff1f11 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6722,7 +6722,7 @@ mat31w11w1w11w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1w11w111 a b c d e f g h i =
+mat31f1ff1f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6737,7 +6737,7 @@ mat31w11w1w11w111 a b c d e f g h i =
         i
 
 
-mat31w11w1w11w11w1 :
+mat31f1ff1f1f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6748,7 +6748,7 @@ mat31w11w1w11w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1w11w11w1 a b c d e f g h i =
+mat31f1ff1f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6763,7 +6763,7 @@ mat31w11w1w11w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11w1w11w1w11 :
+mat31f1ff1ff1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6774,7 +6774,7 @@ mat31w11w1w11w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1w11w1w11 a b c d e f g h i =
+mat31f1ff1ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6789,7 +6789,7 @@ mat31w11w1w11w1w11 a b c d e f g h i =
         i
 
 
-mat31w11w1w11w1w1w1 :
+mat31f1ff1fff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6800,7 +6800,7 @@ mat31w11w1w11w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1w11w1w1w1 a b c d e f g h i =
+mat31f1ff1fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6815,7 +6815,7 @@ mat31w11w1w11w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11w1w1w1111 :
+mat31f1fff111 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6826,7 +6826,7 @@ mat31w11w1w1w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1w1w1111 a b c d e f g h i =
+mat31f1fff111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6841,7 +6841,7 @@ mat31w11w1w1w1111 a b c d e f g h i =
         i
 
 
-mat31w11w1w1w111w1 :
+mat31f1fff11f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6852,7 +6852,7 @@ mat31w11w1w1w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1w1w111w1 a b c d e f g h i =
+mat31f1fff11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6867,7 +6867,7 @@ mat31w11w1w1w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11w1w1w11w11 :
+mat31f1fff1f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6878,7 +6878,7 @@ mat31w11w1w1w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1w1w11w11 a b c d e f g h i =
+mat31f1fff1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6893,7 +6893,7 @@ mat31w11w1w1w11w11 a b c d e f g h i =
         i
 
 
-mat31w11w1w1w11w1w1 :
+mat31f1fff1ff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6904,7 +6904,7 @@ mat31w11w1w1w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1w1w11w1w1 a b c d e f g h i =
+mat31f1fff1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6919,7 +6919,7 @@ mat31w11w1w1w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11w1w1w1w111 :
+mat31f1ffff11 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6930,7 +6930,7 @@ mat31w11w1w1w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1w1w1w111 a b c d e f g h i =
+mat31f1ffff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6945,7 +6945,7 @@ mat31w11w1w1w1w111 a b c d e f g h i =
         i
 
 
-mat31w11w1w1w1w11w1 :
+mat31f1ffff1f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6956,7 +6956,7 @@ mat31w11w1w1w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1w1w1w11w1 a b c d e f g h i =
+mat31f1ffff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6971,7 +6971,7 @@ mat31w11w1w1w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w11w1w1w1w1w11 :
+mat31f1fffff1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -6982,7 +6982,7 @@ mat31w11w1w1w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1w1w1w1w11 a b c d e f g h i =
+mat31f1fffff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -6997,7 +6997,7 @@ mat31w11w1w1w1w1w11 a b c d e f g h i =
         i
 
 
-mat31w11w1w1w1w1w1w1 :
+mat31f1ffffff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -7008,7 +7008,7 @@ mat31w11w1w1w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w11w1w1w1w1w1w1 a b c d e f g h i =
+mat31f1ffffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7023,7 +7023,7 @@ mat31w11w1w1w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1111111 :
+mat31ff111111 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7034,11 +7034,11 @@ mat31w1w1111111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1111111 a b c d e f g h i =
+mat31ff111111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] a (Glsl.float1 b) (Glsl.float1 c) d e f g h i
 
 
-mat31w1w111111w1 :
+mat31ff11111f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7049,7 +7049,7 @@ mat31w1w111111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w111111w1 a b c d e f g h i =
+mat31ff11111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7064,7 +7064,7 @@ mat31w1w111111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w11111w11 :
+mat31ff1111f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7075,7 +7075,7 @@ mat31w1w11111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11111w11 a b c d e f g h i =
+mat31ff1111f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7090,7 +7090,7 @@ mat31w1w11111w11 a b c d e f g h i =
         i
 
 
-mat31w1w11111w1w1 :
+mat31ff1111ff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7101,7 +7101,7 @@ mat31w1w11111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11111w1w1 a b c d e f g h i =
+mat31ff1111ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7116,7 +7116,7 @@ mat31w1w11111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1111w111 :
+mat31ff111f11 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7127,7 +7127,7 @@ mat31w1w1111w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1111w111 a b c d e f g h i =
+mat31ff111f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7142,7 +7142,7 @@ mat31w1w1111w111 a b c d e f g h i =
         i
 
 
-mat31w1w1111w11w1 :
+mat31ff111f1f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7153,7 +7153,7 @@ mat31w1w1111w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1111w11w1 a b c d e f g h i =
+mat31ff111f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7168,7 +7168,7 @@ mat31w1w1111w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1111w1w11 :
+mat31ff111ff1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7179,7 +7179,7 @@ mat31w1w1111w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1111w1w11 a b c d e f g h i =
+mat31ff111ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7194,7 +7194,7 @@ mat31w1w1111w1w11 a b c d e f g h i =
         i
 
 
-mat31w1w1111w1w1w1 :
+mat31ff111fff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7205,7 +7205,7 @@ mat31w1w1111w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1111w1w1w1 a b c d e f g h i =
+mat31ff111fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7220,7 +7220,7 @@ mat31w1w1111w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w111w1111 :
+mat31ff11f111 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7231,7 +7231,7 @@ mat31w1w111w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w111w1111 a b c d e f g h i =
+mat31ff11f111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7246,7 +7246,7 @@ mat31w1w111w1111 a b c d e f g h i =
         i
 
 
-mat31w1w111w111w1 :
+mat31ff11f11f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7257,7 +7257,7 @@ mat31w1w111w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w111w111w1 a b c d e f g h i =
+mat31ff11f11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7272,7 +7272,7 @@ mat31w1w111w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w111w11w11 :
+mat31ff11f1f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7283,7 +7283,7 @@ mat31w1w111w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w111w11w11 a b c d e f g h i =
+mat31ff11f1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7298,7 +7298,7 @@ mat31w1w111w11w11 a b c d e f g h i =
         i
 
 
-mat31w1w111w11w1w1 :
+mat31ff11f1ff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7309,7 +7309,7 @@ mat31w1w111w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w111w11w1w1 a b c d e f g h i =
+mat31ff11f1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7324,7 +7324,7 @@ mat31w1w111w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w111w1w111 :
+mat31ff11ff11 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7335,7 +7335,7 @@ mat31w1w111w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w111w1w111 a b c d e f g h i =
+mat31ff11ff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7350,7 +7350,7 @@ mat31w1w111w1w111 a b c d e f g h i =
         i
 
 
-mat31w1w111w1w11w1 :
+mat31ff11ff1f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7361,7 +7361,7 @@ mat31w1w111w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w111w1w11w1 a b c d e f g h i =
+mat31ff11ff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7376,7 +7376,7 @@ mat31w1w111w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w111w1w1w11 :
+mat31ff11fff1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7387,7 +7387,7 @@ mat31w1w111w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w111w1w1w11 a b c d e f g h i =
+mat31ff11fff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7402,7 +7402,7 @@ mat31w1w111w1w1w11 a b c d e f g h i =
         i
 
 
-mat31w1w111w1w1w1w1 :
+mat31ff11ffff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7413,7 +7413,7 @@ mat31w1w111w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w111w1w1w1w1 a b c d e f g h i =
+mat31ff11ffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7428,7 +7428,7 @@ mat31w1w111w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w11w11111 :
+mat31ff1f1111 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7439,7 +7439,7 @@ mat31w1w11w11111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11w11111 a b c d e f g h i =
+mat31ff1f1111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7454,7 +7454,7 @@ mat31w1w11w11111 a b c d e f g h i =
         i
 
 
-mat31w1w11w1111w1 :
+mat31ff1f111f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7465,7 +7465,7 @@ mat31w1w11w1111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11w1111w1 a b c d e f g h i =
+mat31ff1f111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7480,7 +7480,7 @@ mat31w1w11w1111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w11w111w11 :
+mat31ff1f11f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7491,7 +7491,7 @@ mat31w1w11w111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11w111w11 a b c d e f g h i =
+mat31ff1f11f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7506,7 +7506,7 @@ mat31w1w11w111w11 a b c d e f g h i =
         i
 
 
-mat31w1w11w111w1w1 :
+mat31ff1f11ff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7517,7 +7517,7 @@ mat31w1w11w111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11w111w1w1 a b c d e f g h i =
+mat31ff1f11ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7532,7 +7532,7 @@ mat31w1w11w111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w11w11w111 :
+mat31ff1f1f11 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7543,7 +7543,7 @@ mat31w1w11w11w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11w11w111 a b c d e f g h i =
+mat31ff1f1f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7558,7 +7558,7 @@ mat31w1w11w11w111 a b c d e f g h i =
         i
 
 
-mat31w1w11w11w11w1 :
+mat31ff1f1f1f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7569,7 +7569,7 @@ mat31w1w11w11w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11w11w11w1 a b c d e f g h i =
+mat31ff1f1f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7584,7 +7584,7 @@ mat31w1w11w11w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w11w11w1w11 :
+mat31ff1f1ff1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7595,7 +7595,7 @@ mat31w1w11w11w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11w11w1w11 a b c d e f g h i =
+mat31ff1f1ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7610,7 +7610,7 @@ mat31w1w11w11w1w11 a b c d e f g h i =
         i
 
 
-mat31w1w11w11w1w1w1 :
+mat31ff1f1fff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7621,7 +7621,7 @@ mat31w1w11w11w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11w11w1w1w1 a b c d e f g h i =
+mat31ff1f1fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7636,7 +7636,7 @@ mat31w1w11w11w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w11w1w1111 :
+mat31ff1ff111 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7647,7 +7647,7 @@ mat31w1w11w1w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11w1w1111 a b c d e f g h i =
+mat31ff1ff111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7662,7 +7662,7 @@ mat31w1w11w1w1111 a b c d e f g h i =
         i
 
 
-mat31w1w11w1w111w1 :
+mat31ff1ff11f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7673,7 +7673,7 @@ mat31w1w11w1w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11w1w111w1 a b c d e f g h i =
+mat31ff1ff11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7688,7 +7688,7 @@ mat31w1w11w1w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w11w1w11w11 :
+mat31ff1ff1f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7699,7 +7699,7 @@ mat31w1w11w1w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11w1w11w11 a b c d e f g h i =
+mat31ff1ff1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7714,7 +7714,7 @@ mat31w1w11w1w11w11 a b c d e f g h i =
         i
 
 
-mat31w1w11w1w11w1w1 :
+mat31ff1ff1ff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7725,7 +7725,7 @@ mat31w1w11w1w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11w1w11w1w1 a b c d e f g h i =
+mat31ff1ff1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7740,7 +7740,7 @@ mat31w1w11w1w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w11w1w1w111 :
+mat31ff1fff11 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7751,7 +7751,7 @@ mat31w1w11w1w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11w1w1w111 a b c d e f g h i =
+mat31ff1fff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7766,7 +7766,7 @@ mat31w1w11w1w1w111 a b c d e f g h i =
         i
 
 
-mat31w1w11w1w1w11w1 :
+mat31ff1fff1f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7777,7 +7777,7 @@ mat31w1w11w1w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11w1w1w11w1 a b c d e f g h i =
+mat31ff1fff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7792,7 +7792,7 @@ mat31w1w11w1w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w11w1w1w1w11 :
+mat31ff1ffff1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7803,7 +7803,7 @@ mat31w1w11w1w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11w1w1w1w11 a b c d e f g h i =
+mat31ff1ffff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7818,7 +7818,7 @@ mat31w1w11w1w1w1w11 a b c d e f g h i =
         i
 
 
-mat31w1w11w1w1w1w1w1 :
+mat31ff1fffff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7829,7 +7829,7 @@ mat31w1w11w1w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w11w1w1w1w1w1 a b c d e f g h i =
+mat31ff1fffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7844,7 +7844,7 @@ mat31w1w11w1w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1w111111 :
+mat31fff11111 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7855,7 +7855,7 @@ mat31w1w1w111111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w111111 a b c d e f g h i =
+mat31fff11111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7870,7 +7870,7 @@ mat31w1w1w111111 a b c d e f g h i =
         i
 
 
-mat31w1w1w11111w1 :
+mat31fff1111f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7881,7 +7881,7 @@ mat31w1w1w11111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w11111w1 a b c d e f g h i =
+mat31fff1111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7896,7 +7896,7 @@ mat31w1w1w11111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1w1111w11 :
+mat31fff111f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7907,7 +7907,7 @@ mat31w1w1w1111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1111w11 a b c d e f g h i =
+mat31fff111f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7922,7 +7922,7 @@ mat31w1w1w1111w11 a b c d e f g h i =
         i
 
 
-mat31w1w1w1111w1w1 :
+mat31fff111ff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7933,7 +7933,7 @@ mat31w1w1w1111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1111w1w1 a b c d e f g h i =
+mat31fff111ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7948,7 +7948,7 @@ mat31w1w1w1111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1w111w111 :
+mat31fff11f11 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7959,7 +7959,7 @@ mat31w1w1w111w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w111w111 a b c d e f g h i =
+mat31fff11f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -7974,7 +7974,7 @@ mat31w1w1w111w111 a b c d e f g h i =
         i
 
 
-mat31w1w1w111w11w1 :
+mat31fff11f1f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -7985,7 +7985,7 @@ mat31w1w1w111w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w111w11w1 a b c d e f g h i =
+mat31fff11f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8000,7 +8000,7 @@ mat31w1w1w111w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1w111w1w11 :
+mat31fff11ff1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8011,7 +8011,7 @@ mat31w1w1w111w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w111w1w11 a b c d e f g h i =
+mat31fff11ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8026,7 +8026,7 @@ mat31w1w1w111w1w11 a b c d e f g h i =
         i
 
 
-mat31w1w1w111w1w1w1 :
+mat31fff11fff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8037,7 +8037,7 @@ mat31w1w1w111w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w111w1w1w1 a b c d e f g h i =
+mat31fff11fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8052,7 +8052,7 @@ mat31w1w1w111w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1w11w1111 :
+mat31fff1f111 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8063,7 +8063,7 @@ mat31w1w1w11w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w11w1111 a b c d e f g h i =
+mat31fff1f111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8078,7 +8078,7 @@ mat31w1w1w11w1111 a b c d e f g h i =
         i
 
 
-mat31w1w1w11w111w1 :
+mat31fff1f11f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8089,7 +8089,7 @@ mat31w1w1w11w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w11w111w1 a b c d e f g h i =
+mat31fff1f11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8104,7 +8104,7 @@ mat31w1w1w11w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1w11w11w11 :
+mat31fff1f1f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8115,7 +8115,7 @@ mat31w1w1w11w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w11w11w11 a b c d e f g h i =
+mat31fff1f1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8130,7 +8130,7 @@ mat31w1w1w11w11w11 a b c d e f g h i =
         i
 
 
-mat31w1w1w11w11w1w1 :
+mat31fff1f1ff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8141,7 +8141,7 @@ mat31w1w1w11w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w11w11w1w1 a b c d e f g h i =
+mat31fff1f1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8156,7 +8156,7 @@ mat31w1w1w11w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1w11w1w111 :
+mat31fff1ff11 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8167,7 +8167,7 @@ mat31w1w1w11w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w11w1w111 a b c d e f g h i =
+mat31fff1ff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8182,7 +8182,7 @@ mat31w1w1w11w1w111 a b c d e f g h i =
         i
 
 
-mat31w1w1w11w1w11w1 :
+mat31fff1ff1f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8193,7 +8193,7 @@ mat31w1w1w11w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w11w1w11w1 a b c d e f g h i =
+mat31fff1ff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8208,7 +8208,7 @@ mat31w1w1w11w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1w11w1w1w11 :
+mat31fff1fff1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8219,7 +8219,7 @@ mat31w1w1w11w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w11w1w1w11 a b c d e f g h i =
+mat31fff1fff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8234,7 +8234,7 @@ mat31w1w1w11w1w1w11 a b c d e f g h i =
         i
 
 
-mat31w1w1w11w1w1w1w1 :
+mat31fff1ffff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8245,7 +8245,7 @@ mat31w1w1w11w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w11w1w1w1w1 a b c d e f g h i =
+mat31fff1ffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8260,7 +8260,7 @@ mat31w1w1w11w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1w1w11111 :
+mat31ffff1111 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8271,7 +8271,7 @@ mat31w1w1w1w11111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1w11111 a b c d e f g h i =
+mat31ffff1111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8286,7 +8286,7 @@ mat31w1w1w1w11111 a b c d e f g h i =
         i
 
 
-mat31w1w1w1w1111w1 :
+mat31ffff111f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8297,7 +8297,7 @@ mat31w1w1w1w1111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1w1111w1 a b c d e f g h i =
+mat31ffff111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8312,7 +8312,7 @@ mat31w1w1w1w1111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1w1w111w11 :
+mat31ffff11f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8323,7 +8323,7 @@ mat31w1w1w1w111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1w111w11 a b c d e f g h i =
+mat31ffff11f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8338,7 +8338,7 @@ mat31w1w1w1w111w11 a b c d e f g h i =
         i
 
 
-mat31w1w1w1w111w1w1 :
+mat31ffff11ff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8349,7 +8349,7 @@ mat31w1w1w1w111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1w111w1w1 a b c d e f g h i =
+mat31ffff11ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8364,7 +8364,7 @@ mat31w1w1w1w111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1w1w11w111 :
+mat31ffff1f11 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8375,7 +8375,7 @@ mat31w1w1w1w11w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1w11w111 a b c d e f g h i =
+mat31ffff1f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8390,7 +8390,7 @@ mat31w1w1w1w11w111 a b c d e f g h i =
         i
 
 
-mat31w1w1w1w11w11w1 :
+mat31ffff1f1f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8401,7 +8401,7 @@ mat31w1w1w1w11w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1w11w11w1 a b c d e f g h i =
+mat31ffff1f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8416,7 +8416,7 @@ mat31w1w1w1w11w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1w1w11w1w11 :
+mat31ffff1ff1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8427,7 +8427,7 @@ mat31w1w1w1w11w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1w11w1w11 a b c d e f g h i =
+mat31ffff1ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8442,7 +8442,7 @@ mat31w1w1w1w11w1w11 a b c d e f g h i =
         i
 
 
-mat31w1w1w1w11w1w1w1 :
+mat31ffff1fff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8453,7 +8453,7 @@ mat31w1w1w1w11w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1w11w1w1w1 a b c d e f g h i =
+mat31ffff1fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8468,7 +8468,7 @@ mat31w1w1w1w11w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1w1w1w1111 :
+mat31fffff111 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8479,7 +8479,7 @@ mat31w1w1w1w1w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1w1w1111 a b c d e f g h i =
+mat31fffff111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8494,7 +8494,7 @@ mat31w1w1w1w1w1111 a b c d e f g h i =
         i
 
 
-mat31w1w1w1w1w111w1 :
+mat31fffff11f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8505,7 +8505,7 @@ mat31w1w1w1w1w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1w1w111w1 a b c d e f g h i =
+mat31fffff11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8520,7 +8520,7 @@ mat31w1w1w1w1w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1w1w1w11w11 :
+mat31fffff1f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8531,7 +8531,7 @@ mat31w1w1w1w1w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1w1w11w11 a b c d e f g h i =
+mat31fffff1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8546,7 +8546,7 @@ mat31w1w1w1w1w11w11 a b c d e f g h i =
         i
 
 
-mat31w1w1w1w1w11w1w1 :
+mat31fffff1ff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8557,7 +8557,7 @@ mat31w1w1w1w1w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1w1w11w1w1 a b c d e f g h i =
+mat31fffff1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8572,7 +8572,7 @@ mat31w1w1w1w1w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1w1w1w1w111 :
+mat31ffffff11 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8583,7 +8583,7 @@ mat31w1w1w1w1w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1w1w1w111 a b c d e f g h i =
+mat31ffffff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8598,7 +8598,7 @@ mat31w1w1w1w1w1w111 a b c d e f g h i =
         i
 
 
-mat31w1w1w1w1w1w11w1 :
+mat31ffffff1f :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8609,7 +8609,7 @@ mat31w1w1w1w1w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1w1w1w11w1 a b c d e f g h i =
+mat31ffffff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8624,7 +8624,7 @@ mat31w1w1w1w1w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat31w1w1w1w1w1w1w11 :
+mat31fffffff1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8635,7 +8635,7 @@ mat31w1w1w1w1w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1w1w1w1w11 a b c d e f g h i =
+mat31fffffff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8650,7 +8650,7 @@ mat31w1w1w1w1w1w1w11 a b c d e f g h i =
         i
 
 
-mat31w1w1w1w1w1w1w1w1 :
+mat31ffffffff :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Float
@@ -8661,7 +8661,7 @@ mat31w1w1w1w1w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat31w1w1w1w1w1w1w1w1 a b c d e f g h i =
+mat31ffffffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8685,7 +8685,7 @@ mat3333 a b c =
     Glsl.unsafeCall3 "mat3" [] a b c
 
 
-mat3w111111111 :
+mat3f11111111 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -8696,11 +8696,11 @@ mat3w111111111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111111111 a b c d e f g h i =
+mat3f11111111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] (Glsl.float1 a) b c d e f g h i
 
 
-mat3w11111111w1 :
+mat3f1111111f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -8711,11 +8711,11 @@ mat3w11111111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11111111w1 a b c d e f g h i =
+mat3f1111111f a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] (Glsl.float1 a) b c d e f g h (Glsl.float1 i)
 
 
-mat3w1111111w11 :
+mat3f111111f1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -8726,11 +8726,11 @@ mat3w1111111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1111111w11 a b c d e f g h i =
+mat3f111111f1 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] (Glsl.float1 a) b c d e f g (Glsl.float1 h) i
 
 
-mat3w1111111w1w1 :
+mat3f111111ff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -8741,7 +8741,7 @@ mat3w1111111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1111111w1w1 a b c d e f g h i =
+mat3f111111ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8756,7 +8756,7 @@ mat3w1111111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111111w111 :
+mat3f11111f11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -8767,11 +8767,11 @@ mat3w111111w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111111w111 a b c d e f g h i =
+mat3f11111f11 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] (Glsl.float1 a) b c d e f (Glsl.float1 g) h i
 
 
-mat3w111111w11w1 :
+mat3f11111f1f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -8782,7 +8782,7 @@ mat3w111111w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111111w11w1 a b c d e f g h i =
+mat3f11111f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8797,7 +8797,7 @@ mat3w111111w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111111w1w11 :
+mat3f11111ff1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -8808,7 +8808,7 @@ mat3w111111w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111111w1w11 a b c d e f g h i =
+mat3f11111ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8823,7 +8823,7 @@ mat3w111111w1w11 a b c d e f g h i =
         i
 
 
-mat3w111111w1w1w1 :
+mat3f11111fff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -8834,7 +8834,7 @@ mat3w111111w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111111w1w1w1 a b c d e f g h i =
+mat3f11111fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8849,7 +8849,7 @@ mat3w111111w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11111w1111 :
+mat3f1111f111 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -8860,11 +8860,11 @@ mat3w11111w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11111w1111 a b c d e f g h i =
+mat3f1111f111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] (Glsl.float1 a) b c d e (Glsl.float1 f) g h i
 
 
-mat3w11111w111w1 :
+mat3f1111f11f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -8875,7 +8875,7 @@ mat3w11111w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11111w111w1 a b c d e f g h i =
+mat3f1111f11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8890,7 +8890,7 @@ mat3w11111w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11111w11w11 :
+mat3f1111f1f1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -8901,7 +8901,7 @@ mat3w11111w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11111w11w11 a b c d e f g h i =
+mat3f1111f1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8916,7 +8916,7 @@ mat3w11111w11w11 a b c d e f g h i =
         i
 
 
-mat3w11111w11w1w1 :
+mat3f1111f1ff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -8927,7 +8927,7 @@ mat3w11111w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11111w11w1w1 a b c d e f g h i =
+mat3f1111f1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8942,7 +8942,7 @@ mat3w11111w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11111w1w111 :
+mat3f1111ff11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -8953,7 +8953,7 @@ mat3w11111w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11111w1w111 a b c d e f g h i =
+mat3f1111ff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8968,7 +8968,7 @@ mat3w11111w1w111 a b c d e f g h i =
         i
 
 
-mat3w11111w1w11w1 :
+mat3f1111ff1f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -8979,7 +8979,7 @@ mat3w11111w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11111w1w11w1 a b c d e f g h i =
+mat3f1111ff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -8994,7 +8994,7 @@ mat3w11111w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11111w1w1w11 :
+mat3f1111fff1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9005,7 +9005,7 @@ mat3w11111w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11111w1w1w11 a b c d e f g h i =
+mat3f1111fff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9020,7 +9020,7 @@ mat3w11111w1w1w11 a b c d e f g h i =
         i
 
 
-mat3w11111w1w1w1w1 :
+mat3f1111ffff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9031,7 +9031,7 @@ mat3w11111w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11111w1w1w1w1 a b c d e f g h i =
+mat3f1111ffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9046,7 +9046,7 @@ mat3w11111w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1111w11111 :
+mat3f111f1111 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9057,11 +9057,11 @@ mat3w1111w11111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1111w11111 a b c d e f g h i =
+mat3f111f1111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] (Glsl.float1 a) b c d (Glsl.float1 e) f g h i
 
 
-mat3w1111w1111w1 :
+mat3f111f111f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9072,7 +9072,7 @@ mat3w1111w1111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1111w1111w1 a b c d e f g h i =
+mat3f111f111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9087,7 +9087,7 @@ mat3w1111w1111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1111w111w11 :
+mat3f111f11f1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9098,7 +9098,7 @@ mat3w1111w111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1111w111w11 a b c d e f g h i =
+mat3f111f11f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9113,7 +9113,7 @@ mat3w1111w111w11 a b c d e f g h i =
         i
 
 
-mat3w1111w111w1w1 :
+mat3f111f11ff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9124,7 +9124,7 @@ mat3w1111w111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1111w111w1w1 a b c d e f g h i =
+mat3f111f11ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9139,7 +9139,7 @@ mat3w1111w111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1111w11w111 :
+mat3f111f1f11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9150,7 +9150,7 @@ mat3w1111w11w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1111w11w111 a b c d e f g h i =
+mat3f111f1f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9165,7 +9165,7 @@ mat3w1111w11w111 a b c d e f g h i =
         i
 
 
-mat3w1111w11w11w1 :
+mat3f111f1f1f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9176,7 +9176,7 @@ mat3w1111w11w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1111w11w11w1 a b c d e f g h i =
+mat3f111f1f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9191,7 +9191,7 @@ mat3w1111w11w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1111w11w1w11 :
+mat3f111f1ff1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9202,7 +9202,7 @@ mat3w1111w11w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1111w11w1w11 a b c d e f g h i =
+mat3f111f1ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9217,7 +9217,7 @@ mat3w1111w11w1w11 a b c d e f g h i =
         i
 
 
-mat3w1111w11w1w1w1 :
+mat3f111f1fff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9228,7 +9228,7 @@ mat3w1111w11w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1111w11w1w1w1 a b c d e f g h i =
+mat3f111f1fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9243,7 +9243,7 @@ mat3w1111w11w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1111w1w1111 :
+mat3f111ff111 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9254,7 +9254,7 @@ mat3w1111w1w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1111w1w1111 a b c d e f g h i =
+mat3f111ff111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9269,7 +9269,7 @@ mat3w1111w1w1111 a b c d e f g h i =
         i
 
 
-mat3w1111w1w111w1 :
+mat3f111ff11f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9280,7 +9280,7 @@ mat3w1111w1w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1111w1w111w1 a b c d e f g h i =
+mat3f111ff11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9295,7 +9295,7 @@ mat3w1111w1w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1111w1w11w11 :
+mat3f111ff1f1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9306,7 +9306,7 @@ mat3w1111w1w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1111w1w11w11 a b c d e f g h i =
+mat3f111ff1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9321,7 +9321,7 @@ mat3w1111w1w11w11 a b c d e f g h i =
         i
 
 
-mat3w1111w1w11w1w1 :
+mat3f111ff1ff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9332,7 +9332,7 @@ mat3w1111w1w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1111w1w11w1w1 a b c d e f g h i =
+mat3f111ff1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9347,7 +9347,7 @@ mat3w1111w1w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1111w1w1w111 :
+mat3f111fff11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9358,7 +9358,7 @@ mat3w1111w1w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1111w1w1w111 a b c d e f g h i =
+mat3f111fff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9373,7 +9373,7 @@ mat3w1111w1w1w111 a b c d e f g h i =
         i
 
 
-mat3w1111w1w1w11w1 :
+mat3f111fff1f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9384,7 +9384,7 @@ mat3w1111w1w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1111w1w1w11w1 a b c d e f g h i =
+mat3f111fff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9399,7 +9399,7 @@ mat3w1111w1w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1111w1w1w1w11 :
+mat3f111ffff1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9410,7 +9410,7 @@ mat3w1111w1w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1111w1w1w1w11 a b c d e f g h i =
+mat3f111ffff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9425,7 +9425,7 @@ mat3w1111w1w1w1w11 a b c d e f g h i =
         i
 
 
-mat3w1111w1w1w1w1w1 :
+mat3f111fffff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9436,7 +9436,7 @@ mat3w1111w1w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1111w1w1w1w1w1 a b c d e f g h i =
+mat3f111fffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9451,7 +9451,7 @@ mat3w1111w1w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111w111111 :
+mat3f11f11111 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9462,11 +9462,11 @@ mat3w111w111111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111w111111 a b c d e f g h i =
+mat3f11f11111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] (Glsl.float1 a) b c (Glsl.float1 d) e f g h i
 
 
-mat3w111w11111w1 :
+mat3f11f1111f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9477,7 +9477,7 @@ mat3w111w11111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111w11111w1 a b c d e f g h i =
+mat3f11f1111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9492,7 +9492,7 @@ mat3w111w11111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111w1111w11 :
+mat3f11f111f1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9503,7 +9503,7 @@ mat3w111w1111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1111w11 a b c d e f g h i =
+mat3f11f111f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9518,7 +9518,7 @@ mat3w111w1111w11 a b c d e f g h i =
         i
 
 
-mat3w111w1111w1w1 :
+mat3f11f111ff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9529,7 +9529,7 @@ mat3w111w1111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1111w1w1 a b c d e f g h i =
+mat3f11f111ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9544,7 +9544,7 @@ mat3w111w1111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111w111w111 :
+mat3f11f11f11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9555,7 +9555,7 @@ mat3w111w111w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111w111w111 a b c d e f g h i =
+mat3f11f11f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9570,7 +9570,7 @@ mat3w111w111w111 a b c d e f g h i =
         i
 
 
-mat3w111w111w11w1 :
+mat3f11f11f1f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9581,7 +9581,7 @@ mat3w111w111w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111w111w11w1 a b c d e f g h i =
+mat3f11f11f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9596,7 +9596,7 @@ mat3w111w111w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111w111w1w11 :
+mat3f11f11ff1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9607,7 +9607,7 @@ mat3w111w111w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111w111w1w11 a b c d e f g h i =
+mat3f11f11ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9622,7 +9622,7 @@ mat3w111w111w1w11 a b c d e f g h i =
         i
 
 
-mat3w111w111w1w1w1 :
+mat3f11f11fff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9633,7 +9633,7 @@ mat3w111w111w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111w111w1w1w1 a b c d e f g h i =
+mat3f11f11fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9648,7 +9648,7 @@ mat3w111w111w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111w11w1111 :
+mat3f11f1f111 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9659,7 +9659,7 @@ mat3w111w11w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111w11w1111 a b c d e f g h i =
+mat3f11f1f111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9674,7 +9674,7 @@ mat3w111w11w1111 a b c d e f g h i =
         i
 
 
-mat3w111w11w111w1 :
+mat3f11f1f11f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9685,7 +9685,7 @@ mat3w111w11w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111w11w111w1 a b c d e f g h i =
+mat3f11f1f11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9700,7 +9700,7 @@ mat3w111w11w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111w11w11w11 :
+mat3f11f1f1f1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9711,7 +9711,7 @@ mat3w111w11w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111w11w11w11 a b c d e f g h i =
+mat3f11f1f1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9726,7 +9726,7 @@ mat3w111w11w11w11 a b c d e f g h i =
         i
 
 
-mat3w111w11w11w1w1 :
+mat3f11f1f1ff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9737,7 +9737,7 @@ mat3w111w11w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111w11w11w1w1 a b c d e f g h i =
+mat3f11f1f1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9752,7 +9752,7 @@ mat3w111w11w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111w11w1w111 :
+mat3f11f1ff11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9763,7 +9763,7 @@ mat3w111w11w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111w11w1w111 a b c d e f g h i =
+mat3f11f1ff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9778,7 +9778,7 @@ mat3w111w11w1w111 a b c d e f g h i =
         i
 
 
-mat3w111w11w1w11w1 :
+mat3f11f1ff1f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9789,7 +9789,7 @@ mat3w111w11w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111w11w1w11w1 a b c d e f g h i =
+mat3f11f1ff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9804,7 +9804,7 @@ mat3w111w11w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111w11w1w1w11 :
+mat3f11f1fff1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9815,7 +9815,7 @@ mat3w111w11w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111w11w1w1w11 a b c d e f g h i =
+mat3f11f1fff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9830,7 +9830,7 @@ mat3w111w11w1w1w11 a b c d e f g h i =
         i
 
 
-mat3w111w11w1w1w1w1 :
+mat3f11f1ffff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9841,7 +9841,7 @@ mat3w111w11w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111w11w1w1w1w1 a b c d e f g h i =
+mat3f11f1ffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9856,7 +9856,7 @@ mat3w111w11w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111w1w11111 :
+mat3f11ff1111 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9867,7 +9867,7 @@ mat3w111w1w11111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1w11111 a b c d e f g h i =
+mat3f11ff1111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9882,7 +9882,7 @@ mat3w111w1w11111 a b c d e f g h i =
         i
 
 
-mat3w111w1w1111w1 :
+mat3f11ff111f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9893,7 +9893,7 @@ mat3w111w1w1111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1w1111w1 a b c d e f g h i =
+mat3f11ff111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9908,7 +9908,7 @@ mat3w111w1w1111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111w1w111w11 :
+mat3f11ff11f1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9919,7 +9919,7 @@ mat3w111w1w111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1w111w11 a b c d e f g h i =
+mat3f11ff11f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9934,7 +9934,7 @@ mat3w111w1w111w11 a b c d e f g h i =
         i
 
 
-mat3w111w1w111w1w1 :
+mat3f11ff11ff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9945,7 +9945,7 @@ mat3w111w1w111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1w111w1w1 a b c d e f g h i =
+mat3f11ff11ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9960,7 +9960,7 @@ mat3w111w1w111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111w1w11w111 :
+mat3f11ff1f11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9971,7 +9971,7 @@ mat3w111w1w11w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1w11w111 a b c d e f g h i =
+mat3f11ff1f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -9986,7 +9986,7 @@ mat3w111w1w11w111 a b c d e f g h i =
         i
 
 
-mat3w111w1w11w11w1 :
+mat3f11ff1f1f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -9997,7 +9997,7 @@ mat3w111w1w11w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1w11w11w1 a b c d e f g h i =
+mat3f11ff1f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10012,7 +10012,7 @@ mat3w111w1w11w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111w1w11w1w11 :
+mat3f11ff1ff1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -10023,7 +10023,7 @@ mat3w111w1w11w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1w11w1w11 a b c d e f g h i =
+mat3f11ff1ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10038,7 +10038,7 @@ mat3w111w1w11w1w11 a b c d e f g h i =
         i
 
 
-mat3w111w1w11w1w1w1 :
+mat3f11ff1fff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -10049,7 +10049,7 @@ mat3w111w1w11w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1w11w1w1w1 a b c d e f g h i =
+mat3f11ff1fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10064,7 +10064,7 @@ mat3w111w1w11w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111w1w1w1111 :
+mat3f11fff111 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -10075,7 +10075,7 @@ mat3w111w1w1w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1w1w1111 a b c d e f g h i =
+mat3f11fff111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10090,7 +10090,7 @@ mat3w111w1w1w1111 a b c d e f g h i =
         i
 
 
-mat3w111w1w1w111w1 :
+mat3f11fff11f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -10101,7 +10101,7 @@ mat3w111w1w1w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1w1w111w1 a b c d e f g h i =
+mat3f11fff11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10116,7 +10116,7 @@ mat3w111w1w1w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111w1w1w11w11 :
+mat3f11fff1f1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -10127,7 +10127,7 @@ mat3w111w1w1w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1w1w11w11 a b c d e f g h i =
+mat3f11fff1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10142,7 +10142,7 @@ mat3w111w1w1w11w11 a b c d e f g h i =
         i
 
 
-mat3w111w1w1w11w1w1 :
+mat3f11fff1ff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -10153,7 +10153,7 @@ mat3w111w1w1w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1w1w11w1w1 a b c d e f g h i =
+mat3f11fff1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10168,7 +10168,7 @@ mat3w111w1w1w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111w1w1w1w111 :
+mat3f11ffff11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -10179,7 +10179,7 @@ mat3w111w1w1w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1w1w1w111 a b c d e f g h i =
+mat3f11ffff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10194,7 +10194,7 @@ mat3w111w1w1w1w111 a b c d e f g h i =
         i
 
 
-mat3w111w1w1w1w11w1 :
+mat3f11ffff1f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -10205,7 +10205,7 @@ mat3w111w1w1w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1w1w1w11w1 a b c d e f g h i =
+mat3f11ffff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10220,7 +10220,7 @@ mat3w111w1w1w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w111w1w1w1w1w11 :
+mat3f11fffff1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -10231,7 +10231,7 @@ mat3w111w1w1w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1w1w1w1w11 a b c d e f g h i =
+mat3f11fffff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10246,7 +10246,7 @@ mat3w111w1w1w1w1w11 a b c d e f g h i =
         i
 
 
-mat3w111w1w1w1w1w1w1 :
+mat3f11ffffff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -10257,7 +10257,7 @@ mat3w111w1w1w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w111w1w1w1w1w1w1 a b c d e f g h i =
+mat3f11ffffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10272,7 +10272,7 @@ mat3w111w1w1w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1111111 :
+mat3f1f111111 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10283,11 +10283,11 @@ mat3w11w1111111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1111111 a b c d e f g h i =
+mat3f1f111111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] (Glsl.float1 a) b (Glsl.float1 c) d e f g h i
 
 
-mat3w11w111111w1 :
+mat3f1f11111f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10298,7 +10298,7 @@ mat3w11w111111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w111111w1 a b c d e f g h i =
+mat3f1f11111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10313,7 +10313,7 @@ mat3w11w111111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w11111w11 :
+mat3f1f1111f1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10324,7 +10324,7 @@ mat3w11w11111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11111w11 a b c d e f g h i =
+mat3f1f1111f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10339,7 +10339,7 @@ mat3w11w11111w11 a b c d e f g h i =
         i
 
 
-mat3w11w11111w1w1 :
+mat3f1f1111ff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10350,7 +10350,7 @@ mat3w11w11111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11111w1w1 a b c d e f g h i =
+mat3f1f1111ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10365,7 +10365,7 @@ mat3w11w11111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1111w111 :
+mat3f1f111f11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10376,7 +10376,7 @@ mat3w11w1111w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1111w111 a b c d e f g h i =
+mat3f1f111f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10391,7 +10391,7 @@ mat3w11w1111w111 a b c d e f g h i =
         i
 
 
-mat3w11w1111w11w1 :
+mat3f1f111f1f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10402,7 +10402,7 @@ mat3w11w1111w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1111w11w1 a b c d e f g h i =
+mat3f1f111f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10417,7 +10417,7 @@ mat3w11w1111w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1111w1w11 :
+mat3f1f111ff1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10428,7 +10428,7 @@ mat3w11w1111w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1111w1w11 a b c d e f g h i =
+mat3f1f111ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10443,7 +10443,7 @@ mat3w11w1111w1w11 a b c d e f g h i =
         i
 
 
-mat3w11w1111w1w1w1 :
+mat3f1f111fff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10454,7 +10454,7 @@ mat3w11w1111w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1111w1w1w1 a b c d e f g h i =
+mat3f1f111fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10469,7 +10469,7 @@ mat3w11w1111w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w111w1111 :
+mat3f1f11f111 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10480,7 +10480,7 @@ mat3w11w111w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w111w1111 a b c d e f g h i =
+mat3f1f11f111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10495,7 +10495,7 @@ mat3w11w111w1111 a b c d e f g h i =
         i
 
 
-mat3w11w111w111w1 :
+mat3f1f11f11f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10506,7 +10506,7 @@ mat3w11w111w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w111w111w1 a b c d e f g h i =
+mat3f1f11f11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10521,7 +10521,7 @@ mat3w11w111w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w111w11w11 :
+mat3f1f11f1f1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10532,7 +10532,7 @@ mat3w11w111w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w111w11w11 a b c d e f g h i =
+mat3f1f11f1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10547,7 +10547,7 @@ mat3w11w111w11w11 a b c d e f g h i =
         i
 
 
-mat3w11w111w11w1w1 :
+mat3f1f11f1ff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10558,7 +10558,7 @@ mat3w11w111w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w111w11w1w1 a b c d e f g h i =
+mat3f1f11f1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10573,7 +10573,7 @@ mat3w11w111w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w111w1w111 :
+mat3f1f11ff11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10584,7 +10584,7 @@ mat3w11w111w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w111w1w111 a b c d e f g h i =
+mat3f1f11ff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10599,7 +10599,7 @@ mat3w11w111w1w111 a b c d e f g h i =
         i
 
 
-mat3w11w111w1w11w1 :
+mat3f1f11ff1f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10610,7 +10610,7 @@ mat3w11w111w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w111w1w11w1 a b c d e f g h i =
+mat3f1f11ff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10625,7 +10625,7 @@ mat3w11w111w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w111w1w1w11 :
+mat3f1f11fff1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10636,7 +10636,7 @@ mat3w11w111w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w111w1w1w11 a b c d e f g h i =
+mat3f1f11fff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10651,7 +10651,7 @@ mat3w11w111w1w1w11 a b c d e f g h i =
         i
 
 
-mat3w11w111w1w1w1w1 :
+mat3f1f11ffff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10662,7 +10662,7 @@ mat3w11w111w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w111w1w1w1w1 a b c d e f g h i =
+mat3f1f11ffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10677,7 +10677,7 @@ mat3w11w111w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w11w11111 :
+mat3f1f1f1111 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10688,7 +10688,7 @@ mat3w11w11w11111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11w11111 a b c d e f g h i =
+mat3f1f1f1111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10703,7 +10703,7 @@ mat3w11w11w11111 a b c d e f g h i =
         i
 
 
-mat3w11w11w1111w1 :
+mat3f1f1f111f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10714,7 +10714,7 @@ mat3w11w11w1111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11w1111w1 a b c d e f g h i =
+mat3f1f1f111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10729,7 +10729,7 @@ mat3w11w11w1111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w11w111w11 :
+mat3f1f1f11f1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10740,7 +10740,7 @@ mat3w11w11w111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11w111w11 a b c d e f g h i =
+mat3f1f1f11f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10755,7 +10755,7 @@ mat3w11w11w111w11 a b c d e f g h i =
         i
 
 
-mat3w11w11w111w1w1 :
+mat3f1f1f11ff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10766,7 +10766,7 @@ mat3w11w11w111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11w111w1w1 a b c d e f g h i =
+mat3f1f1f11ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10781,7 +10781,7 @@ mat3w11w11w111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w11w11w111 :
+mat3f1f1f1f11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10792,7 +10792,7 @@ mat3w11w11w11w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11w11w111 a b c d e f g h i =
+mat3f1f1f1f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10807,7 +10807,7 @@ mat3w11w11w11w111 a b c d e f g h i =
         i
 
 
-mat3w11w11w11w11w1 :
+mat3f1f1f1f1f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10818,7 +10818,7 @@ mat3w11w11w11w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11w11w11w1 a b c d e f g h i =
+mat3f1f1f1f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10833,7 +10833,7 @@ mat3w11w11w11w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w11w11w1w11 :
+mat3f1f1f1ff1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10844,7 +10844,7 @@ mat3w11w11w11w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11w11w1w11 a b c d e f g h i =
+mat3f1f1f1ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10859,7 +10859,7 @@ mat3w11w11w11w1w11 a b c d e f g h i =
         i
 
 
-mat3w11w11w11w1w1w1 :
+mat3f1f1f1fff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10870,7 +10870,7 @@ mat3w11w11w11w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11w11w1w1w1 a b c d e f g h i =
+mat3f1f1f1fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10885,7 +10885,7 @@ mat3w11w11w11w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w11w1w1111 :
+mat3f1f1ff111 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10896,7 +10896,7 @@ mat3w11w11w1w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11w1w1111 a b c d e f g h i =
+mat3f1f1ff111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10911,7 +10911,7 @@ mat3w11w11w1w1111 a b c d e f g h i =
         i
 
 
-mat3w11w11w1w111w1 :
+mat3f1f1ff11f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10922,7 +10922,7 @@ mat3w11w11w1w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11w1w111w1 a b c d e f g h i =
+mat3f1f1ff11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10937,7 +10937,7 @@ mat3w11w11w1w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w11w1w11w11 :
+mat3f1f1ff1f1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10948,7 +10948,7 @@ mat3w11w11w1w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11w1w11w11 a b c d e f g h i =
+mat3f1f1ff1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10963,7 +10963,7 @@ mat3w11w11w1w11w11 a b c d e f g h i =
         i
 
 
-mat3w11w11w1w11w1w1 :
+mat3f1f1ff1ff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -10974,7 +10974,7 @@ mat3w11w11w1w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11w1w11w1w1 a b c d e f g h i =
+mat3f1f1ff1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -10989,7 +10989,7 @@ mat3w11w11w1w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w11w1w1w111 :
+mat3f1f1fff11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11000,7 +11000,7 @@ mat3w11w11w1w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11w1w1w111 a b c d e f g h i =
+mat3f1f1fff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11015,7 +11015,7 @@ mat3w11w11w1w1w111 a b c d e f g h i =
         i
 
 
-mat3w11w11w1w1w11w1 :
+mat3f1f1fff1f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11026,7 +11026,7 @@ mat3w11w11w1w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11w1w1w11w1 a b c d e f g h i =
+mat3f1f1fff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11041,7 +11041,7 @@ mat3w11w11w1w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w11w1w1w1w11 :
+mat3f1f1ffff1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11052,7 +11052,7 @@ mat3w11w11w1w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11w1w1w1w11 a b c d e f g h i =
+mat3f1f1ffff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11067,7 +11067,7 @@ mat3w11w11w1w1w1w11 a b c d e f g h i =
         i
 
 
-mat3w11w11w1w1w1w1w1 :
+mat3f1f1fffff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11078,7 +11078,7 @@ mat3w11w11w1w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w11w1w1w1w1w1 a b c d e f g h i =
+mat3f1f1fffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11093,7 +11093,7 @@ mat3w11w11w1w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1w111111 :
+mat3f1ff11111 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11104,7 +11104,7 @@ mat3w11w1w111111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w111111 a b c d e f g h i =
+mat3f1ff11111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11119,7 +11119,7 @@ mat3w11w1w111111 a b c d e f g h i =
         i
 
 
-mat3w11w1w11111w1 :
+mat3f1ff1111f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11130,7 +11130,7 @@ mat3w11w1w11111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w11111w1 a b c d e f g h i =
+mat3f1ff1111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11145,7 +11145,7 @@ mat3w11w1w11111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1w1111w11 :
+mat3f1ff111f1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11156,7 +11156,7 @@ mat3w11w1w1111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1111w11 a b c d e f g h i =
+mat3f1ff111f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11171,7 +11171,7 @@ mat3w11w1w1111w11 a b c d e f g h i =
         i
 
 
-mat3w11w1w1111w1w1 :
+mat3f1ff111ff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11182,7 +11182,7 @@ mat3w11w1w1111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1111w1w1 a b c d e f g h i =
+mat3f1ff111ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11197,7 +11197,7 @@ mat3w11w1w1111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1w111w111 :
+mat3f1ff11f11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11208,7 +11208,7 @@ mat3w11w1w111w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w111w111 a b c d e f g h i =
+mat3f1ff11f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11223,7 +11223,7 @@ mat3w11w1w111w111 a b c d e f g h i =
         i
 
 
-mat3w11w1w111w11w1 :
+mat3f1ff11f1f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11234,7 +11234,7 @@ mat3w11w1w111w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w111w11w1 a b c d e f g h i =
+mat3f1ff11f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11249,7 +11249,7 @@ mat3w11w1w111w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1w111w1w11 :
+mat3f1ff11ff1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11260,7 +11260,7 @@ mat3w11w1w111w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w111w1w11 a b c d e f g h i =
+mat3f1ff11ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11275,7 +11275,7 @@ mat3w11w1w111w1w11 a b c d e f g h i =
         i
 
 
-mat3w11w1w111w1w1w1 :
+mat3f1ff11fff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11286,7 +11286,7 @@ mat3w11w1w111w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w111w1w1w1 a b c d e f g h i =
+mat3f1ff11fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11301,7 +11301,7 @@ mat3w11w1w111w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1w11w1111 :
+mat3f1ff1f111 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11312,7 +11312,7 @@ mat3w11w1w11w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w11w1111 a b c d e f g h i =
+mat3f1ff1f111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11327,7 +11327,7 @@ mat3w11w1w11w1111 a b c d e f g h i =
         i
 
 
-mat3w11w1w11w111w1 :
+mat3f1ff1f11f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11338,7 +11338,7 @@ mat3w11w1w11w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w11w111w1 a b c d e f g h i =
+mat3f1ff1f11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11353,7 +11353,7 @@ mat3w11w1w11w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1w11w11w11 :
+mat3f1ff1f1f1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11364,7 +11364,7 @@ mat3w11w1w11w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w11w11w11 a b c d e f g h i =
+mat3f1ff1f1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11379,7 +11379,7 @@ mat3w11w1w11w11w11 a b c d e f g h i =
         i
 
 
-mat3w11w1w11w11w1w1 :
+mat3f1ff1f1ff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11390,7 +11390,7 @@ mat3w11w1w11w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w11w11w1w1 a b c d e f g h i =
+mat3f1ff1f1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11405,7 +11405,7 @@ mat3w11w1w11w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1w11w1w111 :
+mat3f1ff1ff11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11416,7 +11416,7 @@ mat3w11w1w11w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w11w1w111 a b c d e f g h i =
+mat3f1ff1ff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11431,7 +11431,7 @@ mat3w11w1w11w1w111 a b c d e f g h i =
         i
 
 
-mat3w11w1w11w1w11w1 :
+mat3f1ff1ff1f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11442,7 +11442,7 @@ mat3w11w1w11w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w11w1w11w1 a b c d e f g h i =
+mat3f1ff1ff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11457,7 +11457,7 @@ mat3w11w1w11w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1w11w1w1w11 :
+mat3f1ff1fff1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11468,7 +11468,7 @@ mat3w11w1w11w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w11w1w1w11 a b c d e f g h i =
+mat3f1ff1fff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11483,7 +11483,7 @@ mat3w11w1w11w1w1w11 a b c d e f g h i =
         i
 
 
-mat3w11w1w11w1w1w1w1 :
+mat3f1ff1ffff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11494,7 +11494,7 @@ mat3w11w1w11w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w11w1w1w1w1 a b c d e f g h i =
+mat3f1ff1ffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11509,7 +11509,7 @@ mat3w11w1w11w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1w1w11111 :
+mat3f1fff1111 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11520,7 +11520,7 @@ mat3w11w1w1w11111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1w11111 a b c d e f g h i =
+mat3f1fff1111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11535,7 +11535,7 @@ mat3w11w1w1w11111 a b c d e f g h i =
         i
 
 
-mat3w11w1w1w1111w1 :
+mat3f1fff111f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11546,7 +11546,7 @@ mat3w11w1w1w1111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1w1111w1 a b c d e f g h i =
+mat3f1fff111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11561,7 +11561,7 @@ mat3w11w1w1w1111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1w1w111w11 :
+mat3f1fff11f1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11572,7 +11572,7 @@ mat3w11w1w1w111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1w111w11 a b c d e f g h i =
+mat3f1fff11f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11587,7 +11587,7 @@ mat3w11w1w1w111w11 a b c d e f g h i =
         i
 
 
-mat3w11w1w1w111w1w1 :
+mat3f1fff11ff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11598,7 +11598,7 @@ mat3w11w1w1w111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1w111w1w1 a b c d e f g h i =
+mat3f1fff11ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11613,7 +11613,7 @@ mat3w11w1w1w111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1w1w11w111 :
+mat3f1fff1f11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11624,7 +11624,7 @@ mat3w11w1w1w11w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1w11w111 a b c d e f g h i =
+mat3f1fff1f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11639,7 +11639,7 @@ mat3w11w1w1w11w111 a b c d e f g h i =
         i
 
 
-mat3w11w1w1w11w11w1 :
+mat3f1fff1f1f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11650,7 +11650,7 @@ mat3w11w1w1w11w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1w11w11w1 a b c d e f g h i =
+mat3f1fff1f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11665,7 +11665,7 @@ mat3w11w1w1w11w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1w1w11w1w11 :
+mat3f1fff1ff1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11676,7 +11676,7 @@ mat3w11w1w1w11w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1w11w1w11 a b c d e f g h i =
+mat3f1fff1ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11691,7 +11691,7 @@ mat3w11w1w1w11w1w11 a b c d e f g h i =
         i
 
 
-mat3w11w1w1w11w1w1w1 :
+mat3f1fff1fff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11702,7 +11702,7 @@ mat3w11w1w1w11w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1w11w1w1w1 a b c d e f g h i =
+mat3f1fff1fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11717,7 +11717,7 @@ mat3w11w1w1w11w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1w1w1w1111 :
+mat3f1ffff111 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11728,7 +11728,7 @@ mat3w11w1w1w1w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1w1w1111 a b c d e f g h i =
+mat3f1ffff111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11743,7 +11743,7 @@ mat3w11w1w1w1w1111 a b c d e f g h i =
         i
 
 
-mat3w11w1w1w1w111w1 :
+mat3f1ffff11f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11754,7 +11754,7 @@ mat3w11w1w1w1w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1w1w111w1 a b c d e f g h i =
+mat3f1ffff11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11769,7 +11769,7 @@ mat3w11w1w1w1w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1w1w1w11w11 :
+mat3f1ffff1f1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11780,7 +11780,7 @@ mat3w11w1w1w1w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1w1w11w11 a b c d e f g h i =
+mat3f1ffff1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11795,7 +11795,7 @@ mat3w11w1w1w1w11w11 a b c d e f g h i =
         i
 
 
-mat3w11w1w1w1w11w1w1 :
+mat3f1ffff1ff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11806,7 +11806,7 @@ mat3w11w1w1w1w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1w1w11w1w1 a b c d e f g h i =
+mat3f1ffff1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11821,7 +11821,7 @@ mat3w11w1w1w1w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1w1w1w1w111 :
+mat3f1fffff11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11832,7 +11832,7 @@ mat3w11w1w1w1w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1w1w1w111 a b c d e f g h i =
+mat3f1fffff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11847,7 +11847,7 @@ mat3w11w1w1w1w1w111 a b c d e f g h i =
         i
 
 
-mat3w11w1w1w1w1w11w1 :
+mat3f1fffff1f :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11858,7 +11858,7 @@ mat3w11w1w1w1w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1w1w1w11w1 a b c d e f g h i =
+mat3f1fffff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11873,7 +11873,7 @@ mat3w11w1w1w1w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w11w1w1w1w1w1w11 :
+mat3f1ffffff1 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11884,7 +11884,7 @@ mat3w11w1w1w1w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1w1w1w1w11 a b c d e f g h i =
+mat3f1ffffff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11899,7 +11899,7 @@ mat3w11w1w1w1w1w1w11 a b c d e f g h i =
         i
 
 
-mat3w11w1w1w1w1w1w1w1 :
+mat3f1fffffff :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Float
@@ -11910,7 +11910,7 @@ mat3w11w1w1w1w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w11w1w1w1w1w1w1w1 a b c d e f g h i =
+mat3f1fffffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11925,7 +11925,7 @@ mat3w11w1w1w1w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11111111 :
+mat3ff1111111 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -11936,11 +11936,11 @@ mat3w1w11111111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11111111 a b c d e f g h i =
+mat3ff1111111 a b c d e f g h i =
     Glsl.unsafeCall9 "mat3" [] (Glsl.float1 a) (Glsl.float1 b) c d e f g h i
 
 
-mat3w1w1111111w1 :
+mat3ff111111f :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -11951,7 +11951,7 @@ mat3w1w1111111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1111111w1 a b c d e f g h i =
+mat3ff111111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11966,7 +11966,7 @@ mat3w1w1111111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w111111w11 :
+mat3ff11111f1 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -11977,7 +11977,7 @@ mat3w1w111111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111111w11 a b c d e f g h i =
+mat3ff11111f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -11992,7 +11992,7 @@ mat3w1w111111w11 a b c d e f g h i =
         i
 
 
-mat3w1w111111w1w1 :
+mat3ff11111ff :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12003,7 +12003,7 @@ mat3w1w111111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111111w1w1 a b c d e f g h i =
+mat3ff11111ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12018,7 +12018,7 @@ mat3w1w111111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11111w111 :
+mat3ff1111f11 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12029,7 +12029,7 @@ mat3w1w11111w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11111w111 a b c d e f g h i =
+mat3ff1111f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12044,7 +12044,7 @@ mat3w1w11111w111 a b c d e f g h i =
         i
 
 
-mat3w1w11111w11w1 :
+mat3ff1111f1f :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12055,7 +12055,7 @@ mat3w1w11111w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11111w11w1 a b c d e f g h i =
+mat3ff1111f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12070,7 +12070,7 @@ mat3w1w11111w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11111w1w11 :
+mat3ff1111ff1 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12081,7 +12081,7 @@ mat3w1w11111w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11111w1w11 a b c d e f g h i =
+mat3ff1111ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12096,7 +12096,7 @@ mat3w1w11111w1w11 a b c d e f g h i =
         i
 
 
-mat3w1w11111w1w1w1 :
+mat3ff1111fff :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12107,7 +12107,7 @@ mat3w1w11111w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11111w1w1w1 a b c d e f g h i =
+mat3ff1111fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12122,7 +12122,7 @@ mat3w1w11111w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1111w1111 :
+mat3ff111f111 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12133,7 +12133,7 @@ mat3w1w1111w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1111w1111 a b c d e f g h i =
+mat3ff111f111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12148,7 +12148,7 @@ mat3w1w1111w1111 a b c d e f g h i =
         i
 
 
-mat3w1w1111w111w1 :
+mat3ff111f11f :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12159,7 +12159,7 @@ mat3w1w1111w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1111w111w1 a b c d e f g h i =
+mat3ff111f11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12174,7 +12174,7 @@ mat3w1w1111w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1111w11w11 :
+mat3ff111f1f1 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12185,7 +12185,7 @@ mat3w1w1111w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1111w11w11 a b c d e f g h i =
+mat3ff111f1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12200,7 +12200,7 @@ mat3w1w1111w11w11 a b c d e f g h i =
         i
 
 
-mat3w1w1111w11w1w1 :
+mat3ff111f1ff :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12211,7 +12211,7 @@ mat3w1w1111w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1111w11w1w1 a b c d e f g h i =
+mat3ff111f1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12226,7 +12226,7 @@ mat3w1w1111w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1111w1w111 :
+mat3ff111ff11 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12237,7 +12237,7 @@ mat3w1w1111w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1111w1w111 a b c d e f g h i =
+mat3ff111ff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12252,7 +12252,7 @@ mat3w1w1111w1w111 a b c d e f g h i =
         i
 
 
-mat3w1w1111w1w11w1 :
+mat3ff111ff1f :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12263,7 +12263,7 @@ mat3w1w1111w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1111w1w11w1 a b c d e f g h i =
+mat3ff111ff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12278,7 +12278,7 @@ mat3w1w1111w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1111w1w1w11 :
+mat3ff111fff1 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12289,7 +12289,7 @@ mat3w1w1111w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1111w1w1w11 a b c d e f g h i =
+mat3ff111fff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12304,7 +12304,7 @@ mat3w1w1111w1w1w11 a b c d e f g h i =
         i
 
 
-mat3w1w1111w1w1w1w1 :
+mat3ff111ffff :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12315,7 +12315,7 @@ mat3w1w1111w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1111w1w1w1w1 a b c d e f g h i =
+mat3ff111ffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12330,7 +12330,7 @@ mat3w1w1111w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w111w11111 :
+mat3ff11f1111 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12341,7 +12341,7 @@ mat3w1w111w11111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111w11111 a b c d e f g h i =
+mat3ff11f1111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12356,7 +12356,7 @@ mat3w1w111w11111 a b c d e f g h i =
         i
 
 
-mat3w1w111w1111w1 :
+mat3ff11f111f :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12367,7 +12367,7 @@ mat3w1w111w1111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111w1111w1 a b c d e f g h i =
+mat3ff11f111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12382,7 +12382,7 @@ mat3w1w111w1111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w111w111w11 :
+mat3ff11f11f1 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12393,7 +12393,7 @@ mat3w1w111w111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111w111w11 a b c d e f g h i =
+mat3ff11f11f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12408,7 +12408,7 @@ mat3w1w111w111w11 a b c d e f g h i =
         i
 
 
-mat3w1w111w111w1w1 :
+mat3ff11f11ff :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12419,7 +12419,7 @@ mat3w1w111w111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111w111w1w1 a b c d e f g h i =
+mat3ff11f11ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12434,7 +12434,7 @@ mat3w1w111w111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w111w11w111 :
+mat3ff11f1f11 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12445,7 +12445,7 @@ mat3w1w111w11w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111w11w111 a b c d e f g h i =
+mat3ff11f1f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12460,7 +12460,7 @@ mat3w1w111w11w111 a b c d e f g h i =
         i
 
 
-mat3w1w111w11w11w1 :
+mat3ff11f1f1f :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12471,7 +12471,7 @@ mat3w1w111w11w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111w11w11w1 a b c d e f g h i =
+mat3ff11f1f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12486,7 +12486,7 @@ mat3w1w111w11w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w111w11w1w11 :
+mat3ff11f1ff1 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12497,7 +12497,7 @@ mat3w1w111w11w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111w11w1w11 a b c d e f g h i =
+mat3ff11f1ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12512,7 +12512,7 @@ mat3w1w111w11w1w11 a b c d e f g h i =
         i
 
 
-mat3w1w111w11w1w1w1 :
+mat3ff11f1fff :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12523,7 +12523,7 @@ mat3w1w111w11w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111w11w1w1w1 a b c d e f g h i =
+mat3ff11f1fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12538,7 +12538,7 @@ mat3w1w111w11w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w111w1w1111 :
+mat3ff11ff111 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12549,7 +12549,7 @@ mat3w1w111w1w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111w1w1111 a b c d e f g h i =
+mat3ff11ff111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12564,7 +12564,7 @@ mat3w1w111w1w1111 a b c d e f g h i =
         i
 
 
-mat3w1w111w1w111w1 :
+mat3ff11ff11f :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12575,7 +12575,7 @@ mat3w1w111w1w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111w1w111w1 a b c d e f g h i =
+mat3ff11ff11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12590,7 +12590,7 @@ mat3w1w111w1w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w111w1w11w11 :
+mat3ff11ff1f1 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12601,7 +12601,7 @@ mat3w1w111w1w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111w1w11w11 a b c d e f g h i =
+mat3ff11ff1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12616,7 +12616,7 @@ mat3w1w111w1w11w11 a b c d e f g h i =
         i
 
 
-mat3w1w111w1w11w1w1 :
+mat3ff11ff1ff :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12627,7 +12627,7 @@ mat3w1w111w1w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111w1w11w1w1 a b c d e f g h i =
+mat3ff11ff1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12642,7 +12642,7 @@ mat3w1w111w1w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w111w1w1w111 :
+mat3ff11fff11 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12653,7 +12653,7 @@ mat3w1w111w1w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111w1w1w111 a b c d e f g h i =
+mat3ff11fff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12668,7 +12668,7 @@ mat3w1w111w1w1w111 a b c d e f g h i =
         i
 
 
-mat3w1w111w1w1w11w1 :
+mat3ff11fff1f :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12679,7 +12679,7 @@ mat3w1w111w1w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111w1w1w11w1 a b c d e f g h i =
+mat3ff11fff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12694,7 +12694,7 @@ mat3w1w111w1w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w111w1w1w1w11 :
+mat3ff11ffff1 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12705,7 +12705,7 @@ mat3w1w111w1w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111w1w1w1w11 a b c d e f g h i =
+mat3ff11ffff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12720,7 +12720,7 @@ mat3w1w111w1w1w1w11 a b c d e f g h i =
         i
 
 
-mat3w1w111w1w1w1w1w1 :
+mat3ff11fffff :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12731,7 +12731,7 @@ mat3w1w111w1w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w111w1w1w1w1w1 a b c d e f g h i =
+mat3ff11fffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12746,7 +12746,7 @@ mat3w1w111w1w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11w111111 :
+mat3ff1f11111 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12757,7 +12757,7 @@ mat3w1w11w111111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w111111 a b c d e f g h i =
+mat3ff1f11111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12772,7 +12772,7 @@ mat3w1w11w111111 a b c d e f g h i =
         i
 
 
-mat3w1w11w11111w1 :
+mat3ff1f1111f :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12783,7 +12783,7 @@ mat3w1w11w11111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w11111w1 a b c d e f g h i =
+mat3ff1f1111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12798,7 +12798,7 @@ mat3w1w11w11111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11w1111w11 :
+mat3ff1f111f1 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12809,7 +12809,7 @@ mat3w1w11w1111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1111w11 a b c d e f g h i =
+mat3ff1f111f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12824,7 +12824,7 @@ mat3w1w11w1111w11 a b c d e f g h i =
         i
 
 
-mat3w1w11w1111w1w1 :
+mat3ff1f111ff :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12835,7 +12835,7 @@ mat3w1w11w1111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1111w1w1 a b c d e f g h i =
+mat3ff1f111ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12850,7 +12850,7 @@ mat3w1w11w1111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11w111w111 :
+mat3ff1f11f11 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12861,7 +12861,7 @@ mat3w1w11w111w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w111w111 a b c d e f g h i =
+mat3ff1f11f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12876,7 +12876,7 @@ mat3w1w11w111w111 a b c d e f g h i =
         i
 
 
-mat3w1w11w111w11w1 :
+mat3ff1f11f1f :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12887,7 +12887,7 @@ mat3w1w11w111w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w111w11w1 a b c d e f g h i =
+mat3ff1f11f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12902,7 +12902,7 @@ mat3w1w11w111w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11w111w1w11 :
+mat3ff1f11ff1 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12913,7 +12913,7 @@ mat3w1w11w111w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w111w1w11 a b c d e f g h i =
+mat3ff1f11ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12928,7 +12928,7 @@ mat3w1w11w111w1w11 a b c d e f g h i =
         i
 
 
-mat3w1w11w111w1w1w1 :
+mat3ff1f11fff :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12939,7 +12939,7 @@ mat3w1w11w111w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w111w1w1w1 a b c d e f g h i =
+mat3ff1f11fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12954,7 +12954,7 @@ mat3w1w11w111w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11w11w1111 :
+mat3ff1f1f111 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12965,7 +12965,7 @@ mat3w1w11w11w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w11w1111 a b c d e f g h i =
+mat3ff1f1f111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -12980,7 +12980,7 @@ mat3w1w11w11w1111 a b c d e f g h i =
         i
 
 
-mat3w1w11w11w111w1 :
+mat3ff1f1f11f :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -12991,7 +12991,7 @@ mat3w1w11w11w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w11w111w1 a b c d e f g h i =
+mat3ff1f1f11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13006,7 +13006,7 @@ mat3w1w11w11w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11w11w11w11 :
+mat3ff1f1f1f1 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13017,7 +13017,7 @@ mat3w1w11w11w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w11w11w11 a b c d e f g h i =
+mat3ff1f1f1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13032,7 +13032,7 @@ mat3w1w11w11w11w11 a b c d e f g h i =
         i
 
 
-mat3w1w11w11w11w1w1 :
+mat3ff1f1f1ff :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13043,7 +13043,7 @@ mat3w1w11w11w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w11w11w1w1 a b c d e f g h i =
+mat3ff1f1f1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13058,7 +13058,7 @@ mat3w1w11w11w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11w11w1w111 :
+mat3ff1f1ff11 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13069,7 +13069,7 @@ mat3w1w11w11w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w11w1w111 a b c d e f g h i =
+mat3ff1f1ff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13084,7 +13084,7 @@ mat3w1w11w11w1w111 a b c d e f g h i =
         i
 
 
-mat3w1w11w11w1w11w1 :
+mat3ff1f1ff1f :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13095,7 +13095,7 @@ mat3w1w11w11w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w11w1w11w1 a b c d e f g h i =
+mat3ff1f1ff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13110,7 +13110,7 @@ mat3w1w11w11w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11w11w1w1w11 :
+mat3ff1f1fff1 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13121,7 +13121,7 @@ mat3w1w11w11w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w11w1w1w11 a b c d e f g h i =
+mat3ff1f1fff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13136,7 +13136,7 @@ mat3w1w11w11w1w1w11 a b c d e f g h i =
         i
 
 
-mat3w1w11w11w1w1w1w1 :
+mat3ff1f1ffff :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13147,7 +13147,7 @@ mat3w1w11w11w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w11w1w1w1w1 a b c d e f g h i =
+mat3ff1f1ffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13162,7 +13162,7 @@ mat3w1w11w11w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11w1w11111 :
+mat3ff1ff1111 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13173,7 +13173,7 @@ mat3w1w11w1w11111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1w11111 a b c d e f g h i =
+mat3ff1ff1111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13188,7 +13188,7 @@ mat3w1w11w1w11111 a b c d e f g h i =
         i
 
 
-mat3w1w11w1w1111w1 :
+mat3ff1ff111f :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13199,7 +13199,7 @@ mat3w1w11w1w1111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1w1111w1 a b c d e f g h i =
+mat3ff1ff111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13214,7 +13214,7 @@ mat3w1w11w1w1111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11w1w111w11 :
+mat3ff1ff11f1 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13225,7 +13225,7 @@ mat3w1w11w1w111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1w111w11 a b c d e f g h i =
+mat3ff1ff11f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13240,7 +13240,7 @@ mat3w1w11w1w111w11 a b c d e f g h i =
         i
 
 
-mat3w1w11w1w111w1w1 :
+mat3ff1ff11ff :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13251,7 +13251,7 @@ mat3w1w11w1w111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1w111w1w1 a b c d e f g h i =
+mat3ff1ff11ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13266,7 +13266,7 @@ mat3w1w11w1w111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11w1w11w111 :
+mat3ff1ff1f11 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13277,7 +13277,7 @@ mat3w1w11w1w11w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1w11w111 a b c d e f g h i =
+mat3ff1ff1f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13292,7 +13292,7 @@ mat3w1w11w1w11w111 a b c d e f g h i =
         i
 
 
-mat3w1w11w1w11w11w1 :
+mat3ff1ff1f1f :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13303,7 +13303,7 @@ mat3w1w11w1w11w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1w11w11w1 a b c d e f g h i =
+mat3ff1ff1f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13318,7 +13318,7 @@ mat3w1w11w1w11w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11w1w11w1w11 :
+mat3ff1ff1ff1 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13329,7 +13329,7 @@ mat3w1w11w1w11w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1w11w1w11 a b c d e f g h i =
+mat3ff1ff1ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13344,7 +13344,7 @@ mat3w1w11w1w11w1w11 a b c d e f g h i =
         i
 
 
-mat3w1w11w1w11w1w1w1 :
+mat3ff1ff1fff :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13355,7 +13355,7 @@ mat3w1w11w1w11w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1w11w1w1w1 a b c d e f g h i =
+mat3ff1ff1fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13370,7 +13370,7 @@ mat3w1w11w1w11w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11w1w1w1111 :
+mat3ff1fff111 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13381,7 +13381,7 @@ mat3w1w11w1w1w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1w1w1111 a b c d e f g h i =
+mat3ff1fff111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13396,7 +13396,7 @@ mat3w1w11w1w1w1111 a b c d e f g h i =
         i
 
 
-mat3w1w11w1w1w111w1 :
+mat3ff1fff11f :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13407,7 +13407,7 @@ mat3w1w11w1w1w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1w1w111w1 a b c d e f g h i =
+mat3ff1fff11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13422,7 +13422,7 @@ mat3w1w11w1w1w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11w1w1w11w11 :
+mat3ff1fff1f1 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13433,7 +13433,7 @@ mat3w1w11w1w1w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1w1w11w11 a b c d e f g h i =
+mat3ff1fff1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13448,7 +13448,7 @@ mat3w1w11w1w1w11w11 a b c d e f g h i =
         i
 
 
-mat3w1w11w1w1w11w1w1 :
+mat3ff1fff1ff :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13459,7 +13459,7 @@ mat3w1w11w1w1w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1w1w11w1w1 a b c d e f g h i =
+mat3ff1fff1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13474,7 +13474,7 @@ mat3w1w11w1w1w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11w1w1w1w111 :
+mat3ff1ffff11 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13485,7 +13485,7 @@ mat3w1w11w1w1w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1w1w1w111 a b c d e f g h i =
+mat3ff1ffff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13500,7 +13500,7 @@ mat3w1w11w1w1w1w111 a b c d e f g h i =
         i
 
 
-mat3w1w11w1w1w1w11w1 :
+mat3ff1ffff1f :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13511,7 +13511,7 @@ mat3w1w11w1w1w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1w1w1w11w1 a b c d e f g h i =
+mat3ff1ffff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13526,7 +13526,7 @@ mat3w1w11w1w1w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w11w1w1w1w1w11 :
+mat3ff1fffff1 :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13537,7 +13537,7 @@ mat3w1w11w1w1w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1w1w1w1w11 a b c d e f g h i =
+mat3ff1fffff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13552,7 +13552,7 @@ mat3w1w11w1w1w1w1w11 a b c d e f g h i =
         i
 
 
-mat3w1w11w1w1w1w1w1w1 :
+mat3ff1ffffff :
     Float
     -> Float
     -> Glsl.Expression Glsl.Float_
@@ -13563,7 +13563,7 @@ mat3w1w11w1w1w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w11w1w1w1w1w1w1 a b c d e f g h i =
+mat3ff1ffffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13578,7 +13578,7 @@ mat3w1w11w1w1w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1111111 :
+mat3fff111111 :
     Float
     -> Float
     -> Float
@@ -13589,7 +13589,7 @@ mat3w1w1w1111111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1111111 a b c d e f g h i =
+mat3fff111111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13604,7 +13604,7 @@ mat3w1w1w1111111 a b c d e f g h i =
         i
 
 
-mat3w1w1w111111w1 :
+mat3fff11111f :
     Float
     -> Float
     -> Float
@@ -13615,7 +13615,7 @@ mat3w1w1w111111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w111111w1 a b c d e f g h i =
+mat3fff11111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13630,7 +13630,7 @@ mat3w1w1w111111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w11111w11 :
+mat3fff1111f1 :
     Float
     -> Float
     -> Float
@@ -13641,7 +13641,7 @@ mat3w1w1w11111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11111w11 a b c d e f g h i =
+mat3fff1111f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13656,7 +13656,7 @@ mat3w1w1w11111w11 a b c d e f g h i =
         i
 
 
-mat3w1w1w11111w1w1 :
+mat3fff1111ff :
     Float
     -> Float
     -> Float
@@ -13667,7 +13667,7 @@ mat3w1w1w11111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11111w1w1 a b c d e f g h i =
+mat3fff1111ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13682,7 +13682,7 @@ mat3w1w1w11111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1111w111 :
+mat3fff111f11 :
     Float
     -> Float
     -> Float
@@ -13693,7 +13693,7 @@ mat3w1w1w1111w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1111w111 a b c d e f g h i =
+mat3fff111f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13708,7 +13708,7 @@ mat3w1w1w1111w111 a b c d e f g h i =
         i
 
 
-mat3w1w1w1111w11w1 :
+mat3fff111f1f :
     Float
     -> Float
     -> Float
@@ -13719,7 +13719,7 @@ mat3w1w1w1111w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1111w11w1 a b c d e f g h i =
+mat3fff111f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13734,7 +13734,7 @@ mat3w1w1w1111w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1111w1w11 :
+mat3fff111ff1 :
     Float
     -> Float
     -> Float
@@ -13745,7 +13745,7 @@ mat3w1w1w1111w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1111w1w11 a b c d e f g h i =
+mat3fff111ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13760,7 +13760,7 @@ mat3w1w1w1111w1w11 a b c d e f g h i =
         i
 
 
-mat3w1w1w1111w1w1w1 :
+mat3fff111fff :
     Float
     -> Float
     -> Float
@@ -13771,7 +13771,7 @@ mat3w1w1w1111w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1111w1w1w1 a b c d e f g h i =
+mat3fff111fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13786,7 +13786,7 @@ mat3w1w1w1111w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w111w1111 :
+mat3fff11f111 :
     Float
     -> Float
     -> Float
@@ -13797,7 +13797,7 @@ mat3w1w1w111w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w111w1111 a b c d e f g h i =
+mat3fff11f111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13812,7 +13812,7 @@ mat3w1w1w111w1111 a b c d e f g h i =
         i
 
 
-mat3w1w1w111w111w1 :
+mat3fff11f11f :
     Float
     -> Float
     -> Float
@@ -13823,7 +13823,7 @@ mat3w1w1w111w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w111w111w1 a b c d e f g h i =
+mat3fff11f11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13838,7 +13838,7 @@ mat3w1w1w111w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w111w11w11 :
+mat3fff11f1f1 :
     Float
     -> Float
     -> Float
@@ -13849,7 +13849,7 @@ mat3w1w1w111w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w111w11w11 a b c d e f g h i =
+mat3fff11f1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13864,7 +13864,7 @@ mat3w1w1w111w11w11 a b c d e f g h i =
         i
 
 
-mat3w1w1w111w11w1w1 :
+mat3fff11f1ff :
     Float
     -> Float
     -> Float
@@ -13875,7 +13875,7 @@ mat3w1w1w111w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w111w11w1w1 a b c d e f g h i =
+mat3fff11f1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13890,7 +13890,7 @@ mat3w1w1w111w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w111w1w111 :
+mat3fff11ff11 :
     Float
     -> Float
     -> Float
@@ -13901,7 +13901,7 @@ mat3w1w1w111w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w111w1w111 a b c d e f g h i =
+mat3fff11ff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13916,7 +13916,7 @@ mat3w1w1w111w1w111 a b c d e f g h i =
         i
 
 
-mat3w1w1w111w1w11w1 :
+mat3fff11ff1f :
     Float
     -> Float
     -> Float
@@ -13927,7 +13927,7 @@ mat3w1w1w111w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w111w1w11w1 a b c d e f g h i =
+mat3fff11ff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13942,7 +13942,7 @@ mat3w1w1w111w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w111w1w1w11 :
+mat3fff11fff1 :
     Float
     -> Float
     -> Float
@@ -13953,7 +13953,7 @@ mat3w1w1w111w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w111w1w1w11 a b c d e f g h i =
+mat3fff11fff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13968,7 +13968,7 @@ mat3w1w1w111w1w1w11 a b c d e f g h i =
         i
 
 
-mat3w1w1w111w1w1w1w1 :
+mat3fff11ffff :
     Float
     -> Float
     -> Float
@@ -13979,7 +13979,7 @@ mat3w1w1w111w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w111w1w1w1w1 a b c d e f g h i =
+mat3fff11ffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -13994,7 +13994,7 @@ mat3w1w1w111w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w11w11111 :
+mat3fff1f1111 :
     Float
     -> Float
     -> Float
@@ -14005,7 +14005,7 @@ mat3w1w1w11w11111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11w11111 a b c d e f g h i =
+mat3fff1f1111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14020,7 +14020,7 @@ mat3w1w1w11w11111 a b c d e f g h i =
         i
 
 
-mat3w1w1w11w1111w1 :
+mat3fff1f111f :
     Float
     -> Float
     -> Float
@@ -14031,7 +14031,7 @@ mat3w1w1w11w1111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11w1111w1 a b c d e f g h i =
+mat3fff1f111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14046,7 +14046,7 @@ mat3w1w1w11w1111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w11w111w11 :
+mat3fff1f11f1 :
     Float
     -> Float
     -> Float
@@ -14057,7 +14057,7 @@ mat3w1w1w11w111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11w111w11 a b c d e f g h i =
+mat3fff1f11f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14072,7 +14072,7 @@ mat3w1w1w11w111w11 a b c d e f g h i =
         i
 
 
-mat3w1w1w11w111w1w1 :
+mat3fff1f11ff :
     Float
     -> Float
     -> Float
@@ -14083,7 +14083,7 @@ mat3w1w1w11w111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11w111w1w1 a b c d e f g h i =
+mat3fff1f11ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14098,7 +14098,7 @@ mat3w1w1w11w111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w11w11w111 :
+mat3fff1f1f11 :
     Float
     -> Float
     -> Float
@@ -14109,7 +14109,7 @@ mat3w1w1w11w11w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11w11w111 a b c d e f g h i =
+mat3fff1f1f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14124,7 +14124,7 @@ mat3w1w1w11w11w111 a b c d e f g h i =
         i
 
 
-mat3w1w1w11w11w11w1 :
+mat3fff1f1f1f :
     Float
     -> Float
     -> Float
@@ -14135,7 +14135,7 @@ mat3w1w1w11w11w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11w11w11w1 a b c d e f g h i =
+mat3fff1f1f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14150,7 +14150,7 @@ mat3w1w1w11w11w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w11w11w1w11 :
+mat3fff1f1ff1 :
     Float
     -> Float
     -> Float
@@ -14161,7 +14161,7 @@ mat3w1w1w11w11w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11w11w1w11 a b c d e f g h i =
+mat3fff1f1ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14176,7 +14176,7 @@ mat3w1w1w11w11w1w11 a b c d e f g h i =
         i
 
 
-mat3w1w1w11w11w1w1w1 :
+mat3fff1f1fff :
     Float
     -> Float
     -> Float
@@ -14187,7 +14187,7 @@ mat3w1w1w11w11w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11w11w1w1w1 a b c d e f g h i =
+mat3fff1f1fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14202,7 +14202,7 @@ mat3w1w1w11w11w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w11w1w1111 :
+mat3fff1ff111 :
     Float
     -> Float
     -> Float
@@ -14213,7 +14213,7 @@ mat3w1w1w11w1w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11w1w1111 a b c d e f g h i =
+mat3fff1ff111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14228,7 +14228,7 @@ mat3w1w1w11w1w1111 a b c d e f g h i =
         i
 
 
-mat3w1w1w11w1w111w1 :
+mat3fff1ff11f :
     Float
     -> Float
     -> Float
@@ -14239,7 +14239,7 @@ mat3w1w1w11w1w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11w1w111w1 a b c d e f g h i =
+mat3fff1ff11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14254,7 +14254,7 @@ mat3w1w1w11w1w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w11w1w11w11 :
+mat3fff1ff1f1 :
     Float
     -> Float
     -> Float
@@ -14265,7 +14265,7 @@ mat3w1w1w11w1w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11w1w11w11 a b c d e f g h i =
+mat3fff1ff1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14280,7 +14280,7 @@ mat3w1w1w11w1w11w11 a b c d e f g h i =
         i
 
 
-mat3w1w1w11w1w11w1w1 :
+mat3fff1ff1ff :
     Float
     -> Float
     -> Float
@@ -14291,7 +14291,7 @@ mat3w1w1w11w1w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11w1w11w1w1 a b c d e f g h i =
+mat3fff1ff1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14306,7 +14306,7 @@ mat3w1w1w11w1w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w11w1w1w111 :
+mat3fff1fff11 :
     Float
     -> Float
     -> Float
@@ -14317,7 +14317,7 @@ mat3w1w1w11w1w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11w1w1w111 a b c d e f g h i =
+mat3fff1fff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14332,7 +14332,7 @@ mat3w1w1w11w1w1w111 a b c d e f g h i =
         i
 
 
-mat3w1w1w11w1w1w11w1 :
+mat3fff1fff1f :
     Float
     -> Float
     -> Float
@@ -14343,7 +14343,7 @@ mat3w1w1w11w1w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11w1w1w11w1 a b c d e f g h i =
+mat3fff1fff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14358,7 +14358,7 @@ mat3w1w1w11w1w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w11w1w1w1w11 :
+mat3fff1ffff1 :
     Float
     -> Float
     -> Float
@@ -14369,7 +14369,7 @@ mat3w1w1w11w1w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11w1w1w1w11 a b c d e f g h i =
+mat3fff1ffff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14384,7 +14384,7 @@ mat3w1w1w11w1w1w1w11 a b c d e f g h i =
         i
 
 
-mat3w1w1w11w1w1w1w1w1 :
+mat3fff1fffff :
     Float
     -> Float
     -> Float
@@ -14395,7 +14395,7 @@ mat3w1w1w11w1w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w11w1w1w1w1w1 a b c d e f g h i =
+mat3fff1fffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14410,7 +14410,7 @@ mat3w1w1w11w1w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1w111111 :
+mat3ffff11111 :
     Float
     -> Float
     -> Float
@@ -14421,7 +14421,7 @@ mat3w1w1w1w111111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w111111 a b c d e f g h i =
+mat3ffff11111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14436,7 +14436,7 @@ mat3w1w1w1w111111 a b c d e f g h i =
         i
 
 
-mat3w1w1w1w11111w1 :
+mat3ffff1111f :
     Float
     -> Float
     -> Float
@@ -14447,7 +14447,7 @@ mat3w1w1w1w11111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w11111w1 a b c d e f g h i =
+mat3ffff1111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14462,7 +14462,7 @@ mat3w1w1w1w11111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1w1111w11 :
+mat3ffff111f1 :
     Float
     -> Float
     -> Float
@@ -14473,7 +14473,7 @@ mat3w1w1w1w1111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1111w11 a b c d e f g h i =
+mat3ffff111f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14488,7 +14488,7 @@ mat3w1w1w1w1111w11 a b c d e f g h i =
         i
 
 
-mat3w1w1w1w1111w1w1 :
+mat3ffff111ff :
     Float
     -> Float
     -> Float
@@ -14499,7 +14499,7 @@ mat3w1w1w1w1111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1111w1w1 a b c d e f g h i =
+mat3ffff111ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14514,7 +14514,7 @@ mat3w1w1w1w1111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1w111w111 :
+mat3ffff11f11 :
     Float
     -> Float
     -> Float
@@ -14525,7 +14525,7 @@ mat3w1w1w1w111w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w111w111 a b c d e f g h i =
+mat3ffff11f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14540,7 +14540,7 @@ mat3w1w1w1w111w111 a b c d e f g h i =
         i
 
 
-mat3w1w1w1w111w11w1 :
+mat3ffff11f1f :
     Float
     -> Float
     -> Float
@@ -14551,7 +14551,7 @@ mat3w1w1w1w111w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w111w11w1 a b c d e f g h i =
+mat3ffff11f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14566,7 +14566,7 @@ mat3w1w1w1w111w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1w111w1w11 :
+mat3ffff11ff1 :
     Float
     -> Float
     -> Float
@@ -14577,7 +14577,7 @@ mat3w1w1w1w111w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w111w1w11 a b c d e f g h i =
+mat3ffff11ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14592,7 +14592,7 @@ mat3w1w1w1w111w1w11 a b c d e f g h i =
         i
 
 
-mat3w1w1w1w111w1w1w1 :
+mat3ffff11fff :
     Float
     -> Float
     -> Float
@@ -14603,7 +14603,7 @@ mat3w1w1w1w111w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w111w1w1w1 a b c d e f g h i =
+mat3ffff11fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14618,7 +14618,7 @@ mat3w1w1w1w111w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1w11w1111 :
+mat3ffff1f111 :
     Float
     -> Float
     -> Float
@@ -14629,7 +14629,7 @@ mat3w1w1w1w11w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w11w1111 a b c d e f g h i =
+mat3ffff1f111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14644,7 +14644,7 @@ mat3w1w1w1w11w1111 a b c d e f g h i =
         i
 
 
-mat3w1w1w1w11w111w1 :
+mat3ffff1f11f :
     Float
     -> Float
     -> Float
@@ -14655,7 +14655,7 @@ mat3w1w1w1w11w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w11w111w1 a b c d e f g h i =
+mat3ffff1f11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14670,7 +14670,7 @@ mat3w1w1w1w11w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1w11w11w11 :
+mat3ffff1f1f1 :
     Float
     -> Float
     -> Float
@@ -14681,7 +14681,7 @@ mat3w1w1w1w11w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w11w11w11 a b c d e f g h i =
+mat3ffff1f1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14696,7 +14696,7 @@ mat3w1w1w1w11w11w11 a b c d e f g h i =
         i
 
 
-mat3w1w1w1w11w11w1w1 :
+mat3ffff1f1ff :
     Float
     -> Float
     -> Float
@@ -14707,7 +14707,7 @@ mat3w1w1w1w11w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w11w11w1w1 a b c d e f g h i =
+mat3ffff1f1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14722,7 +14722,7 @@ mat3w1w1w1w11w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1w11w1w111 :
+mat3ffff1ff11 :
     Float
     -> Float
     -> Float
@@ -14733,7 +14733,7 @@ mat3w1w1w1w11w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w11w1w111 a b c d e f g h i =
+mat3ffff1ff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14748,7 +14748,7 @@ mat3w1w1w1w11w1w111 a b c d e f g h i =
         i
 
 
-mat3w1w1w1w11w1w11w1 :
+mat3ffff1ff1f :
     Float
     -> Float
     -> Float
@@ -14759,7 +14759,7 @@ mat3w1w1w1w11w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w11w1w11w1 a b c d e f g h i =
+mat3ffff1ff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14774,7 +14774,7 @@ mat3w1w1w1w11w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1w11w1w1w11 :
+mat3ffff1fff1 :
     Float
     -> Float
     -> Float
@@ -14785,7 +14785,7 @@ mat3w1w1w1w11w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w11w1w1w11 a b c d e f g h i =
+mat3ffff1fff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14800,7 +14800,7 @@ mat3w1w1w1w11w1w1w11 a b c d e f g h i =
         i
 
 
-mat3w1w1w1w11w1w1w1w1 :
+mat3ffff1ffff :
     Float
     -> Float
     -> Float
@@ -14811,7 +14811,7 @@ mat3w1w1w1w11w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w11w1w1w1w1 a b c d e f g h i =
+mat3ffff1ffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14826,7 +14826,7 @@ mat3w1w1w1w11w1w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1w1w11111 :
+mat3fffff1111 :
     Float
     -> Float
     -> Float
@@ -14837,7 +14837,7 @@ mat3w1w1w1w1w11111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1w11111 a b c d e f g h i =
+mat3fffff1111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14852,7 +14852,7 @@ mat3w1w1w1w1w11111 a b c d e f g h i =
         i
 
 
-mat3w1w1w1w1w1111w1 :
+mat3fffff111f :
     Float
     -> Float
     -> Float
@@ -14863,7 +14863,7 @@ mat3w1w1w1w1w1111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1w1111w1 a b c d e f g h i =
+mat3fffff111f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14878,7 +14878,7 @@ mat3w1w1w1w1w1111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1w1w111w11 :
+mat3fffff11f1 :
     Float
     -> Float
     -> Float
@@ -14889,7 +14889,7 @@ mat3w1w1w1w1w111w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1w111w11 a b c d e f g h i =
+mat3fffff11f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14904,7 +14904,7 @@ mat3w1w1w1w1w111w11 a b c d e f g h i =
         i
 
 
-mat3w1w1w1w1w111w1w1 :
+mat3fffff11ff :
     Float
     -> Float
     -> Float
@@ -14915,7 +14915,7 @@ mat3w1w1w1w1w111w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1w111w1w1 a b c d e f g h i =
+mat3fffff11ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14930,7 +14930,7 @@ mat3w1w1w1w1w111w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1w1w11w111 :
+mat3fffff1f11 :
     Float
     -> Float
     -> Float
@@ -14941,7 +14941,7 @@ mat3w1w1w1w1w11w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1w11w111 a b c d e f g h i =
+mat3fffff1f11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14956,7 +14956,7 @@ mat3w1w1w1w1w11w111 a b c d e f g h i =
         i
 
 
-mat3w1w1w1w1w11w11w1 :
+mat3fffff1f1f :
     Float
     -> Float
     -> Float
@@ -14967,7 +14967,7 @@ mat3w1w1w1w1w11w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1w11w11w1 a b c d e f g h i =
+mat3fffff1f1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -14982,7 +14982,7 @@ mat3w1w1w1w1w11w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1w1w11w1w11 :
+mat3fffff1ff1 :
     Float
     -> Float
     -> Float
@@ -14993,7 +14993,7 @@ mat3w1w1w1w1w11w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1w11w1w11 a b c d e f g h i =
+mat3fffff1ff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -15008,7 +15008,7 @@ mat3w1w1w1w1w11w1w11 a b c d e f g h i =
         i
 
 
-mat3w1w1w1w1w11w1w1w1 :
+mat3fffff1fff :
     Float
     -> Float
     -> Float
@@ -15019,7 +15019,7 @@ mat3w1w1w1w1w11w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1w11w1w1w1 a b c d e f g h i =
+mat3fffff1fff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -15034,7 +15034,7 @@ mat3w1w1w1w1w11w1w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1w1w1w1111 :
+mat3ffffff111 :
     Float
     -> Float
     -> Float
@@ -15045,7 +15045,7 @@ mat3w1w1w1w1w1w1111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1w1w1111 a b c d e f g h i =
+mat3ffffff111 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -15060,7 +15060,7 @@ mat3w1w1w1w1w1w1111 a b c d e f g h i =
         i
 
 
-mat3w1w1w1w1w1w111w1 :
+mat3ffffff11f :
     Float
     -> Float
     -> Float
@@ -15071,7 +15071,7 @@ mat3w1w1w1w1w1w111w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1w1w111w1 a b c d e f g h i =
+mat3ffffff11f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -15086,7 +15086,7 @@ mat3w1w1w1w1w1w111w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1w1w1w11w11 :
+mat3ffffff1f1 :
     Float
     -> Float
     -> Float
@@ -15097,7 +15097,7 @@ mat3w1w1w1w1w1w11w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1w1w11w11 a b c d e f g h i =
+mat3ffffff1f1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -15112,7 +15112,7 @@ mat3w1w1w1w1w1w11w11 a b c d e f g h i =
         i
 
 
-mat3w1w1w1w1w1w11w1w1 :
+mat3ffffff1ff :
     Float
     -> Float
     -> Float
@@ -15123,7 +15123,7 @@ mat3w1w1w1w1w1w11w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1w1w11w1w1 a b c d e f g h i =
+mat3ffffff1ff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -15138,7 +15138,7 @@ mat3w1w1w1w1w1w11w1w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1w1w1w1w111 :
+mat3fffffff11 :
     Float
     -> Float
     -> Float
@@ -15149,7 +15149,7 @@ mat3w1w1w1w1w1w1w111 :
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1w1w1w111 a b c d e f g h i =
+mat3fffffff11 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -15164,7 +15164,7 @@ mat3w1w1w1w1w1w1w111 a b c d e f g h i =
         i
 
 
-mat3w1w1w1w1w1w1w11w1 :
+mat3fffffff1f :
     Float
     -> Float
     -> Float
@@ -15175,7 +15175,7 @@ mat3w1w1w1w1w1w1w11w1 :
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1w1w1w11w1 a b c d e f g h i =
+mat3fffffff1f a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -15190,7 +15190,7 @@ mat3w1w1w1w1w1w1w11w1 a b c d e f g h i =
         (Glsl.float1 i)
 
 
-mat3w1w1w1w1w1w1w1w11 :
+mat3ffffffff1 :
     Float
     -> Float
     -> Float
@@ -15201,7 +15201,7 @@ mat3w1w1w1w1w1w1w1w11 :
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1w1w1w1w11 a b c d e f g h i =
+mat3ffffffff1 a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -15216,7 +15216,7 @@ mat3w1w1w1w1w1w1w1w11 a b c d e f g h i =
         i
 
 
-mat3w1w1w1w1w1w1w1w1w1 :
+mat3fffffffff :
     Float
     -> Float
     -> Float
@@ -15227,7 +15227,7 @@ mat3w1w1w1w1w1w1w1w1w1 :
     -> Float
     -> Float
     -> Glsl.Expression Glsl.Mat3
-mat3w1w1w1w1w1w1w1w1w1 a b c d e f g h i =
+mat3fffffffff a b c d e f g h i =
     Glsl.unsafeCall9
         "mat3"
         []
@@ -15260,8 +15260,8 @@ max11 a b =
     Glsl.unsafeCall2 "max" [] a b
 
 
-max1w1 : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
-max1w1 a b =
+max1f : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
+max1f a b =
     Glsl.unsafeCall2 "max" [] a (Glsl.float1 b)
 
 
@@ -15281,8 +15281,8 @@ max22 a b =
     Glsl.unsafeCall2 "max" [] a b
 
 
-max2w1 : Glsl.Expression Glsl.Vec2 -> Float -> Glsl.Expression Glsl.Vec2
-max2w1 a b =
+max2f : Glsl.Expression Glsl.Vec2 -> Float -> Glsl.Expression Glsl.Vec2
+max2f a b =
     Glsl.unsafeCall2 "max" [] a (Glsl.float1 b)
 
 
@@ -15302,8 +15302,8 @@ max33 a b =
     Glsl.unsafeCall2 "max" [] a b
 
 
-max3w1 : Glsl.Expression Glsl.Vec3 -> Float -> Glsl.Expression Glsl.Vec3
-max3w1 a b =
+max3f : Glsl.Expression Glsl.Vec3 -> Float -> Glsl.Expression Glsl.Vec3
+max3f a b =
     Glsl.unsafeCall2 "max" [] a (Glsl.float1 b)
 
 
@@ -15323,8 +15323,8 @@ max44 a b =
     Glsl.unsafeCall2 "max" [] a b
 
 
-max4w1 : Glsl.Expression Glsl.Vec4 -> Float -> Glsl.Expression Glsl.Vec4
-max4w1 a b =
+max4f : Glsl.Expression Glsl.Vec4 -> Float -> Glsl.Expression Glsl.Vec4
+max4f a b =
     Glsl.unsafeCall2 "max" [] a (Glsl.float1 b)
 
 
@@ -15402,6 +15402,16 @@ maxd4d4 a b =
 maxd4wd1 : Glsl.Expression Glsl.DVec4 -> Float -> Glsl.Expression Glsl.DVec4
 maxd4wd1 a b =
     Glsl.unsafeCall2 "max" [] a (Glsl.double1 b)
+
+
+maxf1 : Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
+maxf1 a b =
+    Glsl.unsafeCall2 "max" [] (Glsl.float1 a) b
+
+
+maxff : Float -> Float -> Glsl.Expression Glsl.Float_
+maxff a b =
+    Glsl.unsafeCall2 "max" [] (Glsl.float1 a) (Glsl.float1 b)
 
 
 maxi1i1 :
@@ -15556,16 +15566,6 @@ maxu4wu1 a b =
     Glsl.unsafeCall2 "max" [] a (Glsl.uint1 b)
 
 
-maxw11 : Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
-maxw11 a b =
-    Glsl.unsafeCall2 "max" [] (Glsl.float1 a) b
-
-
-maxw1w1 : Float -> Float -> Glsl.Expression Glsl.Float_
-maxw1w1 a b =
-    Glsl.unsafeCall2 "max" [] (Glsl.float1 a) (Glsl.float1 b)
-
-
 maxwd1d1 : Float -> Glsl.Expression Glsl.Double -> Glsl.Expression Glsl.Double
 maxwd1d1 a b =
     Glsl.unsafeCall2 "max" [] (Glsl.double1 a) b
@@ -15604,8 +15604,8 @@ min11 a b =
     Glsl.unsafeCall2 "min" [] a b
 
 
-min1w1 : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
-min1w1 a b =
+min1f : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
+min1f a b =
     Glsl.unsafeCall2 "min" [] a (Glsl.float1 b)
 
 
@@ -15625,8 +15625,8 @@ min22 a b =
     Glsl.unsafeCall2 "min" [] a b
 
 
-min2w1 : Glsl.Expression Glsl.Vec2 -> Float -> Glsl.Expression Glsl.Vec2
-min2w1 a b =
+min2f : Glsl.Expression Glsl.Vec2 -> Float -> Glsl.Expression Glsl.Vec2
+min2f a b =
     Glsl.unsafeCall2 "min" [] a (Glsl.float1 b)
 
 
@@ -15646,8 +15646,8 @@ min33 a b =
     Glsl.unsafeCall2 "min" [] a b
 
 
-min3w1 : Glsl.Expression Glsl.Vec3 -> Float -> Glsl.Expression Glsl.Vec3
-min3w1 a b =
+min3f : Glsl.Expression Glsl.Vec3 -> Float -> Glsl.Expression Glsl.Vec3
+min3f a b =
     Glsl.unsafeCall2 "min" [] a (Glsl.float1 b)
 
 
@@ -15667,8 +15667,8 @@ min44 a b =
     Glsl.unsafeCall2 "min" [] a b
 
 
-min4w1 : Glsl.Expression Glsl.Vec4 -> Float -> Glsl.Expression Glsl.Vec4
-min4w1 a b =
+min4f : Glsl.Expression Glsl.Vec4 -> Float -> Glsl.Expression Glsl.Vec4
+min4f a b =
     Glsl.unsafeCall2 "min" [] a (Glsl.float1 b)
 
 
@@ -15746,6 +15746,16 @@ mind4d4 a b =
 mind4wd1 : Glsl.Expression Glsl.DVec4 -> Float -> Glsl.Expression Glsl.DVec4
 mind4wd1 a b =
     Glsl.unsafeCall2 "min" [] a (Glsl.double1 b)
+
+
+minf1 : Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
+minf1 a b =
+    Glsl.unsafeCall2 "min" [] (Glsl.float1 a) b
+
+
+minff : Float -> Float -> Glsl.Expression Glsl.Float_
+minff a b =
+    Glsl.unsafeCall2 "min" [] (Glsl.float1 a) (Glsl.float1 b)
 
 
 mini1i1 :
@@ -15900,16 +15910,6 @@ minu4wu1 a b =
     Glsl.unsafeCall2 "min" [] a (Glsl.uint1 b)
 
 
-minw11 : Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
-minw11 a b =
-    Glsl.unsafeCall2 "min" [] (Glsl.float1 a) b
-
-
-minw1w1 : Float -> Float -> Glsl.Expression Glsl.Float_
-minw1w1 a b =
-    Glsl.unsafeCall2 "min" [] (Glsl.float1 a) (Glsl.float1 b)
-
-
 minwd1d1 : Float -> Glsl.Expression Glsl.Double -> Glsl.Expression Glsl.Double
 minwd1d1 a b =
     Glsl.unsafeCall2 "min" [] (Glsl.double1 a) b
@@ -15949,26 +15949,26 @@ mix111 a b c =
     Glsl.unsafeCall3 "mix" [] a b c
 
 
-mix11w1 :
+mix11f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
-mix11w1 a b c =
+mix11f a b c =
     Glsl.unsafeCall3 "mix" [] a b (Glsl.float1 c)
 
 
-mix1w11 :
+mix1f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
-mix1w11 a b c =
+mix1f1 a b c =
     Glsl.unsafeCall3 "mix" [] a (Glsl.float1 b) c
 
 
-mix1w1w1 : Glsl.Expression Glsl.Float_ -> Float -> Float -> Glsl.Expression Glsl.Float_
-mix1w1w1 a b c =
+mix1ff : Glsl.Expression Glsl.Float_ -> Float -> Float -> Glsl.Expression Glsl.Float_
+mix1ff a b c =
     Glsl.unsafeCall3 "mix" [] a (Glsl.float1 b) (Glsl.float1 c)
 
 
@@ -15990,12 +15990,12 @@ mix222 a b c =
     Glsl.unsafeCall3 "mix" [] a b c
 
 
-mix22w1 :
+mix22f :
     Glsl.Expression Glsl.Vec2
     -> Glsl.Expression Glsl.Vec2
     -> Float
     -> Glsl.Expression Glsl.Vec2
-mix22w1 a b c =
+mix22f a b c =
     Glsl.unsafeCall3 "mix" [] a b (Glsl.float1 c)
 
 
@@ -16017,12 +16017,12 @@ mix333 a b c =
     Glsl.unsafeCall3 "mix" [] a b c
 
 
-mix33w1 :
+mix33f :
     Glsl.Expression Glsl.Vec3
     -> Glsl.Expression Glsl.Vec3
     -> Float
     -> Glsl.Expression Glsl.Vec3
-mix33w1 a b c =
+mix33f a b c =
     Glsl.unsafeCall3 "mix" [] a b (Glsl.float1 c)
 
 
@@ -16044,12 +16044,12 @@ mix444 a b c =
     Glsl.unsafeCall3 "mix" [] a b c
 
 
-mix44w1 :
+mix44f :
     Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Vec4
     -> Float
     -> Glsl.Expression Glsl.Vec4
-mix44w1 a b c =
+mix44f a b c =
     Glsl.unsafeCall3 "mix" [] a b (Glsl.float1 c)
 
 
@@ -16166,27 +16166,27 @@ mixd4d4wd1 a b c =
     Glsl.unsafeCall3 "mix" [] a b (Glsl.double1 c)
 
 
-mixw111 :
+mixf11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
-mixw111 a b c =
+mixf11 a b c =
     Glsl.unsafeCall3 "mix" [] (Glsl.float1 a) b c
 
 
-mixw11w1 : Float -> Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
-mixw11w1 a b c =
+mixf1f : Float -> Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
+mixf1f a b c =
     Glsl.unsafeCall3 "mix" [] (Glsl.float1 a) b (Glsl.float1 c)
 
 
-mixw1w11 : Float -> Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
-mixw1w11 a b c =
+mixff1 : Float -> Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
+mixff1 a b c =
     Glsl.unsafeCall3 "mix" [] (Glsl.float1 a) (Glsl.float1 b) c
 
 
-mixw1w1w1 : Float -> Float -> Float -> Glsl.Expression Glsl.Float_
-mixw1w1w1 a b c =
+mixfff : Float -> Float -> Float -> Glsl.Expression Glsl.Float_
+mixfff a b c =
     Glsl.unsafeCall3 "mix" [] (Glsl.float1 a) (Glsl.float1 b) (Glsl.float1 c)
 
 
@@ -16231,8 +16231,8 @@ mod11 a b =
     Glsl.unsafeCall2 "mod" [] a b
 
 
-mod1w1 : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
-mod1w1 a b =
+mod1f : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
+mod1f a b =
     Glsl.unsafeCall2 "mod" [] a (Glsl.float1 b)
 
 
@@ -16252,8 +16252,8 @@ mod22 a b =
     Glsl.unsafeCall2 "mod" [] a b
 
 
-mod2w1 : Glsl.Expression Glsl.Vec2 -> Float -> Glsl.Expression Glsl.Vec2
-mod2w1 a b =
+mod2f : Glsl.Expression Glsl.Vec2 -> Float -> Glsl.Expression Glsl.Vec2
+mod2f a b =
     Glsl.unsafeCall2 "mod" [] a (Glsl.float1 b)
 
 
@@ -16273,8 +16273,8 @@ mod33 a b =
     Glsl.unsafeCall2 "mod" [] a b
 
 
-mod3w1 : Glsl.Expression Glsl.Vec3 -> Float -> Glsl.Expression Glsl.Vec3
-mod3w1 a b =
+mod3f : Glsl.Expression Glsl.Vec3 -> Float -> Glsl.Expression Glsl.Vec3
+mod3f a b =
     Glsl.unsafeCall2 "mod" [] a (Glsl.float1 b)
 
 
@@ -16294,8 +16294,8 @@ mod44 a b =
     Glsl.unsafeCall2 "mod" [] a b
 
 
-mod4w1 : Glsl.Expression Glsl.Vec4 -> Float -> Glsl.Expression Glsl.Vec4
-mod4w1 a b =
+mod4f : Glsl.Expression Glsl.Vec4 -> Float -> Glsl.Expression Glsl.Vec4
+mod4f a b =
     Glsl.unsafeCall2 "mod" [] a (Glsl.float1 b)
 
 
@@ -16375,13 +16375,13 @@ modd4wd1 a b =
     Glsl.unsafeCall2 "mod" [] a (Glsl.double1 b)
 
 
-modw11 : Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
-modw11 a b =
+modf1 : Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
+modf1 a b =
     Glsl.unsafeCall2 "mod" [] (Glsl.float1 a) b
 
 
-modw1w1 : Float -> Float -> Glsl.Expression Glsl.Float_
-modw1w1 a b =
+modff : Float -> Float -> Glsl.Expression Glsl.Float_
+modff a b =
     Glsl.unsafeCall2 "mod" [] (Glsl.float1 a) (Glsl.float1 b)
 
 
@@ -16411,8 +16411,8 @@ modf1o1 a b =
     Glsl.unsafeCall2 "modf" [] a b
 
 
-modf1ow1 : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
-modf1ow1 a b =
+modf1of : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
+modf1of a b =
     Glsl.unsafeCall2 "modf" [] a (Glsl.float1 b)
 
 
@@ -16477,16 +16477,16 @@ modfd4od4 a b =
     Glsl.unsafeCall2 "modf" [] a b
 
 
-modfw1o1 :
+modffo1 :
     Float
     -> Glsl.Expression (Glsl.Out Glsl.Float_)
     -> Glsl.Expression Glsl.Float_
-modfw1o1 a b =
+modffo1 a b =
     Glsl.unsafeCall2 "modf" [] (Glsl.float1 a) b
 
 
-modfw1ow1 : Float -> Float -> Glsl.Expression Glsl.Float_
-modfw1ow1 a b =
+modffof : Float -> Float -> Glsl.Expression Glsl.Float_
+modffof a b =
     Glsl.unsafeCall2 "modf" [] (Glsl.float1 a) (Glsl.float1 b)
 
 
@@ -16551,8 +16551,8 @@ normalized4 a =
     Glsl.unsafeCall1 "normalize" [] a
 
 
-normalizew1 : Float -> Glsl.Expression Glsl.Float_
-normalizew1 a =
+normalizef : Float -> Glsl.Expression Glsl.Float_
+normalizef a =
     Glsl.unsafeCall1 "normalize" [] (Glsl.float1 a)
 
 
@@ -16574,8 +16574,8 @@ reflect11 a b =
     Glsl.unsafeCall2 "reflect" [] a b
 
 
-reflect1w1 : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
-reflect1w1 a b =
+reflect1f : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
+reflect1f a b =
     Glsl.unsafeCall2 "reflect" [] a (Glsl.float1 b)
 
 
@@ -16640,13 +16640,13 @@ reflectd4d4 a b =
     Glsl.unsafeCall2 "reflect" [] a b
 
 
-reflectw11 : Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
-reflectw11 a b =
+reflectf1 : Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
+reflectf1 a b =
     Glsl.unsafeCall2 "reflect" [] (Glsl.float1 a) b
 
 
-reflectw1w1 : Float -> Float -> Glsl.Expression Glsl.Float_
-reflectw1w1 a b =
+reflectff : Float -> Float -> Glsl.Expression Glsl.Float_
+reflectff a b =
     Glsl.unsafeCall2 "reflect" [] (Glsl.float1 a) (Glsl.float1 b)
 
 
@@ -16677,26 +16677,26 @@ refract111 a b c =
     Glsl.unsafeCall3 "refract" [] a b c
 
 
-refract11w1 :
+refract11f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
-refract11w1 a b c =
+refract11f a b c =
     Glsl.unsafeCall3 "refract" [] a b (Glsl.float1 c)
 
 
-refract1w11 :
+refract1f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
-refract1w11 a b c =
+refract1f1 a b c =
     Glsl.unsafeCall3 "refract" [] a (Glsl.float1 b) c
 
 
-refract1w1w1 : Glsl.Expression Glsl.Float_ -> Float -> Float -> Glsl.Expression Glsl.Float_
-refract1w1w1 a b c =
+refract1ff : Glsl.Expression Glsl.Float_ -> Float -> Float -> Glsl.Expression Glsl.Float_
+refract1ff a b c =
     Glsl.unsafeCall3 "refract" [] a (Glsl.float1 b) (Glsl.float1 c)
 
 
@@ -16709,12 +16709,12 @@ refract221 a b c =
     Glsl.unsafeCall3 "refract" [] a b c
 
 
-refract22w1 :
+refract22f :
     Glsl.Expression Glsl.Vec2
     -> Glsl.Expression Glsl.Vec2
     -> Float
     -> Glsl.Expression Glsl.Vec2
-refract22w1 a b c =
+refract22f a b c =
     Glsl.unsafeCall3 "refract" [] a b (Glsl.float1 c)
 
 
@@ -16727,12 +16727,12 @@ refract331 a b c =
     Glsl.unsafeCall3 "refract" [] a b c
 
 
-refract33w1 :
+refract33f :
     Glsl.Expression Glsl.Vec3
     -> Glsl.Expression Glsl.Vec3
     -> Float
     -> Glsl.Expression Glsl.Vec3
-refract33w1 a b c =
+refract33f a b c =
     Glsl.unsafeCall3 "refract" [] a b (Glsl.float1 c)
 
 
@@ -16745,12 +16745,12 @@ refract441 a b c =
     Glsl.unsafeCall3 "refract" [] a b c
 
 
-refract44w1 :
+refract44f :
     Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Vec4
     -> Float
     -> Glsl.Expression Glsl.Vec4
-refract44w1 a b c =
+refract44f a b c =
     Glsl.unsafeCall3 "refract" [] a b (Glsl.float1 c)
 
 
@@ -16763,12 +16763,12 @@ refractd1d11 a b c =
     Glsl.unsafeCall3 "refract" [] a b c
 
 
-refractd1d1w1 :
+refractd1d1f :
     Glsl.Expression Glsl.Double
     -> Glsl.Expression Glsl.Double
     -> Float
     -> Glsl.Expression Glsl.Double
-refractd1d1w1 a b c =
+refractd1d1f a b c =
     Glsl.unsafeCall3 "refract" [] a b (Glsl.float1 c)
 
 
@@ -16781,8 +16781,8 @@ refractd1wd11 a b c =
     Glsl.unsafeCall3 "refract" [] a (Glsl.double1 b) c
 
 
-refractd1wd1w1 : Glsl.Expression Glsl.Double -> Float -> Float -> Glsl.Expression Glsl.Double
-refractd1wd1w1 a b c =
+refractd1wd1f : Glsl.Expression Glsl.Double -> Float -> Float -> Glsl.Expression Glsl.Double
+refractd1wd1f a b c =
     Glsl.unsafeCall3 "refract" [] a (Glsl.double1 b) (Glsl.float1 c)
 
 
@@ -16795,12 +16795,12 @@ refractd2d21 a b c =
     Glsl.unsafeCall3 "refract" [] a b c
 
 
-refractd2d2w1 :
+refractd2d2f :
     Glsl.Expression Glsl.DVec2
     -> Glsl.Expression Glsl.DVec2
     -> Float
     -> Glsl.Expression Glsl.DVec2
-refractd2d2w1 a b c =
+refractd2d2f a b c =
     Glsl.unsafeCall3 "refract" [] a b (Glsl.float1 c)
 
 
@@ -16813,12 +16813,12 @@ refractd3d31 a b c =
     Glsl.unsafeCall3 "refract" [] a b c
 
 
-refractd3d3w1 :
+refractd3d3f :
     Glsl.Expression Glsl.DVec3
     -> Glsl.Expression Glsl.DVec3
     -> Float
     -> Glsl.Expression Glsl.DVec3
-refractd3d3w1 a b c =
+refractd3d3f a b c =
     Glsl.unsafeCall3 "refract" [] a b (Glsl.float1 c)
 
 
@@ -16831,36 +16831,36 @@ refractd4d41 a b c =
     Glsl.unsafeCall3 "refract" [] a b c
 
 
-refractd4d4w1 :
+refractd4d4f :
     Glsl.Expression Glsl.DVec4
     -> Glsl.Expression Glsl.DVec4
     -> Float
     -> Glsl.Expression Glsl.DVec4
-refractd4d4w1 a b c =
+refractd4d4f a b c =
     Glsl.unsafeCall3 "refract" [] a b (Glsl.float1 c)
 
 
-refractw111 :
+refractf11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
-refractw111 a b c =
+refractf11 a b c =
     Glsl.unsafeCall3 "refract" [] (Glsl.float1 a) b c
 
 
-refractw11w1 : Float -> Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
-refractw11w1 a b c =
+refractf1f : Float -> Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
+refractf1f a b c =
     Glsl.unsafeCall3 "refract" [] (Glsl.float1 a) b (Glsl.float1 c)
 
 
-refractw1w11 : Float -> Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
-refractw1w11 a b c =
+refractff1 : Float -> Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
+refractff1 a b c =
     Glsl.unsafeCall3 "refract" [] (Glsl.float1 a) (Glsl.float1 b) c
 
 
-refractw1w1w1 : Float -> Float -> Float -> Glsl.Expression Glsl.Float_
-refractw1w1w1 a b c =
+refractfff : Float -> Float -> Float -> Glsl.Expression Glsl.Float_
+refractfff a b c =
     Glsl.unsafeCall3
         "refract"
         []
@@ -16878,8 +16878,8 @@ refractwd1d11 a b c =
     Glsl.unsafeCall3 "refract" [] (Glsl.double1 a) b c
 
 
-refractwd1d1w1 : Float -> Glsl.Expression Glsl.Double -> Float -> Glsl.Expression Glsl.Double
-refractwd1d1w1 a b c =
+refractwd1d1f : Float -> Glsl.Expression Glsl.Double -> Float -> Glsl.Expression Glsl.Double
+refractwd1d1f a b c =
     Glsl.unsafeCall3 "refract" [] (Glsl.double1 a) b (Glsl.float1 c)
 
 
@@ -16888,8 +16888,8 @@ refractwd1wd11 a b c =
     Glsl.unsafeCall3 "refract" [] (Glsl.double1 a) (Glsl.double1 b) c
 
 
-refractwd1wd1w1 : Float -> Float -> Float -> Glsl.Expression Glsl.Double
-refractwd1wd1w1 a b c =
+refractwd1wd1f : Float -> Float -> Float -> Glsl.Expression Glsl.Double
+refractwd1wd1f a b c =
     Glsl.unsafeCall3
         "refract"
         []
@@ -16947,8 +16947,8 @@ roundd4 a =
     Glsl.unsafeCall1 "round" [] a
 
 
-roundw1 : Float -> Glsl.Expression Glsl.Float_
-roundw1 a =
+roundf : Float -> Glsl.Expression Glsl.Float_
+roundf a =
     Glsl.unsafeCall1 "round" [] (Glsl.float1 a)
 
 
@@ -16997,8 +16997,8 @@ roundEvend4 a =
     Glsl.unsafeCall1 "roundEven" [] a
 
 
-roundEvenw1 : Float -> Glsl.Expression Glsl.Float_
-roundEvenw1 a =
+roundEvenf : Float -> Glsl.Expression Glsl.Float_
+roundEvenf a =
     Glsl.unsafeCall1 "roundEven" [] (Glsl.float1 a)
 
 
@@ -17052,6 +17052,11 @@ signd4 a =
     Glsl.unsafeCall1 "sign" [] a
 
 
+signf : Float -> Glsl.Expression Glsl.Float_
+signf a =
+    Glsl.unsafeCall1 "sign" [] (Glsl.float1 a)
+
+
 signi1 : Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Int_
 signi1 a =
     Glsl.unsafeCall1 "sign" [] a
@@ -17070,11 +17075,6 @@ signi3 a =
 signi4 : Glsl.Expression Glsl.IVec4 -> Glsl.Expression Glsl.IVec4
 signi4 a =
     Glsl.unsafeCall1 "sign" [] a
-
-
-signw1 : Float -> Glsl.Expression Glsl.Float_
-signw1 a =
-    Glsl.unsafeCall1 "sign" [] (Glsl.float1 a)
 
 
 signwd1 : Float -> Glsl.Expression Glsl.Double
@@ -17128,53 +17128,53 @@ smoothstep114 a b c =
     Glsl.unsafeCall3 "smoothstep" [] a b c
 
 
-smoothstep11w1 :
+smoothstep11f :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
-smoothstep11w1 a b c =
+smoothstep11f a b c =
     Glsl.unsafeCall3 "smoothstep" [] a b (Glsl.float1 c)
 
 
-smoothstep1w11 :
+smoothstep1f1 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
-smoothstep1w11 a b c =
+smoothstep1f1 a b c =
     Glsl.unsafeCall3 "smoothstep" [] a (Glsl.float1 b) c
 
 
-smoothstep1w12 :
+smoothstep1f2 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Vec2
     -> Glsl.Expression Glsl.Vec2
-smoothstep1w12 a b c =
+smoothstep1f2 a b c =
     Glsl.unsafeCall3 "smoothstep" [] a (Glsl.float1 b) c
 
 
-smoothstep1w13 :
+smoothstep1f3 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Vec3
     -> Glsl.Expression Glsl.Vec3
-smoothstep1w13 a b c =
+smoothstep1f3 a b c =
     Glsl.unsafeCall3 "smoothstep" [] a (Glsl.float1 b) c
 
 
-smoothstep1w14 :
+smoothstep1f4 :
     Glsl.Expression Glsl.Float_
     -> Float
     -> Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Vec4
-smoothstep1w14 a b c =
+smoothstep1f4 a b c =
     Glsl.unsafeCall3 "smoothstep" [] a (Glsl.float1 b) c
 
 
-smoothstep1w1w1 : Glsl.Expression Glsl.Float_ -> Float -> Float -> Glsl.Expression Glsl.Float_
-smoothstep1w1w1 a b c =
+smoothstep1ff : Glsl.Expression Glsl.Float_ -> Float -> Float -> Glsl.Expression Glsl.Float_
+smoothstep1ff a b c =
     Glsl.unsafeCall3 "smoothstep" [] a (Glsl.float1 b) (Glsl.float1 c)
 
 
@@ -17318,69 +17318,69 @@ smoothstepd4d4d4 a b c =
     Glsl.unsafeCall3 "smoothstep" [] a b c
 
 
-smoothstepw111 :
+smoothstepf11 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
-smoothstepw111 a b c =
+smoothstepf11 a b c =
     Glsl.unsafeCall3 "smoothstep" [] (Glsl.float1 a) b c
 
 
-smoothstepw112 :
+smoothstepf12 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec2
     -> Glsl.Expression Glsl.Vec2
-smoothstepw112 a b c =
+smoothstepf12 a b c =
     Glsl.unsafeCall3 "smoothstep" [] (Glsl.float1 a) b c
 
 
-smoothstepw113 :
+smoothstepf13 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec3
     -> Glsl.Expression Glsl.Vec3
-smoothstepw113 a b c =
+smoothstepf13 a b c =
     Glsl.unsafeCall3 "smoothstep" [] (Glsl.float1 a) b c
 
 
-smoothstepw114 :
+smoothstepf14 :
     Float
     -> Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Vec4
     -> Glsl.Expression Glsl.Vec4
-smoothstepw114 a b c =
+smoothstepf14 a b c =
     Glsl.unsafeCall3 "smoothstep" [] (Glsl.float1 a) b c
 
 
-smoothstepw11w1 : Float -> Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
-smoothstepw11w1 a b c =
+smoothstepf1f : Float -> Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
+smoothstepf1f a b c =
     Glsl.unsafeCall3 "smoothstep" [] (Glsl.float1 a) b (Glsl.float1 c)
 
 
-smoothstepw1w11 : Float -> Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
-smoothstepw1w11 a b c =
+smoothstepff1 : Float -> Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
+smoothstepff1 a b c =
     Glsl.unsafeCall3 "smoothstep" [] (Glsl.float1 a) (Glsl.float1 b) c
 
 
-smoothstepw1w12 : Float -> Float -> Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.Vec2
-smoothstepw1w12 a b c =
+smoothstepff2 : Float -> Float -> Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.Vec2
+smoothstepff2 a b c =
     Glsl.unsafeCall3 "smoothstep" [] (Glsl.float1 a) (Glsl.float1 b) c
 
 
-smoothstepw1w13 : Float -> Float -> Glsl.Expression Glsl.Vec3 -> Glsl.Expression Glsl.Vec3
-smoothstepw1w13 a b c =
+smoothstepff3 : Float -> Float -> Glsl.Expression Glsl.Vec3 -> Glsl.Expression Glsl.Vec3
+smoothstepff3 a b c =
     Glsl.unsafeCall3 "smoothstep" [] (Glsl.float1 a) (Glsl.float1 b) c
 
 
-smoothstepw1w14 : Float -> Float -> Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Vec4
-smoothstepw1w14 a b c =
+smoothstepff4 : Float -> Float -> Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Vec4
+smoothstepff4 a b c =
     Glsl.unsafeCall3 "smoothstep" [] (Glsl.float1 a) (Glsl.float1 b) c
 
 
-smoothstepw1w1w1 : Float -> Float -> Float -> Glsl.Expression Glsl.Float_
-smoothstepw1w1w1 a b c =
+smoothstepfff : Float -> Float -> Float -> Glsl.Expression Glsl.Float_
+smoothstepfff a b c =
     Glsl.unsafeCall3
         "smoothstep"
         []
@@ -17509,8 +17509,8 @@ sqrtd4 a =
     Glsl.unsafeCall1 "sqrt" [] a
 
 
-sqrtw1 : Float -> Glsl.Expression Glsl.Float_
-sqrtw1 a =
+sqrtf : Float -> Glsl.Expression Glsl.Float_
+sqrtf a =
     Glsl.unsafeCall1 "sqrt" [] (Glsl.float1 a)
 
 
@@ -17551,8 +17551,8 @@ step14 a b =
     Glsl.unsafeCall2 "step" [] a b
 
 
-step1w1 : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
-step1w1 a b =
+step1f : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Float_
+step1f a b =
     Glsl.unsafeCall2 "step" [] a (Glsl.float1 b)
 
 
@@ -17641,28 +17641,28 @@ stepd4d4 a b =
     Glsl.unsafeCall2 "step" [] a b
 
 
-stepw11 : Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
-stepw11 a b =
+stepf1 : Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Float_
+stepf1 a b =
     Glsl.unsafeCall2 "step" [] (Glsl.float1 a) b
 
 
-stepw12 : Float -> Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.Vec2
-stepw12 a b =
+stepf2 : Float -> Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.Vec2
+stepf2 a b =
     Glsl.unsafeCall2 "step" [] (Glsl.float1 a) b
 
 
-stepw13 : Float -> Glsl.Expression Glsl.Vec3 -> Glsl.Expression Glsl.Vec3
-stepw13 a b =
+stepf3 : Float -> Glsl.Expression Glsl.Vec3 -> Glsl.Expression Glsl.Vec3
+stepf3 a b =
     Glsl.unsafeCall2 "step" [] (Glsl.float1 a) b
 
 
-stepw14 : Float -> Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Vec4
-stepw14 a b =
+stepf4 : Float -> Glsl.Expression Glsl.Vec4 -> Glsl.Expression Glsl.Vec4
+stepf4 a b =
     Glsl.unsafeCall2 "step" [] (Glsl.float1 a) b
 
 
-stepw1w1 : Float -> Float -> Glsl.Expression Glsl.Float_
-stepw1w1 a b =
+stepff : Float -> Float -> Glsl.Expression Glsl.Float_
+stepff a b =
     Glsl.unsafeCall2 "step" [] (Glsl.float1 a) (Glsl.float1 b)
 
 
@@ -17739,8 +17739,8 @@ truncd4 a =
     Glsl.unsafeCall1 "trunc" [] a
 
 
-truncw1 : Float -> Glsl.Expression Glsl.Float_
-truncw1 a =
+truncf : Float -> Glsl.Expression Glsl.Float_
+truncf a =
     Glsl.unsafeCall1 "trunc" [] (Glsl.float1 a)
 
 
@@ -17792,6 +17792,11 @@ vec211 a b =
     Glsl.unsafeCall2 "vec2" [] a b
 
 
+vec21f : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Vec2
+vec21f a b =
+    Glsl.unsafeCall2 "vec2" [] a (Glsl.float1 b)
+
+
 vec21i1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Int_
@@ -17800,14 +17805,34 @@ vec21i1 a b =
     Glsl.unsafeCall2 "vec2" [] a b
 
 
-vec21w1 : Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Vec2
-vec21w1 a b =
-    Glsl.unsafeCall2 "vec2" [] a (Glsl.float1 b)
-
-
 vec21wi1 : Glsl.Expression Glsl.Float_ -> Int -> Glsl.Expression Glsl.Vec2
 vec21wi1 a b =
     Glsl.unsafeCall2 "vec2" [] a (Glsl.int1 b)
+
+
+vec2f : Float -> Glsl.Expression Glsl.Vec2
+vec2f a =
+    Glsl.unsafeCall1 "vec2" [] (Glsl.float1 a)
+
+
+vec2f1 : Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Vec2
+vec2f1 a b =
+    Glsl.unsafeCall2 "vec2" [] (Glsl.float1 a) b
+
+
+vec2ff : Float -> Float -> Glsl.Expression Glsl.Vec2
+vec2ff a b =
+    Glsl.unsafeCall2 "vec2" [] (Glsl.float1 a) (Glsl.float1 b)
+
+
+vec2fi1 : Float -> Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec2
+vec2fi1 a b =
+    Glsl.unsafeCall2 "vec2" [] (Glsl.float1 a) b
+
+
+vec2fwi1 : Float -> Int -> Glsl.Expression Glsl.Vec2
+vec2fwi1 a b =
+    Glsl.unsafeCall2 "vec2" [] (Glsl.float1 a) (Glsl.int1 b)
 
 
 vec2i1 : Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec2
@@ -17823,6 +17848,11 @@ vec2i11 a b =
     Glsl.unsafeCall2 "vec2" [] a b
 
 
+vec2i1f : Glsl.Expression Glsl.Int_ -> Float -> Glsl.Expression Glsl.Vec2
+vec2i1f a b =
+    Glsl.unsafeCall2 "vec2" [] a (Glsl.float1 b)
+
+
 vec2i1i1 :
     Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Int_
@@ -17831,39 +17861,9 @@ vec2i1i1 a b =
     Glsl.unsafeCall2 "vec2" [] a b
 
 
-vec2i1w1 : Glsl.Expression Glsl.Int_ -> Float -> Glsl.Expression Glsl.Vec2
-vec2i1w1 a b =
-    Glsl.unsafeCall2 "vec2" [] a (Glsl.float1 b)
-
-
 vec2i1wi1 : Glsl.Expression Glsl.Int_ -> Int -> Glsl.Expression Glsl.Vec2
 vec2i1wi1 a b =
     Glsl.unsafeCall2 "vec2" [] a (Glsl.int1 b)
-
-
-vec2w1 : Float -> Glsl.Expression Glsl.Vec2
-vec2w1 a =
-    Glsl.unsafeCall1 "vec2" [] (Glsl.float1 a)
-
-
-vec2w11 : Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Vec2
-vec2w11 a b =
-    Glsl.unsafeCall2 "vec2" [] (Glsl.float1 a) b
-
-
-vec2w1i1 : Float -> Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec2
-vec2w1i1 a b =
-    Glsl.unsafeCall2 "vec2" [] (Glsl.float1 a) b
-
-
-vec2w1w1 : Float -> Float -> Glsl.Expression Glsl.Vec2
-vec2w1w1 a b =
-    Glsl.unsafeCall2 "vec2" [] (Glsl.float1 a) (Glsl.float1 b)
-
-
-vec2w1wi1 : Float -> Int -> Glsl.Expression Glsl.Vec2
-vec2w1wi1 a b =
-    Glsl.unsafeCall2 "vec2" [] (Glsl.float1 a) (Glsl.int1 b)
 
 
 vec2wi1 : Int -> Glsl.Expression Glsl.Vec2
@@ -17876,14 +17876,14 @@ vec2wi11 a b =
     Glsl.unsafeCall2 "vec2" [] (Glsl.int1 a) b
 
 
+vec2wi1f : Int -> Float -> Glsl.Expression Glsl.Vec2
+vec2wi1f a b =
+    Glsl.unsafeCall2 "vec2" [] (Glsl.int1 a) (Glsl.float1 b)
+
+
 vec2wi1i1 : Int -> Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec2
 vec2wi1i1 a b =
     Glsl.unsafeCall2 "vec2" [] (Glsl.int1 a) b
-
-
-vec2wi1w1 : Int -> Float -> Glsl.Expression Glsl.Vec2
-vec2wi1w1 a b =
-    Glsl.unsafeCall2 "vec2" [] (Glsl.int1 a) (Glsl.float1 b)
 
 
 vec2wi1wi1 : Int -> Int -> Glsl.Expression Glsl.Vec2
@@ -17905,6 +17905,15 @@ vec3111 a b c =
     Glsl.unsafeCall3 "vec3" [] a b c
 
 
+vec311f :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec3
+vec311f a b c =
+    Glsl.unsafeCall3 "vec3" [] a b (Glsl.float1 c)
+
+
 vec311i1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -17912,15 +17921,6 @@ vec311i1 :
     -> Glsl.Expression Glsl.Vec3
 vec311i1 a b c =
     Glsl.unsafeCall3 "vec3" [] a b c
-
-
-vec311w1 :
-    Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec3
-vec311w1 a b c =
-    Glsl.unsafeCall3 "vec3" [] a b (Glsl.float1 c)
 
 
 vec311wi1 :
@@ -17940,6 +17940,34 @@ vec312 a b =
     Glsl.unsafeCall2 "vec3" [] a b
 
 
+vec31f1 :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec3
+vec31f1 a b c =
+    Glsl.unsafeCall3 "vec3" [] a (Glsl.float1 b) c
+
+
+vec31ff : Glsl.Expression Glsl.Float_ -> Float -> Float -> Glsl.Expression Glsl.Vec3
+vec31ff a b c =
+    Glsl.unsafeCall3 "vec3" [] a (Glsl.float1 b) (Glsl.float1 c)
+
+
+vec31fi1 :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec3
+vec31fi1 a b c =
+    Glsl.unsafeCall3 "vec3" [] a (Glsl.float1 b) c
+
+
+vec31fwi1 : Glsl.Expression Glsl.Float_ -> Float -> Int -> Glsl.Expression Glsl.Vec3
+vec31fwi1 a b c =
+    Glsl.unsafeCall3 "vec3" [] a (Glsl.float1 b) (Glsl.int1 c)
+
+
 vec31i11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Int_
@@ -17947,6 +17975,15 @@ vec31i11 :
     -> Glsl.Expression Glsl.Vec3
 vec31i11 a b c =
     Glsl.unsafeCall3 "vec3" [] a b c
+
+
+vec31i1f :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec3
+vec31i1f a b c =
+    Glsl.unsafeCall3 "vec3" [] a b (Glsl.float1 c)
 
 
 vec31i1i1 :
@@ -17958,15 +17995,6 @@ vec31i1i1 a b c =
     Glsl.unsafeCall3 "vec3" [] a b c
 
 
-vec31i1w1 :
-    Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec3
-vec31i1w1 a b c =
-    Glsl.unsafeCall3 "vec3" [] a b (Glsl.float1 c)
-
-
 vec31i1wi1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Int_
@@ -17974,34 +18002,6 @@ vec31i1wi1 :
     -> Glsl.Expression Glsl.Vec3
 vec31i1wi1 a b c =
     Glsl.unsafeCall3 "vec3" [] a b (Glsl.int1 c)
-
-
-vec31w11 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec3
-vec31w11 a b c =
-    Glsl.unsafeCall3 "vec3" [] a (Glsl.float1 b) c
-
-
-vec31w1i1 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec3
-vec31w1i1 a b c =
-    Glsl.unsafeCall3 "vec3" [] a (Glsl.float1 b) c
-
-
-vec31w1w1 : Glsl.Expression Glsl.Float_ -> Float -> Float -> Glsl.Expression Glsl.Vec3
-vec31w1w1 a b c =
-    Glsl.unsafeCall3 "vec3" [] a (Glsl.float1 b) (Glsl.float1 c)
-
-
-vec31w1wi1 : Glsl.Expression Glsl.Float_ -> Float -> Int -> Glsl.Expression Glsl.Vec3
-vec31w1wi1 a b c =
-    Glsl.unsafeCall3 "vec3" [] a (Glsl.float1 b) (Glsl.int1 c)
 
 
 vec31wi11 :
@@ -18013,6 +18013,11 @@ vec31wi11 a b c =
     Glsl.unsafeCall3 "vec3" [] a (Glsl.int1 b) c
 
 
+vec31wi1f : Glsl.Expression Glsl.Float_ -> Int -> Float -> Glsl.Expression Glsl.Vec3
+vec31wi1f a b c =
+    Glsl.unsafeCall3 "vec3" [] a (Glsl.int1 b) (Glsl.float1 c)
+
+
 vec31wi1i1 :
     Glsl.Expression Glsl.Float_
     -> Int
@@ -18020,11 +18025,6 @@ vec31wi1i1 :
     -> Glsl.Expression Glsl.Vec3
 vec31wi1i1 a b c =
     Glsl.unsafeCall3 "vec3" [] a (Glsl.int1 b) c
-
-
-vec31wi1w1 : Glsl.Expression Glsl.Float_ -> Int -> Float -> Glsl.Expression Glsl.Vec3
-vec31wi1w1 a b c =
-    Glsl.unsafeCall3 "vec3" [] a (Glsl.int1 b) (Glsl.float1 c)
 
 
 vec31wi1wi1 : Glsl.Expression Glsl.Float_ -> Int -> Int -> Glsl.Expression Glsl.Vec3
@@ -18040,9 +18040,115 @@ vec321 a b =
     Glsl.unsafeCall2 "vec3" [] a b
 
 
-vec32w1 : Glsl.Expression Glsl.Vec2 -> Float -> Glsl.Expression Glsl.Vec3
-vec32w1 a b =
+vec32f : Glsl.Expression Glsl.Vec2 -> Float -> Glsl.Expression Glsl.Vec3
+vec32f a b =
     Glsl.unsafeCall2 "vec3" [] a (Glsl.float1 b)
+
+
+vec3f : Float -> Glsl.Expression Glsl.Vec3
+vec3f a =
+    Glsl.unsafeCall1 "vec3" [] (Glsl.float1 a)
+
+
+vec3f11 :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec3
+vec3f11 a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) b c
+
+
+vec3f1f : Float -> Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Vec3
+vec3f1f a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) b (Glsl.float1 c)
+
+
+vec3f1i1 :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec3
+vec3f1i1 a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) b c
+
+
+vec3f1wi1 : Float -> Glsl.Expression Glsl.Float_ -> Int -> Glsl.Expression Glsl.Vec3
+vec3f1wi1 a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) b (Glsl.int1 c)
+
+
+vec3f2 : Float -> Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.Vec3
+vec3f2 a b =
+    Glsl.unsafeCall2 "vec3" [] (Glsl.float1 a) b
+
+
+vec3ff1 : Float -> Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Vec3
+vec3ff1 a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) (Glsl.float1 b) c
+
+
+vec3fff : Float -> Float -> Float -> Glsl.Expression Glsl.Vec3
+vec3fff a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) (Glsl.float1 b) (Glsl.float1 c)
+
+
+vec3ffi1 : Float -> Float -> Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec3
+vec3ffi1 a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) (Glsl.float1 b) c
+
+
+vec3ffwi1 : Float -> Float -> Int -> Glsl.Expression Glsl.Vec3
+vec3ffwi1 a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) (Glsl.float1 b) (Glsl.int1 c)
+
+
+vec3fi11 :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec3
+vec3fi11 a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) b c
+
+
+vec3fi1f : Float -> Glsl.Expression Glsl.Int_ -> Float -> Glsl.Expression Glsl.Vec3
+vec3fi1f a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) b (Glsl.float1 c)
+
+
+vec3fi1i1 :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec3
+vec3fi1i1 a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) b c
+
+
+vec3fi1wi1 : Float -> Glsl.Expression Glsl.Int_ -> Int -> Glsl.Expression Glsl.Vec3
+vec3fi1wi1 a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) b (Glsl.int1 c)
+
+
+vec3fwi11 : Float -> Int -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Vec3
+vec3fwi11 a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) (Glsl.int1 b) c
+
+
+vec3fwi1f : Float -> Int -> Float -> Glsl.Expression Glsl.Vec3
+vec3fwi1f a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) (Glsl.int1 b) (Glsl.float1 c)
+
+
+vec3fwi1i1 : Float -> Int -> Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec3
+vec3fwi1i1 a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) (Glsl.int1 b) c
+
+
+vec3fwi1wi1 : Float -> Int -> Int -> Glsl.Expression Glsl.Vec3
+vec3fwi1wi1 a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) (Glsl.int1 b) (Glsl.int1 c)
 
 
 vec3i1 : Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec3
@@ -18059,6 +18165,15 @@ vec3i111 a b c =
     Glsl.unsafeCall3 "vec3" [] a b c
 
 
+vec3i11f :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec3
+vec3i11f a b c =
+    Glsl.unsafeCall3 "vec3" [] a b (Glsl.float1 c)
+
+
 vec3i11i1 :
     Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Float_
@@ -18066,15 +18181,6 @@ vec3i11i1 :
     -> Glsl.Expression Glsl.Vec3
 vec3i11i1 a b c =
     Glsl.unsafeCall3 "vec3" [] a b c
-
-
-vec3i11w1 :
-    Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec3
-vec3i11w1 a b c =
-    Glsl.unsafeCall3 "vec3" [] a b (Glsl.float1 c)
 
 
 vec3i11wi1 :
@@ -18086,6 +18192,34 @@ vec3i11wi1 a b c =
     Glsl.unsafeCall3 "vec3" [] a b (Glsl.int1 c)
 
 
+vec3i1f1 :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec3
+vec3i1f1 a b c =
+    Glsl.unsafeCall3 "vec3" [] a (Glsl.float1 b) c
+
+
+vec3i1ff : Glsl.Expression Glsl.Int_ -> Float -> Float -> Glsl.Expression Glsl.Vec3
+vec3i1ff a b c =
+    Glsl.unsafeCall3 "vec3" [] a (Glsl.float1 b) (Glsl.float1 c)
+
+
+vec3i1fi1 :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec3
+vec3i1fi1 a b c =
+    Glsl.unsafeCall3 "vec3" [] a (Glsl.float1 b) c
+
+
+vec3i1fwi1 : Glsl.Expression Glsl.Int_ -> Float -> Int -> Glsl.Expression Glsl.Vec3
+vec3i1fwi1 a b c =
+    Glsl.unsafeCall3 "vec3" [] a (Glsl.float1 b) (Glsl.int1 c)
+
+
 vec3i1i11 :
     Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Int_
@@ -18093,6 +18227,15 @@ vec3i1i11 :
     -> Glsl.Expression Glsl.Vec3
 vec3i1i11 a b c =
     Glsl.unsafeCall3 "vec3" [] a b c
+
+
+vec3i1i1f :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec3
+vec3i1i1f a b c =
+    Glsl.unsafeCall3 "vec3" [] a b (Glsl.float1 c)
 
 
 vec3i1i1i1 :
@@ -18104,15 +18247,6 @@ vec3i1i1i1 a b c =
     Glsl.unsafeCall3 "vec3" [] a b c
 
 
-vec3i1i1w1 :
-    Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec3
-vec3i1i1w1 a b c =
-    Glsl.unsafeCall3 "vec3" [] a b (Glsl.float1 c)
-
-
 vec3i1i1wi1 :
     Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Int_
@@ -18120,34 +18254,6 @@ vec3i1i1wi1 :
     -> Glsl.Expression Glsl.Vec3
 vec3i1i1wi1 a b c =
     Glsl.unsafeCall3 "vec3" [] a b (Glsl.int1 c)
-
-
-vec3i1w11 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec3
-vec3i1w11 a b c =
-    Glsl.unsafeCall3 "vec3" [] a (Glsl.float1 b) c
-
-
-vec3i1w1i1 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec3
-vec3i1w1i1 a b c =
-    Glsl.unsafeCall3 "vec3" [] a (Glsl.float1 b) c
-
-
-vec3i1w1w1 : Glsl.Expression Glsl.Int_ -> Float -> Float -> Glsl.Expression Glsl.Vec3
-vec3i1w1w1 a b c =
-    Glsl.unsafeCall3 "vec3" [] a (Glsl.float1 b) (Glsl.float1 c)
-
-
-vec3i1w1wi1 : Glsl.Expression Glsl.Int_ -> Float -> Int -> Glsl.Expression Glsl.Vec3
-vec3i1w1wi1 a b c =
-    Glsl.unsafeCall3 "vec3" [] a (Glsl.float1 b) (Glsl.int1 c)
 
 
 vec3i1wi11 :
@@ -18159,6 +18265,11 @@ vec3i1wi11 a b c =
     Glsl.unsafeCall3 "vec3" [] a (Glsl.int1 b) c
 
 
+vec3i1wi1f : Glsl.Expression Glsl.Int_ -> Int -> Float -> Glsl.Expression Glsl.Vec3
+vec3i1wi1f a b c =
+    Glsl.unsafeCall3 "vec3" [] a (Glsl.int1 b) (Glsl.float1 c)
+
+
 vec3i1wi1i1 :
     Glsl.Expression Glsl.Int_
     -> Int
@@ -18168,120 +18279,9 @@ vec3i1wi1i1 a b c =
     Glsl.unsafeCall3 "vec3" [] a (Glsl.int1 b) c
 
 
-vec3i1wi1w1 : Glsl.Expression Glsl.Int_ -> Int -> Float -> Glsl.Expression Glsl.Vec3
-vec3i1wi1w1 a b c =
-    Glsl.unsafeCall3 "vec3" [] a (Glsl.int1 b) (Glsl.float1 c)
-
-
 vec3i1wi1wi1 : Glsl.Expression Glsl.Int_ -> Int -> Int -> Glsl.Expression Glsl.Vec3
 vec3i1wi1wi1 a b c =
     Glsl.unsafeCall3 "vec3" [] a (Glsl.int1 b) (Glsl.int1 c)
-
-
-vec3w1 : Float -> Glsl.Expression Glsl.Vec3
-vec3w1 a =
-    Glsl.unsafeCall1 "vec3" [] (Glsl.float1 a)
-
-
-vec3w111 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec3
-vec3w111 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) b c
-
-
-vec3w11i1 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec3
-vec3w11i1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) b c
-
-
-vec3w11w1 : Float -> Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Vec3
-vec3w11w1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) b (Glsl.float1 c)
-
-
-vec3w11wi1 : Float -> Glsl.Expression Glsl.Float_ -> Int -> Glsl.Expression Glsl.Vec3
-vec3w11wi1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) b (Glsl.int1 c)
-
-
-vec3w12 : Float -> Glsl.Expression Glsl.Vec2 -> Glsl.Expression Glsl.Vec3
-vec3w12 a b =
-    Glsl.unsafeCall2 "vec3" [] (Glsl.float1 a) b
-
-
-vec3w1i11 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec3
-vec3w1i11 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) b c
-
-
-vec3w1i1i1 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec3
-vec3w1i1i1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) b c
-
-
-vec3w1i1w1 : Float -> Glsl.Expression Glsl.Int_ -> Float -> Glsl.Expression Glsl.Vec3
-vec3w1i1w1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) b (Glsl.float1 c)
-
-
-vec3w1i1wi1 : Float -> Glsl.Expression Glsl.Int_ -> Int -> Glsl.Expression Glsl.Vec3
-vec3w1i1wi1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) b (Glsl.int1 c)
-
-
-vec3w1w11 : Float -> Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Vec3
-vec3w1w11 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) (Glsl.float1 b) c
-
-
-vec3w1w1i1 : Float -> Float -> Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec3
-vec3w1w1i1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) (Glsl.float1 b) c
-
-
-vec3w1w1w1 : Float -> Float -> Float -> Glsl.Expression Glsl.Vec3
-vec3w1w1w1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) (Glsl.float1 b) (Glsl.float1 c)
-
-
-vec3w1w1wi1 : Float -> Float -> Int -> Glsl.Expression Glsl.Vec3
-vec3w1w1wi1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) (Glsl.float1 b) (Glsl.int1 c)
-
-
-vec3w1wi11 : Float -> Int -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Vec3
-vec3w1wi11 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) (Glsl.int1 b) c
-
-
-vec3w1wi1i1 : Float -> Int -> Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec3
-vec3w1wi1i1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) (Glsl.int1 b) c
-
-
-vec3w1wi1w1 : Float -> Int -> Float -> Glsl.Expression Glsl.Vec3
-vec3w1wi1w1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) (Glsl.int1 b) (Glsl.float1 c)
-
-
-vec3w1wi1wi1 : Float -> Int -> Int -> Glsl.Expression Glsl.Vec3
-vec3w1wi1wi1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.float1 a) (Glsl.int1 b) (Glsl.int1 c)
 
 
 vec3wi1 : Int -> Glsl.Expression Glsl.Vec3
@@ -18298,6 +18298,11 @@ vec3wi111 a b c =
     Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) b c
 
 
+vec3wi11f : Int -> Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Vec3
+vec3wi11f a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) b (Glsl.float1 c)
+
+
 vec3wi11i1 :
     Int
     -> Glsl.Expression Glsl.Float_
@@ -18307,14 +18312,29 @@ vec3wi11i1 a b c =
     Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) b c
 
 
-vec3wi11w1 : Int -> Glsl.Expression Glsl.Float_ -> Float -> Glsl.Expression Glsl.Vec3
-vec3wi11w1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) b (Glsl.float1 c)
-
-
 vec3wi11wi1 : Int -> Glsl.Expression Glsl.Float_ -> Int -> Glsl.Expression Glsl.Vec3
 vec3wi11wi1 a b c =
     Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) b (Glsl.int1 c)
+
+
+vec3wi1f1 : Int -> Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Vec3
+vec3wi1f1 a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) (Glsl.float1 b) c
+
+
+vec3wi1ff : Int -> Float -> Float -> Glsl.Expression Glsl.Vec3
+vec3wi1ff a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) (Glsl.float1 b) (Glsl.float1 c)
+
+
+vec3wi1fi1 : Int -> Float -> Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec3
+vec3wi1fi1 a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) (Glsl.float1 b) c
+
+
+vec3wi1fwi1 : Int -> Float -> Int -> Glsl.Expression Glsl.Vec3
+vec3wi1fwi1 a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) (Glsl.float1 b) (Glsl.int1 c)
 
 
 vec3wi1i11 :
@@ -18326,6 +18346,11 @@ vec3wi1i11 a b c =
     Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) b c
 
 
+vec3wi1i1f : Int -> Glsl.Expression Glsl.Int_ -> Float -> Glsl.Expression Glsl.Vec3
+vec3wi1i1f a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) b (Glsl.float1 c)
+
+
 vec3wi1i1i1 :
     Int
     -> Glsl.Expression Glsl.Int_
@@ -18335,34 +18360,9 @@ vec3wi1i1i1 a b c =
     Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) b c
 
 
-vec3wi1i1w1 : Int -> Glsl.Expression Glsl.Int_ -> Float -> Glsl.Expression Glsl.Vec3
-vec3wi1i1w1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) b (Glsl.float1 c)
-
-
 vec3wi1i1wi1 : Int -> Glsl.Expression Glsl.Int_ -> Int -> Glsl.Expression Glsl.Vec3
 vec3wi1i1wi1 a b c =
     Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) b (Glsl.int1 c)
-
-
-vec3wi1w11 : Int -> Float -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Vec3
-vec3wi1w11 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) (Glsl.float1 b) c
-
-
-vec3wi1w1i1 : Int -> Float -> Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec3
-vec3wi1w1i1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) (Glsl.float1 b) c
-
-
-vec3wi1w1w1 : Int -> Float -> Float -> Glsl.Expression Glsl.Vec3
-vec3wi1w1w1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) (Glsl.float1 b) (Glsl.float1 c)
-
-
-vec3wi1w1wi1 : Int -> Float -> Int -> Glsl.Expression Glsl.Vec3
-vec3wi1w1wi1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) (Glsl.float1 b) (Glsl.int1 c)
 
 
 vec3wi1wi11 : Int -> Int -> Glsl.Expression Glsl.Float_ -> Glsl.Expression Glsl.Vec3
@@ -18370,14 +18370,14 @@ vec3wi1wi11 a b c =
     Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) (Glsl.int1 b) c
 
 
+vec3wi1wi1f : Int -> Int -> Float -> Glsl.Expression Glsl.Vec3
+vec3wi1wi1f a b c =
+    Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) (Glsl.int1 b) (Glsl.float1 c)
+
+
 vec3wi1wi1i1 : Int -> Int -> Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec3
 vec3wi1wi1i1 a b c =
     Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) (Glsl.int1 b) c
-
-
-vec3wi1wi1w1 : Int -> Int -> Float -> Glsl.Expression Glsl.Vec3
-vec3wi1wi1w1 a b c =
-    Glsl.unsafeCall3 "vec3" [] (Glsl.int1 a) (Glsl.int1 b) (Glsl.float1 c)
 
 
 vec3wi1wi1wi1 : Int -> Int -> Int -> Glsl.Expression Glsl.Vec3
@@ -18400,6 +18400,16 @@ vec41111 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
+vec4111f :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4111f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b c (Glsl.float1 d)
+
+
 vec4111i1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -18408,16 +18418,6 @@ vec4111i1 :
     -> Glsl.Expression Glsl.Vec4
 vec4111i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
-
-
-vec4111w1 :
-    Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4111w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b c (Glsl.float1 d)
 
 
 vec4111wi1 :
@@ -18430,6 +18430,46 @@ vec4111wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c (Glsl.int1 d)
 
 
+vec411f1 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec411f1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) d
+
+
+vec411ff :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec411ff a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) (Glsl.float1 d)
+
+
+vec411fi1 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec411fi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) d
+
+
+vec411fwi1 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec411fwi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) (Glsl.int1 d)
+
+
 vec411i11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -18438,6 +18478,16 @@ vec411i11 :
     -> Glsl.Expression Glsl.Vec4
 vec411i11 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
+
+
+vec411i1f :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec411i1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b c (Glsl.float1 d)
 
 
 vec411i1i1 :
@@ -18450,16 +18500,6 @@ vec411i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
-vec411i1w1 :
-    Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec411i1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b c (Glsl.float1 d)
-
-
 vec411i1wi1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -18468,46 +18508,6 @@ vec411i1wi1 :
     -> Glsl.Expression Glsl.Vec4
 vec411i1wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c (Glsl.int1 d)
-
-
-vec411w11 :
-    Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec411w11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) d
-
-
-vec411w1i1 :
-    Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec411w1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) d
-
-
-vec411w1w1 :
-    Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec411w1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) (Glsl.float1 d)
-
-
-vec411w1wi1 :
-    Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec411w1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) (Glsl.int1 d)
 
 
 vec411wi11 :
@@ -18520,6 +18520,16 @@ vec411wi11 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) d
 
 
+vec411wi1f :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec411wi1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) (Glsl.float1 d)
+
+
 vec411wi1i1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Float_
@@ -18528,16 +18538,6 @@ vec411wi1i1 :
     -> Glsl.Expression Glsl.Vec4
 vec411wi1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) d
-
-
-vec411wi1w1 :
-    Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec411wi1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) (Glsl.float1 d)
 
 
 vec411wi1wi1 :
@@ -18558,6 +18558,166 @@ vec413 a b =
     Glsl.unsafeCall2 "vec4" [] a b
 
 
+vec41f11 :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec41f11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c d
+
+
+vec41f1f :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec41f1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c (Glsl.float1 d)
+
+
+vec41f1i1 :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec41f1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c d
+
+
+vec41f1wi1 :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec41f1wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c (Glsl.int1 d)
+
+
+vec41ff1 :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec41ff1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.float1 c) d
+
+
+vec41fff :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec41fff a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.float1 c) (Glsl.float1 d)
+
+
+vec41ffi1 :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec41ffi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.float1 c) d
+
+
+vec41ffwi1 :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec41ffwi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.float1 c) (Glsl.int1 d)
+
+
+vec41fi11 :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec41fi11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c d
+
+
+vec41fi1f :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec41fi1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c (Glsl.float1 d)
+
+
+vec41fi1i1 :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec41fi1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c d
+
+
+vec41fi1wi1 :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec41fi1wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c (Glsl.int1 d)
+
+
+vec41fwi11 :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec41fwi11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.int1 c) d
+
+
+vec41fwi1f :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec41fwi1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.int1 c) (Glsl.float1 d)
+
+
+vec41fwi1i1 :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec41fwi1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.int1 c) d
+
+
+vec41fwi1wi1 :
+    Glsl.Expression Glsl.Float_
+    -> Float
+    -> Int
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec41fwi1wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.int1 c) (Glsl.int1 d)
+
+
 vec41i111 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Int_
@@ -18566,6 +18726,16 @@ vec41i111 :
     -> Glsl.Expression Glsl.Vec4
 vec41i111 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
+
+
+vec41i11f :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec41i11f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b c (Glsl.float1 d)
 
 
 vec41i11i1 :
@@ -18578,16 +18748,6 @@ vec41i11i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
-vec41i11w1 :
-    Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec41i11w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b c (Glsl.float1 d)
-
-
 vec41i11wi1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Int_
@@ -18596,6 +18756,46 @@ vec41i11wi1 :
     -> Glsl.Expression Glsl.Vec4
 vec41i11wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c (Glsl.int1 d)
+
+
+vec41i1f1 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec41i1f1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) d
+
+
+vec41i1ff :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec41i1ff a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) (Glsl.float1 d)
+
+
+vec41i1fi1 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec41i1fi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) d
+
+
+vec41i1fwi1 :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec41i1fwi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) (Glsl.int1 d)
 
 
 vec41i1i11 :
@@ -18608,6 +18808,16 @@ vec41i1i11 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
+vec41i1i1f :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec41i1i1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b c (Glsl.float1 d)
+
+
 vec41i1i1i1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Int_
@@ -18616,16 +18826,6 @@ vec41i1i1i1 :
     -> Glsl.Expression Glsl.Vec4
 vec41i1i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
-
-
-vec41i1i1w1 :
-    Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec41i1i1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b c (Glsl.float1 d)
 
 
 vec41i1i1wi1 :
@@ -18638,46 +18838,6 @@ vec41i1i1wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c (Glsl.int1 d)
 
 
-vec41i1w11 :
-    Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec41i1w11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) d
-
-
-vec41i1w1i1 :
-    Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec41i1w1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) d
-
-
-vec41i1w1w1 :
-    Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec41i1w1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) (Glsl.float1 d)
-
-
-vec41i1w1wi1 :
-    Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec41i1w1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) (Glsl.int1 d)
-
-
 vec41i1wi11 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Int_
@@ -18686,6 +18846,16 @@ vec41i1wi11 :
     -> Glsl.Expression Glsl.Vec4
 vec41i1wi11 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) d
+
+
+vec41i1wi1f :
+    Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec41i1wi1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) (Glsl.float1 d)
 
 
 vec41i1wi1i1 :
@@ -18698,16 +18868,6 @@ vec41i1wi1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) d
 
 
-vec41i1wi1w1 :
-    Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec41i1wi1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) (Glsl.float1 d)
-
-
 vec41i1wi1wi1 :
     Glsl.Expression Glsl.Float_
     -> Glsl.Expression Glsl.Int_
@@ -18716,166 +18876,6 @@ vec41i1wi1wi1 :
     -> Glsl.Expression Glsl.Vec4
 vec41i1wi1wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) (Glsl.int1 d)
-
-
-vec41w111 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec41w111 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c d
-
-
-vec41w11i1 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec41w11i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c d
-
-
-vec41w11w1 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec41w11w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c (Glsl.float1 d)
-
-
-vec41w11wi1 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec41w11wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c (Glsl.int1 d)
-
-
-vec41w1i11 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec41w1i11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c d
-
-
-vec41w1i1i1 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec41w1i1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c d
-
-
-vec41w1i1w1 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec41w1i1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c (Glsl.float1 d)
-
-
-vec41w1i1wi1 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec41w1i1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c (Glsl.int1 d)
-
-
-vec41w1w11 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec41w1w11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.float1 c) d
-
-
-vec41w1w1i1 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec41w1w1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.float1 c) d
-
-
-vec41w1w1w1 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec41w1w1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.float1 c) (Glsl.float1 d)
-
-
-vec41w1w1wi1 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec41w1w1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.float1 c) (Glsl.int1 d)
-
-
-vec41w1wi11 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec41w1wi11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.int1 c) d
-
-
-vec41w1wi1i1 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec41w1wi1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.int1 c) d
-
-
-vec41w1wi1w1 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec41w1wi1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.int1 c) (Glsl.float1 d)
-
-
-vec41w1wi1wi1 :
-    Glsl.Expression Glsl.Float_
-    -> Float
-    -> Int
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec41w1wi1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.int1 c) (Glsl.int1 d)
 
 
 vec41wi111 :
@@ -18888,6 +18888,16 @@ vec41wi111 a b c d =
     Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c d
 
 
+vec41wi11f :
+    Glsl.Expression Glsl.Float_
+    -> Int
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec41wi11f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c (Glsl.float1 d)
+
+
 vec41wi11i1 :
     Glsl.Expression Glsl.Float_
     -> Int
@@ -18896,16 +18906,6 @@ vec41wi11i1 :
     -> Glsl.Expression Glsl.Vec4
 vec41wi11i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c d
-
-
-vec41wi11w1 :
-    Glsl.Expression Glsl.Float_
-    -> Int
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec41wi11w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c (Glsl.float1 d)
 
 
 vec41wi11wi1 :
@@ -18918,6 +18918,46 @@ vec41wi11wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c (Glsl.int1 d)
 
 
+vec41wi1f1 :
+    Glsl.Expression Glsl.Float_
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec41wi1f1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.float1 c) d
+
+
+vec41wi1ff :
+    Glsl.Expression Glsl.Float_
+    -> Int
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec41wi1ff a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.float1 c) (Glsl.float1 d)
+
+
+vec41wi1fi1 :
+    Glsl.Expression Glsl.Float_
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec41wi1fi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.float1 c) d
+
+
+vec41wi1fwi1 :
+    Glsl.Expression Glsl.Float_
+    -> Int
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec41wi1fwi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.float1 c) (Glsl.int1 d)
+
+
 vec41wi1i11 :
     Glsl.Expression Glsl.Float_
     -> Int
@@ -18926,6 +18966,16 @@ vec41wi1i11 :
     -> Glsl.Expression Glsl.Vec4
 vec41wi1i11 a b c d =
     Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c d
+
+
+vec41wi1i1f :
+    Glsl.Expression Glsl.Float_
+    -> Int
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec41wi1i1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c (Glsl.float1 d)
 
 
 vec41wi1i1i1 :
@@ -18938,16 +18988,6 @@ vec41wi1i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c d
 
 
-vec41wi1i1w1 :
-    Glsl.Expression Glsl.Float_
-    -> Int
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec41wi1i1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c (Glsl.float1 d)
-
-
 vec41wi1i1wi1 :
     Glsl.Expression Glsl.Float_
     -> Int
@@ -18956,46 +18996,6 @@ vec41wi1i1wi1 :
     -> Glsl.Expression Glsl.Vec4
 vec41wi1i1wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c (Glsl.int1 d)
-
-
-vec41wi1w11 :
-    Glsl.Expression Glsl.Float_
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec41wi1w11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.float1 c) d
-
-
-vec41wi1w1i1 :
-    Glsl.Expression Glsl.Float_
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec41wi1w1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.float1 c) d
-
-
-vec41wi1w1w1 :
-    Glsl.Expression Glsl.Float_
-    -> Int
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec41wi1w1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.float1 c) (Glsl.float1 d)
-
-
-vec41wi1w1wi1 :
-    Glsl.Expression Glsl.Float_
-    -> Int
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec41wi1w1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.float1 c) (Glsl.int1 d)
 
 
 vec41wi1wi11 :
@@ -19008,6 +19008,16 @@ vec41wi1wi11 a b c d =
     Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.int1 c) d
 
 
+vec41wi1wi1f :
+    Glsl.Expression Glsl.Float_
+    -> Int
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec41wi1wi1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.int1 c) (Glsl.float1 d)
+
+
 vec41wi1wi1i1 :
     Glsl.Expression Glsl.Float_
     -> Int
@@ -19016,16 +19026,6 @@ vec41wi1wi1i1 :
     -> Glsl.Expression Glsl.Vec4
 vec41wi1wi1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.int1 c) d
-
-
-vec41wi1wi1w1 :
-    Glsl.Expression Glsl.Float_
-    -> Int
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec41wi1wi1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.int1 c) (Glsl.float1 d)
 
 
 vec41wi1wi1wi1 :
@@ -19054,9 +19054,667 @@ vec431 a b =
     Glsl.unsafeCall2 "vec4" [] a b
 
 
-vec43w1 : Glsl.Expression Glsl.Vec3 -> Float -> Glsl.Expression Glsl.Vec4
-vec43w1 a b =
+vec43f : Glsl.Expression Glsl.Vec3 -> Float -> Glsl.Expression Glsl.Vec4
+vec43f a b =
     Glsl.unsafeCall2 "vec4" [] a (Glsl.float1 b)
+
+
+vec4f : Float -> Glsl.Expression Glsl.Vec4
+vec4f a =
+    Glsl.unsafeCall1 "vec4" [] (Glsl.float1 a)
+
+
+vec4f111 :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4f111 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c d
+
+
+vec4f11f :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4f11f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c (Glsl.float1 d)
+
+
+vec4f11i1 :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4f11i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c d
+
+
+vec4f11wi1 :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4f11wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c (Glsl.int1 d)
+
+
+vec4f1f1 :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4f1f1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.float1 c) d
+
+
+vec4f1ff :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4f1ff a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.float1 c) (Glsl.float1 d)
+
+
+vec4f1fi1 :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4f1fi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.float1 c) d
+
+
+vec4f1fwi1 :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4f1fwi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.float1 c) (Glsl.int1 d)
+
+
+vec4f1i11 :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4f1i11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c d
+
+
+vec4f1i1f :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4f1i1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c (Glsl.float1 d)
+
+
+vec4f1i1i1 :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4f1i1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c d
+
+
+vec4f1i1wi1 :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4f1i1wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c (Glsl.int1 d)
+
+
+vec4f1wi11 :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Int
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4f1wi11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.int1 c) d
+
+
+vec4f1wi1f :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4f1wi1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.int1 c) (Glsl.float1 d)
+
+
+vec4f1wi1i1 :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Int
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4f1wi1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.int1 c) d
+
+
+vec4f1wi1wi1 :
+    Float
+    -> Glsl.Expression Glsl.Float_
+    -> Int
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4f1wi1wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.int1 c) (Glsl.int1 d)
+
+
+vec4f3 : Float -> Glsl.Expression Glsl.Vec3 -> Glsl.Expression Glsl.Vec4
+vec4f3 a b =
+    Glsl.unsafeCall2 "vec4" [] (Glsl.float1 a) b
+
+
+vec4ff11 :
+    Float
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4ff11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) c d
+
+
+vec4ff1f :
+    Float
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4ff1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) c (Glsl.float1 d)
+
+
+vec4ff1i1 :
+    Float
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4ff1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) c d
+
+
+vec4ff1wi1 :
+    Float
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4ff1wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) c (Glsl.int1 d)
+
+
+vec4fff1 :
+    Float
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4fff1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) (Glsl.float1 c) d
+
+
+vec4ffff : Float -> Float -> Float -> Float -> Glsl.Expression Glsl.Vec4
+vec4ffff a b c d =
+    Glsl.unsafeCall4
+        "vec4"
+        []
+        (Glsl.float1 a)
+        (Glsl.float1 b)
+        (Glsl.float1 c)
+        (Glsl.float1 d)
+
+
+vec4fffi1 :
+    Float
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4fffi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) (Glsl.float1 c) d
+
+
+vec4fffwi1 : Float -> Float -> Float -> Int -> Glsl.Expression Glsl.Vec4
+vec4fffwi1 a b c d =
+    Glsl.unsafeCall4
+        "vec4"
+        []
+        (Glsl.float1 a)
+        (Glsl.float1 b)
+        (Glsl.float1 c)
+        (Glsl.int1 d)
+
+
+vec4ffi11 :
+    Float
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4ffi11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) c d
+
+
+vec4ffi1f :
+    Float
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4ffi1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) c (Glsl.float1 d)
+
+
+vec4ffi1i1 :
+    Float
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4ffi1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) c d
+
+
+vec4ffi1wi1 :
+    Float
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4ffi1wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) c (Glsl.int1 d)
+
+
+vec4ffwi11 :
+    Float
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4ffwi11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) (Glsl.int1 c) d
+
+
+vec4ffwi1f : Float -> Float -> Int -> Float -> Glsl.Expression Glsl.Vec4
+vec4ffwi1f a b c d =
+    Glsl.unsafeCall4
+        "vec4"
+        []
+        (Glsl.float1 a)
+        (Glsl.float1 b)
+        (Glsl.int1 c)
+        (Glsl.float1 d)
+
+
+vec4ffwi1i1 :
+    Float
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4ffwi1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) (Glsl.int1 c) d
+
+
+vec4ffwi1wi1 : Float -> Float -> Int -> Int -> Glsl.Expression Glsl.Vec4
+vec4ffwi1wi1 a b c d =
+    Glsl.unsafeCall4
+        "vec4"
+        []
+        (Glsl.float1 a)
+        (Glsl.float1 b)
+        (Glsl.int1 c)
+        (Glsl.int1 d)
+
+
+vec4fi111 :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4fi111 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c d
+
+
+vec4fi11f :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4fi11f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c (Glsl.float1 d)
+
+
+vec4fi11i1 :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4fi11i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c d
+
+
+vec4fi11wi1 :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4fi11wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c (Glsl.int1 d)
+
+
+vec4fi1f1 :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4fi1f1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.float1 c) d
+
+
+vec4fi1ff :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4fi1ff a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.float1 c) (Glsl.float1 d)
+
+
+vec4fi1fi1 :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4fi1fi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.float1 c) d
+
+
+vec4fi1fwi1 :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4fi1fwi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.float1 c) (Glsl.int1 d)
+
+
+vec4fi1i11 :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4fi1i11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c d
+
+
+vec4fi1i1f :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4fi1i1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c (Glsl.float1 d)
+
+
+vec4fi1i1i1 :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4fi1i1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c d
+
+
+vec4fi1i1wi1 :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4fi1i1wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c (Glsl.int1 d)
+
+
+vec4fi1wi11 :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Int
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4fi1wi11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.int1 c) d
+
+
+vec4fi1wi1f :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4fi1wi1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.int1 c) (Glsl.float1 d)
+
+
+vec4fi1wi1i1 :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Int
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4fi1wi1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.int1 c) d
+
+
+vec4fi1wi1wi1 :
+    Float
+    -> Glsl.Expression Glsl.Int_
+    -> Int
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4fi1wi1wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.int1 c) (Glsl.int1 d)
+
+
+vec4fwi111 :
+    Float
+    -> Int
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4fwi111 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) c d
+
+
+vec4fwi11f :
+    Float
+    -> Int
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4fwi11f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) c (Glsl.float1 d)
+
+
+vec4fwi11i1 :
+    Float
+    -> Int
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4fwi11i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) c d
+
+
+vec4fwi11wi1 :
+    Float
+    -> Int
+    -> Glsl.Expression Glsl.Float_
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4fwi11wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) c (Glsl.int1 d)
+
+
+vec4fwi1f1 :
+    Float
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4fwi1f1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) (Glsl.float1 c) d
+
+
+vec4fwi1ff : Float -> Int -> Float -> Float -> Glsl.Expression Glsl.Vec4
+vec4fwi1ff a b c d =
+    Glsl.unsafeCall4
+        "vec4"
+        []
+        (Glsl.float1 a)
+        (Glsl.int1 b)
+        (Glsl.float1 c)
+        (Glsl.float1 d)
+
+
+vec4fwi1fi1 :
+    Float
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4fwi1fi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) (Glsl.float1 c) d
+
+
+vec4fwi1fwi1 : Float -> Int -> Float -> Int -> Glsl.Expression Glsl.Vec4
+vec4fwi1fwi1 a b c d =
+    Glsl.unsafeCall4
+        "vec4"
+        []
+        (Glsl.float1 a)
+        (Glsl.int1 b)
+        (Glsl.float1 c)
+        (Glsl.int1 d)
+
+
+vec4fwi1i11 :
+    Float
+    -> Int
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4fwi1i11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) c d
+
+
+vec4fwi1i1f :
+    Float
+    -> Int
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4fwi1i1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) c (Glsl.float1 d)
+
+
+vec4fwi1i1i1 :
+    Float
+    -> Int
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4fwi1i1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) c d
+
+
+vec4fwi1i1wi1 :
+    Float
+    -> Int
+    -> Glsl.Expression Glsl.Int_
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4fwi1i1wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) c (Glsl.int1 d)
+
+
+vec4fwi1wi11 :
+    Float
+    -> Int
+    -> Int
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4fwi1wi11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) (Glsl.int1 c) d
+
+
+vec4fwi1wi1f : Float -> Int -> Int -> Float -> Glsl.Expression Glsl.Vec4
+vec4fwi1wi1f a b c d =
+    Glsl.unsafeCall4
+        "vec4"
+        []
+        (Glsl.float1 a)
+        (Glsl.int1 b)
+        (Glsl.int1 c)
+        (Glsl.float1 d)
+
+
+vec4fwi1wi1i1 :
+    Float
+    -> Int
+    -> Int
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4fwi1wi1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) (Glsl.int1 c) d
+
+
+vec4fwi1wi1wi1 : Float -> Int -> Int -> Int -> Glsl.Expression Glsl.Vec4
+vec4fwi1wi1wi1 a b c d =
+    Glsl.unsafeCall4
+        "vec4"
+        []
+        (Glsl.float1 a)
+        (Glsl.int1 b)
+        (Glsl.int1 c)
+        (Glsl.int1 d)
 
 
 vec4i1 : Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec4
@@ -19074,6 +19732,16 @@ vec4i1111 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
+vec4i111f :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4i111f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b c (Glsl.float1 d)
+
+
 vec4i111i1 :
     Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Float_
@@ -19082,16 +19750,6 @@ vec4i111i1 :
     -> Glsl.Expression Glsl.Vec4
 vec4i111i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
-
-
-vec4i111w1 :
-    Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4i111w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b c (Glsl.float1 d)
 
 
 vec4i111wi1 :
@@ -19104,6 +19762,46 @@ vec4i111wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c (Glsl.int1 d)
 
 
+vec4i11f1 :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4i11f1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) d
+
+
+vec4i11ff :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4i11ff a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) (Glsl.float1 d)
+
+
+vec4i11fi1 :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4i11fi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) d
+
+
+vec4i11fwi1 :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4i11fwi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) (Glsl.int1 d)
+
+
 vec4i11i11 :
     Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Float_
@@ -19112,6 +19810,16 @@ vec4i11i11 :
     -> Glsl.Expression Glsl.Vec4
 vec4i11i11 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
+
+
+vec4i11i1f :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4i11i1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b c (Glsl.float1 d)
 
 
 vec4i11i1i1 :
@@ -19124,16 +19832,6 @@ vec4i11i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
-vec4i11i1w1 :
-    Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4i11i1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b c (Glsl.float1 d)
-
-
 vec4i11i1wi1 :
     Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Float_
@@ -19142,46 +19840,6 @@ vec4i11i1wi1 :
     -> Glsl.Expression Glsl.Vec4
 vec4i11i1wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c (Glsl.int1 d)
-
-
-vec4i11w11 :
-    Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4i11w11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) d
-
-
-vec4i11w1i1 :
-    Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4i11w1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) d
-
-
-vec4i11w1w1 :
-    Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4i11w1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) (Glsl.float1 d)
-
-
-vec4i11w1wi1 :
-    Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4i11w1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) (Glsl.int1 d)
 
 
 vec4i11wi11 :
@@ -19194,6 +19852,16 @@ vec4i11wi11 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) d
 
 
+vec4i11wi1f :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4i11wi1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) (Glsl.float1 d)
+
+
 vec4i11wi1i1 :
     Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Float_
@@ -19202,16 +19870,6 @@ vec4i11wi1i1 :
     -> Glsl.Expression Glsl.Vec4
 vec4i11wi1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) d
-
-
-vec4i11wi1w1 :
-    Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4i11wi1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) (Glsl.float1 d)
 
 
 vec4i11wi1wi1 :
@@ -19224,6 +19882,166 @@ vec4i11wi1wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) (Glsl.int1 d)
 
 
+vec4i1f11 :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4i1f11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c d
+
+
+vec4i1f1f :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4i1f1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c (Glsl.float1 d)
+
+
+vec4i1f1i1 :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4i1f1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c d
+
+
+vec4i1f1wi1 :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4i1f1wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c (Glsl.int1 d)
+
+
+vec4i1ff1 :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4i1ff1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.float1 c) d
+
+
+vec4i1fff :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4i1fff a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.float1 c) (Glsl.float1 d)
+
+
+vec4i1ffi1 :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4i1ffi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.float1 c) d
+
+
+vec4i1ffwi1 :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4i1ffwi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.float1 c) (Glsl.int1 d)
+
+
+vec4i1fi11 :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4i1fi11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c d
+
+
+vec4i1fi1f :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4i1fi1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c (Glsl.float1 d)
+
+
+vec4i1fi1i1 :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4i1fi1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c d
+
+
+vec4i1fi1wi1 :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4i1fi1wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c (Glsl.int1 d)
+
+
+vec4i1fwi11 :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4i1fwi11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.int1 c) d
+
+
+vec4i1fwi1f :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4i1fwi1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.int1 c) (Glsl.float1 d)
+
+
+vec4i1fwi1i1 :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4i1fwi1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.int1 c) d
+
+
+vec4i1fwi1wi1 :
+    Glsl.Expression Glsl.Int_
+    -> Float
+    -> Int
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4i1fwi1wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.int1 c) (Glsl.int1 d)
+
+
 vec4i1i111 :
     Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Int_
@@ -19232,6 +20050,16 @@ vec4i1i111 :
     -> Glsl.Expression Glsl.Vec4
 vec4i1i111 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
+
+
+vec4i1i11f :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4i1i11f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b c (Glsl.float1 d)
 
 
 vec4i1i11i1 :
@@ -19244,16 +20072,6 @@ vec4i1i11i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
-vec4i1i11w1 :
-    Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4i1i11w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b c (Glsl.float1 d)
-
-
 vec4i1i11wi1 :
     Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Int_
@@ -19262,6 +20080,46 @@ vec4i1i11wi1 :
     -> Glsl.Expression Glsl.Vec4
 vec4i1i11wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c (Glsl.int1 d)
+
+
+vec4i1i1f1 :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4i1i1f1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) d
+
+
+vec4i1i1ff :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4i1i1ff a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) (Glsl.float1 d)
+
+
+vec4i1i1fi1 :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4i1i1fi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) d
+
+
+vec4i1i1fwi1 :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4i1i1fwi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) (Glsl.int1 d)
 
 
 vec4i1i1i11 :
@@ -19274,6 +20132,16 @@ vec4i1i1i11 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
 
 
+vec4i1i1i1f :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4i1i1i1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b c (Glsl.float1 d)
+
+
 vec4i1i1i1i1 :
     Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Int_
@@ -19282,16 +20150,6 @@ vec4i1i1i1i1 :
     -> Glsl.Expression Glsl.Vec4
 vec4i1i1i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c d
-
-
-vec4i1i1i1w1 :
-    Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4i1i1i1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b c (Glsl.float1 d)
 
 
 vec4i1i1i1wi1 :
@@ -19304,46 +20162,6 @@ vec4i1i1i1wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b c (Glsl.int1 d)
 
 
-vec4i1i1w11 :
-    Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4i1i1w11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) d
-
-
-vec4i1i1w1i1 :
-    Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4i1i1w1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) d
-
-
-vec4i1i1w1w1 :
-    Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4i1i1w1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) (Glsl.float1 d)
-
-
-vec4i1i1w1wi1 :
-    Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4i1i1w1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.float1 c) (Glsl.int1 d)
-
-
 vec4i1i1wi11 :
     Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Int_
@@ -19352,6 +20170,16 @@ vec4i1i1wi11 :
     -> Glsl.Expression Glsl.Vec4
 vec4i1i1wi11 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) d
+
+
+vec4i1i1wi1f :
+    Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4i1i1wi1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) (Glsl.float1 d)
 
 
 vec4i1i1wi1i1 :
@@ -19364,16 +20192,6 @@ vec4i1i1wi1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) d
 
 
-vec4i1i1wi1w1 :
-    Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4i1i1wi1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) (Glsl.float1 d)
-
-
 vec4i1i1wi1wi1 :
     Glsl.Expression Glsl.Int_
     -> Glsl.Expression Glsl.Int_
@@ -19382,166 +20200,6 @@ vec4i1i1wi1wi1 :
     -> Glsl.Expression Glsl.Vec4
 vec4i1i1wi1wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a b (Glsl.int1 c) (Glsl.int1 d)
-
-
-vec4i1w111 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4i1w111 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c d
-
-
-vec4i1w11i1 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4i1w11i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c d
-
-
-vec4i1w11w1 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4i1w11w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c (Glsl.float1 d)
-
-
-vec4i1w11wi1 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4i1w11wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c (Glsl.int1 d)
-
-
-vec4i1w1i11 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4i1w1i11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c d
-
-
-vec4i1w1i1i1 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4i1w1i1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c d
-
-
-vec4i1w1i1w1 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4i1w1i1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c (Glsl.float1 d)
-
-
-vec4i1w1i1wi1 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4i1w1i1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) c (Glsl.int1 d)
-
-
-vec4i1w1w11 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4i1w1w11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.float1 c) d
-
-
-vec4i1w1w1i1 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4i1w1w1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.float1 c) d
-
-
-vec4i1w1w1w1 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4i1w1w1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.float1 c) (Glsl.float1 d)
-
-
-vec4i1w1w1wi1 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4i1w1w1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.float1 c) (Glsl.int1 d)
-
-
-vec4i1w1wi11 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4i1w1wi11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.int1 c) d
-
-
-vec4i1w1wi1i1 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4i1w1wi1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.int1 c) d
-
-
-vec4i1w1wi1w1 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4i1w1wi1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.int1 c) (Glsl.float1 d)
-
-
-vec4i1w1wi1wi1 :
-    Glsl.Expression Glsl.Int_
-    -> Float
-    -> Int
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4i1w1wi1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.float1 b) (Glsl.int1 c) (Glsl.int1 d)
 
 
 vec4i1wi111 :
@@ -19554,6 +20212,16 @@ vec4i1wi111 a b c d =
     Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c d
 
 
+vec4i1wi11f :
+    Glsl.Expression Glsl.Int_
+    -> Int
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4i1wi11f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c (Glsl.float1 d)
+
+
 vec4i1wi11i1 :
     Glsl.Expression Glsl.Int_
     -> Int
@@ -19562,16 +20230,6 @@ vec4i1wi11i1 :
     -> Glsl.Expression Glsl.Vec4
 vec4i1wi11i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c d
-
-
-vec4i1wi11w1 :
-    Glsl.Expression Glsl.Int_
-    -> Int
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4i1wi11w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c (Glsl.float1 d)
 
 
 vec4i1wi11wi1 :
@@ -19584,6 +20242,46 @@ vec4i1wi11wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c (Glsl.int1 d)
 
 
+vec4i1wi1f1 :
+    Glsl.Expression Glsl.Int_
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4i1wi1f1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.float1 c) d
+
+
+vec4i1wi1ff :
+    Glsl.Expression Glsl.Int_
+    -> Int
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4i1wi1ff a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.float1 c) (Glsl.float1 d)
+
+
+vec4i1wi1fi1 :
+    Glsl.Expression Glsl.Int_
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4i1wi1fi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.float1 c) d
+
+
+vec4i1wi1fwi1 :
+    Glsl.Expression Glsl.Int_
+    -> Int
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4i1wi1fwi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.float1 c) (Glsl.int1 d)
+
+
 vec4i1wi1i11 :
     Glsl.Expression Glsl.Int_
     -> Int
@@ -19592,6 +20290,16 @@ vec4i1wi1i11 :
     -> Glsl.Expression Glsl.Vec4
 vec4i1wi1i11 a b c d =
     Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c d
+
+
+vec4i1wi1i1f :
+    Glsl.Expression Glsl.Int_
+    -> Int
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4i1wi1i1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c (Glsl.float1 d)
 
 
 vec4i1wi1i1i1 :
@@ -19604,16 +20312,6 @@ vec4i1wi1i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c d
 
 
-vec4i1wi1i1w1 :
-    Glsl.Expression Glsl.Int_
-    -> Int
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4i1wi1i1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c (Glsl.float1 d)
-
-
 vec4i1wi1i1wi1 :
     Glsl.Expression Glsl.Int_
     -> Int
@@ -19622,46 +20320,6 @@ vec4i1wi1i1wi1 :
     -> Glsl.Expression Glsl.Vec4
 vec4i1wi1i1wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) c (Glsl.int1 d)
-
-
-vec4i1wi1w11 :
-    Glsl.Expression Glsl.Int_
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4i1wi1w11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.float1 c) d
-
-
-vec4i1wi1w1i1 :
-    Glsl.Expression Glsl.Int_
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4i1wi1w1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.float1 c) d
-
-
-vec4i1wi1w1w1 :
-    Glsl.Expression Glsl.Int_
-    -> Int
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4i1wi1w1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.float1 c) (Glsl.float1 d)
-
-
-vec4i1wi1w1wi1 :
-    Glsl.Expression Glsl.Int_
-    -> Int
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4i1wi1w1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.float1 c) (Glsl.int1 d)
 
 
 vec4i1wi1wi11 :
@@ -19674,6 +20332,16 @@ vec4i1wi1wi11 a b c d =
     Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.int1 c) d
 
 
+vec4i1wi1wi1f :
+    Glsl.Expression Glsl.Int_
+    -> Int
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4i1wi1wi1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.int1 c) (Glsl.float1 d)
+
+
 vec4i1wi1wi1i1 :
     Glsl.Expression Glsl.Int_
     -> Int
@@ -19684,677 +20352,9 @@ vec4i1wi1wi1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.int1 c) d
 
 
-vec4i1wi1wi1w1 :
-    Glsl.Expression Glsl.Int_
-    -> Int
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4i1wi1wi1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.int1 c) (Glsl.float1 d)
-
-
 vec4i1wi1wi1wi1 : Glsl.Expression Glsl.Int_ -> Int -> Int -> Int -> Glsl.Expression Glsl.Vec4
 vec4i1wi1wi1wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] a (Glsl.int1 b) (Glsl.int1 c) (Glsl.int1 d)
-
-
-vec4w1 : Float -> Glsl.Expression Glsl.Vec4
-vec4w1 a =
-    Glsl.unsafeCall1 "vec4" [] (Glsl.float1 a)
-
-
-vec4w1111 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1111 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c d
-
-
-vec4w111i1 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4w111i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c d
-
-
-vec4w111w1 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4w111w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c (Glsl.float1 d)
-
-
-vec4w111wi1 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4w111wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c (Glsl.int1 d)
-
-
-vec4w11i11 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4w11i11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c d
-
-
-vec4w11i1i1 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4w11i1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c d
-
-
-vec4w11i1w1 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4w11i1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c (Glsl.float1 d)
-
-
-vec4w11i1wi1 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4w11i1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c (Glsl.int1 d)
-
-
-vec4w11w11 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4w11w11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.float1 c) d
-
-
-vec4w11w1i1 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4w11w1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.float1 c) d
-
-
-vec4w11w1w1 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4w11w1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.float1 c) (Glsl.float1 d)
-
-
-vec4w11w1wi1 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4w11w1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.float1 c) (Glsl.int1 d)
-
-
-vec4w11wi11 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Int
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4w11wi11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.int1 c) d
-
-
-vec4w11wi1i1 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Int
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4w11wi1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.int1 c) d
-
-
-vec4w11wi1w1 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4w11wi1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.int1 c) (Glsl.float1 d)
-
-
-vec4w11wi1wi1 :
-    Float
-    -> Glsl.Expression Glsl.Float_
-    -> Int
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4w11wi1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.int1 c) (Glsl.int1 d)
-
-
-vec4w13 : Float -> Glsl.Expression Glsl.Vec3 -> Glsl.Expression Glsl.Vec4
-vec4w13 a b =
-    Glsl.unsafeCall2 "vec4" [] (Glsl.float1 a) b
-
-
-vec4w1i111 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1i111 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c d
-
-
-vec4w1i11i1 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1i11i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c d
-
-
-vec4w1i11w1 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4w1i11w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c (Glsl.float1 d)
-
-
-vec4w1i11wi1 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4w1i11wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c (Glsl.int1 d)
-
-
-vec4w1i1i11 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1i1i11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c d
-
-
-vec4w1i1i1i1 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1i1i1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c d
-
-
-vec4w1i1i1w1 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4w1i1i1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c (Glsl.float1 d)
-
-
-vec4w1i1i1wi1 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4w1i1i1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b c (Glsl.int1 d)
-
-
-vec4w1i1w11 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1i1w11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.float1 c) d
-
-
-vec4w1i1w1i1 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1i1w1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.float1 c) d
-
-
-vec4w1i1w1w1 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4w1i1w1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.float1 c) (Glsl.float1 d)
-
-
-vec4w1i1w1wi1 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4w1i1w1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.float1 c) (Glsl.int1 d)
-
-
-vec4w1i1wi11 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Int
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1i1wi11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.int1 c) d
-
-
-vec4w1i1wi1i1 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Int
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1i1wi1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.int1 c) d
-
-
-vec4w1i1wi1w1 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4w1i1wi1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.int1 c) (Glsl.float1 d)
-
-
-vec4w1i1wi1wi1 :
-    Float
-    -> Glsl.Expression Glsl.Int_
-    -> Int
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4w1i1wi1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) b (Glsl.int1 c) (Glsl.int1 d)
-
-
-vec4w1w111 :
-    Float
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1w111 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) c d
-
-
-vec4w1w11i1 :
-    Float
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1w11i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) c d
-
-
-vec4w1w11w1 :
-    Float
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4w1w11w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) c (Glsl.float1 d)
-
-
-vec4w1w11wi1 :
-    Float
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4w1w11wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) c (Glsl.int1 d)
-
-
-vec4w1w1i11 :
-    Float
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1w1i11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) c d
-
-
-vec4w1w1i1i1 :
-    Float
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1w1i1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) c d
-
-
-vec4w1w1i1w1 :
-    Float
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4w1w1i1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) c (Glsl.float1 d)
-
-
-vec4w1w1i1wi1 :
-    Float
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4w1w1i1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) c (Glsl.int1 d)
-
-
-vec4w1w1w11 :
-    Float
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1w1w11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) (Glsl.float1 c) d
-
-
-vec4w1w1w1i1 :
-    Float
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1w1w1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) (Glsl.float1 c) d
-
-
-vec4w1w1w1w1 : Float -> Float -> Float -> Float -> Glsl.Expression Glsl.Vec4
-vec4w1w1w1w1 a b c d =
-    Glsl.unsafeCall4
-        "vec4"
-        []
-        (Glsl.float1 a)
-        (Glsl.float1 b)
-        (Glsl.float1 c)
-        (Glsl.float1 d)
-
-
-vec4w1w1w1wi1 : Float -> Float -> Float -> Int -> Glsl.Expression Glsl.Vec4
-vec4w1w1w1wi1 a b c d =
-    Glsl.unsafeCall4
-        "vec4"
-        []
-        (Glsl.float1 a)
-        (Glsl.float1 b)
-        (Glsl.float1 c)
-        (Glsl.int1 d)
-
-
-vec4w1w1wi11 :
-    Float
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1w1wi11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) (Glsl.int1 c) d
-
-
-vec4w1w1wi1i1 :
-    Float
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1w1wi1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.float1 b) (Glsl.int1 c) d
-
-
-vec4w1w1wi1w1 : Float -> Float -> Int -> Float -> Glsl.Expression Glsl.Vec4
-vec4w1w1wi1w1 a b c d =
-    Glsl.unsafeCall4
-        "vec4"
-        []
-        (Glsl.float1 a)
-        (Glsl.float1 b)
-        (Glsl.int1 c)
-        (Glsl.float1 d)
-
-
-vec4w1w1wi1wi1 : Float -> Float -> Int -> Int -> Glsl.Expression Glsl.Vec4
-vec4w1w1wi1wi1 a b c d =
-    Glsl.unsafeCall4
-        "vec4"
-        []
-        (Glsl.float1 a)
-        (Glsl.float1 b)
-        (Glsl.int1 c)
-        (Glsl.int1 d)
-
-
-vec4w1wi111 :
-    Float
-    -> Int
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1wi111 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) c d
-
-
-vec4w1wi11i1 :
-    Float
-    -> Int
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1wi11i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) c d
-
-
-vec4w1wi11w1 :
-    Float
-    -> Int
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4w1wi11w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) c (Glsl.float1 d)
-
-
-vec4w1wi11wi1 :
-    Float
-    -> Int
-    -> Glsl.Expression Glsl.Float_
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4w1wi11wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) c (Glsl.int1 d)
-
-
-vec4w1wi1i11 :
-    Float
-    -> Int
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1wi1i11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) c d
-
-
-vec4w1wi1i1i1 :
-    Float
-    -> Int
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1wi1i1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) c d
-
-
-vec4w1wi1i1w1 :
-    Float
-    -> Int
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4w1wi1i1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) c (Glsl.float1 d)
-
-
-vec4w1wi1i1wi1 :
-    Float
-    -> Int
-    -> Glsl.Expression Glsl.Int_
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4w1wi1i1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) c (Glsl.int1 d)
-
-
-vec4w1wi1w11 :
-    Float
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1wi1w11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) (Glsl.float1 c) d
-
-
-vec4w1wi1w1i1 :
-    Float
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1wi1w1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) (Glsl.float1 c) d
-
-
-vec4w1wi1w1w1 : Float -> Int -> Float -> Float -> Glsl.Expression Glsl.Vec4
-vec4w1wi1w1w1 a b c d =
-    Glsl.unsafeCall4
-        "vec4"
-        []
-        (Glsl.float1 a)
-        (Glsl.int1 b)
-        (Glsl.float1 c)
-        (Glsl.float1 d)
-
-
-vec4w1wi1w1wi1 : Float -> Int -> Float -> Int -> Glsl.Expression Glsl.Vec4
-vec4w1wi1w1wi1 a b c d =
-    Glsl.unsafeCall4
-        "vec4"
-        []
-        (Glsl.float1 a)
-        (Glsl.int1 b)
-        (Glsl.float1 c)
-        (Glsl.int1 d)
-
-
-vec4w1wi1wi11 :
-    Float
-    -> Int
-    -> Int
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1wi1wi11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) (Glsl.int1 c) d
-
-
-vec4w1wi1wi1i1 :
-    Float
-    -> Int
-    -> Int
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4w1wi1wi1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.float1 a) (Glsl.int1 b) (Glsl.int1 c) d
-
-
-vec4w1wi1wi1w1 : Float -> Int -> Int -> Float -> Glsl.Expression Glsl.Vec4
-vec4w1wi1wi1w1 a b c d =
-    Glsl.unsafeCall4
-        "vec4"
-        []
-        (Glsl.float1 a)
-        (Glsl.int1 b)
-        (Glsl.int1 c)
-        (Glsl.float1 d)
-
-
-vec4w1wi1wi1wi1 : Float -> Int -> Int -> Int -> Glsl.Expression Glsl.Vec4
-vec4w1wi1wi1wi1 a b c d =
-    Glsl.unsafeCall4
-        "vec4"
-        []
-        (Glsl.float1 a)
-        (Glsl.int1 b)
-        (Glsl.int1 c)
-        (Glsl.int1 d)
 
 
 vec4wi1 : Int -> Glsl.Expression Glsl.Vec4
@@ -20372,6 +20372,16 @@ vec4wi1111 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c d
 
 
+vec4wi111f :
+    Int
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4wi111f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c (Glsl.float1 d)
+
+
 vec4wi111i1 :
     Int
     -> Glsl.Expression Glsl.Float_
@@ -20380,16 +20390,6 @@ vec4wi111i1 :
     -> Glsl.Expression Glsl.Vec4
 vec4wi111i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c d
-
-
-vec4wi111w1 :
-    Int
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4wi111w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c (Glsl.float1 d)
 
 
 vec4wi111wi1 :
@@ -20402,6 +20402,46 @@ vec4wi111wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c (Glsl.int1 d)
 
 
+vec4wi11f1 :
+    Int
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4wi11f1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.float1 c) d
+
+
+vec4wi11ff :
+    Int
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4wi11ff a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.float1 c) (Glsl.float1 d)
+
+
+vec4wi11fi1 :
+    Int
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4wi11fi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.float1 c) d
+
+
+vec4wi11fwi1 :
+    Int
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4wi11fwi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.float1 c) (Glsl.int1 d)
+
+
 vec4wi11i11 :
     Int
     -> Glsl.Expression Glsl.Float_
@@ -20410,6 +20450,16 @@ vec4wi11i11 :
     -> Glsl.Expression Glsl.Vec4
 vec4wi11i11 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c d
+
+
+vec4wi11i1f :
+    Int
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4wi11i1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c (Glsl.float1 d)
 
 
 vec4wi11i1i1 :
@@ -20422,16 +20472,6 @@ vec4wi11i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c d
 
 
-vec4wi11i1w1 :
-    Int
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4wi11i1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c (Glsl.float1 d)
-
-
 vec4wi11i1wi1 :
     Int
     -> Glsl.Expression Glsl.Float_
@@ -20440,46 +20480,6 @@ vec4wi11i1wi1 :
     -> Glsl.Expression Glsl.Vec4
 vec4wi11i1wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c (Glsl.int1 d)
-
-
-vec4wi11w11 :
-    Int
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4wi11w11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.float1 c) d
-
-
-vec4wi11w1i1 :
-    Int
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4wi11w1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.float1 c) d
-
-
-vec4wi11w1w1 :
-    Int
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4wi11w1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.float1 c) (Glsl.float1 d)
-
-
-vec4wi11w1wi1 :
-    Int
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4wi11w1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.float1 c) (Glsl.int1 d)
 
 
 vec4wi11wi11 :
@@ -20492,6 +20492,16 @@ vec4wi11wi11 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.int1 c) d
 
 
+vec4wi11wi1f :
+    Int
+    -> Glsl.Expression Glsl.Float_
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4wi11wi1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.int1 c) (Glsl.float1 d)
+
+
 vec4wi11wi1i1 :
     Int
     -> Glsl.Expression Glsl.Float_
@@ -20500,16 +20510,6 @@ vec4wi11wi1i1 :
     -> Glsl.Expression Glsl.Vec4
 vec4wi11wi1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.int1 c) d
-
-
-vec4wi11wi1w1 :
-    Int
-    -> Glsl.Expression Glsl.Float_
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4wi11wi1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.int1 c) (Glsl.float1 d)
 
 
 vec4wi11wi1wi1 :
@@ -20522,6 +20522,170 @@ vec4wi11wi1wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.int1 c) (Glsl.int1 d)
 
 
+vec4wi1f11 :
+    Int
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1f11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) c d
+
+
+vec4wi1f1f :
+    Int
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1f1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) c (Glsl.float1 d)
+
+
+vec4wi1f1i1 :
+    Int
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1f1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) c d
+
+
+vec4wi1f1wi1 :
+    Int
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1f1wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) c (Glsl.int1 d)
+
+
+vec4wi1ff1 :
+    Int
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1ff1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) (Glsl.float1 c) d
+
+
+vec4wi1fff : Int -> Float -> Float -> Float -> Glsl.Expression Glsl.Vec4
+vec4wi1fff a b c d =
+    Glsl.unsafeCall4
+        "vec4"
+        []
+        (Glsl.int1 a)
+        (Glsl.float1 b)
+        (Glsl.float1 c)
+        (Glsl.float1 d)
+
+
+vec4wi1ffi1 :
+    Int
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1ffi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) (Glsl.float1 c) d
+
+
+vec4wi1ffwi1 : Int -> Float -> Float -> Int -> Glsl.Expression Glsl.Vec4
+vec4wi1ffwi1 a b c d =
+    Glsl.unsafeCall4
+        "vec4"
+        []
+        (Glsl.int1 a)
+        (Glsl.float1 b)
+        (Glsl.float1 c)
+        (Glsl.int1 d)
+
+
+vec4wi1fi11 :
+    Int
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1fi11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) c d
+
+
+vec4wi1fi1f :
+    Int
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1fi1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) c (Glsl.float1 d)
+
+
+vec4wi1fi1i1 :
+    Int
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1fi1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) c d
+
+
+vec4wi1fi1wi1 :
+    Int
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1fi1wi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) c (Glsl.int1 d)
+
+
+vec4wi1fwi11 :
+    Int
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1fwi11 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) (Glsl.int1 c) d
+
+
+vec4wi1fwi1f : Int -> Float -> Int -> Float -> Glsl.Expression Glsl.Vec4
+vec4wi1fwi1f a b c d =
+    Glsl.unsafeCall4
+        "vec4"
+        []
+        (Glsl.int1 a)
+        (Glsl.float1 b)
+        (Glsl.int1 c)
+        (Glsl.float1 d)
+
+
+vec4wi1fwi1i1 :
+    Int
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1fwi1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) (Glsl.int1 c) d
+
+
+vec4wi1fwi1wi1 : Int -> Float -> Int -> Int -> Glsl.Expression Glsl.Vec4
+vec4wi1fwi1wi1 a b c d =
+    Glsl.unsafeCall4
+        "vec4"
+        []
+        (Glsl.int1 a)
+        (Glsl.float1 b)
+        (Glsl.int1 c)
+        (Glsl.int1 d)
+
+
 vec4wi1i111 :
     Int
     -> Glsl.Expression Glsl.Int_
@@ -20530,6 +20694,16 @@ vec4wi1i111 :
     -> Glsl.Expression Glsl.Vec4
 vec4wi1i111 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c d
+
+
+vec4wi1i11f :
+    Int
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1i11f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c (Glsl.float1 d)
 
 
 vec4wi1i11i1 :
@@ -20542,16 +20716,6 @@ vec4wi1i11i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c d
 
 
-vec4wi1i11w1 :
-    Int
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1i11w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c (Glsl.float1 d)
-
-
 vec4wi1i11wi1 :
     Int
     -> Glsl.Expression Glsl.Int_
@@ -20560,6 +20724,46 @@ vec4wi1i11wi1 :
     -> Glsl.Expression Glsl.Vec4
 vec4wi1i11wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c (Glsl.int1 d)
+
+
+vec4wi1i1f1 :
+    Int
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1i1f1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.float1 c) d
+
+
+vec4wi1i1ff :
+    Int
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1i1ff a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.float1 c) (Glsl.float1 d)
+
+
+vec4wi1i1fi1 :
+    Int
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1i1fi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.float1 c) d
+
+
+vec4wi1i1fwi1 :
+    Int
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Int
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1i1fwi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.float1 c) (Glsl.int1 d)
 
 
 vec4wi1i1i11 :
@@ -20572,6 +20776,16 @@ vec4wi1i1i11 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c d
 
 
+vec4wi1i1i1f :
+    Int
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1i1i1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c (Glsl.float1 d)
+
+
 vec4wi1i1i1i1 :
     Int
     -> Glsl.Expression Glsl.Int_
@@ -20580,16 +20794,6 @@ vec4wi1i1i1i1 :
     -> Glsl.Expression Glsl.Vec4
 vec4wi1i1i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c d
-
-
-vec4wi1i1i1w1 :
-    Int
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1i1i1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c (Glsl.float1 d)
 
 
 vec4wi1i1i1wi1 :
@@ -20602,46 +20806,6 @@ vec4wi1i1i1wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b c (Glsl.int1 d)
 
 
-vec4wi1i1w11 :
-    Int
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1i1w11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.float1 c) d
-
-
-vec4wi1i1w1i1 :
-    Int
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1i1w1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.float1 c) d
-
-
-vec4wi1i1w1w1 :
-    Int
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1i1w1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.float1 c) (Glsl.float1 d)
-
-
-vec4wi1i1w1wi1 :
-    Int
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1i1w1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.float1 c) (Glsl.int1 d)
-
-
 vec4wi1i1wi11 :
     Int
     -> Glsl.Expression Glsl.Int_
@@ -20650,6 +20814,16 @@ vec4wi1i1wi11 :
     -> Glsl.Expression Glsl.Vec4
 vec4wi1i1wi11 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.int1 c) d
+
+
+vec4wi1i1wi1f :
+    Int
+    -> Glsl.Expression Glsl.Int_
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1i1wi1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.int1 c) (Glsl.float1 d)
 
 
 vec4wi1i1wi1i1 :
@@ -20662,183 +20836,9 @@ vec4wi1i1wi1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.int1 c) d
 
 
-vec4wi1i1wi1w1 :
-    Int
-    -> Glsl.Expression Glsl.Int_
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1i1wi1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.int1 c) (Glsl.float1 d)
-
-
 vec4wi1i1wi1wi1 : Int -> Glsl.Expression Glsl.Int_ -> Int -> Int -> Glsl.Expression Glsl.Vec4
 vec4wi1i1wi1wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) b (Glsl.int1 c) (Glsl.int1 d)
-
-
-vec4wi1w111 :
-    Int
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1w111 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) c d
-
-
-vec4wi1w11i1 :
-    Int
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1w11i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) c d
-
-
-vec4wi1w11w1 :
-    Int
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1w11w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) c (Glsl.float1 d)
-
-
-vec4wi1w11wi1 :
-    Int
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1w11wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) c (Glsl.int1 d)
-
-
-vec4wi1w1i11 :
-    Int
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1w1i11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) c d
-
-
-vec4wi1w1i1i1 :
-    Int
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1w1i1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) c d
-
-
-vec4wi1w1i1w1 :
-    Int
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1w1i1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) c (Glsl.float1 d)
-
-
-vec4wi1w1i1wi1 :
-    Int
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Int
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1w1i1wi1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) c (Glsl.int1 d)
-
-
-vec4wi1w1w11 :
-    Int
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1w1w11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) (Glsl.float1 c) d
-
-
-vec4wi1w1w1i1 :
-    Int
-    -> Float
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1w1w1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) (Glsl.float1 c) d
-
-
-vec4wi1w1w1w1 : Int -> Float -> Float -> Float -> Glsl.Expression Glsl.Vec4
-vec4wi1w1w1w1 a b c d =
-    Glsl.unsafeCall4
-        "vec4"
-        []
-        (Glsl.int1 a)
-        (Glsl.float1 b)
-        (Glsl.float1 c)
-        (Glsl.float1 d)
-
-
-vec4wi1w1w1wi1 : Int -> Float -> Float -> Int -> Glsl.Expression Glsl.Vec4
-vec4wi1w1w1wi1 a b c d =
-    Glsl.unsafeCall4
-        "vec4"
-        []
-        (Glsl.int1 a)
-        (Glsl.float1 b)
-        (Glsl.float1 c)
-        (Glsl.int1 d)
-
-
-vec4wi1w1wi11 :
-    Int
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1w1wi11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) (Glsl.int1 c) d
-
-
-vec4wi1w1wi1i1 :
-    Int
-    -> Float
-    -> Int
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1w1wi1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.float1 b) (Glsl.int1 c) d
-
-
-vec4wi1w1wi1w1 : Int -> Float -> Int -> Float -> Glsl.Expression Glsl.Vec4
-vec4wi1w1wi1w1 a b c d =
-    Glsl.unsafeCall4
-        "vec4"
-        []
-        (Glsl.int1 a)
-        (Glsl.float1 b)
-        (Glsl.int1 c)
-        (Glsl.float1 d)
-
-
-vec4wi1w1wi1wi1 : Int -> Float -> Int -> Int -> Glsl.Expression Glsl.Vec4
-vec4wi1w1wi1wi1 a b c d =
-    Glsl.unsafeCall4
-        "vec4"
-        []
-        (Glsl.int1 a)
-        (Glsl.float1 b)
-        (Glsl.int1 c)
-        (Glsl.int1 d)
 
 
 vec4wi1wi111 :
@@ -20851,6 +20851,16 @@ vec4wi1wi111 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.int1 b) c d
 
 
+vec4wi1wi11f :
+    Int
+    -> Int
+    -> Glsl.Expression Glsl.Float_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1wi11f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.int1 b) c (Glsl.float1 d)
+
+
 vec4wi1wi11i1 :
     Int
     -> Int
@@ -20859,16 +20869,6 @@ vec4wi1wi11i1 :
     -> Glsl.Expression Glsl.Vec4
 vec4wi1wi11i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.int1 b) c d
-
-
-vec4wi1wi11w1 :
-    Int
-    -> Int
-    -> Glsl.Expression Glsl.Float_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1wi11w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.int1 b) c (Glsl.float1 d)
 
 
 vec4wi1wi11wi1 :
@@ -20881,6 +20881,48 @@ vec4wi1wi11wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.int1 b) c (Glsl.int1 d)
 
 
+vec4wi1wi1f1 :
+    Int
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Float_
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1wi1f1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.int1 b) (Glsl.float1 c) d
+
+
+vec4wi1wi1ff : Int -> Int -> Float -> Float -> Glsl.Expression Glsl.Vec4
+vec4wi1wi1ff a b c d =
+    Glsl.unsafeCall4
+        "vec4"
+        []
+        (Glsl.int1 a)
+        (Glsl.int1 b)
+        (Glsl.float1 c)
+        (Glsl.float1 d)
+
+
+vec4wi1wi1fi1 :
+    Int
+    -> Int
+    -> Float
+    -> Glsl.Expression Glsl.Int_
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1wi1fi1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.int1 b) (Glsl.float1 c) d
+
+
+vec4wi1wi1fwi1 : Int -> Int -> Float -> Int -> Glsl.Expression Glsl.Vec4
+vec4wi1wi1fwi1 a b c d =
+    Glsl.unsafeCall4
+        "vec4"
+        []
+        (Glsl.int1 a)
+        (Glsl.int1 b)
+        (Glsl.float1 c)
+        (Glsl.int1 d)
+
+
 vec4wi1wi1i11 :
     Int
     -> Int
@@ -20889,6 +20931,16 @@ vec4wi1wi1i11 :
     -> Glsl.Expression Glsl.Vec4
 vec4wi1wi1i11 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.int1 b) c d
+
+
+vec4wi1wi1i1f :
+    Int
+    -> Int
+    -> Glsl.Expression Glsl.Int_
+    -> Float
+    -> Glsl.Expression Glsl.Vec4
+vec4wi1wi1i1f a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.int1 b) c (Glsl.float1 d)
 
 
 vec4wi1wi1i1i1 :
@@ -20901,61 +20953,9 @@ vec4wi1wi1i1i1 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.int1 b) c d
 
 
-vec4wi1wi1i1w1 :
-    Int
-    -> Int
-    -> Glsl.Expression Glsl.Int_
-    -> Float
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1wi1i1w1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.int1 b) c (Glsl.float1 d)
-
-
 vec4wi1wi1i1wi1 : Int -> Int -> Glsl.Expression Glsl.Int_ -> Int -> Glsl.Expression Glsl.Vec4
 vec4wi1wi1i1wi1 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.int1 b) c (Glsl.int1 d)
-
-
-vec4wi1wi1w11 :
-    Int
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Float_
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1wi1w11 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.int1 b) (Glsl.float1 c) d
-
-
-vec4wi1wi1w1i1 :
-    Int
-    -> Int
-    -> Float
-    -> Glsl.Expression Glsl.Int_
-    -> Glsl.Expression Glsl.Vec4
-vec4wi1wi1w1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.int1 b) (Glsl.float1 c) d
-
-
-vec4wi1wi1w1w1 : Int -> Int -> Float -> Float -> Glsl.Expression Glsl.Vec4
-vec4wi1wi1w1w1 a b c d =
-    Glsl.unsafeCall4
-        "vec4"
-        []
-        (Glsl.int1 a)
-        (Glsl.int1 b)
-        (Glsl.float1 c)
-        (Glsl.float1 d)
-
-
-vec4wi1wi1w1wi1 : Int -> Int -> Float -> Int -> Glsl.Expression Glsl.Vec4
-vec4wi1wi1w1wi1 a b c d =
-    Glsl.unsafeCall4
-        "vec4"
-        []
-        (Glsl.int1 a)
-        (Glsl.int1 b)
-        (Glsl.float1 c)
-        (Glsl.int1 d)
 
 
 vec4wi1wi1wi11 :
@@ -20968,13 +20968,8 @@ vec4wi1wi1wi11 a b c d =
     Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.int1 b) (Glsl.int1 c) d
 
 
-vec4wi1wi1wi1i1 : Int -> Int -> Int -> Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec4
-vec4wi1wi1wi1i1 a b c d =
-    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.int1 b) (Glsl.int1 c) d
-
-
-vec4wi1wi1wi1w1 : Int -> Int -> Int -> Float -> Glsl.Expression Glsl.Vec4
-vec4wi1wi1wi1w1 a b c d =
+vec4wi1wi1wi1f : Int -> Int -> Int -> Float -> Glsl.Expression Glsl.Vec4
+vec4wi1wi1wi1f a b c d =
     Glsl.unsafeCall4
         "vec4"
         []
@@ -20982,6 +20977,11 @@ vec4wi1wi1wi1w1 a b c d =
         (Glsl.int1 b)
         (Glsl.int1 c)
         (Glsl.float1 d)
+
+
+vec4wi1wi1wi1i1 : Int -> Int -> Int -> Glsl.Expression Glsl.Int_ -> Glsl.Expression Glsl.Vec4
+vec4wi1wi1wi1i1 a b c d =
+    Glsl.unsafeCall4 "vec4" [] (Glsl.int1 a) (Glsl.int1 b) (Glsl.int1 c) d
 
 
 vec4wi1wi1wi1wi1 : Int -> Int -> Int -> Int -> Glsl.Expression Glsl.Vec4
