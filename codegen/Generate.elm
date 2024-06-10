@@ -1,6 +1,6 @@
 module Generate exposing (main)
 
-import Dict exposing (Dict)
+import Dict
 import Elm
 import Elm.Annotation as Type
 import Gen.CodeGen.Generate as Generate
@@ -36,22 +36,45 @@ main =
         ]
 
 
-wrapFunction : String -> SortedSet String -> List ( Type, String ) -> Type -> { declaration : Elm.Declaration, group : String }
+wrapFunction : String -> SortedSet String -> List ( Type, String ) -> Type -> List ( String, { declaration : Elm.Declaration, group : String } )
 wrapFunction name deps args returnType =
     let
-        fname : String
-        fname =
-            fullName name (List.map Tuple.first args)
+        argsDecls : List ( String, List ( String, Maybe Type.Annotation, Elm.Expression -> Elm.Expression ) )
+        argsDecls =
+            List.repeat (List.length args) [ True, False ]
+                |> List.Extra.cartesianProduct
+                |> List.foldl
+                    (\wraps ->
+                        let
+                            ( argTypes, argWrappers ) =
+                                List.map2
+                                    (\( type_, argName ) wrap ->
+                                        ( ( type_, wrap )
+                                        , ( argName
+                                          , Just <|
+                                                if wrap then
+                                                    typeToAnnotation True type_
 
-        argDecls : List ( String, Maybe Type.Annotation )
-        argDecls =
-            List.map
-                (\( type_, argName ) ->
-                    ( argName
-                    , Just <| Gen.Glsl.annotation_.expression (typeToAnnotation type_)
+                                                else
+                                                    Gen.Glsl.annotation_.expression (typeToAnnotation False type_)
+                                          , if wrap then
+                                                wrapArgument type_
+
+                                            else
+                                                identity
+                                          )
+                                        )
+                                    )
+                                    args
+                                    wraps
+                                    |> List.unzip
+                        in
+                        Dict.insert
+                            (fullName name argTypes)
+                            argWrappers
                     )
-                )
-                args
+                    Dict.empty
+                |> Dict.toList
 
         depsExpr : Elm.Expression
         depsExpr =
@@ -99,285 +122,364 @@ wrapFunction name deps args returnType =
         expr argValues =
             innerCall
                 argValues
-                |> Elm.withType (Gen.Glsl.annotation_.expression (typeToAnnotation returnType))
+                |> Elm.withType (Gen.Glsl.annotation_.expression (typeToAnnotation False returnType))
     in
-    { declaration =
-        Elm.function argDecls expr
-            |> Elm.declaration fname
-            |> Elm.expose
-    , group =
-        if
-            List.member (String.left 1 name) [ "g", "i", "c" ]
-                && not (List.member name [ "cbrt", "increment", "cosh", "is_even", "is_odd" ])
-        then
-            String.dropLeft 1 name
+    argsDecls
+        |> List.map
+            (\( fname, argsDecl ) ->
+                ( fname
+                , { declaration =
+                        Elm.function
+                            (List.map (\( n, t, _ ) -> ( n, t )) argsDecl)
+                            (\iargs ->
+                                expr
+                                    (List.map2
+                                        (\( _, _, m ) a -> m a)
+                                        argsDecl
+                                        iargs
+                                    )
+                            )
+                            |> Elm.declaration fname
+                            |> Elm.expose
+                  , group =
+                        if
+                            List.member (String.left 1 name) [ "g", "i", "c" ]
+                                && not (List.member name [ "cbrt", "increment", "cosh", "is_even", "is_odd" ])
+                        then
+                            String.dropLeft 1 name
 
-        else
-            name
-    }
+                        else
+                            name
+                  }
+                )
+            )
 
 
-typeToAnnotation : Type -> Type.Annotation
-typeToAnnotation type_ =
+wrapArgument : Type -> Elm.Expression -> Elm.Expression
+wrapArgument type_ =
     case type_ of
-        TBool ->
-            Gen.Glsl.annotation_.bool_
-
         TFloat ->
-            Gen.Glsl.annotation_.float_
-
-        TInt ->
-            Gen.Glsl.annotation_.int_
-
-        TVec2 ->
-            Gen.Glsl.annotation_.vec2
-
-        TIVec2 ->
-            Gen.Glsl.annotation_.iVec2
-
-        TVec3 ->
-            Gen.Glsl.annotation_.vec3
-
-        TIVec3 ->
-            Gen.Glsl.annotation_.iVec3
-
-        TVec4 ->
-            Gen.Glsl.annotation_.vec4
-
-        TIVec4 ->
-            Gen.Glsl.annotation_.iVec4
-
-        TMat3 ->
-            Gen.Glsl.annotation_.mat3
-
-        TVoid ->
-            Gen.Glsl.annotation_.void
-
-        TIn tt ->
-            Gen.Glsl.annotation_.in_ (typeToAnnotation tt)
-
-        TOut tt ->
-            Gen.Glsl.annotation_.out (typeToAnnotation tt)
-
-        TBVec2 ->
-            Gen.Glsl.annotation_.bVec2
-
-        TBVec3 ->
-            Gen.Glsl.annotation_.bVec3
-
-        TBVec4 ->
-            Gen.Glsl.annotation_.bVec4
-
-        TUint ->
-            Gen.Glsl.annotation_.uint
-
-        TUVec2 ->
-            Gen.Glsl.annotation_.uVec2
-
-        TUVec3 ->
-            Gen.Glsl.annotation_.uVec3
-
-        TUVec4 ->
-            Gen.Glsl.annotation_.uVec4
+            Gen.Glsl.call_.float1
 
         TDouble ->
+            Gen.Glsl.call_.double1
+
+        TInt ->
+            Gen.Glsl.call_.int1
+
+        TBool ->
+            Gen.Glsl.call_.bool1
+
+        TUint ->
+            Gen.Glsl.call_.uint1
+
+        TIn t ->
+            wrapArgument t
+
+        TOut t ->
+            wrapArgument t
+
+        _ ->
+            identity
+
+
+typeToAnnotation : Bool -> Type -> Type.Annotation
+typeToAnnotation wrap type_ =
+    case ( type_, wrap ) of
+        ( TBool, False ) ->
+            Gen.Glsl.annotation_.bool_
+
+        ( TBool, True ) ->
+            Type.bool
+
+        ( TFloat, False ) ->
+            Gen.Glsl.annotation_.float_
+
+        ( TFloat, True ) ->
+            Type.float
+
+        ( TInt, False ) ->
+            Gen.Glsl.annotation_.int_
+
+        ( TInt, True ) ->
+            Type.int
+
+        ( TUint, False ) ->
+            Gen.Glsl.annotation_.uint
+
+        ( TUint, True ) ->
+            Type.int
+
+        ( TDouble, False ) ->
             Gen.Glsl.annotation_.double
 
-        TDVec2 ->
+        ( TDouble, True ) ->
+            Type.float
+
+        ( TVec2, _ ) ->
+            Gen.Glsl.annotation_.vec2
+
+        ( TIVec2, _ ) ->
+            Gen.Glsl.annotation_.iVec2
+
+        ( TVec3, _ ) ->
+            Gen.Glsl.annotation_.vec3
+
+        ( TIVec3, _ ) ->
+            Gen.Glsl.annotation_.iVec3
+
+        ( TVec4, _ ) ->
+            Gen.Glsl.annotation_.vec4
+
+        ( TIVec4, _ ) ->
+            Gen.Glsl.annotation_.iVec4
+
+        ( TMat3, _ ) ->
+            Gen.Glsl.annotation_.mat3
+
+        ( TVoid, _ ) ->
+            Gen.Glsl.annotation_.void
+
+        ( TIn tt, False ) ->
+            Gen.Glsl.annotation_.in_ (typeToAnnotation False tt)
+
+        ( TIn tt, True ) ->
+            typeToAnnotation True tt
+
+        ( TOut tt, False ) ->
+            Gen.Glsl.annotation_.out (typeToAnnotation False tt)
+
+        ( TOut tt, True ) ->
+            typeToAnnotation True tt
+
+        ( TBVec2, _ ) ->
+            Gen.Glsl.annotation_.bVec2
+
+        ( TBVec3, _ ) ->
+            Gen.Glsl.annotation_.bVec3
+
+        ( TBVec4, _ ) ->
+            Gen.Glsl.annotation_.bVec4
+
+        ( TUVec2, _ ) ->
+            Gen.Glsl.annotation_.uVec2
+
+        ( TUVec3, _ ) ->
+            Gen.Glsl.annotation_.uVec3
+
+        ( TUVec4, _ ) ->
+            Gen.Glsl.annotation_.uVec4
+
+        ( TDVec2, _ ) ->
             Gen.Glsl.annotation_.dVec2
 
-        TDVec3 ->
+        ( TDVec3, _ ) ->
             Gen.Glsl.annotation_.dVec3
 
-        TDVec4 ->
+        ( TDVec4, _ ) ->
             Gen.Glsl.annotation_.dVec4
 
-        TMat2 ->
+        ( TMat2, _ ) ->
             Gen.Glsl.annotation_.mat2
 
-        TMat4 ->
+        ( TMat4, _ ) ->
             Gen.Glsl.annotation_.mat4
 
-        TMat23 ->
+        ( TMat23, _ ) ->
             Gen.Glsl.annotation_.mat23
 
-        TMat24 ->
+        ( TMat24, _ ) ->
             Gen.Glsl.annotation_.mat24
 
-        TMat32 ->
+        ( TMat32, _ ) ->
             Gen.Glsl.annotation_.mat32
 
-        TMat34 ->
+        ( TMat34, _ ) ->
             Gen.Glsl.annotation_.mat34
 
-        TMat42 ->
+        ( TMat42, _ ) ->
             Gen.Glsl.annotation_.mat42
 
-        TMat43 ->
+        ( TMat43, _ ) ->
             Gen.Glsl.annotation_.mat43
 
-        TDMat2 ->
+        ( TDMat2, _ ) ->
             Gen.Glsl.annotation_.dMat2
 
-        TDMat3 ->
+        ( TDMat3, _ ) ->
             Gen.Glsl.annotation_.dMat3
 
-        TDMat4 ->
+        ( TDMat4, _ ) ->
             Gen.Glsl.annotation_.dMat4
 
-        TDMat23 ->
+        ( TDMat23, _ ) ->
             Gen.Glsl.annotation_.dMat23
 
-        TDMat24 ->
+        ( TDMat24, _ ) ->
             Gen.Glsl.annotation_.dMat24
 
-        TDMat32 ->
+        ( TDMat32, _ ) ->
             Gen.Glsl.annotation_.dMat32
 
-        TDMat34 ->
+        ( TDMat34, _ ) ->
             Gen.Glsl.annotation_.dMat34
 
-        TDMat42 ->
+        ( TDMat42, _ ) ->
             Gen.Glsl.annotation_.dMat42
 
-        TDMat43 ->
+        ( TDMat43, _ ) ->
             Gen.Glsl.annotation_.dMat43
 
 
-fullName : String -> List Type -> String
+fullName : String -> List ( Type, Bool ) -> String
 fullName baseName argTypes =
     String.concat (baseName :: List.map typeToShort argTypes)
         |> avoidClash
 
 
-typeToShort : Type -> String
-typeToShort t =
-    case t of
-        TFloat ->
+typeToShort : ( Type, Bool ) -> String
+typeToShort ( t, wrap ) =
+    case ( t, wrap ) of
+        ( TFloat, False ) ->
             "1"
 
-        TInt ->
+        ( TFloat, True ) ->
+            "w1"
+
+        ( TInt, False ) ->
             "i1"
 
-        TVec2 ->
+        ( TInt, True ) ->
+            "wi1"
+
+        ( TVec2, _ ) ->
             "2"
 
-        TIVec2 ->
+        ( TIVec2, _ ) ->
             "i2"
 
-        TVec3 ->
+        ( TVec3, _ ) ->
             "3"
 
-        TIVec3 ->
+        ( TIVec3, _ ) ->
             "i3"
 
-        TVec4 ->
+        ( TVec4, _ ) ->
             "4"
 
-        TIVec4 ->
+        ( TIVec4, _ ) ->
             "i4"
 
-        TMat3 ->
+        ( TMat3, _ ) ->
             "m33"
 
-        TBool ->
+        ( TBool, False ) ->
             "b1"
 
-        TBVec2 ->
+        ( TBool, True ) ->
+            "wb1"
+
+        ( TBVec2, _ ) ->
             "b2"
 
-        TBVec3 ->
+        ( TBVec3, _ ) ->
             "b3"
 
-        TBVec4 ->
+        ( TBVec4, _ ) ->
             "b4"
 
-        TUint ->
+        ( TUint, False ) ->
             "u1"
 
-        TUVec2 ->
+        ( TUint, True ) ->
+            "wu1"
+
+        ( TUVec2, _ ) ->
             "u2"
 
-        TUVec3 ->
+        ( TUVec3, _ ) ->
             "u3"
 
-        TUVec4 ->
+        ( TUVec4, _ ) ->
             "u4"
 
-        TDouble ->
+        ( TDouble, False ) ->
             "d1"
 
-        TDVec2 ->
+        ( TDouble, True ) ->
+            "wd1"
+
+        ( TDVec2, _ ) ->
             "d2"
 
-        TDVec3 ->
+        ( TDVec3, _ ) ->
             "d3"
 
-        TDVec4 ->
+        ( TDVec4, _ ) ->
             "d4"
 
-        TMat2 ->
+        ( TMat2, _ ) ->
             "m22"
 
-        TMat4 ->
+        ( TMat4, _ ) ->
             "m44"
 
-        TMat23 ->
+        ( TMat23, _ ) ->
             "m23"
 
-        TMat24 ->
+        ( TMat24, _ ) ->
             "m24"
 
-        TMat32 ->
+        ( TMat32, _ ) ->
             "m32"
 
-        TMat34 ->
+        ( TMat34, _ ) ->
             "m34"
 
-        TMat42 ->
+        ( TMat42, _ ) ->
             "m42"
 
-        TMat43 ->
+        ( TMat43, _ ) ->
             "m43"
 
-        TDMat2 ->
+        ( TDMat2, _ ) ->
             "dm22"
 
-        TDMat3 ->
+        ( TDMat3, _ ) ->
             "dm33"
 
-        TDMat4 ->
+        ( TDMat4, _ ) ->
             "dm44"
 
-        TDMat23 ->
+        ( TDMat23, _ ) ->
             "dm23"
 
-        TDMat24 ->
+        ( TDMat24, _ ) ->
             "dm24"
 
-        TDMat32 ->
+        ( TDMat32, _ ) ->
             "dm32"
 
-        TDMat34 ->
+        ( TDMat34, _ ) ->
             "dm34"
 
-        TDMat42 ->
+        ( TDMat42, _ ) ->
             "dm42"
 
-        TDMat43 ->
+        ( TDMat43, _ ) ->
             "dm43"
 
-        TVoid ->
+        ( TVoid, _ ) ->
             "v"
 
-        TIn tt ->
-            "n" ++ typeToShort tt
+        ( TIn tt, _ ) ->
+            "n" ++ typeToShort ( tt, wrap )
 
-        TOut tt ->
-            "o" ++ typeToShort tt
+        ( TOut tt, _ ) ->
+            "o" ++ typeToShort ( tt, wrap )
 
 
-builtinFunctions : Dict String { baseName : String, args : List Type, return : Type }
+builtinFunctions : List { baseName : String, args : List Type, return : Type }
 builtinFunctions =
     let
         vecs : List ( String, List Type, Type )
@@ -392,21 +494,26 @@ builtinFunctions =
                             (\inTypes ->
                                 ( "vec" ++ String.fromInt size, inTypes, type_ )
                             )
-                            ([ TFloat, TInt ]
-                                |> List.repeat size
-                                |> List.Extra.cartesianProduct
-                                |> (++)
-                                    (if size == 4 then
-                                        [ [ TInt ]
-                                        , [ TFloat ]
-                                        , [ TFloat, TVec3 ]
-                                        , [ TVec3, TFloat ]
-                                        , [ TVec2, TVec2 ]
-                                        ]
+                            ([ [ TInt ], [ TFloat ] ]
+                                ++ (case size of
+                                        4 ->
+                                            [ [ TVec3, TFloat ]
+                                            , [ TFloat, TVec3 ]
+                                            , [ TVec2, TVec2 ]
+                                            ]
 
-                                     else
-                                        [ [ TInt ], [ TFloat ] ]
-                                    )
+                                        3 ->
+                                            [ [ TVec2, TFloat ]
+                                            , [ TFloat, TVec2 ]
+                                            ]
+
+                                        _ ->
+                                            []
+                                   )
+                                ++ ([ TFloat, TInt ]
+                                        |> List.repeat size
+                                        |> List.Extra.cartesianProduct
+                                   )
                             )
                     )
 
@@ -447,17 +554,16 @@ builtinFunctions =
 
         builtTuple :
             ( String, List Type, Type )
-            -> ( String, { baseName : String, args : List Type, return : Type } )
+            -> { baseName : String, args : List Type, return : Type }
         builtTuple ( name, inTypes, resultType ) =
-            ( fullName name inTypes, { baseName = name, args = inTypes, return = resultType } )
+            { baseName = name, args = inTypes, return = resultType }
     in
-    (builtin_new ++ vecs ++ ivecs ++ mats ++ others)
+    (builtin ++ vecs ++ ivecs ++ mats ++ others)
         |> List.map builtTuple
-        |> Dict.fromList
 
 
-builtin_new : List ( String, List Type, Type )
-builtin_new =
+builtin : List ( String, List Type, Type )
+builtin =
     functionsExponential ++ functionsCommon ++ functionsGeometric
 
 
@@ -723,22 +829,27 @@ builtinDecls =
         specific : List { declaration : Elm.Declaration, group : String }
         specific =
             builtinFunctions
-                |> Dict.toList
-                |> List.map
-                    (\( _, { baseName, args, return } ) ->
-                        { declaration =
-                            (wrapFunction
-                                baseName
-                                SortedSet.empty
-                                (List.indexedMap
-                                    (\i type_ -> ( type_, indexedVar i ))
-                                    args
+                |> List.concatMap
+                    (\{ baseName, args, return } ->
+                        wrapFunction
+                            baseName
+                            SortedSet.empty
+                            (List.indexedMap
+                                (\i type_ -> ( type_, indexedVar i ))
+                                args
+                            )
+                            return
+                            |> List.map
+                                (\( name, declaration ) ->
+                                    ( name
+                                    , { declaration = declaration.declaration
+                                      , group = baseName
+                                      }
+                                    )
                                 )
-                                return
-                            ).declaration
-                        , group = baseName
-                        }
                     )
+                |> Dict.fromList
+                |> Dict.values
 
         generics : List { declaration : Elm.Declaration, group : String }
         generics =
