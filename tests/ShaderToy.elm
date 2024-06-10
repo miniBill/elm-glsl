@@ -3,11 +3,10 @@ module ShaderToy exposing (suite)
 import ErrorUtils
 import Expect
 import Glsl exposing (Declaration, Expression, Float_, Vec2, Vec3, Vec4, float1)
-import Glsl.Constants exposing (minusOne, one, zero)
-import Glsl.Dot as Dot exposing (dot2, dot4, dotX, dotY)
-import Glsl.Functions exposing (cos_, cross33, dot, floor_, fract, inversesqrt, mat21111, mat2ff11, mat2fff1, mix441, sin_, step, stepf1, vec211, vec3111, vec321, vec41111, vec422)
+import Glsl.Dot as Dot exposing (dot4, dotX, dotY)
+import Glsl.Functions exposing (cos_, cross33, dot, floor_, fract, inversesqrt, mat21111, mat2ff11, mat2fff1, mix441, sin_, step, step1f, stepf1, vec211, vec3111, vec311f, vec32f, vec422, vec4ffff)
 import Glsl.Helpers exposing (assign, const_, expr, float, floatT, fun1_, fun2_, fun4_, in_, mat2T, nop, out, return, vec2, vec2T, vec3, vec3T, vec4, vec4T, voidT)
-import Glsl.Operations exposing (add, add1f, byfv, bymv, byv1, byvf, divvf, negate_, subtract)
+import Glsl.Operations exposing (add, add1f, byfv, bymv, byv1, byvf, divvf, negate_, subtract, subtract1f)
 import Glsl.Parser
 import IsAlmostEquals
 import Parser
@@ -171,9 +170,9 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                 vec4
                     "nn"
                     (pick3.call
-                        (vec41111 zero zero (float1 2) one)
-                        (vec41111 one one zero minusOne)
-                        (vec41111 one zero zero one)
+                        (vec4ffff 0 0 2 1)
+                        (vec4ffff 1 1 0 -1)
+                        (vec4ffff 1 0 0 1)
                         (add (pi |> dotX) (pi |> dotY))
                     )
                 <| \nn ->
@@ -190,19 +189,19 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
             perpBisector =
                 fun2_ vec3T "perpBisector" (vec2T "p1") (vec2T "p2") <| \p1 p2 ->
                 vec2 "p21" (subtract p2 p1) <| \p21 ->
-                vec3 "pa" (vec321 (add p1 (byfv 0.5 p21)) one) <| \pa ->
+                vec3 "pa" (vec32f (add p1 (byfv 0.5 p21)) 1) <| \pa ->
                 vec3 "pb"
-                    (vec3111
+                    (vec311f
                         (subtract (pa |> dotX) (p21 |> dotY))
                         (add (pa |> dotY) (p21 |> dotX))
-                        one
+                        1
                     )
                 <| \pb ->
                 vec3 "l" (cross33 pa pb) <| \l ->
                 return
                     (byv1 l
                         (inversesqrt
-                            (dot (l |> dot2 Dot.x Dot.y) (l |> dot2 Dot.x Dot.y))
+                            (dot (l |> Dot.xy) (l |> Dot.xy))
                         )
                     )
 
@@ -219,9 +218,9 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                 , call : Expression Vec4 -> Expression Vec2 -> Expression ()
                 }
             mainImage =
-                fun2_ voidT "mainImage" (out vec4T "fragColor") (in_ vec2T "fragCoord") <| \_ fragCoord ->
-                float "scl" zero <| \scl ->
-                float "iTime" zero <| \iTime ->
+                fun2_ voidT "mainImage" (out vec4T "fragColor") (in_ vec2T "fragCoord") <| \fragColor fragCoord ->
+                float "scl" (float1 0) <| \scl ->
+                float "iTime" (float1 0) <| \iTime ->
                 float "cx"
                     (add
                         (byfv 2 (cos_ (byvf iTime 0.3)))
@@ -237,7 +236,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                 float "theta" (byfv 0.05 iTime) <| \theta ->
                 vec2 "pos"
                     (add
-                        (byv1 (fragCoord |> dot2 Dot.x Dot.y) scl)
+                        (byv1 (fragCoord |> Dot.xy) scl)
                         (vec211 cx cy)
                     )
                 <| \pos ->
@@ -255,14 +254,27 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                 vec3 "L" (vec3111 i3.value (negate_ i3.value) i3.value) <| \uL ->
                 expr
                     (assign
-                        (uL |> dot2 Dot.x Dot.y)
+                        (uL |> Dot.xy)
                         (bymv
                             (mat21111 ct (negate_ st) st ct)
-                            (uL |> dot2 Dot.x Dot.y)
+                            (uL |> Dot.xy)
                         )
                     )
                 <| \() ->
-                vec4 "h" (closestHexCenters.call (bymv cart2tri.value pos)) <| \_ ->
+                vec4 "h" (closestHexCenters.call (bymv cart2tri.value pos)) <| \h ->
+                vec2 "q1" (bymv tri2cart.value (h |> Dot.xy)) <| \q1 ->
+                float "s"
+                    (subtract1f
+                        (byvf
+                            (step1f
+                                (hash.call (h |> Dot.xy))
+                                0.5
+                            )
+                            2
+                        )
+                        1
+                    )
+                <| \s ->
                 nop
         in
         [ s3.declaration

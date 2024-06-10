@@ -10,6 +10,7 @@ module Glsl.Operations exposing
     , lt, leq, eq, geq, gt
     , ternary
     , and, or, ands, ors
+    , subtract1f
     )
 
 {-|
@@ -131,6 +132,11 @@ subtract =
     unsafeBinary Subtract
 
 
+subtract1f : Expression Float_ -> Float -> Expression Float_
+subtract1f l r =
+    subtract l (float1 r)
+
+
 negate_ : Expression (Vec Float d) -> Expression (Vec Float d)
 negate_ l =
     unsafeMap (UnaryOperation Negate) l
@@ -152,7 +158,7 @@ by1v =
 
 byfv : Float -> Expression (Vec Float d) -> Expression (Vec Float d)
 byfv f =
-    unsafeBinary By (float1 f)
+    by1v (float1 f)
 
 
 byv1 : Expression (Vec Float d) -> Expression Float_ -> Expression (Vec Float d)
@@ -162,7 +168,7 @@ byv1 =
 
 byvf : Expression (Vec Float d) -> Float -> Expression (Vec Float d)
 byvf v f =
-    unsafeBinary By v (float1 f)
+    byv1 v (float1 f)
 
 
 bymv : Expression (Mat Float D2 d) -> Expression (Vec Float d) -> Expression (Vec Float d)
@@ -186,7 +192,7 @@ divv1 =
 
 divvf : Expression (Vec Float d) -> Float -> Expression (Vec Float d)
 divvf l r =
-    unsafeBinary Div l (float1 r)
+    divv1 l (float1 r)
 
 
 div : Expression (Vec Float d) -> Expression (Vec Float d) -> Expression (Vec Float d)
