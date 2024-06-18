@@ -61,13 +61,15 @@ functionToGlsl (TypedName rt name) args body =
     let
         argsList : String
         argsList =
-            String.join ", " (List.map (\( t, n ) -> Glsl.PrettyPrinter.type_ t ++ " " ++ n) args)
+            args
+                |> List.map (\( t, n ) -> Glsl.PrettyPrinter.type_ t ++ " " ++ n)
+                |> String.join ", "
     in
-    String.join "\n" <|
-        [ Glsl.PrettyPrinter.type_ rt ++ " " ++ name ++ "(" ++ argsList ++ ") {"
-        , statementToGlsl body
-        , "}"
-        ]
+    [ Glsl.PrettyPrinter.type_ rt ++ " " ++ name ++ "(" ++ argsList ++ ") {"
+    , statementToGlsl body
+    , "}"
+    ]
+        |> String.join "\n"
 
 
 funX :
