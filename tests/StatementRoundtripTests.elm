@@ -31,32 +31,30 @@ examples =
 
 example : String -> Stat -> Test
 example label expr =
-    test label <|
-        \_ ->
-            expr
-                |> Glsl.PrettyPrinter.stat 0
-                |> Expect.equal label
+    test label <| \_ ->
+    expr
+        |> Glsl.PrettyPrinter.stat 0
+        |> Expect.equal label
 
 
 roundtrip : Test
 roundtrip =
-    Test.fuzz (statFuzzer 3) "Statement roundtrips" <|
-        \expected ->
-            let
-                str : String
-                str =
-                    Glsl.PrettyPrinter.stat 0 expected
-            in
-            case Parser.run (Glsl.Parser.statement |. Parser.end) str of
-                Err errs ->
-                    errs
-                        |> ErrorUtils.errorsToString str
-                        |> Expect.fail
+    Test.fuzz (statFuzzer 3) "Statement roundtrips" <| \expected ->
+    let
+        str : String
+        str =
+            Glsl.PrettyPrinter.stat 0 expected
+    in
+    case Parser.run (Glsl.Parser.statement |. Parser.end) str of
+        Err errs ->
+            errs
+                |> ErrorUtils.errorsToString str
+                |> Expect.fail
 
-                Ok actual ->
-                    actual
-                        |> IsAlmostEquals.stat expected
-                        |> IsAlmostEquals.toExpectation
+        Ok actual ->
+            actual
+                |> IsAlmostEquals.stat expected
+                |> IsAlmostEquals.toExpectation
 
 
 statFuzzer : Int -> Fuzzer Stat
@@ -81,16 +79,7 @@ statFuzzer depth =
                 , Fuzz.map4 For (Fuzz.maybe child) expr expr child
                 , Fuzz.map ExpressionStatement expr
                 , Fuzz.map3 Decl typeFuzzer ExpressionRoundtripTests.variableNameFuzzer (Fuzz.maybe expr)
-                , Fuzz.map
-                    (\s ->
-                        case s of
-                            [ c ] ->
-                                c
-
-                            _ ->
-                                Block s
-                    )
-                    (Fuzz.list child)
+                , Fuzz.map Glsl.block (Fuzz.list child)
                 ]
     in
     List.foldl (\i -> inner (ExpressionRoundtripTests.fuzzer i)) base (List.range 1 depth)

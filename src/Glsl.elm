@@ -20,6 +20,7 @@ module Glsl exposing
     , unsafeVar
     , unsafeDot
     , build, withExpression, withStatement, withContinuation, buildExpression, buildStatement, WithDepsBuilder
+    , block, deps
     )
 
 {-|
@@ -70,38 +71,62 @@ module Glsl exposing
 import SortedSet exposing (SortedSet)
 
 
+block : List Stat -> Stat
+block stats =
+    let
+        list : List Stat
+        list =
+            List.concatMap
+                (\stat ->
+                    case stat of
+                        Block children ->
+                            children
+
+                        _ ->
+                            [ stat ]
+                )
+                stats
+    in
+    case list of
+        [ child ] ->
+            child
+
+        _ ->
+            Block list
+
+
 
 -- UNSAFE --
 
 
 unsafeCall0 : String -> List String -> Expression r
-unsafeCall0 name deps =
+unsafeCall0 name dps =
     build (Call (Variable name) [])
-        |> withDependencies deps
+        |> withDependencies dps
         |> buildExpression
 
 
 unsafeCall1 : String -> List String -> Expression t -> Expression r
-unsafeCall1 name deps arg0 =
+unsafeCall1 name dps arg0 =
     build (\a0 -> Call (Variable name) [ a0 ])
-        |> withDependencies deps
+        |> withDependencies dps
         |> withExpression arg0
         |> buildExpression
 
 
 unsafeCall2 : String -> List String -> Expression t -> Expression u -> Expression r
-unsafeCall2 name deps arg0 arg1 =
+unsafeCall2 name dps arg0 arg1 =
     build (\a0 a1 -> Call (Variable name) [ a0, a1 ])
-        |> withDependencies deps
+        |> withDependencies dps
         |> withExpression arg0
         |> withExpression arg1
         |> buildExpression
 
 
 unsafeCall3 : String -> List String -> Expression t -> Expression u -> Expression v -> Expression r
-unsafeCall3 name deps arg0 arg1 arg2 =
+unsafeCall3 name dps arg0 arg1 arg2 =
     build (\a0 a1 a2 -> Call (Variable name) [ a0, a1, a2 ])
-        |> withDependencies deps
+        |> withDependencies dps
         |> withExpression arg0
         |> withExpression arg1
         |> withExpression arg2
@@ -109,9 +134,9 @@ unsafeCall3 name deps arg0 arg1 arg2 =
 
 
 unsafeCall4 : String -> List String -> Expression t -> Expression u -> Expression v -> Expression w -> Expression r
-unsafeCall4 name deps arg0 arg1 arg2 arg3 =
+unsafeCall4 name dps arg0 arg1 arg2 arg3 =
     build (\a0 a1 a2 a3 -> Call (Variable name) [ a0, a1, a2, a3 ])
-        |> withDependencies deps
+        |> withDependencies dps
         |> withExpression arg0
         |> withExpression arg1
         |> withExpression arg2
@@ -120,9 +145,9 @@ unsafeCall4 name deps arg0 arg1 arg2 arg3 =
 
 
 unsafeCall5 : String -> List String -> Expression t -> Expression u -> Expression v -> Expression w -> Expression x -> Expression r
-unsafeCall5 name deps arg0 arg1 arg2 arg3 arg4 =
+unsafeCall5 name dps arg0 arg1 arg2 arg3 arg4 =
     build (\a0 a1 a2 a3 a4 -> Call (Variable name) [ a0, a1, a2, a3, a4 ])
-        |> withDependencies deps
+        |> withDependencies dps
         |> withExpression arg0
         |> withExpression arg1
         |> withExpression arg2
@@ -132,9 +157,9 @@ unsafeCall5 name deps arg0 arg1 arg2 arg3 arg4 =
 
 
 unsafeCall6 : String -> List String -> Expression a -> Expression b -> Expression c -> Expression d -> Expression e -> Expression f -> Expression r
-unsafeCall6 name deps arg0 arg1 arg2 arg3 arg4 arg5 =
+unsafeCall6 name dps arg0 arg1 arg2 arg3 arg4 arg5 =
     build (\a0 a1 a2 a3 a4 a5 -> Call (Variable name) [ a0, a1, a2, a3, a4, a5 ])
-        |> withDependencies deps
+        |> withDependencies dps
         |> withExpression arg0
         |> withExpression arg1
         |> withExpression arg2
@@ -145,9 +170,9 @@ unsafeCall6 name deps arg0 arg1 arg2 arg3 arg4 arg5 =
 
 
 unsafeCall7 : String -> List String -> Expression a -> Expression b -> Expression c -> Expression d -> Expression e -> Expression f -> Expression g -> Expression r
-unsafeCall7 name deps arg0 arg1 arg2 arg3 arg4 arg5 arg6 =
+unsafeCall7 name dps arg0 arg1 arg2 arg3 arg4 arg5 arg6 =
     build (\a0 a1 a2 a3 a4 a5 a6 -> Call (Variable name) [ a0, a1, a2, a3, a4, a5, a6 ])
-        |> withDependencies deps
+        |> withDependencies dps
         |> withExpression arg0
         |> withExpression arg1
         |> withExpression arg2
@@ -159,9 +184,9 @@ unsafeCall7 name deps arg0 arg1 arg2 arg3 arg4 arg5 arg6 =
 
 
 unsafeCall8 : String -> List String -> Expression a -> Expression b -> Expression c -> Expression d -> Expression e -> Expression f -> Expression g -> Expression h -> Expression r
-unsafeCall8 name deps arg0 arg1 arg2 arg3 arg4 arg5 arg6 arg7 =
+unsafeCall8 name dps arg0 arg1 arg2 arg3 arg4 arg5 arg6 arg7 =
     build (\a0 a1 a2 a3 a4 a5 a6 a7 -> Call (Variable name) [ a0, a1, a2, a3, a4, a5, a6, a7 ])
-        |> withDependencies deps
+        |> withDependencies dps
         |> withExpression arg0
         |> withExpression arg1
         |> withExpression arg2
@@ -174,9 +199,9 @@ unsafeCall8 name deps arg0 arg1 arg2 arg3 arg4 arg5 arg6 arg7 =
 
 
 unsafeCall9 : String -> List String -> Expression a -> Expression b -> Expression c -> Expression d -> Expression e -> Expression f -> Expression g -> Expression h -> Expression i -> Expression r
-unsafeCall9 name deps arg0 arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8 =
+unsafeCall9 name dps arg0 arg1 arg2 arg3 arg4 arg5 arg6 arg7 arg8 =
     build (\a0 a1 a2 a3 a4 a5 a6 a7 a8 -> Call (Variable name) [ a0, a1, a2, a3, a4, a5, a6, a7, a8 ])
-        |> withDependencies deps
+        |> withDependencies dps
         |> withExpression arg0
         |> withExpression arg1
         |> withExpression arg2
@@ -228,71 +253,49 @@ build k =
 
 
 withExpression : Expression e -> WithDepsBuilder (Expr -> k) -> WithDepsBuilder k
-withExpression (Expression e) (WithDepsBuilder k deps) =
+withExpression (Expression e) (WithDepsBuilder k dps) =
     WithDepsBuilder (k e.expr)
-        (deps |> SortedSet.insertAll e.deps)
+        (dps |> SortedSet.insertAll e.deps)
 
 
 withStatement : Statement r -> WithDepsBuilder (Stat -> k) -> WithDepsBuilder k
-withStatement (Statement s) (WithDepsBuilder k deps) =
+withStatement (Statement s) (WithDepsBuilder k dps) =
     WithDepsBuilder
-        (case s.stat of
-            [ child ] ->
-                k child
-
-            _ ->
-                k (Block s.stat)
-        )
-        (deps |> SortedSet.insertAll s.deps)
+        (k s.stat)
+        (dps |> SortedSet.insertAll s.deps)
 
 
 withContinuation : (() -> Statement r) -> WithDepsBuilder Stat -> Statement r
-withContinuation next (WithDepsBuilder k deps) =
+withContinuation next (WithDepsBuilder k dps) =
     let
         (Statement s) =
             next ()
     in
     Statement
-        { stat =
-            let
-                unwrappedSStat : List Stat
-                unwrappedSStat =
-                    case s.stat of
-                        [ Block children ] ->
-                            children
-
-                        _ ->
-                            s.stat
-            in
-            case k of
-                Block children ->
-                    children ++ unwrappedSStat
-
-                _ ->
-                    k :: unwrappedSStat
-        , deps = deps |> SortedSet.insertAll s.deps
+        { stat = block [ k, s.stat ]
+        , deps = dps |> SortedSet.insertAll s.deps
         }
 
 
 withDependencies : List String -> WithDepsBuilder k -> WithDepsBuilder k
-withDependencies additionalDeps (WithDepsBuilder k deps) =
+withDependencies additionalDeps (WithDepsBuilder k dps) =
     WithDepsBuilder k
-        (deps |> SortedSet.insertAll (SortedSet.fromList additionalDeps))
+        (dps |> SortedSet.insertAll (SortedSet.fromList additionalDeps))
 
 
 buildStatement : WithDepsBuilder Stat -> Statement r
-buildStatement (WithDepsBuilder stat deps) =
+buildStatement (WithDepsBuilder stat dps) =
     Statement
-        { stat = [ stat ]
-        , deps = deps
+        { stat = block [ stat ]
+        , deps = dps
         }
 
 
 buildExpression : WithDepsBuilder Expr -> Expression t
-buildExpression (WithDepsBuilder expr deps) =
+buildExpression (WithDepsBuilder expr dps) =
     Expression
         { expr = expr
-        , deps = deps
+        , deps = dps
         }
 
 
@@ -425,7 +428,7 @@ type UnaryOperation
 
 type Statement r
     = Statement
-        { stat : List Stat
+        { stat : Stat
         , deps : SortedSet String
         }
 
@@ -795,3 +798,9 @@ pure e =
         { expr = e
         , deps = SortedSet.empty
         }
+
+
+deps : Expression a -> List String
+deps (Expression e) =
+    e.deps
+        |> SortedSet.toList

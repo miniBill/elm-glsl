@@ -1,6 +1,6 @@
 module Glsl.Helpers exposing (File, FunDecl, assign, assignAdd, assignBy, assignOut, boolT, break, const, const_, continue, decl, def, def1, expr, expressionToGlsl, fileToGlsl, float, floatT, for, forDown, forLeq, fun0, fun1, fun1_, fun2, fun2_, fun3, fun3_, fun4, fun4_, fun5, fun5_, funDeclToGlsl, ifElse, if_, in_, intT, main_, mat2T, mat3, mat3T, nop, out, return, statementToGlsl, vec2, vec2T, vec3, vec3T, vec4, vec4T, voidT)
 
-import Glsl exposing (BinaryOperation(..), Bool_, Declaration(..), Expr(..), Expression(..), Float_, Int_, Mat2, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap, unsafeMap2, unsafeVar, withContinuation, withExpression, withStatement)
+import Glsl exposing (BinaryOperation(..), Bool_, Declaration(..), Expr(..), Expression(..), Float_, Int_, Mat2, Mat3, Out, RelationOperation(..), Stat(..), Statement(..), Type(..), TypedName(..), TypingFunction, UnaryOperation(..), Vec2, Vec3, Vec4, build, buildStatement, unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeMap2, unsafeVar, withContinuation, withExpression, withStatement)
 import Glsl.PrettyPrinter
 import Set
 import SortedSet
@@ -43,8 +43,7 @@ funDeclToGlsl (FunDecl { body }) =
 statementToGlsl : Statement s -> String
 statementToGlsl (Statement r) =
     r.stat
-        |> List.map (Glsl.PrettyPrinter.stat 1)
-        |> String.join "\n"
+        |> Glsl.PrettyPrinter.stat 1
 
 
 expressionToGlsl : Expression t -> String
@@ -102,13 +101,7 @@ funX call typeF name body args =
             { returnType = returnType
             , name = name
             , args = args
-            , stat =
-                case stat of
-                    [ child ] ->
-                        child
-
-                    _ ->
-                        Block stat
+            , stat = stat
             , body = funGlsl
             }
     , call =
@@ -144,6 +137,15 @@ const_ typeF name value =
 
         (Expression e) =
             value
+
+        constGlsl =
+            "const "
+                ++ Glsl.PrettyPrinter.type_ constType
+                ++ " "
+                ++ name
+                ++ " = "
+                ++ Glsl.PrettyPrinter.expr e.expr
+                ++ ";"
     in
     { declaration =
         ConstDeclaration
@@ -152,7 +154,12 @@ const_ typeF name value =
             , value = e.expr
             }
     , value =
-        unsafeMap (\_ -> Variable name) value
+        Expression
+            { deps =
+                e.deps
+                    |> SortedSet.insert constGlsl
+            , expr = Variable name
+            }
     }
 
 
@@ -442,12 +449,7 @@ def typeF name val k =
     in
     build
         (\v0 k0 ->
-            case k0 of
-                Block kb ->
-                    Block (Decl t0 n0 (Just v0) :: kb)
-
-                _ ->
-                    Block [ Decl t0 n0 (Just v0), k0 ]
+            Glsl.block [ Decl t0 n0 (Just v0), k0 ]
         )
         |> withExpression val
         |> withStatement (k (unsafeVar n0))
@@ -490,12 +492,7 @@ def1 ( tn0, val0 ) k =
     in
     build
         (\v0 k0 ->
-            case k0 of
-                Block kb ->
-                    Block (Decl t0 n0 (Just v0) :: kb)
-
-                _ ->
-                    Block [ Decl t0 n0 (Just v0), k0 ]
+            Glsl.block [ Decl t0 n0 (Just v0), k0 ]
         )
         |> withExpression val0
         |> withStatement (k (unsafeVar n0))
@@ -521,7 +518,7 @@ expr e s =
 
 nop : Statement ()
 nop =
-    Statement { stat = [], deps = SortedSet.empty }
+    Statement { stat = Block [], deps = SortedSet.empty }
 
 
 assignAdd : Expression t -> Expression t -> (() -> Statement q) -> Statement q

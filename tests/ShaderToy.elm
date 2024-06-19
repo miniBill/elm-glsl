@@ -8,6 +8,7 @@ import Glsl.Functions exposing (abs_, clampff1, cos_, cross33, distance, dot, fl
 import Glsl.Helpers exposing (assign, const_, expr, float, floatT, fun1_, fun2_, fun4_, in_, mat2T, nop, out, return, vec2, vec2T, vec3, vec3T, vec4, vec4T, voidT)
 import Glsl.Operations exposing (add, add1f, addf1, by, byfv, bymv, byv1, byvf, divvf, negate_, subtract, subtract1f, subtractf1)
 import Glsl.Parser
+import Glsl.PrettyPrinter
 import IsAlmostEquals
 import Parser
 import Test exposing (Test, describe, test)
@@ -24,17 +25,18 @@ hexagonal : Test
 hexagonal =
     check "https://www.shadertoy.com/view/4d2GzV"
         """
-const float s3 = 1.7320508075688772;
 const float i3 = 0.5773502691896258;
-
-const mat2 tri2cart = mat2(1.0, 0.0, -0.5, 0.5*s3);
-
-const mat2 cart2tri = mat2(1.0, 0.0, i3, 2.0*i3);
 
 vec4 pick3(vec4 a, vec4 b, vec4 c, float u) {
     float v = fract(u * 0.3333333333333);
     return mix(mix(a, b, step(0.3, v)), c, step(0.6, v));
 }
+
+const float s3 = 1.7320508075688772;
+
+const mat2 tri2cart = mat2(1.0, 0.0, -0.5, 0.5*s3);
+
+const mat2 cart2tri = mat2(1.0, 0.0, i3, 2.0*i3);
 
 vec4 closestHexCenters(vec2 p) {
     vec2 pi = floor(p);
@@ -329,19 +331,11 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                 expr (assign fragColor (mix441 crgb truchet k)) <| \() ->
                 nop
         in
-        [ s3.declaration
-        , i3.declaration
-        , tri2cart.declaration
-        , cart2tri.declaration
-        , pick3.declaration
-        , closestHexCenters.declaration
-        , perpBisector.declaration
-        , hash.declaration
-        , mainImage.declaration
-        ]
+        mainImage.call (Glsl.unsafeVar "_") (Glsl.unsafeVar "_")
+            |> Glsl.deps
 
 
-check : String -> String -> List Declaration -> Test
+check : String -> String -> List String -> Test
 check label input expected =
     test label <| \_ ->
     case Parser.run Glsl.Parser.file (Glsl.Parser.preprocess input) of
@@ -350,5 +344,7 @@ check label input expected =
                 |> Expect.fail
 
         Ok ( _, actual ) ->
-            IsAlmostEquals.list IsAlmostEquals.declaration expected actual
+            actual
+                |> List.map Glsl.PrettyPrinter.declaration
+                |> IsAlmostEquals.list IsAlmostEquals.string expected
                 |> IsAlmostEquals.toExpectation

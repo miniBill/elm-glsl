@@ -15,21 +15,20 @@ simple =
 
 checkParses : String -> String -> Test
 checkParses label source =
-    test label <|
-        \_ ->
-            case Parser.run (Glsl.Parser.file |. Parser.end) source of
-                Err errs ->
-                    errs
-                        |> ErrorUtils.errorsToString source
-                        |> Expect.fail
+    test label <| \_ ->
+    case Parser.run (Glsl.Parser.file |. Parser.end) source of
+        Err errs ->
+            errs
+                |> ErrorUtils.errorsToString source
+                |> Expect.fail
 
-                Ok o ->
-                    o
-                        |> Expect.equal
-                            ( Just { version = "300" }
-                            , [ FunctionDeclaration
-                                    { args = []
-                                    , body = """void main()
+        Ok o ->
+            o
+                |> Expect.equal
+                    ( Just { version = "300" }
+                    , [ FunctionDeclaration
+                            { args = []
+                            , body = """void main()
 {
   pos3 = vec3(pos, 1);
 }"""

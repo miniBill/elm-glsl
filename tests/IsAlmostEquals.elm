@@ -1,4 +1,4 @@
-module IsAlmostEquals exposing (Check, Path, declaration, expr, list, maybe, stat, toExpectation)
+module IsAlmostEquals exposing (Check, Path, declaration, expr, list, maybe, stat, string, toExpectation)
 
 import Expect exposing (Expectation)
 import Glsl exposing (Declaration(..), Expr(..), Stat(..), Type)
@@ -259,7 +259,7 @@ string expected actual =
 
 
 list : (a -> a -> Check) -> List a -> List a -> Check
-list f =
+list f exps acts =
     let
         go : Int -> List a -> List a -> Check
         go i e a =
@@ -277,7 +277,7 @@ list f =
                 ( [], _ :: _ ) ->
                     equals Debug.toString e a
     in
-    go 0
+    go 0 exps acts
 
 
 maybe : (a -> a -> Check) -> Maybe a -> Maybe a -> Check
