@@ -35,19 +35,17 @@ checkParses label source =
                                     , name = "main"
                                     , returnType = TVoid
                                     , stat =
-                                        Block
-                                            [ ExpressionStatement
-                                                (BinaryOperation
-                                                    (Variable "pos3")
-                                                    Assign
-                                                    (Call
-                                                        (Variable "vec3")
-                                                        [ Variable "pos"
-                                                        , Int 1
-                                                        ]
-                                                    )
+                                        ExpressionStatement
+                                            (BinaryOperation
+                                                (Variable "pos3")
+                                                Assign
+                                                (Call
+                                                    (Variable "vec3")
+                                                    [ Variable "pos"
+                                                    , Int 1
+                                                    ]
                                                 )
-                                            ]
+                                            )
                                     }
                               ]
                             )

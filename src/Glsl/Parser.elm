@@ -163,17 +163,16 @@ typeParser =
 
 statement : Parser Stat
 statement =
-    Parser.lazy <|
-        \_ ->
-            oneOf
-                [ blockParser
-                , returnParser
-                , breakContinueParser
-                , ifParser
-                , forParser
-                , defParser
-                , expressionStatementParser
-                ]
+    Parser.lazy <| \_ ->
+    oneOf
+        [ blockParser
+        , returnParser
+        , breakContinueParser
+        , ifParser
+        , forParser
+        , defParser
+        , expressionStatementParser
+        ]
 
 
 breakContinueParser : Parser Stat
@@ -263,7 +262,7 @@ blockParser =
         , end = "}"
         , trailing = Parser.Optional
         }
-        |> Parser.map Block
+        |> Parser.map Glsl.block
 
 
 defParser : Parser Stat
