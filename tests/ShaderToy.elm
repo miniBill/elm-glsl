@@ -2,10 +2,10 @@ module ShaderToy exposing (suite)
 
 import ErrorUtils
 import Expect
-import Glsl exposing (Declaration, Expression, Float_, Vec2, Vec3, Vec4, float1)
+import Glsl exposing (Expression, Float_, Vec2, Vec3, Vec4, float1)
 import Glsl.Dot as Dot exposing (dot4)
 import Glsl.Functions exposing (abs_, clampff1, cos_, cross33, distance, dot, floor_, fract, inversesqrt, mat21111, mat2ff11, mat2fff1, min_, mix221, mix441, sin_, smoothstep1f1, smoothstepf11, smoothstepff1, sqrt_, step, step1f, stepf1, vec211, vec21f, vec2f, vec31, vec3111, vec311f, vec321, vec32f, vec3f, vec422, vec43f, vec4f, vec4ffff)
-import Glsl.Helpers exposing (assign, const, const_, expr, float, floatT, fun1, fun2, fun4, in_, mat2T, nop, out, return, vec2, vec2T, vec3, vec3T, vec4, vec4T, voidT)
+import Glsl.Helpers exposing (assign, const, expr, float, floatT, fun1, fun2, fun4, in_, mat2T, nop, out, return, vec2, vec2T, vec3, vec3T, vec4, vec4T, voidT)
 import Glsl.Operations exposing (add, add1f, addf1, by, byfv, bymv, byv1, byvf, divvf, negate_, subtract, subtract1f, subtractf1)
 import Glsl.Parser
 import Glsl.PrettyPrinter
