@@ -331,8 +331,8 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
         in
         [ s3.declaration
         , i3.declaration
-        , (const_ mat2T "tri2cart" (mat2fff1 1 0 -0.5 (byfv 0.5 s3.value))).declaration
-        , (const_ mat2T "cart2tri" (mat2ff11 1 0 i3.value (byfv 2.0 i3.value))).declaration
+        , tri2cart.declaration
+        , cart2tri.declaration
         , pick3.declaration
         , closestHexCenters.declaration
         , perpBisector.declaration
