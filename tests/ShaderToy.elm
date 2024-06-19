@@ -32,12 +32,6 @@ vec4 pick3(vec4 a, vec4 b, vec4 c, float u) {
     return mix(mix(a, b, step(0.3, v)), c, step(0.6, v));
 }
 
-const float s3 = 1.7320508075688772;
-
-const mat2 tri2cart = mat2(1.0, 0.0, -0.5, 0.5*s3);
-
-const mat2 cart2tri = mat2(1.0, 0.0, i3, 2.0*i3);
-
 vec4 closestHexCenters(vec2 p) {
     vec2 pi = floor(p);
     vec2 pf = fract(p);
@@ -49,7 +43,17 @@ vec4 closestHexCenters(vec2 p) {
 
     return ( mix(nn, nn.yxwz, step(pf.x, pf.y)) +
              vec4(pi, pi) );
+}
 
+const mat2 cart2tri = mat2(1.0, 0.0, i3, 2.0*i3);
+
+const float s3 = 1.7320508075688772;
+
+const mat2 tri2cart = mat2(1.0, 0.0, -0.5, 0.5*s3);
+
+float hash(vec2 pos) {
+    // return texture(iChannel0, fract(pos/511.0)).x;
+    return fract(pos/511.0).x;
 }
 
 vec3 perpBisector(vec2 p1, vec2 p2) {
@@ -58,11 +62,6 @@ vec3 perpBisector(vec2 p1, vec2 p2) {
     vec3 pb = vec3(pa.x-p21.y, pa.y+p21.x, 1.0);
     vec3 l = cross(pa, pb);
     return l * inversesqrt(dot(l.xy, l.xy));
-}
-
-float hash(vec2 pos) {
-    // return texture(iChannel0, fract(pos/511.0)).x;
-    return fract(pos/511.0).x;
 }
 
 

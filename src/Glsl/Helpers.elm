@@ -56,19 +56,15 @@ expressionToGlsl (Expression tree) =
 
 
 functionToGlsl : TypedName t -> List ( Type, String ) -> Statement t -> String
-functionToGlsl (TypedName rt name) args body =
-    let
-        argsList : String
-        argsList =
-            args
-                |> List.map (\( t, n ) -> Glsl.PrettyPrinter.type_ t ++ " " ++ n)
-                |> String.join ", "
-    in
-    [ Glsl.PrettyPrinter.type_ rt ++ " " ++ name ++ "(" ++ argsList ++ ") {"
-    , statementToGlsl body
-    , "}"
-    ]
-        |> String.join "\n"
+functionToGlsl (TypedName rt name) args (Statement body) =
+    Glsl.PrettyPrinter.declaration
+        (FunctionDeclaration
+            { args = args
+            , returnType = rt
+            , name = name
+            , stat = body.stat
+            }
+        )
 
 
 funX :
@@ -92,17 +88,13 @@ funX call typeF name body args =
         funGlsl : String
         funGlsl =
             functionToGlsl typed args body
-
-        (Statement { stat }) =
-            body
     in
     { declaration =
         FunctionDeclaration
             { returnType = returnType
             , name = name
             , args = args
-            , stat = stat
-            , body = funGlsl
+            , stat = s.stat
             }
     , call =
         call name
@@ -138,6 +130,7 @@ const_ typeF name value =
         (Expression e) =
             value
 
+        constGlsl : String
         constGlsl =
             "const "
                 ++ Glsl.PrettyPrinter.type_ constType
@@ -518,7 +511,7 @@ expr e s =
 
 nop : Statement ()
 nop =
-    Statement { stat = Block [], deps = SortedSet.empty }
+    Statement { stat = Nop, deps = SortedSet.empty }
 
 
 assignAdd : Expression t -> Expression t -> (() -> Statement q) -> Statement q

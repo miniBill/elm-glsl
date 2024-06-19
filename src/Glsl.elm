@@ -79,8 +79,11 @@ block stats =
             List.concatMap
                 (\stat ->
                     case stat of
-                        Block children ->
-                            children
+                        Block a b children ->
+                            a :: b :: children
+
+                        Nop ->
+                            []
 
                         _ ->
                             [ stat ]
@@ -88,11 +91,14 @@ block stats =
                 stats
     in
     case list of
+        [] ->
+            Nop
+
         [ child ] ->
             child
 
-        _ ->
-            Block list
+        a :: b :: c ->
+            Block a b c
 
 
 
@@ -314,7 +320,6 @@ type alias Function =
     , name : String
     , args : List ( Type, String )
     , stat : Stat
-    , body : String
     }
 
 
@@ -442,7 +447,8 @@ type Stat
     | Continue
     | ExpressionStatement Expr
     | Decl Type String (Maybe Expr)
-    | Block (List Stat)
+    | Nop
+    | Block Stat Stat (List Stat)
 
 
 type alias TypingFunction t =

@@ -24,11 +24,11 @@ stat root =
         For init check step loop ->
             map4 stat root For (Maybe.map stat) init expr check expr step stat loop
 
-        Block [ child ] ->
-            stat child
+        Nop ->
+            Nop
 
-        Block children ->
-            map stat root Block (List.map stat) children
+        Block a b children ->
+            map stat root (Block (stat a) (stat b)) (List.map stat) children
 
         _ ->
             root

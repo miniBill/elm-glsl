@@ -1,6 +1,6 @@
 module Glsl.Parser exposing (expression, file, function, preprocess, statement)
 
-import Glsl exposing (BinaryOperation(..), Declaration(..), Expr(..), Function, RelationOperation(..), Stat(..), Type(..), UnaryOperation(..))
+import Glsl exposing (BinaryOperation(..), Declaration(..), Expr(..), RelationOperation(..), Stat(..), Type(..), UnaryOperation(..))
 import Parser exposing ((|.), (|=), Parser, Step(..), Trailing(..), chompIf, chompWhile, getChompedString, keyword, loop, oneOf, sequence, succeed, symbol)
 
 
@@ -35,21 +35,14 @@ file =
 function : Parser Declaration
 function =
     succeed
-        (\glsl begin returnType name args stat end ->
-            let
-                res : Function
-                res =
-                    { returnType = returnType
-                    , name = name
-                    , args = args
-                    , stat = stat
-                    , body = String.slice begin end glsl
-                    }
-            in
-            FunctionDeclaration res
+        (\returnType name args stat ->
+            FunctionDeclaration
+                { returnType = returnType
+                , name = name
+                , args = args
+                , stat = stat
+                }
         )
-        |= Parser.getSource
-        |= Parser.getOffset
         |= typeParser
         |. spaces
         |= identifierParser
@@ -64,7 +57,6 @@ function =
             }
         |. spaces
         |= statement
-        |= Parser.getOffset
 
 
 const : Parser Declaration

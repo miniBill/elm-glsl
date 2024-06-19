@@ -28,27 +28,23 @@ checkParses label source =
                     ( Just { version = "300" }
                     , [ FunctionDeclaration
                             { args = []
-                            , body = """void main()
-{
-  pos3 = vec3(pos, 1);
-}"""
-                                    , name = "main"
-                                    , returnType = TVoid
-                                    , stat =
-                                        ExpressionStatement
-                                            (BinaryOperation
-                                                (Variable "pos3")
-                                                Assign
-                                                (Call
-                                                    (Variable "vec3")
-                                                    [ Variable "pos"
-                                                    , Int 1
-                                                    ]
-                                                )
-                                            )
-                                    }
-                              ]
-                            )
+                            , name = "main"
+                            , returnType = TVoid
+                            , stat =
+                                ExpressionStatement
+                                    (BinaryOperation
+                                        (Variable "pos3")
+                                        Assign
+                                        (Call
+                                            (Variable "vec3")
+                                            [ Variable "pos"
+                                            , Int 1
+                                            ]
+                                        )
+                                    )
+                            }
+                      ]
+                    )
 
 
 simpleSrc : String

@@ -6,12 +6,12 @@ import Glsl exposing (BinaryOperation(..), Declaration(..), Expr(..), RelationOp
 stat : Int -> Stat -> String
 stat i c =
     case c of
-        Block [ child ] ->
-            stat i child
+        Nop ->
+            "{}"
 
-        Block children ->
+        Block a b children ->
             (indent i "{"
-                :: List.map (stat (i + 1)) children
+                :: List.map (stat (i + 1)) (a :: b :: children)
                 ++ [ indent i "}" ]
             )
                 |> String.join "\n"
@@ -559,8 +559,24 @@ declaration decl =
                     function.args
                         |> List.map (\( atype, aname ) -> type_ atype ++ " " ++ aname)
                         |> String.join ", "
+
+                head : String
+                head =
+                    type_ function.returnType ++ " " ++ function.name ++ "(" ++ argsString ++ ") "
             in
-            type_ function.returnType ++ " " ++ function.name ++ "(" ++ argsString ++ ") " ++ stat 0 function.stat
+            case function.stat of
+                Block _ _ _ ->
+                    head ++ stat 0 function.stat
+
+                Nop ->
+                    head ++ "{}"
+
+                _ ->
+                    [ head ++ "{"
+                    , stat 1 function.stat
+                    , "}"
+                    ]
+                        |> String.join "\n"
 
         UniformDeclaration uniform ->
             "uniform " ++ type_ uniform.tipe ++ " " ++ uniform.name ++ ";"

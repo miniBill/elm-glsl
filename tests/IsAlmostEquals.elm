@@ -183,14 +183,8 @@ innerStat expected actual =
         ( ExpressionStatement el, ExpressionStatement al ) ->
             expr el al
 
-        ( Block [ ec ], _ ) ->
-            innerStat ec actual
-
-        ( _, Block [ ac ] ) ->
-            innerStat expected ac
-
-        ( Block ec, Block ac ) ->
-            list innerStat ec ac
+        ( Block ea eb ec, Block aa ab ac ) ->
+            list innerStat (ea :: eb :: ec) (aa :: ab :: ac)
 
         _ ->
             equals (Glsl.PrettyPrinter.stat 0) expected actual
