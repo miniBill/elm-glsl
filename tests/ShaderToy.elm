@@ -5,7 +5,7 @@ import Expect
 import Glsl exposing (Declaration, Expression, Float_, Vec2, Vec3, Vec4, float1)
 import Glsl.Dot as Dot exposing (dot4)
 import Glsl.Functions exposing (abs_, clampff1, cos_, cross33, distance, dot, floor_, fract, inversesqrt, mat21111, mat2ff11, mat2fff1, min_, mix221, mix441, sin_, smoothstep1f1, smoothstepf11, smoothstepff1, sqrt_, step, step1f, stepf1, vec211, vec21f, vec2f, vec31, vec3111, vec311f, vec321, vec32f, vec3f, vec422, vec43f, vec4f, vec4ffff)
-import Glsl.Helpers exposing (assign, const_, expr, float, floatT, fun1_, fun2_, fun4_, in_, mat2T, nop, out, return, vec2, vec2T, vec3, vec3T, vec4, vec4T, voidT)
+import Glsl.Helpers exposing (assign, const, const_, expr, float, floatT, fun1, fun2, fun4, in_, mat2T, nop, out, return, vec2, vec2T, vec3, vec3T, vec4, vec4T, voidT)
 import Glsl.Operations exposing (add, add1f, addf1, by, byfv, bymv, byv1, byvf, divvf, negate_, subtract, subtract1f, subtractf1)
 import Glsl.Parser
 import Glsl.PrettyPrinter
@@ -135,42 +135,36 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
 """
     <|
         let
-            s3 : { declaration : Declaration, value : Expression Float_ }
+            s3 : Expression Float_
             s3 =
-                const_ floatT "s3" (float1 1.7320508075688772)
+                const floatT "s3" (float1 1.7320508075688772)
 
-            i3 : { declaration : Declaration, value : Expression Float_ }
+            i3 : Expression Float_
             i3 =
-                const_ floatT "i3" (float1 0.5773502691896258)
+                const floatT "i3" (float1 0.5773502691896258)
 
-            tri2cart : { declaration : Declaration, value : Expression Glsl.Mat2 }
+            tri2cart : Expression Glsl.Mat2
             tri2cart =
-                const_ mat2T "tri2cart" (mat2fff1 1 0 -0.5 (byfv 0.5 s3.value))
+                const mat2T "tri2cart" (mat2fff1 1 0 -0.5 (byfv 0.5 s3))
 
-            cart2tri : { declaration : Declaration, value : Expression Glsl.Mat2 }
+            cart2tri : Expression Glsl.Mat2
             cart2tri =
-                const_ mat2T "cart2tri" (mat2ff11 1 0 i3.value (byfv 2.0 i3.value))
+                const mat2T "cart2tri" (mat2ff11 1 0 i3 (byfv 2.0 i3))
 
-            pick3 :
-                { declaration : Declaration
-                , call : Expression Vec4 -> Expression Vec4 -> Expression Vec4 -> Expression Float_ -> Expression Vec4
-                }
+            pick3 : Expression Vec4 -> Expression Vec4 -> Expression Vec4 -> Expression Float_ -> Expression Vec4
             pick3 =
-                fun4_ vec4T "pick3" (vec4T "a") (vec4T "b") (vec4T "c") (floatT "u") <| \a b c u ->
+                fun4 vec4T "pick3" (vec4T "a") (vec4T "b") (vec4T "c") (floatT "u") <| \a b c u ->
                 float "v" (fract (byvf u 0.3333333333333)) <| \v ->
                 return (mix441 (mix441 a b (stepf1 0.3 v)) c (stepf1 0.6 v))
 
-            closestHexCenters :
-                { declaration : Declaration
-                , call : Expression Vec2 -> Expression Vec4
-                }
+            closestHexCenters : Expression Vec2 -> Expression Vec4
             closestHexCenters =
-                fun1_ vec4T "closestHexCenters" (vec2T "p") <| \p ->
+                fun1 vec4T "closestHexCenters" (vec2T "p") <| \p ->
                 vec2 "pi" (floor_ p) <| \pi ->
                 vec2 "pf" (fract p) <| \pf ->
                 vec4
                     "nn"
-                    (pick3.call
+                    (pick3
                         (vec4ffff 0 0 2 1)
                         (vec4ffff 1 1 0 -1)
                         (vec4ffff 1 0 0 1)
@@ -187,12 +181,9 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                         (vec422 pi pi)
                     )
 
-            perpBisector :
-                { declaration : Declaration
-                , call : Expression Vec2 -> Expression Vec2 -> Expression Vec3
-                }
+            perpBisector : Expression Vec2 -> Expression Vec2 -> Expression Vec3
             perpBisector =
-                fun2_ vec3T "perpBisector" (vec2T "p1") (vec2T "p2") <| \p1 p2 ->
+                fun2 vec3T "perpBisector" (vec2T "p1") (vec2T "p2") <| \p1 p2 ->
                 vec2 "p21" (subtract p2 p1) <| \p21 ->
                 vec3 "pa" (vec32f (add p1 (byfv 0.5 p21)) 1) <| \pa ->
                 vec3 "pb"
@@ -210,20 +201,14 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                         )
                     )
 
-            hash :
-                { declaration : Declaration
-                , call : Expression Vec2 -> Expression Float_
-                }
+            hash : Expression Vec2 -> Expression Float_
             hash =
-                fun1_ floatT "hash" (vec2T "pos") <| \pos ->
+                fun1 floatT "hash" (vec2T "pos") <| \pos ->
                 return (fract (divvf pos 511) |> Dot.x)
 
-            mainImage :
-                { declaration : Declaration
-                , call : Expression Vec4 -> Expression Vec2 -> Expression ()
-                }
+            mainImage : Expression Vec4 -> Expression Vec2 -> Expression ()
             mainImage =
-                fun2_ voidT "mainImage" (out vec4T "fragColor") (in_ vec2T "fragCoord") <| \fragColor fragCoord ->
+                fun2 voidT "mainImage" (out vec4T "fragColor") (in_ vec2T "fragCoord") <| \fragColor fragCoord ->
                 float "scl" (float1 0) <| \scl ->
                 float "iTime" (float1 0) <| \iTime ->
                 float "cx"
@@ -256,7 +241,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                         )
                     )
                 <| \() ->
-                vec3 "L" (vec3111 i3.value (negate_ i3.value) i3.value) <| \uL ->
+                vec3 "L" (vec3111 i3 (negate_ i3) i3) <| \uL ->
                 expr
                     (assign
                         (uL |> Dot.xy)
@@ -266,13 +251,13 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                         )
                     )
                 <| \() ->
-                vec4 "h" (closestHexCenters.call (bymv cart2tri.value pos)) <| \h ->
-                vec2 "q1" (bymv tri2cart.value (h |> Dot.xy)) <| \q1 ->
+                vec4 "h" (closestHexCenters (bymv cart2tri pos)) <| \h ->
+                vec2 "q1" (bymv tri2cart (h |> Dot.xy)) <| \q1 ->
                 float "s"
                     (subtract1f
                         (byvf
                             (step1f
-                                (hash.call (h |> Dot.xy))
+                                (hash (h |> Dot.xy))
                                 0.5
                             )
                             2
@@ -285,9 +270,9 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                     (min_
                         (min_
                             (distance d1 (vec21f (byvf s -1) 0))
-                            (distance d1 (vec211 (byvf s 0.5) (byfv 0.5 s3.value)))
+                            (distance d1 (vec211 (byvf s 0.5) (byfv 0.5 s3)))
                         )
-                        (distance d1 (vec211 (byvf s 0.5) (byfv -0.5 s3.value)))
+                        (distance d1 (vec211 (byvf s 0.5) (byfv -0.5 s3)))
                     )
                 <| \l ->
                 float "r" (float1 0.5) <| \r ->
@@ -297,16 +282,16 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                         1
                     )
                 <| \truchet ->
-                vec2 "q2" (bymv tri2cart.value (h |> Dot.zw)) <| \q2 ->
+                vec2 "q2" (bymv tri2cart (h |> Dot.zw)) <| \q2 ->
                 vec4 "rgb"
-                    (pick3.call
+                    (pick3
                         (vec4ffff 1 0 0 1)
                         (vec4ffff 0 1 0 1)
                         (vec4ffff 0 0 1 1)
                         (h |> Dot.x)
                     )
                 <| \rgb ->
-                vec3 "line" (perpBisector.call q1 q2) <| \line ->
+                vec3 "line" (perpBisector q1 q2) <| \line ->
                 float "d" (dot (vec32f pos 1) line) <| \d ->
                 vec4 "black" (vec43f (vec3f 0) 1) <| \black ->
                 vec2 "nxy" (mix221 (byfv 0.4 (line |> Dot.xy)) (vec2f 0) (smoothstepf11 0.3 (addf1 0.3 scl) d)) <| \nxy ->
@@ -330,7 +315,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
                 expr (assign fragColor (mix441 crgb truchet k)) <| \() ->
                 nop
         in
-        mainImage.call (Glsl.unsafeVar "_") (Glsl.unsafeVar "_")
+        mainImage (Glsl.unsafeVar "_") (Glsl.unsafeVar "_")
             |> Glsl.deps
 
 
