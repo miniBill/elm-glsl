@@ -5,7 +5,7 @@ import Elm
 import Elm.Annotation as Type
 import Gen.CodeGen.Generate as Generate
 import Gen.Glsl
-import Glsl exposing (BinaryOperation(..), Declaration(..), Expr(..), Expression(..), Stat(..), Statement(..), Type(..))
+import Glsl exposing (Type(..))
 import Glsl.PrettyPrinter
 import List.Extra
 import Set exposing (Set)

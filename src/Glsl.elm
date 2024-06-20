@@ -20,7 +20,7 @@ module Glsl exposing
     , unsafeVar
     , unsafeDot
     , build, withExpression, withStatement, withContinuation, buildExpression, buildStatement, WithDepsBuilder
-    , block, deps
+    , Const, block, deps
     )
 
 {-|
