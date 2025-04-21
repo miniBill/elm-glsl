@@ -24,14 +24,17 @@ stat root =
         For init check step loop ->
             map4 stat root For (Maybe.map stat) init expr check expr step stat loop
 
-        Nop ->
-            Nop
-
         Block a b children ->
             map stat root (Block (stat a) (stat b)) (List.map stat) children
 
-        _ ->
-            root
+        Nop ->
+            Nop
+
+        Break ->
+            Break
+
+        Continue ->
+            Continue
 
 
 expr : Expr -> Expr
@@ -58,6 +61,12 @@ expr root =
         Call l r ->
             map2 expr root Call expr l (List.map expr) r
 
+        -- Bool _ ->
+        -- Int _ ->
+        -- Float _ ->
+        -- Uint _ ->
+        -- Double _ ->
+        -- Variable _ ->
         _ ->
             root
 
