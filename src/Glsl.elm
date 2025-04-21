@@ -13,14 +13,14 @@ module Glsl exposing
     , Double, Double_, DVec2, DVec3, DVec4
     , Mat2, Mat3, Mat4, Mat23, Mat24, Mat32, Mat34, Mat42, Mat43
     , DMat2, DMat3, DMat4, DMat23, DMat24, DMat32, DMat34, DMat42, DMat43
-    , Void, In, Out
+    , Void, In, Out, Const
     , unsafeCall0, unsafeCall1, unsafeCall2, unsafeCall3, unsafeCall4, unsafeCall5, unsafeCall6, unsafeCall7, unsafeCall8, unsafeCall9
     , unsafeMap, unsafeMap2, unsafeMap3
     , unsafeTypecast
     , unsafeVar
     , unsafeDot
     , build, withExpression, withStatement, withContinuation, buildExpression, buildStatement, WithDepsBuilder
-    , Const, block, deps
+    , block, deps
     )
 
 {-|
@@ -50,7 +50,7 @@ module Glsl exposing
 @docs Double, Double_, DVec2, DVec3, DVec4
 @docs Mat2, Mat3, Mat4, Mat23, Mat24, Mat32, Mat34, Mat42, Mat43
 @docs DMat2, DMat3, DMat4, DMat23, DMat24, DMat32, DMat34, DMat42, DMat43
-@docs Void, In, Out
+@docs Void, In, Out, Const
 
 
 # Escape hatches
