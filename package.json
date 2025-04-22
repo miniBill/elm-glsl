@@ -2,12 +2,13 @@
     "devDependencies": {
         "elm-codegen": "^0.6.1",
         "elm-format": "^0.8.7",
+        "elm-pages": "3.0.22",
         "elm-review": "^2.13.2",
         "elm-test-rs": "^3.0.0-5"
     },
     "license": "BSD-3-Clause",
     "scripts": {
-        "start": "yarn elm-codegen run --output src; elm-format --yes src/Glsl/Functions.elm; sed -i'' -e 's/Vec String/Vec q/g' src/Glsl/Functions.elm; rm -f src/Glsl/Functions.elm-e"
+        "start": "yarn elm-pages run codegen/src/Generate.elm; elm-format --yes src/Glsl/Functions.elm; sed -i'' -e 's/Vec String/Vec q/g' src/Glsl/Functions.elm; rm -f src/Glsl/Functions.elm-e"
     },
     "overrides": {
         "elm-doc-preview": ">=6.0.0",

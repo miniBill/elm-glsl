@@ -1,39 +1,42 @@
-module Generate exposing (main)
+module Generate exposing (run)
 
+import BackendTask exposing (BackendTask)
 import Dict
 import Elm
 import Elm.Annotation as Type
-import Gen.CodeGen.Generate as Generate
+import FatalError exposing (FatalError)
 import Gen.Glsl
 import Glsl exposing (BinaryOperation(..), Declaration(..), Expr(..), Expression(..), Stat(..), Statement(..), Type(..))
 import Glsl.PrettyPrinter
 import List.Extra
+import Pages.Script as Script exposing (Script)
 import Set exposing (Set)
 import SortedSet exposing (SortedSet)
 
 
-main : Program {} () ()
-main =
-    Generate.run
-        [ builtinDecls
-            |> List.Extra.gatherEqualsBy .group
-            |> List.map
-                (\( { group } as head, tail ) ->
-                    List.map .declaration (head :: tail)
-                        |> Elm.group { title = group, docs = "aaa" }
-                )
-            |> Elm.fileWith [ "Glsl", "Functions" ]
-                { docs =
-                    List.map
-                        (\{ group, members } ->
-                            Elm.docs
-                                { group = group
-                                , members = List.sort members
-                                }
-                        )
-                , aliases = []
-                }
-        ]
+run : Script
+run =
+    Script.withoutCliOptions task
+
+
+task : BackendTask FatalError ()
+task =
+    let
+        file =
+            builtinDecls
+                |> List.Extra.gatherEqualsBy .group
+                |> List.map
+                    (\( { group } as head, tail ) ->
+                        List.map .declaration (head :: tail)
+                            |> Elm.group
+                    )
+                |> Elm.file [ "Glsl", "Functions" ]
+    in
+    Script.writeFile
+        { path = "src/" ++ file.path
+        , body = file.contents
+        }
+        |> BackendTask.allowFatal
 
 
 wrapFunction : String -> SortedSet String -> List ( Type, String ) -> Type -> List ( String, { declaration : Elm.Declaration, group : String } )
