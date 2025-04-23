@@ -620,42 +620,42 @@ genericExponential =
 functionsCommon : List ( String, List Type, Type )
 functionsCommon =
     [ unary genFIDType "abs" genFIDType
-    , unary genFIDType "sign" genFIDType
-    , unary genFDType "floor" genFDType
-    , unary genFDType "trunc" genFDType
-    , unary genFDType "round" genFDType
-    , unary genFDType "roundEven" genFDType
     , unary genFDType "ceil" genFDType
-    , unary genFDType "fract" genFDType
-    , binary genFDType "mod" genFDType genFDType
-    , binary genFDType "mod" genFDType fdType
-    , binary genType "modf" genType (List.map TOut genType)
-    , binary genDType "modf" genDType (List.map TOut genDType)
-    , binary genFDIUType "min" genFDIUType genFDIUType
-    , binary genFDIUType "min" genFDIUType fdiuType
-    , binary genFDIUType "max" genFDIUType genFDIUType
-    , binary genFDIUType "max" genFDIUType fdiuType
-    , ternary genFDIUType "clamp" genFDIUType genFDIUType genFDIUType
     , ternary genFDIUType "clamp" genFDIUType fdiuType fdiuType
-    , ternary genFDType "mix" genFDType genFDType genFDType
-    , ternary genFDType "mix" genFDType genFDType fdType
-    , binary genFDType "step" genFDType genFDType
-    , binary genFDType "step" fdType genFDType
-    , ternary genFDType "smoothstep" genFDType genFDType genFDType
-    , ternary genFDType "smoothstep" fdType fdType genFDType
-    , unary genBType "isnan" genType
-    , unary genBType "isnan" genDType
-    , unary genBType "isinf" genType
-    , unary genBType "isinf" genDType
+    , ternary genFDIUType "clamp" genFDIUType genFDIUType genFDIUType
     , unary genIType "floatBitsToInt" genType
     , unary genUType "floatBitsToUint" genType
-    , unary genType "intBitsToFloat" genIType
-    , unary genType "uintBitsToFloat" genUType
+    , unary genFDType "floor" genFDType
     , ternary genFDType "fma" genFDType genFDType genFDType
-    , binary genType "frexp" genType (List.map TOut genIType)
+    , unary genFDType "fract" genFDType
     , binary genDType "frexp" genDType (List.map TOut genIType)
-    , binary genType "ldexp" genType genIType
+    , binary genType "frexp" genType (List.map TOut genIType)
+    , unary genType "intBitsToFloat" genIType
+    , unary genBType "isinf" genDType
+    , unary genBType "isinf" genType
+    , unary genBType "isnan" genDType
+    , unary genBType "isnan" genType
     , binary genDType "ldexp" genDType genIType
+    , binary genType "ldexp" genType genIType
+    , binary genFDIUType "max" genFDIUType fdiuType
+    , binary genFDIUType "max" genFDIUType genFDIUType
+    , binary genFDIUType "min" genFDIUType fdiuType
+    , binary genFDIUType "min" genFDIUType genFDIUType
+    , ternary genFDType "mix" genFDType genFDType fdType
+    , ternary genFDType "mix" genFDType genFDType genFDType
+    , binary genFDType "mod" genFDType fdType
+    , binary genFDType "mod" genFDType genFDType
+    , binary genDType "modf" genDType (List.map TOut genDType)
+    , binary genType "modf" genType (List.map TOut genType)
+    , unary genFDType "round" genFDType
+    , unary genFDType "roundEven" genFDType
+    , unary genFIDType "sign" genFIDType
+    , ternary genFDType "smoothstep" fdType fdType genFDType
+    , ternary genFDType "smoothstep" genFDType genFDType genFDType
+    , binary genFDType "step" fdType genFDType
+    , binary genFDType "step" genFDType genFDType
+    , unary genFDType "trunc" genFDType
+    , unary genType "uintBitsToFloat" genUType
     ]
         |> List.concat
 
@@ -663,22 +663,22 @@ functionsCommon =
 genericCommon : List ( String, Elm.Expression )
 genericCommon =
     [ generic1 "abs"
-    , generic1 "sign"
-    , generic1 "floor"
-    , generic1 "trunc"
-    , generic1 "round"
-    , generic1 "roundEven"
     , generic1 "ceil"
+    , generic3 "clamp"
+    , generic1 "floor"
+    , generic3 "fma"
     , generic1 "fract"
+    , generic2 "max"
+    , generic2 "min"
+    , generic3 "mix"
     , generic2 "mod"
     , generic2_out2 "modf"
-    , generic2 "min"
-    , generic2 "max"
-    , generic3 "clamp"
-    , generic3 "mix"
-    , generic2 "step"
+    , generic1 "round"
+    , generic1 "roundEven"
+    , generic1 "sign"
     , generic3 "smoothstep"
-    , generic3 "fma"
+    , generic2 "step"
+    , generic1 "trunc"
     ]
 
 
@@ -689,12 +689,12 @@ functionsGeometric =
         fdvec3 =
             [ TVec3, TDVec3 ]
     in
-    [ unary fdType "length" genFDType
+    [ binary fdvec3 "cross" fdvec3 fdvec3
     , binary fdType "distance" genFDType genFDType
     , binary fdType "dot" genFDType genFDType
-    , binary fdvec3 "cross" fdvec3 fdvec3
-    , unary genFDType "normalize" genFDType
     , ternary genFDType "faceforward" genFDType genFDType genFDType
+    , unary fdType "length" genFDType
+    , unary genFDType "normalize" genFDType
     , binary genFDType "reflect" genFDType genFDType
     , ternary genFDType "refract" genFDType genFDType (float ++ float)
     ]
@@ -703,11 +703,11 @@ functionsGeometric =
 
 genericGeometric : List ( String, Elm.Expression )
 genericGeometric =
-    [ generic1_toscalar "length"
-    , generic2_toscalar "distance"
+    [ generic2_toscalar "distance"
     , generic2_toscalar "dot"
-    , generic1 "normalize"
     , generic3 "faceforward"
+    , generic1_toscalar "length"
+    , generic1 "normalize"
     , generic2 "reflect"
     , generic "refract" [ exprVecAnn, exprVecAnn, exprFloat ] exprVecAnn
     ]
@@ -716,14 +716,14 @@ genericGeometric =
 genericDerivative : List ( String, Elm.Expression )
 genericDerivative =
     [ generic1F "dFdx"
-    , generic1F "dFdy"
-    , generic1F "dFdxFine"
-    , generic1F "dFdyFine"
     , generic1F "dFdxCoarse"
+    , generic1F "dFdxFine"
+    , generic1F "dFdy"
     , generic1F "dFdyCoarse"
+    , generic1F "dFdyFine"
     , generic1F "fwidth"
-    , generic1F "fwidthFine"
     , generic1F "fwidthCoarse"
+    , generic1F "fwidthFine"
     ]
 
 
@@ -951,41 +951,41 @@ avoidClash name =
 
 basicNames : Set String
 basicNames =
-    [ "round"
-    , "floor"
-    , "ceiling"
-    , "truncate"
-    , "max"
-    , "min"
-    , "compare"
-    , "not"
-    , "xor"
-    , "modBy"
-    , "remainderBy"
-    , "negate"
-    , "abs"
-    , "clamp"
-    , "sqrt"
-    , "logBase"
-    , "e"
-    , "degrees"
-    , "radians"
-    , "turns"
-    , "pi"
-    , "cos"
-    , "sin"
-    , "tan"
+    [ "abs"
     , "acos"
+    , "always"
     , "asin"
     , "atan"
     , "atan2"
-    , "toPolar"
+    , "ceiling"
+    , "clamp"
+    , "compare"
+    , "cos"
+    , "degrees"
+    , "e"
+    , "floor"
     , "fromPolar"
-    , "isNaN"
-    , "isInfinite"
     , "identity"
-    , "always"
+    , "isInfinite"
+    , "isNaN"
+    , "logBase"
+    , "max"
+    , "min"
+    , "modBy"
+    , "negate"
     , "never"
+    , "not"
+    , "pi"
+    , "radians"
+    , "remainderBy"
+    , "round"
+    , "sin"
+    , "sqrt"
+    , "tan"
+    , "toPolar"
+    , "truncate"
+    , "turns"
+    , "xor"
     ]
         |> Set.fromList
 
