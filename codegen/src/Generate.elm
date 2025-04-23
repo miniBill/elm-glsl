@@ -25,10 +25,12 @@ task =
         file =
             builtinDecls
                 |> List.Extra.gatherEqualsBy .group
-                |> List.map
+                |> List.concatMap
                     (\( { group } as head, tail ) ->
-                        List.map .declaration (head :: tail)
+                        [ Elm.docs ("## " ++ group)
+                        , List.map .declaration (head :: tail)
                             |> Elm.group
+                        ]
                     )
                 |> Elm.file [ "Glsl", "Functions" ]
     in
