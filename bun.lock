@@ -4,11 +4,11 @@
   "workspaces": {
     "": {
       "devDependencies": {
-        "elm-codegen": "latest",
-        "elm-format": "latest",
-        "elm-pages": "latest",
-        "elm-review": "latest",
-        "elm-test-rs": "latest",
+        "elm-codegen": "^0.6.1",
+        "elm-format": "^0.8.8",
+        "elm-pages": "3.0.26",
+        "elm-review": "^2.13.5",
+        "elm-test-rs": "^3.0.1-0",
       },
     },
   },
