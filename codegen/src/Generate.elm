@@ -46,7 +46,7 @@ wrapFunction name deps args returnType =
     let
         argsDecls : List ( String, List ( String, Maybe Type.Annotation, Elm.Expression -> Elm.Expression ) )
         argsDecls =
-            List.repeat (List.length args) [ True, False ]
+            List.repeat (List.length args) [ {-True,-} False ]
                 |> List.Extra.cartesianProduct
                 |> List.foldl
                     (\wraps ->
