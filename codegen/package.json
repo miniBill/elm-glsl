@@ -2,7 +2,7 @@
     "license": "BSD-3-Clause",
     "devDependencies": {
         "elm-codegen": "^0.6.1",
-        "elm-pages": "^3.0.19"
+        "elm-pages": "^3.0.26"
     },
     "overrides": {
         "elm-doc-preview": ">=6.0.0",
