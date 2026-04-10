@@ -26,17 +26,23 @@ getChompedString parser =
 
 symbol : String -> Parser c ()
 symbol k =
-    Parser.Advanced.symbol (token k)
+    Parser.Advanced.symbol (token_ k)
+        |. spaces
 
 
 keyword : String -> Parser c ()
 keyword k =
-    Parser.Advanced.keyword (token k)
+    Parser.Advanced.keyword (token_ k)
         |. spaces
 
 
-token : String -> Token Problem
+token : String -> Parser c ()
 token k =
+    Parser.Advanced.token (token_ k)
+
+
+token_ : String -> Token Problem
+token_ k =
     if String.isEmpty k then
         Token k UnexpectedChar
 
@@ -85,16 +91,16 @@ spaces =
         comment : Parser c ()
         comment =
             oneOf
-                [ Parser.Advanced.Workaround.lineCommentAfter (token "//")
-                , Parser.Advanced.Workaround.multiCommentAfter (token "/*") (token "*/") Parser.Advanced.NotNestable
+                [ Parser.Advanced.Workaround.lineCommentAfter (token_ "//")
+                , Parser.Advanced.Workaround.multiCommentAfter (token_ "/*") (token_ "*/") Parser.Advanced.NotNestable
                 ]
     in
     Parser.Advanced.sequence
-        { start = token ""
-        , end = token ""
+        { start = token_ ""
+        , end = token_ ""
         , trailing = Parser.Advanced.Optional
         , spaces = inner
-        , separator = token ""
+        , separator = token_ ""
         , item = comment
         }
         |> Parser.Advanced.map (\_ -> ())
@@ -110,11 +116,11 @@ sequence :
     -> Parser c (List a)
 sequence config =
     Parser.Advanced.sequence
-        { start = token config.start
-        , end = token config.end
+        { start = token_ config.start
+        , end = token_ config.end
         , trailing = config.trailing
         , spaces = spaces
-        , separator = token config.separator
+        , separator = token_ config.separator
         , item = config.item
         }
         |. spaces
