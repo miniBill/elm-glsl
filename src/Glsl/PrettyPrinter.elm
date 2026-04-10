@@ -44,8 +44,21 @@ stat i c =
             ]
                 |> String.join "\n"
 
-        For init check step loop ->
-            [ indent i ("for ( " ++ maybeStat 0 init ++ "; " ++ expr check ++ "; " ++ expr step ++ ") {")
+        For maybeInit check step loop ->
+            [ indent i
+                ("for ( "
+                    ++ (case maybeInit of
+                            Just init ->
+                                stat 0 init ++ " "
+
+                            Nothing ->
+                                ";"
+                       )
+                    ++ expr check
+                    ++ "; "
+                    ++ expr step
+                    ++ ") {"
+                )
             , stat (i + 1) loop
             , indent i "}"
             ]
@@ -68,16 +81,6 @@ stat i c =
 
         Decl t n Nothing ->
             indent i (type_ t ++ " " ++ n ++ ";")
-
-
-maybeStat : Int -> Maybe Stat -> String
-maybeStat i c =
-    case c of
-        Nothing ->
-            ""
-
-        Just s ->
-            stat i s
 
 
 indent : Int -> String -> String
