@@ -164,17 +164,16 @@ typeParser =
 
 statement : Parser Stat
 statement =
-    (ParserWithContext.lazy <|
-        \_ ->
-            oneOf
-                [ blockParser
-                , returnParser
-                , breakContinueParser
-                , ifParser
-                , forParser
-                , defParser
-                , expressionStatementParser
-                ]
+    (ParserWithContext.lazy <| \_ ->
+    oneOf
+        [ blockParser
+        , returnParser
+        , breakContinueParser
+        , ifParser
+        , forParser
+        , defParser
+        , expressionStatementParser
+        ]
     )
         |> inContext ParsingStatement
 
