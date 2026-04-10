@@ -66,6 +66,11 @@ module Glsl exposing
 
 @docs build, withExpression, withStatement, withContinuation, buildExpression, buildStatement, WithDepsBuilder
 
+
+# Other
+
+@docs block, deps
+
 -}
 
 import SortedSet exposing (SortedSet)
