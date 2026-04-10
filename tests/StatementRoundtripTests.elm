@@ -8,7 +8,8 @@ import Glsl exposing (Expr(..), Stat(..), Type(..))
 import Glsl.Parser
 import Glsl.PrettyPrinter
 import IsAlmostEquals
-import Parser exposing ((|.))
+import Parser.Advanced exposing ((|.))
+import ParserWithContext
 import Test exposing (Test, describe, test)
 
 
@@ -45,7 +46,7 @@ roundtrip =
         str =
             Glsl.PrettyPrinter.stat 0 expected
     in
-    case Parser.run (Glsl.Parser.statement |. Parser.end) str of
+    case Parser.Advanced.run (Glsl.Parser.statement |. ParserWithContext.end) str of
         Err errs ->
             errs
                 |> ErrorUtils.errorsToString str

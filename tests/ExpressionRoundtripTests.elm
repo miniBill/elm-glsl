@@ -7,7 +7,8 @@ import Glsl exposing (BinaryOperation(..), Expr(..), RelationOperation(..), Unar
 import Glsl.Parser
 import Glsl.PrettyPrinter
 import IsAlmostEquals
-import Parser exposing ((|.))
+import Parser.Advanced exposing ((|.))
+import ParserWithContext
 import Set exposing (Set)
 import Test exposing (Test, describe, test)
 
@@ -38,7 +39,7 @@ roundtrip =
         str =
             Glsl.PrettyPrinter.expr expr
     in
-    case Parser.run (Glsl.Parser.expression |. Parser.end) str of
+    case Parser.Advanced.run (Glsl.Parser.expression |. ParserWithContext.end) str of
         Err errs ->
             errs
                 |> ErrorUtils.errorsToString str

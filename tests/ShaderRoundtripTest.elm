@@ -4,7 +4,8 @@ import ErrorUtils
 import Expect
 import Glsl exposing (BinaryOperation(..), Declaration(..), Expr(..), Stat(..), Type(..))
 import Glsl.Parser
-import Parser exposing ((|.))
+import Parser.Advanced exposing ((|.))
+import ParserWithContext
 import Test exposing (Test, test)
 
 
@@ -16,7 +17,7 @@ simple =
 checkParses : String -> String -> Test
 checkParses label source =
     test label <| \_ ->
-    case Parser.run (Glsl.Parser.file |. Parser.end) source of
+    case Parser.Advanced.run (Glsl.Parser.file |. ParserWithContext.end) source of
         Err errs ->
             errs
                 |> ErrorUtils.errorsToString source
@@ -25,7 +26,7 @@ checkParses label source =
         Ok o ->
             o
                 |> Expect.equal
-                    ( Just { version = "300" }
+                    ( Just { version = 300 }
                     , [ FunctionDeclaration
                             { args = []
                             , name = "main"
