@@ -411,7 +411,7 @@ symbolNotFollowedBy s nots =
         |. oneOf
             [ succeed ()
                 |. oneOf (List.map symbol nots)
-                |. ParserWithContext.problem ("Expecting " ++ s ++ " not follwed by any of " ++ String.join ", " nots)
+                |. ParserWithContext.problem ("Expecting " ++ s ++ " not followed by any of " ++ String.join ", " nots)
                 |> ParserWithContext.backtrackable
             , succeed ()
             ]
