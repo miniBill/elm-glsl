@@ -27,7 +27,6 @@ getChompedString parser =
 symbol : String -> Parser c ()
 symbol k =
     Parser.Advanced.symbol (token k)
-        |. spaces
 
 
 keyword : String -> Parser c ()
@@ -148,7 +147,15 @@ problem msg =
 
 int : Parser c Int
 int =
-    (succeed ()
+    innerInt
+        |. spaces
+
+
+{-| Same as `int` but without the implicit `spaces` at the end.
+-}
+innerInt : Parser c Int
+innerInt =
+    succeed ()
         |. chompIf Char.isDigit ExpectingInt
         |. chompWhile Char.isDigit
         |> getChompedString
@@ -161,8 +168,6 @@ int =
                     Nothing ->
                         Parser.Advanced.problem ExpectingInt
             )
-    )
-        |. spaces
 
 
 float : Parser c Float
@@ -173,13 +178,13 @@ float =
             oneOf
                 [ succeed ()
                     |. symbol "."
-                    |. int
+                    |. innerInt
                 , succeed ()
-                    |. backtrackable int
+                    |. backtrackable innerInt
                     |. symbol "."
                     |. commit ()
                     |. oneOf
-                        [ int
+                        [ innerInt
                         , succeed 0
                         ]
                 ]
@@ -211,11 +216,11 @@ float =
                 |= oneOf
                     [ succeed identity
                         |. symbol "+"
-                        |= int
+                        |= innerInt
                     , succeed negate
                         |. symbol "-"
-                        |= int
-                    , int
+                        |= innerInt
+                    , innerInt
                     ]
     in
     oneOf
@@ -226,9 +231,10 @@ float =
                 , succeed 0
                 ]
         , succeed (\c e -> toFloat c * 10 ^ toFloat e)
-            |= backtrackable int
+            |= backtrackable innerInt
             |= exponent
         ]
+        |. spaces
 
 
 andThen : (a -> Parser c b) -> Parser c a -> Parser c b
